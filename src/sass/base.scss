@@ -1,107 +1,165 @@
-$font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', arial, helvetica, tahoma, verdana, sans-serif;
-$font-extra-small: 10px;
-$font-small: 12px;
-$font-middle: 14px;
-$font-large: 16px;
-$font-extra-large: 18px;
+$font-family: 'PingFang SC',
+'Noto Sans CJK SC',
+'Microsoft YaHei',
+arial,
+helvetica,
+tahoma,
+verdana,
+sans-serif;
+$font-extra-small: .1rem;
+$font-small: .12rem;
+$font-middle: .14rem;
+$font-large: .16rem;
+$font-extra-large: .18rem;
 $color-dark-grey: #333;
 $color-grey: #666;
 $color-light-grey: #999;
 $color-orange: #ff8a00;
 $color-body-bg: #f5f5f5;
-$spacing-small: 10px;
-$spacing-middle: 15px;
-$spacing-large: 20px;
-$border: 1px solid #f0f0f0;
-
+$spacing-small: .1rem;
+$spacing-middle: .15rem;
+$spacing-large: .2rem;
+$border: .005rem solid #E3E6E9;
 @mixin flex-box {
-  display: -webkit-flex;
-  display: flex;
+    display: -webkit-flex;
+    display: flex;
 }
 
 @mixin flex($flex: 1) {
-  -webkit-flex: $flex;
-  flex: $flex;
+    -webkit-flex: $flex;
+    flex: $flex;
 }
 
 @mixin flex($flex-grow: 1, $flex-shrink: 1, $flex-basis: auto) {
-  -webkit-flex: $flex-grow $flex-shrink $flex-basis;
-  flex: $flex-grow $flex-shrink $flex-basis;
+    -webkit-flex: $flex-grow $flex-shrink $flex-basis;
+    flex: $flex-grow $flex-shrink $flex-basis;
 }
 
 @mixin flex-direction($flex-direction: row) {
-  -webkit-flex-direction: $flex-direction;
-  flex-direction: $flex-direction;
+    -webkit-flex-direction: $flex-direction;
+    flex-direction: $flex-direction;
 }
 
 @mixin flex-wrap($flex-wrap: nowrap) {
-  -webkit-flex-wrap: $flex-wrap;
-  flex-wrap: $flex-wrap;
+    -webkit-flex-wrap: $flex-wrap;
+    flex-wrap: $flex-wrap;
 }
 
 @mixin align-content($align-content: center) {
-  -webkit-align-content: $align-content;
-  align-content: $align-content;
+    -webkit-align-content: $align-content;
+    align-content: $align-content;
 }
 
 @mixin align-items($align-items: center) {
-  -webkit-align-items: $align-items;
-  align-items: $align-items;
+    -webkit-align-items: $align-items;
+    align-items: $align-items;
 }
 
 @mixin align-self($align-self: center) {
-  -webkit-align-self: $align-self;
-  align-self: $align-self;
+    -webkit-align-self: $align-self;
+    align-self: $align-self;
 }
 
 @mixin justify-content($justify-content: center) {
-  -webkit-justify-content: $justify-content;
-  justify-content: $justify-content;
+    -webkit-justify-content: $justify-content;
+    justify-content: $justify-content;
 }
 
 @mixin line-clamp($line-clamp: 2) {
-  display: -webkit-box;
-  display: -moz-box; 
-  -webkit-box-orient:vertical;
-  -moz-box-orient:vertical;
-  -webkit-line-clamp: $line-clamp;
-  -moz-line-clamp: $line-clamp;
-  text-overflow: ellipsis;
-  overflow: hidden;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-line-clamp: $line-clamp;
+    -moz-line-clamp: $line-clamp;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @mixin transform($transform) {
-  -webkit-transform: $transform;
-  -moz-transform: $transform;
-  transform: $transform;
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    transform: $transform;
 }
 
 @mixin transition($transition) {
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  transition: $transition;
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    transition: $transition;
 }
 
 @mixin animation($animation) {
-  -webkit-animation: $animation;
-  -moz-animation: $animation;
-  animation: $animation;
+    -webkit-animation: $animation;
+    -moz-animation: $animation;
+    animation: $animation;
 }
 
 @mixin ellips {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @mixin position($position: absolute, $top: auto, $right: auto, $bottom: auto, $left: auto, $z-index: 1000) {
-  position: $position;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-  z-index: $z-index;
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z-index;
 }
+
+
+/* html的fontsize */
+
+html {
+    font-size: 200px;
+}
+
+@media screen and(min-width: 320px)and(max-width: 359px) {
+    html {
+        font-size: 85.33px !important;
+    }
+}
+
+@media screen and(min-width: 360px)and(max-width: 374px) {
+    html {
+        font-size: 96px !important;
+    }
+}
+
+@media screen and(min-width: 375px)and(max-width: 385px) {
+    html {
+        font-size: 100px !important;
+    }
+}
+
+@media screen and(min-width: 386px)and(max-width: 392px) {
+    html {
+        font-size: 102.933 !important;
+    }
+}
+
+@media screen and(min-width: 393px)and(max-width: 400px) {
+    html {
+        font-size: 104.8px !important;
+    }
+}
+
+@media screen and(min-width: 401px)and(max-width: 414px) {
+    html {
+        font-size: 106.933px !important;
+    }
+}
+
+@media screen and(min-width: 750px)and(max-width: 799px) {
+    html {
+        font-size: 200px !important;
+    }
+}
+
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 article,
 aside,
@@ -119,7 +177,6 @@ h5,
 h6,
 header,
 hgroup,
-html,
 input,
 nav,
 ol,
@@ -128,8 +185,9 @@ section,
 select,
 textarea,
 ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-size: .16rem;
 }
 
 article,
@@ -145,38 +203,37 @@ nav,
 ol,
 section,
 ul {
-  display: block;
-  width: auto;
-  height: auto;
+    display: block;
+    width: auto;
+    height: auto;
 }
 
 html {
-  font-family: $font-family;
-  font-size: 100%;
+    font-family: $font-family;
 }
 
 body {
-  font-size: 100%;
-  background-color: $color-body-bg;
-  -webkit-text-size-adjust: none;
-  /* 解决IOS横、竖屏切换时字体变大的BUG */
+    // font-size: 100%;
+    background-color: $color-body-bg;
+    -webkit-text-size-adjust: none;
+    /* 解决IOS横、竖屏切换时字体变大的BUG */
 }
 
 a {
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  /* 去掉a标签点击时的黑色区域  */
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    /* 去掉a标签点击时的黑色区域  */
 }
 
 dl,
 ol,
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 img {
-  width: 100%;
-  border: none;
+    width: 100%;
+    border: none;
 }
 
 h1,
@@ -187,47 +244,44 @@ h5,
 h6,
 strong,
 th {
-  font-size: 100%;
-  font-weight: normal;
+    font-size: 100%;
+    font-weight: normal;
 }
 
 em,
 i {
-  font-style: normal;
+    font-style: normal;
 }
 
 input,
 textarea {
-  line-height: 1.2;
-  border-radius: 0;
-  outline: none;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+    border: none;
+    line-height: 1.2;
+    border-radius: 0;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: #ccc;
-  line-height: 1.2;
+    color: #ccc;
+    line-height: 1.2;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-:root .hide {
-  display: none;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .ellips {
-  @include ellips;
+    @include ellips;
 }
 
 .overlay {
-  @include position(fixed, 0, 0, 0, 0, 1000);
-  display: none;
-  background-color: rgba(0, 0, 0, .3);
+    @include position(fixed, 0, 0, 0, 0, 1000);
+    display: none;
+    background-color: rgba(0, 0, 0, .3);
 }

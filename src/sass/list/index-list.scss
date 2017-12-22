@@ -1,0 +1,84 @@
+.index-list {
+    border-bottom: $border;
+    padding: .18rem 0 .19rem;
+}
+
+.index-list img {
+    width: 100%;
+    height: 1.92rem;    
+}
+
+.item-oneline,
+.item-twoline,
+.item-threeline,
+.three-rline,
+.three-lline {
+    @include flex-box;
+    @include flex-direction;
+    @include align-items;
+}
+
+.index-list .item-oneline {
+    @include justify-content(space-between);
+    padding-top: .12rem;
+}
+
+.index-list .item-oneline p {
+    font-size: .16rem;
+}
+
+.index-list .item-oneline p:first-child {
+    color: rgba(42, 43, 45, 1);
+}
+
+.index-list .item-oneline p:last-child {
+    font-family: HelveticaNeueDeskInterface-Bold;
+    color: rgba(255, 92, 92, 1);
+}
+
+.index-list .item-twoline,
+.item-threeline {
+    @include justify-content(flex-start);
+    padding-top: .13rem;
+}
+
+.index-list .twoline-items {
+    font-size: .12rem;
+    padding: 0 .1rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: 1;
+    border-right: $border;
+}
+
+.index-list .twoline-items:last-child {
+    border: none;
+}
+
+.index-list .item-twoline .twoline-items:first-child {
+    padding-left: .15rem;
+}
+
+.index-list .item-twoline .twoline-items:first-child:before {
+    @include position(absolute, auto, auto, auto, .175rem, 10);
+    display: block;
+    content: '';
+    height: .115rem;
+    width: .085rem;
+    background-color: skyblue;
+}
+
+.three-lline {
+    @include justify-content(space-between);
+}
+
+.three-lline .star-lines {
+    width: .6rem;
+    height: .1rem;
+    background-color: rgba(255, 92, 92, 1);
+    margin-right: .13rem;
+}
+
+.three-lline .score {
+    font-size: .12rem;
+    color: rgba(255, 92, 92, 1);
+}

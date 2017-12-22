@@ -1,0 +1,132 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/search.scss'; // 全局搜索
+@import '../../sass/list/filter.scss'; // 条件筛选
+@import '../../sass/list/index-list.scss'; // 推荐房源列表
+@import '../../sass/navigate.scss'; // 侧边导航
+@import '../../sass/footer.scss'; // 全局底部
+body {
+    position: relative;
+    padding: .44rem 0 .43rem;
+    background-color: #f5f5f5;
+    height: 100%
+}
+
+
+/* 公共margin */
+
+.mrl_35 {
+    @include align-items;
+    margin-left: .175rem;
+    margin-right: .175rem;
+}
+
+
+/* recommend-body */
+
+.search {
+    padding: 0;
+    background-color: transparent;
+}
+
+.search .text-body {
+    border: .01rem solid #fff;
+}
+
+
+/* recommend-body */
+
+.recommend-body {
+    background-color: #fff;
+    margin-top: .035rem;
+    margin-bottom: .065rem;
+}
+
+.recommend-body .index-list:last-child {
+    border: none;
+}
+
+
+/* app-download */
+
+.app-download {
+    @include position(fixed, auto, 0, 0, 0, 1000);
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    height: .43rem;
+    padding-right: .175rem;
+    ;
+    padding-left: .175rem;
+    ;
+    background-color: #f3ffff;
+    box-shadow: 0 -.05rem .1rem rgba(100, 100, 100, .2);
+}
+
+.app-download-box {
+    @include flex-box;
+    @include align-items;
+}
+
+.app-download .logo {
+    display: block;
+    width: .8rem;
+    height: .28rem;
+    margin-right: .07rem;
+    margin-left: .09rem;
+    background-color: yellowgreen;
+    overflow: hidden;
+}
+
+.app-download .txt-box {
+    color: #5aa572;
+}
+
+.app-download .tit {
+    font-size: .12rem;
+    line-height: 1.2;
+}
+
+.app-download .desc {
+    margin-top: .025rem;
+    font-size: .1rem;
+    line-height: 1.2;
+}
+
+.app-download .download {
+    display: block;
+    padding: .08rem .16rem;
+    font-size: $font-small;
+    color: #fff;
+    border-radius: .2rem;
+    background-color: #5aa572;
+    box-shadow: 0 0 .08rem rgba(100, 100, 100, .3);
+}
+
+.app-download .close {
+    position: relative;
+    width: .2rem;
+    height: .2rem;
+    overflow: hidden;
+}
+
+.app-download .close:before,
+.app-download .close:after {
+    @include position(absolute, .09rem, auto, auto, .02rem, 10);
+    display: block;
+    content: '';
+    width: .14rem;
+    height: .02rem;
+    border-radius: .02rem;
+    background-color: #999;
+    z-index: 1000;
+}
+
+.app-download .close:before {
+    @include transform(rotateZ(45deg));
+}
+
+.app-download .close:after {
+    @include transform(rotateZ(-45deg));
+}

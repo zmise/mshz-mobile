@@ -8,7 +8,9 @@ const modules = {
   rules: [{
     test: /\.html$/,
     include: config.srcDir,
-    loader: 'dot-loader'
+    // loader: 'dot-loader'
+    // 处理HTML中的图片img的插件
+    loader: 'html-withimg-loader'
   }, {
     test: /\.css$/,
     include: config.srcDir,

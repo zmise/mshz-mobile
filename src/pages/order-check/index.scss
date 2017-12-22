@@ -1,0 +1,180 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+body {
+    position: relative;
+    padding: .44rem 0 .5rem;
+    background-color: #f5f5f5;
+    height: 100%
+}
+
+
+/* address-body */
+
+.address-body {
+    padding: .2rem .175rem .3rem;
+    background-color: #fff;
+    border-bottom: .025rem dashed #5AA572;
+}
+
+.item-oneline,
+.item-twoline {
+    @include flex-box;
+    @include flex-direction;
+    @include align-items;
+}
+
+.address-body .item-oneline {
+    @include justify-content(space-between);
+}
+
+.address-body .item-oneline p {
+    display: block;
+    font-size: .16rem;
+}
+
+.address-body .item-oneline p:first-child {
+    color: rgba(90, 165, 114, 1);
+}
+
+.address-body .item-oneline p:last-child {
+    color: rgba(255, 92, 92, 1);
+}
+
+.address-body .item-twoline {
+    @include justify-content(flex-start);
+    padding-top: .13rem;
+}
+
+.address-body .twoline-items {
+    font-size: .12rem;
+    padding: 0 .1rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: 1;
+    border-right: $border;
+}
+
+.address-body .twoline-items:last-child {
+    border: none;
+}
+
+.address-body .item-twoline .twoline-items:first-child {
+    padding-left: .15rem;
+}
+
+.address-body .item-twoline .twoline-items:first-child:before {
+    @include position(absolute, auto, auto, auto, .175rem, 10);
+    display: block;
+    content: '';
+    height: .115rem;
+    width: .085rem;
+    background-color: skyblue;
+}
+
+
+/* userInfo-body */
+
+.userInfo-body,
+.userInfo-body .item {
+    @include flex;
+    @include flex-box;
+    @include flex-direction(column);
+    background-color: #fff;
+}
+
+.userInfo-body .item {
+    margin: 0 .175rem;
+}
+
+.userInfo-body .item:nth-child(2n+1) {
+    @include flex-box; // @include align-items;
+    @include justify-content;
+    height: 0.32rem;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0 .175rem;
+    font-size: .12rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.userInfo-body .item:nth-child(2) {
+    margin: 0;
+    padding: 0 .175rem;
+}
+
+.input-layout {
+    @include flex-box;
+    @include justify-content(space-between);
+}
+
+.text-style-1 {
+    font-size: .13rem;
+    color: rgba(43, 47, 51, 1);
+}
+
+.text-style-2 {
+    font-size: .13rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.text-style-3 {
+    font-size: .13rem;
+    color: rgba(196, 201, 205, 1);
+}
+
+.text-style-4 {
+    font-size: .13rem;
+    color: rgba(255, 92, 92, 1);
+}
+
+.cale-styel {
+    width: 1.13rem;
+    height: .39rem;
+    color: rgba(90, 165, 114, 1);
+    border: .005rem solid rgba(90, 165, 114, 1);
+    background: rgba(247, 250, 248, 1);
+    border-radius: .02rem; 
+    text-align: center;
+}
+
+
+/* rule-body */
+
+
+/* footer-body */
+
+.footer-body {
+    @include position(fixed, auto, 0, 0, 0, 500);
+    @include flex-box; // @include flex-direction;
+    height: .5rem;
+    background-color: #fff; // box-shadow: 0 -5px 5px rgba(200, 200, 200, .2);
+}
+
+.footer-body .items {
+    @include flex-box;
+    @include align-items;
+}
+
+.footer-body .items:first-child {
+    @include flex;
+}
+
+.footer-body .items:first-child p:first-child {
+    margin-left: .19rem;
+    font-size: .14rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.footer-body .items:first-child p:last-child {
+    margin-left: .165rem;
+    font-size: .2rem;
+    color: rgba(255, 92, 92, 1);
+}
+
+.footer-body .items:last-child {
+    @include justify-content;
+    width: 1.6rem;
+    background-color: rgba(90, 165, 114, 1);
+    color: #fff;
+    font-size: .18rem;
+}

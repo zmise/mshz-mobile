@@ -1,0 +1,104 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/navigate.scss'; // 侧边导航
+@import '../../sass/footer.scss'; // 全局底部
+body {
+    position: relative;
+    padding-top: .44rem;
+    background-color: #fff;
+    height: 100%
+}
+
+
+/* about-us */
+
+.about-us {
+    padding: .15rem;
+    background-color: #fff;
+}
+
+.about-us .pic {
+    margin-bottom: .1rem;
+    overflow: hidden;
+}
+
+.about-us .txt {
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.8;
+}
+
+
+/* contact-us */
+
+.contact-us {
+    padding: .3rem 0;
+    margin: 0 .15rem;
+    background: url('img/about-bg.png') 50% 50% no-repeat;
+    background-color: #fff;
+    background-size: 100% auto;
+}
+
+.contact-us .title {
+    margin-bottom: .1rem;
+    font-size: $font-large;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.contact-us .items {
+    @include flex-box;
+    padding: .05rem 0;
+    font-size: $font-middle;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.contact-us .items .lab {
+    display: block;
+    margin-right: .2rem;
+}
+
+.contact-us .items .txt {
+    display: block;
+    @include flex;
+}
+
+.contact-us .items .gap {
+    display: inline-block;
+    width: 2em;
+}
+
+
+/* address-body */
+
+.address-body {
+    padding: .15rem .15rem;
+    border-bottom: $border;
+    background-color: #fff;
+}
+
+.address-body .title {
+    padding: .05rem 0;
+    font-size: $font-large;
+    font-weight: 700;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.address-body .address {
+    padding: .1rem 0;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.address-body .map {
+    margin: .1rem 0;
+    overflow: hidden;
+}

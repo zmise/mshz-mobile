@@ -1,0 +1,272 @@
+/* 筛选 */
+
+.filter-layer {
+    @include position(fixed, 0, 0, 20%, 0, 2000);
+    @include flex-box;
+    @include flex-direction(column);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.filter-body {
+    @include position(relative, 0, 0, auto, 0, 500);
+    @include flex-box; // border-top: $border;
+    // border-bottom: $border;
+    padding: 0 .175rem;
+    background-color: #fff;
+}
+
+.filter-body .items {
+    @include flex-box;
+    @include flex;
+    @include align-items;
+    @include justify-content;
+    width: 25%;
+    height: .45rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+}
+
+.filter-body .items .txt {
+    display: block;
+    max-width: 70%;
+    max-width: calc(100% - .3rem);
+}
+
+.filter-body .items .icon {
+    position: relative;
+    display: block;
+    width: .16rem;
+    height: .16rem;
+    overflow: hidden;
+}
+
+.filter-body .items .icon:before {
+    @include position(absolute, .06rem, auto, auto, .05rem, 10);
+    display: block;
+    content: '';
+    width: .01rem;
+    height: .01rem;
+    border-width: .05rem .04rem;
+    border-style: solid;
+    border-color: #d0d0d0 transparent transparent;
+}
+
+.filter-body .current {
+    font-size: .13rem;
+    color: $color-orange;
+}
+
+.filter-body .current .icon {
+    @include transform(rotateZ(180deg));
+}
+
+.filter-body .current .icon:before {
+    border-color: $color-orange transparent transparent;
+}
+
+
+/* filter-list */
+
+.filter-list {
+    @include flex-box;
+    @include flex;
+    @include flex-direction(column);
+    height: 2rem;
+    background-color: #fff;
+}
+
+.filter-list .content {
+    @include flex-box;
+    @include flex;
+    height: 1rem;
+}
+
+.filter-list .content .slide-body {
+    @include flex;
+    width: 25%;
+    border-right: $border;
+    overflow: hidden;
+}
+
+.filter-list .content .items {
+    display: block;
+    padding: .12rem .15rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    border-bottom: $border;
+}
+
+.filter-list .content .current {
+    color: $color-orange;
+    background-color: #fafafa;
+}
+
+
+/* range-body */
+
+.filter-list .range-body {
+    @include flex-box;
+    @include align-items;
+    padding: .2rem .2rem .1rem .3rem;
+    box-shadow: 0 -.02rem .02rem rgba(100, 100, 100, .1);
+}
+
+.filter-list .range-body .range {
+    @include flex;
+    position: relative;
+    height: .02rem;
+    width: 1rem;
+    margin: 0 .2rem;
+    border-radius: .02rem;
+    background-color: #ccc;
+}
+
+.filter-list .range-body .ok {
+    display: block;
+    padding: .1rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+}
+
+.filter-list .range-body .range-value {
+    @include position(absolute, 0, 0, 0, 0, 10);
+    background-color: $color-orange;
+}
+
+.filter-list .range-body .first-slider {
+    @include position(absolute, -.09rem, auto, auto, -.2rem, 20);
+}
+
+.filter-list .range-body .last-slider {
+    @include position(absolute, -.09rem, -.2rem, auto, auto, 20);
+}
+
+.filter-list .range-body .first-slider,
+.filter-list .range-body .last-slider {
+    width: .2rem;
+    height: .2rem;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 .03rem rgba(0, 0, 0, .5);
+}
+
+.filter-list .range-body .text-value {
+    @include position(absolute, -.2rem, auto, auto, -50%, 10);
+    width: .4rem;
+    font-size: $font-small;
+    color: $color-orange;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.filter-list .range-body .orange-text {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    top: -.55rem;
+    width: .4rem;
+    height: .4rem;
+    color: #fff;
+    border-radius: 50%;
+    background-color: $color-orange;
+}
+
+.filter-list .range-body .orange-text:before {
+    @include position(absolute, .24rem, auto, auto, .1rem, -10);
+    display: block;
+    content: '';
+    width: .2rem;
+    height: .2rem;
+    background-color: $color-orange;
+    @include transform(rotateZ(45deg));
+}
+
+
+/* checkbox-body */
+
+.filter-list .checkbox-body {
+    @include flex-box;
+    @include flex;
+    height: 1rem;
+}
+
+.filter-list .checkbox-body .slide-body {
+    @include flex;
+    width: 1rem;
+    overflow: hidden;
+}
+
+.filter-list .checkbox-body .options {
+    margin-left: .2rem;
+    padding: .15rem 0;
+    border-bottom: $border;
+}
+
+.filter-list .checkbox-body .options:last-child {
+    border: none;
+}
+
+.filter-list .checkbox-body .tit {
+    margin-bottom: .15rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+}
+
+.filter-list .checkbox-body .items-box {
+    @include flex-box;
+    @include flex-wrap(wrap);
+}
+
+.filter-list .checkbox-body .items {
+    display: block;
+    width: 27%;
+    width: calc(33.33% - .2rem);
+    margin-right: .2rem;
+    margin-bottom: .15rem;
+    padding: .05rem 0;
+    font-size: $font-small;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    text-align: center;
+    border: $border;
+    border-radius: .03rem;
+    box-sizing: border-box;
+}
+
+.filter-list .checkbox-body .current {
+    color: $color-orange;
+    border: .01rem solid $color-orange;
+}
+
+
+/* complete-body */
+
+.filter-list .complete-body {
+    @include flex-box;
+    background-color: #fff;
+}
+
+.filter-list .complete-body .items {
+    display: block;
+    padding: .12rem 0;
+    font-size: $font-middle;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.filter-list .complete-body .ok {
+    width: 60%;
+    color: #fff;
+    background-color: $color-orange;
+}
+
+.filter-list .complete-body .cancel {
+    width: 40%;
+    color: $color-grey;
+    background-color: #f3f3f3;
+}

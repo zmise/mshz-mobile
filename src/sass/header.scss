@@ -1,0 +1,112 @@
+/* 全局头部 */
+
+.header-body {
+    position: relative;
+    background-color: rgba(90, 165, 114, 1);
+}
+
+.header-body.fixed {
+    @include position(fixed, 0, 0, auto, 0, 999);
+}
+
+.header-body .header {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    height: .44rem;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+}
+
+.header-body .title {
+    font-size: .18rem;
+    color: #fff;
+    line-height: 1.2;
+}
+
+// .header-body .city {
+//   @include flex-box;
+//   margin-left: .05rem;
+//   padding-left: .05rem;
+//   font-size: $font-middle;
+//   color: $color-dark-grey;
+//   line-height: 1.2;
+//   border-left: .01rem solid #ccc;
+// }
+// .header-body .city .txt {
+//   display: block;
+// }
+// .header-body .city .icon {
+//   position: relative;
+//   display: block;
+//   width: .16rem;
+//   height: .16rem;
+//   overflow: hidden;
+// }
+// .header-body .city .icon:before {
+//   @include position(absolute, .06rem, auto, auto, .05rem, 10);
+//   display: block;
+//   content: '';
+//   width: .01rem;
+//   height: .01rem;
+//   border-width: .05rem .04rem;
+//   border-style: solid;
+//   border-color: #d0d0d0 transparent transparent;
+// }
+.header-body .logo {
+    @include position(absolute, .05rem, auto, auto, .05rem, 10);
+    display: block;
+    width: .9rem;
+    padding: .1rem;
+}
+
+.header-body .back {
+    @include position(absolute, 0, auto, auto, 0, 10);
+    display: block;
+    width: .44rem;
+    height: .44rem;
+    overflow: hidden;
+    font-size: .18rem;
+}
+
+.header-body .back:before {
+    @include position(absolute, .15rem, auto, auto, .18rem, 10);
+    display: block;
+    content: '';
+    width: .12rem;
+    height: .12rem;
+    border-width: 0 0 .02rem .02rem;
+    border-color: #fff;
+    border-style: solid;
+    @include transform(rotateZ(45deg));
+}
+
+.header-body .menu {
+    @include position(absolute, 0, 0, auto, auto, 10);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .44rem;
+    height: .44rem;
+    font-size: .18rem;
+    color: #fff;
+}
+
+.header-body .menu:before {
+    display: block;
+    width: .15rem;
+    height: .15rem;
+    overflow: hidden;
+}
+
+// .header-body .char {
+//     @include position(absolute, 0, 0, auto, auto, 10);
+//     @include flex-box;
+//     @include align-items;
+//     @include justify-content;
+//     width: .4em;
+//     height: .4rem;
+//     font-size: $font-middle;
+//     color: #666;
+//     line-height: 1.2;
+// }
