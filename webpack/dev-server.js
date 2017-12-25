@@ -1,7 +1,7 @@
 const devServer = {
   historyApiFallback: true,
-  host: 'localhost',
-  port: 8088,
+  host: '172.16.72.97',
+  port: 8080,
   compress: true,
   hot: true,
   stats: {

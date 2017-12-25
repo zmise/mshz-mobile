@@ -1,5 +1,198 @@
 @import '../../sass/base.scss'; // 基础变量
-// @import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/iconfont.scss'; // 字体
 // @import '../../sass/header.scss'; // 全局头部
-// @import '../../sass/navigate.scss'; // 侧边导航
-// @import '../../sass/footer.scss'; // 全局底部
+body {
+    position: relative;
+    padding-bottom: .55rem;
+    background-color: #f5f5f5;
+}
+
+
+/* address-body */
+
+.address-body {
+    padding: .15rem .15rem;
+    background-color: #fff;
+}
+
+.address-body .title {
+    padding: .05rem 0;
+    font-size: $font-large;
+    font-weight: 700;
+    color: $color-dark-grey;
+    line-height: 1.2; // text-align: center;
+}
+
+.address-body .map {
+    position: relative;
+    margin: .1rem 0;
+    overflow: hidden;
+}
+
+.address-body .address {
+    @include position(absolute, auto, auto, 0, auto, 10);
+    padding: .1rem 0;
+    width: 100%;
+    font-size: $font-middle;
+    color: rgba(255, 255, 255, 1);
+    line-height: 1.2;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: .02rem;
+}
+
+
+/* 房源基础信息 */
+
+
+/* house-base-info */
+
+
+.living-info {
+    background-color: #fff;
+    border-bottom: $border;
+    padding: .08rem 0;
+}
+
+.living-info .items {
+    @include flex-box;
+    padding: .04rem .15rem;
+}
+
+.living-info .items .lab {
+    display: block;
+    font-size: $font-middle;
+    color: $color-light-grey;
+    line-height: 1.2;
+}
+
+.living-info .items .txt {
+    display: block;
+    @include flex;
+    width: .5rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+}
+
+.living-info .items .gap {
+    display: inline-block;
+    width: 2em;
+}
+
+.living-info .items .icon {
+    padding: .02rem;
+    font-size: .16rem;
+    color: #fff;
+    line-height: 1;
+    background-color: #cbcbcb;
+    border-radius: .2rem;
+}
+
+.living-info .items .icon:before {
+    display: block;
+    width: .16rem;
+    height: .16rem;
+    overflow: hidden;
+}
+
+
+/* feature-channel */
+
+.feature-channel {
+    background-color: #fff;
+    padding-left: .175rem;
+}
+
+.feature-channel .title {
+    padding: .24rem .15rem .2rem 0;
+    line-height: 1.2;
+    font-size: .14rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.feature-channel .slide-body {
+    overflow: hidden;
+}
+
+.feature-channel .slide {
+    @include flex-box;
+}
+
+.feature-channel .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    @include flex(0, 0, auto);
+    width: 1.9rem;
+    height: 1.069rem;
+    margin-right: .12rem;
+    font-size: $font-large;
+    color: #fff;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+@each $item in garden,
+school,
+overseas,
+office,
+onekey {
+    .feature-channel .#{$item} {
+        background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
+        background-size: 100% auto;
+    }
+}
+
+
+/* footer-body */
+
+.footer-body {
+    @include position(fixed,
+    auto,
+    0,
+    0,
+    0,
+    500);
+    @include flex-box;
+    background-color: #fff;
+    height: .5rem;
+}
+
+.footer-body .items {
+    flex: 1;
+    @include flex-box;
+    @include align-items;
+}
+
+.footer-body .items:last-child {
+    @include justify-content;
+    background-color: rgba(90, 165, 114, 1);
+}
+
+.footer-body .items .commuite {
+    width: 0.21rem;
+    height: 0.145rem;
+    margin-left: .265rem;
+    margin-right: .08rem;
+    background-color: rgba(42, 43, 45, 1);
+}
+
+.footer-body .items span {
+    font-size: .18rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.footer-body .items .txt {
+    font-size: .12rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.footer-body .items .price {
+    padding-right: .125rem;
+    border-right: $border;
+}
+
+.footer-body .items .roder {
+    padding-left: .105rem;
+}

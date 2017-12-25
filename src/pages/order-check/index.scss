@@ -5,7 +5,6 @@ body {
     position: relative;
     padding: .44rem 0 .5rem;
     background-color: #f5f5f5;
-    height: 100%
 }
 
 
@@ -104,10 +103,40 @@ body {
 
 .input-layout {
     @include flex-box;
+    @include align-items;
     @include justify-content(space-between);
 }
 
+.userInfo-body .item:nth-child(2) .input-layout:nth-child(1) {
+    padding-top: .18rem
+}
+
+.userInfo-body .item:nth-child(2) .input-layout:nth-child(2) {
+    padding: .13rem 0 .24rem;
+}
+
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(1),
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(2),
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(3),
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(4) {
+    padding: .18rem 0;
+}
+
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(1) {
+    border-bottom: $border;
+}
+
+.userInfo-body .item:nth-child(6) .input-layout:nth-child(1) {
+    padding: .185rem 0 .14rem;
+    border-bottom: $border;
+}
+
+.userInfo-body .item:nth-child(6) .input-layout:nth-child(2) {
+    padding: .17rem 0;
+}
+
 .text-style-1 {
+    @include flex-box;
     font-size: .13rem;
     color: rgba(43, 47, 51, 1);
 }
@@ -133,12 +162,94 @@ body {
     color: rgba(90, 165, 114, 1);
     border: .005rem solid rgba(90, 165, 114, 1);
     background: rgba(247, 250, 248, 1);
-    border-radius: .02rem; 
+    border-radius: .02rem;
     text-align: center;
+    font-size: .18rem;
+}
+
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(1) .text-style-2 {
+    position: relative;
+    padding-right: .26rem;
+}
+
+.userInfo-body .item:nth-child(4) .input-layout:nth-child(1) .text-style-2::before {
+    @include position(absolute, auto, auto, 0, auto, 10);
+    display: block;
+    content: '';
+    width: .14rem;
+    height: .14rem;
 }
 
 
 /* rule-body */
+
+.rule-body {
+    @include flex-box;
+    @include flex-direction(column);
+    padding: 0 .175rem;
+    background-color: #fff;
+}
+
+.rule-body .tit {
+    padding-top: .24rem;
+    font-size: .12rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.rule-body .part {
+    padding-right: .06rem;
+    font-size: .11rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .15rem;
+    padding-top: .15rem;
+}
+
+.rule-body .part:last-child {
+    padding-top: .1rem;
+    padding-bottom: .35rem;
+}
+
+/* start 消息框的样式 */
+.dialog {
+    @include flex-box;
+    @include flex-direction;
+}
+
+.dialog-border-bottom {
+    height: .43rem;
+    position: relative;
+    width: 1.375rem;
+    border-radius: .02rem;
+}
+
+.dialog-border-bottom:before {
+    border-color: #888 transparent transparent;
+    border-style: solid solid solid;
+    border-width: 20px 20px 20px 20px;
+    bottom: -40px;
+    content: '';
+    height: 0px;
+    left: 20px;
+    position: absolute;
+    width: 0px;
+    // background-color: black;
+    
+}
+
+.dialog-border-bottom:after {
+    border-color: #fff transparent transparent;
+    border-style: solid solid solid solid;
+    border-width: 20px;
+    bottom: -33px;
+    content: '';
+    height: 0px;
+    left: 20px;
+    position: absolute;
+    width: 0px;
+    // background-color: skyblue;
+}
+
+/* end 对话框的样式 */
 
 
 /* footer-body */
