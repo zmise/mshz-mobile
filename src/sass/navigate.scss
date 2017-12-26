@@ -10,7 +10,7 @@
   .navigate-body .items {
     @include flex-box;
     @include align-items;
-    padding: .12rem .3rem;
+    padding: .24rem .6rem;
     font-size: $font-large;
     color: $color-dark-grey;
     line-height: 1.2;
@@ -19,15 +19,15 @@
   
   .navigate-body .items .icon {
     display: block;
-    margin-right: .15rem;
-    font-size: .2rem;
+    margin-right: .3rem;
+    font-size: .4rem;
     color: #b2b2b2;
   }
   
   .navigate-body .items .icon:before {
     display: block;
-    width: .2rem;
-    height: .2rem;
+    width: .4rem;
+    height: .4rem;
     overflow: hidden;
   }
   
@@ -36,21 +36,21 @@
   }
   
   .navigate-body .login {
-    padding: .2rem .3rem;
-    border-bottom: .06rem solid rgba(245,245,245,1);
+    padding: .4rem .6rem;
+    border-bottom: .12rem solid rgba(245,245,245,1);
   }
   
   .navigate-body .user {
-    margin-bottom: .2rem;
-    padding: .2rem .3rem;
+    margin-bottom: .4rem;
+    padding: .4rem .6rem;
     border-bottom: $border;
   }
   
   .navigate-body .user .pic {
     display: block;
-    width: .4rem;
-    height: .4rem;
-    margin-right: .1rem;
+    width: .8em;
+    height: .8rem;
+    margin-right: .2rem;
     border-radius: 50%;
     overflow: hidden;
   }

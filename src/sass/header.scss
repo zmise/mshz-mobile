@@ -13,25 +13,25 @@
     @include flex-box;
     @include align-items;
     @include justify-content;
-    height: .44rem;
-    padding: 0 .5rem;
+    height: .88rem;
+    padding: 0 1rem;
     box-sizing: border-box;
 }
 
 .header-body .title {
-    font-size: .18rem;
+    font-size: .36rem;
     color: #fff;
     line-height: 1.2;
 }
 
 // .header-body .city {
 //   @include flex-box;
-//   margin-left: .05rem;
-//   padding-left: .05rem;
+//   margin-left: .1rem;
+//   padding-left: .1rem;
 //   font-size: $font-middle;
 //   color: $color-dark-grey;
 //   line-height: 1.2;
-//   border-left: .01rem solid #ccc;
+//   border-left: .02rem solid #ccc;
 // }
 // .header-body .city .txt {
 //   display: block;
@@ -39,43 +39,43 @@
 // .header-body .city .icon {
 //   position: relative;
 //   display: block;
-//   width: .16rem;
-//   height: .16rem;
+//   width: .32rem;
+//   height: .32rem;
 //   overflow: hidden;
 // }
 // .header-body .city .icon:before {
-//   @include position(absolute, .06rem, auto, auto, .05rem, 10);
+//   @include position(absolute, .12rem, auto, auto, .1rem, 10);
 //   display: block;
 //   content: '';
-//   width: .01rem;
-//   height: .01rem;
-//   border-width: .05rem .04rem;
+//   width: .02rem;
+//   height: .02rem;
+//   border-width: .1rem .08rem;
 //   border-style: solid;
 //   border-color: #d0d0d0 transparent transparent;
 // }
 .header-body .logo {
-    @include position(absolute, .05rem, auto, auto, .05rem, 10);
+    @include position(absolute, .1rem, auto, auto, .1rem, 10);
     display: block;
-    width: .9rem;
-    padding: .1rem;
+    width: .18rem;
+    padding: .2rem;
 }
 
 .header-body .back {
     @include position(absolute, 0, auto, auto, 0, 10);
     display: block;
-    width: .44rem;
-    height: .44rem;
+    width: .88rem;
+    height: .88rem;
     overflow: hidden;
-    font-size: .18rem;
+    font-size: .36rem;
 }
 
 .header-body .back:before {
-    @include position(absolute, .15rem, auto, auto, .18rem, 10);
+    @include position(absolute, .3rem, auto, auto, .36rem, 10);
     display: block;
     content: '';
-    width: .12rem;
-    height: .12rem;
-    border-width: 0 0 .02rem .02rem;
+    width: .24rem;
+    height: .24rem;
+    border-width: 0 0 .04rem .04rem;
     border-color: #fff;
     border-style: solid;
     @include transform(rotateZ(45deg));
@@ -86,16 +86,16 @@
     @include flex-box;
     @include align-items;
     @include justify-content;
-    width: .44rem;
-    height: .44rem;
-    font-size: .18rem;
+    width: .88rem;
+    height: .88rem;
+    font-size: .36rem;
     color: #fff;
 }
 
 .header-body .menu:before {
     display: block;
-    width: .15rem;
-    height: .15rem;
+    width: .3rem;
+    height: .3rem;
     overflow: hidden;
 }
 
@@ -104,8 +104,8 @@
 //     @include flex-box;
 //     @include align-items;
 //     @include justify-content;
-//     width: .4em;
-//     height: .4rem;
+//     width: .8em;
+//     height: .8rem;
 //     font-size: $font-middle;
 //     color: #666;
 //     line-height: 1.2;

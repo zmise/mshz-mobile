@@ -3,7 +3,7 @@
 @import '../../sass/header.scss'; // 全局头部
 body {
     position: relative;
-    padding: .44rem 0 .5rem;
+    padding: .88rem 0 1rem;
     background-color: #f5f5f5;
 }
 
@@ -11,7 +11,7 @@ body {
 /* address-body */
 
 .address-body {
-    padding: .2rem .175rem .3rem;
+    padding: .4rem .35rem .6rem;
     background-color: #fff;
     border-bottom: .025rem dashed #5AA572;
 }
@@ -29,7 +29,7 @@ body {
 
 .address-body .item-oneline p {
     display: block;
-    font-size: .16rem;
+    font-size: .32rem;
 }
 
 .address-body .item-oneline p:first-child {
@@ -42,12 +42,12 @@ body {
 
 .address-body .item-twoline {
     @include justify-content(flex-start);
-    padding-top: .13rem;
+    padding-top: .26rem;
 }
 
 .address-body .twoline-items {
-    font-size: .12rem;
-    padding: 0 .1rem;
+    font-size: .24rem;
+    padding: 0 .2rem;
     color: rgba(181, 185, 190, 1);
     line-height: 1;
     border-right: $border;
@@ -58,15 +58,15 @@ body {
 }
 
 .address-body .item-twoline .twoline-items:first-child {
-    padding-left: .15rem;
+    padding-left: .3rem;
 }
 
 .address-body .item-twoline .twoline-items:first-child:before {
-    @include position(absolute, auto, auto, auto, .175rem, 10);
+    @include position(absolute, auto, auto, auto, .35rem, 10);
     display: block;
     content: '';
-    height: .115rem;
-    width: .085rem;
+    height: .23rem;
+    width: .17rem;
     background-color: skyblue;
 }
 
@@ -82,23 +82,23 @@ body {
 }
 
 .userInfo-body .item {
-    margin: 0 .175rem;
+    margin: 0 .35rem;
 }
 
 .userInfo-body .item:nth-child(2n+1) {
     @include flex-box; // @include align-items;
     @include justify-content;
-    height: 0.32rem;
+    height: 0.64rem;
     background-color: #f5f5f5;
     margin: 0;
-    padding: 0 .175rem;
-    font-size: .12rem;
+    padding: 0 .35rem;
+    font-size: .24rem;
     color: rgba(181, 185, 190, 1);
 }
 
 .userInfo-body .item:nth-child(2) {
     margin: 0;
-    padding: 0 .175rem;
+    padding: 0 .35rem;
 }
 
 .input-layout {
@@ -108,18 +108,18 @@ body {
 }
 
 .userInfo-body .item:nth-child(2) .input-layout:nth-child(1) {
-    padding-top: .18rem
+    padding-top: .36rem
 }
 
 .userInfo-body .item:nth-child(2) .input-layout:nth-child(2) {
-    padding: .13rem 0 .24rem;
+    padding: .26rem 0 .48rem;
 }
 
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(1),
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(2),
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(3),
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(4) {
-    padding: .18rem 0;
+    padding: .36rem 0;
 }
 
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(1) {
@@ -127,57 +127,57 @@ body {
 }
 
 .userInfo-body .item:nth-child(6) .input-layout:nth-child(1) {
-    padding: .185rem 0 .14rem;
+    padding: .36rem 0 .28rem;
     border-bottom: $border;
 }
 
 .userInfo-body .item:nth-child(6) .input-layout:nth-child(2) {
-    padding: .17rem 0;
+    padding: .34rem 0;
 }
 
 .text-style-1 {
     @include flex-box;
-    font-size: .13rem;
+    font-size: .26rem;
     color: rgba(43, 47, 51, 1);
 }
 
 .text-style-2 {
-    font-size: .13rem;
+    font-size: .26rem;
     color: rgba(94, 100, 107, 1);
 }
 
 .text-style-3 {
-    font-size: .13rem;
+    font-size: .26rem;
     color: rgba(196, 201, 205, 1);
 }
 
 .text-style-4 {
-    font-size: .13rem;
+    font-size: .26rem;
     color: rgba(255, 92, 92, 1);
 }
 
 .cale-styel {
-    width: 1.13rem;
-    height: .39rem;
+    width: 2.26rem;
+    height: .78rem;
     color: rgba(90, 165, 114, 1);
-    border: .005rem solid rgba(90, 165, 114, 1);
+    border: .01rem solid rgba(90, 165, 114, 1);
     background: rgba(247, 250, 248, 1);
-    border-radius: .02rem;
+    border-radius: .04rem;
     text-align: center;
-    font-size: .18rem;
+    font-size: .36rem;
 }
 
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(1) .text-style-2 {
     position: relative;
-    padding-right: .26rem;
+    padding-right: .52rem;
 }
 
 .userInfo-body .item:nth-child(4) .input-layout:nth-child(1) .text-style-2::before {
     @include position(absolute, auto, auto, 0, auto, 10);
     display: block;
     content: '';
-    width: .14rem;
-    height: .14rem;
+    width: .28rem;
+    height: .28rem;
 }
 
 
@@ -186,27 +186,27 @@ body {
 .rule-body {
     @include flex-box;
     @include flex-direction(column);
-    padding: 0 .175rem;
+    padding: 0 .35rem;
     background-color: #fff;
 }
 
 .rule-body .tit {
-    padding-top: .24rem;
-    font-size: .12rem;
+    padding-top: .48rem;
+    font-size: .24rem;
     color: rgba(181, 185, 190, 1);
 }
 
 .rule-body .part {
-    padding-right: .06rem;
-    font-size: .11rem;
+    padding-right: .12rem;
+    font-size: .22rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .15rem;
-    padding-top: .15rem;
+    line-height: .3rem;
+    padding-top: .3rem;
 }
 
 .rule-body .part:last-child {
-    padding-top: .1rem;
-    padding-bottom: .35rem;
+    padding-top: .2rem;
+    padding-bottom: .7rem;
 }
 
 /* start 消息框的样式 */
@@ -216,20 +216,20 @@ body {
 }
 
 .dialog-border-bottom {
-    height: .43rem;
+    height: .86rem;
     position: relative;
-    width: 1.375rem;
-    border-radius: .02rem;
+    width: 2.75rem;
+    border-radius: .04rem;
 }
 
 .dialog-border-bottom:before {
     border-color: #888 transparent transparent;
     border-style: solid solid solid;
-    border-width: 20px 20px 20px 20px;
-    bottom: -40px;
+    border-width: .4rem .4rem .4rem .4rem;
+    bottom: -.8rem;
     content: '';
     height: 0px;
-    left: 20px;
+    left: .4rem;
     position: absolute;
     width: 0px;
     // background-color: black;
@@ -239,11 +239,11 @@ body {
 .dialog-border-bottom:after {
     border-color: #fff transparent transparent;
     border-style: solid solid solid solid;
-    border-width: 20px;
-    bottom: -33px;
+    border-width: .4rem;
+    bottom: -.66rem;
     content: '';
     height: 0px;
-    left: 20px;
+    left: .4rem;
     position: absolute;
     width: 0px;
     // background-color: skyblue;
@@ -257,8 +257,8 @@ body {
 .footer-body {
     @include position(fixed, auto, 0, 0, 0, 500);
     @include flex-box; // @include flex-direction;
-    height: .5rem;
-    background-color: #fff; // box-shadow: 0 -5px 5px rgba(200, 200, 200, .2);
+    height: 1rem;
+    background-color: #fff; // box-shadow: 0 -.1rem .1rem rgba(200, 200, 200, .2);
 }
 
 .footer-body .items {
@@ -271,21 +271,21 @@ body {
 }
 
 .footer-body .items:first-child p:first-child {
-    margin-left: .19rem;
-    font-size: .14rem;
+    margin-left: .38rem;
+    font-size: .28rem;
     color: rgba(42, 43, 45, 1);
 }
 
 .footer-body .items:first-child p:last-child {
-    margin-left: .165rem;
-    font-size: .2rem;
+    margin-left: .33rem;
+    font-size: .4rem;
     color: rgba(255, 92, 92, 1);
 }
 
 .footer-body .items:last-child {
     @include justify-content;
-    width: 1.6rem;
+    width: 3.2rem;
     background-color: rgba(90, 165, 114, 1);
     color: #fff;
-    font-size: .18rem;
+    font-size: .36rem;
 }

@@ -17,32 +17,32 @@ body {
 
 footer {
     @include flex;
-    padding-bottom: .5rem;
+    padding-bottom: 1rem;
 }
 
 
 /* hold-body */
 
 .hold-body {
-    padding-top: .44rem;
+    padding-top: .88rem;
     @include flex-box;
     @include flex-direction(column);
     @include align-items;
     @include justify-content;
-    height: .84rem;
+    height: 1.68rem;
     background-color: #fff;
 }
 
 .hold-body i {
-    width: 0.255rem;
-    height: 0.255rem;
-    margin-top: .185rem;
-    margin-bottom: .115rem;
+    width: 0.51rem;
+    height: 0.51rem;
+    margin-top: .37rem;
+    margin-bottom: .23rem;
     background-color: rgba(90, 165, 114, 1);
 }
 
 .hold-body span {
-    font-size: .13rem;
+    font-size: .26rem;
     color: rgba(90, 165, 114, 1);
 }
 
@@ -53,12 +53,12 @@ footer {
     @include flex-box;
     @include flex-direction(column);
     background-color: #fff;
-    height: 1.435rem;
-    margin-top: .06rem;
+    height: 2.87rem;
+    margin-top: .12rem;
 }
 
 .content-body .content {
-    padding: 0 .175rem;
+    padding: 0 .35rem;
     @include flex;
     @include flex-box;
     @include align-items;
@@ -66,23 +66,23 @@ footer {
 }
 
 // .content-body .icon {
-//     height: 0.415rem;
-//     width: 0.415rem;
-//     margin-top: .54rem;
+//     height: 0.83rem;
+//     width: 0.83rem;
+//     margin-top: 1.08rem;
 //     background-color: skyblue;
 // }
 .content-body .txt {
     @include flex;
     @include flex-box;
     @include flex-direction(column);
-    padding-left: .16rem;
-    margin-top: .06rem;
+    padding-left: .32rem;
+    margin-top: .12rem;
 }
 
 .content-body .txt span {
-    font-size: .12rem;
+    font-size: .24rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .23rem
+    line-height: .26rem
 }
 
 .content-body .txt .longTxt {
@@ -92,28 +92,28 @@ footer {
 }
 
 .content-body .txt .longTxt i {
-    width: 0.15rem;
-    height: 0.155rem;
-    margin-left: .3rem;
-    margin-right: .06rem;
+    width: 0.3rem;
+    height: 0.31rem;
+    margin-left: .6rem;
+    margin-right: .12rem;
     background-color: skyblue;
 }
 
 .content-body .checkInfo {
     @include flex-box;
     @include align-items;
-    height: 0.57rem;
-    padding-left: .195rem;
-    padding-right: .175rem;
+    height: 1.14rem;
+    padding-left: .39rem;
+    padding-right: .35rem;
 }
 
 .content-body .checkInfo span {
-    font-size: .14rem;
+    font-size: .28rem;
     color: rgba(90, 165, 114, 1);
 }
 
 .content-body .checkInfo span:last-child {
-    font-size: .16rem;
+    font-size: .32rem;
     font-weight: 600;
 }
 
@@ -123,8 +123,8 @@ footer {
 .title-body {
     @include flex-box;
     @include align-items;
-    padding: .11rem .175rem;
-    font-size: .12rem;
+    padding: .22rem .35rem;
+    font-size: .24rem;
     color: rgba(94, 100, 107, 1);
 }
 
@@ -136,21 +136,21 @@ footer {
     @include flex-direction(column);
     @include justify-content(flex-start);
     background-color: #fff;
-    height: 1.74rem;
-    margin-bottom: .06rem;
+    height: 3.48rem;
+    margin-bottom: .12rem;
 }
 
 .play-body .playStyle {
     @include flex-box;
     @include align-items;
     @include justify-content(space-between);
-    padding: .12rem .175rem;
+    padding: .24rem .35rem;
     border-bottom: $border;
 }
 
 .play-body .playStyle .more {
-    width: 0.06rem;
-    height: 0.1rem;
+    width: 0.12rem;
+    height: 0.2rem;
     background: rgba(201, 144, 101, 1);
 }
 
@@ -160,9 +160,9 @@ footer {
 }
 
 .play-body .playStyle .logobox .logo {
-    height: 0.255rem;
-    width: 0.29rem;
-    margin-right: .24rem;
+    height: 0.51rem;
+    width: 0.58rem;
+    margin-right: .48rem;
     background-color: rgba(56, 176, 53, 1);
 }
 
@@ -172,11 +172,11 @@ footer {
 }
 
 .play-body .playStyle .logobox .content span {
-    font-size: .12rem;
+    font-size: .24rem;
     color: rgba(196, 201, 205, 1);
 }
 
 .play-body .playStyle .logobox .content span:first-child {
-    font-size: .14rem;
+    font-size: .28rem;
     color: rgba(94, 100, 107, 1);
 }

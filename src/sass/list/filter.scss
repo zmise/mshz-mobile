@@ -12,7 +12,7 @@
     @include position(relative, 0, 0, auto, 0, 500);
     @include flex-box; // border-top: $border;
     // border-bottom: $border;
-    padding: 0 .175rem;
+    padding: 0 .35rem;
     background-color: #fff;
 }
 
@@ -22,7 +22,7 @@
     @include align-items;
     @include justify-content;
     width: 25%;
-    height: .45rem;
+    height: .9rem;
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
@@ -37,24 +37,24 @@
 .filter-body .items .icon {
     position: relative;
     display: block;
-    width: .16rem;
-    height: .16rem;
+    width: .32rem;
+    height: .32rem;
     overflow: hidden;
 }
 
 .filter-body .items .icon:before {
-    @include position(absolute, .06rem, auto, auto, .05rem, 10);
+    @include position(absolute, .12rem, auto, auto, .1rem, 10);
     display: block;
     content: '';
-    width: .01rem;
-    height: .01rem;
-    border-width: .05rem .04rem;
+    width: .02rem;
+    height: .02rem;
+    border-width: .1rem .08rem;
     border-style: solid;
     border-color: #d0d0d0 transparent transparent;
 }
 
 .filter-body .current {
-    font-size: .13rem;
+    font-size: .26rem;
     color: $color-orange;
 }
 
@@ -73,14 +73,14 @@
     @include flex-box;
     @include flex;
     @include flex-direction(column);
-    height: 2rem;
+    height: 4rem;
     background-color: #fff;
 }
 
 .filter-list .content {
     @include flex-box;
     @include flex;
-    height: 1rem;
+    height: 2rem;
 }
 
 .filter-list .content .slide-body {
@@ -92,7 +92,7 @@
 
 .filter-list .content .items {
     display: block;
-    padding: .12rem .15rem;
+    padding: .24rem .3rem;
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
@@ -110,23 +110,23 @@
 .filter-list .range-body {
     @include flex-box;
     @include align-items;
-    padding: .2rem .2rem .1rem .3rem;
-    box-shadow: 0 -.02rem .02rem rgba(100, 100, 100, .1);
+    padding: .4rem .4rem .2rem .6rem;
+    box-shadow: 0 -.04rem .04em rgba(100, 100, 100, .1);
 }
 
 .filter-list .range-body .range {
     @include flex;
     position: relative;
-    height: .02rem;
-    width: 1rem;
-    margin: 0 .2rem;
-    border-radius: .02rem;
+    height: .04rem;
+    width: 2rem;
+    margin: 0 .4rem;
+    border-radius: .04rem;
     background-color: #ccc;
 }
 
 .filter-list .range-body .ok {
     display: block;
-    padding: .1rem;
+    padding: .2rem;
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
@@ -138,25 +138,25 @@
 }
 
 .filter-list .range-body .first-slider {
-    @include position(absolute, -.09rem, auto, auto, -.2rem, 20);
+    @include position(absolute, -.18rem, auto, auto, -.4rem, 20);
 }
 
 .filter-list .range-body .last-slider {
-    @include position(absolute, -.09rem, -.2rem, auto, auto, 20);
+    @include position(absolute, -.18rem, -.4rem, auto, auto, 20);
 }
 
 .filter-list .range-body .first-slider,
 .filter-list .range-body .last-slider {
-    width: .2rem;
-    height: .2rem;
+    width: .4rem;
+    height: .4rem;
     border-radius: 50%;
     background-color: #fff;
-    box-shadow: 0 0 .03rem rgba(0, 0, 0, .5);
+    box-shadow: 0 0 .06rem rgba(0, 0, 0, .5);
 }
 
 .filter-list .range-body .text-value {
-    @include position(absolute, -.2rem, auto, auto, -50%, 10);
-    width: .4rem;
+    @include position(absolute, -.4rem, auto, auto, -50%, 10);
+    width: .8rem;
     font-size: $font-small;
     color: $color-orange;
     line-height: 1.2;
@@ -167,20 +167,20 @@
     @include flex-box;
     @include align-items;
     @include justify-content;
-    top: -.55rem;
-    width: .4rem;
-    height: .4rem;
+    top: -1.1rem;
+    width: .8rem;
+    height: .8rem;
     color: #fff;
     border-radius: 50%;
     background-color: $color-orange;
 }
 
 .filter-list .range-body .orange-text:before {
-    @include position(absolute, .24rem, auto, auto, .1rem, -10);
+    @include position(absolute, .48rem, auto, auto, .2rem, -10);
     display: block;
     content: '';
-    width: .2rem;
-    height: .2rem;
+    width: .4rem;
+    height: .4rem;
     background-color: $color-orange;
     @include transform(rotateZ(45deg));
 }
@@ -191,18 +191,18 @@
 .filter-list .checkbox-body {
     @include flex-box;
     @include flex;
-    height: 1rem;
+    height: 2rem;
 }
 
 .filter-list .checkbox-body .slide-body {
     @include flex;
-    width: 1rem;
+    width: 2rem;
     overflow: hidden;
 }
 
 .filter-list .checkbox-body .options {
-    margin-left: .2rem;
-    padding: .15rem 0;
+    margin-left: .4rem;
+    padding: .3rem 0;
     border-bottom: $border;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .filter-list .checkbox-body .tit {
-    margin-bottom: .15rem;
+    margin-bottom: .3rem;
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
@@ -225,22 +225,22 @@
 .filter-list .checkbox-body .items {
     display: block;
     width: 27%;
-    width: calc(33.33% - .2rem);
-    margin-right: .2rem;
-    margin-bottom: .15rem;
-    padding: .05rem 0;
+    width: calc(33.33% - .4rem);
+    margin-right: .4rem;
+    margin-bottom: .3rem;
+    padding: .1rem 0;
     font-size: $font-small;
     color: $color-dark-grey;
     line-height: 1.2;
     text-align: center;
     border: $border;
-    border-radius: .03rem;
+    border-radius: .06rem;
     box-sizing: border-box;
 }
 
 .filter-list .checkbox-body .current {
     color: $color-orange;
-    border: .01rem solid $color-orange;
+    border: .02rem solid $color-orange;
 }
 
 
@@ -253,7 +253,7 @@
 
 .filter-list .complete-body .items {
     display: block;
-    padding: .12rem 0;
+    padding: .24rem 0;
     font-size: $font-middle;
     line-height: 1.2;
     text-align: center;

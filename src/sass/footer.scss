@@ -37,12 +37,12 @@
 }
 
 .site-map-box .site-map-title {
-    font-size: .11rem;
+    font-size: .22rem;
     color: #2a2b2d;
 }
 
 .site-map-box .site-map-content {
-    font-size: .1rem;
+    font-size: .2rem;
     color: #b5b9be;
 }
 
@@ -53,16 +53,16 @@
     @include flex-box;
     @include justify-content;
     width: 100%;
-    padding: .2rem 0 .18rem;
+    padding: .4rem 0 .36rem;
 }
 
 .site-nav .items {
     display: block;
-    padding: 0 .225rem;
-    font-size: .12rem;
+    padding: 0 .45rem;
+    font-size: .24rem;
     color: #787f86;
     text-align: center;
-    border-right: .005rem dashed #E3E6E9;
+    border-right: .01rem dashed #E3E6E9;
 }
 
 .site-nav .items:last-child {
@@ -70,7 +70,7 @@
 }
 
 .copyright {
-    font-size: .09rem;
+    font-size: .18rem;
     color: #b5b9be;
-    margin-bottom: .14rem;
+    margin-bottom: .28rem;
 }

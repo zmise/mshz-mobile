@@ -8,7 +8,7 @@
 @import '../../sass/footer.scss'; // 全局底部
 body {
     position: relative;
-    padding: .44rem 0 .43rem;
+    padding: .88rem 0 .86rem;
     background-color: #f5f5f5;
     height: 100%
 }
@@ -18,8 +18,8 @@ body {
 
 .mrl_35 {
     @include align-items;
-    margin-left: .175rem;
-    margin-right: .175rem;
+    margin-left: .35rem;
+    margin-right: .35rem;
 }
 
 
@@ -31,7 +31,7 @@ body {
 }
 
 .search .text-body {
-    border: .01rem solid #fff;
+    border: .02rem solid #fff;
 }
 
 
@@ -39,8 +39,8 @@ body {
 
 .recommend-body {
     background-color: #fff;
-    margin-top: .035rem;
-    margin-bottom: .065rem;
+    margin-top: .07rem;
+    margin-bottom: .13rem;
 }
 
 .recommend-body .index-list:last-child {
@@ -55,13 +55,13 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content(space-between);
-    height: .43rem;
-    padding-right: .175rem;
+    height: .86rem;
+    padding-right: .35rem;
     ;
-    padding-left: .175rem;
+    padding-left: .35rem;
     ;
     background-color: #f3ffff;
-    box-shadow: 0 -.05rem .1rem rgba(100, 100, 100, .2);
+    box-shadow: 0 -.1rem .2rem rgba(100, 100, 100, .2);
 }
 
 .app-download-box {
@@ -71,10 +71,10 @@ body {
 
 .app-download .logo {
     display: block;
-    width: .8rem;
-    height: .28rem;
-    margin-right: .07rem;
-    margin-left: .09rem;
+    width: 1.6rem;
+    height: .56rem;
+    margin-right: .14rem;
+    margin-left: .18rem;
     background-color: yellowgreen;
     overflow: hidden;
 }
@@ -84,41 +84,41 @@ body {
 }
 
 .app-download .tit {
-    font-size: .12rem;
+    font-size: .24rem;
     line-height: 1.2;
 }
 
 .app-download .desc {
-    margin-top: .025rem;
-    font-size: .1rem;
+    margin-top: .05rem;
+    font-size: .2rem;
     line-height: 1.2;
 }
 
 .app-download .download {
     display: block;
-    padding: .08rem .16rem;
+    padding: .16rem .32rem;
     font-size: $font-small;
     color: #fff;
-    border-radius: .2rem;
+    border-radius: .4rem;
     background-color: #5aa572;
-    box-shadow: 0 0 .08rem rgba(100, 100, 100, .3);
+    box-shadow: 0 0 .16rem rgba(100, 100, 100, .3);
 }
 
 .app-download .close {
     position: relative;
-    width: .2rem;
-    height: .2rem;
+    width: .4rem;
+    height: .4rem;
     overflow: hidden;
 }
 
 .app-download .close:before,
 .app-download .close:after {
-    @include position(absolute, .09rem, auto, auto, .02rem, 10);
+    @include position(absolute, .18rem, auto, auto, .04rem, 10);
     display: block;
     content: '';
-    width: .14rem;
-    height: .02rem;
-    border-radius: .02rem;
+    width: .28rem;
+    height: .04rem;
+    border-radius: .04rem;
     background-color: #999;
     z-index: 1000;
 }

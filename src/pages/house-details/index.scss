@@ -3,7 +3,7 @@
 // @import '../../sass/header.scss'; // 全局头部
 body {
     position: relative;
-    padding-bottom: .55rem;
+    padding-bottom: 1.1rem;
     background-color: #f5f5f5;
 }
 
@@ -11,12 +11,12 @@ body {
 /* address-body */
 
 .address-body {
-    padding: .15rem .15rem;
+    padding: .3rem .3rem;
     background-color: #fff;
 }
 
 .address-body .title {
-    padding: .05rem 0;
+    padding: .1rem 0;
     font-size: $font-large;
     font-weight: 700;
     color: $color-dark-grey;
@@ -25,20 +25,20 @@ body {
 
 .address-body .map {
     position: relative;
-    margin: .1rem 0;
+    margin: .2rem 0;
     overflow: hidden;
 }
 
 .address-body .address {
     @include position(absolute, auto, auto, 0, auto, 10);
-    padding: .1rem 0;
+    padding: .2rem 0;
     width: 100%;
     font-size: $font-middle;
     color: rgba(255, 255, 255, 1);
     line-height: 1.2;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: .02rem;
+    border-radius: .04em;
 }
 
 
@@ -47,16 +47,23 @@ body {
 
 /* house-base-info */
 
-
 .living-info {
     background-color: #fff;
     border-bottom: $border;
-    padding: .08rem 0;
+    padding: .16rem .35rem;
+}
+
+.living-info .title {
+    padding: .1rem 0;
+    line-height: 1.2; // text-align: center;
+    font-size: .28rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 .living-info .items {
     @include flex-box;
-    padding: .04rem .15rem;
+    // padding: .08rem .3rem;
+    
 }
 
 .living-info .items .lab {
@@ -69,45 +76,45 @@ body {
 .living-info .items .txt {
     display: block;
     @include flex;
-    width: .5rem;
+    width: 1rem;
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
 }
 
-.living-info .items .gap {
-    display: inline-block;
-    width: 2em;
-}
+// .living-info .items .gap {
+//     display: inline-block;
+//     width: 2em;
+// }
 
-.living-info .items .icon {
-    padding: .02rem;
-    font-size: .16rem;
-    color: #fff;
-    line-height: 1;
-    background-color: #cbcbcb;
-    border-radius: .2rem;
-}
+// .living-info .items .icon {
+//     padding: .04rem;
+//     font-size: .32rem;
+//     color: #fff;
+//     line-height: 1;
+//     background-color: #cbcbcb;
+//     border-radius: .4rem;
+// }
 
-.living-info .items .icon:before {
-    display: block;
-    width: .16rem;
-    height: .16rem;
-    overflow: hidden;
-}
+// .living-info .items .icon:before {
+//     display: block;
+//     width: .32rem;
+//     height: .32rem;
+//     overflow: hidden;
+// }
 
 
 /* feature-channel */
 
 .feature-channel {
     background-color: #fff;
-    padding-left: .175rem;
+    padding-left: .35rem;
 }
 
 .feature-channel .title {
-    padding: .24rem .15rem .2rem 0;
+    padding: .58rem .3rem .4rem 0;
     line-height: 1.2;
-    font-size: .14rem;
+    font-size: .28rem;
     color: rgba(42, 43, 45, 1);
 }
 
@@ -124,9 +131,9 @@ body {
     @include align-items;
     @include justify-content;
     @include flex(0, 0, auto);
-    width: 1.9rem;
-    height: 1.069rem;
-    margin-right: .12rem;
+    width: 3.8rem;
+    height: 2.138rem;
+    margin-right: .24rem;
     font-size: $font-large;
     color: #fff;
     line-height: 1.2;
@@ -156,7 +163,7 @@ onekey {
     500);
     @include flex-box;
     background-color: #fff;
-    height: .5rem;
+    height: 1rem;
 }
 
 .footer-body .items {
@@ -171,28 +178,28 @@ onekey {
 }
 
 .footer-body .items .commuite {
-    width: 0.21rem;
-    height: 0.145rem;
-    margin-left: .265rem;
-    margin-right: .08rem;
+    width: 0.42rem;
+    height: 0.29rem;
+    margin-left: .53rem;
+    margin-right: .16rem;
     background-color: rgba(42, 43, 45, 1);
 }
 
 .footer-body .items span {
-    font-size: .18rem;
+    font-size: .36rem;
     color: rgba(255, 255, 255, 1);
 }
 
 .footer-body .items .txt {
-    font-size: .12rem;
+    font-size: .24rem;
     color: rgba(94, 100, 107, 1);
 }
 
 .footer-body .items .price {
-    padding-right: .125rem;
+    padding-right: .25rem;
     border-right: $border;
 }
 
 .footer-body .items .roder {
-    padding-left: .105rem;
+    padding-left: .21rem;
 }

@@ -12,7 +12,7 @@ body {
 
 .header-body {
     width: 100%;
-    height: 2.48rem;
+    height: 4.96rem;
     background: url('./img/feature-garden.jpg') no-repeat;
     background-size: cover;
 }
@@ -22,31 +22,31 @@ body {
     @include flex-direction;
     @include align-items;
     @include justify-content(space-between);
-    width: 2.925rem;
-    height: .405rem;
-    padding-top: .715rem;
-    margin-left: .45rem;
+    width: 5.85rem;
+    height: .81rem;
+    padding-top: 1.43rem;
+    margin-left: .9rem;
 }
 
 .header-body .header-title p {
-    font-size: .44rem;
+    font-size: .88rem;
     font-family: MFYueYuan_Noncommercial-Regular;
     color: rgba(255, 255, 255, 1);
 }
 
 .header-body .user {
     @include position(absolute,
-    .12rem,
-    .18rem,
+    .24rem,
+    .36em,
     auto,
     auto,
     10);
     @include flex-box;
     @include align-items;
     @include justify-content;
-    width: .24rem;
-    height: .24rem;
-    font-size: .24rem;
+    width: .48rem;
+    height: .48rem;
+    font-size: .48rem;
     color: #fff;
     overflow: hidden;
 }
@@ -62,8 +62,8 @@ body {
 /* 公共margin */
 
 .mrl_35 {
-    margin-left: .175rem;
-    margin-right: .175rem;
+    margin-left: .35rem;
+    margin-right: .35em;
 }
 
 
@@ -73,22 +73,22 @@ body {
     @include flex-box;
     @include flex-direction(column);
     @include position(relative,
-    -.73rem,
+    -1.46rem,
     auto,
     auto,
     auto,
     10);
     background-color: rgba(255, 255, 255, 1);
-    border-radius: .02rem;
-    box-shadow: 0 0 .05rem rgb(100, 100, 100);
-    padding: .15rem .3rem .2rem;
+    border-radius: .04rem;
+    box-shadow: 0 0 .1rem rgb(100, 100, 100);
+    padding: .3rem .6rem .4rem;
 }
 
 .select-body .input-text {
     @include flex-box;
     @include justify-content(space-between);
-    height: .3rem;
-    padding-bottom: .1rem;
+    height: .6rem;
+    padding-bottom: .2rem;
     border-bottom: $border;
     width: 100%;
 }
@@ -100,9 +100,9 @@ body {
 }
 
 .select-body .input-text .input-text-left i {
-    width: .17rem;
-    height: .17rem;
-    margin-right: .16rem;
+    width: .34rem;
+    height: .34rem;
+    margin-right: .32rem;
     background-color: skyblue;
 }
 
@@ -112,14 +112,14 @@ body {
 }
 
 .select-body .input-text .input-text-right i {
-    width: .1rem;
-    height: .12rem;
+    width: .2rem;
+    height: .24rem;
     background-color: rgba(90, 165, 114, 1);
 }
 
 .select-body .input-text .input-text-right span {
-    margin-left: .05rem;
-    font-size: .11rem;
+    margin-left: .1rem;
+    font-size: .22rem;
     font-family: PingFangSC;
     color: rgba(90, 165, 114, 1);
 }
@@ -129,20 +129,20 @@ body {
     border: none;
     outline: none;
     color: rgba(196, 201, 205, 1);
-    font-size: .14rem
+    font-size: .28rem
 }
 
 .select-body button {
     padding: 0;
     border: none;
     outline: none; //css去掉button点击后的蓝框
-    margin-top: .135rem;
-    height: .4rem;
+    margin-top: .27rem;
+    height: .8rem;
     width: 100%;
-    font-size: .17rem;
+    font-size: .34rem;
     background: rgba(90, 165, 114, 1);
     color: rgba(255, 255, 255, 1);
-    border-radius: .02rem;
+    border-radius: .04rem;
 }
 
 
@@ -151,12 +151,12 @@ body {
 .navigate-body {
     @include flex-box;
     @include justify-content(space-around);
-    height: .71rem;
-    margin-top: -.61rem;
-    padding-top: .10rem;
+    height: 1.42rem;
+    margin-top: -1.22rem;
+    padding-top: .2rem;
     background: rgba(255, 255, 255, 1);
-    border-radius: .02rem;
-    box-shadow: 0 0 .05rem rgb(100, 100, 100);
+    border-radius: .04rem;
+    box-shadow: 0 0 .1rem rgb(100, 100, 100);
 }
 
 .navigate-body .items {
@@ -169,13 +169,13 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content;
-    width: .43rem;
-    height: .4rem;
+    width: .86rem;
+    height: .8rem;
     margin: 0 auto;
 }
 
 .navigate-body .items .icon {
-    font-size: .34rem;
+    font-size: .68rem;
     color: #5aa572;
     line-height: 1;
     overflow: hidden;
@@ -183,8 +183,8 @@ body {
 
 .navigate-body .items .txt {
     display: block;
-    margin-top: .12rem;
-    font-size: .11rem;
+    margin-top: .24rem;
+    font-size: .22rem;
     font-family: PingFangSC;
     color: rgba(105, 107, 112, 1);
     line-height: 1;
@@ -220,20 +220,20 @@ body {
 
 .recommend-body {
     background-color: #fff;
-    margin-top: .24rem;
+    margin-top: .48rem;
 }
 
 .recommend-body .title {
     @include flex-box;
     @include align-items;
     @include justify-content;
-    font-size: .18rem;
+    font-size: .36rem;
     font-family: PingFangSC-Medium;
     color: rgba(42, 43, 45, 1);
 }
 
 .recommend-body .title .txt {
-    font-size: .18rem;
+    font-size: .36rem;
     font-family: PingFangSC-Medium;
     color: rgba(42, 43, 45, 1);
 }
@@ -241,9 +241,9 @@ body {
 .recommend-body .title .icon {
     position: relative;
     display: block;
-    width: .18rem;
-    height: .18rem;
-    margin-right: .12rem;
+    width: .36rem;
+    height: .36rem;
+    margin-right: .24rem;
     overflow: hidden;
 }
 
@@ -271,10 +271,10 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content(space-between);
-    height: .43rem;
-    padding-right: .175rem;
+    height: .86rem;
+    padding-right: .35rem;
     ;
-    padding-left: .175rem;
+    padding-left: .35rem;
     ;
     background-color: #f3ffff;
     box-shadow: 0 -5px 10px rgba(100, 100, 100, .2);
@@ -287,10 +287,10 @@ body {
 
 .app-download .logo {
     display: block;
-    width: .8rem;
-    height: .28rem;
-    margin-right: .07rem;
-    margin-left: .09rem;
+    width: 1.6rem;
+    height: .56rem;
+    margin-right: .14rem;
+    margin-left: .18rem;
     background-color: yellowgreen;
     overflow: hidden;
 }
@@ -300,46 +300,46 @@ body {
 }
 
 .app-download .tit {
-    font-size: .12rem;
+    font-size: .24rem;
     line-height: 1.2;
 }
 
 .app-download .desc {
-    margin-top: .025rem;
-    font-size: .1rem;
+    margin-top: .05rem;
+    font-size: .2rem;
     line-height: 1.2;
 }
 
 .app-download .download {
     display: block;
-    padding: 8px 16px;
+    padding: .16rem .32rem;
     font-size: $font-small;
     color: #fff; // line-height: 1.2;
-    border-radius: 20px;
+    border-radius: .4rem;
     background-color: #5aa572;
     box-shadow: 0 0 8px rgba(100, 100, 100, .3);
 }
 
 .app-download .close {
     position: relative;
-    width: .2rem;
-    height: .2rem;
+    width: .4rem;
+    height: .4rem;
     overflow: hidden;
 }
 
 .app-download .close:before,
 .app-download .close:after {
     @include position(absolute,
-    9px,
+    .18rem,
     auto,
     auto,
-    2px,
+    .04rem,
     10);
     display: block;
     content: '';
-    width: 14px;
-    height: 2px;
-    border-radius: 2px;
+    width: .28rem;
+    height: .4rem;
+    border-radius: .4rem;
     background-color: #999;
     z-index: 1000;
 }
