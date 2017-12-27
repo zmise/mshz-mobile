@@ -266,14 +266,14 @@ textarea {
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-    color: #ccc;
+    color: rgba(181, 185, 190, 1);
     line-height: 1.2;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
+    // border-collapse: collapse;
+    // border-spacing: 0;
 }
 
 .ellips {
@@ -284,4 +284,28 @@ table {
     @include position(fixed, 0, 0, 0, 0, 1000);
     display: none;
     background-color: rgba(0, 0, 0, .3);
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.bg-base {
+    background-color: rgba(90, 165, 114, 1) !important;
+}
+
+.c-wite {
+    color: #fff !important;
+}
+
+.c-base {
+    color: rgba(90, 165, 114, 1) !important;
+}
+
+.bd-c-wite {
+    color: #fff !important;
+}
+
+.bd-c-base {
+    color: rgba(90, 165, 114, 1) !important;
 }

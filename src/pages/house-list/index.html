@@ -17,11 +17,13 @@
     </a>
     <a class="menu iconfont icon-menu" id="menu" href="javascript:;"></a>
   </header>
-
+  <!-- 搜索框 -->
   <section class="search">
     <div class="search-body" id="search-entry">
       <div class="text-body">
-        <i class="icon-search"></i>
+        <i class="icon-search">
+          <i class="circle"></i>
+        </i>
         <input class="text" type="text" placeholder="您想住哪里？" />
       </div>
     </div>
@@ -186,6 +188,261 @@
       </a>
     </div>
   </nav>
+
+  <!-- 筛选弹出框 -->
+  <section class="filter-layer" style="display:none;">
+    <div class="filter-body">
+      <a class="items" href="javascript:;">
+        <span class="txt ellips">区域</span>
+        <i class="icon"></i>
+      </a>
+      <a class="items" href="javascript:;">
+        <span class="txt ellips">租金</span>
+        <i class="icon"></i>
+      </a>
+      <a class="items" href="javascript:;">
+        <span class="txt ellips">房型</span>
+        <i class="icon"></i>
+      </a>
+      <a class="items" href="javascript:;">
+        <span class="txt ellips">更多</span>
+        <i class="icon"></i>
+      </a>
+    </div>
+    <div class="filter-list" style="display:none;">
+      <div class="content">
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items" href="javascript:;">区域</a>
+            <a class="items" href="javascript:;">地铁</a>
+          </div>
+        </div>
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">附近</a>
+            <a class="items" href="javascript:;">福田</a>
+            <a class="items" href="javascript:;">南山</a>
+            <a class="items" href="javascript:;">宝安</a>
+            <a class="items" href="javascript:;">罗湖</a>
+            <a class="items" href="javascript:;">龙岗</a>
+            <a class="items" href="javascript:;">龙华新区</a>
+            <a class="items" href="javascript:;">坪山新区</a>
+            <a class="items" href="javascript:;">盐田</a>
+            <a class="items" href="javascript:;">光明新区</a>
+            <a class="items" href="javascript:;">大鹏新区</a>
+          </div>
+        </div>
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">附近</a>
+            <a class="items" href="javascript:;">福田</a>
+            <a class="items" href="javascript:;">南山</a>
+            <a class="items" href="javascript:;">宝安</a>
+            <a class="items" href="javascript:;">罗湖</a>
+            <a class="items" href="javascript:;">龙岗</a>
+            <a class="items" href="javascript:;">龙华新区</a>
+            <a class="items" href="javascript:;">坪山新区</a>
+            <a class="items" href="javascript:;">盐田</a>
+            <a class="items" href="javascript:;">光明新区</a>
+            <a class="items" href="javascript:;">大鹏新区</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-list" style="display:none;">
+      <div class="content">
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">200万元以下</a>
+            <a class="items" href="javascript:;">200-300万元</a>
+            <a class="items" href="javascript:;">300-400万元</a>
+            <a class="items" href="javascript:;">400-500万元</a>
+            <a class="items" href="javascript:;">500-600万元</a>
+            <a class="items" href="javascript:;">600-800万元</a>
+            <a class="items" href="javascript:;">800-1000万元</a>
+            <a class="items" href="javascript:;">1000万元以上</a>
+          </div>
+        </div>
+      </div>
+      <div class="range-body">
+        <div class="range">
+          <div class="range-value"></div>
+          <div class="first-slider">
+            <div class="text-value">不限</div>
+          </div>
+          <div class="last-slider">
+            <div class="text-value">不限</div>
+          </div>
+        </div>
+        <a class="ok" href="javascript:;">确定</a>
+      </div>
+    </div>
+    <div class="filter-list" style="display:none;">
+      <div class="content">
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">一室</a>
+            <a class="items" href="javascript:;">二室</a>
+            <a class="items" href="javascript:;">三室</a>
+            <a class="items" href="javascript:;">四室</a>
+            <a class="items" href="javascript:;">五室及以上</a>
+            <a class="items" href="javascript:;">别墅</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-list" style="display:none;">
+      <div class="checkbox-body">
+        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <div class="options">
+              <div class="tit">面积</div>
+              <div class="items-box">
+                <a class="items current" href="javascript:;">50平以下</a>
+                <a class="items" href="javascript:;">50-70平</a>
+                <a class="items" href="javascript:;">70-90平</a>
+                <a class="items" href="javascript:;">90-110平</a>
+                <a class="items" href="javascript:;">110-130平</a>
+                <a class="items" href="javascript:;">130-150平</a>
+                <a class="items" href="javascript:;">150-200平</a>
+                <a class="items" href="javascript:;">200平以上</a>
+              </div>
+            </div>
+            <div class="options">
+              <div class="tit">房龄</div>
+              <div class="items-box">
+                <a class="items current" href="javascript:;">5年内</a>
+                <a class="items" href="javascript:;">5-10年</a>
+                <a class="items" href="javascript:;">10-20年</a>
+                <a class="items" href="javascript:;">20年以上</a>
+              </div>
+            </div>
+            <div class="options">
+              <div class="tit">装修</div>
+              <div class="items-box">
+                <a class="items current" href="javascript:;">毛坯</a>
+                <a class="items" href="javascript:;">普通装修</a>
+                <a class="items" href="javascript:;">精装修</a>
+                <a class="items" href="javascript:;">豪华装修</a>
+              </div>
+            </div>
+            <div class="options">
+              <div class="tit">标签</div>
+              <div class="items-box">
+                <a class="items current" href="javascript:;">急售</a>
+                <a class="items" href="javascript:;">南北通透</a>
+                <a class="items" href="javascript:;">满五唯一</a>
+                <a class="items" href="javascript:;">满两年</a>
+                <a class="items" href="javascript:;">不限购</a>
+                <a class="items" href="javascript:;">复式</a>
+                <a class="items" href="javascript:;">随时看房</a>
+                <a class="items" href="javascript:;">红本在手</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="complete-body">
+        <a class="items cancel" href="javascript:;">重置</a>
+        <a class="items ok" href="javascript:;">完成筛选</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 搜索弹出框 -->
+  <section class="search-layer" style="display:none;">
+    <div class="search-body bg-base">
+      <a class="cancel" id="search-cancel" href="javascript:;"></a>
+
+      <div class="text-body">
+        <i class="icon-search style-two">
+          <i class="circle bg-white"></i>
+        </i>
+        <input class="text" type="text" placeholder="您想住哪？" />
+        <a class="clear-text" href="javascript:;"></a>
+      </div>
+    </div>
+    <div class="search-keyword">
+      <div class="title">热门搜索</div>
+      <div class="keywords">
+        <a class="items" href="javascript:;">远洋新干线</a>
+        <a class="items" href="javascript:;">布吉阳光花园,祺峰华庭</a>
+        <a class="items" href="javascript:;">国展苑</a>
+        <a class="items" href="javascript:;">中海康城国际</a>
+        <a class="items" href="javascript:;">金地梅陇镇</a>
+        <a class="items" href="javascript:;">中海西岸华府北区</a>
+      </div>
+    </div>
+    <div class="search-list" js-plugin="slide" data-direction="vertical">
+      <div class="slide">
+        <a class="items" href="javascript:;">
+          <span class="txt">京基100</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-school"></i>
+          <span class="txt">学区房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-sale"></i>
+          <span class="txt">二手房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-rent"></i>
+          <span class="txt">租房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-newhouse"></i>
+          <span class="txt">新房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-office"></i>
+          <span class="txt">写字楼</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="clear-record" href="javascript:;">清空历史记录</a>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>

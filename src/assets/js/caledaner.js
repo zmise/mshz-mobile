@@ -17,39 +17,40 @@
                 me.startData = me.settings.startData;
                 me.endData = me.settings.endData;
 
-                var html = " <div class='fixBox'><div class='headerWrapper'><div class='headerTip'>请选择入住离店日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
+                var html = " <div class='fixBox'><div class='headerWrapper'>" + "<a class='back'href='javascript:;' id='cancel'></a>" + "<div class='headerTip'>请选择入住离店日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
                 $(me.sections).append(html);
                 $(me.sections).find('.fixBox').css({
-                    "height": "95px",
+                    "height": "1.76rem",
                     "width": "100%",
                     "backgroundColor": "#fff",
                     "zIndex": "99",
                     "position": "fixed"
                 });
                 $(me.sections).find('.headerWrapper').css({
-                    "height": "50px",
-                    "line-height": "50px",
+                    "height": ".88rem",
+                    "line-height": ".88rem",
                     "position": "relative"
                 });
                 $(me.sections).find('.headerTip').css({
                     "text-align": "center",
-                    "line-height": "50px",
+                    "line-height": ".88rem",
+                });
+                $(me.sections).find('.dateZone').css({
+                    "height": ".88rem",
+                    "backgroundColor": "#fff",
+
                 });
                 $(me.sections).find('.tbody').css({
-                    "marginTop": "105px"
+                    "marginTop": "1.77rem"
                 });
                 $(me.sections).find(me.comfire).css({
-                    "height": "20px",
-                    "line-height": "20px",
-                    "width": "60px",
-                    "color": "#ff5400",
+                    "color": "#fff",
                     "position": "absolute",
-                    "right": "15px",
+                    "right": ".35rem",
                     "text-align": "center",
-                    "font-size": "14px",
+                    "font-size": ".36rem",
                     "cursor": "pointer",
-                    "top": "15px",
-                    "border": "1px solid #ff5400"
+                    "top": "0",
 
                 });
 
@@ -82,10 +83,10 @@
                     var createTd = $(me.sections).find('.dateTable').eq(select).find('tr');
                     createTd.each(function (index, element) {
                         for (var j = 0; j < 7; j++) {
-                            $(this).append('<td><span></span></td>')
+                            $(this).append('<td><span></span><span></span></td>')
                         }
                     });
-                    var arryTd = $(me.sections).find('.dateTable').eq(select).find('span');
+                    var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:even');
                     for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
                         arryTd.eq(firstDay++).text(m + 1);
                     }
@@ -148,7 +149,7 @@
                 var me = this;
                 me.comeColor = me.settings.comeColor;
                 me.outColor = me.settings.outColor;
-                me.daysnumber = me.settings.daysnumber;
+                // me.daysnumber = me.settings.daysnumber;
                 var strDays = new Date().getDate();
                 var arry = [];
                 var arry1 = [];
@@ -156,13 +157,13 @@
                 tds.each(function (index, element) {
                     if ($(this).text() == strDays) {
                         var r = index;
-                        $(this).append('</br><p class="rz">入住</p>');
+                        $(this).append('<p class="rz">入住</p>');
                         if ($(this).next().text() != "") {
-                            $(this).next().append('</br><p class="rz">离店</p>');
+                            $(this).next().append('<p class="rz">离店</p>');
                         } else {
                             $(".dateTable").eq(1).find("td").each(function (index, el) {
                                 if ($(this).text() != "") {
-                                    $(this).append('</br><p class="rz">离店</p>');
+                                    $(this).append('<p class="rz">离店</p>');
                                     return false;
                                 }
                             });
@@ -180,18 +181,19 @@
                 for (var i = 0; i < strDays - 1; i++) {
                     $(arry[i]).css('color', '#ccc');
                 }
-                if (me.daysnumber) {
-                    //可以在这里添加90天的条件
-                    for (var i = strDays - 1; i < strDays + 90; i++) {
-                        arry1.push(arry[i])
-                    }
-                    for (var i = strDays + 90; i < $(arry).length; i++) {
-                        $(arry[i]).css('color', '#ccc')
-                    }
-                } else {
-                    for (var i = strDays - 1; i < $(arry).length; i++) {
-                        arry1.push(arry[i])
-                    }
+                // if (me.daysnumber) {
+                //     //可以在这里添加90天的条件
+                //     for (var i = strDays - 1; i < strDays + 60; i++) {
+                //         arry1.push(arry[i])
+                //     }
+                //     for (var i = strDays + 60; i < $(arry).length; i++) {
+                //         $(arry[i]).css('color', '#ccc')
+                //     }
+                // } else {
+
+                // }
+                for (var i = strDays - 1; i < $(arry).length; i++) {
+                    arry1.push(arry[i])
                 }
                 me._selectDate(arry1)
             },
@@ -203,7 +205,7 @@
                     if (rz.eq(i).text() == "入住") {
                         rz.eq(i).closest('td').css({
                             'background': comeColor,
-                            'color': '#fff'
+                            'color': '#fff',
                         });
                     } else {
                         rz.eq(i).closest('td').css({
@@ -220,7 +222,9 @@
                     me.settings.callback();
                 }
             },
+
             _selectDate: function (arry1) {
+
                 var me = this;
                 me.comeColor = me.settings.comeColor;
                 me.outColor = me.settings.outColor;
@@ -238,7 +242,7 @@
                     if (flag == 0) {
                         $(me.sections).find('.hover').remove();
                         $(me.sections).find('.tbody').find('p').remove('.rz');
-                        $(me.sections).find('.tbody').find('br').remove();
+                        // $(me.sections).find('.tbody').find('br').remove();
                         $(arry1).css({
                             'background': '#fff',
                             'color': '#000'
@@ -247,9 +251,27 @@
                         first = $(arry1).index($(this));
                         me._checkColor(me.comeColor, me.outColor)
                         flag = 1;
-                    } else if (flag == 1) { //第二次点击
-                        flag = 0;
 
+                        var e = $(this).text().replace(/[^0-9]/ig, "");
+                        var c, d;
+                        var a = new Array();
+                        var b = new Array();
+                        var f;
+                        var same = $(this).parents('table').prev('p').text().replace(/[^0-9]/ig, "").split('');
+                        for (var i = 0; i < 4; i++) {
+                            a.push(same[i]);
+
+                        }
+                        c = a.join('');
+                        for (var j = 4; j < 6; j++) {
+                            b.push(same[j]);
+                        }
+                        d = b.join('');
+
+                        f = c + '-' + d + '-' + e;
+                        // $("#startDate").val(f);
+                        me.startData = f;
+                    } else if (flag == 1) { //第二次点击
                         second = $(arry1).index($(this))
                         sum = Math.abs(second - first);
                         if (sum == 0) {
@@ -265,31 +287,7 @@
                                     'color': '#fff'
                                 });
                             }
-                        } else if (first == second) {
-
-                            $(me.sections).find('.rz').text('入住');
-                            $(this).append('<p class="rz">离店</p>');
-                            $(this).find('.rz').css('font-size', '12px');
-                            var e = $(this).text().replace(/[^0-9]/ig, "");
-                            var c, d;
-                            var a = new Array();
-                            var b = new Array();
-                            var f;
-                            var same = $(this).parents('table').prev('p').text().replace(/[^0-9]/ig, "").split('');
-                            for (var i = 0; i < 4; i++) {
-                                a.push(same[i]);
-
-                            }
-                            c = a.join('');
-                            for (var j = 4; j < 6; j++) {
-                                b.push(same[j]);
-                            }
-                            d = b.join('');
-
-                            f = c + '-' + d + '-' + e;
-                            $("#startDate").val(f);
-                            me.startData = f;
-                            console.log(f);
+                            flag = 0;
 
                         } else if (first > second) {
 
@@ -302,6 +300,8 @@
                                     'color': '#fff'
                                 });
                             }
+                            flag = 0;
+
                         }
                         $(me.sections).find('.rz').each(function (index, element) {
                             if ($(this).text() == '离店') {
@@ -422,13 +422,13 @@
         selectors: {
             sections: "#calendar"
         },
-        index: 4,
+        index: 3,
         //展示的月份个数
         animateFunction: "toggle",
         //动画效果
         controlDay: false,
         //知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
-        daysnumber: "90",
+        // daysnumber: "90",
         //控制天数
         comeColor: "blue",
         //入住颜色

@@ -1,0 +1,98 @@
+/* 焦点图 */
+
+.banner-body {
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.banner-body .banner {
+  @include flex-box;
+}
+
+.banner-body .items {
+  display: block;
+  width: 100%;
+  @include flex(0, 0, auto);
+  overflow: hidden;
+}
+
+.banner-body .pagination {
+  @include position(absolute, auto, .2rem, .2rem, auto, 10);
+  @include flex-box;
+  padding: .1rem;
+  border-radius: .06rem;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.banner-body .pagination .icon,
+.banner-body .pagination span {
+  display: block;
+  margin-right: .04rem;
+  font-size: $font-middle;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.banner-body .pagination .icon:before {
+  display: block;
+  width: .28rem;
+  height: .28rem;
+  overflow: hidden;
+}
+
+.banner-body .back {
+  @include position(absolute, .2rem, auto, auto, .2rem, 10);
+  width: .8rem;
+  height: .8rem;
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: .08rem;
+}
+
+.banner-body .back:before {
+  @include position(absolute, .28rem, auto, auto, .32rem, 10);
+  display: block;
+  content: '';
+  width: .24rem;
+  height: .24rem;
+  border-width: 0 0 .04rem .04rem;
+  border-style: solid;
+  border-color: #fff;
+  @include transform(rotateZ(45deg));
+}
+
+.banner-body .icon-collect,
+.banner-body .icon-collected {
+  @include position(absolute, .2rem, .2rem, auto, auto, 10);
+  @include flex-box;
+  @include align-items;
+  @include justify-content;
+  width: .8rem;
+  height: .8rem;
+  font-size: 28px;
+  color: #fff;
+  line-height: 1;
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: .1rem;
+}
+
+.banner-body .icon-collected {
+  color: $color-orange;
+}
+
+.banner-body .icon-collect:before,
+.banner-body .icon-collected:before {
+  display: block;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+}
+
+.banner-body .sold-out {
+  @include position(absolute, auto, 0, 0, 0, 100);
+  padding: .2rem;
+  font-size: $font-large;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, .7);
+}

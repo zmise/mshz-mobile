@@ -1,9 +1,13 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/list/index-list.scss'; // 推荐房源列表
+@import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
+@import '../../sass/destination.scss'; // 日地的的弹出框
+@import '../../sass/caledaner.scss'; // 日历插件
+@import '../../sass/search.scss'; // 全局搜索
 body {
-    padding-bottom: 50px;
+    padding-bottom: 1rem;
     background-color: #fff;
 }
 
@@ -37,7 +41,7 @@ body {
 .header-body .user {
     @include position(absolute,
     .24rem,
-    .36em,
+    .36rem,
     auto,
     auto,
     10);
@@ -53,8 +57,8 @@ body {
 
 .header-body .user:before {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: .48rem;
+    height: .48rem;
     overflow: hidden;
 }
 
@@ -63,7 +67,7 @@ body {
 
 .mrl_35 {
     margin-left: .35rem;
-    margin-right: .35em;
+    margin-right: .35rem;
 }
 
 
@@ -103,7 +107,6 @@ body {
     width: .34rem;
     height: .34rem;
     margin-right: .32rem;
-    background-color: skyblue;
 }
 
 .select-body .input-text .input-text-right {
@@ -112,15 +115,20 @@ body {
 }
 
 .select-body .input-text .input-text-right i {
-    width: .2rem;
-    height: .24rem;
-    background-color: rgba(90, 165, 114, 1);
+    width: .32rem;
+    height: .32rem;
+    color: rgba(90, 165, 114, 1);
+    font-size: .12rem;
+    @include transform(rotateY(180deg));
+}
+
+.icon-fujin1 {
+    font-size: .26rem;
 }
 
 .select-body .input-text .input-text-right span {
     margin-left: .1rem;
     font-size: .22rem;
-    font-family: PingFangSC;
     color: rgba(90, 165, 114, 1);
 }
 
@@ -128,7 +136,7 @@ body {
     @include flex;
     border: none;
     outline: none;
-    color: rgba(196, 201, 205, 1);
+    color: #2A2B2D;
     font-size: .28rem
 }
 
@@ -136,7 +144,7 @@ body {
     padding: 0;
     border: none;
     outline: none; //css去掉button点击后的蓝框
-    margin-top: .27rem;
+    margin-top: .27;
     height: .8rem;
     width: 100%;
     font-size: .34rem;
@@ -146,9 +154,9 @@ body {
 }
 
 
-/* navigate-body */
+/* navigatelist-body */
 
-.navigate-body {
+.navigatelist-body {
     @include flex-box;
     @include justify-content(space-around);
     height: 1.42rem;
@@ -159,13 +167,13 @@ body {
     box-shadow: 0 0 .1rem rgb(100, 100, 100);
 }
 
-.navigate-body .items {
+.navigatelist-body .items {
     display: block;
     width: 25%;
     box-sizing: border-box;
 }
 
-.navigate-body .items .icon-box {
+.navigatelist-body .items .icon-box {
     @include flex-box;
     @include align-items;
     @include justify-content;
@@ -174,14 +182,13 @@ body {
     margin: 0 auto;
 }
 
-.navigate-body .items .icon {
+.navigatelist-body .items .icon {
     font-size: .68rem;
-    color: #5aa572;
     line-height: 1;
     overflow: hidden;
 }
 
-.navigate-body .items .txt {
+.navigatelist-body .items .txt {
     display: block;
     margin-top: .24rem;
     font-size: .22rem;
@@ -189,30 +196,6 @@ body {
     color: rgba(105, 107, 112, 1);
     line-height: 1;
     text-align: center;
-}
-
-.navigate-body .items .sale {
-    background-color: #e6b322;
-}
-
-.navigate-body .items .newhouse {
-    background-color: #a9c980;
-}
-
-.navigate-body .items .rent {
-    background-color: #898085;
-}
-
-.navigate-body .items .app {
-    background-color: #6c848e;
-}
-
-.navigate-body .items .overseas {
-    background-color: #5383c3;
-}
-
-.navigate-body .items .loan {
-    background-color: #b4866c;
 }
 
 
@@ -228,13 +211,12 @@ body {
     @include align-items;
     @include justify-content;
     font-size: .36rem;
-    font-family: PingFangSC-Medium;
     color: rgba(42, 43, 45, 1);
 }
 
 .recommend-body .title .txt {
+    display: inline-block;
     font-size: .36rem;
-    font-family: PingFangSC-Medium;
     color: rgba(42, 43, 45, 1);
 }
 
@@ -243,8 +225,11 @@ body {
     display: block;
     width: .36rem;
     height: .36rem;
+    font-size: .36rem;
     margin-right: .24rem;
     overflow: hidden;
+    color: rgba(90, 165, 114, 1);
+    ;
 }
 
 // .recommend-body .title .icon:before {
@@ -322,32 +307,50 @@ body {
 
 .app-download .close {
     position: relative;
-    width: .4rem;
-    height: .4rem;
+    width: .24rem;
+    height: .24rem;
+    overflow: hidden;
+    font-size: .16rem;
+    color: #5aa572;
+}
+
+// .app-download .close:before,
+// .app-download .close:after {
+//     @include position(absolute,
+//     .18rem,
+//     auto,
+//     auto,
+//     .04rem,
+//     10);
+//     display: block;
+//     content: '';
+//     width: .28rem;
+//     height: .4rem;
+//     border-radius: .4rem;
+//     background-color: #999;
+//     z-index: 1000;
+// }
+// .app-download .close:before {
+//     @include transform(rotateZ(45deg));
+// }
+// .app-download .close:after {
+//     @include transform(rotateZ(-45deg));
+// }
+.icon {
+    /* 通过设置 font-size 来改变图标大小 */
+    width: 1em;
+    height: 1em;
+    /* 图标和文字相邻时，垂直对齐 */
+    vertical-align: -0.15em;
+    /* 通过设置 color 来改变 SVG 的颜色/fill */
+    fill: currentColor;
+    /* path 和 stroke 溢出 viewBox 部分在 IE 下会显示
+     normalize.css 中也包含这行 */
     overflow: hidden;
 }
 
-.app-download .close:before,
-.app-download .close:after {
-    @include position(absolute,
-    .18rem,
-    auto,
-    auto,
-    .04rem,
-    10);
-    display: block;
-    content: '';
-    width: .28rem;
-    height: .4rem;
-    border-radius: .4rem;
-    background-color: #999;
-    z-index: 1000;
-}
-
-.app-download .close:before {
-    @include transform(rotateZ(45deg));
-}
-
-.app-download .close:after {
-    @include transform(rotateZ(-45deg));
+.icon-xiaoweizhidingdian {
+    width: 0.24rem;
+    height: 0.26rem;
+    font-size: 0.17rem;
 }

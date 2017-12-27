@@ -23,13 +23,14 @@
 .site-map-box {
     @include flex;
     @include flex-box;
+    @include align-items;
     @include justify-content;
 }
 
 .site-map-icon {
-    width: .3rem;
-    height: .25rem;
-    background-color: skyblue;
+    width: .6rem;
+    height: .5rem;
+    font-size: .48rem;
 }
 
 .site-map-mbox {

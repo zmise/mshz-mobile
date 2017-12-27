@@ -29,9 +29,10 @@
 }
 
 .filter-body .items .txt {
-    display: block;
-    max-width: 70%;
-    max-width: calc(100% - .3rem);
+    display: block; // max-width: 70%;
+    // max-width: calc(100% - .3rem);
+    font-size: .24rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 .filter-body .items .icon {

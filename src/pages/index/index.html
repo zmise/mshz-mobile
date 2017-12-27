@@ -5,68 +5,76 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
-  <title>名宿好住</title>
+  <title>mshz-mobile-develop-index</title>
 </head>
 
 <body>
+  <!-- 最后修改 -->
   <header class="header-body">
     <a class="user iconfont icon-gerenzhongxin" href="javascript:;"></a>
+    <!-- <a class="user iconfont icon-daohanglancaidan" id="menu" href="javascript:;"></a> -->
     <div class="header-title">
-      <p>让旅行</p>
-      <p>更舒适</p>
+      <p>让旅行 更舒适</p>
     </div>
   </header>
+  <!-- end最后修改 -->
   <section class="select-body mrl_35">
     <div class="input-text">
       <div class="input-text-left">
-        <i></i>
-        <input placeholder="目的地">
+        <i class="iconfont icon-mudedi"></i>
+        <input id="destination-entry" placeholder="目的地" readOnly="readOnly">
       </div>
       <a class="input-text-right">
-        <i></i>
+        <i class="iconfont icon-fujin1"></i>
         <span>附近</span>
       </a>
     </div>
     <div class="input-text">
       <div class="input-text-left">
-        <i></i>
-        <input placeholder="入住日期-退房日期">
+        <i class="iconfont icon-riqixuanze"></i>
+        <input id="firstSelect" placeholder="入住日期-退房日期" readOnly="readOnly">
       </div>
       <a class="input-text-right">
-        <i></i>
+        <i class="iconfont icon-fanhui"></i>
       </a>
     </div>
     <div class="input-text">
       <div class="input-text-left">
-        <i></i>
-        <input placeholder="景点/关键字/商圈">
+        <i class="iconfont icon-jingdian"></i>
+        <input id="search-entry" placeholder="景点/关键字/商圈" readOnly="readOnly">
       </div>
     </div>
     <button>搜索</button>
   </section>
-  <section class="navigate-body mrl_35">
+  <section class="navigatelist-body mrl_35">
     <a class="items" href="javascript:;">
       <div class="icon-box ">
-        <i class="icon iconfont icon-sale"></i>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-liulanjilu"></use>
+        </svg>
       </div>
       <span class="txt">浏览记录</span>
     </a>
     <a class="items" href="javascript:;">
       <div class="icon-box">
-        <i class="icon iconfont icon-newhouse"></i>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-wodedingdan"></use>
+        </svg>
       </div>
       <span class="txt">我的订单</span>
     </a>
     <a class="items" href="javascript:;">
       <div class="icon-box ">
-        <i class="icon iconfont icon-rent"></i>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-wodeshoucang"></use>
+        </svg>
       </div>
       <span class="txt">我的收藏</span>
     </a>
   </section>
   <section class="recommend-body mrl_35">
     <a class="title" href="javascript:;">
-      <i class="icon iconfont icon-rent"></i>
+      <i class="icon iconfont icon-tuijianfangyuan"></i>
       <span class="txt">推荐房源</span>
     </a>
     <div class="index-list">
@@ -76,41 +84,16 @@
         <p>￥328</p>
       </div>
       <div class="item-twoline">
+        <i class=" twoline-items iconfont icon-xiaoweizhidingdian"></i>
         <i class="twoline-items" href="javascript:;">昆明</i>
         <i class="twoline-items" href="javascript:;">1居30平</i>
         <i class="twoline-items" href="javascript:;">2人</i>
       </div>
       <div class="item-threeline">
-        <div class="three-lline">
-          <div class="star-lines"></div>
-          <i class="score">4.7分</i>
-        </div>
-        <div class="three-rline">
-          <i class="twoline-items" href="javascript:;">122住过</i>
-          <i class="twoline-items" href="javascript:;">108条评价</i>
-        </div>
-      </div>
-    </div>
-    <div class="index-list">
-      <img src="./img/feature-onekey.jpg" alt="">
-      <div class="item-oneline">
-        <p>泸沽湖畔 一居室民宿</p>
-        <p>￥328</p>
-      </div>
-      <div class="item-twoline">
-        <i class="twoline-items" href="javascript:;">昆明</i>
-        <i class="twoline-items" href="javascript:;">1居30平</i>
-        <i class="twoline-items" href="javascript:;">2人</i>
-      </div>
-      <div class="item-threeline">
-        <div class="three-lline">
-          <div class="star-lines"></div>
-          <i class="score">4.7分</i>
-        </div>
-        <div class="three-rline">
-          <i class="twoline-items" href="javascript:;">122住过</i>
-          <i class="twoline-items" href="javascript:;">108条评价</i>
-        </div>
+        <div class="star-lines"></div>
+        <i class="score">4.7分</i>
+        <i class="twoline-items" href="javascript:;">122住过</i>
+        <i class="twoline-items" href="javascript:;">108条评价</i>
       </div>
     </div>
     <div class="index-list">
@@ -120,33 +103,53 @@
         <p>￥328</p>
       </div>
       <div class="item-twoline">
+        <i class=" twoline-items iconfont icon-xiaoweizhidingdian"></i>
         <i class="twoline-items" href="javascript:;">昆明</i>
         <i class="twoline-items" href="javascript:;">1居30平</i>
         <i class="twoline-items" href="javascript:;">2人</i>
       </div>
       <div class="item-threeline">
-        <div class="three-lline">
-          <div class="star-lines"></div>
-          <i class="score">4.7分</i>
-        </div>
-        <div class="three-rline">
-          <i class="twoline-items" href="javascript:;">122住过</i>
-          <i class="twoline-items" href="javascript:;">108条评价</i>
-        </div>
+        <div class="star-lines"></div>
+        <i class="score">4.7分</i>
+        <i class="twoline-items" href="javascript:;">122住过</i>
+        <i class="twoline-items" href="javascript:;">108条评价</i>
+      </div>
+    </div>
+    <div class="index-list">
+      <img src="./img/feature-onekey.jpg" alt="">
+      <div class="item-oneline">
+        <p>泸沽湖畔 一居室民宿</p>
+        <p>￥328</p>
+      </div>
+      <div class="item-twoline">
+        <i class=" twoline-items iconfont icon-xiaoweizhidingdian"></i>
+        <i class="twoline-items" href="javascript:;">昆明</i>
+        <i class="twoline-items" href="javascript:;">1居30平</i>
+        <i class="twoline-items" href="javascript:;">2人</i>
+      </div>
+      <div class="item-threeline">
+        <div class="star-lines"></div>
+        <i class="score">4.7分</i>
+        <i class="twoline-items" href="javascript:;">122住过</i>
+        <i class="twoline-items" href="javascript:;">108条评价</i>
       </div>
     </div>
   </section>
   <footer class="footer-body mrl_35">
     <div class="site-map">
       <div class="site-map-box">
-        <i class="site-map-icon"></i>
+        <svg class="site-map-icon icon" aria-hidden="true">
+          <use xlink:href="#icon-kefu"></use>
+        </svg>
         <div class="site-map-mbox">
           <p class="site-map-title">客服</p>
           <p class="site-map-content">400-xxx-xxx</p>
         </div>
       </div>
       <div class="site-map-box">
-        <i class="site-map-icon"></i>
+        <svg class="site-map-icon icon" aria-hidden="true">
+          <use xlink:href="#icon-anquanzhifu"></use>
+        </svg>
         <div class="site-map-mbox">
           <p class="site-map-title">客服</p>
           <p class="site-map-content">400-xxx-xxx</p>
@@ -164,7 +167,9 @@
   </footer>
   <section class="app-download">
     <div class="app-download-box">
-      <a class="close" href="javascript:;"></a>
+      <a class="close iconfont icon-icon-test1" href="javascript:;">
+
+      </a>
       <div class="logo">
         <img src="img/app-download.png" />
       </div>
@@ -175,6 +180,156 @@
     </div>
     <a class="download" href="javascript:;">立即打开</a>
   </section>
+  <!-- 侧边栏 -->
+  <section class="overlay" id="overlay"></section>
+  <nav class="navigate-body" js-plugin="slide" data-direction="vertical">
+    <div class="navigate">
+      <a class="items login" href="javascript:;">
+        <i class="icon iconfont icon-gerenzhongxin"></i>
+        <span class="txt">登录/注册</span>
+      </a>
+
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-home"></i>
+        <span class="txt">首页</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-sale"></i>
+        <span class="txt">二手房</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-newhouse"></i>
+        <span class="txt">新房</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-rent"></i>
+        <span class="txt">租房</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-office"></i>
+        <span class="txt">写字楼</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-garden"></i>
+        <span class="txt">小区</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-school"></i>
+        <span class="txt">学区房</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-feiji"></i>
+        <span class="txt">海外</span>
+      </a>
+      <a class="items" href="javascript:;">
+        <i class="icon iconfont icon-about"></i>
+        <span class="txt">关于Q房</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- 日地的的弹出页面 -->
+  <section class="destination-body" style="display:none;">
+    <div class="des-header">
+      <div class="des">
+        <h1 class="title">选择目的地</h1>
+      </div>
+      <a class="back" href="javascript:;" id="destination-cancel">
+      </a>
+    </div>
+  </section>
+  <!-- 全局搜索 -->
+  <section class="search-layer" style="display:none;">
+    <div class="search-body bg-base">
+      <a class="cancel" id="search-cancel" href="javascript:;"></a>
+
+      <div class="text-body">
+        <i class="icon-search style-two">
+          <i class="circle bg-white"></i>
+        </i>
+        <input class="text" type="text" placeholder="您想住哪？" />
+        <a class="clear-text" href="javascript:;"></a>
+      </div>
+    </div>
+    <div class="search-keyword">
+      <div class="title">热门搜索</div>
+      <div class="keywords">
+        <a class="items" href="javascript:;">远洋新干线</a>
+        <a class="items" href="javascript:;">布吉阳光花园,祺峰华庭</a>
+        <a class="items" href="javascript:;">国展苑</a>
+        <a class="items" href="javascript:;">中海康城国际</a>
+        <a class="items" href="javascript:;">金地梅陇镇</a>
+        <a class="items" href="javascript:;">中海西岸华府北区</a>
+      </div>
+    </div>
+    <div class="search-list" js-plugin="slide" data-direction="vertical">
+      <div class="slide">
+        <a class="items" href="javascript:;">
+          <span class="txt">京基100</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-school"></i>
+          <span class="txt">学区房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-sale"></i>
+          <span class="txt">二手房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-rent"></i>
+          <span class="txt">租房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-newhouse"></i>
+          <span class="txt">新房</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-office"></i>
+          <span class="txt">写字楼</span>
+          <i class="icon-goto"></i>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-yuyue"></i>
+          <span class="txt">北京大厦</span>
+        </a>
+        <a class="clear-record" href="javascript:;">清空历史记录</a>
+      </div>
+    </div>
+  </section>
+  <!-- 日历插件 -->
+  <section class="calendar"></section>
 </body>
 
 </html>
