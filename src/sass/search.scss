@@ -15,16 +15,17 @@
 .search-body {
     @include flex-box;
     @include align-items;
-    padding: .18rem .35rem;
+    padding: 0 .35rem;
+    height: 0.88rem;
     background-color: #f9f9f9;
-    overflow: hidden;
 }
 
 .search-body .text-body {
     @include flex-box;
     @include flex;
     @include align-items;
-    height: 0.88rem;
+    padding: .08rem 0;
+    height: 0.72rem;
     border-radius: .44rem;
     background-color: #fff;
     box-sizing: border-box;
@@ -199,56 +200,55 @@
 }
 
 .search-body .cancel {
-    display: block;
-    width: 0.18rem;
-    height: 0.3rem; // padding: .2rem 0 .2rem .2rem;
-    margin-right: .24rem;
-    font-size: $font-large;
-    color: $color-orange;
-    line-height: 1.2;
-    background-color: black;
+    width: 0.44rem;
+    line-height: .88rem; // padding: .2rem 0 .2rem .2rem;
+    // margin-right: .24rem;
+    font-size: .3rem;
+    color: #fff; // background-color: black;
 }
 
 
 /* search-keyword */
 
 .search-keyword {
-    display: none;
     @include flex;
-    height: 6rem;
+    padding: 0 .35rem;
     overflow: hidden;
 }
 
 .search-keyword .title {
-    padding: .3rem;
-    font-size: $font-large;
-    color: $color-dark-grey;
-    line-height: 1.2;
+    margin: .37rem 0 .30rem;
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.search-keyword .title:first-child {
+    margin: .62rem 0 .30rem;
 }
 
 .search-keyword .keywords {
     @include flex-box;
-    @include flex-wrap(wrap);
-    padding: 0 .3rem;
+    @include flex-wrap(wrap); // padding: 0 .3rem;
 }
 
 .search-keyword .items {
     display: block;
-    margin: 0 .2rem .2rem 0;
-    padding: .1rem .2rem;
-    font-size: $font-middle;
-    color: $color-dark-grey;
-    line-height: 1.2;
-    background-color: #f5f5f5;
+    border: $border;
+    line-height: 0.22rem;
+    padding: .15rem .25rem;
+    margin-right: .2rem;
+    margin-bottom: .25rem;
+    border-radius: .26rem;
+    font-size: .24rem;
+    color: rgba(94, 100, 107, 1);
 }
 
 
 /* search-list */
 
 .search-list {
+    display: none;
     @include flex;
-    height: 6rem;
-    border-top: $border;
     overflow: hidden;
 }
 

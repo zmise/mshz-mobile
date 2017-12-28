@@ -16,8 +16,9 @@
                 me.comfire = me.settings.comfireBtn;
                 me.startData = me.settings.startData;
                 me.endData = me.settings.endData;
+                me.sourceData = me.settings.sourceData; // 后台数据
 
-                var html = " <div class='fixBox'><div class='headerWrapper'>" + "<a class='back'href='javascript:;' id='cancel'></a>" + "<div class='headerTip'>请选择入住离店日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
+                var html = " <div class='fixBox'><div class='headerWrapper'>" + "<a class='back' id='cale-cancel'></a>" + "<div class='headerTip'>请选择入住退房日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
                 $(me.sections).append(html);
                 $(me.sections).find('.fixBox').css({
                     "height": "1.76rem",
@@ -76,20 +77,46 @@
                         DaysInMonth = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
                     }
                     var Ntd = firstDay + DaysInMonth[currentMonth];
+
                     var Ntr = Math.ceil(Ntd / 7);
                     for (var i = 0; i < Ntr; i++) {
                         $(me.sections).find('.dateTable').eq(select).append('<tr></tr>');
                     };
                     var createTd = $(me.sections).find('.dateTable').eq(select).find('tr');
                     createTd.each(function (index, element) {
-                        for (var j = 0; j < 7; j++) {
-                            $(this).append('<td><span></span><span></span></td>')
+
+                        // console.log(me.settings.sourceData);
+
+                        //判断后台有没有数据
+                        if (me.settings.sourceData) {
+                            for (var j = 0; j < 7; j++) {
+                                $(this).append('<td><span></span><span></span></td>')
+                            }
+                        } else {
+                            for (var j = 0; j < 7; j++) {
+                                // $(this).append('<td><span></span><span></span></td>')
+                                $(this).append('<td><span></span></td>');
+                            }
                         }
+
                     });
-                    var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:even');
-                    for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
-                        arryTd.eq(firstDay++).text(m + 1);
+                    if (me.settings.sourceData) {
+                        var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:even');
+                        // var firstDay = setcurrentDate.getDay();
+                        // var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:odd');
+                        // for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
+                        //     arryTd.eq(firstDay++).text('￥200');
+                        //     // arryTd.eq(firstDay++).text(m + 1);
+                        // }
+                    } else {
+                        var arryTd = $(me.sections).find('.dateTable').eq(select).find('span');
                     }
+
+                    for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
+                        arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1);
+                        // arryTd.eq(firstDay++).text(m + 1);
+                    }
+
                 }
                 me._initselected();
 
@@ -99,6 +126,7 @@
                 });
                 $(me.comfire).on('click', function (event) {
                     event.preventDefault();
+                    $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
                     var st = me.startData;
                     var en = me.endData;
                     if (st) {
@@ -110,25 +138,29 @@
                         var ye = b.getFullYear();
                         var mo = b.getMonth() + 1;
                         var da = b.getDate();
-                        // $('#startDate').val(ye + '-' + mo + '-' + da);
                         b = new Date(b.getTime() + 24 * 3600 * 1000);
                         var ye1 = b.getFullYear();
                         var mo1 = b.getMonth() + 1;
                         var da1 = b.getDate();
-                        // $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
                         if ($('#startDate').length) {
                             $('#startDate').val(ye + '-' + mo + '-' + da);
                             $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
                         } else {
                             $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
                         }
-                        // alert("请选择入住离店日期")
+                        // alert("请选择入住退房日期")
                         me._slider(me.sections)
                         me._callback()
                     }
 
                 });
 
+                $('#cale-cancel').on('click', function (e) {
+                    e.stopPropagation();
+                    $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
+                    me._slider(me.sections);
+                    me._callback()
+                });
             },
             _isLeapYear: function (year) {
                 return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
@@ -136,6 +168,7 @@
             _slider: function (id) {
                 var me = this;
                 me.animateFunction = me.settings.animateFunction;
+
                 if (me.animateFunction == "fadeToggle") {
                     $(id).fadeToggle();
                 } else if (me.animateFunction == "slideToggle") {
@@ -157,13 +190,14 @@
                 tds.each(function (index, element) {
                     if ($(this).text() == strDays) {
                         var r = index;
-                        $(this).append('<p class="rz">入住</p>');
+                        $(this).find('span:first').text('入住').addClass('rz');
                         if ($(this).next().text() != "") {
-                            $(this).next().append('<p class="rz">离店</p>');
+                            $(this).next().find('span:first').text('退房').addClass('rz');
+
                         } else {
                             $(".dateTable").eq(1).find("td").each(function (index, el) {
                                 if ($(this).text() != "") {
-                                    $(this).append('<p class="rz">离店</p>');
+                                    $(this).find('span:first').text('退房').addClass('rz');
                                     return false;
                                 }
                             });
@@ -240,37 +274,25 @@
                 $(arry1).on('click', function (index) {
                     //第一次点击
                     if (flag == 0) {
-                        $(me.sections).find('.hover').remove();
-                        $(me.sections).find('.tbody').find('p').remove('.rz');
-                        // $(me.sections).find('.tbody').find('br').remove();
+                        var arr = $(me.sections).find('.tbody').find('.rz');
+                        for (var m = 0; m < arr.length; m++) {
+                            arr.eq(m).text(arr.eq(m).data('day'));
+                            // arryTd.eq(firstDay++).text(m + 1);
+                        }
+                        $(me.sections).find('.tbody').find('span').removeClass('rz');
+                        // $(me.sections).find('.tbody').find('span:even').text($(this).data('day'));
+
+                        // $(me.sections).find('.tbody').find('br').remove();find('span:even');
                         $(arry1).css({
                             'background': '#fff',
                             'color': '#000'
                         });
-                        $(this).append('<p class="rz">入住</p>')
+                        // $(this).append('<p class="rz">入住</p>')
+                        $(this).find('span:first').text('入住').addClass('rz');
                         first = $(arry1).index($(this));
                         me._checkColor(me.comeColor, me.outColor)
                         flag = 1;
 
-                        var e = $(this).text().replace(/[^0-9]/ig, "");
-                        var c, d;
-                        var a = new Array();
-                        var b = new Array();
-                        var f;
-                        var same = $(this).parents('table').prev('p').text().replace(/[^0-9]/ig, "").split('');
-                        for (var i = 0; i < 4; i++) {
-                            a.push(same[i]);
-
-                        }
-                        c = a.join('');
-                        for (var j = 4; j < 6; j++) {
-                            b.push(same[j]);
-                        }
-                        d = b.join('');
-
-                        f = c + '-' + d + '-' + e;
-                        // $("#startDate").val(f);
-                        me.startData = f;
                     } else if (flag == 1) { //第二次点击
                         second = $(arry1).index($(this))
                         sum = Math.abs(second - first);
@@ -279,7 +301,9 @@
                         }
 
                         if (first < second) {
-                            $(this).append('<p class="rz">离店</p>')
+                            // $(this).append('<p class="rz">退房</p>')
+                            $(this).find('span:first').text('退房').addClass('rz');
+
                             first = first + 1;
                             for (first; first < second; first++) {
                                 $(arry1[first]).css({
@@ -291,8 +315,9 @@
 
                         } else if (first > second) {
 
-                            $(me.sections).find('.rz').text('离店');
-                            $(this).append('<p class="rz">入住</p>')
+                            $(me.sections).find('.rz').text('退房');
+                            // $(this).append('<p class="rz">入住</p>')
+                            $(this).find('span:first').text('入住').addClass('rz');
                             second = second + 1;
                             for (second; second < first; second++) {
                                 $(arry1[second]).css({
@@ -303,105 +328,111 @@
                             flag = 0;
 
                         }
-                        $(me.sections).find('.rz').each(function (index, element) {
-                            if ($(this).text() == '离店') {
-                                $(this).parent('td').append('<span class="hover">' + sum + '天</span>')
-                                $(this).parent('td').css('position', 'relative');
-                            }
+                        // $(me.sections).find('.rz').each(function (index, element) {
+                        //     if ($(this).text() == '退房') {
+                        //         $(this).parent('td').append('<span class="hover">' + sum + '天</span>')
+                        //         $(this).parent('td').css('position', 'relative');
+                        //     }
 
-                        });
+                        // });
 
-                        $('.hover').css({
-                            'position': 'absolute',
-                            'left': '-17px',
-                            'top': '0px'
-                        })
+                        // $('.hover').css({
+                        //     'position': 'absolute',
+                        //     'left': '-17px',
+                        //     'top': '0px'
+                        // })
                         me._slider('firstSelect')
 
-                        //点击的日期存入input
-                        $(me.sections).find('.tbody .rz').each(function (index, element) {
-                            if ($(this).text() == '入住') {
-                                var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "")) //截取字符串中的数字
-                                // console.log($(this).parent().find('span:first').text())
-                                var startDayArrays = $(this).parents('table').prev('p').text().split('');
-                                var startDayArrayYear = [];
-                                var startDayArrayMonth = [];
-                                var startDayYear = "";
-                                var startDayMonth = "";
-                                for (var i = 0; i < me.index; i++) {
-                                    var select = i;
-                                    startDayArrayYear.push(startDayArrays[select])
-                                }
-                                startDayYear = startDayArrayYear.join('');
-                                for (var i = 5; i < 7; i++) {
-                                    startDayArrayMonth.push(startDayArrays[i])
-                                }
-                                startDayMonth = startDayArrayMonth.join('');
-                                $('#startDate').val(startDayYear + '-' + startDayMonth + '-' + day)
-                                me.startData = startDayYear + '-' + startDayMonth + '-' + day;
-                            }
-                            if ($(this).text() == '离店') {
-                                var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "").substring(0, 2));
-                                //day=$(this).parent().text().split('离')[0];
 
-                                var endDayArrays = $(this).parents('table').prev('p').text().split('');
-                                var endDayArrayYear = [];
-                                var endDayArrayMonth = [];
-                                var endDayYear = "";
-                                var endDayMonth = "";
-                                for (var i = 0; i < 4; i++) {
-                                    endDayArrayYear.push(endDayArrays[i])
-                                }
-                                endDayYear = endDayArrayYear.join('');
-                                for (var i = 5; i < 7; i++) {
-                                    endDayArrayMonth.push(endDayArrays[i])
-                                }
-                                endDayMonth = endDayArrayMonth.join('');
 
-                                // $('#endDate').val(endDayYear + '-' + endDayMonth + '-' + day);
-                                me.endData = endDayYear + '-' + endDayMonth + '-' + day;
-
-                                // console.log($("#endate").val().replace(/[^0-9]/ig, ""))
-                                // console.log($("#endDate").val().replace(/[^0-9]/ig, ""))
-                                if (parseInt(me.startData.replace(/[^0-9]/ig, "")) == parseInt(me.endData.replace(/[^0-9]/ig, ""))) {
-                                    var x = me.startData;
-                                    var a = new Date(x.replace(/-/g, "/"));
-                                    var b = new Date();
-                                    b = new Date(a.getTime() + 24 * 3600 * 1000);
-                                    var ye = b.getFullYear();
-                                    var mo = b.getMonth() + 1;
-                                    var da = b.getDate();
-                                    // $('#endDate').val(ye + '-' + mo + '-' + da);
-                                    me.endData = ye + '-' + mo + '-' + da;
-                                }
-
-                                // dateNum();
-                            }
-                            startDayArrayYear = [];
-                            startDayArrayMonth = [];
-                            endDayArrayYear = [];
-                            endDayArrayMonth = [];
-
-                        });
-                        var myweek = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-
-                        var st = new Date(me.startData);
-                        var en = new Date(me.startData);
-                        $('.week').text(myweek[st.getDay()])
-                        $('.week1').text(myweek[en.getDay()])
-                        me._checkColor(me.comeColor, me.outColor)
-
-                        if ($('#startDate').length) {
-                            $('#startDate').val(me.startData)
-                            $('#endDate').val(me.endData)
-                        } else {
-                            $('#firstSelect').val(me.startData + '至' + me.endData)
-                        }
                     }
                     //第二次点击结束
+                    //点击的日期存入input
+                    $(me.sections).find('.tbody .rz').each(function (index, element) {
+                        if ($(this).text() == '入住') {
+                            // var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "")) //截取字符串中的数字 
+                            var day = parseInt($(this).data('day')); //截取字符串中的数字 
+                            // console.log($(this).parent().find('span:first').text())
+                            var startDayArrays = $(this).parents('table').prev('p').text().split('');
+                            var startDayArrayYear = [];
+                            var startDayArrayMonth = [];
+                            var startDayYear = "";
+                            var startDayMonth = "";
+                            for (var i = 0; i < 4; i++) {
+                                var select = i;
+                                startDayArrayYear.push(startDayArrays[select])
+                            }
+                            startDayYear = startDayArrayYear.join('');
+                            for (var i = 5; i < 7; i++) {
+                                startDayArrayMonth.push(startDayArrays[i])
+                            }
+                            startDayMonth = startDayArrayMonth.join('');
+                            if ((day - 0) < 10) {
+                                day = '0' + day;
+                            }
+                            me.startData = startDayYear + '-' + startDayMonth + '-' + day;
 
+                        }
+                        if ($(this).text() == '退房') {
+                            // var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "").substring(0, 2));
+                            var day = parseInt($(this).data('day'));
+                            //day=$(this).parent().text().split('离')[0];
+
+                            var endDayArrays = $(this).parents('table').prev('p').text().split('');
+                            var endDayArrayYear = [];
+                            var endDayArrayMonth = [];
+                            var endDayYear = "";
+                            var endDayMonth = "";
+                            for (var i = 0; i < 4; i++) {
+                                endDayArrayYear.push(endDayArrays[i])
+                            }
+                            endDayYear = endDayArrayYear.join('');
+                            for (var i = 5; i < 7; i++) {
+                                endDayArrayMonth.push(endDayArrays[i])
+                            }
+                            endDayMonth = endDayArrayMonth.join('');
+                            if ((day - 0) < 10) {
+                                day = '0' + day;
+                            }
+                            me.endData = endDayYear + '-' + endDayMonth + '-' + day;
+                        } else {
+                            var x = me.startData;
+                            var a = new Date(x.replace(/-/g, "/"));
+                            var b = new Date();
+                            b = new Date(a.getTime() + 24 * 3600 * 1000);
+                            var ye = b.getFullYear();
+                            var mo = b.getMonth() + 1;
+                            var da = b.getDate();
+                            if ((mo - 0) < 10) {
+                                mo = '0' + mo;
+                            }
+                            if ((da - 0) < 10) {
+                                da = '0' + da;
+                            }
+                            me.endData = ye + '-' + mo + '-' + da;
+                        }
+                        startDayArrayYear = [];
+                        startDayArrayMonth = [];
+                        endDayArrayYear = [];
+                        endDayArrayMonth = [];
+
+                    });
+                    var myweek = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+                    var st = new Date(me.startData);
+                    var en = new Date(me.endData);
+                    $('.week').text(myweek[st.getDay()])
+                    $('.week1').text(myweek[en.getDay()])
+                    me._checkColor(me.comeColor, me.outColor)
+                    if ($('#startDate').length) {
+                        $('#startDate').val(me.startData)
+                        $('#endDate').val(me.endData)
+                    } else {
+                        $('#firstSelect').val(me.startData + '至' + me.endData)
+                    }
                 })
-            }
+            },
+
+
 
         }
         return calendarSwitch;
@@ -433,9 +464,9 @@
         comeColor: "blue",
         //入住颜色
         outColor: "red",
-        //离店颜色
+        //退房颜色
         comeoutColor: "#0cf",
-        //入住和离店之间的颜色
+        //入住和退房之间的颜色
         callback: "",
         //回调函数
         comfireBtn: '.comfire' //确定按钮的class或者id

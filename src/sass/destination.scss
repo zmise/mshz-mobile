@@ -1,20 +1,36 @@
 /* 日地的的弹出框 */
 
-.destination-body {
+.des-body {
     @include position(fixed, 0, 0, 0, 0, 2000);
     @include flex-box;
     @include flex-direction(column);
-    background-color: #fff;
-    box-sizing: border-box;
+    background-color: #f5f5f5;
     overflow: hidden;
+    overflow-y: auto;
 }
 
-.des-header {
+.des-body .title {
+    padding: 0 .35rem;
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: .48rem;
+    background-color: #f5f5f5;
+}
+
+.des-body .content {
+    padding-right: .35rem;
+    background-color: #fff;
+}
+
+
+/* start des-header */
+
+.des-body .des-header {
     @include position(fixed, 0, 0, auto, 0, 999);
     background-color: rgba(90, 165, 114, 1);
 }
 
-.des-header .des {
+.des-body .des-header .des {
     @include flex-box;
     @include align-items;
     @include justify-content;
@@ -23,13 +39,13 @@
     box-sizing: border-box;
 }
 
-.des-header .title {
+.des-body .des-header .tlt {
     font-size: .36rem;
     color: #fff;
     line-height: 1.2;
 }
 
-.des-header .back {
+.des-body .des-header .back {
     @include position(absolute, 0, auto, auto, 0, 10);
     display: block;
     width: .88rem;
@@ -38,7 +54,7 @@
     font-size: .36rem;
 }
 
-.des-header .back:before {
+.des-body .des-header .back:before {
     @include position(absolute, .3rem, auto, auto, .36rem, 10);
     display: block;
     content: '';
@@ -49,3 +65,136 @@
     border-style: solid;
     @include transform(rotateZ(45deg));
 }
+
+
+/* end des-header */
+
+
+/* start des-location */
+
+.des-location {
+    padding-top: 1rem;
+}
+
+.des-location .content {
+    @include flex-box;
+    @include align-items;
+    height: .88rem;
+    padding-left: .35rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    color: rgba(90, 165, 114, 1);
+}
+
+.des-location .content span {
+    font-size: .26rem;
+    line-height: .42rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.des-location .content .icon-fujin1 {
+    font-size: .28rem;
+    color: rgba(90, 165, 114, 1);
+}
+
+.des-location .content .icon-fanhui {
+    @include transform(rotatey(180deg));
+}
+
+
+/* end des-location */
+
+
+/* start des-hot-city */
+
+.des-hot-city .content {
+    @include flex-box;
+    @include flex-wrap(wrap);
+    @include flex-direction;
+    @include align-items;
+    height: 2.37rem;
+    padding-left: .35rem;
+}
+
+.des-hot-city .content .items {
+    display: block;
+    text-align: center;
+    width: 1.28rem;
+    height: .52rem;
+    line-height: 0.52rem;
+    margin-right: .36rem;
+    background: rgba(245, 245, 245, 1);
+    border-radius: .04rem;
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+
+/* end des-hot-city */
+
+
+/* start des-list */
+
+// .des-list {
+//     // @include flex;
+//     // height: 6rem;
+//     // border-top: $border;
+//     // overflow: hidden;
+// }
+.des-list .slide {
+    background-color: #fff;
+}
+
+.des-list .items {
+    @include flex-box;
+    @include align-items;
+    height: .88rem;
+    padding-right: .35rem;
+    margin-left: .35rem;
+    font-size: $font-middle;
+    color: $color-dark-grey;
+    line-height: 1.2;
+    border-bottom: $border;
+}
+
+.des-location .icon,
+.des-list .items .icon {
+    display: block;
+    margin-right: .1rem;
+    font-size: .4rem;
+    color: #ccc;
+}
+
+.des-location .content .txt,
+.des-list .items .txt {
+    display: block;
+    @include flex;
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+
+/* end des-list */
+
+
+/* start des-fixed */
+
+.des-fixed {
+    @include position(fixed, 4rem, .35rem, auto, auto, 99);
+    @include flex-box;
+    @include flex-direction(column);
+}
+
+.des-fixed .items {
+    font-size: .2rem;
+    line-height: 0.4rem;
+    color: #5E646B;
+}
+
+.des-fixed .items:first-child {
+    color: rgba(90, 165, 114, 1);
+}
+
+
+/* end des-fixed */

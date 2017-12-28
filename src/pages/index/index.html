@@ -229,20 +229,102 @@
   </nav>
 
   <!-- 日地的的弹出页面 -->
-  <section class="destination-body" style="display:none;">
+  <section class="des-body" style="display:none;">
     <div class="des-header">
       <div class="des">
-        <h1 class="title">选择目的地</h1>
+        <h1 class="tlt">选择目的地</h1>
       </div>
       <a class="back" href="javascript:;" id="destination-cancel">
       </a>
+    </div>
+    <div class="des-location">
+      <div class="title">当前位置</div>
+      <a class="content">
+        <i class="icon iconfont icon-fujin1"></i>
+        <span class="txt">
+          附近：昆明西山区滇池路1312号民族村广场旁</span>
+        <i class="iconfont icon-fanhui"></i>
+      </a>
+    </div>
+    <div class="des-hot-city">
+      <div class="title">热门城市</div>
+      <div class="content">
+        <a class="items">上海</a>
+        <a class="items">腾冲</a>
+        <a class="items">大理</a>
+        <a class="items">丽江</a>
+        <a class="items">北京</a>
+      </div>
+    </div>
+    <div class="des-list">
+      <div class="slide">
+        <div class="title">A</div>
+        <a class="items" href="javascript:;">
+          <span class="txt">深圳</span>
+        </a>
+        <a class="items" href="javascript:;">
+
+          <span class="txt">惠州</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <span class="txt">东莞</span>
+        </a>
+      </div>
+      <div class="slide">
+        <div class="title">B</div>
+        <a class="items" href="javascript:;">
+          <span class="txt">深圳</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <span class="txt">惠州</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <span class="txt">东莞</span>
+        </a>
+      </div>
+      <div class="slide">
+        <div class="title">C</div>
+        <a class="items" href="javascript:;">
+          <span class="txt">深圳</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <span class="txt">惠州</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <span class="txt">东莞</span>
+        </a>
+      </div>
+    </div>
+    <div class="des-fixed">
+      <span class="items">热</span>
+      <a class="items">A</a>
+      <a class="items">B</a>
+      <a class="items">C</a>
+      <a class="items">D</a>
+      <a class="items">E</a>
+      <a class="items">F</a>
+      <a class="items">G</a>
+      <a class="items">H</a>
+      <a class="items">J</a>
+      <a class="items">K</a>
+      <a class="items">L</a>
+      <a class="items">M</a>
+      <a class="items">N</a>
+      <a class="items">P</a>
+      <a class="items">Q</a>
+      <a class="items">R</a>
+      <a class="items">S</a>
+      <a class="items">T</a>
+      <a class="items">W</a>
+      <a class="items">X</a>
+      <a class="items">Y</a>
+      <a class="items">Z</a>
     </div>
   </section>
   <!-- 全局搜索 -->
   <section class="search-layer" style="display:none;">
     <div class="search-body bg-base">
-      <a class="cancel" id="search-cancel" href="javascript:;"></a>
-
+      <a class="cancel iconfont icon-daohanglanfanhui" id="search-cancel" href="javascript:;"></a>
       <div class="text-body">
         <i class="icon-search style-two">
           <i class="circle bg-white"></i>
@@ -252,14 +334,40 @@
       </div>
     </div>
     <div class="search-keyword">
-      <div class="title">热门搜索</div>
-      <div class="keywords">
-        <a class="items" href="javascript:;">远洋新干线</a>
-        <a class="items" href="javascript:;">布吉阳光花园,祺峰华庭</a>
-        <a class="items" href="javascript:;">国展苑</a>
-        <a class="items" href="javascript:;">中海康城国际</a>
-        <a class="items" href="javascript:;">金地梅陇镇</a>
-        <a class="items" href="javascript:;">中海西岸华府北区</a>
+      <div class="theme">
+        <div class="title">搜索历史</div>
+        <div class="keywords">
+          <a class="items" href="javascript:;">惠州十里</a>
+          <a class="items" href="javascript:;">海洋王国</a>
+          <a class="items" href="javascript:;">客村地铁站</a>
+          <a class="items" href="javascript:;">庐江</a>
+
+        </div>
+      </div>
+      <div class="theme">
+        <div class="title">热门商圈</div>
+        <div class="keywords">
+          <a class="items" href="javascript:;">翠湖</a>
+        </div>
+      </div>
+      <div class="theme">
+        <div class="title">搜索历史</div>
+        <div class="keywords">
+          <a class="items" href="javascript:;">昆明站</a>
+          <a class="items" href="javascript:;">昆明南站</a>
+          <a class="items" href="javascript:;">昆明北站</a>
+          <a class="items" href="javascript:;">昆明西站</a>
+        </div>
+      </div>
+      <div class="theme">
+        <div class="title">热门景点</div>
+        <div class="keywords">
+          <a class="items" href="javascript:;">云南民族村</a>
+          <a class="items" href="javascript:;">官渡古镇</a>
+          <a class="items" href="javascript:;">世博园</a>
+          <a class="items" href="javascript:;">翠湖公园</a>
+          <a class="items" href="javascript:;">海埂公园</a>
+        </div>
       </div>
     </div>
     <div class="search-list" js-plugin="slide" data-direction="vertical">

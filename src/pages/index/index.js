@@ -9,6 +9,21 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/caledaner.js');//日期插件
 
 $(function () {
+  $.ajax({
+    url: '/api/security/room/queryReturn',
+    data: {
+    },
+    dataType: 'json',
+    type: 'GET',
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+
+
   var b = new Date();
   var ye = b.getFullYear();
   var mo = b.getMonth() + 1;
@@ -25,7 +40,8 @@ $(function () {
     $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
   }
 
-  var startData, endData;
+  var startData, endData, sourceData;
+  sourceData = 1;
   if ($('#startDate').length) {
     console.log($('#startDate').val())
     startData = $.trim($('#startDate').val());
@@ -39,7 +55,7 @@ $(function () {
       sections: ".calendar"
     },
     index: 3,      //展示的月份个数
-    animateFunction: "toggle",        //动画效果
+    animateFunction: "slideToggle",        //动画效果
     controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
     // daysnumber: "90",     //控制天数
     comeColor: "#44bb80",       //入住颜色
@@ -51,6 +67,10 @@ $(function () {
     comfireBtn: '.comfire',//确定按钮的class或者id
     startData: startData,
     endData: endData,
+    sourceData: sourceData,
   });
-
+  $('#firstSelect').on('click', function (e) {
+    e.stopPropagation();
+    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+  });
 });
