@@ -55,6 +55,7 @@
 
                 });
 
+                // debugger
                 for (var q = 0; q < me.index; q++) {
                     var select = q;
                     $(me.sections).find(".tbody").append("<p class='ny1'></p><table class='dateTable'></table>")
@@ -66,10 +67,10 @@
                     var firstDay = setcurrentDate.getDay();
                     var yf = currentMonth + 1;
                     if (yf < 10) {
-                        $(me.sections).find('.ny1').eq(select).text(currentYear + '年' + '0' + yf + '月');
-                    } else {
-                        $(me.sections).find('.ny1').eq(select).text(currentYear + '年' + yf + '月');
+                        yf = '0' + yf
                     }
+                    $(me.sections).find('.ny1').eq(select).text(currentYear + '年' + yf + '月');
+
                     var DaysInMonth = [];
                     if (me._isLeapYear(currentYear)) {
                         DaysInMonth = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
@@ -113,7 +114,12 @@
                     }
 
                     for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
-                        arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1);
+                        if (m < 9) {
+                            arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1).attr('data-year-month-day', currentYear + '-' + yf + '-0' + (m - 0 + 1));
+                        } else {
+                            arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1).attr('data-year-month-day', currentYear + '-' + yf + '-' + (m - 0 + 1));
+                        }
+
                         // arryTd.eq(firstDay++).text(m + 1);
                     }
 
@@ -146,6 +152,7 @@
                             $('#startDate').val(ye + '-' + mo + '-' + da);
                             $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
                         } else {
+                            // console.log($('#firstSelect').val(444));
                             $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
                         }
                         // alert("请选择入住退房日期")
@@ -182,30 +189,54 @@
                 var me = this;
                 me.comeColor = me.settings.comeColor;
                 me.outColor = me.settings.outColor;
-                // me.daysnumber = me.settings.daysnumber;
+                me.startData = me.settings.startData;
+                me.endData = me.settings.endData;
+                // console.log(me.startData);
+                // console.log(me.endData);
+                me.daysnumber = me.settings.daysnumber;
+                // $(me.sections).find('.ny1').eq(select).text();
+                // var strMonth = new Date().getMonth();
+                // console.log(strMonth);
                 var strDays = new Date().getDate();
                 var arry = [];
                 var arry1 = [];
-                var tds = $(me.sections).find('.dateTable').eq(0).find('td');
+                /*  初始化选择的日期区间 */
+                // debugger
+                var tds = $(me.sections).find('.tbody').find('td');
                 tds.each(function (index, element) {
-                    if ($(this).text() == strDays) {
-                        var r = index;
+                    // if ($(this).data('year-month-day') == strDays) {
+                    //     var r = index;
+                    //     $(this).find('span:first').text('入住').addClass('rz');
+                    //     if ($(this).next().text() != "") {
+                    //         $(this).next().find('span:first').text('退房').addClass('rz');
+
+                    //     } else {
+                    //         $(".dateTable").eq(1).find("td").each(function (index, el) {
+                    //             if ($(this).text() != "") {
+                    //                 $(this).find('span:first').text('退房').addClass('rz');
+                    //                 return false;
+                    //             }
+                    //         });
+                    //     }
+                    //     me._checkColor(me.comeColor, me.outColor)
+
+                    // }
+                    // console.log($(this).find('span:first').data('year-month-day'));
+                    var datayyr = $(this).find('span:first').data('year-month-day');
+
+                    if (datayyr === me.startData) {
+                        // console.log('zmise')
+
                         $(this).find('span:first').text('入住').addClass('rz');
-                        if ($(this).next().text() != "") {
-                            $(this).next().find('span:first').text('退房').addClass('rz');
-
-                        } else {
-                            $(".dateTable").eq(1).find("td").each(function (index, el) {
-                                if ($(this).text() != "") {
-                                    $(this).find('span:first').text('退房').addClass('rz');
-                                    return false;
-                                }
-                            });
-                        }
-                        me._checkColor(me.comeColor, me.outColor)
-
                     }
-                })
+                    if (datayyr === me.endData) {
+                        // console.log('zmise')
+
+                        $(this).find('span:first').text('退房').addClass('rz');
+                    }
+
+                });
+                me._checkColor(me.comeColor, me.outColor)
 
                 $(me.sections).find('.tbody').find('td').each(function (index, element) {
                     if ($(this).text() != '') {
@@ -348,6 +379,8 @@
                     }
                     //第二次点击结束
                     //点击的日期存入input
+                    var startData1, endData1;
+
                     $(me.sections).find('.tbody .rz').each(function (index, element) {
                         if ($(this).text() == '入住') {
                             // var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "")) //截取字符串中的数字 
@@ -371,7 +404,7 @@
                                 day = '0' + day;
                             }
                             me.startData = startDayYear + '-' + startDayMonth + '-' + day;
-
+                            startData1 =startDayMonth + '.' + day;
                         }
                         if ($(this).text() == '退房') {
                             // var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "").substring(0, 2));
@@ -395,6 +428,8 @@
                                 day = '0' + day;
                             }
                             me.endData = endDayYear + '-' + endDayMonth + '-' + day;
+                            endData1 = endDayMonth + '.' + day;
+
                         } else {
                             var x = me.startData;
                             var a = new Date(x.replace(/-/g, "/"));
@@ -410,6 +445,8 @@
                                 da = '0' + da;
                             }
                             me.endData = ye + '-' + mo + '-' + da;
+                            endData1 =  mo + '.' + da;
+
                         }
                         startDayArrayYear = [];
                         startDayArrayMonth = [];
@@ -426,7 +463,14 @@
                     if ($('#startDate').length) {
                         $('#startDate').val(me.startData)
                         $('#endDate').val(me.endData)
-                    } else {
+                    }
+                    else if ($('#firstSelect').text() !== '') {
+                        // me.startDataArr = me.startData.split('-');
+                        // me.endData = me.endData.split('-');
+                        $('#firstSelect').text(startData1 + '-' + endData1)
+                    }
+                    else {
+
                         $('#firstSelect').val(me.startData + '至' + me.endData)
                     }
                 })

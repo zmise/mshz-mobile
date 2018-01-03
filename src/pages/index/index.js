@@ -7,10 +7,14 @@ require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 require('../../assets/js/destination.js');// 日地的
 require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/caledaner.js');//日期插件
+require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
   $.ajax({
-    url: '/api/security/room/queryReturn',
+    // url: '/api/security/room/queryReturn',
+    url: '/api/security/userFeedBack/addUserFeedBack',
+    
+    // url: '/api/security/userinfo/deleteUserResident',
     data: {
     },
     dataType: 'json',
@@ -22,34 +26,56 @@ $(function () {
       console.log(error);
     }
   })
+  // console.log($('#firstSelect').val() === '');
 
 
-  var b = new Date();
-  var ye = b.getFullYear();
-  var mo = b.getMonth() + 1;
-  var da = b.getDate();
-  b = new Date(b.getTime() + 24 * 3600 * 1000);
-  var ye1 = b.getFullYear();
-  var mo1 = b.getMonth() + 1;
-  var da1 = b.getDate();
+  if ($('#firstSelect').val() === '') {
 
-  if ($('#startDate').length) {
-    $('#startDate').val(ye + '-' + mo + '-' + da);
-    $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
-  } else {
-    $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
+    var b = new Date();
+    var ye = b.getFullYear();
+    var mo = b.getMonth() + 1;
+    var da = b.getDate();
+    b = new Date(b.getTime() + 24 * 3600 * 1000);
+    var ye1 = b.getFullYear();
+    var mo1 = b.getMonth() + 1;
+    var da1 = b.getDate();
+    if (mo < 10) {
+      mo = '0' + mo
+    }
+    if (da < 10) {
+      da = '0' + da
+    }
+    if (mo1 < 10) {
+      mo1 = '0' + mo1
+    }
+    if (da1 < 10) {
+      da1 = '0' + da1
+    }
+    if ($('#startDate').length) {
+      $('#startDate').val(ye + '-' + mo + '-' + da);
+      $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
+    } else {
+      $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
+    }
+
   }
 
   var startData, endData, sourceData;
-  sourceData = 1;
-  if ($('#startDate').length) {
-    console.log($('#startDate').val())
-    startData = $.trim($('#startDate').val());
-    endData = $.trim($('#endDate').val());
-  } else {
-    startData = $.trim($('#firstSelect').val().split('至')[0]);
-    endData = $.trim($('#firstSelect').val().split('至')[1]);
-  }
+  startData = $.trim($('#firstSelect').val().split('至')[0]);
+  endData = $.trim($('#firstSelect').val().split('至')[1]);
+  // sourceData = 1;
+  // if ($('#startDate').length) {
+  //   console.log($('#startDate').val())
+  //   startData = $.trim($('#startDate').val());
+  //   endData = $.trim($('#endDate').val());
+  // } else {
+  //   startData = $.trim($('#firstSelect').val().split('至')[0]);
+  //   endData = $.trim($('#firstSelect').val().split('至')[1]);
+  // }
+  $('#firstSelect').on('tap', function (e) {
+    e.stopPropagation();
+    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+  });
   $('#firstSelect').calendarSwitch({
     selectors: {
       sections: ".calendar"
@@ -69,8 +95,32 @@ $(function () {
     endData: endData,
     sourceData: sourceData,
   });
-  $('#firstSelect').on('click', function (e) {
+
+
+
+  //获取位置的经纬度
+  // var x=document.getElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else {
+      // x.innerHTML = "该浏览器不支持获取地理位置。";
+      alert("该浏览器不支持获取地理位置。");
+    }
+  }
+
+  function showPosition(position) {
+
+    //   x.innerHTML="纬度: " + position.coords.latitude + 
+    // "<br>经度: " + position.coords.longitude;	
+    alert("纬度: " + position.coords.latitude +
+      "经度: " + position.coords.longitude)
+  }
+  $('#location').on('tap', function (e) {
     e.stopPropagation();
-    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    getLocation();
   });
+
+
 });

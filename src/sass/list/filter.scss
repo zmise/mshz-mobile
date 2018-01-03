@@ -1,12 +1,96 @@
 /* 筛选 */
 
 .filter-layer {
-    @include position(fixed, 0, 0, 20%, 0, 2000);
+    @include position(fixed, 0, 0, 0, 0, 2000);
     @include flex-box;
     @include flex-direction(column);
     box-sizing: border-box;
     overflow: hidden;
 }
+
+
+/* .filter-header */
+
+
+/* start filter-search */
+
+.filter-layer .filter-header {
+    // @include position(fixed, 0, 0, auto, 0, 999);
+    background-color: rgba(90, 165, 114, 1);
+}
+
+.filter-layer .filter-header .des {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    height: .88rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.filter-layer .filter-header .tlt {
+    font-size: .36rem;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.filter-layer .filter-header .filter-close {
+    @include position(absolute, 0, auto, auto, 0, 10);
+    display: block;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .88rem;
+    height: .88rem;
+    overflow: hidden;
+    font-size: .36rem;
+    color: #fff;
+}
+
+
+/* end filter-search */
+
+
+/* .filter-search */
+
+.filter-search {
+    background-color: #f5f5f5;
+}
+
+.filter-search .button {
+    padding: .18rem .35rem;
+    background-color: transparent;
+}
+
+.filter-search .button .text {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    background-color: #fff;
+    border-radius: .44rem;
+}
+
+.filter-search .button .text .icon-search {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    margin: .08rem;
+    width: 0.72rem;
+    height: 0.72rem;
+    background: rgba(90, 165, 114, 1);
+    border-radius: .36rem;
+    color: #fff;
+}
+
+.filter-search .button .text .text {
+    @include flex;
+    height: 0.88rem;
+    margin-left: .4rem;
+    border-radius: .44rem;
+}
+
+
+/* .filter-body */
 
 .filter-body {
     @include position(relative, 0, 0, auto, 0, 500);
@@ -33,6 +117,9 @@
     // max-width: calc(100% - .3rem);
     font-size: .24rem;
     color: rgba(42, 43, 45, 1);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
 }
 
 .filter-body .items .icon {
@@ -56,7 +143,7 @@
 
 .filter-body .current {
     font-size: .26rem;
-    color: $color-orange;
+    color: rgba(90, 165, 114, 1);
 }
 
 .filter-body .current .icon {
@@ -64,7 +151,7 @@
 }
 
 .filter-body .current .icon:before {
-    border-color: $color-orange transparent transparent;
+    border-color: rgba(90, 165, 114, 1) transparent transparent;
 }
 
 
@@ -72,10 +159,26 @@
 
 .filter-list {
     @include flex-box;
-    @include flex;
     @include flex-direction(column);
     height: 4rem;
     background-color: #fff;
+}
+
+.filter-layer .onelist {
+    position: relative;
+    height: 7.84rem;
+    padding-bottom: .88rem;
+}
+
+.filter-layer .twolist {
+    height: 5rem;
+}
+
+.filter-layer .threelist {
+    @include flex;
+    position: relative;
+    padding-bottom: .88rem;
+    box-sizing: border-box;
 }
 
 .filter-list .content {
@@ -85,24 +188,49 @@
 }
 
 .filter-list .content .slide-body {
-    @include flex;
-    width: 25%;
-    border-right: $border;
+    width: 2.96rem;
+    background-color: #fbfbfb;
     overflow: hidden;
 }
 
+// .filter-list .content .slide-body 
 .filter-list .content .items {
     display: block;
+    @include flex-box;
+    @include align-items;
+    height: 0.98rem;
     padding: .24rem .3rem;
-    font-size: $font-middle;
-    color: $color-dark-grey;
-    line-height: 1.2;
+    font-size: .26rem;
+    box-sizing: border-box; // border-bottom: $border;
+}
+
+.filter-list .content .slide-body:last-child {
+    @include flex; // padding: .24rem 0;
+    padding: 0 .3rem;
+    margin-top: .24rem;
+    background-color: #fff;
+}
+
+.filter-list .content .slide-body .items {
+    color: rgba(181, 185, 190, 1);
     border-bottom: $border;
 }
 
-.filter-list .content .current {
-    color: $color-orange;
-    background-color: #fafafa;
+.filter-list .content .slide-body:first-child .items {
+    color: rgba(94, 100, 107, 1);
+}
+
+.filter-list .content .slide-body .current {
+    color: rgba(90, 165, 114, 1);
+}
+
+.filter-list .content .slide-body:first-child .current {
+    color: rgba(90, 165, 114, 1);
+    background-color: #fff;
+}
+
+.onelist .content .slide-body:first-child .current {
+    border: 0;
 }
 
 
@@ -111,8 +239,8 @@
 .filter-list .range-body {
     @include flex-box;
     @include align-items;
-    padding: .4rem .4rem .2rem .6rem;
-    box-shadow: 0 -.04rem .04em rgba(100, 100, 100, .1);
+    @include justify-content;
+    padding: 1.4rem .35rem .6rem; // box-shadow: 0 -.04rem .04em rgba(100, 100, 100, .1);
 }
 
 .filter-list .range-body .range {
@@ -135,7 +263,7 @@
 
 .filter-list .range-body .range-value {
     @include position(absolute, 0, 0, 0, 0, 10);
-    background-color: $color-orange;
+    background-color: rgba(90, 165, 114, 1);
 }
 
 .filter-list .range-body .first-slider {
@@ -159,7 +287,7 @@
     @include position(absolute, -.4rem, auto, auto, -50%, 10);
     width: .8rem;
     font-size: $font-small;
-    color: $color-orange;
+    color: rgba(90, 165, 114, 1);
     line-height: 1.2;
     text-align: center;
 }
@@ -173,7 +301,7 @@
     height: .8rem;
     color: #fff;
     border-radius: 50%;
-    background-color: $color-orange;
+    background-color: rgba(90, 165, 114, 1);
 }
 
 .filter-list .range-body .orange-text:before {
@@ -182,7 +310,7 @@
     content: '';
     width: .4rem;
     height: .4rem;
-    background-color: $color-orange;
+    background-color: rgba(90, 165, 114, 1);
     @include transform(rotateZ(45deg));
 }
 
@@ -202,7 +330,7 @@
 }
 
 .filter-list .checkbox-body .options {
-    margin-left: .4rem;
+    margin-left: .35rem;
     padding: .3rem 0;
     border-bottom: $border;
 }
@@ -216,6 +344,11 @@
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
+}
+
+.filter-list .checkbox-body .tit:first-child {
+    padding: .5rem .35rem 0;
+    border: none;
 }
 
 .filter-list .checkbox-body .items-box {
@@ -240,16 +373,18 @@
 }
 
 .filter-list .checkbox-body .current {
-    color: $color-orange;
-    border: .02rem solid $color-orange;
+    color: rgba(90, 165, 114, 1);
+    border: .02rem solid rgba(90, 165, 114, 1);
 }
 
 
 /* complete-body */
 
 .filter-list .complete-body {
+    @include position(fixed, auto, 0, 0, 0, 10);
     @include flex-box;
     background-color: #fff;
+    height: 0.88rem;
 }
 
 .filter-list .complete-body .items {
@@ -261,13 +396,22 @@
 }
 
 .filter-list .complete-body .ok {
-    width: 60%;
+    @include flex;
     color: #fff;
-    background-color: $color-orange;
+    background-color: rgba(90, 165, 114, 1);
 }
 
 .filter-list .complete-body .cancel {
-    width: 40%;
-    color: $color-grey;
-    background-color: #f3f3f3;
+    width: 2.96rem;
+    color: rgba(94, 100, 107, 1);
+    background-color: #fff;
 }
+
+.onelist .complete-body {
+    top: 9.6rem;
+}
+
+// .filter-list .cl-fs {
+//     font-size: .24rem;
+//     color: rgba(255, 92, 92, 1);
+// }

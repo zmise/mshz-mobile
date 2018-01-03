@@ -1,74 +1,279 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
-// @import '../../sass/header.scss'; // 全局头部
+@import '../../sass/banner.scss'; // 焦点图
 body {
     position: relative;
-    padding-bottom: 1.1rem;
+    padding-bottom: 1rem;
     background-color: #f5f5f5;
 }
 
+.clc-red {
+    color: rgba(255, 92, 92, 1) !important;
+}
 
-/* house-info */
 
-.house-info {
+/* header-body */
+
+.header-body {
+    @include position(fixed, 0, 0, auto, 0, 500);
+    @include flex-box;
+    @include align-items;
+    padding: .1rem;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.header-body .title {
+    @include flex;
+    width: 50%;
+    padding: 0 .1rem;
+    font-size: $font-large;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.header-body .title .tit {
+    display: block;
+}
+
+.header-body .title .desc {
+    font-size: 0.8em;
+}
+
+.header-body .back {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    position: relative;
+    width: .8rem;
+    height: .8rem;
+    font-size: .42rem;
+    color: #fff;
+}
+
+.header-body .collect,
+.header-body .icon-collected {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .8rem;
+    height: .8rem;
+    font-size: .42rem;
+}
+
+.header-body .icon-collected {
+    color: $color-orange;
+}
+
+
+/* banner-des */
+
+.banner-des {
+    padding: 0 .35rem;
+    background-color: #fff;
+}
+
+.banner-des .content .oneline {
+    padding-top: .24rem;
+}
+
+.banner-des .content .oneline p {
+    font-size: .32rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.banner-des .content .twoline {
+    @include flex-box;
+    @include flex-direction;
+    @include align-items;
+    @include justify-content(flex-start);
+    padding: .26rem 0 .3rem;
+    border-bottom: $border;
+}
+
+.star-lines {
+    width: 1.2rem;
+    height: .2rem;
+    background-color: #ff5c5c;
+}
+
+.banner-des .content .twoline .score {
+    font-size: .24rem;
+    color: rgba(255, 92, 92, 1);
+    margin-right: .26rem;
+}
+
+.banner-des .content .twoline .twoline-items {
+    font-size: .24rem;
+    padding: 0 .2rem;
+    color: #b5b9be;
+    line-height: 1;
+    border-right: $border;
+}
+
+.banner-des .content .twoline .twoline-items:last-child {
+    border: none;
+}
+
+.banner-des .tools {
+    padding: .3rem 0 .6rem;
+}
+
+.banner-des .tools .items,
+.banner-des .tools .items .fr-txt,
+.banner-des .tools .items .fl-txt,
+.banner-des .tools .items i {
+    @include flex-box;
+    @include align-items(flex-end);
+}
+
+.banner-des .tools .items {
+    padding-bottom: .4rem;
+}
+
+.banner-des .tools .items:last-child {
+    padding-bottom: 0;
+}
+
+.banner-des .tools .items .fr-txt {
+    width: 2.5rem;
+}
+
+.banner-des .tools .items .fl-txt {
+    @include flex;
+}
+
+.banner-des .tools .items i {
+    height: 0.5rem;
+    width: 0.5rem;
+    font-size: .42rem;
+}
+
+.banner-des .tools .items span {
+    font-size: .24rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+
+/* house-base-info */
+
+.house-base-info {
     @include flex-box;
     @include flex-direction(column);
     padding: 0 .35rem;
     background-color: #fff;
+    margin-top: .12rem;
+}
+
+.house-base-info .items {
     border-bottom: $border;
-}
-
-.house-info .tit {
     padding-top: .48rem;
-    font-size: .24rem;
-    color: rgba(181, 185, 190, 1);
+    padding-bottom: .36rem;
 }
 
-.house-info .part {
+.house-base-info .items:last-child {
+    border: 0;
+}
+
+.house-base-info .items .tit {
+    font-size: .28rem;
+    color: rgba(42, 43, 45, 1);
+    font-weight: 900;
+}
+
+.house-base-info .house-des .part {
     padding-right: .12rem;
-    font-size: .22rem;
+    font-size: .24rem;
     color: rgba(94, 100, 107, 1);
     line-height: .3rem;
-    padding-top: .3rem;
-}
-
-.house-info .part:last-child {
     padding-top: .2rem;
-    padding-bottom: .7rem;
 }
 
+.house-base-info .house-des .part:last-child {
+    padding-top: .2rem;
+}
 
-/* base-server */
+.base-server .content {
+    @include flex-box;
+    @include flex-wrap(wrap);
+    padding: .2rem 0;
+    overflow: hidden;
+}
 
-.base-server {}
+.base-server .content .icon-items {
+    display: block;
+    width: 20%;
+    padding: .2rem 0;
+}
 
-.base-server {}
+.base-server .content .icon-items .txt {
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.2;
+    text-align: center;
+}
 
-.base-server {}
+.base-server .content .icon-items .icon {
+    display: block;
+    @include flex-box;
+    @include justify-content;
+    width: .6rem;
+    height: .6rem;
+    margin: 0 auto;
+    font-size: .50rem;
+    color: #999;
+    line-height: 1
+}
 
-.base-server {}
+.base-server .more {
+    @include flex-box;
+    @include justify-content;
+}
 
-.base-server {}
+.base-server .more span {
+    font-size: .2rem;
+    color: rgba(181, 185, 190, 1);
+    padding-right: .15rem;
+}
 
+.base-server .more .icon {
+    position: relative;
+    display: block;
+    width: .32rem;
+    height: .32rem;
+    overflow: hidden;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s
+}
 
-/* address-body */
+.base-server .more .icon:before,
+.base-server .more .icon:after {
+    position: absolute;
+    bottom: .1rem;
+    right: auto;
+    top: auto;
+    left: .08rem;
+    z-index: 10;
+    display: block;
+    content: "";
+    width: .16rem;
+    height: .16rem;
+    border-width: 0 .02rem .02rem 0;
+    border-style: solid;
+    border-color: #999;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 .address-body {
-    padding: .23rem .35rem;
     background-color: #fff;
-}
-
-.address-body .title {
-    padding: .24rem 0 .35rem;
-    font-size: .28rem;
-    font-weight: 700;
-    color: $color-dark-grey;
-    line-height: 1.2; // text-align: center;
 }
 
 .address-body .map {
     position: relative;
-    margin: .2rem 0;
     overflow: hidden;
 }
 
@@ -85,15 +290,24 @@ body {
 }
 
 
-/* 房源基础信息 */
+/*end 房源基础信息 */
 
 
-/* living-info */
+/* comment-body */
+
+.comment-body {
+    background-color: #fff;
+    padding: .45rem .35rem;
+    margin-top: .12rem;
+}
+
+
+/*start living-info */
 
 .living-info {
     background-color: #fff;
-    border-bottom: $border;
     padding: .16rem .35rem;
+    margin-top: .12rem;
 }
 
 .living-info .title {
@@ -125,10 +339,11 @@ body {
 .feature-channel {
     background-color: #fff;
     padding-left: .35rem;
+    margin-top: .12rem;
 }
 
 .feature-channel .title {
-    padding: .58rem .3rem .4rem 0;
+    padding: .48rem 0 .38rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
 }
@@ -166,6 +381,47 @@ onekey {
     }
 }
 
+.feature-channel .slide .oneline {
+    @include flex-box;
+    @include justify-content(space-between);
+    width: 3.8rem;
+    margin-top: .21rem;
+}
+
+.feature-channel .slide .twoline {
+    @include flex-box;
+    @include justify-content(flex-start);
+    width: 3.8rem;
+    margin-top: .05rem;
+    margin-bottom: .25rem;
+}
+
+.feature-channel .slide .oneline p {
+    font-size: .24rem;
+    font-weight: 700;
+    color: rgba(42, 43, 45, 1);
+}
+
+.feature-channel .slide .oneline p:last-child {
+    color: rgba(255, 92, 92, 1);
+}
+
+.feature-channel .slide .twoline .twoline-items {
+    font-size: .20rem;
+    padding: 0 .2rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: 1;
+    border-right: $border;
+}
+
+.feature-channel .slide .twoline .twoline-items:first-child {
+    padding-left: 0;
+}
+
+.feature-channel .slide .twoline .twoline-items:last-child {
+    border: none;
+}
+
 
 /* footer-body */
 
@@ -193,11 +449,11 @@ onekey {
 }
 
 .footer-body .items .commuite {
-    width: 0.42rem;
-    height: 0.29rem;
+    width: 0.5rem;
+    height: 0.5rem;
     margin-left: .53rem;
     margin-right: .16rem;
-    background-color: rgba(42, 43, 45, 1);
+    font-size: .42rem;
 }
 
 .footer-body .items span {

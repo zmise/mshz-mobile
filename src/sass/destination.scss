@@ -166,12 +166,25 @@
     color: #ccc;
 }
 
-.des-location .content .txt,
+.des-location .content .address,
 .des-list .items .txt {
     display: block;
     @include flex;
     font-size: .26rem;
     color: rgba(42, 43, 45, 1);
+}
+
+.des-location .content .address {
+    color: rgba(90, 165, 114, 1);
+    overflow: hidden;
+    text-overflow: ellipsis；
+}
+
+// .des-location .content .add,
+.des-location .content .txt {
+    display: block;
+    font-size: .26rem;
+    color: rgba(90, 165, 114, 1);
 }
 
 

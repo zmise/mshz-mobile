@@ -12,7 +12,8 @@
 
 /* search-body */
 
-.search-body {
+.search-layer .search-body {
+    @include position(absolute, .0, 0, auto, 0, 10);
     @include flex-box;
     @include align-items;
     padding: 0 .35rem;
@@ -20,7 +21,7 @@
     background-color: #f9f9f9;
 }
 
-.search-body .text-body {
+.search-layer  .search-body .text-body {
     @include flex-box;
     @include flex;
     @include align-items;
@@ -31,7 +32,7 @@
     box-sizing: border-box;
 }
 
-.search-body .text-body .text {
+.search-layer  .search-body .text-body .text {
     display: block;
     @include flex;
     padding: .24rem 0 .2rem;
@@ -53,7 +54,7 @@
     padding-right: .4rem;
 }
 
-.search-body .text-body .icon-search .circle {
+.search-layer .search-body .text-body .icon-search .circle {
     @include position(absolute, .04rem, auto, auto, .04rem, 10);
     display: block;
     content: '';
@@ -64,7 +65,7 @@
     z-index: 1;
 }
 
-.search-body .text-body .icon-search:before {
+.search-layer .search-body .text-body .icon-search:before {
     @include position(absolute, .24rem, auto, auto, .24rem, 10);
     display: block;
     content: '';
@@ -75,7 +76,7 @@
     z-index: 2;
 }
 
-.search-body .text-body .icon-search:after {
+.search-layer .search-body .text-body .icon-search:after {
     @include position(absolute, .5rem, auto, auto, .44rem, 10);
     display: block;
     content: '';
@@ -85,7 +86,7 @@
     @include transform(rotateZ(45deg));
 }
 
-.search-body .text-body .style-two:before {
+.search-layer .search-body .text-body .style-two:before {
     @include position(absolute, .24rem, auto, auto, .24rem, 10);
     display: block;
     content: '';
@@ -96,7 +97,7 @@
     z-index: 2;
 }
 
-.search-body .text-body .style-two:after {
+.search-layer .search-body .text-body .style-two:after {
     @include position(absolute, .5rem, auto, auto, .44rem, 10);
     display: block;
     content: '';
@@ -106,7 +107,7 @@
     @include transform(rotateZ(45deg));
 }
 
-.search-body .text-body .clear-text {
+.search-layer .search-body .text-body .clear-text {
     position: relative;
     display: none;
     width: .4rem;
@@ -117,8 +118,8 @@
     overflow: hidden;
 }
 
-.search-body .text-body .clear-text:after,
-.search-body .text-body .clear-text:before {
+.search-layer .search-body .text-body .clear-text:after,
+.search-layer .search-body .text-body .clear-text:before {
     @include position(absolute, .2rem, auto, auto, .08rem, 10);
     display: block;
     content: '';
@@ -127,15 +128,15 @@
     background-color: #fff;
 }
 
-.search-body .text-body .clear-text:before {
+.search-layer .search-body .text-body .clear-text:before {
     @include transform(rotateZ(-45deg));
 }
 
-.search-body .text-body .clear-text:after {
+.search-layer .search-body .text-body .clear-text:after {
     @include transform(rotateZ(45deg));
 }
 
-.search-body .type {
+.search-layer .search-body .type {
     @include flex-box;
     @include align-items;
     @include justify-content;
@@ -149,12 +150,12 @@
     box-sizing: border-box;
 }
 
-.search-body .type .txt {
+.search-layer .search-body .type .txt {
     display: block;
     width: 4em;
 }
 
-.search-body .type .icon {
+.search-layer .search-body .type .icon {
     position: relative;
     display: block;
     width: .32rem;
@@ -162,7 +163,7 @@
     overflow: hidden;
 }
 
-.search-body .type .icon:before {
+.search-layer .search-body .type .icon:before {
     @include position(absolute, .04rem, auto, auto, .1rem, 10);
     display: block;
     content: '';
@@ -174,7 +175,7 @@
     @include transform(rotateZ(45deg));
 }
 
-.search-body .select {
+.search-layer .search-body .select {
     @include position(absolute, 1.06rem, auto, auto, .3rem, 10);
     display: none;
     width: 1.8rem;
@@ -184,7 +185,7 @@
     box-sizing: border-box;
 }
 
-.search-body .select .option {
+.search-layer .search-body .select .option {
     display: block;
     padding: .2rem 0;
     font-size: $font-middle;
@@ -195,11 +196,11 @@
     box-sizing: border-box;
 }
 
-.search-body .select .option:last-child {
+.search-layer .search-body .select .option:last-child {
     border: none;
 }
 
-.search-body .cancel {
+.search-layer .search-body .cancel {
     width: 0.44rem;
     line-height: .88rem; // padding: .2rem 0 .2rem .2rem;
     // margin-right: .24rem;
@@ -210,28 +211,29 @@
 
 /* search-keyword */
 
-.search-keyword {
+.search-layer .search-keyword {
+    // display: none;
     @include flex;
-    padding: 0 .35rem;
+    padding: .88rem .35rem 0;
     overflow: hidden;
 }
 
-.search-keyword .title {
+.search-layer .search-keyword .title {
     margin: .37rem 0 .30rem;
     font-size: .24rem;
     color: rgba(181, 185, 190, 1);
 }
 
-.search-keyword .title:first-child {
+.search-layer .search-keyword .title:first-child {
     margin: .62rem 0 .30rem;
 }
 
-.search-keyword .keywords {
+.search-layer .search-keyword .keywords {
     @include flex-box;
     @include flex-wrap(wrap); // padding: 0 .3rem;
 }
 
-.search-keyword .items {
+.search-layer .search-keyword .items {
     display: block;
     border: $border;
     line-height: 0.22rem;
@@ -241,18 +243,20 @@
     border-radius: .26rem;
     font-size: .24rem;
     color: rgba(94, 100, 107, 1);
+    cursor: pointer;
 }
 
 
 /* search-list */
 
-.search-list {
+.search-layer .search-list {
     display: none;
     @include flex;
     overflow: hidden;
+    padding: .88rem 0 0;
 }
 
-.search-list .items {
+.search-layer .search-list .items {
     @include flex-box;
     @include align-items;
     height: 1rem;
@@ -265,20 +269,20 @@
     box-sizing: border-box;
 }
 
-.search-list .items .icon {
+.search-layer .search-list .items .icon {
     display: block;
     margin-right: .1rem;
     font-size: .4rem;
     color: #ccc;
 }
 
-.search-list .items .txt {
+.search-layer .search-list .items .txt {
     display: block;
     @include flex;
     width: 2rem;
 }
 
-.search-list .items .icon-goto {
+.search-layer .search-list .items .icon-goto {
     position: relative;
     display: block;
     width: .4rem;
@@ -286,7 +290,7 @@
     overflow: hidden;
 }
 
-.search-list .items .icon-goto:before {
+.search-layer .search-list .items .icon-goto:before {
     @include position(absolute, .08rem, auto, auto, .04rem, 10);
     display: block;
     content: '';
@@ -298,7 +302,7 @@
     @include transform(rotateZ(45deg));
 }
 
-.search-list .clear-record {
+.search-layer .search-list .clear-record {
     display: block;
     padding: .3rem;
     font-size: $font-middle;

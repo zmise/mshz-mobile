@@ -11,24 +11,38 @@ $(function () {
 
   });
 
-  /* 取消搜索  */
+  /* 返回首页  */
   $('#search-cancel').on('tap', function (e) {
     e.stopPropagation();
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
-
+    $('#search-entry').val($(this).closest('.search-body').find('.text-body .text').val());
   });
 
-  $('.search-body .text').on()
+  /* 点击search-keyword给input输入文本并切换 search-list */
+  $('.search-layer .keywords .items').on('tap', function (e) {
+    e.stopPropagation();
+    // console.log($(this).closest('.search-layer').html());
+    $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
+    $('.search-layer .search-keyword').hide();
+    $('.search-layer .search-list').show();
+  });
+  /* 点击search-list给input输入文本 */
+  $('.search-list .slide .items').on('tap', function (e) {
+    e.stopPropagation();
+    $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).find('.txt').text());
+  });
 
-  // /* 当搜索框内容不为空时显示清空按钮 */
-  // $('.search-body .text').on('input', function (e) {
-  //   if ($.trim($(this).val()) == '') {
-  //     $(this).next('.clear-text').hide();
-  //   } else {
-  //     $(this).next('.clear-text').show();
-  //   }
-  // });
+  /* 当搜索框内容不为空时显示清空按钮 */
+  $('.text-body .text').on('input', function (e) {
+    if ($.trim($(this).val()) == '') {
+      $('.search-layer .search-keyword').show();
+      $('.search-layer .search-list').hide();
+    } else {
+      $('.search-layer .search-keyword').hide();
+      $('.search-layer .search-list').show();
+    }
+  });
 
   // /* 清空搜索框内容 */
   // $('.search-body .clear-text').on('tap', function (e) {
