@@ -11,19 +11,25 @@ require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
   $.ajax({
-    // url: '/api/security/room/queryReturn',
-    url: '/api/security/userFeedBack/addUserFeedBack',
-    
+    // url: '/api/room/queryCityRimInfo?city=KUNMING',
+
+    url: '/api/room/darkSelectRimInfo?city=KUNMING&name=北环',
+    // room/darkSelectRimInfo?city=KUNMING&name=北环
     // url: '/api/security/userinfo/deleteUserResident',
     data: {
+      // 'city': 'KUNMING',
+      // 'name': '北环'
     },
     dataType: 'json',
     type: 'GET',
     success: function (data) {
+      console.log('success');
       console.log(data);
     },
     error: function (error) {
       console.log(error);
+      console.log('error');
+
     }
   })
   // console.log($('#firstSelect').val() === '');

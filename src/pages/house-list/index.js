@@ -15,6 +15,9 @@ $(function () {
   var startData, endData, sourceData;
   startData = '2018-01-02';
   endData = '2018-01-03';
+  // var startData, endData, sourceData;
+  // startData = $.trim($('#firstSelect').val().split('-')[0]);
+  // endData = $.trim($('#firstSelect').val().split('-')[1]);
   $('#firstSelect').on('tap', function (e) {
     e.stopPropagation();
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件

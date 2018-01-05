@@ -4,10 +4,15 @@ $(function () {
   //   e.preventDefault();
   // });
   /* 进入日地的的弹出页面 */
+  var arr = [];
+
   $('#destination-entry').on('tap', function (e) {
     $('.des-body').show();
     /* 阻止首页滚动条事件  */
     $('body,html').css({ 'overflow': 'hidden' });
+    for (var i = 0; i < $('.des-body .des-list .title').length; i++) {
+      arr[i] = $('.des-body .des-list .title').eq(i).offset().top;
+    }
   });
 
   /* 返回首页  */
@@ -38,6 +43,29 @@ $(function () {
     $('#destination-entry').val($(this).text());
     $(this).closest('.des-body').hide();
     $('body,html').css({ 'overflow': 'visible' });
+  });
+  $('.des-body .des-fixed .items').on('tap', function (e) {
+    e.preventDefault();
+    var target = $(this).text();
+    var arr1 = $('.des-body .des-list .title').text();
+    var a = 0;
+    console.log(arr);
+    console.log($('.des-body'));
 
+    for (var i = 0; i < arr1.length; i++) {
+      if (target === arr1[i]) {
+        a = arr[i] - 43;
+        b = $('.des-body .des-list .title').eq(i).offset().top - $('.des-body').scrollHeight - 43;
+        break;
+      }
+    }
+    // var c = $('.des-body').scrollHeight - $('.des-body').clientHeight;
+    // console.log(b);
+    // console.log($('.des-body .des-list .title').eq(0));
+    // console.log($('.des-body'));
+    if (a > 0 ) {
+      // console.log('zmise');
+      $('.des-body').animate({ scrollTop: a }, 1000);
+    }
   });
 });

@@ -11,6 +11,11 @@ body {
     color: rgba(255, 92, 92, 1) !important;
 }
 
+.flex-box {
+    @include flex-box;
+    @include align-items;
+}
+
 
 /* header-body */
 
@@ -243,9 +248,7 @@ body {
     width: .32rem;
     height: .32rem;
     overflow: hidden;
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    transition: all .3s
+    @include transition(all .3s);
 }
 
 .base-server .more .icon:before,
@@ -263,9 +266,7 @@ body {
     border-width: 0 .02rem .02rem 0;
     border-style: solid;
     border-color: #999;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    transform: rotate(45deg);
+    @include transform(rotate(45deg));
 }
 
 .address-body {
@@ -279,14 +280,43 @@ body {
 
 .address-body .address {
     @include position(absolute, auto, auto, 0, auto, 10);
-    padding: .2rem 0;
-    width: 100%;
+    @include flex-box;
+    @include align-items;
+    padding: .2rem .3rem;
+    width: 6.8rem;
     font-size: $font-middle;
     color: rgba(255, 255, 255, 1);
     line-height: 1.2;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
     border-radius: .04em;
+}
+
+.address-body .address .icon {
+    position: relative;
+    display: block;
+    width: .24rem;
+    height: .24rem;
+    margin-left: .3rem;
+    overflow: hidden;
+    @include transition(all .3s);
+}
+
+.address-body .address .icon::before {
+    position: absolute;
+    bottom: .06rem;
+    right: auto;
+    top: auto;
+    left: .03rem;
+    z-index: 10;
+    display: block;
+    content: "";
+    width: .12rem;
+    height: .12rem;
+    border-width: 0 .015rem .015rem 0;
+    border-style: solid;
+    border-color: #fff;
+    @include transform(rotate(-45deg));
 }
 
 
@@ -299,6 +329,163 @@ body {
     background-color: #fff;
     padding: .45rem .35rem;
     margin-top: .12rem;
+}
+
+.comment-body .total {
+    padding-bottom: .3rem;
+    border-bottom: $border;
+}
+
+.comment-body .total .line-one,
+.comment-body .total .line-two {
+    @include flex-box;
+    @include justify-content(space-between);
+}
+
+.comment-body .total .line-two {
+    padding-top: .1rem;
+}
+
+.comment-body .total .txt {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .total .line-one .tlt {
+    font-size: .28rem;
+    font-weight: 700;
+    color: rgba(42, 43, 45, 1);
+}
+
+.comment-body .total .line-two .socre {
+    margin-right: .26rem;
+}
+
+.comment-body .line-one .icon {
+    position: relative;
+    display: block;
+    width: .24rem;
+    height: .24rem;
+    margin-left: .1rem;
+    overflow: hidden;
+    @include transition(all .3s);
+}
+
+.comment-body .line-one .icon::before {
+    position: absolute;
+    bottom: .06rem;
+    right: auto;
+    top: auto;
+    left: .03rem;
+    z-index: 10;
+    display: block;
+    content: "";
+    width: .12rem;
+    height: .12rem;
+    border-width: 0 .015rem .015rem 0;
+    border-style: solid;
+    border-color: #999;
+    @include transform(rotate(-45deg));
+}
+
+.comment-body .first-comment {
+    padding-top: .46rem;
+}
+
+.comment-body .first-comment .info {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+}
+
+.comment-body .first-comment .info .socre {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .first-comment .info .photo {
+    width: 0.88rem;
+    height: 0.88rem;
+    border-radius: .44rem;
+    background-color: #333;
+    margin-right: .22rem;
+}
+
+.comment-body .first-comment .info .name-time {
+    @include flex-box;
+    @include flex-direction(column);
+    @include justify-content;
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .first-comment .info .name-time span:first-child {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.comment-body .first-comment .des {
+    margin-left: 1.1rem;
+}
+
+.comment-body .first-comment .des .des-cnt {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .4rem;
+    @include line-clamp;
+}
+
+.comment-body .first-comment .des .img-list {
+    @include flex-box;
+    @include flex-wrap(wrap);
+    border-bottom: $border;
+}
+
+.comment-body .first-comment .des .des-duihua {
+    @include flex-box;
+    @include align-items;
+    @include flex;
+    padding-top: .2rem;
+}
+
+.comment-body .first-comment .des .des-duihua span {
+    font-size: .26rem;
+    color: rgba(90, 165, 114, 1);
+    line-height: .4rem;
+}
+
+.comment-body .first-comment .des .des-duihua span:last-child {
+    @include flex;
+    color: rgba(94, 100, 107, 1);
+}
+
+.comment-body .first-comment .des-duihua .icon {
+    @include flex-box;
+    @include align-items;
+    width: 0.4rem;
+    height: 0.4rem;
+    font-size: .32rem;
+    color: rgba(90, 165, 114, 1);
+}
+
+.comment-body .first-comment .des .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.44rem;
+    margin-right: .16rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+@each $item in garden,
+school,
+overseas,
+office,
+onekey {
+    .comment-body .#{$item} {
+        background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
+        background-size: 100% auto;
+    }
 }
 
 
@@ -360,7 +547,9 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content;
-    @include flex(0, 0, auto);
+    @include flex(0,
+    0,
+    auto);
     width: 3.8rem;
     height: 2.138rem;
     margin-right: .24rem;
