@@ -44,6 +44,45 @@ $(function () {
     }
   });
 
+
+  /* 当搜索框的模糊查询 */
+
+  $(".text-body .text").bind("input", function () {
+    console.log($(this).val());
+
+    if ($(this).val().length > 0) {
+      var newListHTML = search();
+      $('.search-list .slide').empty().append(newListHTML);
+    } else {
+      $(".sea").html('');
+    }
+  })
+
+  function search() {
+    console.log($(".text-body .text").val());
+    $.ajax({
+      url: '/api/room/darkSelectRimInfo',
+      data: {
+        'city': 'KUNMING',
+        'name': $(".text-body .text").val()
+      },
+      dataType: 'json',
+      type: 'GET',
+      success: function (data) {
+        //转换成json对象  
+        console.log(data)
+        // eval("var json=" + data);
+        // //console.log(json)  
+        // var str = "";
+        // for (var i = 0; i < json.length; i++) {
+        //   str += "<li>" + json[i].sea + "</li>";
+        // }
+        // $(".sea").html(str);
+      }
+    })
+  }
+
+
   // /* 清空搜索框内容 */
   // $('.search-body .clear-text').on('tap', function (e) {
   //   e.stopPropagation();

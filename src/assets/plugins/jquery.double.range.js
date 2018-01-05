@@ -85,7 +85,7 @@
         _this.$el.find(_this.opts.rangeValue).css({
           'left': _newPot
         });
-        var _txt = _newValue * _this.opts.unitValue;
+        var _txt = '￥' + _newValue * _this.opts.unitValue;
         if (_newValue === _this.opts.minValue) {
           _txt = _this.opts.defaultText;
         }
@@ -158,7 +158,7 @@
         _this.$el.find(_this.opts.rangeValue).css({
           'right': _newPot
         });
-        var _txt = _newValue * _this.opts.unitValue;
+        var _txt = '￥' + _newValue * _this.opts.unitValue;
         if (_newValue === _this.opts.maxValue) {
           _txt = _this.opts.defaultText;
         }
@@ -220,7 +220,7 @@
     this.$el.find(this.opts.rangeValue).css({
       'left': this.opts.firstPot
     });
-    var _txt = this.opts.firstValue * this.opts.unitValue;
+    var _txt = '￥' + this.opts.firstValue * this.opts.unitValue;
     if (this.opts.firstValue === this.opts.minValue) {
       _txt = this.opts.defaultText;
     }
@@ -243,7 +243,7 @@
     this.$el.find(this.opts.rangeValue).css({
       'right': this.opts.lastPot
     });
-    var _txt = this.opts.lastValue * this.opts.unitValue;
+    var _txt = '￥' + this.opts.lastValue * this.opts.unitValue;
     if (this.opts.lastValue === this.opts.maxValue) {
       _txt = this.opts.defaultText;
     }

@@ -78,7 +78,6 @@ $(function () {
   $('#close').on('tap', function (e) {
     e.stopPropagation();
     hideFilterLayer();
-
   });
 
   /* overlay的tap事件  */
@@ -103,17 +102,27 @@ $(function () {
   });
 
   /* 单选事件 */
-  $filterList.find('.content').on('tap', '.mostjs', function (e) {
+  $filterList.on('tap', '.items', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
   });
 
-  // /* 多选事件 */
-  // $filterList.find('.checkbox-body').on('tap', '.mostjs', function (e) {
-  //   e.preventDefault();
+  /* 多选事件 */
+  $filterList.on('tap', '.more-sel-items', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).toggleClass('current');
+    $(this).find('.icon').toggleClass('current');
+  });
+  /* 确定事件 */
+  $filterList.on('tap', '.ok', function (e) {
+    e.stopPropagation();
+    hideFilterLayer();
+  });
+  /* 排序事件 */
+  // $('.twolist .items').on('tap', function (e) {
   //   e.stopPropagation();
-  //   $(this).addClass('current').siblings().removeClass('current');
+  //   hideFilterLayer();
   // });
-
 });

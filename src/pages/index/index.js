@@ -10,30 +10,6 @@ require('../../assets/js/caledaner.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
-  $.ajax({
-    // url: '/api/room/queryCityRimInfo?city=KUNMING',
-
-    url: '/api/room/darkSelectRimInfo?city=KUNMING&name=北环',
-    // room/darkSelectRimInfo?city=KUNMING&name=北环
-    // url: '/api/security/userinfo/deleteUserResident',
-    data: {
-      // 'city': 'KUNMING',
-      // 'name': '北环'
-    },
-    dataType: 'json',
-    type: 'GET',
-    success: function (data) {
-      console.log('success');
-      console.log(data);
-    },
-    error: function (error) {
-      console.log(error);
-      console.log('error');
-
-    }
-  })
-  // console.log($('#firstSelect').val() === '');
-
 
   if ($('#firstSelect').val() === '') {
 
@@ -128,5 +104,23 @@ $(function () {
     getLocation();
   });
 
+  // $.ajax({
+  //   url: '/api/room/darkSelectRimInfo',
+  //   data: {
+  //     'city': 'KUNMING',
+  //     'name': $(this).text()
+  //   },
+  //   dataType: 'json',
+  //   type: 'GET',
+  //   success: function (data) {
+  //     console.log('success');
+  //     console.log(data);
+  //   },
+  //   error: function (error) {
+  //     console.log(error);
+  //     console.log('error');
+
+  //   }
+  // });
 
 });
