@@ -18,6 +18,9 @@ $(function () {
     $filterLayer.slideDown(200);
     $filterList.hide().eq(index).show();
     $filterLayer.find('.filter-body .mostjs:eq(' + index + ')').addClass('current').siblings().removeClass('current');
+    if (index === 0) {
+      $filterLayer.find('.filter-list .two-row:eq(0)').css('display', 'block');
+    }
     if (index === 2) {
       _range = $range.doubleRange({
         minValue: 0,
@@ -90,8 +93,9 @@ $(function () {
   /* 切换筛选项   */
   $filterBody.find('.mostjs').on('tap', function (e) {
     // console.log('zmise')
-
     e.stopPropagation();
+    $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
+
     if ($(this).hasClass('current') && $filterLayer.css('display') !== 'none') {
       hideFilterLayer();
     } else {
@@ -115,11 +119,22 @@ $(function () {
     $(this).toggleClass('current');
     $(this).find('.icon').toggleClass('current');
   });
+
+
   /* 确定事件 */
   $filterList.on('tap', '.ok', function (e) {
     e.stopPropagation();
     hideFilterLayer();
   });
+
+  $filterLayer.find('.one-row').on('tap', '.items', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // console.log($(this).index())
+    $(this).addClass('current').siblings().removeClass('current');
+    $('.two-row').css('display', 'none').eq($(this).index() - 1).css('display', 'block');
+  });
+
   /* 排序事件 */
   // $('.twolist .items').on('tap', function (e) {
   //   e.stopPropagation();

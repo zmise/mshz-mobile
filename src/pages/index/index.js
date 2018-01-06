@@ -88,7 +88,7 @@ $(function () {
     }
     else {
       // x.innerHTML = "该浏览器不支持获取地理位置。";
-      alert("该浏览器不支持获取地理位置。");
+      alert('该浏览器不支持获取地理位置。');
     }
   }
 
@@ -96,13 +96,64 @@ $(function () {
 
     //   x.innerHTML="纬度: " + position.coords.latitude + 
     // "<br>经度: " + position.coords.longitude;	
-    alert("纬度: " + position.coords.latitude +
-      "经度: " + position.coords.longitude)
+    alert('纬度: ' + position.coords.latitude +
+      '经度: ' + position.coords.longitude)
   }
   $('#location').on('tap', function (e) {
     e.stopPropagation();
     getLocation();
   });
+
+  // 自动获取定位访问者当前城市
+  var nowCity = new BMap.LocalCity();
+  nowCity.get(bdGetPosition);
+  function bdGetPosition(result) {
+    $('#destination-entry').val(result.name);
+    searchInfo(result.name);
+  }
+
+
+
+  function searchInfo(cityname) {
+    console.log('11');
+    var city = $('#destination-entry').val();
+    $.ajax({
+      // url: 'http://172.16.72.198:51711/mshz-render/queryCityRimInfo',
+      url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
+      data: {
+        'city': 'KUNMING' || $('#destination-entry').val(),
+        // 'cityZW': '深圳' || cityname,
+
+      },
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        var json = data.result;
+        console.log(json);
+        var str = '';
+        for (var i = 0; i < json.length; i++) {
+          var str1 = ''
+          var arr = json[i].rimNames;
+          for (var j = 0; j < arr.length; j++) {
+            str1 += '<a class="items" href="javascript:;">' + arr[j].name + '</a>';
+          }
+
+          str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div >';
+        }
+        $('.search-keyword').empty().append(str);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+
+
 
   // $.ajax({
   //   url: '/api/room/darkSelectRimInfo',

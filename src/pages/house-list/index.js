@@ -16,9 +16,11 @@ $(function () {
   // startData = '2018-01-02';
   // endData = '2018-01-03';
   var startData, endData, sourceData;
-  startData = $.trim($('#firstSelect').val().split('-')[0]);
-  // console.log()
-  endData = $.trim($('#firstSelect').val().split('-')[1]);
+  startData = $.trim($('#firstSelect').text().split('-')[0]);
+  console.log(startData)
+  endData = $.trim($('#firstSelect').text().split('-')[1]);
+  console.log(endData)
+
   $('#firstSelect').on('tap', function (e) {
     e.stopPropagation();
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件

@@ -6,8 +6,22 @@ $(function () {
 
   /* 进入搜索页 */
   $('#search-entry').on('tap', function (e) {
-    $('.search-layer').show();
-    $('body,html').css({ 'overflow': 'hidden' });
+    if ($.trim($(this).val()) == '') {
+      $('.search-layer').show();
+      $('.search-layer .search-keyword').show();
+      $('.search-layer .search-list').hide();
+      $('body,html').css({ 'overflow': 'hidden' });
+      $('.search-body .text-body .text').val($(this).val());
+    } else {
+      $('.search-layer').show();
+      $('.search-layer .search-keyword').hide();
+      $('.search-layer .search-list').show();
+      $('body,html').css({ 'overflow': 'hidden' });
+      $('.search-body .text-body .text').val($(this).val());
+    }
+    // $('.search-layer').show();
+    // $('body,html').css({ 'overflow': 'hidden' });
+    // $('.search-body .text-body .text').val($(this).val());
 
   });
 
@@ -16,25 +30,35 @@ $(function () {
     e.stopPropagation();
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
-    $('#search-entry').val($(this).closest('.search-body').find('.text-body .text').val());
+    // $('#search-entry').val($('.text-body .text').val());
   });
 
   /* 点击search-keyword给input输入文本并切换 search-list */
-  $('.search-layer .keywords .items').on('tap', function (e) {
+  $('.search-layer').on('tap', '.keywords .items', function (e) {
     e.stopPropagation();
     // console.log($(this).closest('.search-layer').html());
     $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
-    $('.search-layer .search-keyword').hide();
-    $('.search-layer .search-list').show();
-  });
-  /* 点击search-list给input输入文本 */
-  $('.search-list .slide .items').on('tap', function (e) {
-    e.stopPropagation();
-    $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).find('.txt').text());
+
+    $(this).closest('.search-layer').hide();
+    $('body,html').css({ 'overflow': 'visible' });
+
+    $('#search-entry').val($(this).text());
+
+    // $('.search-layer .search-keyword').hide();
+    // var newListHTML = search();
+    // $('.search-list .slide').empty().append(newListHTML)
+    // $('.search-layer .search-list').show();
   });
 
+  /* 点击search-list给input输入文本 */
+  // $('.search-list').on('tap', '.slide .items', function (e) {
+  //   e.stopPropagation();
+  //   // $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).find('.txt').text());
+
+  // });
+
   /* 当搜索框内容不为空时显示清空按钮 */
-  $('.text-body .text').on('input', function (e) {
+  $('.search-body').on('input', '.text-body .text', function (e) {
     if ($.trim($(this).val()) == '') {
       $('.search-layer .search-keyword').show();
       $('.search-layer .search-list').hide();
@@ -47,42 +71,61 @@ $(function () {
 
   /* 当搜索框的模糊查询 */
 
-  $(".text-body .text").bind("input", function () {
-    console.log($(this).val());
-
-    if ($(this).val().length > 0) {
-      var newListHTML = search();
-      $('.search-list .slide').empty().append(newListHTML);
+  $('.search-body').on('input', '.text-body .text', function () {
+    var keyword = $.trim($(this).val());//去除空格
+    if (keyword.length > 0) {
+      search(keyword);
     } else {
       $(".sea").html('');
     }
   })
 
-  function search() {
-    console.log($(".text-body .text").val());
+  function search(keyword) {
+    var city = $('#destination-entry').val();
     $.ajax({
-      url: '/api/room/darkSelectRimInfo',
+      url: 'http://192.168.0.243:51312/mshz-app/room/darkSelectRimInfo',
       data: {
-        'city': 'KUNMING',
-        'name': $(".text-body .text").val()
+        // 'city': $('#destination-entry').val(),
+        'city': 'KUNMING' || $('#destination-entry').val(),
+        'name': '北环' || keyword
       },
       dataType: 'json',
       type: 'GET',
+      cache: false,
       success: function (data) {
-        //转换成json对象  
-        console.log(data)
-        // eval("var json=" + data);
-        // //console.log(json)  
-        // var str = "";
-        // for (var i = 0; i < json.length; i++) {
-        //   str += "<li>" + json[i].sea + "</li>";
-        // }
-        // $(".sea").html(str);
+        console.log('success');
+        var json = data.result;
+        console.log(json);
+        var str = '';
+        for (var i = 0; i < json.length; i++) {
+          str += '<a class="items" href="javascript:;" data-keyword="' + json[i].name + '"><div class="txt-icon"><i class="icon iconfont icon-sousuoliebiao"></i><span class="txt">' + json[i].name + '</span></div><span class="icon-goto">' + json[i].pointTypeDtoEnum + '</span></a>';
+        }
+        $('.search-list .slide').empty().append(str);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+
       }
-    })
+    });
+
   }
 
+  $('.search-list').on('tap', '.slide .items', function (e) {
+    e.stopPropagation();
+    // $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
 
+    $(this).closest('.search-layer').hide();
+    $('body,html').css({ 'overflow': 'visible' });
+    $('#search-entry').val($(this).data('keyword'));
+  });
+
+  $('.search-body ').on('tap', '.text-body .search-close ', function (e) {
+    e.stopPropagation();
+    $(this).closest('.text-body').find('.text').val('');
+    $('.search-layer .search-keyword').show();
+    $('.search-layer .search-list').hide();
+  });
   // /* 清空搜索框内容 */
   // $('.search-body .clear-text').on('tap', function (e) {
   //   e.stopPropagation();

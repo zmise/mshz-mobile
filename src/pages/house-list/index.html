@@ -28,7 +28,7 @@
   <!-- 条件筛选 -->
   <section class="filter-body">
     <a class="items" href="javascript:;">
-      <span class="txt" id="firstSelect">12.27-12.28</span>
+      <span class="txt" id="firstSelect" data-startData="" data-endData="">01.11-01.12</span>
       <i class="icon"></i>
     </a>
     <a class="items mostjs" href="javascript:;">
@@ -223,17 +223,16 @@
             <a class="items" href="javascript:;">地铁</a>
           </div>
         </div> -->
-        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+        <div class="slide-body one-row" js-plugin="slide" data-direction="vertical">
           <div class="slide">
             <a class="items current" href="javascript:;">热门景点</a>
             <a class="items" href="javascript:;">行政区</a>
             <a class="items" href="javascript:;">车站/机场</a>
             <a class="items" href="javascript:;">地铁线路</a>
             <a class="items" href="javascript:;">商圈</a>
-            <botton class="items" href="javascript:;">商圈</botton>
           </div>
         </div>
-        <div class="slide-body" js-plugin="slide" data-direction="vertical">
+        <div class="slide-body two-row" js-plugin="slide" data-direction="vertical">
           <div class="slide">
             <a class="items current" href="javascript:;">不限</a>
             <a class="items" href="javascript:;">滇池风景区</a>
@@ -247,6 +246,46 @@
             <a class="items" href="javascript:;">盐田</a>
             <a class="items" href="javascript:;">光明新区</a>
             <a class="items" href="javascript:;">大鹏新区</a>
+          </div>
+        </div>
+        <div class="slide-body two-row" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">滇池风景区</a>
+            <a class="items" href="javascript:;">官渡古镇</a>
+            <a class="items" href="javascript:;">世博园</a>
+          </div>
+        </div>
+        <div class="slide-body two-row" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">滇池风景区</a>
+            <a class="items" href="javascript:;">官渡古镇</a>
+          
+           
+          </div>
+        </div>
+        <div class="slide-body two-row" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">滇池风景区</a>
+            <a class="items" href="javascript:;">官渡古镇</a>
+            <a class="items" href="javascript:;">世博园</a>
+            <a class="items" href="javascript:;">翠湖公园</a>
+            <a class="items" href="javascript:;">罗湖</a>
+            <a class="items" href="javascript:;">龙岗</a>
+            <a class="items" href="javascript:;">龙华新区</a>
+            <a class="items" href="javascript:;">坪山新区</a>
+            <a class="items" href="javascript:;">盐田</a>
+            <a class="items" href="javascript:;">光明新区</a>
+            <a class="items" href="javascript:;">大鹏新区</a>
+          </div>
+        </div>
+        <div class="slide-body two-row" js-plugin="slide" data-direction="vertical">
+          <div class="slide">
+            <a class="items current" href="javascript:;">不限</a>
+            <a class="items" href="javascript:;">滇池风景区</a>
+          
           </div>
         </div>
       </div>
@@ -352,10 +391,11 @@
     <div class="search-body bg-base">
       <a class="cancel iconfont icon-daohanglanfanhui" id="search-cancel" href="javascript:;"></a>
       <div class="text-body">
-        <i class="icon-search style-two">
+        <i class="search-icon style-two">
           <i class="circle bg-white"></i>
         </i>
         <input class="text" type="text" placeholder="您想住哪？" />
+        <i class="search-close iconfont icon-icon-test1"></i>
       </div>
     </div>
     <div class="search-keyword">

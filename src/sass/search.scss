@@ -21,10 +21,10 @@
     background-color: #f9f9f9;
 }
 
-.search-layer  .search-body .text-body {
+.search-layer .search-body .text-body {
     @include flex-box;
     @include flex;
-    @include align-items;
+    @include align-items; // @include justify-content(space-between);
     padding: .08rem 0;
     height: 0.72rem;
     border-radius: .44rem;
@@ -32,7 +32,23 @@
     box-sizing: border-box;
 }
 
-.search-layer  .search-body .text-body .text {
+.search-body .text-body .search-close {
+    position: relative;
+    display: block;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .4rem;
+    height: .4rem;
+    margin-right: .24rem;
+    border-radius: .2rem;
+    font-size: .10rem;
+    background-color: rgba(181, 185, 190, 1);
+    color: #fff;
+    overflow: hidden;
+}
+
+.search-layer .search-body .text-body .text {
     display: block;
     @include flex;
     padding: .24rem 0 .2rem;
@@ -43,7 +59,7 @@
     color: #2A2B2D;
 }
 
-.search-body .text-body .icon-search {
+.search-body .text-body .search-icon {
     position: relative;
     display: block;
     width: .8rem;
@@ -54,7 +70,7 @@
     padding-right: .4rem;
 }
 
-.search-layer .search-body .text-body .icon-search .circle {
+.search-layer .search-body .text-body .search-icon .circle {
     @include position(absolute, .04rem, auto, auto, .04rem, 10);
     display: block;
     content: '';
@@ -65,7 +81,7 @@
     z-index: 1;
 }
 
-.search-layer .search-body .text-body .icon-search:before {
+.search-layer .search-body .text-body .search-icon:before {
     @include position(absolute, .24rem, auto, auto, .24rem, 10);
     display: block;
     content: '';
@@ -76,7 +92,7 @@
     z-index: 2;
 }
 
-.search-layer .search-body .text-body .icon-search:after {
+.search-layer .search-body .text-body .search-icon:after {
     @include position(absolute, .5rem, auto, auto, .44rem, 10);
     display: block;
     content: '';
@@ -259,6 +275,7 @@
 .search-layer .search-list .items {
     @include flex-box;
     @include align-items;
+    @include justify-content(space-between);
     height: 1rem;
     margin-left: .3rem;
     padding-right: .3rem;
@@ -269,37 +286,33 @@
     box-sizing: border-box;
 }
 
+.search-layer .search-list .items .txt-icon {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+}
+
 .search-layer .search-list .items .icon {
     display: block;
     margin-right: .1rem;
-    font-size: .4rem;
-    color: #ccc;
+    margin-bottom: .1rem;
+    font-size: .35rem;
+    color: rgba(181, 185, 190, 1);
 }
 
 .search-layer .search-list .items .txt {
     display: block;
     @include flex;
-    width: 2rem;
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 .search-layer .search-list .items .icon-goto {
     position: relative;
     display: block;
-    width: .4rem;
-    height: .4rem;
     overflow: hidden;
-}
-
-.search-layer .search-list .items .icon-goto:before {
-    @include position(absolute, .08rem, auto, auto, .04rem, 10);
-    display: block;
-    content: '';
-    width: .18rem;
-    height: .18rem;
-    border-width: .04rem .04rem 0 0;
-    border-style: solid;
-    border-color: #ccc;
-    @include transform(rotateZ(45deg));
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
 }
 
 .search-layer .search-list .clear-record {

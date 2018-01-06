@@ -193,7 +193,8 @@
 }
 
 // .filter-list .content .slide-body 
-.filter-list .content .items {
+.filter-list .content .items
+ {
     display: block;
     @include flex-box;
     @include align-items;
@@ -201,6 +202,14 @@
     padding: .24rem .3rem;
     font-size: .26rem;
     box-sizing: border-box; // border-bottom: $border;
+}
+
+.filter-list .content .two-row {
+    display: none;
+    @include flex;
+    padding: 0 .3rem;
+    margin-top: .24rem;
+    background-color: #fff;
 }
 
 .filter-list .content .slide-body:last-child {
