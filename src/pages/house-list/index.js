@@ -16,13 +16,15 @@ $(function () {
     params = {
       city: $('#city').val(),
       keyword: $('#search-entry').val(),
-      startDate: $('#startDate').val(),
-      endDate: $('#endDate').val(),
+      startDate: $('#firstSelect').data('startdata'),
+      // startDate: '2018-02-01',
+      endDate: $('#firstSelect').data('enddata'),
+      // endDate: '2018-02-02',
       poi: $('#poi').val(),
       sortBy: $('#sortBy').val(),
       prices: $('#prices').val(),
-      roomCount: $('#roomCount').val(),
-      furniture: +$('#furniture').val(),
+      roomCount: +$('#roomCount').val(),
+      furniture: $('#furniture').val(),
       page: $('#page').val()
     };
   }
@@ -48,9 +50,14 @@ $(function () {
     outColor: "#44bb80",      //离店颜色
     comeoutColor: "#44bb80",        //入住和离店之间的颜色
     callback: function (start, end) {
-      $('#firstSelect').val(start + '-' + end);
-      params.startDate = start;
-      params.endDate = end;
+      $('#firstSelect').data("startdata", start);
+      $('#firstSelect').data("enddata", end);
+      console.log($('#firstSelect').data())
+      start = start.split('-');
+      start = start[1] + '.' + start[2];
+      end = end.split('-');
+      end = end[1] + '.' + end[2];
+      $('#firstSelect').text(start + '-' + end);
       params.page = 1;
       loadingMore();
     },   //回调函数
@@ -69,39 +76,45 @@ $(function () {
     $filterList.hide();
     $overlay.hide();
   };
-  /* 位置和筛选确定事件 */
-  $('.filter-list').on('tap', '.ok', function (e) {
+  /* 位置确定事件 */
+  $('.filter-list').on('tap', '.ok-one', function (e) {
     e.stopPropagation();
     hideFilterLayer();
     var $content = $(this).closest('.filter-list').find('.content');
     var curLayerIndex = $content.find('.one-row .current').index();
     var pText = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
-    if (pText) {
-      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(pText);
-      $('#poi').val(pText);
-    } else {
-      params.prices = '' || '';
-      params.roomCount = $(this).data('sortBy') || '';
-      params.furniture = $(this).data('sortBy') || '';
-    }
-    params.page = 1;
-    // params.prices = $(this).data('sortBy') || '';
-    // params.roomCount = $(this).data('sortBy') || '';
-    // params.poi = $(this).data('sortBy') || '';
-    // params.furniture = $(this).data('sortBy') || '';
-    //  city: $('#city').val(),
-    //     keyword: $('#search-entry').val(),
-    //     startDate: $('#startDate').val(),
-    //     endDate: $('#endDate').val(),
-    //     poi: $('#poi').val(),
-    //     sortBy: $('#sortBy').val(),
-    //     prices: $('#prices').val(),
-    //     roomCount: $('#roomCount').val(),
-    //     furniture: +$('#furniture').val(),
-    //     page: $('#page').val()
+    $('#page').val(1);
+    var $content = $(this).closest('.filter-list').find('.content');
+    var curLayerIndex = $content.find('.one-row .current').index();
+    var poi = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
+    $('#poi').val(poi);
 
     loadingMore();
   });
+  /* 筛选确定事件 */
+
+  $('.filter-list').on('tap', '.ok-two', function (e) {
+    e.stopPropagation();
+    hideFilterLayer();
+
+    $('#page').val(1);
+    var furniture = $.map($('.threelist .options:eq(1)').find('.more-sel-items.current'), function (el) {
+      return $(el).data('furniture');
+    }).join(',');
+
+    // var $roomCount = $('.threelist .options:eq(0) .items');
+    // var roomCount = $roomCount.find('.current');
+    $('#furniture').val(furniture);
+    var prices = $('.first-slider .text-value').text().replace('￥', '') + ',' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '1000');
+    $('#prices').val(prices);
+    // $('#poi').val(poi);
+
+    var roomcount = $('.threelist .options:eq(0)').find('.current').data('roomcount');
+    $('#roomCount').val(roomcount);
+
+    loadingMore();
+  });
+
 
   $('.filter-list').on('tap', '.cancel-one', function (e) {
     e.stopPropagation();
@@ -140,8 +153,8 @@ $(function () {
     $(this).closest('body').find('.filter-body .mostjs:eq(1) .txt').text($(this).text());
     // params.page = 1;
     $('#page').val(1);
-    var sortBy = $(this).data('sortBy') || '';
-    // console.log(sortBy)
+    var sortBy = $(this).data('sortBy');
+    console.log(sortBy)
     $('#sortBy').val(sortBy);
 
     //ajax
@@ -192,16 +205,18 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (data) {
-        console.log('success');
-        var json = data.result.items;
-        console.log(json);
-        var str = '';
-        for (var i = 0; i < json.length; i++) {
-          str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
+        console.log(data);
+        if (data.status === 'C0000') {
+          if (data.result && data.result.items) {
+            var json = data.result.items;
+            var str = '';
+            for (var i = 0; i < json.length; i++) {
+              str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
+            }
+            $('.recommend-body .mrl_35').append(str);
+            $('.loading').remove();
+          }
         }
-        $('.recommend-body .mrl_35').append(str);
-        $('.loading').remove();
-
       },
       error: function (error) {
         console.log(error);

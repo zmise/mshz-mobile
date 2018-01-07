@@ -24,10 +24,10 @@ $(function () {
     if (index === 2) {
       _range = $range.doubleRange({
         minValue: 0,
-        maxValue: 101,
-        unitValue: 10,
+        maxValue: 21,
+        unitValue: 50,
         firstValue: 0,
-        lastValue: 30
+        lastValue: 3
       });
     }
   };
@@ -108,6 +108,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
+
   });
 
   /* 多选事件 */
@@ -117,10 +118,6 @@ $(function () {
     $(this).toggleClass('current');
     $(this).find('.icon').toggleClass('current');
     $(this).closest('.items-box').find('.current').text();
-    // console.log($.trim());
-    var furniture = String($(this).closest('.items-box').find('.current').text().replace(/\s/g, ""));
-    console.log(furniture);
-    $('#furniture').val(furniture);
 
   });
 

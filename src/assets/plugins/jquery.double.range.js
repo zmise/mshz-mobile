@@ -17,7 +17,7 @@
     rangeValue: '.range-value', // range-value
     textValue: '.text-value', // text-value
     moveTextClass: 'orange-text', // 拖动时的ClassName
-    defaultText: '不限', // 默认文本
+    defaultText: '不限', // 默认文本    
     firstCallback: null, // 前一个回调函数
     lastCallback: null, // 后一个回调函数
   };
@@ -87,7 +87,7 @@
         });
         var _txt = '￥' + _newValue * _this.opts.unitValue;
         if (_newValue === _this.opts.minValue) {
-          _txt = _this.opts.defaultText;
+          _txt = 0;
         }
         $(this).find(_this.opts.textValue).addClass(_this.opts.moveTextClass).text(_txt);
       }
@@ -222,7 +222,7 @@
     });
     var _txt = '￥' + this.opts.firstValue * this.opts.unitValue;
     if (this.opts.firstValue === this.opts.minValue) {
-      _txt = this.opts.defaultText;
+      _txt = 0;
     }
     this.$el.find(this.opts.firstSlider).find(this.opts.textValue).text(_txt);
   };
