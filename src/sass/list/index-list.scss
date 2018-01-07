@@ -8,6 +8,8 @@
     height: 3.84rem;
 }
 
+.three-rline,
+.three-lline,
 .item-oneline,
 .item-twoline,
 .item-threeline {
@@ -40,6 +42,9 @@
     padding-top: .26rem;
 }
 
+// .index-list .item-threeline .three-lline {
+//     @include flex-box;
+// }
 .index-list .twoline-items {
     font-size: .24rem;
     padding: 0 .2rem;

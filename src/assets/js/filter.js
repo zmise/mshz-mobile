@@ -19,7 +19,7 @@ $(function () {
     $filterList.hide().eq(index).show();
     $filterLayer.find('.filter-body .mostjs:eq(' + index + ')').addClass('current').siblings().removeClass('current');
     if (index === 0) {
-      $filterLayer.find('.filter-list .two-row:eq(0)').css('display', 'block');
+      // $filterLayer.find('.filter-list .two-row').css('display', 'none').eq(0).css('display', 'block');
     }
     if (index === 2) {
       _range = $range.doubleRange({
@@ -92,14 +92,12 @@ $(function () {
 
   /* 切换筛选项   */
   $filterBody.find('.mostjs').on('tap', function (e) {
-    // console.log('zmise')
     e.stopPropagation();
-    $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
+    // $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
 
     if ($(this).hasClass('current') && $filterLayer.css('display') !== 'none') {
       hideFilterLayer();
     } else {
-      // console.log('zmise')
       // debugger
       showFilterLayer($(this).index() - 1);
     }
@@ -118,26 +116,34 @@ $(function () {
     e.stopPropagation();
     $(this).toggleClass('current');
     $(this).find('.icon').toggleClass('current');
+    $(this).closest('.items-box').find('.current').text();
+    // console.log($.trim());
+    var furniture = String($(this).closest('.items-box').find('.current').text().replace(/\s/g, ""));
+    console.log(furniture);
+    $('#furniture').val(furniture);
+
   });
 
 
-  /* 确定事件 */
-  $filterList.on('tap', '.ok', function (e) {
-    e.stopPropagation();
-    hideFilterLayer();
-  });
 
+
+  /* 位置筛选层的切换事件 */
   $filterLayer.find('.one-row').on('tap', '.items', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    // console.log($(this).index())
     $(this).addClass('current').siblings().removeClass('current');
-    $('.two-row').css('display', 'none').eq($(this).index() - 1).css('display', 'block');
+    // debugger
+    $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
   });
+
+  // params.page = 1;
 
   /* 排序事件 */
   // $('.twolist .items').on('tap', function (e) {
   //   e.stopPropagation();
   //   hideFilterLayer();
   // });
+
+
+  /* 条件搜索的ajax事件 */
 });

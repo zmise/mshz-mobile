@@ -16,6 +16,10 @@ body {
     @include align-items;
 }
 
+.hide {
+    display: none !important;
+}
+
 
 /* header-body */
 

@@ -80,6 +80,8 @@ $(function () {
     }
   })
 
+  /* 模糊查询列表的ajax */
+
   function search(keyword) {
     var city = $('#destination-entry').val();
     $.ajax({
@@ -108,51 +110,24 @@ $(function () {
 
       }
     });
-
   }
+  /* ???? */
 
   $('.search-list').on('tap', '.slide .items', function (e) {
     e.stopPropagation();
-    // $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
 
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
     $('#search-entry').val($(this).data('keyword'));
   });
 
+  /* ??? */
   $('.search-body ').on('tap', '.text-body .search-close ', function (e) {
     e.stopPropagation();
     $(this).closest('.text-body').find('.text').val('');
     $('.search-layer .search-keyword').show();
     $('.search-layer .search-list').hide();
   });
-  // /* 清空搜索框内容 */
-  // $('.search-body .clear-text').on('tap', function (e) {
-  //   e.stopPropagation();
-  //   $(this).prev('.text').val('');
-  //   $(this).hide();
-  // });
 
-  // /* 打开下拉类型列表  */
-  // $('.search-body .type').on('tap', function (e) {
-  //   e.stopPropagation();
-  //   if ($(this).next('.select').css('display') === 'none') {
-  //     $(this).next('.select').show();
-  //   } else {
-  //     $(this).next('.select').hide();
-  //   }
-  // });
-
-  // /* 关闭下拉类型列表  */
-  // $(document).on('tap.searchType', function (e) {
-  //   $('.search-body .select').hide();
-  // });
-
-  // /* 切换类型  */
-  // $('.search-body .option').on('tap', function (e) {
-  //   e.stopPropagation();
-  //   $(this).closest('.search-body').find('.type .txt').text($(this).text());
-  //   $('.search-body .select').hide();
-  // });
 
 });

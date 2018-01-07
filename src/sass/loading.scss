@@ -1,0 +1,12 @@
+/* 加载中 */
+
+.loading {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    height: 40px;
+    font-size: $font-middle;
+    color: $color-light-grey;
+    line-height: 1.2;
+    background-color: #fff;
+}

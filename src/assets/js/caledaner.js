@@ -126,18 +126,21 @@
                 }
                 me._initselected();
 
-                me.element.on('click', function (event) {
+                me.element.on('tap', function (event) {
                     event.preventDefault();
+                    event.stopPropagation();
                     me._slider(me.sections)
                 });
-                $(me.comfire).on('click', function (event) {
+                $(me.comfire).on('tap', function (event) {
                     event.preventDefault();
+                    event.stopPropagation();
                     $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
                     var st = me.startData;
                     var en = me.endData;
+                    // debugger
                     if (st) {
                         me._slider(me.sections)
-                        me._callback();
+                        me._callback(st, en);
 
                     } else {
                         var b = new Date();
@@ -148,25 +151,21 @@
                         var ye1 = b.getFullYear();
                         var mo1 = b.getMonth() + 1;
                         var da1 = b.getDate();
-                        if ($('#startDate').length) {
-                            $('#startDate').val(ye + '-' + mo + '-' + da);
-                            $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
-                        } else {
-                            // console.log($('#firstSelect').val(444));
-                            $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
-                        }
-                        // alert("请选择入住退房日期")
-                        me._slider(me.sections)
-                        me._callback()
+                        var st = ye + '-' + mo + '-' + da;
+                        var en = ye1 + '-' + mo1 + '-' + da1;
+
+                        me._slider(me.sections);
+                        me._callback(st, en);
                     }
 
                 });
 
-                $('#cale-cancel').on('click', function (e) {
+                $('#cale-cancel').on('tap', function (e) {
                     e.stopPropagation();
+                    e.preventDefault();
                     $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
                     me._slider(me.sections);
-                    me._callback()
+                    // me._callback()
                 });
             },
             _isLeapYear: function (year) {
@@ -281,10 +280,10 @@
                 }
 
             },
-            _callback: function () {
+            _callback: function (st, en) {
                 var me = this;
                 if (me.settings.callback && $.type(me.settings.callback) === "function") {
-                    me.settings.callback();
+                    me.settings.callback(st, en);
                 }
             },
 
@@ -404,7 +403,7 @@
                                 day = '0' + day;
                             }
                             me.startData = startDayYear + '-' + startDayMonth + '-' + day;
-                            startData1 =startDayMonth + '.' + day;
+                            startData1 = startDayMonth + '.' + day;
                         }
                         if ($(this).text() == '退房') {
                             // var day = parseInt($(this).parent().find('span:first').text().replace(/[^0-9]/ig, "").substring(0, 2));
@@ -445,7 +444,7 @@
                                 da = '0' + da;
                             }
                             me.endData = ye + '-' + mo + '-' + da;
-                            endData1 =  mo + '.' + da;
+                            endData1 = mo + '.' + da;
 
                         }
                         startDayArrayYear = [];
@@ -460,19 +459,7 @@
                     $('.week').text(myweek[st.getDay()])
                     $('.week1').text(myweek[en.getDay()])
                     me._checkColor(me.comeColor, me.outColor)
-                    if ($('#startDate').length) {
-                        $('#startDate').val(me.startData)
-                        $('#endDate').val(me.endData)
-                    }
-                    else if ($('#firstSelect').text() !== '') {
-                        // me.startDataArr = me.startData.split('-');
-                        // me.endData = me.endData.split('-');
-                        $('#firstSelect').text(startData1 + '-' + endData1)
-                    }
-                    else {
 
-                        $('#firstSelect').val(me.startData + '至' + me.endData)
-                    }
                 })
             },
 

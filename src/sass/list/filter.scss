@@ -110,11 +110,12 @@
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
+    overflow: hidden;
 }
 
 .filter-body .items .txt {
-    display: block; // max-width: 70%;
-    // max-width: calc(100% - .3rem);
+    display: block; // max-width: calc(100% - .3rem);
+    // @include flex;
     font-size: .24rem; // color: rgba(42, 43, 45, 1);
     text-overflow: ellipsis;
     overflow: hidden;
@@ -193,8 +194,7 @@
 }
 
 // .filter-list .content .slide-body 
-.filter-list .content .items
- {
+.filter-list .content .items {
     display: block;
     @include flex-box;
     @include align-items;
