@@ -129,7 +129,6 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
-    // debugger
     $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
   });
 

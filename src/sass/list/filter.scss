@@ -160,14 +160,14 @@
 .filter-list {
     @include flex-box;
     @include flex-direction(column);
-    height: 4rem;
+    // height: 4rem;
     background-color: #fff;
 }
 
 .filter-layer .onelist {
     position: relative;
-    height: 7.84rem;
-    padding-bottom: .88rem;
+    // height: 7.84rem;
+    // padding-bottom: .88rem;
 }
 
 .filter-layer .twolist {
@@ -184,7 +184,7 @@
 .filter-list .content {
     @include flex-box;
     @include flex;
-    height: 2rem;
+    // height: 2rem;
 }
 
 .filter-list .content .slide-body {

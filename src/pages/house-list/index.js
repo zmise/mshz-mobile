@@ -77,16 +77,16 @@ $(function () {
     $overlay.hide();
   };
   /* 位置确定事件 */
-  $('.filter-list').on('tap', '.ok-one', function (e) {
+  $('.filter-list').on('tap', '.two-row .items', function (e) {
     e.stopPropagation();
     hideFilterLayer();
-    var $content = $(this).closest('.filter-list').find('.content');
-    var curLayerIndex = $content.find('.one-row .current').index();
-    var pText = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
+
     $('#page').val(1);
     var $content = $(this).closest('.filter-list').find('.content');
     var curLayerIndex = $content.find('.one-row .current').index();
     var poi = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
+    // console.log(poi)
+    $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
     $('#poi').val(poi);
 
     loadingMore();
@@ -105,7 +105,7 @@ $(function () {
     // var $roomCount = $('.threelist .options:eq(0) .items');
     // var roomCount = $roomCount.find('.current');
     $('#furniture').val(furniture);
-    var prices = $('.first-slider .text-value').text().replace('￥', '') + ',' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '1000');
+    var prices = $('.first-slider .text-value').text().replace('￥', '') + '-' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '*');
     $('#prices').val(prices);
     // $('#poi').val(poi);
 
@@ -201,6 +201,9 @@ $(function () {
       // url: 'http://192.168.0.243:51313/mshz-mgr/security/oms/recommend/selectRoom',
       url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
       data: params,
+      // data: {
+      //   city: 'SHENZHEN'
+      // },
       dataType: 'json',
       type: 'GET',
       cache: false,
@@ -213,7 +216,12 @@ $(function () {
             for (var i = 0; i < json.length; i++) {
               str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
             }
-            $('.recommend-body .mrl_35').append(str);
+            if (params.page === '1') {
+              $('.recommend-body .mrl_35').empty().append(str);
+            } else {
+              $('.recommend-body .mrl_35').append(str);
+            }
+
             $('.loading').remove();
           }
         }

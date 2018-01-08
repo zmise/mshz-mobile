@@ -39,6 +39,11 @@ $(function () {
   $('.house-base-info .base-server').on('tap', '.more', function (e) {
     e.stopPropagation();
     $('.house-base-info .base-server .icon-items:gt(4)').toggleClass('hide');
+  });
 
+  /* 点击切换喜欢收藏  */
+  $('.banner-body').on('tap', '.collect', function (e) {
+    e.stopPropagation();
+    $(this).toggleClass('clc-red');
   });
 });
