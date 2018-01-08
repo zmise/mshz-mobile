@@ -159,14 +159,12 @@
 
 .filter-list {
     @include flex-box;
-    @include flex-direction(column);
-    // height: 4rem;
+    @include flex-direction(column); // height: 4rem;
     background-color: #fff;
 }
 
 .filter-layer .onelist {
-    position: relative;
-    // height: 7.84rem;
+    position: relative; // height: 7.84rem;
     // padding-bottom: .88rem;
 }
 
@@ -183,8 +181,7 @@
 
 .filter-list .content {
     @include flex-box;
-    @include flex;
-    // height: 2rem;
+    @include flex; // height: 2rem;
 }
 
 .filter-list .content .slide-body {
@@ -211,6 +208,22 @@
     margin-top: .24rem;
     background-color: #fff;
 }
+
+.filter-list .content .two-row:first-child {
+    display: block;
+}
+
+.filter-list .content .metro-row {
+    display: none;
+    @include flex;
+    padding: 0 .3rem;
+    margin-top: .24rem;
+    background-color: #fff;
+}
+
+// .filter-list .content .metro-row .slide {
+//     display: none;
+// }
 
 .filter-list .content .slide-body:last-child {
     @include flex; // padding: .24rem 0;

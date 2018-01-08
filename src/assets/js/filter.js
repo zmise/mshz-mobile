@@ -91,7 +91,7 @@ $(function () {
 
 
   /* 切换筛选项   */
-  $filterBody.find('.mostjs').on('tap', function (e) {
+  $filterBody.on('tap', '.mostjs', function (e) {
     e.stopPropagation();
     // $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
 
@@ -102,7 +102,6 @@ $(function () {
       showFilterLayer($(this).index() - 1);
     }
   });
-
   /* 单选事件 */
   $filterList.on('tap', '.items', function (e) {
     e.preventDefault();
@@ -122,15 +121,6 @@ $(function () {
   });
 
 
-
-
-  /* 位置筛选层的切换事件 */
-  $filterLayer.find('.one-row').on('tap', '.items', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).addClass('current').siblings().removeClass('current');
-    $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
-  });
 
   // params.page = 1;
 

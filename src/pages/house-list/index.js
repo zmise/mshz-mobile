@@ -77,7 +77,7 @@ $(function () {
     $overlay.hide();
   };
   /* 位置确定事件 */
-  $('.filter-list').on('tap', '.two-row .items', function (e) {
+  $('.filter-list').on('tap', '.two-row:not(.metro) .items', function (e) {
     e.stopPropagation();
     hideFilterLayer();
 
@@ -85,11 +85,56 @@ $(function () {
     var $content = $(this).closest('.filter-list').find('.content');
     var curLayerIndex = $content.find('.one-row .current').index();
     var poi = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
-    // console.log(poi)
-    $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
+    console.log(poi)
+    if (poi == '不限') {
+      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
+    } else {
+      console.log('zmise')
+      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
+    }
     $('#poi').val(poi);
 
     loadingMore();
+  });
+
+
+  $('.filter-list').on('tap', '.metro .items', function (e) {
+    e.stopPropagation();
+    var $metroRow = $(this).closest('.content').find('.metro-row');
+    // console.log($metroRow)
+    $metroRow.show();
+    // console.log($metroRow.find('.silde:eq(' + $(this).index() + ')'));
+    // $metroRow.find('.silde:eq(' + $(this).index() + ')').show().siblings().hide();
+    $metroRow.find('div').css('display', 'none').eq($(this).index()).css('display', 'block');
+  });
+  $('.filter-list').on('tap', '.metro-row .items', function (e) {
+    e.stopPropagation();
+    hideFilterLayer();
+    var poi = $(this).text();
+    //   // console.log(poi)
+    if (poi === '不限') {
+      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
+    } else {
+      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
+    }
+    $('#poi').val($(this).text());
+
+    loadingMore();
+  });
+
+
+  /* 位置筛选层的切换事件 */
+  $filterLayer.find('.one-row').on('tap', '.items', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).closest('.content').find('.metro-row').hide();
+
+    $(this).addClass('current').siblings().removeClass('current');
+    $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
+    var $closest = $(this).closest('.content').find('.slide-body:not(.one-row)');
+    $closest.find('.items').removeClass('current');
+    // console.log($closest.find('.items:firstchild'))
+    // $closest.eq(0).addClass('current');
   });
   /* 筛选确定事件 */
 
@@ -119,12 +164,8 @@ $(function () {
   $('.filter-list').on('tap', '.cancel-one', function (e) {
     e.stopPropagation();
     $('.onelist .items').removeClass('current');
-    // params.page = 1;
     $('#page').val(1);
     $('#poi').val('');
-
-
-    // params.poi = '';
 
   });
   $('.filter-list').on('tap', '.cancel-two', function (e) {
