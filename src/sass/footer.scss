@@ -6,6 +6,8 @@
     @include align-items;
     @include position(relative, auto, auto, 0, auto, 10);
     background-color: #fff;
+    height: 2.98rem;
+    box-sizing: border-box;
 }
 
 
@@ -54,12 +56,12 @@
     @include flex-box;
     @include justify-content;
     width: 100%;
-    padding: .4rem 0 .36rem;
+    padding: .35rem 0 .25rem;
 }
 
 .site-nav .items {
     display: block;
-    padding: 0 .45rem;
+    padding: 0 .6rem;
     font-size: .24rem;
     color: #787f86;
     text-align: center;
@@ -71,7 +73,13 @@
 }
 
 .copyright {
-    font-size: .18rem;
+    font-size: .16rem;
     color: #b5b9be;
-    margin-bottom: .28rem;
+    line-height: 1.5;
+}
+
+.page-bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }

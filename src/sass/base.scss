@@ -114,6 +114,7 @@ $border: .01rem solid #E3E6E9;
 
 html {
     font-size: 100px;
+    height: 100%;
 }
 
 @media screen and(min-width: 320px)and(max-width: 359px) {
@@ -271,8 +272,7 @@ textarea::-webkit-input-placeholder {
 }
 
 table {
-    width: 100%;
-    // border-collapse: collapse;
+    width: 100%; // border-collapse: collapse;
     // border-spacing: 0;
 }
 
