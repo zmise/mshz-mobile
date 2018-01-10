@@ -1,7 +1,7 @@
 require('./index.scss');
 
 require('../../assets/js/plugins.js');
-require('../../assets/js/caledaner.js');//日期插件
+require('../../assets/js/calendar.js');//日期插件
 $(function () {
   var sourceDate;
   var startDate = $('#startDate').val();

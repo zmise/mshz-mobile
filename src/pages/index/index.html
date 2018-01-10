@@ -24,7 +24,7 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-mudedi"></i>
-        <input id="destination-entry" placeholder="目的地" readOnly="readOnly">
+        <input id="destination-entry" placeholder="目的地" disabled=”disabled“>
       </div>
       <a class="input-text-right" id="location">
         <i class="iconfont icon-fujin1"></i>
@@ -34,7 +34,7 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-riqixuanze"></i>
-        <input id="firstSelect" placeholder="入住日期-退房日期" readOnly="readOnly">
+        <input id="firstSelect" placeholder="入住日期-退房日期" disabled=”disabled”>
       </div>
       <a class="input-text-right">
         <i class="iconfont icon-fanhui"></i>
@@ -43,7 +43,7 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-jingdian"></i>
-        <input id="search-entry" placeholder="景点/关键字/商圈" readOnly="readOnly">
+        <input id="search-entry" placeholder="景点/关键字/商圈" disabled=”disabled“>
       </div>
     </div>
     <button>搜索</button>
@@ -184,47 +184,65 @@
   <!-- 侧边栏 -->
   <section class="overlay" id="overlay"></section>
   <nav class="navigate-body" js-plugin="slide" data-direction="vertical">
-    <div class="navigate">
-      <a class="items login" href="javascript:;">
-        <i class="icon iconfont icon-gerenzhongxin"></i>
-        <span class="txt">登录/注册</span>
-      </a>
-
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-home"></i>
-        <span class="txt">首页</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-sale"></i>
-        <span class="txt">我的</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-newhouse"></i>
-        <span class="txt">订单</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-rent"></i>
-        <span class="txt">收藏</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-office"></i>
-        <span class="txt">足迹</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-garden"></i>
-        <span class="txt">修改密码</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-school"></i>
-        <span class="txt">设置密码</span>
-      </a>
-      <a class="items" href="javascript:;">
-        <i class="icon iconfont icon-feiji"></i>
-        <span class="txt">退出登录</span>
-      </a>
-
-    </div>
-  </nav>
+      <div class="navigate">
+        <div class="login" href="javascript:;">
+          <img class="photo" src="" alt="">
+          <span class="txt">西瓜爱上夏天</span>
+          <div class="tel">
+            <i class="icon iconfont icon-shouji"></i>
+            <span class="Ttxt">130****3929</span>
+          </div>
+        </div>
+        <div class="content">
+          <a class="items current" href="javascript:;">
+            <i class="icon iconfont icon-gerenzhongxinshouye current"></i>
+            <span class="txt">首页</span>
+  
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-gerenzhongxinwode"></i>
+            <span class="txt">我的</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>
+            <span class="txt">订单</span>
+            <span class="num">6</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>
+            <span class="txt">收藏</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-zuji"></i>
+            <span class="txt">足迹</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-xiugaimima"></i>
+            <span class="txt">修改密码</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-xiugaimima"></i>
+            <span class="txt">设置密码</span>
+          </a>
+          <a class="items" href="javascript:;">
+            <i class="icon iconfont icon-gerenzhongxintuichu"></i>
+            <span class="txt">退出登录</span>
+          </a>
+        </div>
+  
+  
+      </div>
+      <div class="nav-footer">
+        <div class="box">
+          <i class="icon iconfont icon-xiazai"></i>
+          <span class="ftxt">下载APP</span>
+        </div>
+        <div class="box">
+          <i class="icon iconfont icon-gerenzhongxinyijianfankui"></i>
+          <span class="ftxt">意见反馈</span>
+        </div>
+      </div>
+    </nav>
 
   <!-- 日地的的弹出页面 -->
   <section class="des-body" style="display:none;">

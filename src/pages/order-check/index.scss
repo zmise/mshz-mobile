@@ -1,7 +1,7 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/header.scss'; // 全局头部
-@import '../../sass/caledaner.scss'; // 日历插件
+@import '../../sass/calendar.scss'; // 日历插件
 body {
     position: relative;
     padding: .88rem 0 1rem;
@@ -206,6 +206,10 @@ body {
     color: rgba(90, 165, 114, 1);
 }
 
+.userInfo-body .input-layout .reduce {
+    color: #c4c9cd;
+}
+
 .userInfo-body .input-layout .peo-num {
     margin: 0 .1rem;
 }
@@ -336,15 +340,13 @@ body {
     width: 2.28rem;
     height: .08rem;
     background: url('img/time-point.png') repeat rgba(255, 92, 92, 1);
-    background-color:rgba(255, 92, 92, 1);
-    
+    background-color: rgba(255, 92, 92, 1);
     margin: 0 .1rem;
 }
 
 .rule-body .slide-content .box2 .current {
     // background-color:rgba(90, 165, 114, 1);
     background: url('img/time-point.png') repeat rgba(90, 165, 114, 1);
-    
 }
 
 .rule-body .slide-content .box3 {

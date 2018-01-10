@@ -27,7 +27,7 @@ $(function () {
         maxValue: 21,
         unitValue: 50,
         firstValue: 0,
-        lastValue: 3
+        lastValue: 21
       });
     }
   };

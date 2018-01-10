@@ -4,7 +4,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 
 require('../../assets/js/search.js'); //搜索功能
-require('../../assets/js/caledaner.js');//日期插件
+require('../../assets/js/calendar.js');//日期插件
 
 require('../../assets/js/filter.js');//筛选功能
 require('../../assets/js/appDownload.js');//全局下载APP
@@ -52,7 +52,7 @@ $(function () {
     callback: function (start, end) {
       $('#firstSelect').data("startdata", start);
       $('#firstSelect').data("enddata", end);
-      console.log($('#firstSelect').data())
+      // console.log($('#firstSelect').data())
       start = start.split('-');
       start = start[1] + '.' + start[2];
       end = end.split('-');

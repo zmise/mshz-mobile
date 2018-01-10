@@ -3,54 +3,131 @@
 .navigate-body {
     @include position(fixed, 0, 0, 0, 2.9rem, 5000);
     background-color: #fff;
+    height: 100%;
     overflow: hidden;
     @include transform(translateX(100%));
-  }
-  
-  .navigate-body .items {
+}
+
+.navigate-body .login {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    padding: .5rem 0 0;
+    border-bottom: .12rem solid rgba(245, 245, 245, 1);
+    height: 2.92rem;
+    box-sizing: border-box;
+}
+
+.navigate-body .login .photo {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: .6rem;
+    background-color: skyblue;
+}
+
+.navigate-body .login .txt {
+    font-size: .28rem;
+    color: rgba(42, 43, 45, 1);
+    padding: .15rem 0;
+}
+
+.navigate-body .login .tel {
     @include flex-box;
     @include align-items;
-    padding: .24rem .6rem;
+}
+
+.navigate-body .login .tel .icon {
+    width: .3rem;
+    height: .3rem;
+    font-size: .3rem;
+    margin-right: .1rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.navigate-body .login .tel .Ttxt {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.navigate-body .content {
+    padding-top: 0.36rem;
+}
+
+.navigate-body .content .items {
+    @include flex-box;
+    @include align-items;
+    padding: 0 .36rem 0 .5rem;
     font-size: $font-large;
     color: $color-dark-grey;
-    line-height: 1.2;
+    height: 0.76rem;
     box-sizing: border-box;
-  }
-  
-  .navigate-body .items .icon {
-    display: block;
-    margin-right: .3rem;
-    font-size: .4rem;
+}
+
+.navigate-body .content .current {
+    color: rgba(90, 165, 114, 1);
+    border-left: .04rem solid rgba(90, 165, 114, 1);
+}
+
+.navigate-body .content .items .icon {
+    height: 0.35rem;
+    width: 0.35rem;
+    margin-right: .25rem;
+    font-size: .35rem;
     color: #b2b2b2;
-  }
-  
-  .navigate-body .items .icon:before {
+}
+
+.navigate-body .content .items .current {
+    color: rgba(90, 165, 114, 1);
+    border: none;
+}
+
+.navigate-body .content .items .icon:before {
     display: block;
     width: .4rem;
     height: .4rem;
     overflow: hidden;
-  }
-  
-  .navigate-body .items .txt {
-    display: block;
-  }
-  
-  .navigate-body .login {
-    padding: .4rem .6rem;
-    border-bottom: .12rem solid rgba(245,245,245,1);
-  }
-  
-  .navigate-body .user {
-    margin-bottom: .4rem;
-    padding: .4rem .6rem;
-    border-bottom: $border;
-  }
-  
-  .navigate-body .user .pic {
-    display: block;
-    width: .8em;
-    height: .8rem;
-    margin-right: .2rem;
-    border-radius: 50%;
-    overflow: hidden;
-  }
+}
+
+.navigate-body .content .items .txt {
+    @include flex;
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.navigate-body .content .items .num {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .32rem;
+    height: .26rem;
+    font-size: .22rem;
+    border-radius: .13rem;
+    border: .01rem solid rgba(181, 185, 190, 1);
+}
+
+.nav-footer {
+    @include position(fixed, auto, 0, 0, 0, 99);
+    @include flex-box;
+    height: 0.82rem;
+    padding-bottom: 0.48rem;
+    box-sizing: border-box;
+}
+
+.nav-footer .box {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+}
+
+.nav-footer .box .icon {
+    line-height: 0.34rem;
+    width: 0.34rem;
+    font-size: 0.34rem;
+    margin-right: 0.2rem;
+}
+
+.nav-footer .box .ftxt {
+    font-size: .22rem;
+    color: rgba(94, 100, 107, 1);
+}
