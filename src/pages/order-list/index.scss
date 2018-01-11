@@ -3,7 +3,6 @@
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
-@import '../../sass/appDownload.scss'; // 全局下载APP
 body {
     position: relative;
     padding: 1.76rem 0 .86rem;
@@ -13,15 +12,152 @@ body {
 }
 
 
+/* order-sort-body */
+
+.order-sort-body {
+    @include position(fixed, .88rem, auto, auto, auto, 999);
+    @include flex-box;
+    @include justify-content(space-around);
+    height: 0.88rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.order-sort-body .items {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    height: 100%;
+    color: rgba(94, 100, 107, 1);
+}
+
+.order-sort-body .txt {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.order-sort-body .line {
+    width: 0.48rem;
+    border-bottom: 0.04rem solid #fff;
+}
+
+.order-sort-body .items .current {
+    color: rgba(90, 165, 114, 1);
+    border-color: rgba(90, 165, 114, 1);
+}
+
+
 /* 确保底部footer在底部 */
 
 .article-body {
     min-height: calc(100% - 2.12rem);
 }
 
-.order-sort-body {
-    @include position(fixed, .88rem, auto, auto, auto, 999);
-    height: 0.88rem;
+.article-body .box {
+    @include flex-box;
+    @include flex-direction(column);
+    height: 3rem;
     width: 100%;
-    background: skyblue;
+    margin-top: 0.24rem;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.article-body .box:last-child {
+    margin-bottom: 0.12rem;
+}
+
+.article-body .box .content {
+    height: 1.88rem;
+    border-bottom: 0.04rem dashed #c4c9cd;
+}
+
+.article-body .box .content .title,
+.article-body .box .content .time,
+.article-body .box .content .total {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    padding: 0 .24rem 0 .35rem;
+}
+
+.article-body .box .content .title {
+    margin-top: .18rem;
+    font-size: .32rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.article-body .box .content .current {
+    border-left: 0.04rem solid rgba(90, 165, 114, 1);
+    padding-left: .31rem;
+}
+
+.article-body .box .content .time {
+    padding-top: .16rem;
+    font-size: .24rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.article-body .box .content .time div,
+.article-body .box .content .total div,
+.article-body .box .content .total {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.article-body .box .content .total {
+    padding-top: .16rem;
+}
+
+.article-body .box .status {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    padding: 0 .35rem;
+}
+
+.article-body .box .status .stu-but {
+    @include flex;
+    @include flex-box;
+    @include justify-content(flex-end);
+}
+
+.article-body .box .status .stu-but button {
+    width: 1.56rem;
+    height: .56rem;
+    margin-left: .32rem;
+    background-color: #fff;
+    border-radius: .28rem;
+    border: 0.01rem solid rgba(196, 201, 205, 1);
+}
+
+.article-body .box .status .title {
+    font-size: .28rem;
+}
+
+.article-body .box .status .stu-but .current1 {
+    background-color: rgba(90, 165, 114, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.article-body .box .status .stu-but .current2 {
+    color: rgba(255, 92, 92, 1);
+    border-color: rgba(255, 92, 92, 1);
+}
+
+.article-body .box .status .stu-but .current3 {
+    color: rgba(90, 165, 114, 1);
+    border-color: rgba(90, 165, 114, 1);
+}
+
+.current2 {
+    color: rgba(255, 92, 92, 1);
+}
+
+.current3 {
+    color: rgba(90, 165, 114, 1);
 }

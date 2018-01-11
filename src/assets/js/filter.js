@@ -68,11 +68,15 @@ $(function () {
   /* 阻止滚动条事件  */
   $overlay.on('touchmove.filter', function (e) {
     e.stopPropagation();
+    e.preventDefault();
+
   });
 
   /* 阻止滚动条事件  */
   $filterLayer.on('touchmove.filter', function (e) {
     e.preventDefault();
+    e.stopPropagation();
+
   });
 
 

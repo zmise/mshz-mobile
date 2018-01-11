@@ -107,8 +107,10 @@ $(function () {
   // } else {
   //   alert("不包含");
   // }
-  var nowCity = new BMap.LocalCity();
-  nowCity.get(bdGetPosition);
+  if ($('#destination-entry').val() == '') {
+    var nowCity = new BMap.LocalCity();
+    nowCity.get(bdGetPosition);
+  }
   function bdGetPosition(result) {
     var cityName = result.name;
     if (cityName.indexOf('市') != -1) {

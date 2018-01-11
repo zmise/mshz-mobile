@@ -4,6 +4,8 @@ $(function () {
   //   e.preventDefault();
   // });
   /* 进入日地的的弹出页面 */
+  const pinyin = require('tiny-pinyin')
+
   var arr = [];
 
   $('#destination-entry').on('tap', function (e) {
@@ -34,6 +36,17 @@ $(function () {
   $('.des-hot-city .items').on('tap', function (e) {
     e.preventDefault();
     $('#destination-entry').val($(this).text());
+
+    /* 中文转拼音 */
+    var cityName = $(this).text();
+
+    if (pinyin.isSupported()) {
+      var cityName = pinyin.convertToPinyin(cityName)
+    }
+    $('#destination-entry').attr('data-cityname', cityName);
+
+
+
     $(this).closest('.des-body').hide();
     $('body,html').css({ 'overflow': 'visible' });
 
@@ -44,6 +57,9 @@ $(function () {
     $(this).closest('.des-body').hide();
     $('body,html').css({ 'overflow': 'visible' });
   });
+
+  /* 按字母查询事件 */
+
   $('.des-body .des-fixed .items').on('tap', function (e) {
     e.preventDefault();
     var target = $(this).text();
@@ -63,7 +79,7 @@ $(function () {
     // console.log(b);
     // console.log($('.des-body .des-list .title').eq(0));
     // console.log($('.des-body'));
-    if (a > 0 ) {
+    if (a > 0) {
       // console.log('zmise');
       $('.des-body').animate({ scrollTop: a }, 1000);
     }
