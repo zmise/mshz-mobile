@@ -17,7 +17,8 @@
                 me.startData = me.settings.startData;
                 me.endData = me.settings.endData;
                 me.sourceData = me.settings.sourceData; // 后台数据
-
+                console.log(me.startData);
+                console.log(me.endData);
                 var html = " <div class='fixBox'><div class='headerWrapper'>" + "<a class='back' id='cale-cancel'></a>" + "<div class='headerTip'>请选择入住退房日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
                 $(me.sections).append(html);
                 $(me.sections).find('.fixBox').css({
@@ -208,7 +209,7 @@
                 /*  初始化选择的日期区间 */
                 // debugger
                 var tds = $(me.sections).find('.tbody').find('td');
-                if (me.startData && me.endData && (me.startData === '') && (me.endData === '')) {
+                if (me.startData && me.endData && (me.startData !== '') && (me.endData !== '')) {
                     tds.each(function (index, element) {
                         // if ($(this).data('year-month-day') == strDays) {
                         //     var r = index;

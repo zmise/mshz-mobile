@@ -6,7 +6,7 @@ $(function () {
   var sourceDate;
   var startDate = $('#startDate').val();
   var endDate = $('#endDate').val();
-  // console.log($('#startDate'));
+  // console.log(startDate);
   // console.log(endDate);
   /*   日历控件的生成 */
   $('#firstSelect').calendarSwitch({
