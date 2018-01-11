@@ -58,9 +58,10 @@
     @include align-items;
     padding: 0 .36rem 0 .5rem;
     font-size: $font-large;
-    color: $color-dark-grey;
+    color: rgba(42, 43, 45, 1);
     height: 0.76rem;
     box-sizing: border-box;
+    border-left: .04rem solid #fff;
 }
 
 .navigate-body .content .current {
@@ -91,7 +92,6 @@
 .navigate-body .content .items .txt {
     @include flex;
     font-size: .26rem;
-    color: rgba(42, 43, 45, 1);
 }
 
 .navigate-body .content .items .num {

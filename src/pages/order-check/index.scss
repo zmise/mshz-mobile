@@ -338,15 +338,12 @@ body {
 
 .rule-body .slide-content .box2 .split-line {
     width: 2.28rem;
-    height: .08rem;
-    background: url('img/time-point.png') repeat rgba(255, 92, 92, 1);
-    background-color: rgba(255, 92, 92, 1);
+    border-bottom: .08rem dotted red;
     margin: 0 .1rem;
 }
 
 .rule-body .slide-content .box2 .current {
-    // background-color:rgba(90, 165, 114, 1);
-    background: url('img/time-point.png') repeat rgba(90, 165, 114, 1);
+    border-color: rgba(90, 165, 114, 1);
 }
 
 .rule-body .slide-content .box3 {
@@ -422,9 +419,9 @@ body {
 /* end 对话框的样式 */
 
 
-/* footer-body */
+/*footer check-body */
 
-.footer-body {
+.check-body {
     @include position(fixed,
     auto,
     0,
@@ -433,31 +430,32 @@ body {
     500);
     @include flex-box; // @include flex-direction;
     height: 1rem;
-    background-color: #fff; // box-shadow: 0 -.1rem .1rem rgba(200, 200, 200, .2);
+    background-color: #fff;
+    box-shadow: 0 -.1rem .1rem rgba(200, 200, 200, .2);
 }
 
-.footer-body .items {
+.check-body .items {
     @include flex-box;
     @include align-items;
 }
 
-.footer-body .items:first-child {
+.check-body .items:first-child {
     @include flex;
 }
 
-.footer-body .items:first-child p:first-child {
+.check-body .items:first-child p:first-child {
     margin-left: .38rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
 }
 
-.footer-body .items:first-child p:last-child {
+.check-body .items:first-child p:last-child {
     margin-left: .33rem;
     font-size: .4rem;
     color: rgba(255, 92, 92, 1);
 }
 
-.footer-body .items:last-child {
+.check-body .items:last-child {
     @include justify-content;
     width: 3.2rem;
     background-color: rgba(90, 165, 114, 1);

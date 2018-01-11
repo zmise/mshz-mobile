@@ -29,4 +29,13 @@ $(function () {
     });
   });
 
+  /*  点击改变颜色current  */
+  $('.navigate .content').on('tap', '.items', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).addClass('current').siblings().removeClass('current');
+    $(this).find('.icon').addClass('current').end().siblings().find('.icon').removeClass('current');
+  });
+
+
 });

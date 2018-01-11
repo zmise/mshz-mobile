@@ -1,0 +1,53 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/navigate.scss'; // 侧边导航
+@import '../../sass/footer.scss'; // 全局底部
+body {
+    position: relative; // padding-top: .88rem ;
+    padding: .88rem 0 .37rem;
+    background-color: #f5f5f5;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* 确保底部footer在底部 */
+
+.article-body {
+    min-height: calc(100% - 3rem);
+}
+
+
+/* check-body */
+
+.check-body {
+    @include position(fixed, auto, 0, 0, 0, 500);
+    @include flex-box; // @include flex-direction;
+    height: 1rem;
+    background-color: #fff;
+    box-shadow: 0 -.1rem .1rem rgba(200, 200, 200, .2);
+}
+
+.check-body .items {
+    @include flex-box;
+    @include align-items;
+}
+
+.check-body .items:first-child {
+    @include flex;
+}
+
+.check-body .items:first-child p {
+    margin-left: .38rem;
+    font-size: .28rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.check-body .items:last-child {
+    @include justify-content;
+    width: 3.2rem;
+    background-color: rgba(90, 165, 114, 1);
+    color: #fff;
+    font-size: .36rem;
+}

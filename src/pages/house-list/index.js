@@ -178,103 +178,106 @@ $(function () {
     // params.page = 1;
     // params.prices = '';
     // params.roomCount = '';
-    // params.furniture = '';   
-    $('#page').val(1);
-    $('#prices').val('');
-    $('#roomCount').val('');
-    $('#furniture').val('');
+    // params.furniture = '';  
+    // $filterList.find('.checkbox-body .range .first-slider');
+    // $filterList.find('.checkbox-body .range .last-slider');
+    // $filterList.find('.checkbox-body .range .range-value').css({ 'left': 0, 'right': 0 });
+  $('#page').val(1);
+  $('#prices').val('0-*');
+  $('#roomCount').val('');
+  $('#furniture').val('');
 
-  });
+});
 
-  /* 排序层的切换确定事件 */
-  $('.filter-layer .twolist').on('tap', '.items', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    hideFilterLayer();
-    $(this).closest('body').find('.filter-body .mostjs:eq(1) .txt').text($(this).text());
-    // params.page = 1;
-    $('#page').val(1);
-    var sortBy = $(this).data('sortBy');
-    console.log(sortBy)
-    $('#sortBy').val(sortBy);
+/* 排序层的切换确定事件 */
+$('.filter-layer .twolist').on('tap', '.items', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  hideFilterLayer();
+  $(this).closest('body').find('.filter-body .mostjs:eq(1) .txt').text($(this).text());
+  // params.page = 1;
+  $('#page').val(1);
+  var sortBy = $(this).data('sortBy');
+  console.log(sortBy)
+  $('#sortBy').val(sortBy);
 
-    //ajax
-    loadingMore();
-    // freachloading($(this).text());
-  });
+  //ajax
+  loadingMore();
+  // freachloading($(this).text());
+});
 
-  /* loadinging start*/
+/* loadinging start*/
 
-  var _html = require('../../assets/svg/loading.html');
+var _html = require('../../assets/svg/loading.html');
 
-  $(document).on('scroll.loading', function (e) {
-    var _footerHeight = $('.footer-body').outerHeight(true) || 0;
-    var _heg = $(document).height() - _footerHeight;
+$(document).on('scroll.loading', function (e) {
+  var _footerHeight = $('.footer-body').outerHeight(true) || 0;
+  var _heg = $(document).height() - _footerHeight;
 
-    if ($(this).scrollTop() + $(window).height() < _heg) {
-      return;
-    }
-    if (!$('.loading').length) {
-      $('.article-body').append(_html);
-
-      //加载更多请求
-      // params.page++;
-      var page = $('#page').val() - 0 + 1;
-      $('#page').val(page);
-
-      loadingMore();
-    }
-    $('.loading').show();
-    /*setTimeout(function() {
-      $('.loading').hide();
-    }, 3000);*/
-  });
-
-  /* loadinging end*/
-
-
-  /* loadingMore start*/
-
-  function loadingMore() {
-    initParams();
-    console.log(params);
-    $.ajax({
-      // url: 'http://192.168.0.243:51313/mshz-mgr/security/oms/recommend/selectRoom',
-      url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
-      data: params,
-      // data: {
-      //   city: 'SHENZHEN'
-      // },
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (data) {
-        console.log(data);
-        if (data.status === 'C0000') {
-          if (data.result && data.result.items) {
-            var json = data.result.items;
-            var str = '';
-            for (var i = 0; i < json.length; i++) {
-              str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
-            }
-            if (params.page === '1') {
-              $('.recommend-body .mrl_35').empty().append(str);
-            } else {
-              $('.recommend-body .mrl_35').append(str);
-            }
-
-            $('.loading').remove();
-          }
-        }
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-
-      }
-    });
-
+  if ($(this).scrollTop() + $(window).height() < _heg) {
+    return;
   }
+  if (!$('.loading').length) {
+    $('.article-body').append(_html);
+
+    //加载更多请求
+    // params.page++;
+    var page = $('#page').val() - 0 + 1;
+    $('#page').val(page);
+
+    loadingMore();
+  }
+  $('.loading').show();
+  /*setTimeout(function() {
+    $('.loading').hide();
+  }, 3000);*/
+});
+
+/* loadinging end*/
+
+
+/* loadingMore start*/
+
+function loadingMore() {
+  initParams();
+  console.log(params);
+  $.ajax({
+    // url: 'http://192.168.0.243:51313/mshz-mgr/security/oms/recommend/selectRoom',
+    url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
+    data: params,
+    // data: {
+    //   city: 'SHENZHEN'
+    // },
+    dataType: 'json',
+    type: 'GET',
+    cache: false,
+    success: function (data) {
+      console.log(data);
+      if (data.status === 'C0000') {
+        if (data.result && data.result.items) {
+          var json = data.result.items;
+          var str = '';
+          for (var i = 0; i < json.length; i++) {
+            str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
+          }
+          if (params.page === '1') {
+            $('.recommend-body .mrl_35').empty().append(str);
+          } else {
+            $('.recommend-body .mrl_35').append(str);
+          }
+
+          $('.loading').remove();
+        }
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      console.log('error');
+
+    }
+  });
+
+}
 
 
   /* loadingMore end*/
