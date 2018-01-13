@@ -75,6 +75,12 @@ $(function () {
   });
 
 
+  //防止input被选中
+
+  $('.select-body').on('focus', 'input', function (e) {
+    e.preventDefault();
+  });
+
 
   //获取位置的经纬度
   // function getLocation() {
@@ -111,6 +117,7 @@ $(function () {
     var nowCity = new BMap.LocalCity();
     nowCity.get(bdGetPosition);
   }
+
   function bdGetPosition(result) {
     var cityName = result.name;
     if (cityName.indexOf('市') != -1) {
@@ -118,28 +125,27 @@ $(function () {
     }
     $('#destination-entry').val(cityName);
     if (pinyin.isSupported()) {
-      var cityName = pinyin.convertToPinyin(cityName)
+      cityName = pinyin.convertToPinyin(cityName)
     }
-    $('#destination-entry').attr('data-cityname', cityName);
-    searchInfo(cityName);
   }
 
 
 
   function searchInfo(cityName) {
+    console.log(cityName);
     var city = $('#destination-entry').val();
     $.ajax({
-      // url: 'http://172.16.72.198:51711/mshz-render/queryCityRimInfo',
-      url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
+      url: 'http://192.168.0.243:51711/mshz-render/queryCityRimInfo',
+      // url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
       data: {
-        'cityZW': '深圳' || cityName,
+        'city': cityName,
       },
       dataType: 'json',
       type: 'GET',
       cache: false,
       success: function (data) {
         console.log('success');
-        var json = data.result;
+        var json = data;
         console.log(json);
         var str = '';
         for (var i = 0; i < json.length; i++) {
@@ -161,9 +167,90 @@ $(function () {
 
   }
 
+  /*  点击搜索跳转houselist */
+  $("#search").click(function () {
+
+    if ($('#destination-entry').val() != '') {
+      var cityName = $('#destination-entry').val();
+      if (pinyin.isSupported()) {
+        cityName = pinyin.convertToPinyin(cityName)
+      }
+      $('#destination-entry').attr('data-cityname', cityName);
+    }
+    searchInfo(cityName);
+    var city = $("#destination-entry").data('cityname');
+
+    var poi = $("#search-entry").val();
+    var dates = $("#firstSelect").val();
+    var path = "/mshz-render/houseList?city=" + city
+    if (dates != "") {
+      var split = dates.split("至");
+      var str = "&startDate=" + split[0] + "&endDate=" + split[1];
+      path += str;
+    }
+    if (poi != "") {
+      path += "&poi=" + poi;
+    }
+    console.log(path);
+    window.location = path;
+  })
 
 
+  /* 选定位置返回首页的事件  */
+  $('.des-body .des-location .icon-fanhui').on('tap', function (e) {
+    e.preventDefault();
+    // console.log($(this).prev().text());
+    $('#destination-entry').val($(this).prev().text());
+    $(this).closest('.des-body').hide();
+    $('body,html').css({ 'overflow': 'visible' });
+  });
+  $('.des-hot-city .items').on('tap', function (e) {
+    e.preventDefault();
+    $('#destination-entry').val($(this).text());
 
+    /* 中文转拼音 */
+    var cityName = $(this).text();
+
+    if (pinyin.isSupported()) {
+      var cityName = pinyin.convertToPinyin(cityName)
+    }
+    $('#destination-entry').attr('data-cityname', cityName);
+
+
+    $(this).closest('.des-body').hide();
+    $('body,html').css({ 'overflow': 'visible' });
+
+  });
+  $('.des-list .txt').on('tap', function (e) {
+    e.preventDefault();
+    $('#destination-entry').val($(this).text());
+    $(this).closest('.des-body').hide();
+    $('body,html').css({ 'overflow': 'visible' });
+  });
+
+
+  /* 进入搜索页 */
+  $('#search-entry').on('tap', function (e) {
+    if ($.trim($(this).val()) == '') {
+      $('.search-layer').show();
+      $('.search-layer .search-keyword').show();
+      $('.search-layer .search-list').hide();
+      $('body,html').css({ 'overflow': 'hidden' });
+      $('.search-body .text-body .text').val($(this).val());
+    } else {
+      $('.search-layer').show();
+      $('.search-layer .search-keyword').hide();
+      $('.search-layer .search-list').show();
+      $('body,html').css({ 'overflow': 'hidden' });
+      $('.search-body .text-body .text').val($(this).val());
+    }
+
+    searchInfo($('#destination-entry').data('cityname'));
+    // $('.search-layer').show();
+    // $('body,html').css({ 'overflow': 'hidden' });
+    // $('.search-body .text-body .text').val($(this).val());
+
+  });
   // $.ajax({
   //   url: '/api/room/darkSelectRimInfo',
   //   data: {

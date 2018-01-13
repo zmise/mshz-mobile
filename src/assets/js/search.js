@@ -4,26 +4,7 @@ $(function () {
     e.preventDefault();
   });
 
-  /* 进入搜索页 */
-  $('#search-entry').on('tap', function (e) {
-    if ($.trim($(this).val()) == '') {
-      $('.search-layer').show();
-      $('.search-layer .search-keyword').show();
-      $('.search-layer .search-list').hide();
-      $('body,html').css({ 'overflow': 'hidden' });
-      $('.search-body .text-body .text').val($(this).val());
-    } else {
-      $('.search-layer').show();
-      $('.search-layer .search-keyword').hide();
-      $('.search-layer .search-list').show();
-      $('body,html').css({ 'overflow': 'hidden' });
-      $('.search-body .text-body .text').val($(this).val());
-    }
-    // $('.search-layer').show();
-    // $('body,html').css({ 'overflow': 'hidden' });
-    // $('.search-body .text-body .text').val($(this).val());
 
-  });
 
   /* 返回首页  */
   $('#search-cancel').on('tap', function (e) {

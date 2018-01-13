@@ -3,6 +3,11 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
 $(function () {
+
+  // $.ajax('/mshz-app/security/app/order/queryOrderList?orderQueryType=VALIDATED');
+  /* ajax请求模板 */
+
+
   var sourceDate;
   var startDate = $('#startDate').val();
   var endDate = $('#endDate').val();

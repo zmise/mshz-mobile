@@ -24,7 +24,7 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-mudedi"></i>
-        <input id="destination-entry" placeholder="目的地" disabled=”disabled“>
+        <input id="destination-entry" placeholder="目的地" readonly>
       </div>
       <a class="input-text-right" id="location">
         <i class="iconfont icon-fujin1"></i>
@@ -34,7 +34,7 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-riqixuanze"></i>
-        <input id="firstSelect" placeholder="入住日期-退房日期" disabled=”disabled”>
+        <input id="firstSelect" placeholder="入住日期-退房日期" readonly>
       </div>
       <a class="input-text-right">
         <i class="iconfont icon-fanhui"></i>
@@ -43,10 +43,10 @@
     <div class="input-text">
       <div class="input-text-left">
         <i class="iconfont icon-jingdian"></i>
-        <input id="search-entry" placeholder="景点/关键字/商圈" disabled=”disabled“>
+        <input id="search-entry" placeholder="景点/关键字/商圈" readonly>
       </div>
     </div>
-    <button>搜索</button>
+    <button id="search">搜索</button>
   </section>
   <section class="navigatelist-body mrl_35">
     <a class="items" href="javascript:;">
@@ -80,23 +80,25 @@
       <span class="txt">推荐房源</span>
     </a>
     <div class="index-list">
-      <img src="./img/feature-school.jpg" alt="">
-      <div class="item-oneline">
-        <p>泸沽湖畔 一居室民宿</p>
-        <p>￥328</p>
-      </div>
-      <div class="item-twoline">
-        <i class=" twoline-items iconfont icon-xiaoweizhidingdian"></i>
-        <i class="twoline-items" href="javascript:;">昆明</i>
-        <i class="twoline-items" href="javascript:;">1居30平</i>
-        <i class="twoline-items" href="javascript:;">2人</i>
-      </div>
-      <div class="item-threeline">
-        <div class="star-lines"></div>
-        <i class="score">4.7分</i>
-        <i class="twoline-items" href="javascript:;">122住过</i>
-        <i class="twoline-items" href="javascript:;">108条评价</i>
-      </div>
+      <a href="http://172.16.72.97:8080/html/house-list.html">
+        <img src="./img/feature-school.jpg" alt="">
+        <div class="item-oneline">
+          <p>泸沽湖畔 一居室民宿</p>
+          <p>￥328</p>
+        </div>
+        <div class="item-twoline">
+          <i class=" twoline-items iconfont icon-xiaoweizhidingdian"></i>
+          <i class="twoline-items" href="javascript:;">昆明</i>
+          <i class="twoline-items" href="javascript:;">1居30平</i>
+          <i class="twoline-items" href="javascript:;">2人</i>
+        </div>
+        <div class="item-threeline">
+          <div class="star-lines"></div>
+          <i class="score">4.7分</i>
+          <i class="twoline-items" href="javascript:;">122住过</i>
+          <i class="twoline-items" href="javascript:;">108条评价</i>
+        </div>
+      </a>
     </div>
     <div class="index-list">
       <img src="./img/banner-bg.jpg" alt="" />
@@ -168,9 +170,7 @@
   </footer>
   <section class="app-download">
     <div class="app-download-box">
-      <a class="close iconfont icon-icon-test1" href="javascript:;">
-
-      </a>
+      <a class="close iconfont icon-icon-test1" href="javascript:;"></a>
       <div class="logo">
         <img src="img/app-download.png" />
       </div>
@@ -184,65 +184,65 @@
   <!-- 侧边栏 -->
   <section class="overlay" id="overlay"></section>
   <nav class="navigate-body" js-plugin="slide" data-direction="vertical">
-      <div class="navigate">
-        <div class="login" href="javascript:;">
-          <img class="photo" src="" alt="">
-          <span class="txt">西瓜爱上夏天</span>
-          <div class="tel">
-            <i class="icon iconfont icon-shouji"></i>
-            <span class="Ttxt">130****3929</span>
-          </div>
-        </div>
-        <div class="content">
-          <a class="items current" href="javascript:;">
-            <i class="icon iconfont icon-gerenzhongxinshouye current"></i>
-            <span class="txt">首页</span>
-  
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-gerenzhongxinwode"></i>
-            <span class="txt">我的</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>
-            <span class="txt">订单</span>
-            <span class="num">6</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>
-            <span class="txt">收藏</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-zuji"></i>
-            <span class="txt">足迹</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-xiugaimima"></i>
-            <span class="txt">修改密码</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-xiugaimima"></i>
-            <span class="txt">设置密码</span>
-          </a>
-          <a class="items" href="javascript:;">
-            <i class="icon iconfont icon-gerenzhongxintuichu"></i>
-            <span class="txt">退出登录</span>
-          </a>
-        </div>
-  
-  
-      </div>
-      <div class="nav-footer">
-        <div class="box">
-          <i class="icon iconfont icon-xiazai"></i>
-          <span class="ftxt">下载APP</span>
-        </div>
-        <div class="box">
-          <i class="icon iconfont icon-gerenzhongxinyijianfankui"></i>
-          <span class="ftxt">意见反馈</span>
+    <div class="navigate">
+      <div class="login" href="javascript:;">
+        <img class="photo" src="" alt="">
+        <span class="txt">西瓜爱上夏天</span>
+        <div class="tel">
+          <i class="icon iconfont icon-shouji"></i>
+          <span class="Ttxt">130****3929</span>
         </div>
       </div>
-    </nav>
+      <div class="content">
+        <a class="items current" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinshouye current"></i>
+          <span class="txt">首页</span>
+
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinwode"></i>
+          <span class="txt">我的</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>
+          <span class="txt">订单</span>
+          <span class="num">6</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>
+          <span class="txt">收藏</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-zuji"></i>
+          <span class="txt">足迹</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-xiugaimima"></i>
+          <span class="txt">修改密码</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-xiugaimima"></i>
+          <span class="txt">设置密码</span>
+        </a>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxintuichu"></i>
+          <span class="txt">退出登录</span>
+        </a>
+      </div>
+
+
+    </div>
+    <div class="nav-footer">
+      <div class="box">
+        <i class="icon iconfont icon-xiazai"></i>
+        <span class="ftxt">下载APP</span>
+      </div>
+      <div class="box">
+        <i class="icon iconfont icon-gerenzhongxinyijianfankui"></i>
+        <span class="ftxt">意见反馈</span>
+      </div>
+    </div>
+  </nav>
 
   <!-- 日地的的弹出页面 -->
   <section class="des-body" style="display:none;">

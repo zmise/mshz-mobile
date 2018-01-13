@@ -3,19 +3,13 @@
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
+@import '../../sass/order-details.scss'; // 订单详情
 body {
     position: relative; // padding-top: .88rem ;
     padding: .88rem 0 .37rem;
     background-color: #f5f5f5;
     height: 100%;
     box-sizing: border-box;
-}
-
-
-/* 确保底部footer在底部 */
-
-.article-body {
-    min-height: calc(100% - 3rem);
 }
 
 
@@ -51,3 +45,185 @@ body {
     color: #fff;
     font-size: .36rem;
 }
+
+
+/* 确保底部footer在底部 */
+
+.article-body {
+    min-height: calc(100% - 3rem);
+}
+
+// .article-body .time-paid {
+//     @include flex-box;
+//     @include align-items;
+//     @include justify-content(space-between);
+//     height: .6rem;
+//     padding: 0 .35rem 0 .42rem;
+//     background: rgba(253, 250, 229, 1);
+//     color: rgba(235, 102, 0, 1);
+// }
+
+// .article-body .time-paid .txt {
+//     font-size: .26rem;
+//     line-height: 0.4rem;
+// }
+
+// .article-body .time-paid .icon {
+//     width: .3rem;
+//     height: .3rem;
+//     font-size: .3rem;
+//     color: rgba(235, 102, 0, 1);
+// }
+
+// #minute,
+// #seconds {
+//     display: inline-block;
+//     width: .3rem
+// }
+
+// .article-body .order-info {
+//     height: 3.52rem;
+//     padding: .32rem .35rem 0;
+//     margin-bottom: 0.11rem;
+//     background: rgba(255, 255, 255, 1);
+//     box-sizing: border-box;
+// }
+
+// .article-body .order-info .content {
+//     @include flex-box;
+//     @include align-items;
+//     width: 6.8rem;
+//     height: 1.67rem;
+//     background: rgba(247, 250, 248, 1);
+//     border-radius: .04rem;
+// }
+
+// .article-body .order-info .content img {
+//     width: 2.54rem;
+//     height: 1.43rem;
+//     margin-left: .12rem;
+// }
+
+// .article-body .order-info .content .i-txt {
+//     @include flex-box;
+//     @include flex-direction(column);
+//     height: 100%;
+//     margin-left: .2rem;
+// }
+
+// .article-body .order-info .content .i-txt .title {
+//     padding-top: 0.3rem;
+//     font-size: .28rem;
+//     color: rgba(94, 100, 107, 1);
+// }
+
+// .article-body .order-info .content .txt-line {
+//     @include flex-box;
+//     @include justify-content(flex-start);
+//     padding-top: 0.20rem;
+// }
+
+// .article-body .order-info .content .line-items {
+//     font-size: .24rem;
+//     padding: 0 .2rem;
+//     color: rgba(181, 185, 190, 1);
+//     line-height: 1;
+//     border-right: $border;
+// }
+
+// .article-body .order-info .content .line-items:last-child {
+//     border: none;
+// }
+
+// .article-body .order-info .content .txt-line .line-items:first-child {
+//     padding: 0;
+//     border: 0;
+// }
+
+// .article-body .order-info .time,
+// {
+//     padding: 0.2rem 0 0 .07rem;
+// }
+
+// .article-body .order-info .address {
+//     padding: 0.1rem 0 0 .07rem;
+// }
+
+// .article-body .order-info .time .icon,
+// .article-body .order-info .address .icon {
+//     width: 0.35rem;
+//     height: 0.35rem;
+//     font-size: .33rem;
+//     color: rgba(196, 201, 205, 1);
+//     margin-right: .1rem;
+// }
+
+// .article-body .order-info .time .txt,
+// .article-body .order-info .address .txt {
+//     font-size: .26rem;
+//     color: rgba(42, 43, 45, 1);
+// }
+
+// .article-body .money-info {
+//     height: 3.07rem;
+//     padding: .3rem .35rem 0 .42rem;
+//     margin-bottom: 0.11rem;
+//     background: rgba(255, 255, 255, 1);
+//     box-sizing: border-box;
+// }
+
+// .article-body .money-info .title,
+// .article-body .peo-info .title {
+//     font-size: .24rem;
+//     color: rgba(196, 201, 205, 1);
+// }
+
+// .article-body .money-info .check-list {
+//     padding-top: 0.35rem;
+//     color: rgba(94, 100, 107, 1);
+// }
+
+// .article-body .money-info .check-list .items {
+//     @include flex-box;
+//     @include justify-content(space-between);
+// }
+
+// .article-body .money-info .check-list .items span {
+//     font-size: .26rem;
+// }
+
+// .article-body .money-info .check-list .items:last-child {
+//     padding-top: 0.3rem;
+//     padding-bottom: 0.2rem;
+//     border-bottom: .01rem solid rgba(227, 230, 233, 1);
+// }
+
+// .article-body .money-info .total {
+//     @include flex-box;
+//     @include align-items;
+//     @include justify-content(flex-end);
+//     padding-top: 0.1rem;
+//     font-size: .26rem;
+//     color: rgba(42, 43, 45, 1);
+// }
+
+// .article-body .money-info .total .price {
+//     font-size: .36rem;
+//     color: rgba(90, 165, 114, 1);
+//     margin-left: .26rem;
+// }
+
+// .article-body .peo-info {
+//     height: 1.54rem;
+//     padding: .3rem .35rem 0 .42rem;
+//     background: rgba(255, 255, 255, 1);
+//     box-sizing: border-box;
+// }
+
+// .article-body .peo-info .pri-info {
+//     @include flex-box;
+//     @include justify-content(space-between);
+//     padding-top: .2rem;
+//     font-size: .26rem;
+//     color: rgba(94, 100, 107, 1);
+// }

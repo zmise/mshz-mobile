@@ -106,6 +106,7 @@ $(function () {
       showFilterLayer($(this).index() - 1);
     }
   });
+  
   /* 单选事件 */
   $filterList.on('tap', '.items', function (e) {
     e.preventDefault();
