@@ -6,9 +6,734 @@ $(function () {
 
   // $.ajax('/mshz-app/security/app/order/queryOrderList?orderQueryType=VALIDATED');
   /* ajax请求模板 */
+  var obj = {
+    "2018-01": [
+      {
+        "date": "2018-01-12",
+        "dateDay": "12",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-13",
+        "dateDay": "13",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-14",
+        "dateDay": "14",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-15",
+        "dateDay": "15",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-16",
+        "dateDay": "16",
+        "holiday": "",
+        "price": 200,
+        "status": "BOOKED",
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-17",
+        "dateDay": "17",
+        "holiday": "",
+        "price": 200,
+        "status": "BOOKED",
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-18",
+        "dateDay": "18",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-19",
+        "dateDay": "19",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-20",
+        "dateDay": "20",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-21",
+        "dateDay": "21",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-22",
+        "dateDay": "22",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-23",
+        "dateDay": "23",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-24",
+        "dateDay": "24",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-25",
+        "dateDay": "25",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-26",
+        "dateDay": "26",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-27",
+        "dateDay": "27",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-28",
+        "dateDay": "28",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-29",
+        "dateDay": "29",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-30",
+        "dateDay": "30",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-01-31",
+        "dateDay": "31",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      }
+    ],
+    "2018-02": [
+      {
+        "date": "2018-02-01",
+        "dateDay": "01",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-02",
+        "dateDay": "02",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-03",
+        "dateDay": "03",
+        "holiday": "",
+        "price": 300,
+        "status": "BOOKED",
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-04",
+        "dateDay": "04",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-05",
+        "dateDay": "05",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-06",
+        "dateDay": "06",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-07",
+        "dateDay": "07",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-08",
+        "dateDay": "08",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-09",
+        "dateDay": "09",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-10",
+        "dateDay": "10",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-11",
+        "dateDay": "11",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-12",
+        "dateDay": "12",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-13",
+        "dateDay": "13",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-14",
+        "dateDay": "14",
+        "holiday": "情人节",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-15",
+        "dateDay": "15",
+        "holiday": "除夕",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-16",
+        "dateDay": "16",
+        "holiday": "春节",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-17",
+        "dateDay": "17",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-18",
+        "dateDay": "18",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-19",
+        "dateDay": "19",
+        "holiday": "元宵",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-20",
+        "dateDay": "20",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-21",
+        "dateDay": "21",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-22",
+        "dateDay": "22",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-23",
+        "dateDay": "23",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-24",
+        "dateDay": "24",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-25",
+        "dateDay": "25",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-26",
+        "dateDay": "26",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-27",
+        "dateDay": "27",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-02-28",
+        "dateDay": "28",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      }
+    ],
+    "2018-03": [
+      {
+        "date": "2018-03-01",
+        "dateDay": "01",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-02",
+        "dateDay": "02",
+        "holiday": "元宵",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-03",
+        "dateDay": "03",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-04",
+        "dateDay": "04",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-05",
+        "dateDay": "05",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-06",
+        "dateDay": "06",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-07",
+        "dateDay": "07",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-08",
+        "dateDay": "08",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-09",
+        "dateDay": "09",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-10",
+        "dateDay": "10",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-11",
+        "dateDay": "11",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-12",
+        "dateDay": "12",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-13",
+        "dateDay": "13",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-14",
+        "dateDay": "14",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-15",
+        "dateDay": "15",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-16",
+        "dateDay": "16",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-17",
+        "dateDay": "17",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-18",
+        "dateDay": "18",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-19",
+        "dateDay": "19",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-20",
+        "dateDay": "20",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-21",
+        "dateDay": "21",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-22",
+        "dateDay": "22",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-23",
+        "dateDay": "23",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-24",
+        "dateDay": "24",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-25",
+        "dateDay": "25",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-26",
+        "dateDay": "26",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-27",
+        "dateDay": "27",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-28",
+        "dateDay": "28",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-29",
+        "dateDay": "29",
+        "holiday": "",
+        "price": 200,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-30",
+        "dateDay": "30",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      },
+      {
+        "date": "2018-03-31",
+        "dateDay": "31",
+        "holiday": "",
+        "price": 300,
+        "status": null,
+        "statusDesc": "",
+        "statusLongDesc": ""
+      }
+    ]
+  }
 
 
-  var sourceDate;
+  var sourceDate = [];
+  Object.keys(obj).forEach(function (key) {
+
+    return sourceDate = sourceDate.concat(obj[key]);
+
+  });
+
   var startDate = $('#startDate').val();
   var endDate = $('#endDate').val();
   // console.log(startDate);

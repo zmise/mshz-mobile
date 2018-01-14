@@ -17,8 +17,10 @@
                 me.startData = me.settings.startData;
                 me.endData = me.settings.endData;
                 me.sourceData = me.settings.sourceData; // 后台数据
-                console.log(me.startData);
-                console.log(me.endData);
+                me.comeoutColor = me.settings.comeoutColor;
+
+
+                // console.log(me.sourceData);
                 var html = " <div class='fixBox'><div class='headerWrapper'>" + "<a class='back' id='cale-cancel'></a>" + "<div class='headerTip'>请选择入住退房日期</div><div class='comfire'>确定</div></div><table class='dateZone'><tr><td class='colo'>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td class='colo'>六</td></tr></table></div>" + "<div class='tbody'></div>";
                 $(me.sections).append(html);
                 $(me.sections).find('.fixBox').css({
@@ -90,7 +92,8 @@
                         // console.log(me.settings.sourceData);
 
                         //判断后台有没有数据
-                        if (me.sourceData && me.sourceData === '') {
+                        if (me.sourceData && me.sourceData !== '') {
+                            // console.log(13)
                             for (var j = 0; j < 7; j++) {
                                 $(this).append('<td><span></span><span></span></td>')
                             }
@@ -102,25 +105,32 @@
                         }
 
                     });
-                    if (me.settings.sourceData) {
+                    if (me.sourceData && me.sourceData !== '') {
                         var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:even');
-                        // var firstDay = setcurrentDate.getDay();
-                        // var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:odd');
-                        // for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
-                        //     arryTd.eq(firstDay++).text('￥200');
-                        //     // arryTd.eq(firstDay++).text(m + 1);
-                        // }
+                        // var arryOdd = $(me.sections).find('.dateTable').eq(select).find('span:odd');
+
                     } else {
                         var arryTd = $(me.sections).find('.dateTable').eq(select).find('span');
                     }
 
                     for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
+                        // arryTd.eq(firstDay).addClass('odd');
+                        // arryOdd.eq(firstDay).addClass('even');
                         if (m < 9) {
                             arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1).attr('data-year-month-day', currentYear + '-' + yf + '-0' + (m - 0 + 1));
                         } else {
                             arryTd.eq(firstDay++).text(m + 1).attr('data-day', m + 1).attr('data-year-month-day', currentYear + '-' + yf + '-' + (m - 0 + 1));
                         }
 
+
+
+
+                        // var firstDay = setcurrentDate.getDay();
+                        // var arryTd = $(me.sections).find('.dateTable').eq(select).find('span:odd');
+                        // for (var m = 0; m < DaysInMonth[currentMonth]; m++) {
+                        //     arryTd.eq(firstDay++).text('￥200');
+                        //     // arryTd.eq(firstDay++).text(m + 1);
+                        // }
                         // arryTd.eq(firstDay++).text(m + 1);
                     }
 
@@ -203,6 +213,8 @@
                 // $(me.sections).find('.ny1').eq(select).text();
                 // var strMonth = new Date().getMonth();
                 // console.log(strMonth);
+                me.sourceData = me.settings.sourceData; // 后台数据
+
                 var strDays = new Date().getDate();
                 var arry = [];
                 var arry1 = [];
@@ -232,10 +244,13 @@
                         var datayyr = $(this).find('span:first').data('year-month-day');
 
                         if (datayyr === me.startData) {
-                            $(this).find('span:first').text('入住').addClass('rz');
+                            $(this).find('span:first').text('入住').addClass('rz').attr('flay', '1');
+                            $(this).find('span').addClass('color');
+
                         }
                         if (datayyr === me.endData) {
-                            $(this).find('span:first').text('退房').addClass('rz');
+                            $(this).find('span:first').text('退房').addClass('rz tf');
+                            $(this).find('span').addClass('color');
                         }
 
                     });
@@ -266,9 +281,66 @@
                 // } else {
 
                 // }
+
+
                 for (var i = strDays - 1; i < $(arry).length; i++) {
                     arry1.push(arry[i])
                 }
+
+
+                /*  开始到结束的的dom对象 */
+                var $arryodd = $(arry1).find('span:odd');
+                var $arryeven = $(arry1).find('span:even');
+                // console.log($arryodd)
+                $arryeven.eq(0).text('今天');
+                $arryeven.eq(0).attr('data-day', '今天');
+                $arryeven.addClass('even');  //入住 等 文字
+                $arryodd.addClass('odd'); //价格 200
+                // console.log(me.sourceData)
+                if (me.sourceData && me.sourceData !== '') {
+                    // console.log($arryodd.length);
+
+                    for (var i = 0; i < $arryodd.length; i++) {
+                        if (me.sourceData[i].status) {
+                            $arryodd.eq(i).attr('data-status', me.sourceData[i].status);
+                        }
+                        if (me.sourceData[i].status == 'BOOKED') {
+
+                            $arryodd.eq(i).text('无房');
+                            $arryeven.eq(i).removeClass('even');
+                        } else {
+                            $arryodd.eq(i).text('￥' + me.sourceData[i].price);
+
+                        }
+                    }
+                }
+
+
+                /*  开始到结束的的dom对象 */
+
+                /*  初始化渲染选中日期 */
+
+                // var $arryodd = $(arry1).find('span:odd');
+                // var $arryeven = $(arry1).find('span:even');
+
+                // var $listItem = ;
+                // var first = $arryodd.index($listItem);
+                var first = $arryeven.index($('.rz'));
+                var second = $arryeven.index($('.tf'));
+                // var second = $(arry1).index($(arry1).find('span:first').text('退房'));
+                // console.log(first);
+                // console.log(first);
+                // console.log(second);
+                first = first + 1;
+                for (first; first < second; first++) {
+                    $(arry1[first]).find('span').addClass('color');
+
+                    $(arry1[first]).css({
+                        'background': me.comeoutColor,
+                        'color': '#fff'
+                    });
+                }
+
                 me._selectDate(arry1)
 
             },
@@ -307,36 +379,103 @@
                 me.sections = me.selectors.sections;
                 me.startData = me.settings.startData;
                 me.endData = me.settings.endData;
+                me.sourceData = me.settings.sourceData; // 后台数据
 
                 var flag = 0;
                 var first;
                 var sum;
                 var second;
                 $(arry1).on('click', function (index) {
+                    var $arryodd = $(arry1).find('span:odd');
+                    var $arryeven = $(arry1).find('span:even');
+
+
+                    //判断中间有没有无房的 有的话 不给它选给他直接显示入住 
+                    if ((flag == 1) && me.sourceData && me.sourceData !== '') {
+
+                        second = $(arry1).index($(this));
+                        if (first < second) {
+                            for (first; first < second; first++) {
+                                if ($(arry1[first]).find('.odd').data('status') == 'BOOKED') {
+                                    flag = 0;
+                                    break
+                                }
+                            }
+                        } else {
+                            for (second; second < first; second++) {
+                                if ($(arry1[second]).find('.odd').data('status') == 'BOOKED') {
+                                    flag = 0;
+                                    break
+                                }
+                            }
+                        }
+
+
+                        // var a = $arryeven.index($('.rz'));
+
+                        // var b = $(arry1).index($(this));
+                        // console.log(a, b)
+
+                        // for (j; j < arry1.length; j++) {
+
+                        // }
+                    }
+
                     //第一次点击
                     if (flag == 0) {
                         var arr = $(me.sections).find('.tbody').find('.rz');
                         for (var m = 0; m < arr.length; m++) {
                             arr.eq(m).text(arr.eq(m).data('day'));
                         }
+                        // $(me.sections).find('.tbody').find('span').removeClass('rz').removeClass('Val-price');
+
+                        //移除点击无房的高亮
+                        for (var n = 0; n < arry1.length; n++) {
+                            if ($(arry1[n]).find('.odd').data('status') == 'BOOKED') {
+                                $(arry1[n]).find('span:first').removeClass('even');
+                            }
+                        }
+
+
                         $(me.sections).find('.tbody').find('span').removeClass('rz');
+                        $(me.sections).find('.tbody').find('span').removeClass('color');
 
                         $(arry1).css({
                             'background': '#fff',
                             'color': '#000'
                         });
+                        // if($(this).data('now')=='1'){
+
+                        // }
+                        // var flag1 = $arryeven.index($('.rz'));
                         $(this).find('span:first').text('入住').addClass('rz');
+                        $(this).find('span').addClass('color');
+
+
+                        //点击查找第一个无房使它 高亮
+                        if (me.sourceData && me.sourceData !== '') {
+                            var i = $(arry1).index($(this)) + 1;
+
+                            for (i; i < arry1.length; i++) {
+                                if ($(arry1[i]).find('.odd').data('status') == 'BOOKED') {
+                                    $(arry1[i]).find('span:first').addClass('even');
+                                    break
+                                }
+                            }
+                        }
+
+
+
                         first = $(arry1).index($(this));
                         me._checkColor(me.comeColor, me.outColor)
                         flag = 1;
                         var start = $(this).find('span:first').data('year-month-day');
                         start = start.split('-');
                         start = start[1] + '.' + start[2];
-                        // end = end.split('-');
-                        // end = end[1] + '.' + end[2];
                         $('.calendar .headerTip').text(start + '-');
 
-                    } else if (flag == 1) { //第二次点击
+                    } else if (flag == 1) {
+                        //第二次点击
                         second = $(arry1).index($(this))
                         sum = Math.abs(second - first);
                         if (sum == 0) {
@@ -344,11 +483,15 @@
                         }
 
                         if (first < second) {
-                            // $(this).append('<p class="rz">退房</p>')
-                            $(this).find('span:first').text('退房').addClass('rz');
-
                             first = first + 1;
+
+
+                            $(this).find('span:first').text('退房').addClass('rz');
+                            $(this).find('span').addClass('color');
+
                             for (first; first < second; first++) {
+                                $(arry1[first]).find('span').addClass('color');
+
                                 $(arry1[first]).css({
                                     'background': me.comeoutColor,
                                     'color': '#fff'
@@ -361,8 +504,12 @@
                             $(me.sections).find('.rz').text('退房');
                             // $(this).append('<p class="rz">入住</p>')
                             $(this).find('span:first').text('入住').addClass('rz');
+                            $(this).find('span').addClass('color');
+
                             second = second + 1;
                             for (second; second < first; second++) {
+                                $(arry1[second]).find('span').addClass('color');
+
                                 $(arry1[second]).css({
                                     'background': me.comeoutColor,
                                     'color': '#fff'
