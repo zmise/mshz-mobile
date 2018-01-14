@@ -50,8 +50,10 @@ $(function () {
     outColor: "#44bb80",      //离店颜色
     comeoutColor: "#44bb80",        //入住和离店之间的颜色
     callback: function (start, end) {
-      $('#firstSelect').data("startdata", start);
-      $('#firstSelect').data("enddata", end);
+      $('#firstSelect').attr("data-startdata", start);
+      $('#firstSelect').attr("data-enddata", end);
+      $('#startDate').val(start);
+      $('#endtDate').val(end);
       // console.log($('#firstSelect').data())
       start = start.split('-');
       start = start[1] + '.' + start[2];

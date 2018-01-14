@@ -3,766 +3,116 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
 $(function () {
+  //获取url中的参数
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
 
-  // $.ajax('/mshz-app/security/app/order/queryOrderList?orderQueryType=VALIDATED');
-  /* ajax请求模板 */
-  var obj = {
-    "2018-01": [
-      {
-        "date": "2018-01-12",
-        "dateDay": "12",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-13",
-        "dateDay": "13",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-14",
-        "dateDay": "14",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-15",
-        "dateDay": "15",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-16",
-        "dateDay": "16",
-        "holiday": "",
-        "price": 200,
-        "status": "BOOKED",
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-17",
-        "dateDay": "17",
-        "holiday": "",
-        "price": 200,
-        "status": "BOOKED",
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-18",
-        "dateDay": "18",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-19",
-        "dateDay": "19",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-20",
-        "dateDay": "20",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-21",
-        "dateDay": "21",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-22",
-        "dateDay": "22",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-23",
-        "dateDay": "23",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-24",
-        "dateDay": "24",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-25",
-        "dateDay": "25",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-26",
-        "dateDay": "26",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-27",
-        "dateDay": "27",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-28",
-        "dateDay": "28",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-29",
-        "dateDay": "29",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-30",
-        "dateDay": "30",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-01-31",
-        "dateDay": "31",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      }
-    ],
-    "2018-02": [
-      {
-        "date": "2018-02-01",
-        "dateDay": "01",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-02",
-        "dateDay": "02",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-03",
-        "dateDay": "03",
-        "holiday": "",
-        "price": 300,
-        "status": "BOOKED",
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-04",
-        "dateDay": "04",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-05",
-        "dateDay": "05",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-06",
-        "dateDay": "06",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-07",
-        "dateDay": "07",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-08",
-        "dateDay": "08",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-09",
-        "dateDay": "09",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-10",
-        "dateDay": "10",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-11",
-        "dateDay": "11",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-12",
-        "dateDay": "12",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-13",
-        "dateDay": "13",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-14",
-        "dateDay": "14",
-        "holiday": "情人节",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-15",
-        "dateDay": "15",
-        "holiday": "除夕",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-16",
-        "dateDay": "16",
-        "holiday": "春节",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-17",
-        "dateDay": "17",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-18",
-        "dateDay": "18",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-19",
-        "dateDay": "19",
-        "holiday": "元宵",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-20",
-        "dateDay": "20",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-21",
-        "dateDay": "21",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-22",
-        "dateDay": "22",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-23",
-        "dateDay": "23",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-24",
-        "dateDay": "24",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-25",
-        "dateDay": "25",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-26",
-        "dateDay": "26",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-27",
-        "dateDay": "27",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-02-28",
-        "dateDay": "28",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      }
-    ],
-    "2018-03": [
-      {
-        "date": "2018-03-01",
-        "dateDay": "01",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-02",
-        "dateDay": "02",
-        "holiday": "元宵",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-03",
-        "dateDay": "03",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-04",
-        "dateDay": "04",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-05",
-        "dateDay": "05",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-06",
-        "dateDay": "06",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-07",
-        "dateDay": "07",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-08",
-        "dateDay": "08",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-09",
-        "dateDay": "09",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-10",
-        "dateDay": "10",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-11",
-        "dateDay": "11",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-12",
-        "dateDay": "12",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-13",
-        "dateDay": "13",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-14",
-        "dateDay": "14",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-15",
-        "dateDay": "15",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-16",
-        "dateDay": "16",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-17",
-        "dateDay": "17",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-18",
-        "dateDay": "18",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-19",
-        "dateDay": "19",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-20",
-        "dateDay": "20",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-21",
-        "dateDay": "21",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-22",
-        "dateDay": "22",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-23",
-        "dateDay": "23",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-24",
-        "dateDay": "24",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-25",
-        "dateDay": "25",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-26",
-        "dateDay": "26",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-27",
-        "dateDay": "27",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-28",
-        "dateDay": "28",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-29",
-        "dateDay": "29",
-        "holiday": "",
-        "price": 200,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-30",
-        "dateDay": "30",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      },
-      {
-        "date": "2018-03-31",
-        "dateDay": "31",
-        "holiday": "",
-        "price": 300,
-        "status": null,
-        "statusDesc": "",
-        "statusLongDesc": ""
-      }
-    ]
+  // url上面的参数
+  var params = {
+    'roomId': getUrlParam('roomId') || '1ce93b4a-302d-4ed8-85e6-45143d07ffb7',
+    'startDate': getUrlParam('startDate') || '2018-01-15',
+    'endDate': getUrlParam('endDate') || '2018-04-01',
   }
 
 
-  var sourceDate = [];
-  Object.keys(obj).forEach(function (key) {
 
-    return sourceDate = sourceDate.concat(obj[key]);
 
-  });
+  // 价格日历get请求接口
+  calePriceInfo(params);
+  // 价格日历请求
+  function calePriceInfo(params) {
+    console.log(params)
+    var city = $('#destination-entry').val();
+    $.ajax({
+      url: '/mshz-app/room/calendarEveryDay',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (data) {
+        // console.log('success');
+        var json = data;
+        var obj = data.result.map;
+        var sourceDate = [];
+        Object.keys(obj).forEach(function (key) {
 
-  var startDate = $('#startDate').val();
-  var endDate = $('#endDate').val();
-  // console.log(startDate);
-  // console.log(endDate);
-  /*   日历控件的生成 */
-  $('#firstSelect').calendarSwitch({
-    selectors: {
-      sections: ".calendar"
-    },
-    index: 3,      //展示的月份个数
-    animateFunction: "slideToggle",        //动画效果
-    controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
-    // daysnumber: "90",     //控制天数
-    comeColor: "#44bb80",       //入住颜色
-    outColor: "#44bb80",      //离店颜色
-    comeoutColor: "#44bb80",        //入住和离店之间的颜色
-    callback: function (start, end) {
-      // $('#firstSelect').data("startdata", start);
-      // $('#firstSelect').data("enddata", end);
-      // console.log($('#firstSelect').data())
-      $('#startDate').val(start);
-      $('#endDate').val(end);
-      // loadingMore();
-    },   //回调函数
-    comfireBtn: '.comfire',//确定按钮的class或者id
-    startData: startDate,
-    endData: endDate,
-    sourceData: sourceDate,
-  });
+          return sourceDate = sourceDate.concat(obj[key]);
+
+        });
+
+        var startDate = $('#startDate').val() || params.startDate;
+        var endDate = $('#endDate').val() || params.endDate;
+        // 初始化价格日历
+        $('#firstSelect').calendarSwitch({
+          selectors: {
+            sections: ".calendar"
+          },
+          index: 3,      //展示的月份个数
+          animateFunction: "slideToggle",        //动画效果
+          controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
+          // daysnumber: "90",     //控制天数
+          comeColor: "#44bb80",       //入住颜色
+          outColor: "#44bb80",      //离店颜色
+          comeoutColor: "#44bb80",        //入住和离店之间的颜色
+          callback: function (start, end) {
+            $('#startDate').val(start);
+            $('#endDate').val(end);
+          },   //回调函数
+          comfireBtn: '.comfire',//确定按钮的class或者id
+          startData: startDate,
+          endData: endDate,
+          sourceData: sourceDate,
+        });
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+  // 价格日历get请求接口
+
+
+
+  // 订单预览get接口
+  orderPreviewInfo(params);
+  function orderPreviewInfo(params) {
+    var city = $('#destination-entry').val();
+    $.ajax({
+      url: '/mshz-app/security/app/order/queryOrderPreview',
+      data: params,
+
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        var json = data.result;
+        console.log(json);
+        var str = '<div class="item-oneline"><p>' + json.roomTitle + '</p><p>￥' + json.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + json.roomCount + '居' + json.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + json.custCount + '人</i></div>';
+
+        $('.yajin').text(json.roomDeposit);
+        $('.house-price').text(json.totalPrice);
+        $('.tol-pri').text(json.totalPrice + json.roomDeposit);
+        $('.address-body').empty().append(str);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+
+  // 订单预览get接口
+
+
+
 
   /*   页面的生成时一些盒子的隐藏判断 */
   var $liveNum = $('.userInfo-body .input-layout .liveNum');
@@ -826,6 +176,58 @@ $(function () {
     }
   });
 
+
+  // 提交订单事件
+
+  $('.check-body').on('tap', '#addOrder', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+
+    var paramsList = {
+      "custFormList": [
+        {
+          "custIdCard": $('#IDcard').val() || "411421199002087746",
+          "custName": $('#name').val() || "测试1",
+          "custPhone": $('#tel').val() || "18823370299"
+        }
+      ],
+      "custCount": ($('#peo-num').val() - 0) || 1,
+      "orderChannel": "MSHZ_APP",
+      "remark": "test by hao",
+      "roomId": params.roomId || "1ce93b4a-302d-4ed8-85e6-45143d07ffb7",
+      "startTime": params.startDate || "2018-02-15",
+      "endTime": params.endDate || "2018-02-16"
+    }
+    addOrder(paramsList);
+
+  });
+  // 新增订单post接口
+
+  function addOrder(params) {
+    var city = $('#destination-entry').val();
+    $.ajax({
+      url: '/mshz-app/security/app/order/addOrder',
+      data: params,
+      dataType: 'json',
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        var json = data;
+        console.log(json);
+        var path = "/html/order-payment.html?orderNo=" + josn.orderNo;
+        window.location = path;
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+  // 新增订单post接口
 
 
 });

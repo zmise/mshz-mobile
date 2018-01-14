@@ -148,16 +148,17 @@
                     $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
                     var st = me.startData;
                     var en = me.endData;
-                    console.log(st)
-                    console.log(en)
-                    var end = en;
-                    end = end.split('-');
-                    end = end[1] + '.' + end[2];
-                    $('.calendar .headerTip').text($('.calendar .headerTip').text().split('-')[0] + '-' + end);
+                    // console.log(st)
+                    // console.log(en)
+
                     // debugger
                     if (st) {
                         me._slider(me.sections)
                         me._callback(st, en);
+                        var end = en;
+                        end = end.split('-');
+                        end = end[1] + '.' + end[2];
+                        $('.calendar .headerTip').text($('.calendar .headerTip').text().split('-')[0] + '-' + end);
 
                     } else {
                         var b = new Date();

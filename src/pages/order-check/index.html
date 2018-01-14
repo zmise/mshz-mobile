@@ -54,21 +54,21 @@
         <!-- <input class="text-style-2" type="text" value="1" dir='rtl'> -->
         <div class="liveNum">
           <i class="reduce iconfont icon-jian"></i>
-          <span class="peo-num">1</span>
+          <span class="peo-num" id="peo-num">1</span>
           <i class="add iconfont icon-icon-test"></i>
         </div>
       </div>
       <div class="input-layout">
         <span class="text-style-1">姓名</span>
-        <input class="text-style-2 name" type="text" value="王小明" dir='rtl'>
+        <input class="text-style-2 name" type="text" value="王小明" dir='rtl' id="name">
       </div>
       <div class="input-layout">
         <span class="text-style-1">身份证号</span>
-        <input class="text-style-3 IDcard" type="number" maxlength="18" placeholder="请填写入住人身份证信息" dir='rtl'>
+        <input class="text-style-3 IDcard" type="number" maxlength="18" placeholder="请填写入住人身份证信息" dir='rtl' id="IDcard">
       </div>
       <div class="input-layout">
         <span class="text-style-1">手机号</span>
-        <input class="text-style-3 tel" type="number" placeholder="请填写入住人手机号" dir='rtl'>
+        <input class="text-style-3 tel" type="number" placeholder="请填写入住人手机号" dir='rtl' id="tel">
       </div>
     </div>
     <div class="item">费用信息</div>
@@ -137,9 +137,9 @@
   <footer class="check-body">
     <div class="items">
       <p>需支付</p>
-      <p>￥3600</p>
+      <p class="tol-pri">￥3600</p>
     </div>
-    <a class="items" href="javascript:;">提交订单</a>
+    <a class="items" href="javascript:;" id="addOrder">提交订单</a>
   </footer>
 
   <!-- 日历插件 -->

@@ -45,4 +45,50 @@ $(function () {
       clearInterval(interval);
     }
   }, 1000);
+
+  // $.ajax('/mshz-app/security/app/order/queryOrderList?orderQueryType=VALIDATED');
+
+  //获取url中的参数
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+
+  // url上面的参数
+  var params = {
+    'orderNo': getUrlParam('orderNo') || 'SZ010915491070',
+  }
+
+
+  // 订单详情get接口
+  orderPreviewInfo(params);
+
+  function orderPreviewInfo(params) {
+    var city = $('#destination-entry').val();
+    $.ajax({
+      url: '/mshz-app/security/app/order/queryOrderDetail',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        var json = data.result;
+        console.log(json);
+        var str = '<div class="txt"><span>订单号：<span>' + json.a + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.a + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.a + '-' + json.a + ' 共' + json.a + '晚</span></div><span>押金：￥<span>' + json.a + '</span></span></div>';
+        $('tol-pri').text(json.a + json.a);
+
+        $('.content-body .content').empty().append(str);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+  // 订单详情get接口
+
 });
