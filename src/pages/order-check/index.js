@@ -2,6 +2,8 @@ require('./index.scss');
 
 require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
+
+// $.toast('Here you can put the text of the toast')
 $(function () {
   //获取url中的参数
   function getUrlParam(name) {
@@ -13,18 +15,22 @@ $(function () {
   // url上面的参数
   var params = {
     'roomId': getUrlParam('roomId') || '1ce93b4a-302d-4ed8-85e6-45143d07ffb7',
-    'startDate': getUrlParam('startDate') || '2018-01-15',
-    'endDate': getUrlParam('endDate') || '2018-04-01',
+    'startDate': getUrlParam('startDate') || '2018-01-14',
+    'endDate': getUrlParam('endDate') || '2018-01-15',
   }
 
 
 
 
   // 价格日历get请求接口
+
+
   calePriceInfo(params);
   // 价格日历请求
+
   function calePriceInfo(params) {
-    console.log(params)
+    params.endDate = '2018-04-01';
+    // console.log(params)
     var city = $('#destination-entry').val();
     $.ajax({
       url: '/mshz-app/room/calendarEveryDay',
@@ -34,38 +40,65 @@ $(function () {
       cache: false,
       success: function (data) {
         // console.log('success');
-        var json = data;
-        var obj = data.result.map;
-        var sourceDate = [];
-        Object.keys(obj).forEach(function (key) {
+        console.log(data);
+        if (data && data.result && data.result.map && data.result.map !== '') {
+          var obj = data.result.map;
 
-          return sourceDate = sourceDate.concat(obj[key]);
+          var sourceDate = [];
+          Object.keys(obj).forEach(function (key) {
 
-        });
+            return sourceDate = sourceDate.concat(obj[key]);
 
-        var startDate = $('#startDate').val() || params.startDate;
-        var endDate = $('#endDate').val() || params.endDate;
-        // 初始化价格日历
-        $('#firstSelect').calendarSwitch({
-          selectors: {
-            sections: ".calendar"
-          },
-          index: 3,      //展示的月份个数
-          animateFunction: "slideToggle",        //动画效果
-          controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
-          // daysnumber: "90",     //控制天数
-          comeColor: "#44bb80",       //入住颜色
-          outColor: "#44bb80",      //离店颜色
-          comeoutColor: "#44bb80",        //入住和离店之间的颜色
-          callback: function (start, end) {
-            $('#startDate').val(start);
-            $('#endDate').val(end);
-          },   //回调函数
-          comfireBtn: '.comfire',//确定按钮的class或者id
-          startData: startDate,
-          endData: endDate,
-          sourceData: sourceDate,
-        });
+          });
+
+          var startDate = $('#startDate').val() || params.startDate;
+          var endDate = $('#endDate').val() || params.endDate;
+          // 初始化价格日历
+          $('#firstSelect').calendarSwitch({
+            selectors: {
+              sections: ".calendar"
+            },
+            index: 3,      //展示的月份个数
+            animateFunction: "slideToggle",        //动画效果
+            controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
+            // daysnumber: "90",     //控制天数
+            comeColor: "#44bb80",       //入住颜色
+            outColor: "#44bb80",      //离店颜色
+            comeoutColor: "#44bb80",        //入住和离店之间的颜色
+            callback: function (start, end) {
+              $('#startDate').val(start);
+              $('#endDate').val(end);
+            },   //回调函数
+            comfireBtn: '.comfire',//确定按钮的class或者id
+            startData: startDate,
+            endData: endDate,
+            sourceData: sourceDate,
+          });
+        } else {
+          var startDate = $('#startDate').val() || params.startDate;
+          var endDate = $('#endDate').val() || params.endDate;
+          // 初始化价格日历
+          $('#firstSelect').calendarSwitch({
+            selectors: {
+              sections: ".calendar"
+            },
+            index: 3,      //展示的月份个数
+            animateFunction: "slideToggle",        //动画效果
+            controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
+            // daysnumber: "90",     //控制天数
+            comeColor: "#44bb80",       //入住颜色
+            outColor: "#44bb80",      //离店颜色
+            comeoutColor: "#44bb80",        //入住和离店之间的颜色
+            callback: function (start, end) {
+              $('#startDate').val(start);
+              $('#endDate').val(end);
+            },   //回调函数
+            comfireBtn: '.comfire',//确定按钮的class或者id
+            startData: startDate,
+            endData: endDate,
+          });
+        }
+
       },
       error: function (error) {
         console.log(error);
@@ -77,28 +110,40 @@ $(function () {
   // 价格日历get请求接口
 
 
-
+  var ordPreParams = {
+    'roomId': params.roomId,
+    'startTime': params.startDate,
+    'endTime': params.endDate,
+  }
   // 订单预览get接口
-  orderPreviewInfo(params);
+  orderPreviewInfo(ordPreParams);
   function orderPreviewInfo(params) {
-    var city = $('#destination-entry').val();
+
+    // console.log(params);
+
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderPreview',
       data: params,
-
       dataType: 'json',
       type: 'GET',
       cache: false,
       success: function (data) {
-        console.log('success');
-        var json = data.result;
-        console.log(json);
-        var str = '<div class="item-oneline"><p>' + json.roomTitle + '</p><p>￥' + json.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + json.roomCount + '居' + json.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + json.custCount + '人</i></div>';
+        // console.log('success');
+        console.log(data);
 
-        $('.yajin').text(json.roomDeposit);
-        $('.house-price').text(json.totalPrice);
-        $('.tol-pri').text(json.totalPrice + json.roomDeposit);
-        $('.address-body').empty().append(str);
+
+        if (data && data.result && data.result !== '') {
+          var json = data.result;
+          console.log(json);
+          var str = '<div class="item-oneline"><p>' + json.roomTitle + '</p><p>￥' + json.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + json.roomCount + '居' + json.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + json.custCount + '人</i></div>';
+
+          $('.yajin').text(json.roomDeposit);
+          $('.house-price').text(json.roomRate);
+          $('.tol-pri').text(json.roomRate + json.roomDeposit);
+          $('.address-body').empty().append(str);
+        }
+
+
       },
       error: function (error) {
         console.log(error);
@@ -126,21 +171,18 @@ $(function () {
   // $inputLayout.find('.name')
   // $inputLayout.find('.IDcard')
   // $inputLayout.find('.tel')
-  // $inputLayout.on('keydown', '.name', function (e) {
-  //   e.preventDefault();
-  //   $(this).val($(this).val().replace(/[^\u4E00-\u9FA5]/g, ''));
-  // });
-  // $inputLayout.on('keydown', '.IDcard', function (e) {
-  //   e.preventDefault();
+  $inputLayout.on('keydown', '#name', function (e) {
+    $(this).val($(this).val().replace(/[^\u4E00-\u9FA5]/g, ''));
+  });
+  $inputLayout.on('keydown', '#IDcard', function (e) {
 
-  //   $(this).val($(this).val().replace(/\D+/g, ''));
+    $(this).val($(this).val().replace(/\D+/g, ''));
 
-  // });
-  // $inputLayout.on('keydown', '.tel', function (e) {
-  //   e.preventDefault();
-  //   $(this).val($(this).val().replace(/\D+/g, ''));
+  });
+  $inputLayout.on('keydown', '#tel', function (e) {
+    $(this).val($(this).val().replace(/\D+/g, ''));
 
-  // });
+  });
 
 
   /*   显示日历的控件的点击事件 */
@@ -163,10 +205,10 @@ $(function () {
   /*   显示日历的控件的点击事件 */
 
   $('.userInfo-body').on('tap', '.add', function (e) {
-    console.log(123);
-    console.log($liveNum);
+    // console.log(123);
+    // console.log($liveNum);
 
-    console.log($liveNum.find('.peo-num').text());
+    // console.log($liveNum.find('.peo-num').text());
 
     if ($liveNum.find('.peo-num').text() === '1') {
       $liveNum.find('.reduce').show();
@@ -185,39 +227,50 @@ $(function () {
 
 
     var paramsList = {
-      "custFormList": [
+      custFormList: [
         {
-          "custIdCard": $('#IDcard').val() || "411421199002087746",
-          "custName": $('#name').val() || "测试1",
-          "custPhone": $('#tel').val() || "18823370299"
+          custIdCard: $('#IDcard').val() || '411421199002087746',
+          custName: $('#name').val() || '测试1',
+          custPhone: $('#tel').val() || '18823370299'
         }
       ],
-      "custCount": ($('#peo-num').val() - 0) || 1,
-      "orderChannel": "MSHZ_APP",
-      "remark": "test by hao",
-      "roomId": params.roomId || "1ce93b4a-302d-4ed8-85e6-45143d07ffb7",
-      "startTime": params.startDate || "2018-02-15",
-      "endTime": params.endDate || "2018-02-16"
+      custCount: +$('#peo-num').val() || 1,
+      orderChannel: 'MSHZ_APP',
+      remark: 'test by hao',
+      roomId: params.roomId || '1ce93b4a-302d-4ed8-85e6-45143d07ffb7',
+      startTime: $('#startDate').val() || '2018-02-16',
+      endTime: $('#endDate').val() || '2018-02-19'
     }
-    addOrder(paramsList);
+
+    // 验证手机格式  
+    var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则  
+    if (telReg.test($('#tel').val())) {
+      addOrder(paramsList);
+    } else {
+      console.log(13)
+    }
+
 
   });
   // 新增订单post接口
 
   function addOrder(params) {
-    var city = $('#destination-entry').val();
+    // console.log(params)
     $.ajax({
       url: '/mshz-app/security/app/order/addOrder',
-      data: params,
+      data: JSON.stringify(params),  //todo
       dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',  //todo
       type: 'POST',
       cache: false,
       success: function (data) {
         console.log('success');
-        var json = data;
-        console.log(json);
-        var path = "/html/order-payment.html?orderNo=" + josn.orderNo;
-        window.location = path;
+        console.log(data);
+        if (data && data.orderNo && data.orderNo !== '') {
+          var path = "/html/order-payment.html?orderNo=" + data.orderNo;
+          window.location = path;
+        }
+
       },
       error: function (error) {
         console.log(error);

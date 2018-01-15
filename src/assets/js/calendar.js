@@ -387,24 +387,28 @@
                 var sum;
                 var second;
                 $(arry1).on('click', function (index) {
+                    if ($(this).find('.even').length == 0) {
+                        return;
+                    }
                     var $arryodd = $(arry1).find('span:odd');
                     var $arryeven = $(arry1).find('span:even');
 
 
                     //判断中间有没有无房的 有的话 不给它选给他直接显示入住 
                     if ((flag == 1) && me.sourceData && me.sourceData !== '') {
-
-                        second = $(arry1).index($(this));
-                        if (first < second) {
-                            for (first; first < second; first++) {
-                                if ($(arry1[first]).find('.odd').data('status') == 'BOOKED') {
+                        console.log(flag);
+                        var four = first;
+                        var three = $(arry1).index($(this));
+                        if (first < three) {
+                            for (four; four < three; four++) {
+                                if ($(arry1[four]).find('.odd').data('status') == 'BOOKED') {
                                     flag = 0;
                                     break
                                 }
                             }
                         } else {
-                            for (second; second < first; second++) {
-                                if ($(arry1[second]).find('.odd').data('status') == 'BOOKED') {
+                            for (three; three < four; three++) {
+                                if ($(arry1[three]).find('.odd').data('status') == 'BOOKED') {
                                     flag = 0;
                                     break
                                 }
@@ -412,14 +416,6 @@
                         }
 
 
-                        // var a = $arryeven.index($('.rz'));
-
-                        // var b = $(arry1).index($(this));
-                        // console.log(a, b)
-
-                        // for (j; j < arry1.length; j++) {
-
-                        // }
                     }
 
                     //第一次点击
@@ -477,7 +473,11 @@
 
                     } else if (flag == 1) {
                         //第二次点击
+
                         second = $(arry1).index($(this))
+
+
+                        //计算总共多少天sum
                         sum = Math.abs(second - first);
                         if (sum == 0) {
                             sum = 1;
@@ -486,6 +486,7 @@
                         if (first < second) {
                             first = first + 1;
 
+                            // $(me.sections).find('.rz').text('退房');
 
                             $(this).find('span:first').text('退房').addClass('rz');
                             $(this).find('span').addClass('color');

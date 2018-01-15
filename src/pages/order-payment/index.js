@@ -46,7 +46,7 @@ $(function () {
     }
   }, 1000);
 
-  // $.ajax('/mshz-app/security/app/order/queryOrderList?orderQueryType=VALIDATED');
+  // $.ajax('/mshz-app/openapi/user/login/password?password=e10adc3949ba59abbe56e057f20f883e&phone=13665432112');
 
   //获取url中的参数
   function getUrlParam(name) {
@@ -61,11 +61,13 @@ $(function () {
   }
 
 
+
   // 订单详情get接口
   orderPreviewInfo(params);
 
   function orderPreviewInfo(params) {
-    var city = $('#destination-entry').val();
+
+    console.log(params);
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderDetail',
       data: params,
@@ -74,10 +76,13 @@ $(function () {
       cache: false,
       success: function (data) {
         console.log('success');
+        console.log(data);
+
         var json = data.result;
         console.log(json);
-        var str = '<div class="txt"><span>订单号：<span>' + json.a + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.a + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.a + '-' + json.a + ' 共' + json.a + '晚</span></div><span>押金：￥<span>' + json.a + '</span></span></div>';
-        $('tol-pri').text(json.a + json.a);
+        var str = '<div class="txt"><span>订单号：<span>' + params.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.startTime.replace(/-/g, '.') + '-' + json.endTime.replace(/-/g, '.') + ' 共' + json.bookedDays + '晚</span ></div > <span>押金：￥<span>' + json.roomDeposit + '</span></span></div > ';
+        $('.tol-pri').text(+json.roomRate + +json.roomDeposit);
+        // console.log($('tol-pri').text())
 
         $('.content-body .content').empty().append(str);
       },

@@ -8,6 +8,7 @@ const devServer = {
     // proxy all requests starting with /api to jsonplaceholder
     '/mshz-app': {
       // target: 'http://172.16.72.198:51312/mshz-app',
+      // target: 'http://172.16.72.170:51312/',
       target: 'http://192.168.0.243:51312/',
       // target: 'http://api.mshz.com:51312/mshz-app',
       // target: 'http://api.mshz.com:51312/mshz-mgr',

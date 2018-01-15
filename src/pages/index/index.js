@@ -192,7 +192,7 @@ $(function () {
       path += "&poi=" + poi;
     }
     console.log(path);
-    window.location = path;
+    window.location = '/html/house-list.html' || path;
   })
 
 
