@@ -77,14 +77,16 @@ $(function () {
       success: function (data) {
         console.log('success');
         console.log(data);
+        if (data && data.result && data.result !== '') {
+          var json = data.result;
+          console.log(json);
+          var str = '<div class="txt"><span>订单号：<span>' + params.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.startTime.replace(/-/g, '.') + '-' + json.endTime.replace(/-/g, '.') + ' 共' + json.bookedDays + '晚</span ></div > <span>押金：￥<span>' + json.roomDeposit + '</span></span></div > ';
+          $('.tol-pri').text(+json.roomRate + +json.roomDeposit);
+          // console.log($('tol-pri').text())
 
-        var json = data.result;
-        console.log(json);
-        var str = '<div class="txt"><span>订单号：<span>' + params.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.startTime.replace(/-/g, '.') + '-' + json.endTime.replace(/-/g, '.') + ' 共' + json.bookedDays + '晚</span ></div > <span>押金：￥<span>' + json.roomDeposit + '</span></span></div > ';
-        $('.tol-pri').text(+json.roomRate + +json.roomDeposit);
-        // console.log($('tol-pri').text())
+          $('.content-body .content').empty().append(str);
+        }
 
-        $('.content-body .content').empty().append(str);
       },
       error: function (error) {
         console.log(error);

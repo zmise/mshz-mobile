@@ -4,6 +4,55 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
 
 // $.toast('Here you can put the text of the toast')
+
+
+var startDate, endDate, initStartDate, initEndDate, initCaleEndDate;
+function initTime() {
+  var b = new Date();
+  var ye = b.getFullYear();
+  var mo = b.getMonth() + 1;
+  var da = b.getDate();
+  b = new Date(b.getTime() + 24 * 3600 * 1000);
+  var ye1 = b.getFullYear();
+  var mo1 = b.getMonth() + 1;
+  var da1 = b.getDate();
+  if (mo < 10) {
+    mo = '0' + mo
+  }
+  if (da < 10) {
+    da = '0' + da
+  }
+  if (mo1 < 10) {
+    mo1 = '0' + mo1
+  }
+  if (da1 < 10) {
+    da1 = '0' + da1
+  }
+  initStartDate = ye + '-' + mo + '-' + da;
+  initEndDate = ye1 + '-' + mo1 + '-' + da1;
+
+  b = new Date(b.getTime() + 24 * 3600 * 1000 * 89);
+  ye1 = b.getFullYear();
+  mo1 = b.getMonth() + 1;
+  da1 = b.getDate();
+  if (mo1 < 10) {
+    mo1 = '0' + mo1
+  }
+  if (da1 < 10) {
+    da1 = '0' + da1
+  }
+  initCaleEndDate = ye1 + '-' + mo1 + '-' + da1;
+
+}
+initTime();
+var startDate = window.sessionStorage.startDate || initStartDate;
+var endDate = window.sessionStorage.endDate || initEndDate;
+// window.sessionStorage.JQa="JQA";
+// $("#a").text(window.sessionStorage.JQa);
+// window.sessionStorage.setItem('JQb','JQB');
+// $("#b").text(window.sessionStorage.getItem('JQb'));
+$('#startDate').val(startDate);
+$('#endDate').val(endDate);
 $(function () {
   //获取url中的参数
   function getUrlParam(name) {
@@ -15,21 +64,25 @@ $(function () {
   // url上面的参数
   var params = {
     'roomId': getUrlParam('roomId') || '1ce93b4a-302d-4ed8-85e6-45143d07ffb7',
-    'startDate': getUrlParam('startDate') || '2018-01-14',
-    'endDate': getUrlParam('endDate') || '2018-01-15',
+    'startDate': startDate,
+    'endDate': endDate,
   }
 
 
 
 
-  // 价格日历get请求接口
+  // init价格日历get请求接口
+  var caleParams = {
+    'roomId': params.roomId,
+    'startDate': initStartDate,
+    'endDate': initCaleEndDate,
+  }
 
-
-  calePriceInfo(params);
-  // 价格日历请求
+  calePriceInfo(caleParams);
+  // init价格日历请求
 
   function calePriceInfo(params) {
-    params.endDate = '2018-04-01';
+    // params.endDate = '2018-03-31';
     // console.log(params)
     var city = $('#destination-entry').val();
     $.ajax({
@@ -51,8 +104,8 @@ $(function () {
 
           });
 
-          var startDate = $('#startDate').val() || params.startDate;
-          var endDate = $('#endDate').val() || params.endDate;
+          var startDate = $('#startDate').val() || initStartDate;
+          var endDate = $('#endDate').val() || initEndDate;
           // 初始化价格日历
           $('#firstSelect').calendarSwitch({
             selectors: {
@@ -236,7 +289,6 @@ $(function () {
       ],
       custCount: +$('#peo-num').val() || 1,
       orderChannel: 'MSHZ_APP',
-      remark: 'test by hao',
       roomId: params.roomId || '1ce93b4a-302d-4ed8-85e6-45143d07ffb7',
       startTime: $('#startDate').val() || '2018-02-16',
       endTime: $('#endDate').val() || '2018-02-19'

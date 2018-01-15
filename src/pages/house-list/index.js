@@ -54,6 +54,8 @@ $(function () {
       $('#firstSelect').attr("data-enddata", end);
       $('#startDate').val(start);
       $('#endtDate').val(end);
+      window.sessionStorage.setItem('startDate', start);
+      window.sessionStorage.setItem('endDate', end);
       // console.log($('#firstSelect').data())
       start = start.split('-');
       start = start[1] + '.' + start[2];
@@ -242,10 +244,10 @@ $(function () {
 
   function loadingMore() {
     initParams();
-    console.log(params);
+    // console.log(params);
     $.ajax({
       // url: 'http://192.168.0.243:51313/mshz-mgr/security/oms/recommend/selectRoom',
-      url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
+      url: '/mshz-app/room/queryRoom',
       data: params,
       // data: {
       //   city: 'SHENZHEN'

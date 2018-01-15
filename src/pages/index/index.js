@@ -12,44 +12,8 @@ require('../../assets/js/appDownload.js');//全局下载APP
 $(function () {
 
   /*  引入转换pinyin插件 */
-  const pinyin = require('tiny-pinyin')
+  const pinyin = require('tiny-pinyin');
 
-
-
-  // if ($('#firstSelect').val() === '') {
-
-  //   var b = new Date();
-  //   var ye = b.getFullYear();
-  //   var mo = b.getMonth() + 1;
-  //   var da = b.getDate();
-  //   b = new Date(b.getTime() + 24 * 3600 * 1000);
-  //   var ye1 = b.getFullYear();
-  //   var mo1 = b.getMonth() + 1;
-  //   var da1 = b.getDate();
-  //   if (mo < 10) {
-  //     mo = '0' + mo
-  //   }
-  //   if (da < 10) {
-  //     da = '0' + da
-  //   }
-  //   if (mo1 < 10) {
-  //     mo1 = '0' + mo1
-  //   }
-  //   if (da1 < 10) {
-  //     da1 = '0' + da1
-  //   }
-  //   if ($('#startDate').length) {
-  //     $('#startDate').val(ye + '-' + mo + '-' + da);
-  //     $('#endDate').val(ye1 + '-' + mo1 + '-' + da1);
-  //   } else {
-  //     $('#firstSelect').val(ye + '-' + mo + '-' + da + '至' + ye1 + '-' + mo1 + '-' + da1);
-  //   }
-
-  // }
-
-  // var startData, endData;
-  // startData = $.trim($('#firstSelect').val().split('至')[0]);
-  // endData = $.trim($('#firstSelect').val().split('至')[1]);
 
   $('#firstSelect').on('tap', function (e) {
     e.stopPropagation();
@@ -68,10 +32,11 @@ $(function () {
     comeoutColor: "#44bb80",        //入住和离店之间的颜色
     callback: function (start, end) {
       $('#firstSelect').val(start + '至' + end);
+      window.sessionStorage.setItem('startDate', start);
+      window.sessionStorage.setItem('endDate', end);
+
     },   //回调函数
     comfireBtn: '.comfire',//确定按钮的class或者id
-    // startData: startData,
-    // endData: endData,
   });
 
 
@@ -269,5 +234,47 @@ $(function () {
 
   //   }
   // });
+
+
+  /*  用sessionStorage存储startDate和endDate */
+
+
+
+  /*  当天的日期和当他下一天的日期*/
+  var startDate, endDate;
+  function initTime() {
+    var b = new Date();
+    var ye = b.getFullYear();
+    var mo = b.getMonth() + 1;
+    var da = b.getDate();
+    b = new Date(b.getTime() + 24 * 3600 * 1000);
+    var ye1 = b.getFullYear();
+    var mo1 = b.getMonth() + 1;
+    var da1 = b.getDate();
+    if (mo < 10) {
+      mo = '0' + mo
+    }
+    if (da < 10) {
+      da = '0' + da
+    }
+    if (mo1 < 10) {
+      mo1 = '0' + mo1
+    }
+    if (da1 < 10) {
+      da1 = '0' + da1
+    }
+    startDate = ye + '-' + mo + '-' + da;
+    endDate = ye1 + '-' + mo1 + '-' + da1;
+
+  }
+
+  initTime();
+  console.log(startDate);
+  console.log(endDate);
+  startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
+  endData = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
+
+  window.sessionStorage.setItem('startDate', startDate);
+  window.sessionStorage.setItem('endDate', endDate);
 
 });
