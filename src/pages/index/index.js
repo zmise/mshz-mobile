@@ -12,7 +12,6 @@ require('../../assets/js/appDownload.js');//全局下载APP
 $(function () {
 
   /*  引入转换pinyin插件 */
-  const pinyin = require('tiny-pinyin');
 
 
   $('#firstSelect').on('tap', function (e) {
@@ -89,20 +88,19 @@ $(function () {
       cityName = cityName.replace('市', '');
     }
     $('#destination-entry').val(cityName);
-    if (pinyin.isSupported()) {
-      cityName = pinyin.convertToPinyin(cityName)
-    }
   }
 
 
 
   function searchInfo(cityName) {
     console.log(cityName);
+    
+
     var city = $('#destination-entry').val();
     $.ajax({
-      url: 'http://192.168.0.243:51711/mshz-render/queryCityRimInfo',
-      // url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
+      url: '/mshz-render/queryCityRimInfo',
       data: {
+        'cityZW': cityName,
         'city': cityName,
       },
       dataType: 'json',

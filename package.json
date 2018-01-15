@@ -16,8 +16,7 @@
     "url": "http://git.qfang.com/qfang-frontend/qfang-mobile.git"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
-    "tiny-pinyin": "^1.2.1"
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.0.1",

@@ -66,7 +66,7 @@ $(function () {
   function search(keyword) {
     var city = $('#destination-entry').val();
     $.ajax({
-      url: 'http://192.168.0.243:51312/mshz-app/room/darkSelectRimInfo',
+      url: '/mshz-app/room/darkSelectRimInfo',
       data: {
         // 'city': $('#destination-entry').val(),
         'city': 'KUNMING' || $('#destination-entry').val(),

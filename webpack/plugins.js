@@ -36,7 +36,7 @@ const plugins = [
 // 自动生成 html 页面，并注入 css & js
 pages.forEach(function (page) {
   const htmlPlugin = new HtmlWebpackPlugin({
-    filename: 'html/' + page + '.html',  // 添加一个html文件夹
+    filename: page + '.html',
     template: path.resolve(config.srcDir, 'pages/' + page + '/index.html'),
     chunks: [page, 'common'],
     minify: {

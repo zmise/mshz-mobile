@@ -16,14 +16,15 @@ const modules = {
     include: config.srcDir,
     loader: ExtractTextPlugin.extract({
       fallback: 'style-loader',
-      use: 'css-loader?minimize'
+      use: 'css-loader?minimize',
     })
   }, {
     test: /\.scss$/,
     include: config.srcDir,
     loader: ExtractTextPlugin.extract({
       fallback: 'style-loader',
-      use: ['css-loader?minimize', 'sass-loader']
+      use: ['css-loader?minimize', 'sass-loader'],
+      publicPath: '../'
     })
   }, {
     test: /\.js$/,
