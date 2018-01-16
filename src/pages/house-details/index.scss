@@ -475,22 +475,23 @@ body {
 .comment-body .first-comment .des .items {
     @include flex(0, 0, auto);
     width: 1.44rem;
-    height: 1.44rem;
+    height: 1.2rem;
     margin-right: .16rem;
+    margin-bottom: .24rem;
     color: #000;
     box-sizing: border-box;
 }
 
-@each $item in garden,
-school,
-overseas,
-office,
-onekey {
-    .comment-body .#{$item} {
-        background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
-        background-size: 100% auto;
-    }
-}
+// @each $item in garden,
+// school,
+// overseas,
+// office,
+// onekey {
+//     .comment-body .#{$item} {
+//         background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
+//         background-size: 100% auto;
+//     }
+// }
 
 
 /*start living-info */

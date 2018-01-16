@@ -6,7 +6,7 @@
   "author": "heqiong",
   "license": "ISC",
   "scripts": {
-    "clear": "rm -rf ./dist",
+    "clear": "rm -rf ./user",
     "start": "npm run clear&&set NODE_ENV=development&&webpack-dev-server --hot",
     "build": "npm run clear&&set NODE_ENV=production&&webpack --optimize-minimize --progress --profile",
     "deploy:test": "npm run clear&&set NODE_ENV=test&&webpack --config webpack.deploy.js --optimize-minimize --progress --profile"
