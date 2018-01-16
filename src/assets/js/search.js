@@ -63,20 +63,21 @@ $(function () {
 
   /* 模糊查询列表的ajax */
 
+  //todo
   function search(keyword) {
     var city = $('#destination-entry').val();
+    // console.log(city);
     $.ajax({
       url: '/mshz-app/room/darkSelectRimInfo',
       data: {
-        // 'city': $('#destination-entry').val(),
-        'city': 'KUNMING' || $('#destination-entry').val(),
-        'name': '北环' || keyword
+        'city': $('#destination-entry').val(),
+        'name': keyword,
       },
       dataType: 'json',
       type: 'GET',
       cache: false,
       success: function (data) {
-        console.log('success');
+        // console.log('success');
         var json = data.result;
         console.log(json);
         var str = '';

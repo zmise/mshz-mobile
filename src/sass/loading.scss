@@ -1,12 +1,22 @@
 /* 加载中 */
 
-.loading {
-    @include flex-box;
-    @include align-items;
-    @include justify-content;
-    height: 40px;
-    font-size: $font-middle;
-    color: $color-light-grey;
-    line-height: 1.2;
+.loading-box {
+    @include position(absolute, 0, 0, 0, 0, 999999);
     background-color: #fff;
+}
+
+.loading {
+    @include position(absolute, 50%, auto, auto, 50%, 999999);
+    width: 160px;
+    height: 56px;
+    margin-left: -80px;
+    line-height: 56px;
+    color: #fff;
+    padding-left: 60px;
+    font-size: 15px;
+    background: #000 url("../../assets/img/loading.gif") no-repeat 10px 50%;
+    opacity: 0.6;
+    z-index: 9999;
+    border-radius: 20px
+    /* filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60); */
 }

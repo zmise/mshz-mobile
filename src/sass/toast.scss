@@ -1,0 +1,102 @@
+.cpt-toast {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    animation-duration: 0.3s;
+    max-width: 300px;
+    line-height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    *zoom: 1;
+    *display: inline;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
+    font-family: '微软雅黑', 'Microsoft Yahei';
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    word-wrap: break-word;
+}
+
+
+/*这是关于position absolute或者fixed改版的animate */
+
+
+/*是由于水平居中translate无法使用*/
+
+.animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.animated.infinite {
+    animation-iteration-count: infinite;
+}
+
+.animated.hinge-hastrans {
+    animation-duration: 2s;
+}
+
+.animated.flipOutX-hastrans,
+.animated.flipOutY-hastrans,
+.animated.bounceIn-hastrans,
+.animated.bounceOut-hastrans {
+    animation-duration: .75s;
+}
+
+@keyframes bounceInUp-hastrans {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    from {
+        opacity: 0;
+        transform: translate3d(-50%, 3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(-50%, -70px, 0);
+    }
+    75% {
+        transform: translate3d(-50%, -30px, 0);
+    }
+    90% {
+        transform: translate3d(-50%, -46px, 0);
+    }
+    to {
+        transform: translate3d(-50%, -50%, 0);
+    }
+}
+
+.bounceInUp-hastrans {
+    animation-name: bounceInUp-hastrans;
+}
+
+@keyframes bounceOutDown-hastrans {
+    20% {
+        transform: translate3d(-50%, -40%, 0);
+    }
+    40%,
+    45% {
+        opacity: 1;
+        transform: translate3d(-50%, -60%, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-50%, 3000px, 0);
+    }
+}
+
+.bounceOutDown-hastrans {
+    animation-name: bounceOutDown-hastrans;
+}

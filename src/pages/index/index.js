@@ -11,7 +11,6 @@ require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
 
-  /*  引入转换pinyin插件 */
 
 
   $('#firstSelect').on('tap', function (e) {
@@ -93,22 +92,19 @@ $(function () {
 
 
   function searchInfo(cityName) {
-    console.log(cityName);
-    
-
-    var city = $('#destination-entry').val();
+    // console.log(cityName);
+    // var city = $('#destination-entry').val();
     $.ajax({
-      url: '/mshz-render/queryCityRimInfo',
+      url: '/mshz-app/room/queryCityRimInfo',
       data: {
-        'cityZW': cityName,
         'city': cityName,
       },
       dataType: 'json',
       type: 'GET',
       cache: false,
       success: function (data) {
-        console.log('success');
-        var json = data;
+        // console.log('success');
+        var json = data.result;
         console.log(json);
         var str = '';
         for (var i = 0; i < json.length; i++) {
@@ -133,19 +129,23 @@ $(function () {
   /*  点击搜索跳转houselist */
   $("#search").click(function () {
 
-    if ($('#destination-entry').val() != '') {
-      var cityName = $('#destination-entry').val();
-      if (pinyin.isSupported()) {
-        cityName = pinyin.convertToPinyin(cityName)
-      }
-      $('#destination-entry').attr('data-cityname', cityName);
-    }
-    searchInfo(cityName);
-    var city = $("#destination-entry").data('cityname');
+    // if ($('#destination-entry').val() != '') {
+    //   var cityName = $('#destination-entry').val();
+    //   // if (pinyin.isSupported()) {
+    //   //   cityName = pinyin.convertToPinyin(cityName)
+    //   // }
+    //   // $('#destination-entry').attr('data-cityname', cityName);
+    // }
+    if (!$("#destination-entry").val()) {
 
+      return;
+    }
+
+    // var city = $("#destination-entry").data('cityname');
+    var city = $("#destination-entry").val();
     var poi = $("#search-entry").val();
     var dates = $("#firstSelect").val();
-    var path = "/mshz-render/houseList?city=" + city
+    var path = "/houseList?city=" + city
     if (dates != "") {
       var split = dates.split("至");
       var str = "&startDate=" + split[0] + "&endDate=" + split[1];
@@ -155,7 +155,7 @@ $(function () {
       path += "&poi=" + poi;
     }
     console.log(path);
-    window.location = '/html/house-list.html' || path;
+    window.location = path;
   })
 
 
@@ -171,13 +171,12 @@ $(function () {
     e.preventDefault();
     $('#destination-entry').val($(this).text());
 
-    /* 中文转拼音 */
-    var cityName = $(this).text();
 
-    if (pinyin.isSupported()) {
-      var cityName = pinyin.convertToPinyin(cityName)
-    }
-    $('#destination-entry').attr('data-cityname', cityName);
+    // var cityName = $(this).data('cityPing');
+    // if (pinyin.isSupported()) {
+    //   var cityName = pinyin.convertToPinyin(cityName)
+    // }
+    // $('#destination-entry').attr('data-cityname', cityName);
 
 
     $(this).closest('.des-body').hide();
@@ -208,7 +207,7 @@ $(function () {
       $('.search-body .text-body .text').val($(this).val());
     }
 
-    searchInfo($('#destination-entry').data('cityname'));
+    searchInfo($('#destination-entry').val());
     // $('.search-layer').show();
     // $('body,html').css({ 'overflow': 'hidden' });
     // $('.search-body .text-body .text').val($(this).val());
@@ -267,8 +266,8 @@ $(function () {
   }
 
   initTime();
-  console.log(startDate);
-  console.log(endDate);
+  // console.log(startDate);
+  // console.log(endDate);
   startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
   endData = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
 

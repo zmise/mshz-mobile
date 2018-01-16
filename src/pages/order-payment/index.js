@@ -57,8 +57,15 @@ $(function () {
 
   // url上面的参数
   var params = {
-    'orderNo': getUrlParam('orderNo') || 'SZ010915491070',
+    orderNo: getUrlParam('orderNo'),
   }
+  if (!params.orderNo) {
+    location.replace('error.html?code=E0001')
+  } else {
+    // 关闭loading
+    $('#loading').remove();
+  }
+
 
 
 
@@ -78,6 +85,7 @@ $(function () {
         console.log('success');
         console.log(data);
         if (data && data.result && data.result !== '') {
+
           var json = data.result;
           console.log(json);
           var str = '<div class="txt"><span>订单号：<span>' + params.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + json.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + json.startTime.replace(/-/g, '.') + '-' + json.endTime.replace(/-/g, '.') + ' 共' + json.bookedDays + '晚</span ></div > <span>押金：￥<span>' + json.roomDeposit + '</span></span></div > ';
@@ -86,7 +94,6 @@ $(function () {
 
           $('.content-body .content').empty().append(str);
         }
-
       },
       error: function (error) {
         console.log(error);

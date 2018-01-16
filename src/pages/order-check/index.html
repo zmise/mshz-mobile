@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>mshz-mobile-develop-order-check</title>
+  <title>名宿好住</title>
 </head>
 
 <body>
@@ -17,8 +17,8 @@
     </a>
   </header>
 
-  <section class="address-body">
-    <div class="item-oneline">
+  <section class="address-body" id="addressBody">
+    <!-- <div class="item-oneline">
       <p>云南昆明泸沽湖畔 一居室民宿</p>
       <p>￥328</p>
     </div>
@@ -26,7 +26,7 @@
       <i class="twoline-items" href="javascript:;">昆明</i>
       <i class="twoline-items" href="javascript:;">1居30平</i>
       <i class="twoline-items def-pnum" href="javascript:;">2人</i>
-    </div>
+    </div> -->
   </section>
   <section class="color-border"></section>
   <section class="userInfo-body">
@@ -53,9 +53,9 @@
         <span class="text-style-1">入住人</span>
         <!-- <input class="text-style-2" type="text" value="1" dir='rtl'> -->
         <div class="liveNum">
-          <i class="reduce iconfont icon-jian"></i>
+          <i class="reduce iconfont icon-jian" id="reduce"></i>
           <span class="peo-num" id="peo-num">1</span>
-          <i class="add iconfont icon-icon-test"></i>
+          <i class="add iconfont icon-icon-test" id="add"></i>
         </div>
       </div>
       <div class="input-layout">
@@ -77,18 +77,19 @@
         <span class="text-style-1">房费</span>
         <div class="text-style-4">
           <span>￥</span>
-          <span class="house-price">2400</span>
+          <span class="house-price"></span>
         </div>
       </div>
       <div class="input-layout">
         <span class="text-style-1"> 押金</span>
         <div class="text-style-4">
           <span>￥</span>
-          <span class="yajin">1200</span>
+          <span class="yajin"></span>
         </div>
       </div>
     </div>
   </section>
+  <!-- todo -->
   <section class="rule-body">
     <div class="title">退订信息</div>
     <div class="slide-body" js-plugin="slide">
@@ -137,13 +138,26 @@
   <footer class="check-body">
     <div class="items">
       <p>需支付</p>
-      <p class="tol-pri">￥3600</p>
+      <p id="totalPrice">￥</p>
     </div>
     <a class="items" href="javascript:;" id="addOrder">提交订单</a>
   </footer>
 
   <!-- 日历插件 -->
   <section class="calendar"></section>
+
+  <!-- 弹框toast -->
+  <section class="layer-tip js-layer-tip" style="display: none;">
+    <div class="tip-body">
+      <span class="info">请选择要委托的小区</span>
+    </div>
+  </section>
+
+  <!-- loading层 -->
+  <section class="loading-box" id="loading">
+    <div class="loading">加载中...</div>
+  </section>
+
 </body>
 
 </html>

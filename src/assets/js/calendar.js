@@ -297,10 +297,10 @@
                 $arryeven.eq(0).attr('data-day', '今天');
                 $arryeven.addClass('even');  //入住 等 文字
                 $arryodd.addClass('odd'); //价格 200
-                if (me.sourceData && me.sourceData !== '') {
+                console.log(me.sourceData);
+                if (me.sourceData && me.sourceData.length !== 0) {
                     // console.log($arryodd.length);
-                    console.log(me.sourceData);
-
+                    console.log(13)
                     for (var i = 0; i < $arryodd.length; i++) {
                         // console.log(me.sourceData[i])
                         // if (me.sourceData[i] == undefined) {
@@ -308,8 +308,8 @@
                         // }
                         if (me.sourceData[i].status != null) {
                             $arryodd.eq(i).attr('data-status', me.sourceData[i].status);
-                        } 
-                         if (me.sourceData[i].status == 'BOOKED') {
+                        }
+                        if (me.sourceData[i].status == 'BOOKED') {
 
                             $arryodd.eq(i).text('无房');
                             $arryeven.eq(i).removeClass('even');
