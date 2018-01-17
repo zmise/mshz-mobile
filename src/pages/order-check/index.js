@@ -110,7 +110,7 @@ $(function () {
             endData: endDate,
             sourceData: sourceDate,
           });
-        } 
+        }
 
       },
       error: function (error) {
@@ -177,7 +177,7 @@ $(function () {
   // 新增订单post接口
 
   function addOrder(params) {
-    // console.log(params)
+    console.log(params)
     $.ajax({
       url: '/mshz-app/security/app/order/addOrder',
       data: JSON.stringify(params),
@@ -367,5 +367,12 @@ $(function () {
   });
 
 
+
+  // 点击返回回到上一页
+  $('back').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    windows.history.go(-1)
+  });
 
 });
