@@ -13,22 +13,22 @@
     <div class="header">
       <h1 class="title">我的订单</h1>
     </div>
-    <a class="back" href="javascript:;">
+    <a class="back" href="javascript:;" id="back">
     </a>
 
     <a class="menu iconfont icon-daohanglancaidan" id="menu" href="javascript:;"></a>
   </header>
   <!-- 订单分类栏-->
   <section class="order-sort-body">
-    <div class="items">
+    <div class="items" id="tobepaid">
       <span class="txt current">待付款</span>
       <i class="line current"></i>
     </div>
-    <div class="items">
+    <div class="items" id="valid">
       <span class="txt">有效单</span>
       <i class="line"></i>
     </div>
-    <div class="items">
+    <div class="items" id="invalid">
       <span class="txt">退款/失效单</span>
       <i class="line"></i>
     </div>
@@ -38,7 +38,7 @@
   <article class="article-body">
     <!-- 第一页的样式 -->
     <div class="box">
-      <div class="content">
+      <a class="content orderDetails">
         <div class="title current">
           <span>泸沽湖畔公寓A</span>
           <span>¥400</span>
@@ -57,7 +57,8 @@
             <span>¥200</span>
           </div>
         </div>
-      </div>
+      </a>
+
       <div class="status">
         <div class="stu-but">
           <button>取消订单</button>
@@ -68,7 +69,7 @@
 
     <!-- 第二页的样式 -->
 
-    <div class="box">
+    <!-- <div class="box">
       <div class="content">
         <div class="title">
           <span>泸沽湖畔公寓A</span>
@@ -184,11 +185,11 @@
           <button class="current2">评价订单</button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- 第三页的样式 -->
 
-    <div class="box">
+    <!-- <div class="box">
       <div class="content">
         <div class="title">
           <span>泸沽湖畔公寓A</span>
@@ -271,7 +272,7 @@
           <button class="current3">再次预订</button>
         </div>
       </div>
-    </div>
+    </div>  -->
   </article>
 
   <footer class="footer-body">
@@ -297,8 +298,8 @@
         </div>
       </div>
       <div class="content">
-        <a class="items current" href="javascript:;">
-          <i class="icon iconfont icon-gerenzhongxinshouye current"></i>
+        <a class="items" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinshouye"></i>
           <span class="txt">首页</span>
 
         </a>
@@ -306,8 +307,8 @@
           <i class="icon iconfont icon-gerenzhongxinwode"></i>
           <span class="txt">我的</span>
         </a>
-        <a class="items" href="javascript:;">
-          <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>
+        <a class="items current" href="javascript:;">
+          <i class="icon iconfont icon-gerenzhongxinwodedingdan current"></i>
           <span class="txt">订单</span>
           <span class="num">6</span>
         </a>

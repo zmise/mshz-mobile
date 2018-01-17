@@ -37,5 +37,12 @@ $(function () {
     $(this).find('.icon').addClass('current').end().siblings().find('.icon').removeClass('current');
   });
 
-
+  /*  点击进入订单列表  */
+  $('#order-list').on('tap', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(132)
+    var path = "/order-list.html"
+    window.location = path;
+  });
 });

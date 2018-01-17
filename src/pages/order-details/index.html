@@ -1,86 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>mshz-mobile-develop-order-payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>名宿好住</title>
 </head>
 
 <body>
   <header class="header-body fixed">
     <div class="header">
-      <h1 class="title">支付订单</h1>
+      <h1 class="title">订单详情</h1>
     </div>
     <a class="back" href="javascript:;">
     </a>
+
     <a class="menu iconfont icon-daohanglancaidan" id="menu" href="javascript:;"></a>
   </header>
-  <section class="hold-body">
-    <i class="iconfont icon-zhifushijianjishi"></i>
-    <span>已为您保留房源，请于
-      <span class="minute" id="minute">15</span> 分
-      <span class="seconds" id="seconds">00</span> 秒内支付订单</span>
-  </section>
-  <section class="content-body">
-    <div class="content">
-      <div class="txt">
-        <span>订单号：
-          <span>MM3267363</span>
-        </span>
-        <div class="longTxt">
-          <span>房费：￥
-            <span>2400</span>
-          </span>
-          <i class="iconfont icon-riqi"></i>
-          <span>2017.11.12-2017.11.20 共8晚</span>
-        </div>
-        <span>押金：￥
-          <span>1200</span>
-        </span>
-      </div>
-    </div>
-    <div class="checkInfo">
-      <span>共需支付：</span>
-      <span>￥
-        <span class="tol-pri">3600</span>
-      </span>
-    </div>
-  </section>
-  <section class="title-body">选择支付方式</section>
-  <section class="play-body">
-    <div class="playStyle">
-      <div class="logobox">
-        <i class="logo weixin"></i>
-        <div class="content">
-          <span>微信支付</span>
-          <span>推荐开通微信支付的用户使用</span>
+
+
+  <article class="article-body">
+    <div class="order-info">
+      <div class="content">
+        <img src="./img/banner-bg.jpg" alt="">
+        <div class="i-txt">
+          <span class="title">云南昆明官渡区 一居室民宿</span>
+          <div class="txt-line">
+            <i class="line-items">昆明</i>
+            <i class="line-items">1居30平</i>
+            <i class="line-items">2人</i>
+          </div>
         </div>
       </div>
-      <i class="more iconfont icon-fanhuixiangyou"></i>
+      <div class="time">
+        <i class="icon iconfont icon-shijianxianshi"></i>
+        <span class="txt">2017-11-12至2017-11-20</span>
+        <span class="txt">8晚</span>
+      </div>
+      <div class="address">
+        <i class="icon iconfont icon-lubiao"></i>
+        <span class="txt">地址:</span>
+        <span class="txt">昆明西山区滇池路1312号民族村广场旁</span>
+      </div>
     </div>
-    <div class="playStyle">
-      <div class="logobox">
-        <i class="logo zhifubao"></i>
-        <div class="content">
-          <span>支付宝支付</span>
-          <span>推荐有支付宝账户的用户使用</span>
+    <div class="money-info">
+      <span class="title">费用信息</span>
+      <div class="check-list">
+        <div class="items">
+          <span>房费</span>
+          <span>¥2400</span>
+        </div>
+        <div class="items">
+          <span>押金</span>
+          <span>¥1200</span>
         </div>
       </div>
-      <i class="more iconfont icon-fanhuixiangyou"></i>
+      <div class="total">
+        <span>总额</span>
+        <span class="price">¥3600</span>
+      </div>
+    </div>
+    <div class="peo-info">
+      <span class="title">入住人信息</span>
+      <div class="pri-info">
+        <span>王小明</span>
+        <span>430625199510296123</span>
+        <span>134 2343 2333</span>
+      </div>
+    </div>
+  </article>
+
+  <section class="opinion-body">
+    <div class="items">
+      <p>评价订单</p>
     </div>
   </section>
+
   <footer class="footer-body">
     <div class="site-nav">
       <a class="items" href="javascript:;">App下载</a>
-      <a class="items" href="javascript:;">网站地图</a>
       <a class="items" href="javascript:;">关于我们</a>
     </div>
     <p class="copyright">Copyright © 2017 qfang.com All Right Reserved</p>
     <p class="copyright">版权所有：深圳市云房网络科技有限公司</p>
     <p class="copyright">ICP备案号：粤ICP备05067219号-3</p>
   </footer>
+
   <!-- 侧边栏 -->
   <div class="overlay" id="overlay"></div>
   <nav class="navigate-body" js-plugin="slide" data-direction="vertical">
@@ -103,7 +109,7 @@
           <i class="icon iconfont icon-gerenzhongxinwode"></i>
           <span class="txt">我的</span>
         </a>
-        <a class="items" href="javascript:;" id="order-list">
+        <a class="items" href="javascript:;">
           <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>
           <span class="txt">订单</span>
           <span class="num">6</span>
@@ -149,6 +155,20 @@
   <section class="loading-box" id="loading">
     <div class="loading">加载中...</div>
   </section>
+
+
+
+  <!-- <input id="page" type="hidden" value="1" />
+  <input id="city" type="hidden" value="SHENZHEN" />
+  <input id="poi" type="hidden" value="" />
+  <input id="roomCount" type="hidden" value="" />
+  <input id="sortBy" type="hidden" value="" />
+  <input id="keyword" type="hidden" value="" />
+  <input id="startDate" type="hidden" value="" />
+  <input id="endDate" type="hidden" value="" />
+  <input id="prices" type="hidden" value="" />
+  <input id="furniture" type="hidden" value="" /> -->
+
 </body>
 
 </html>

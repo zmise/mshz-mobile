@@ -369,7 +369,7 @@ $(function () {
 
 
   // 点击返回回到上一页
-  $('back').on('tap', function (e) {
+  $('#back').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
     windows.history.go(-1)
