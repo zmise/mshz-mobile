@@ -170,6 +170,7 @@ $(function () {
   $('.des-hot-city .items').on('tap', function (e) {
     e.preventDefault();
     $('#destination-entry').val($(this).text());
+    $('#search-entry').val('');
 
 
     // var cityName = $(this).data('cityPing');

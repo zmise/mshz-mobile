@@ -302,6 +302,8 @@ $(function () {
   /*   显示日历的控件的点击事件 */
 
   $('.userInfo-body').on('tap', '#reduce', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
     if ($liveNum.find('.peo-num').text() === '2') {
       $liveNum.find('#reduce').hide();
     }
@@ -312,7 +314,8 @@ $(function () {
   /*   显示日历的控件的点击事件 */
 
   $('.userInfo-body').on('tap', '#add', function (e) {
-
+    e.stopPropagation();
+    e.preventDefault();
 
     if ($liveNum.find('.peo-num').text() === '1') {
       $liveNum.find('#reduce').show();
