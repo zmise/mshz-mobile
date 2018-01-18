@@ -8,13 +8,11 @@ require('../../assets/js/navigate.js');
 $(function () {
   function startTimer(totalSeconds) {
     // var nowTime = new Date();
-    var nowTime = 0;
-    var userfulSeconds = totalSeconds - nowTime;
     var tMin = 60;
     var $min = $('#minute');
     var $sec = $("#seconds");
-    var interval = setInterval(function () {
-      var tResult = userfulSeconds - 1;
+    var timeInterval = setInterval(function () {    
+      var tResult = totalSeconds - 1;
       var tResultMin = Math.floor(tResult / tMin);
       var tResultSec = Math.floor(tResult % tMin);
       // 将时间小于10的,在值前面加入0; 
@@ -25,14 +23,14 @@ $(function () {
       if (tResultSec < 10) {
         tResultSec = "0" + tResultSec;
       }
-      userfulSeconds = userfulSeconds - 1;
+      totalSeconds = totalSeconds - 1;
       //显示到页面上
       $min.text(tResultMin);
       $sec.text(tResultSec);
 
       //清除定时器并执行释放房源的操作和刷新页面
       if (tResult <= 0) {
-        clearInterval(interval);
+        clearInterval(timeInterval);
       }
     }, 1000);
 

@@ -26,7 +26,7 @@ var map = {
 
 function buildHeader(state, data) {
   var header = '';
-  if (state === 'PEDDING') {
+  if (state === 'PENDING') {
     header =
       '<div class="time-paid">' +
       '<span class="txt">已为您保留房源，请于' +
@@ -76,7 +76,7 @@ function buildRefundContent(state, data) {
 }
 function buildButton(state) {
   var button = '';
-  if (state === 'PEDDING') {
+  if (state === 'PENDING') {
     button =
       '<section class="check-body">' +
       '<a class="items">' +
@@ -103,13 +103,11 @@ function buildButton(state) {
 }
 
 function startTimer(totalSeconds) {
-  var nowTime = new Date();
-  var userfulSeconds = totalSeconds - nowTime;
   var tMin = 60;
   var $min = $('#minute');
   var $sec = $("#seconds");
   var interval = setInterval(function () {
-    var tResult = userfulSeconds - 1;
+    var tResult = totalSeconds - 1;
     var tResultMin = Math.floor(tResult / tMin);
     var tResultSec = Math.floor(tResult % tMin);
     // 将时间小于10的,在值前面加入0; 
@@ -120,7 +118,7 @@ function startTimer(totalSeconds) {
     if (tResultSec < 10) {
       tResultSec = "0" + tResultSec;
     }
-    userfulSeconds = userfulSeconds - 1;
+    totalSeconds = totalSeconds - 1;
     //显示到页面上
     $min.text(tResultMin);
     $sec.text(tResultSec);
@@ -146,7 +144,7 @@ function convertStatus(orderState, payState) {
   INVALIDATED 无效
   */
   if (orderState === 'BOOKED' && payState === 'NO_PAYMENT') {
-    state = 'PEDDING';  // 待付款
+    state = 'PENDING';  // 待付款
   } else if (orderState === 'BOOKED' && payState === 'PAYMENT') {
     state = 'PAYMENT';  // 待入住
   }
