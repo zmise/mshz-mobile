@@ -29,6 +29,68 @@
 }
 
 
+/* 其他订单详情的样式 */
+
+.article-body {
+    min-height: calc(100% - 3rem);
+}
+
+.article-body .others-info {
+    @include flex-box;
+    @include align-items;
+    height: 1.24rem;
+    background: rgba(255, 255, 255, 1);
+    padding: 0 .35rem 0 .42rem;
+    margin-bottom: 0.11rem;
+    box-sizing: border-box;
+}
+
+.article-body .others-info .icon {
+    width: .62rem;
+    height: .62rem;
+    fill: currentColor;
+    overflow: hidden;
+    margin-right: 0.3rem;
+}
+
+.article-body .others-info .txt {
+    font-size: .3rem;
+}
+
+.article-body .others-info .current1 {
+    color: rgba(255, 92, 92, 1);
+}
+
+.article-body .others-info .current2 {
+    color: rgba(90, 165, 114, 1);
+}
+
+.article-body .others-info .cot-txt {
+    font-size: .22rem;
+    color: rgba(90, 165, 114, 1);
+    line-height: .4rem;
+}
+
+
+/* 退房，取消有退款的订单详情的样式 */
+
+.article-body .cancel-info {
+    @include flex-box;
+    @include align-items;
+    height: 1.24rem;
+    background: rgba(255, 255, 255, 1);
+    padding: 0 .35rem 0 .42rem;
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.article-body .cancel-info .cancel-price {
+    font-size: .36rem;
+    color: rgba(255, 92, 92, 1);
+    margin-left: .3rem;
+}
+
+
 /* 公共订单详情的样式 */
 
 .article-body .order-info {

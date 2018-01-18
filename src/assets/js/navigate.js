@@ -42,7 +42,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     console.log(132)
-    var path = "/order-list.html"
+    var path = "./order-list.html"
     window.location = path;
   });
 });

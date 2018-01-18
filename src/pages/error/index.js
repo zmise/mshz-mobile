@@ -17,4 +17,14 @@ $(function () {
   }
   $('#content').text('错误参数 ' + code + ': ' + message[code]);
 
+
+  // 点击返回回到上一页
+  $('#back').on('click', function (e) {
+
+    e.stopPropagation();
+    e.preventDefault();
+    window.history.go(-1);
+  });
+
+
 });

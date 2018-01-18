@@ -13,7 +13,7 @@
     <div class="header">
       <h1 class="title">订单详情</h1>
     </div>
-    <a class="back" href="javascript:;">
+    <a class="back" href="javascript:;" id="back">
     </a>
 
     <a class="menu iconfont icon-daohanglancaidan" id="menu" href="javascript:;"></a>
@@ -21,6 +21,41 @@
 
 
   <article class="article-body">
+    <!--    tobepaid -->
+    <div class="time-paid">
+      <span class="txt">已为您保留房源，请于
+        <span class="minute" id="minute">30</span> 分
+        <span class="seconds" id="seconds">00</span>
+        秒内支付订单
+      </span>
+
+      <i class="icon iconfont icon-daojishi"></i>
+    </div>
+    <!--    tobepaid -->
+
+    <!--    other -->
+
+    <div class="others-info">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-zhifuchaoshi"></use>
+      </svg>
+      <span class="txt current1">支付超时</span>
+    </div>
+    <!--    other -->
+
+
+    <!--    cancel -->
+    <div class="others-info">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-yituifangyoutuikuan"></use>
+      </svg>
+      <div>
+        <span class="txt current2">已退房</span>
+        <p class="cot-txt current2">退款中，申请时间：2017-11-13 处理时间：1-3个工作日</p>
+      </div>
+    </div>
+    <!--    cancel -->
+    <!--    commont -->
     <div class="order-info">
       <div class="content">
         <img src="./img/banner-bg.jpg" alt="">
@@ -44,6 +79,15 @@
         <span class="txt">昆明西山区滇池路1312号民族村广场旁</span>
       </div>
     </div>
+
+    <!--    cancel -->
+    <div class="cancel-info">
+      <span>退款金额</span>
+      <span class="cancel-price">¥1200</span>
+    </div>
+
+    <!--    cancel -->
+
     <div class="money-info">
       <span class="title">费用信息</span>
       <div class="check-list">
@@ -69,14 +113,24 @@
         <span>134 2343 2333</span>
       </div>
     </div>
+    <!--    commont -->
+
   </article>
 
   <section class="opinion-body">
-    <div class="items">
+    <a class="items">
       <p>评价订单</p>
-    </div>
+    </a>
   </section>
 
+  <!--    tobepaid -->
+  <section class="check-body">
+    <a class="items">
+      <p>取消订单</p>
+    </a>
+    <a class="items" href="javascript:;">付款</a>
+  </section>
+  <!--    tobepaid -->
   <footer class="footer-body">
     <div class="site-nav">
       <a class="items" href="javascript:;">App下载</a>

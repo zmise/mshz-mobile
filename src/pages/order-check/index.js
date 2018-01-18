@@ -189,7 +189,7 @@ $(function () {
         console.log('success');
         console.log(data);
         if (data && data.result && data.result.orderNo !== '') {
-          var path = '/order-payment.html?orderNo=' + data.result.orderNo;
+          var path = './order-payment.html?orderNo=' + data.result.orderNo;
           console.log(path);
           window.location = path;
         }

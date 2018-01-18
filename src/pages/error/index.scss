@@ -1,8 +1,15 @@
-.body p {
-    background-color: #fff;
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/footer.scss'; // 全局底部
+body {
+    position: relative;
+    padding-top: .88rem;
+    height: 100%;
 }
 
-p {
-    font-size: 2rem;
+#content {
+    min-height: calc(100% - 3rem);
+    font-size: .5rem;
     color: red;
 }
