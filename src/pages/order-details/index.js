@@ -2,7 +2,6 @@ require('./index.scss');
 
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');//侧边栏
-require('../../assets/js/appDownload.js');//全局下载APP
 
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 
@@ -79,10 +78,10 @@ function buildButton(state) {
   if (state === 'PENDING') {
     button =
       '<section class="check-body">' +
-      '<a class="items">' +
+      '<a class="items" id="order-cancel">' +
       '<p>取消订单</p>' +
       '</a>' +
-      '<a class="items" href="javascript:;">付款</a>' +
+      '<a class="items" href="javascript:;" id="order-paid">付款</a>' +
       '</section>'
       ;
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'INVALIDATED' || state === 'CHECKED_OUT') {
@@ -96,7 +95,7 @@ function buildButton(state) {
   } else {
     button =
       '<section class="opinion-body">' +
-      '<a class="items current">' +
+      '<a class="items current" id="order-cancel">' +
       '<p>取消订单</p>' +
       '</a>' +
       '</section>'
@@ -274,6 +273,63 @@ $(function () {
 
   }
 
+  // 订单支付页面的post接口
+  function orderPaid(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/app/order/orderPay',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        console.log(data);
+        // if (data && data.result && data.result.orderNo !== '') {
+        //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
+        //   console.log(path);
+        //   window.location = path;
+        // }
+
+
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+  // 取消订单的post接口
+  function orderCancel(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/app/order/cancelOrder',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        console.log(data);
+        // if (data && data.result && data.result.orderNo !== '') {
+        //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
+        //   console.log(path);
+        //   window.location = path;
+        // }
+
+
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
   //获取url中的参数
   function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -291,6 +347,32 @@ $(function () {
     }
     orderDetails(initParams);
   }
+
+  // 点击付款
+
+  $('#order-paid').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var paidParams = {
+      orderNo: orderNo,
+      payChannel: 'WECHATPAY',
+      roomId: '',
+      totalPrice: 0
+    }
+    // orderPaid(paidParams);
+  });
+  // 点击取消订单
+
+  $('#order-cancel').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var cancelParams = {
+      orderNo: orderNo
+    }
+    // orderCancel(cancelParams);
+  });
+
+
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {

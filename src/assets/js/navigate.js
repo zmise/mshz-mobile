@@ -41,8 +41,15 @@ $(function () {
   $('#order-list').on('tap', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(132)
     var path = "./order-list.html"
+    window.location = path;
+  });
+
+  /*  点击进入个人中心  */
+  $('#personal-center').on('tap', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var path = "./personal-center.html"
     window.location = path;
   });
 });
