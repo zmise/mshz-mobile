@@ -16,7 +16,7 @@
 
 .filter-layer .filter-header {
     // @include position(fixed, 0, 0, auto, 0, 999);
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
 }
 
 .filter-layer .filter-header .des {
@@ -77,7 +77,7 @@
     margin: .08rem;
     width: 0.72rem;
     height: 0.72rem;
-    background: rgba(90, 165, 114, 1);
+    background: $color;
     border-radius: .36rem;
     color: #fff;
 }
@@ -142,7 +142,7 @@
 }
 
 .filter-body .current {
-    font-size: .26rem; // color: rgba(90, 165, 114, 1);
+    font-size: .26rem; // color: $color;
     color: rgba(255, 92, 92, 1);
 }
 
@@ -242,11 +242,11 @@
 }
 
 .filter-list .content .slide-body .current {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .filter-list .content .slide-body:first-child .current {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     background-color: #fff;
 }
 
@@ -283,7 +283,7 @@
 
 .filter-list .range-body .range-value {
     @include position(absolute, 0, 0, 0, 0, 10);
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
 }
 
 .filter-list .range-body .first-slider {
@@ -317,7 +317,7 @@
     @include position(absolute, -.4rem, auto, auto, -50%, 10);
     width: .8rem;
     font-size: $font-small;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     line-height: 1.2;
     text-align: center;
 }
@@ -331,7 +331,7 @@
 //     height: .8rem;
 //     color: #fff;
 //     border-radius: 50%;
-//     background-color: rgba(90, 165, 114, 1);
+//     background-color: $color;
 // }
 // .filter-list .range-body .orange-text:before {
 //     @include position(absolute, .48rem, auto, auto, .2rem, -10);
@@ -339,7 +339,7 @@
 //     content: '';
 //     width: .4rem;
 //     height: .4rem;
-//     background-color: rgba(90, 165, 114, 1);
+//     background-color: $color;
 //     @include transform(rotateZ(45deg));
 // }
 
@@ -418,13 +418,13 @@
 }
 
 .filter-list .checkbox-body .current {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     background-color: #fff;
-    border: .02rem solid rgba(90, 165, 114, 1);
+    border: .02rem solid $color;
 }
 
 .filter-list .checkbox-body .more-sel-items .current {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     background-color: transparent;
     border: 0;
 }
@@ -450,7 +450,7 @@
 .filter-list .complete-body .ok {
     @include flex;
     color: #fff;
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
 }
 
 .filter-list .complete-body .cancel {

@@ -28,7 +28,7 @@
 
 .des-body .des-header {
     @include position(fixed, 0, 0, auto, 0, 999);
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
 }
 
 .des-body .des-header .des {
@@ -83,7 +83,7 @@
     font-size: $font-middle;
     color: $color-dark-grey;
     line-height: 1.2;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .des-location .content span {
@@ -94,7 +94,7 @@
 
 .des-location .content .icon-fujin1 {
     font-size: .28rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .des-location .content .icon-fanhui {
@@ -178,7 +178,7 @@
 }
 
 .des-location .content .address {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     overflow: hidden;
     text-overflow: ellipsis；
 }
@@ -187,7 +187,7 @@
 .des-location .content .txt {
     display: block;
     font-size: .26rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 
@@ -209,7 +209,7 @@
 }
 
 .des-fixed .items:first-child {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 

@@ -118,7 +118,7 @@ body {
 .select-body .input-text .input-text-right i {
     width: .32rem;
     height: .32rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     font-size: .12rem;
     @include transform(rotateY(180deg));
 }
@@ -130,7 +130,7 @@ body {
 .select-body .input-text .input-text-right span {
     margin-left: .1rem;
     font-size: .22rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .select-body .input-text input {
@@ -150,7 +150,7 @@ body {
     height: .8rem;
     width: 100%;
     font-size: .34rem;
-    background: rgba(90, 165, 114, 1);
+    background: $color;
     color: rgba(255, 255, 255, 1);
     border-radius: .04rem;
 }
@@ -230,7 +230,7 @@ body {
     font-size: .36rem;
     margin-right: .24rem;
     overflow: hidden;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     ;
 }
 

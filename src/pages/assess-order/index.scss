@@ -46,7 +46,7 @@ body {
     width: 0.36rem;
     font-size: .3rem;
     margin-right: 0.2rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .assess-commiute {
@@ -108,7 +108,7 @@ body {
 .assess-commiute .box .bnt {
     width: 2.4rem;
     height: .64rem;
-    background: rgba(90, 165, 114, 1);
+    background: $color;
     border-radius: .04rem;
     font-size: .26rem;
     color: rgba(255, 255, 255, 1);

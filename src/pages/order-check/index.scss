@@ -37,7 +37,7 @@ body {
 }
 
 .address-body .item-oneline p:first-child {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .address-body .item-oneline p:last-child {
@@ -165,8 +165,8 @@ body {
 .cale-styel {
     width: 2.26rem;
     height: .78rem;
-    color: rgba(90, 165, 114, 1);
-    border: .01rem solid rgba(90, 165, 114, 1);
+    color: $color;
+    border: .01rem solid $color;
     background: rgba(247, 250, 248, 1);
     border-radius: .04rem;
     text-align: center;
@@ -198,7 +198,7 @@ body {
     width: 0.4rem;
     height: 0.4rem;
     font-size: .33rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .userInfo-body .input-layout .reduce,
@@ -206,7 +206,7 @@ body {
     width: 0.35rem;
     height: 0.35rem;
     font-size: .32rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .userInfo-body .input-layout .reduce {
@@ -316,8 +316,8 @@ body {
 
 .rule-body .slide-content .box1 .items:first-child {
     color: #fff;
-    background-color: rgba(90, 165, 114, 1);
-    border-color: rgba(90, 165, 114, 1);
+    background-color: $color;
+    border-color: $color;
 }
 
 .rule-body .slide-content .box2 {
@@ -337,7 +337,7 @@ body {
 }
 
 .rule-body .slide-content .box2 .circle:first-child {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .rule-body .slide-content .box2 .split-line {
@@ -347,7 +347,7 @@ body {
 }
 
 .rule-body .slide-content .box2 .current {
-    border-color: rgba(90, 165, 114, 1);
+    border-color: $color;
 }
 
 .rule-body .slide-content .box3 {
@@ -462,7 +462,7 @@ body {
 .check-body .items:last-child {
     @include justify-content;
     width: 3.2rem;
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
     color: #fff;
     font-size: .36rem;
 }

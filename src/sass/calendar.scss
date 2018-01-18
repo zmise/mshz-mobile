@@ -17,7 +17,7 @@
     }
 
     .headerWrapper {
-        background-color: rgba(90, 165, 114, 1);
+        background-color: $color;
     }
 
     .headerWrapper .back {
@@ -79,7 +79,7 @@
     }
 
     .dateZone .colo {
-        color: rgba(90, 165, 114, 1);
+        color: $color;
     }
 
     .dateTable {

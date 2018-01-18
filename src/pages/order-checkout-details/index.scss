@@ -54,7 +54,7 @@ body {
 
 .opinion-body .items:last-child {
     @include justify-content;
-    width: 3.2rem; // background-color: rgba(90, 165, 114, 1);
-    color: rgba(90, 165, 114, 1);
+    width: 3.2rem; // background-color: $color;
+    color: $color;
     font-size: .36rem;
 }

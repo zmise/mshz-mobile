@@ -45,8 +45,8 @@ body {
 }
 
 .order-sort-body .items .current {
-    color: rgba(90, 165, 114, 1);
-    border-color: rgba(90, 165, 114, 1);
+    color: $color;
+    border-color: $color;
 }
 
 
@@ -116,7 +116,7 @@ body {
 }
 
 .article-body .box .content .current {
-    border-left: 0.04rem solid rgba(90, 165, 114, 1);
+    border-left: 0.04rem solid $color;
     padding-left: .31rem;
 }
 
@@ -165,7 +165,7 @@ body {
 }
 
 .article-body .box .status .stu-but .current1 {
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
     color: rgba(255, 255, 255, 1);
 }
 
@@ -175,8 +175,8 @@ body {
 }
 
 .article-body .box .status .stu-but .current3 {
-    color: rgba(90, 165, 114, 1);
-    border-color: rgba(90, 165, 114, 1);
+    color: $color;
+    border-color: $color;
 }
 
 .current2 {
@@ -184,5 +184,5 @@ body {
 }
 
 .current3 {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }

@@ -454,7 +454,7 @@ body {
 
 .comment-body .first-comment .des .des-duihua span {
     font-size: .26rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     line-height: .4rem;
 }
 
@@ -469,7 +469,7 @@ body {
     width: 0.4rem;
     height: 0.4rem;
     font-size: .32rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .comment-body .first-comment .des .items {
@@ -640,7 +640,7 @@ onekey {
 
 .footer-body .items:last-child {
     @include justify-content;
-    background-color: rgba(90, 165, 114, 1);
+    background-color: $color;
 }
 
 .footer-body .items .commuite {

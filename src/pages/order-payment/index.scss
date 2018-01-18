@@ -40,12 +40,12 @@ footer {
     font-size: .51rem;
     margin-top: .37rem;
     margin-bottom: .23rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .hold-body span {
     font-size: .26rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 #minute,
@@ -117,7 +117,7 @@ footer {
 
 .content-body .checkInfo span {
     font-size: .28rem;
-    color: rgba(90, 165, 114, 1);
+    color: $color;
 }
 
 .content-body .checkInfo span:last-child {

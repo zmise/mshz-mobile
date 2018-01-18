@@ -65,8 +65,8 @@
 }
 
 .navigate-body .content .current {
-    color: rgba(90, 165, 114, 1);
-    border-left: .04rem solid rgba(90, 165, 114, 1);
+    color: $color;
+    border-left: .04rem solid $color;
 }
 
 .navigate-body .content .items .icon {
@@ -78,7 +78,7 @@
 }
 
 .navigate-body .content .items .current {
-    color: rgba(90, 165, 114, 1);
+    color: $color;
     border: none;
 }
 
