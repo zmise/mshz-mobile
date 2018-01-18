@@ -29,7 +29,7 @@ $(function () {
 
     e.stopPropagation();
     e.preventDefault();
-    window.history.go(-1);
+    history.go(-1);
   });
 
 

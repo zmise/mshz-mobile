@@ -375,7 +375,7 @@ $(function () {
   $('#back').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    windows.history.go(-1)
+    history.go(-1)
   });
 
 });

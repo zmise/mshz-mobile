@@ -6,57 +6,130 @@ require('../../assets/js/appDownload.js');//全局下载APP
 
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 
-
-// var str = '';
-// var strA = '';
-// var strB = '';
-// var strC = '';
-// var strD = '';
-// var strE = '';
-// var strF = '';
-// var strG = '';
-
-// if (json.orderState === 'BOOKED') {
-//   strA = '';
-//   strC = '';
-//   strE = '<span>押金</span> <span>¥' + json.remark + '</span>';
-//   strG = '';
-
-// } else if (json.orderState === 'CHECKED') {
-
-// } else if (json.orderState === 'CANCELL_REFUND') {
-
-// } else if (json.orderState === 'CANCELL_NO_REFUND') {
-
-// } else if (json.orderState === 'CHECKED_OUT') {
-
-// } else if (json.orderState === 'EARLY_CHECKED_OUT') {
-
-// } else {
-
-// }
-
+// CHECKED: 已入住
+// CANCELL_REFUND, 已取消，有退款
+// CANCELL_NO_REFUND, 已取消，无退款
+// CHECKED_OUT, 已退房
+// EARLY_CHECKED_OUT, 提前退房
+// INVALIDATED 无效
 // return '';
 var map = {
-  'PENDING': { icon: 'daifukuan', text: 'asdfasdf<span id="minute">15</span>fen <span id="second">00</span>asldkjfksd', 'content': '' },
-  'CHECKED': { icon: 'yiruzhu', text: '已入住', 'content': '' },
-  'CANCEL': { icon: 'yiruzhu', text: '已入住', 'content': 'asdf{{TEXT}}asdf' },
+  PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current1' },
+  CHECKED: { icon: 'dairuzhu', text: '待入住', className: 'current1' },
+  CANCELL_REFUND: { icon: 'yiquxian', text: '已取消', className: 'current2' },
+  CHECKED_OUT: { icon: 'yituifang', text: '已退房', className: 'current1' },
+  EARLY_CHECKED_OUT: { icon: 'tiqiantuifang', text: '提前退房', className: 'current1' },
+  INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时', className: 'current2' },
+  CANCELL_NO_REFUND: { icon: 'yiquxian', text: '已取消', className: 'current2' },
+
 };
 
-function buildHeader(state) {
-  var header = '<div><i class="icon-' + map[state].icon + '"></i><span class="state-text">' + map[state].text + '</span>';
+function buildHeader(state, data) {
+  var header = '';
+  if (state === 'PEDDING') {
+    header =
+      '<div class="time-paid">' +
+      '<span class="txt">已为您保留房源，请于' +
+      '<span class="minute" id="minute"></span> 分' +
+      '<span class="seconds" id="seconds"></span>' +
+      '秒内支付订单' +
+      '</span>' +
+      '<i class="icon iconfont icon-daojishi"></i>' +
+      '</div>'
+      ;
 
-  if (map[state].content.length > 0) {
-    header += '<div class="more-text">' + map[state].content.replace('{{TEXT}}', data.refundDate) + '</div>';
+  } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT') {
+    header =
+      '<div class="others-info">' +
+      '<svg class="icon" aria-hidden="true">' +
+      '<use xlink:href="#icon-' + map[state].icon + '"></use>' +
+      '</svg>' +
+      '<div>' +
+      '<span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
+      '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data + ' 处理时间：1-3个工作日' + '</p>' +
+      '</div>' +
+      '</div>'
+      ;
+  } else {
+    header =
+      '<div class="others-info">' +
+      '<svg class="icon" aria-hidden="true">' +
+      '<use xlink:href="#icon-' + map[state].icon + '"></use>' +
+      '</svg>' +
+      '<span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
+      '</div>'
+      ;
   }
-
-  header += '</div>';
-
   return header;
 }
+function buildRefundContent(state, data) {
+  var refund = '';
+  if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT') {
+    refund += '<div class="cancel-info">' +
+      '<span>退款金额</span>' +
+      '<span class="cancel-price">¥' + data.refund + '</span>' +
+      '</div>'
+      ;
+  }
 
+  return refund;
+}
+function buildButton(state) {
+  var button = '';
+  if (state === 'PEDDING') {
+    button =
+      '<section class="check-body">' +
+      '<a class="items">' +
+      '<p>取消订单</p>' +
+      '</a>' +
+      '<a class="items" href="javascript:;">付款</a>' +
+      '</section>'
+      ;
+  } else if (state === 'CANCELL_REFUND' || state === 'CANCELL_NO_REFUND' || state === 'INVALIDATED') {
+    button =
+      '<section class="opinion-body">' +
+      '<a class="items">' +
+      '<p>评价订单</p>' +
+      '</a>' +
+      '</section>'
+      ;
+  }
+  // if (map[state].content.length > 0) {
+  //   button += '<div class="more-text">' + map[state].content.replace('{{TEXT}}', data.refundDate) + '</div>';
+  // }
+
+
+  return button;
+}
 
 function startTimer(totalSeconds) {
+  var nowTime = new Date();
+  var userfulSeconds = totalSeconds - nowTime;
+  var tMin = 60;
+  var $min = $('#minute');
+  var $sec = $("#seconds");
+  var interval = setInterval(function () {
+    var tResult = userfulSeconds - 1;
+    var tResultMin = Math.floor(tResult / tMin);
+    var tResultSec = Math.floor(tResult % tMin);
+    // 将时间小于10的,在值前面加入0; 
+    if (tResultMin < 10) {
+      tResultMin = "0" + tResultMin;
+    }
+
+    if (tResultSec < 10) {
+      tResultSec = "0" + tResultSec;
+    }
+    userfulSeconds = userfulSeconds - 1;
+    //显示到页面上
+    $min.text(tResultMin);
+    $sec.text(tResultSec);
+
+    //清除定时器并执行释放房源的操作和刷新页面
+    if (tResult <= 0) {
+      clearInterval(interval);
+    }
+  }, 1000);
 
 }
 
@@ -84,36 +157,7 @@ function convertStatus(orderState, payState) {
 $(function () {
 
 
-  function tobepaidTime() {
-    var t_min = 60;
-    var $min = $('#minute');
-    var $sec = $("#seconds");
-    $min.text('30');
-    $sec.text('00');
-    var interval = setInterval(function () {
-      var t_result = ($min.text() - 0) * 60 + ($sec.text() - 0) - 1;
-      var t_result_min = Math.floor(t_result / t_min);
-      var t_result_sec = Math.floor(t_result % t_min);
-      // 将时间小于10的,在值前面加入0; 
-      if (t_result_min < 10) {
-        t_result_min = "0" + t_result_min;
-      }
 
-      if (t_result_sec < 10) {
-        t_result_sec = "0" + t_result_sec;
-      }
-
-      //显示到页面上
-      $min.text(t_result_min);
-      $sec.text(t_result_sec);
-
-      //清除定时器并执行释放房源的操作和刷新页面
-      if (t_result <= 0) {
-        clearInterval(interval);
-      }
-    }, 1000);
-
-  }
 
   // 订单详情页面的get接口
   function orderDetails(params) {
@@ -128,36 +172,35 @@ $(function () {
         console.log(data);
         if (data.status === 'C0000') {
           if (data && data.result && data.result !== '') {
-
-            var newOrderState = convertStatus(orderState, payState);
-
             var json = data.result;
 
+            var newOrderState = convertStatus(json.orderState, json.payState);
 
             var houseInfo =
-              '< div class="order-info" >' +
+              '<div class="order-info">' +
               '<div class="content">' +
-              '<img src="' + json.mainPicture + '" alt="">' +
+              '<img src="' + json.roomMainPic + '" alt="">' +
               '<div class="i-txt">' +
-              '<span class="title">' + json.title + '</span>' +
+              '<span class="title">' + json.roomTitle + '</span>' +
               '<div class="txt-line">' +
-              '<i class="line-items">' + json.roomBuilding + '</i>' +
-              '<i class="line-items">' + json.roomCount + '居' + json.area + '平</i>' +
-              '<i class="line-items">' + json.livedCount + '人</i>' +
+              '<i class="line-items">' + json.gardenArea + '</i>' +
+              '<i class="line-items">' + json.roomLayout + '居' + json.roomArea + '平</i>' +
+              '<i class="line-items">' + json.roomCount + '人</i>' +
               '</div>' +
               '</div>' +
               '</div>' +
               '<div class="time">' +
               '<i class="icon iconfont icon-shijianxianshi"></i>' +
               '<span class="txt">' + json.startTime + '至' + json.endTime + '</span>' +
-              '<span class="txt">' + json.bookedDays + '晚</span>' +
+              '<span class="txt"> ' + json.bookedDays + '晚</span>' +
               '</div>' +
               '<div class="address">' +
               '<i class="icon iconfont icon-lubiao"></i>' +
               '<span class="txt">地址:</span>' +
-              '<span class="txt">' + json.addressDesc + '</span>' +
+              '<span class="txt">' + json.address + '</span>' +
               '</div>' +
-              '</div>';
+              '</div>'
+              ;
 
             var moneyInfo =
               '<div class="money-info">' +
@@ -172,41 +215,48 @@ $(function () {
                 '</div>';
             }
 
-            moneyInfo += '</div>' +
+            moneyInfo +=
+
+              '</div>' +
               '<div class="total">' +
               '<span>总额</span>' +
-              '<span class="price">¥' + json.roomRate + '</span>' +
+              '<span class="price">¥' + json.totalPrice + '</span>' +
               '</div>' +
-              '</div>';
+              '</div>'
+              ;
 
             var customerInfoHTML = '<div class="peo-info">' +
               '<span class="title">入住人信息</span>';
 
             var custModelList = json.custModelList;
             for (var i = 0, len = custModelList.length; i < len; i++) {
-              customerInfo += '<div class="pri-info">' +
+              customerInfoHTML += '<div class="pri-info">' +
                 '<span>' + custModelList[0].custName + '</span>' +
-                '<span>' + custModelList.custIdCard + '</span>' +
-                '<span>' + custModelList + '</span>';
+                '<span>' + custModelList[0].custIdCard + '</span>' +
+                '<span>' + custModelList[0].custPhone + '</span>';
               '</div>';
             }
-            customerInfo += '</div>';
+            customerInfoHTML += '</div>';
 
 
-            var headerHTML = buildHeader(newOrderState);
-            var refundHTML = buildRefundContent(newOrderState);
+            var headerHTML = buildHeader(newOrderState, json);
+            var refundHTML = buildRefundContent(newOrderState, json);
+
+
+            $('#article-body').html(headerHTML + houseInfo + moneyInfo + refundHTML + customerInfoHTML);
             var buttonsHTML = buildButton(newOrderState);
-
-
-            $('#orderInfo').html(headerHTML + moneyInfo + houseInfo + refundHTML + customerInfo + buttonsHTML);
-
+            $('body').append(buttonsHTML);
+            console.log(newOrderState);
+            console.log('json.effectTimeSecond=', json.effectTimeSecond);
             if (newOrderState === 'PENDING') {
-              startTimer(json.totalSeconds);
+              startTimer(json.effectTimeSecond);
             }
 
 
           }
+          else {
 
+          }
         }
 
       },
@@ -240,7 +290,7 @@ $(function () {
   $('#back').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    window.history.go(-1)
+    history.go(-1)
   });
 
 });

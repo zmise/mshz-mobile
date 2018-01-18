@@ -56,6 +56,31 @@ body {
     min-height: calc(100% - 2.12rem);
 }
 
+
+/* 没有订单数据的样式 */
+
+.article-body .noOrder-body {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    background-color: #fff;
+    margin-top: 0.24rem;
+}
+
+.article-body .noOrder-body .img {
+    width: 2.5rem;
+    height: 2rem;
+    background: url('./img/nullbox.png') no-repeat;
+    background-size: 2.5rem 2rem;
+}
+
+.article-body .noOrder-body .txt {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    padding-top: 0.24rem;
+}
+
 .article-body .box {
     @include flex-box;
     @include flex-direction(column);
