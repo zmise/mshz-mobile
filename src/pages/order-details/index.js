@@ -14,13 +14,13 @@ require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 // INVALIDATED 无效
 // return '';
 var map = {
-  PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current1' },
-  CHECKED: { icon: 'dairuzhu', text: '待入住', className: 'current1' },
-  CANCELL_REFUND: { icon: 'yiquxian', text: '已取消', className: 'current2' },
-  CHECKED_OUT: { icon: 'yituifang', text: '已退房', className: 'current1' },
-  EARLY_CHECKED_OUT: { icon: 'tiqiantuifang', text: '提前退房', className: 'current1' },
+  // PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
+  PAYMENT: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
+  CANCELL_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
+  CHECKED_OUT: { icon: 'yituifangwutuikuan', text: '已退房', className: 'current2' },
+  EARLY_CHECKED_OUT: { icon: 'yituifangyoutuikuan', text: '提前退房', className: 'current2' },
   INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时', className: 'current2' },
-  CANCELL_NO_REFUND: { icon: 'yiquxian', text: '已取消', className: 'current2' },
+  CANCELL_NO_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
 
 };
 
@@ -85,11 +85,19 @@ function buildButton(state) {
       '<a class="items" href="javascript:;">付款</a>' +
       '</section>'
       ;
-  } else if (state === 'CANCELL_REFUND' || state === 'CANCELL_NO_REFUND' || state === 'INVALIDATED') {
+  } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'INVALIDATED' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
       '<a class="items">' +
       '<p>评价订单</p>' +
+      '</a>' +
+      '</section>'
+      ;
+  } else {
+    button =
+      '<section class="opinion-body">' +
+      '<a class="items current">' +
+      '<p>取消订单</p>' +
       '</a>' +
       '</section>'
       ;
@@ -236,7 +244,7 @@ $(function () {
             }
             customerInfoHTML += '</div>';
 
-
+            newOrderState = 'PAYMENT';
             var headerHTML = buildHeader(newOrderState, json);
             var refundHTML = buildRefundContent(newOrderState, json);
 
