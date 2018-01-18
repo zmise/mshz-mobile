@@ -294,7 +294,7 @@
                 var $arryeven = $(arry1).find('span:even');
                 // console.log($arryodd)
                 $arryeven.eq(0).text('今天');
-                $arryeven.eq(0).attr('data-day', '今天');
+                $arryeven.eq(0).attr('data-txt', '今天');
                 $arryeven.addClass('even');  //入住 等 文字
                 $arryodd.addClass('odd'); //价格 200
                 console.log(me.sourceData);
@@ -427,9 +427,14 @@
                     //第一次点击
                     if (flag == 0) {
                         var arr = $(me.sections).find('.tbody').find('.rz');
+
                         for (var m = 0; m < arr.length; m++) {
                             arr.eq(m).text(arr.eq(m).data('day'));
+                            if (arr.eq(m).data('txt')) {
+                                arr.eq(m).text(arr.eq(m).data('txt'));
+                            }
                         }
+
                         // $(me.sections).find('.tbody').find('span').removeClass('rz').removeClass('Val-price');
 
                         //移除点击无房的高亮
