@@ -183,9 +183,12 @@ $(function () {
     // params.prices = '';
     // params.roomCount = '';
     // params.furniture = '';  
-    // $filterList.find('.checkbox-body .range .first-slider');
-    // $filterList.find('.checkbox-body .range .last-slider');
-    // $filterList.find('.checkbox-body .range .range-value').css({ 'left': 0, 'right': 0 });
+    $filterList.find('.checkbox-body .range .first-slider').css({ 'left': '-20px' });
+    $filterList.find('.checkbox-body .range .first-slider .text-value').text('0');
+    $filterList.find('.checkbox-body .range .last-slider').css({ 'right': '-20px' });
+    $filterList.find('.checkbox-body .range .last-slider .text-value').text('不限');
+
+    $filterList.find('.checkbox-body .range .range-value').css({ 'left': 0, 'right': 0 });
     $('#page').val(1);
     $('#prices').val('0-*');
     $('#roomCount').val('');
