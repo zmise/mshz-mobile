@@ -95,7 +95,9 @@ $(function () {
     // console.log(cityName);
     // var city = $('#destination-entry').val();
     $.ajax({
-      url: '/mshz-app/room/queryCityRimInfo',
+      //todo 
+      // url: '/mshz-app/room/queryCityRimInfo',
+      url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
       data: {
         'city': cityName,
       },

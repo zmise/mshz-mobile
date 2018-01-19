@@ -16,9 +16,9 @@ $(function () {
     params = {
       city: $('#city').val(),
       keyword: $('#search-entry').val(),
-      startDate: $('#firstSelect').data('startdata'),
+      startDate: $('#startDate').val(),
       // startDate: '2018-02-01',
-      endDate: $('#firstSelect').data('enddata'),
+      endDate: $('#endDate').val(),
       // endDate: '2018-02-02',
       poi: $('#poi').val(),
       sortBy: $('#sortBy').val(),
@@ -53,7 +53,7 @@ $(function () {
       $('#firstSelect').attr("data-startdata", start);
       $('#firstSelect').attr("data-enddata", end);
       $('#startDate').val(start);
-      $('#endtDate').val(end);
+      $('#endDate').val(end);
       window.sessionStorage.setItem('startDate', start);
       window.sessionStorage.setItem('endDate', end);
       // console.log($('#firstSelect').data())
@@ -247,11 +247,20 @@ $(function () {
 
   function loadingMore() {
     initParams();
-    // console.log(params);
+    console.log(params);
+    var lastParams = {}
+    for (var prop in params) {
+      if (params[prop] !== '') {
+        lastParams[prop] = params[prop];
+      }
+    }
+    console.log(lastParams, 'lastParams');
+
     $.ajax({
-      // url: 'http://192.168.0.243:51313/mshz-mgr/security/oms/recommend/selectRoom',
-      url: '/mshz-app/room/queryRoom',
-      data: params,
+      //todo
+      // url: '/mshz-app/room/queryRoom',
+      url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
+      data: lastParams,
       // data: {
       //   city: 'SHENZHEN'
       // },

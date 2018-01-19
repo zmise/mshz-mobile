@@ -68,7 +68,9 @@ $(function () {
     var city = $('#destination-entry').val();
     // console.log(city);
     $.ajax({
-      url: '/mshz-app/room/darkSelectRimInfo',
+      //todo
+      // url: '/mshz-app/room/darkSelectRimInfo',
+      url: 'http://192.168.0.243:51312/mshz-app/room/darkSelectRimInfo',
       data: {
         'city': $('#destination-entry').val(),
         'name': keyword,

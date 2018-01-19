@@ -78,15 +78,21 @@ $(function () {
       cache: false,
       success: function (data) {
         // console.log('success');
-        console.log(data);
+        // console.log(data);
         if (data && data.result && data.result.map && data.result.map !== '') {
           var obj = data.result.map;
 
           var sourceDate = [];
-          Object.keys(obj).forEach(function (key) {
-            return sourceDate = sourceDate.concat(obj[key]);
-          });
+          // Object.keys(obj).forEach(function (key) {
+          //   return sourceDate = sourceDate.concat(obj[key]);
+          // });
+          // var sourceDate1 = [];
+          // console.log(obj);
 
+          for (var prop in obj) {
+            sourceDate = sourceDate.concat(obj[prop]);
+          }
+          // console.log(sourceDate);
           var startDate = $('#startDate').val() || initStartDate;
           var endDate = $('#endDate').val() || initEndDate;
           // 初始化价格日历
