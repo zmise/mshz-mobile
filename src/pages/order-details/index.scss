@@ -5,6 +5,7 @@
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/order-details.scss'; // 订单详情
 @import '../../sass/loading.scss'; // 加载中
+@import '../../sass/toast.scss'; // toast的样式
 body {
     position: relative;
     padding: .88rem 0 .37rem;
@@ -98,4 +99,45 @@ footer {
 .opinion-body .current {
     border-color: rgba(94, 100, 107, 1);
     color: rgba(94, 100, 107, 1);
+}
+
+//#overlay 
+#overlay .box {
+    @include flex-box;
+    @include flex-direction(column);
+    width: 6.8rem;
+    margin: calc(80%) .35rem 0;
+    background: rgba(255, 255, 255, 1);
+    border-radius: .08rem;
+    box-sizing: border-box;
+    display: none;
+}
+
+#overlay .box .text1 {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .28rem;
+    height: 1.22rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+#overlay .box .text2 {
+    @include flex-box;
+    height: 0.85rem;
+    border-top: .01rem solid rgba(227, 230, 233, 1);
+}
+
+#overlay .box .text2 span {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .28rem;
+    color: rgba(0, 122, 255, 1);
+}
+
+#overlay .box .text2 span:last-child {
+    border-left: .01rem solid rgba(227, 230, 233, 1);
 }

@@ -229,7 +229,7 @@ $(function () {
 
 
   // url上面的参数
-  // todo 
+  // todo
   var roomId = getUrlParam('roomId');
   console.log(roomId);
   if (!roomId) {
@@ -295,11 +295,26 @@ $(function () {
     $(this).val($(this).val().replace(/\D+/g, ''));
 
   });
-  $inputLayout.on('keydown', '#tel', function (e) {
-    $(this).val($(this).val().replace(/\D+/g, ''));
 
+  //输入电话号码以 4 3 3 的格式
+  $inputLayout.on('input', '#tel', function (e) {
+    var len = this.value.length;
+    if (len === 3 || len === 8) {
+      this.value += ' ';
+    }
+  }).on('keydown', '#tel', function (e) {
+    var key = e.keyCode;
+    if ((key > 47 && key < 58) || (key > 95 && key < 106) || key === 8) {
+      var val = this.value.replace(/^\s*/, '');
+      var len = val.length;
+      if (key == 8 && (len == 4 || len == 9)) {
+        val = val.trim();
+      }
+      this.value = val;
+    } else {
+      return false;
+    }
   });
-
 
   /*   显示日历的控件的点击事件 */
   $('.userInfo-body').on('tap', '.calc-entry', function (e) {
@@ -334,46 +349,43 @@ $(function () {
     }
   });
 
-
-
-
-
-
   // 提交订单事件
 
   $('.check-body').on('tap', '#addOrder', function (e) {
     e.stopPropagation();
     e.preventDefault();
     // 验证手机格式  todo
-    var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则  
-    var IdReg = /^((\d{18})|([0-9x]{18})|([0-9X]{18}))$/; //验证身份证正则
-    if ($('#name').val() == '') {
-      showMessage('姓名填写不正确', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
+    var idReg = /^((\d{18})|([0-9x]{18})|([0-9X]{18}))$/; //验证身份证正则
+    var nameVal = $.trim($('#name').val());
+    var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
+    var idVal = $.trim($('#IDcard').val());
+    if (nameVal.length < 2) {
+      showMessage('请填写正确姓名', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
-    if (!IdReg.test($('#IDcard').val())) {
-      showMessage('填写的身份证号码不正确', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    if (!idReg.test(idVal)) {
+      showMessage('请填写正确身份证号', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
-    if (!telReg.test($('#tel').val())) {
-      showMessage('填写的手机号码不正确', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    if (!telReg.test(telVal)) {
+      showMessage('请填写正确手机号码', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
-
 
     var paramsList = {
       custFormList: [
         {
-          custIdCard: $('#IDcard').val(),
-          custName: $('#name').val(),
-          custPhone: $('#tel').val(),
+          custIdCard: idVal,
+          custName: nameVal,
+          custPhone: telVal,
         }
       ],
       custCount: +$('#peo-num').val() || 1,
       orderChannel: 'MSHZ_APP',
-      roomId: params.roomId || '00f1cf6f-2eb9-4b4b-ad3c-95a03795dea4',
-      startTime: $('#startDate').val() || '2018-02-16',
-      endTime: $('#endDate').val() || '2018-02-17',
+      roomId: params.roomId,
+      startTime: $('#startDate').val(),
+      endTime: $('#endDate').val(),
     }
     addOrder(paramsList);
   });

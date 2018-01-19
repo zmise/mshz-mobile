@@ -102,8 +102,8 @@
           <button class="current2">评价订单</button>
         </div>
       </div>
-    </div>
-
+    </div> -->
+    <!-- 
     <div class="box">
       <div class="content">
         <div class="title">
@@ -290,8 +290,18 @@
     <p class="copyright">ICP备案号：粤ICP备05067219号-3</p>
   </footer>
 
+  <!-- 取消订单的toast -->
+
+  <div class="overlay" id="overlay">
+    <div class="box">
+      <div class="text1">取消订单将不再保留房源</div>
+      <div class="text2">
+        <span id="no-cancel">不取消</span>
+        <span id="cancel">确认取消</span>
+      </div>
+    </div>
+  </div>
   <!-- 侧边栏 -->
-  <div class="overlay" id="overlay"></div>
   <nav class="navigate-body" js-plugin="slide" data-direction="vertical">
     <div class="navigate">
       <div class="login" href="javascript:;">
@@ -358,8 +368,10 @@
 
 
 
-  <!-- <input id="page" type="hidden" value="1" />
-  <input id="city" type="hidden" value="SHENZHEN" />
+  <input id="orderno" type="hidden" value="" />
+
+  <input id="orderQueryType" type="hidden" value="" />
+  <!-- 
   <input id="poi" type="hidden" value="" />
   <input id="roomCount" type="hidden" value="" />
   <input id="sortBy" type="hidden" value="" />

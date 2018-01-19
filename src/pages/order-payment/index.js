@@ -11,7 +11,7 @@ $(function () {
     var tMin = 60;
     var $min = $('#minute');
     var $sec = $("#seconds");
-    var timeInterval = setInterval(function () {    
+    var timeInterval = setInterval(function () {
       var tResult = totalSeconds - 1;
       var tResultMin = Math.floor(tResult / tMin);
       var tResultSec = Math.floor(tResult % tMin);
@@ -44,21 +44,7 @@ $(function () {
     if (r != null) return unescape(r[2]); return null; //返回参数值
   }
 
-  // url上面的参数
-  var params = {
-    orderNo: getUrlParam('orderNo'),
-  }
-  if (!params.orderNo) {
-    location.replace('error.html?code=E0001')
-  } else {
-    // 关闭loading
-    $('#loading').remove();
-  }
-
-
-
   // 订单详情get接口
-  orderPreviewInfo(params);
 
   function orderPreviewInfo(params) {
 
@@ -93,6 +79,59 @@ $(function () {
 
   }
 
-  // 订单详情get接口
+
+  // 订单支付页面的post接口
+  function orderPaid(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/app/order/orderPay',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        console.log('success');
+        console.log(data);
+        // if (data && data.result && data.result.orderNo !== '') {
+        //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
+        //   console.log(path);
+        //   window.location = path;
+        // }
+
+
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+
+  // url上面的参数
+  var params = {
+    orderNo: getUrlParam('orderNo'),
+  }
+  if (!params.orderNo) {
+    location.replace('error.html?code=E0001')
+  } else {
+    // 关闭loading
+    $('#loading').remove();
+  }
+
+
+
+  // 吊起订单详情get接口
+  orderPreviewInfo(params);
+
+
+  // 点击返回回到上一页
+  $('#back').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    history.go(-1)
+  });
 
 });

@@ -4,6 +4,8 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');//侧边栏
 
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
+require('../../assets/js/toast.js');  //toast的事件
+
 
 // CHECKED: 已入住
 // CANCELL_REFUND, 已取消，有退款
@@ -87,7 +89,7 @@ function buildButton(state) {
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'INVALIDATED' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
-      '<a class="items">' +
+      '<a class="items" id="talk-order">' +
       '<p>评价订单</p>' +
       '</a>' +
       '</section>'
@@ -157,6 +159,24 @@ function convertStatus(orderState, payState) {
   }
   return state;
 }
+
+// 初始化的弹出的toast框
+function showMessage(content, duration, isCenter, animateIn, animateOut) {
+  var animateIn = animateIn;
+  var animateOut = animateOut;
+  var content = content;
+  var duration = duration;
+  var isCenter = isCenter;
+  $('body').toast({
+    position: 'fixed',
+    animateIn: animateIn,
+    animateOut: animateOut,
+    content: content,
+    duration: duration,
+    isCenter: isCenter,
+  });
+}
+
 
 
 $(function () {
@@ -273,34 +293,6 @@ $(function () {
 
   }
 
-  // 订单支付页面的post接口
-  function orderPaid(params) {
-    console.log(params)
-    $.ajax({
-      url: '/mshz-app/security/app/order/orderPay',
-      data: JSON.stringify(params),
-      dataType: 'json',
-      contentType: 'application/json;charset=UTF-8',
-      type: 'POST',
-      cache: false,
-      success: function (data) {
-        console.log('success');
-        console.log(data);
-        // if (data && data.result && data.result.orderNo !== '') {
-        //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
-        //   console.log(path);
-        //   window.location = path;
-        // }
-
-
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-      }
-    });
-
-  }
 
   // 取消订单的post接口
   function orderCancel(params) {
@@ -313,8 +305,16 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (data) {
-        console.log('success');
         console.log(data);
+
+        if (data.status === 'C0000') {
+          console.log('success');
+          showMessage('取消成功', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+
+          //跳转order-list页面
+          var path = './order-list页面.html';
+          window.location = path;
+        }
         // if (data && data.result && data.result.orderNo !== '') {
         //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
         //   console.log(path);
@@ -340,6 +340,7 @@ $(function () {
   if (!orderNo) {
     location.replace('error.html?code=E0001')
   } else {
+    $('#orderNo').val(orderNo);
     // 关闭loading
     $('#loading').remove();
     var initParams = {
@@ -348,31 +349,62 @@ $(function () {
     orderDetails(initParams);
   }
 
-  // 点击付款
+
+
+  // 点击付款按钮跳转到订单支付页面 order-payment
 
   $('#order-paid').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var paidParams = {
-      orderNo: orderNo,
-      payChannel: 'WECHATPAY',
-      roomId: '',
-      totalPrice: 0
-    }
+    var order = $('#orderNo').val();
+
+    var path = './order-payment.html?orderNo=' + orderNo;
+    window.location = path;
     // orderPaid(paidParams);
   });
-  // 点击取消订单
 
+  // 点击取消订单 跳转到订单列表页面  弹出弹框，点击确定取消，删除该订单dom”释放房源，toast，取消成功，跳转订单列吧
   $('#order-cancel').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var cancelParams = {
-      orderNo: orderNo
-    }
+    $('#overlay').show();
+    $('#overlay .box').show();
     // orderCancel(cancelParams);
+
+    // var path = './order-list.html';
+    // window.location = path;
+  });
+  //点击不取消按钮
+  $('#overlay').on('tap', '#no-cancel', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $('#overlay').hide();
+    $('#overlay .box').hide();
+
+  });
+  //点击确认取消按钮
+  $('#overlay').on('tap', '#cancel', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var orderNo = $('#orderno').val();
+    $('#overlay').hide();
+    $('#overlay .box').hide();
+    //释放房源
+    var cancelParams = {
+      orderNo: orderNo,
+    }
+    orderCancel(cancelParams);
+
   });
 
 
+  // 点击评价订单
+  $('#talk-order').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var order = $('#orderNo').val();
+
+  });
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
