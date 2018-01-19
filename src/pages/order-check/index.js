@@ -101,9 +101,12 @@ $(function () {
             comeColor: "#44bb80",       //入住颜色
             outColor: "#44bb80",      //离店颜色
             comeoutColor: "#44bb80",        //入住和离店之间的颜色
-            callback: function (start, end) {
+            callback: function (start, end, totalDay, Price) {
               $('#startDate').val(start);
               $('#endDate').val(end);
+              $('#totalday').text('共' + totalDay + '晚');
+              $('#housePrice').text(Price);
+              $('#totalPrice').text('￥' + (Price + +$('#otherPrice').text()));
             },   //回调函数
             comfireBtn: '.comfire',//确定按钮的class或者id
             startData: startDate,

@@ -6,6 +6,8 @@
             this.element = element;
             this.init();
         }
+        var totalDay;  //总天数
+        var totalPrice;  //总价格
         calendarSwitch.prototype = { /*说明：初始化插件*/
             /*实现：初始化dom结构，布局，分页及绑定事件*/
             init: function () {
@@ -148,13 +150,15 @@
                     $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
                     var st = me.startData;
                     var en = me.endData;
-                    // console.log(st)
-                    // console.log(en)
+                    var day = totalDay;
+                    var price = totalPrice;
+                    console.log(day)
+                    console.log(price)
 
                     // debugger
                     if (st) {
                         me._slider(me.sections)
-                        me._callback(st, en);
+                        me._callback(st, en, day, price);
                         var end = en;
                         end = end.split('-');
                         end = end[1] + '.' + end[2];
@@ -173,7 +177,7 @@
                         var en = ye1 + '-' + mo1 + '-' + da1;
 
                         me._slider(me.sections);
-                        me._callback(st, en);
+                        me._callback(st, en, day, price);
                     }
 
                 });
@@ -370,10 +374,10 @@
                 }
 
             },
-            _callback: function (st, en) {
+            _callback: function (st, en, day, price) {
                 var me = this;
                 if (me.settings.callback && $.type(me.settings.callback) === "function") {
-                    me.settings.callback(st, en);
+                    me.settings.callback(st, en, day, price);
                 }
             },
 
@@ -390,7 +394,6 @@
 
                 var flag = 0;
                 var first;
-                var sum;
                 var second;
                 $(arry1).on('click', function (index) {
                     if ($(this).find('.even').length == 0) {
@@ -402,7 +405,7 @@
 
                     //判断中间有没有无房的 有的话 不给它选给他直接显示入住 
                     if ((flag == 1) && me.sourceData && me.sourceData !== '') {
-                        console.log(flag);
+                        // console.log(flag);
                         var four = first;
                         var three = $(arry1).index($(this));
                         if (first < three) {
@@ -470,6 +473,9 @@
                                     break
                                 }
                             }
+
+                            totalDay = 1;
+                            totalPrice = +$(this).find('.odd').text().replace('￥', '');
                         }
 
 
@@ -483,19 +489,22 @@
                         $('.calendar .headerTip').text(start + '-');
 
                     } else if (flag == 1) {
-                        //第二次点击
-
                         second = $(arry1).index($(this))
 
-
-                        //计算总共多少天sum
-                        sum = Math.abs(second - first);
-                        if (sum == 0) {
-                            sum = 1;
+                        //第二次点击
+                        if (me.sourceData && me.sourceData !== '') {
+                            //计算总共多少天totalDay
+                            totalDay = Math.abs(second - first);
+                            if (totalDay == 0) {
+                                totalDay = 1;
+                            }
                         }
 
+
+
+
                         if (first < second) {
-                            first = first + 1;
+                            first = first;
 
                             // $(me.sections).find('.rz').text('退房');
 
@@ -509,6 +518,10 @@
                                     'background': me.comeoutColor,
                                     'color': '#fff'
                                 });
+                                if (me.sourceData && me.sourceData !== '') {
+                                    totalPrice = totalPrice + +$(arry1[first]).find('.odd').text().replace('￥', '');
+
+                                }
                             }
                             flag = 0;
 
@@ -519,7 +532,7 @@
                             $(this).find('span:first').text('入住').addClass('rz');
                             $(this).find('span').addClass('color');
 
-                            second = second + 1;
+                            second = second;
                             for (second; second < first; second++) {
                                 $(arry1[second]).find('span').addClass('color');
 
@@ -527,13 +540,17 @@
                                     'background': me.comeoutColor,
                                     'color': '#fff'
                                 });
+                                if (me.sourceData && me.sourceData !== '') {
+
+                                    totalPrice = totalPrice + +$(arry1[first]).find('.odd').text().replace('￥', '');
+                                }
                             }
                             flag = 0;
 
                         }
                         // $(me.sections).find('.rz').each(function (index, element) {
                         //     if ($(this).text() == '退房') {
-                        //         $(this).parent('td').append('<span class="hover">' + sum + '天</span>')
+                        //         $(this).parent('td').append('<span class="hover">' + totalDay + '天</span>')
                         //         $(this).parent('td').css('position', 'relative');
                         //     }
 
