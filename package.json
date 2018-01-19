@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "qfang-mobile",
   "main": "webpack.config.js",
-  "author": "heqiong",
+  "author": "",
   "license": "ISC",
   "scripts": {
     "clear": "rm -rf ./user",

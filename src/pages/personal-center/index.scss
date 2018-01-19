@@ -4,7 +4,6 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
-
 body {
     position: relative;
     padding-top: .88rem;
@@ -15,4 +14,216 @@ body {
 
 .article-body {
     min-height: calc(100% - 3rem);
+    box-sizing: border-box;
+}
+
+.personal-info {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    height: 1.9rem;
+    padding: 0 .65rem 0 .35rem;
+    background: $color;
+    box-sizing: border-box;
+}
+
+.personal-info .flex-box {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+}
+
+.personal-info .icon {
+    width: 0.26rem;
+    height: 0.26rem;
+    font-size: .26rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.personal-info .photo {
+    width: 1.37rem;
+    height: 1.37rem;
+    border-radius: .685rem;
+    background-color: #333;
+    margin-right: .3rem;
+}
+
+.personal-info .name-time {
+    @include flex;
+    @include flex-box;
+    @include flex-direction(column);
+    @include justify-content;
+    font-size: .28rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.personal-info .name-time .tel {
+    margin-top: 0.2rem;
+    font-size: .24rem;
+}
+
+.personal-info .name-time .icon {
+    width: 0.25rem;
+    height: 0.25rem;
+    font-size: .25rem;
+    margin-right: 0.1rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+// .personal-info .name-time span:first-child {
+//     font-size: .26rem;
+//     color: rgba(94, 100, 107, 1);
+// }
+
+/* other-info */
+
+.other-info {
+    @include flex-box;
+    @include justify-content(space-around);
+    height: 1.14rem;
+    background-color: #fff;
+}
+
+.other-info .items {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    color: rgba(94, 100, 107, 1);
+}
+
+.other-info .items .txt {
+    font-size: .22rem;
+    color: rgba(94, 100, 107, 1);
+    margin-top: 0.1rem;
+}
+
+.other-info .items .number {
+    font-size: .28rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+
+/* order-info */
+
+.order-info {
+    @include flex-box;
+    @include flex-direction(column);
+    margin-top: 0.13rem;
+    height: 5.45rem;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+}
+
+.order-info .title {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    height: .9rem;
+    padding: 0 .35rem;
+    margin-bottom: 0.1rem;
+}
+
+.order-info .title .txt {
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.order-info .title .icon {
+    font-size: .26rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.order-info .slider {
+    @include flex;
+    @include flex-box;
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    padding: 0 0.35rem;
+}
+
+.order-info .slider .items {
+    height: 1.8rem;
+    border-radius: .08rem;
+    border: .01rem dashed $color;
+    padding: 0 0.25rem;
+}
+
+.order-info .slider .items .tlt {
+    @include flex-box;
+    @include justify-content(space-between);
+    padding-top: 0.36rem;
+}
+
+.order-info .slider .items .tlt .txt {
+    font-size: .32rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.order-info .slider .items .tlt .current {
+    color: $color;
+    font-weight: 700;
+}
+
+.order-info .slider .items .time {
+    @include flex-box;
+    padding-top: 0.26rem;
+}
+
+.order-info .slider .items .time .txt {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+    margin-right: 0.48rem;
+}
+
+.order-info .slider-point {
+    @include flex-box;
+    @include justify-content;
+    padding: 0.24rem 0;
+}
+
+.order-info .slider-point .point {
+    width: .14rem;
+    height: .14rem;
+    background: rgba(227, 230, 233, 1);
+    border-radius: .07rem;
+    margin-right: 0.2rem;
+}
+
+.order-info .slider-point .current {
+    background: $color;
+}
+
+.landlord-entry {
+    @include flex-box;
+    @include justify-content;
+}
+
+.landlord-entry img {
+    width: 1.18rem;
+    height: 1.04rem;
+    margin-right: 0.24rem;
+}
+
+.landlord-entry .txt {
+    margin-top: 0.28rem;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: 2.52rem;
+    height: .48rem;
+    background: $color;
+    border-radius: .04rem;
+    font-size: .24rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.server-tel {
+    @include flex-box;
+    @include align-items(flex-end);
+    @include justify-content;
+    height: .48rem;
+    background: rgba(255, 255, 255, 1);
+    font-size: .24rem;
+    color: rgba(94, 100, 107, 1);
 }
