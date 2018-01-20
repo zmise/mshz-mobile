@@ -49,6 +49,8 @@ $(function () {
 
   $('#firstSelect').on('tap', function (e) {
     e.stopPropagation();
+    e.preventDefault();
+
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
   $('#firstSelect').calendarSwitch({
@@ -197,6 +199,7 @@ $(function () {
 
   /* 选定位置返回首页的事件  */
   $('.des-body .des-location .icon-fanhui').on('tap', function (e) {
+    e.stopPropagation();
     e.preventDefault();
     // console.log($(this).prev().text());
     $('#destination-entry').val($(this).prev().text());
@@ -204,6 +207,7 @@ $(function () {
     $('body,html').css({ 'overflow': 'visible' });
   });
   $('.des-hot-city .items').on('tap', function (e) {
+    e.stopPropagation();
     e.preventDefault();
     $('#destination-entry').val($(this).text());
     $('#search-entry').val('');
@@ -221,6 +225,7 @@ $(function () {
 
   });
   $('.des-list .txt').on('tap', function (e) {
+    e.stopPropagation();
     e.preventDefault();
     $('#destination-entry').val($(this).text());
     $(this).closest('.des-body').hide();
@@ -230,6 +235,8 @@ $(function () {
 
   /* 进入搜索页 */
   $('#search-entry').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
     if ($.trim($(this).val()) == '') {
       $('.search-layer').show();
       $('.search-layer .search-keyword').show();

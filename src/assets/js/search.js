@@ -9,6 +9,7 @@ $(function () {
   /* 返回首页  */
   $('#search-cancel').on('tap', function (e) {
     e.stopPropagation();
+    e.preventDefault();
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
     // $('#search-entry').val($('.text-body .text').val());
@@ -17,6 +18,7 @@ $(function () {
   /* 点击search-keyword给input输入文本并切换 search-list */
   $('.search-layer').on('tap', '.keywords .items', function (e) {
     e.stopPropagation();
+    e.preventDefault();
     // console.log($(this).closest('.search-layer').html());
     $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
 
@@ -99,6 +101,7 @@ $(function () {
 
   $('.search-list').on('tap', '.slide .items', function (e) {
     e.stopPropagation();
+    e.preventDefault();
 
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
@@ -108,6 +111,7 @@ $(function () {
   /* ??? */
   $('.search-body ').on('tap', '.text-body .search-close ', function (e) {
     e.stopPropagation();
+    e.preventDefault();
     $(this).closest('.text-body').find('.text').val('');
     $('.search-layer .search-keyword').show();
     $('.search-layer .search-list').hide();

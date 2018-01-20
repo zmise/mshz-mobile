@@ -35,6 +35,7 @@ $(function () {
   var sourceData;
   $('#firstSelect').on('tap', function (e) {
     e.stopPropagation();
+    e.preventDefault();
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
 
@@ -103,6 +104,7 @@ $(function () {
 
 
   $('.filter-list').on('tap', '.metro .items', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     var $metroRow = $(this).closest('.content').find('.metro-row');
     // console.log($metroRow)
@@ -112,6 +114,7 @@ $(function () {
     $metroRow.find('div').css('display', 'none').eq($(this).index()).css('display', 'block');
   });
   $('.filter-list').on('tap', '.metro-row .items', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     hideFilterLayer();
     var poi = $(this).text();
@@ -166,6 +169,7 @@ $(function () {
 
 
   $('.filter-list').on('tap', '.cancel-one', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     $('.onelist .items').removeClass('current');
     $('#page').val(1);
@@ -173,6 +177,7 @@ $(function () {
 
   });
   $('.filter-list').on('tap', '.cancel-two', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     $('.threelist .items').removeClass('current');
     var $mitems = $('.threelist .more-sel-items');

@@ -82,9 +82,10 @@ $(function () {
 
   // 订单支付页面的post接口
   function orderPaid(params) {
-    console.log(params)
+    console.log(params);
+
     $.ajax({
-      url: '/mshz-app/security/app/order/orderPay',
+      url: 'http://172.16.72.69:51312/mshz-app/security/orderpay/ali/getorderstr/wap',
       data: JSON.stringify(params),
       dataType: 'json',
       contentType: 'application/json;charset=UTF-8',
@@ -98,7 +99,6 @@ $(function () {
         //   console.log(path);
         //   window.location = path;
         // }
-
 
       },
       error: function (error) {
@@ -123,8 +123,14 @@ $(function () {
 
 
 
-  // 吊起订单详情get接口
+  // 调起订单详情get接口
   orderPreviewInfo(params);
+  $('#alipay').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    orderPaid(params);
+
+  });
 
 
   // 点击返回回到上一页

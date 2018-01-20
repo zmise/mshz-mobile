@@ -83,12 +83,14 @@ $(function () {
 
   /* close的tap事件  */
   $('#close').on('tap', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     hideFilterLayer();
   });
 
   /* overlay的tap事件  */
   $overlay.on('tap', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     hideFilterLayer();
   });
@@ -96,6 +98,7 @@ $(function () {
 
   /* 切换筛选项   */
   $filterBody.on('tap', '.mostjs', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     // $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
 

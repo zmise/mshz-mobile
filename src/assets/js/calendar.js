@@ -379,7 +379,7 @@
                 if (me.settings.callback && $.type(me.settings.callback) === "function") {
                     me.settings.callback(st, en, day, price);
                 }
-            },
+           },
 
             _selectDate: function (arry1) {
 
