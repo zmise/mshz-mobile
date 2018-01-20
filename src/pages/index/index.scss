@@ -23,23 +23,21 @@ body {
     background-size: cover;
 }
 
-.header-body .header-title {
-    @include flex-box;
-    @include flex-direction;
-    @include align-items;
-    @include justify-content(space-between);
-    width: 5.85rem;
-    height: .81rem;
-    padding-top: 1.43rem;
-    margin-left: .9rem;
-}
-
-.header-body .header-title p {
-    font-size: .88rem;
-    font-family: MFYueYuan_Noncommercial-Regular;
-    color: rgba(255, 255, 255, 1);
-}
-
+// .header-body .header-title {
+//     @include flex-box;
+//     @include flex-direction;
+//     @include align-items;
+//     @include justify-content(space-between);
+//     width: 5.85rem;
+//     height: .81rem;
+//     padding-top: 1.43rem;
+//     margin-left: .9rem;
+// }
+// .header-body .header-title p {
+//     font-size: .88rem;
+//     font-family: MFYueYuan_Noncommercial-Regular;
+//     color: rgba(255, 255, 255, 1);
+// }
 .header-body .user {
     @include position(absolute,
     .24rem,
@@ -61,6 +59,11 @@ body {
     display: block;
     width: .48rem;
     height: .48rem;
+    overflow: hidden;
+}
+
+.header-body .banner-body {
+    height: 4.96rem;
     overflow: hidden;
 }
 
