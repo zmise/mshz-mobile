@@ -7,6 +7,7 @@
 @import '../../sass/calendar.scss'; // 日历插件
 @import '../../sass/search.scss'; // 全局搜索
 @import '../../sass/appDownload.scss'; // 全局下载APP
+@import '../../sass/banner.scss'; // 焦点图
 body {
     padding-bottom: 1rem;
     background-color: #fff;
@@ -245,7 +246,6 @@ body {
 //     border-color: #ccc;
 //     @include transform(rotateZ(45deg));
 // }
-
 .icon {
     /* 通过设置 font-size 来改变图标大小 */
     width: 1em;

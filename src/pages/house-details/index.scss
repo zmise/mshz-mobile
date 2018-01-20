@@ -564,16 +564,16 @@ body {
     box-sizing: border-box;
 }
 
-@each $item in garden,
-school,
-overseas,
-office,
-onekey {
-    .feature-channel .#{$item} {
-        background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
-        background-size: 100% auto;
-    }
-}
+// @each $item in garden,
+// school,
+// overseas,
+// office,
+// onekey {
+//     .feature-channel .#{$item} {
+//         background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
+//         background-size: 100% auto;
+//     }
+// }
 
 .feature-channel .slide .oneline {
     @include flex-box;

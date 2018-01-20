@@ -1,6 +1,8 @@
 require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
+require('../../assets/plugins/jquery.banner.js');//轮播图
+
 
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 
@@ -9,7 +11,36 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 
+
+
 $(function () {
+
+  $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
+  /* 焦点图片  */
+  $('.banner-body').banner({
+    'width': $(window).width(),
+    'height': $(window).width() * 2 / 3,
+    'paginationType': 'fraction'
+  });
+
+  /* switch header */
+  function switchHeader() {
+    var _hig = $('.banner-body').height();
+    if ($(document).scrollTop() > _hig) {
+      $('.header-body').show();
+    } else {
+      $('.header-body').hide();
+    }
+  };
+
+  /* switch header   */
+  var timeoutObject;
+  $(document).on('scroll.header', function () {
+    if (timeoutObject) {
+      clearTimeout(timeoutObject);
+    }
+    timeoutObject = setTimeout(switchHeader, 30);
+  });
 
 
 
