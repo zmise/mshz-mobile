@@ -12,6 +12,110 @@ body {
     box-sizing: border-box;
 }
 
+.general-info {
+    @include position(relative, auto, auto, auto, auto, 10);
+    @include flex-box;
+    @include align-items;
+    @include flex-direction(column);
+    height: 3rem;
+    background-color: $color;
+    padding-top: 0.1rem;
+    margin-bottom: 0.7rem;
+    box-sizing: border-box;
+}
+
+.general-info .score {
+    font-size: .72rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+}
+
+.general-info .txt {
+    font-size: .24rem;
+    color: rgba(255, 255, 255, 1);
+}
+
+.general-info .content {
+    @include position(absolute, auto, auto, -.5rem, auto, 10);
+    @include flex-box;
+    @include justify-content;
+    @include flex-direction(column);
+    width: 6.78rem;
+    height: 1.64rem;
+    border-radius: .08rem; // box-shadow: 0 0 .1rem rgb(100, 100, 100);
+    padding: .2rem .9rem 0 .75rem;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.general-info .content .tlt {
+    font-size: .24rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .4rem;
+}
+
+.general-info .content .cnt {
+    font-size: .22rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .32rem;
+}
+
 .article-body {
-    min-height: calc(100% - 3rem);
+    min-height: calc(100% - 6.9rem);
+}
+
+.article-body .list {
+    padding: 0 .36rem;
+    background-color: #fff;
+}
+
+.article-body .title {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    height: 1.12rem;
+    font-size: .28rem;
+    color: rgba(42, 43, 45, 1);
+    border-bottom: $border;
+}
+
+.article-body .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    padding: 0.36rem 0;
+    border-bottom: $border;
+}
+
+.article-body .items:last-child {
+    border: 0;
+}
+
+.article-body .items .txt {
+    @include flex-box;
+    @include flex-direction(column);
+}
+
+.article-body .items .txt .theme {
+    font-size: .24rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .4rem;
+}
+
+.article-body .items .txt .time {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: .4rem;
+}
+
+.article-body .items .score {
+    font-size: .4rem;
+    color: rgba(255, 97, 97, 1);
+    line-height: .4rem;
+}
+
+.article-body .items {}
+
+.footer-body {
+    margin-top: 0.2rem;
 }
