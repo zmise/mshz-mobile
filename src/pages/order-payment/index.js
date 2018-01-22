@@ -83,17 +83,16 @@ $(function () {
   }
 
 
-  // 订单支付页面的post接口
+  // GET
   function orderPaid(params) {
     console.log(params);
 
     $.ajax({
-      // url: '/mshz-app/security/orderpay/ali/getorderstr/wap',
-      url: 'http://172.16.72.69:51312/mshz-app/security/orderpay/ali/getorderstr/wap',
+      url: '/mshz-app//security/orderpay/ali/wap',
       data: JSON.stringify(params),
       dataType: 'json',
       contentType: 'application/json;charset=UTF-8',
-      type: 'POST',
+      type: 'GET',
       cache: false,
       success: function (data) {
         console.log('success');

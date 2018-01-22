@@ -4,15 +4,160 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
-
 body {
     position: relative;
-    padding-top: .88rem;
+    padding-top: 1.76rem;
     background-color: #f5f5f5;
     height: 100%;
     box-sizing: border-box;
 }
 
 .article-body {
-    min-height: calc(100% - 3rem);
+    min-height: calc(100% - 2.18rem);
 }
+
+
+/* order-body*/
+
+.order-body {
+    @include position(fixed, .88rem, auto, auto, auto, 999);
+    @include flex-box;
+    @include justify-content(space-around);
+    height: 0.88rem;
+    width: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.order-body .items {
+    @include flex;
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    color: rgba(94, 100, 107, 1);
+}
+
+.order-body .txt {
+    position: relative;
+    @include flex-box;
+    @include align-items;
+    font-size: .26rem;
+}
+
+.order-body .txt .number {
+    @include position(absolute, -.15rem, -.25rem, auto, auto, 10);
+    @include flex-box;
+    @include justify-content;
+    width: .3rem;
+    height: .24rem;
+    background: rgba(255, 92, 92, 1);
+    border-radius: .12rem;
+    color: #fff;
+    font-size: .22rem;
+    line-height: 0.24rem;
+}
+
+.order-body .txt .current {
+    background: $color;
+}
+
+.order-body .current {
+    color: $color;
+    border-bottom: .04rem solid $color;
+}
+
+
+/* all-assess */
+
+.article-body .all-assess {
+    @include flex-box;
+    @include flex-direction(column);
+    height: 3.07rem;
+    padding: .32rem .35rem 0;
+    margin-top: 0.24rem;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+}
+
+.article-body .all-assess .content {
+    @include flex-box;
+    @include align-items;
+    width: 6.8rem;
+    height: 1.67rem;
+    background: rgba(247, 250, 248, 1);
+    border-radius: .04rem;
+}
+
+.article-body .all-assess .content img {
+    width: 2.54rem;
+    height: 1.43rem;
+    margin-left: .12rem;
+}
+
+.article-body .all-assess .content .i-txt {
+    @include flex-box;
+    @include flex-direction(column);
+    height: 100%;
+    margin-left: .2rem;
+}
+
+.article-body .all-assess .content .i-txt .title {
+    padding-top: 0.3rem;
+    font-size: .28rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.article-body .all-assess .content .txt-line {
+    @include flex-box;
+    @include justify-content(flex-start);
+    padding-top: 0.20rem;
+}
+
+.article-body .all-assess .content .line-items {
+    font-size: .24rem;
+    padding: 0 .2rem;
+    color: rgba(181, 185, 190, 1);
+    line-height: 1;
+    border-right: $border;
+}
+
+.article-body .all-assess .content .line-items:last-child {
+    border: none;
+}
+
+.article-body .all-assess .content .txt-line .line-items:first-child {
+    padding: 0;
+    border: 0;
+}
+
+.article-body .all-assess .img-list .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.2rem;
+    margin-right: .16rem;
+    margin-bottom: .24rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+// .article-body .all-assess .time,
+// {
+//     padding: 0.2rem 0 0 .07rem;
+// }
+// .article-body .all-assess .address {
+//     padding: 0.1rem 0 0 .07rem;
+// }
+// .article-body .all-assess .time .icon,
+// .article-body .all-assess .address .icon {
+//     width: 0.35rem;
+//     height: 0.35rem;
+//     font-size: .33rem;
+//     color: rgba(196, 201, 205, 1);
+//     margin-right: .1rem;
+// }
+// .article-body .all-assess .time .txt,
+// .article-body .all-assess .address .txt {
+//     font-size: .26rem;
+//     color: rgba(42, 43, 45, 1);
+// }
