@@ -67,7 +67,10 @@ $(function () {
           // console.log($('tol-pri').text())
 
           $('.content-body .content').empty().append(str);
-          startTimer(15 * 60);
+          if (json.effectTimeSecond > 0) {
+            startTimer(json.effectTimeSecond);
+          }
+
 
         }
       },
@@ -85,6 +88,7 @@ $(function () {
     console.log(params);
 
     $.ajax({
+      // url: '/mshz-app/security/orderpay/ali/getorderstr/wap',
       url: 'http://172.16.72.69:51312/mshz-app/security/orderpay/ali/getorderstr/wap',
       data: JSON.stringify(params),
       dataType: 'json',

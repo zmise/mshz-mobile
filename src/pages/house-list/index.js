@@ -257,7 +257,7 @@ $(function () {
     console.log(params);
     var lastParams = {}
     for (var prop in params) {
-      if (params[prop] !== '') {
+      if (params[prop] !== '' && params[prop]) {
         lastParams[prop] = params[prop];
       }
     }
