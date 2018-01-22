@@ -23,7 +23,7 @@ $(function () {
       poi: $('#poi').val(),
       sortBy: $('#sortBy').val(),
       prices: $('#prices').val(),
-      roomCount: +$('#roomCount').val(),
+      roomCount: $('#roomCount').val() === '' ? '' : +$('#roomCount').val(),
       furniture: $('#furniture').val(),
       page: $('#page').val()
     };
@@ -161,8 +161,10 @@ $(function () {
     $('#prices').val(prices);
     // $('#poi').val(poi);
 
-    var roomcount = $('.threelist .options:eq(0)').find('.current').data('roomcount');
-    $('#roomCount').val(roomcount);
+    var roomCount = $('.threelist .options:eq(0)').find('.current').data('roomcount');
+    if (roomCount) { // 排除未选房间数的情况
+      $('#roomCount').val(roomCount);
+    }
 
     loadingMore();
   });
@@ -187,7 +189,7 @@ $(function () {
     // params.page = 1;
     // params.prices = '';
     // params.roomCount = '';
-    // params.furniture = '';  
+    // params.furniture = '';
     $filterList.find('.checkbox-body .range .first-slider').css({ 'left': '-20px' });
     $filterList.find('.checkbox-body .range .first-slider .text-value').text('0');
     $filterList.find('.checkbox-body .range .last-slider').css({ 'right': '-20px' });
