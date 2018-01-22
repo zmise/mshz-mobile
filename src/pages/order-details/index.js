@@ -15,7 +15,7 @@ require('../../assets/js/toast.js');  //toast的事件
 // INVALIDATED 无效
 // return '';
 var map = {
-  // PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
+  PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
   PAYMENT: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
   CANCELL_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
   CHECKED_OUT: { icon: 'yituifangwutuikuan', text: '已退房', className: 'current2' },
@@ -27,7 +27,7 @@ var map = {
 
 function buildHeader(state, data) {
   var header = '';
-  if (state === 'PENDING') {
+  if (state === 'PENDING' || state === 'BOOKED') {
     header =
       '<div class="time-paid">' +
       '<span class="txt">已为您保留房源，请于' +
@@ -77,7 +77,7 @@ function buildRefundContent(state, data) {
 }
 function buildButton(state) {
   var button = '';
-  if (state === 'PENDING') {
+  if (state === 'PENDING' || state === 'BOOKED') {
     button =
       '<section class="check-body">' +
       '<a class="items" id="order-cancel">' +
@@ -89,16 +89,17 @@ function buildButton(state) {
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'INVALIDATED' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
-      '<a class="items" id="talk-order">' +
-      '<p>评价订单</p>' +
+      '<a class="items current" id="order-cancel">' +
+      '<p>取消订单</p>' +
       '</a>' +
       '</section>'
       ;
+
   } else {
     button =
       '<section class="opinion-body">' +
-      '<a class="items current" id="order-cancel">' +
-      '<p>取消订单</p>' +
+      '<a class="items" id="talk-order">' +
+      '<p>评价订单</p>' +
       '</a>' +
       '</section>'
       ;
@@ -181,9 +182,6 @@ function showMessage(content, duration, isCenter, animateIn, animateOut) {
 
 $(function () {
 
-
-
-
   // 订单详情页面的get接口
   function orderDetails(params) {
     $.ajax({
@@ -262,8 +260,7 @@ $(function () {
               '</div>';
             }
             customerInfoHTML += '</div>';
-
-            newOrderState = 'PAYMENT';
+            console.log(newOrderState);
             var headerHTML = buildHeader(newOrderState, json);
             var refundHTML = buildRefundContent(newOrderState, json);
 
@@ -271,9 +268,9 @@ $(function () {
             $('#article-body').html(headerHTML + houseInfo + moneyInfo + refundHTML + customerInfoHTML);
             var buttonsHTML = buildButton(newOrderState);
             $('body').append(buttonsHTML);
-            console.log(newOrderState);
+            // console.log(newOrderState);
             console.log('json.effectTimeSecond=', json.effectTimeSecond);
-            if (newOrderState === 'PENDING') {
+            if (newOrderState === 'PENDING' && json.effectTimeSecond > 0) {
               startTimer(json.effectTimeSecond);
             }
 

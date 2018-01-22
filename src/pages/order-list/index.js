@@ -38,13 +38,13 @@ $(function () {
               for (var i = 0; i < json.length; i++) {
                 strA = '<div class="box"><a class="content orderDetails" data-orderno="' + json[i].orderNo + '" data-orderstate="' + json[i].orderState + '"><div class="title"><span>' + json[i].roomTitle + '</span><span>¥' + json[i].totalPrice + '</span></div><div class="time"><span>' + json[i].startTime + '至' + json[i].endTime + '</span><div><span>房费：</span><span>¥' + json[i].roomRate + '</span></div></div><div class="total"><span>' + json[i].bookedDays + '晚</span><div> ';
                 if (json[i].orderState === 'CHECKED_OUT') {
-                  strB = '<span>额外费用：</span><span>¥' + json[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">已退房</span><div class="stu-but"><button class="order-again" data-roomid="' + json[i].roomId + '">再次预订</button><button class="current2 talk-order">评价订单</button></div></div></div>';
+                  strB = '<span>额外费用：</span><span>¥' + json[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">已退房</span><div class="stu-but"><button class="order-again" data-roomid="' + json[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + json[i].orderNo + '">评价订单</button></div></div></div>';
                 } else if (json[i].orderState === 'BOOKED') {
                   strB = '<span>押金：</span><span>¥' + json[i].roomDeposit + '</span></div></div> </a><div class="status"><span class="title current3">待入住</span><div class="stu-but"><button class="cancel-order">取消订单</button><button class="current3 order-again" data-roomid="' + json[i].roomId + '">再次预订</button></div></div></div>';
                 } else if (json[i].orderState === 'CHECKED') {
                   strB = '<span>押金：</span><span>¥' + json[i].roomDeposit + '</span></div></div> </a><div class="status"><span class="title current3">入住中</span><div class="stu-but"><button class="current3 order-again" data-roomid="' + json[i].roomId + '">再次预订</button></div></div></div>';
                 } else {
-                  strB = '<span>额外费用：</span><span>¥' + json[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">提前退房</span><div class="stu-but"><button class="order-again" data-roomid="' + json[i].roomId + '">再次预订</button><button class="current2 talk-order">评价订单</button></div></div></div>';
+                  strB = '<span>额外费用：</span><span>¥' + json[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">提前退房</span><div class="stu-but"><button class="order-again" data-roomid="' + json[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + json[i].orderNo + '">评价订单</button></div></div></div>';
                 }
 
                 str += strA + strB;
@@ -197,10 +197,11 @@ $(function () {
     var roomId = $(this).data('roomid');
 
     var path = './order-check.html?roomId=' + roomId;
-
+    console.log(path)
     window.location = path;
 
   });
+
 
 
 
@@ -244,6 +245,12 @@ $(function () {
   $('.article-body').on('tap', '.talk-order', function (e) {
     e.stopPropagation();
     e.preventDefault();
+
+    var orderNo = $(this).data('orderno');
+
+    var path = './assess-order.html?orderNo=' + orderNo;
+    console.log(path)
+    window.location = path;
   });
 
   // 点击返回回到上一页
