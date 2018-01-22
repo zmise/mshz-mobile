@@ -70,9 +70,7 @@ $(function () {
     var city = $('#destination-entry').val();
     // console.log(city);
     $.ajax({
-      //todo
-      // url: '/mshz-app/room/darkSelectRimInfo',
-      url: 'http://192.168.0.243:51312/mshz-app/room/darkSelectRimInfo',
+      url: '/mshz-app/room/darkSelectRimInfo',
       data: {
         'city': $('#destination-entry').val(),
         'name': keyword,
@@ -86,7 +84,7 @@ $(function () {
         console.log(json);
         var str = '';
         for (var i = 0; i < json.length; i++) {
-          str += '<a class="items" href="javascript:;" data-keyword="' + json[i].name + '"><div class="txt-icon"><i class="icon iconfont icon-sousuoliebiao"></i><span class="txt">' + json[i].name + '</span></div><span class="icon-goto">' + json[i].pointTypeDtoEnum + '</span></a>';
+          str += '<a class="items" href="javascript:;" data-keyword="' + json[i].name + '"><div class="txt-icon"><i class="icon iconfont icon-sousuoliebiao"></i><span class="txt">' + json[i].name + '</span></div><span class="icon-goto">' + json[i].pointTypeName + '</span></a>';
         }
         $('.search-list .slide').empty().append(str);
       },

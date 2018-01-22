@@ -264,9 +264,7 @@ $(function () {
     console.log(lastParams, 'lastParams');
 
     $.ajax({
-      //todo
-      // url: '/mshz-app/room/queryRoom',
-      url: 'http://192.168.0.243:51312/mshz-app/room/queryRoom',
+      url: '/mshz-app/room/queryRoom',
       data: lastParams,
       // data: {
       //   city: 'SHENZHEN'

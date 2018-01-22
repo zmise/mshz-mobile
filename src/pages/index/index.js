@@ -94,8 +94,8 @@ $(function () {
 
   // function showPosition(position) {
 
-  //   //   x.innerHTML="纬度: " + position.coords.latitude + 
-  //   // "<br>经度: " + position.coords.longitude;	
+  //   //   x.innerHTML="纬度: " + position.coords.latitude +
+  //   // "<br>经度: " + position.coords.longitude;
   //   alert('纬度: ' + position.coords.latitude +
   //     '经度: ' + position.coords.longitude)
   // }
@@ -106,7 +106,7 @@ $(function () {
 
   // 自动获取定位访问者当前城市
   // var str = "Hello 世界!";
-  // alert(str.indexOf("世界"));   //6  
+  // alert(str.indexOf("世界"));   //6
   // if (str.indexOf("Hello") != -1) {
   //   alert("包含");
   // } else {
@@ -131,9 +131,7 @@ $(function () {
     // console.log(cityName);
     // var city = $('#destination-entry').val();
     $.ajax({
-      //todo 
-      // url: '/mshz-app/room/queryCityRimInfo',
-      url: 'http://192.168.0.243:51312/mshz-app/room/queryCityRimInfo',
+      url: '/mshz-app/room/queryCityRimInfo',
       data: {
         'city': cityName,
       },
