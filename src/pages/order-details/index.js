@@ -175,6 +175,8 @@ $('#talk-order').on('tap', function (e) {
   e.stopPropagation();
   e.preventDefault();
   var order = $('#orderNo').val();
+  var roomId = $(this).data('roomid');
+  location.href = './assess-order.html?orderNo=' + orderNo + '&roomId=' + roomId;
 });
 
 // 点击返回回到上一页
@@ -202,7 +204,7 @@ $(function () {
 
 
     $('#article-body').html(headerHTML + houseInfoHTML + refundHTML + moneyInfoHTML + customerInfoHTML);
-    var buttonsHTML = order.buildButton(data.newOrderState);
+    var buttonsHTML = order.buildButton(data.newOrderState, data);
     $('body').append(buttonsHTML);
     // console.log(newOrderState);
     console.log('data.effectTimeSecond=', data.effectTimeSecond);

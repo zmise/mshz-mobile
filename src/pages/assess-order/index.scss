@@ -2,6 +2,7 @@
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/navigate.scss'; // 侧边导航
+@import '../../sass/toast.scss'; // toast的样式
 body {
     position: relative;
     padding-top: .88rem;
@@ -65,7 +66,7 @@ body {
     height: 1.5rem;
     margin: 0.3rem 0;
     font-size: .26rem;
-    color: rgba(196, 201, 205, 1);
+    // color: ;
     resize: none;
     outline: none;
     -webkit-appearance: none;
@@ -75,6 +76,7 @@ body {
 
 .assess-commiute .img-list {
     @include flex-box;
+    @include flex-wrap(wrap);
     border-bottom: $border;
 }
 
@@ -91,16 +93,21 @@ body {
     border-radius: .04rem;
 }
 
-.assess-commiute .img-list .items .closeImg {
-    @include position(absolute, -.19rem, -.19rem, auto, auto, 10);
-    @include flex-box;    
-    height: 0.38rem;
-    width: 0.38rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: .19rem;
+.assess-commiute .img-list .items img {
+    height: 1.68rem;
+    width: 1.68rem;
+    overflow: hidden;
 }
 
-.assess-commiute .img-list .items .icon {
+.assess-commiute .img-list .items .closeImg {
+    @include position(absolute, -.19rem, -.19rem, auto, auto, 10);
+    @include flex-box;
+    height: 0.38rem;
+    width: 0.38rem;
+    color: rgba(0, 0, 0, 0.8); // border-radius: .19rem;
+}
+
+.assess-commiute .img-list .items .iconImg {
     margin-top: 0.5rem;
     height: 0.5rem;
     width: 0.5rem;

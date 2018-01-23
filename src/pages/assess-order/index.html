@@ -24,7 +24,7 @@
       <div class="title">评分</div>
       <div class="txt">满意请给5星哦</div>
     </div>
-    <div class="items">
+    <div class="items" id="roomEnvironment">
       <div class="title">房屋环境</div>
       <div class="start-list">
         <i class="start iconfont icon-weitianchongxingji"></i>
@@ -34,7 +34,7 @@
         <i class="start iconfont icon-weitianchongxingji"></i>
       </div>
     </div>
-    <div class="items">
+    <div class="items" id="serviceAttitude">
       <div class="title">服务态度</div>
       <div class="start-list">
         <i class="start iconfont icon-weitianchongxingji"></i>
@@ -46,19 +46,23 @@
     </div>
   </section>
   <section class="assess-commiute">
-    <textarea class="content" placeholder="你有什么住房心得吗？都可以告诉大家哦"></textarea>
+    <textarea class="content" placeholder="你有什么住房心得吗？都可以告诉大家哦" id="textarea"></textarea>
     <div class="img-list">
-      <div class="items" src="" alt="">
-        <img src="" alt="">
-        <i class="closeImg"></i>
-      </div>
+      <!-- <div class="items">
+        <img src="" alt="" id="img">
+        <i class="closeImg">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-tupianxuanzequxiao"></use>
+          </svg>
+        </i>
+      </div> -->
       <div class="items">
-        <i class="icon iconfont icon-xuanzexiangpian"></i>
-        <span class="txt">1/5</span>
+        <input class="iconImg iconfont icon-xuanzexiangpian" type="file" accept="image/*" id="img-file" multiple="multiple">
+        <span class="txt">0/6</span>
       </div>
     </div>
     <div class="box">
-      <button class="bnt">提交评价</button>
+      <button class="bnt" id="saveComment-entry">提交评价</button>
     </div>
   </section>
 

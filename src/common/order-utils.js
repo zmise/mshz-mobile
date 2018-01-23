@@ -68,7 +68,7 @@ function buildRefundContent(data) {
 
   return refund;
 }
-function buildButton(state) {
+function buildButton(state, data) {
   var button = '';
   if (state === 'PENDING' || state === 'BOOKED') {
     button =
@@ -82,7 +82,7 @@ function buildButton(state) {
   } else if (state === 'EARLY_CHECKED_OUT' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
-      '<a class="items" id="talk-order">' +
+      '<a class="items" id="talk-order" data-roomid="' + data.roomId + '">' +
       '<p>评价订单</p>' +
       '</a>' +
       '</section>';

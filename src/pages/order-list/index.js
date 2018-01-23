@@ -42,7 +42,7 @@ $(function () {
                 } else if (data[i].orderState === 'CHECKED') {
                   strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div></a><div class="status"><span class="title current3">入住中</span><div class="stu-but"><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
                 } else {
-                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div></a><div class="status"><span class="title current2">' + data[i].orderStateDesc + '</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '">评价订单</button></div></div></div>';
+                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div></a><div class="status"><span class="title current2">' + data[i].orderStateDesc + '</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">评价订单</button></div></div></div>';
                 }
 
                 str += strA + strB;
@@ -236,9 +236,10 @@ $(function () {
     e.preventDefault();
 
     var orderNo = $(this).data('orderno');
+    var roomId = $(this).data('roomid');
 
-    var path = './assess-order.html?orderNo=' + orderNo;
-    console.log(path)
+    var path = './assess-order.html?orderNo=' + orderNo + '&roomId=' + roomId;
+    // console.log(path)
     window.location = path;
   });
 
