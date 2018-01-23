@@ -1,11 +1,11 @@
 var map = {
-  PENDING: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
+  PENDING: { icon: 'dairuzhu', text: '待付款', className: 'current2' },
   PAYMENT: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
   CANCELL_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
+  CANCELL_NO_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
   CHECKED_OUT: { icon: 'yituifangwutuikuan', text: '已退房', className: 'current2' },
   EARLY_CHECKED_OUT: { icon: 'yituifangyoutuikuan', text: '提前退房', className: 'current2' },
-  INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时', className: 'current2' },
-  CANCELL_NO_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
+  INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时', className: 'current2' }
 };
 
 
@@ -27,12 +27,10 @@ function buildHeader(data) {
       '<div class="time-paid">' +
       '<span class="txt">已为您保留房源，请于 ' +
       '<span class="minute" id="minute"></span> 分 ' +
-      '<span class="seconds" id="seconds"></span> ' +
-      '秒内支付订单' +
-      '</span>' +
+      '<span class="seconds" id="seconds"></span>' +
+      ' 秒内支付订单</span>' +
       '<i class="icon iconfont icon-daojishi"></i>' +
-      '</div>'
-      ;
+      '</div>';
 
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT') {
     header =
@@ -42,7 +40,7 @@ function buildHeader(data) {
       '</svg>' +
       '<div>' +
       '<span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
-      '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data + ' 处理时间：1-3个工作日' + '</p>' +
+      '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data.refundApplyTime + ' 处理时间：1-3个工作日' + '</p>' +
       '</div>' +
       '</div>'
       ;
@@ -81,24 +79,15 @@ function buildButton(state) {
       '<a class="items" href="javascript:;" id="orderPaid">付款</a>' +
       '</section>'
       ;
-  } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'CHECKED_OUT') {
-    button =
-      '<section class="opinion-body">' +
-      '<a class="items current" id="order-cancel">' +
-      '<p>取消订单</p>' +
-      '</a>' +
-      '</section>'
-      ;
-
-  } else if (state !== 'INVALIDATED') {
+  } else if (state === 'EARLY_CHECKED_OUT' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
       '<a class="items" id="talk-order">' +
       '<p>评价订单</p>' +
       '</a>' +
-      '</section>'
-      ;
+      '</section>';
   }
+
   // if (map[state].content.length > 0) {
   //   button += '<div class="more-text">' + map[state].content.replace('{{TEXT}}', data.refundDate) + '</div>';
   // }
@@ -155,7 +144,6 @@ function convertStatus(orderState, payState) {
   }
   return state;
 }
-
 
 
 function orderInfo() {
