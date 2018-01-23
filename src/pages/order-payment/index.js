@@ -56,10 +56,6 @@ $(function () {
     orderPaid();
   });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 支付之前先查询当前订单状态是否可进行支付
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();
