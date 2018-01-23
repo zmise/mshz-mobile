@@ -25,15 +25,45 @@ $(function () {
   });
 
   // 订单支付页面的post接口
-  function orderPaid() {
-    location.href = '/mshz-app/security/orderpay/ali/getorderstr/wap?orderNo=' + order.orderNo;
+  function orderPaid(params) {
+    $.ajax({
+      url: '/security/orderpay/statusConfirm',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (data) {
+        if (data.status === 'C0000') {
+          console.log('success');
+          // if (data.result) {
+
+          // }
+          location.href = '/mshz-app/security/orderpay/ali/getorderstr/wap?orderNo=' + params.orderNo;
+
+        } else {
+          alert(data.message);
+          setTimeout(() => {
+            location.href = './oreder-list.html';
+          }, 1000);
+        }
+
+
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+
   }
 
 
   $('#alipay').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    orderPaid();
+    orderPaid(order);
   });
 
 

@@ -16,14 +16,25 @@ $(function () {
 
   var code = getUrlParam('code');
 
-  var message = {
-    E0001: '上一个页面传过来的参数错误！！！',
-    E0002: '订单预览接口返回的数据不正确',
-    E0003: '价格日历接口返回的数据不正确'
-  }
-  $('#content').text('错误参数 ' + code + ': ' + message[code]);
+  // 点击给评分
+  $('.assess-start').on('tap', '.start', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $(this).siblings().removeClass('icon-tianchongxingji current').addClass('icon-weitianchongxingji');
+    $(this).removeClass('icon-weitianchongxingji').addClass('icon-tianchongxingji current').prevAll().removeClass('icon-weitianchongxingji').addClass('icon-tianchongxingji current');
+    $(this).closest('.items').attr('data-score', $(this).index() + 1)
+    console.log($(this).closest('.items'))
+    console.log($(this).index())
+  });
 
 
+  // 点击上传图片
+  $('#back').on('click', function (e) {
+
+    e.stopPropagation();
+    e.preventDefault();
+    history.go(-1);
+  });
   // 点击返回回到上一页
   $('#back').on('click', function (e) {
 

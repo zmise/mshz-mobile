@@ -46,6 +46,10 @@ body {
     width: 0.36rem;
     font-size: .3rem;
     margin-right: 0.2rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.assess-start .items .start-list .current {
     color: $color;
 }
 
@@ -78,12 +82,22 @@ body {
     @include flex-box;
     @include flex-direction(column);
     @include align-items;
+    position: relative;
     height: 1.68rem;
     width: 1.68rem;
     border: .02rem dashed rgba(181, 185, 190, 1);
-    margin-right: 0.2rem;
+    margin-right: 0.3rem;
     margin-bottom: 0.5rem;
     border-radius: .04rem;
+}
+
+.assess-commiute .img-list .items .closeImg {
+    @include position(absolute, -.19rem, -.19rem, auto, auto, 10);
+    @include flex-box;    
+    height: 0.38rem;
+    width: 0.38rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: .19rem;
 }
 
 .assess-commiute .img-list .items .icon {

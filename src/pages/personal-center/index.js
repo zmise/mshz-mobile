@@ -35,6 +35,13 @@ $(function () {
     window.location = './tobelandlord.html';
   });
 
+  //点击进入我的评价页面
+  $('.article-body').on('tap', '#myAssess-entry', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location = './myAssess.html';
+  });
+
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();
