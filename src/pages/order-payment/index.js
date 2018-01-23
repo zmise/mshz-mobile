@@ -25,9 +25,14 @@ $(function () {
   });
 
   // 订单支付页面的post接口
-  function orderPaid(params) {
+  function orderPaid() {
+    var params = {
+      orderNo: order.orderNo,
+    }
+    console.log(params)
+
     $.ajax({
-      url: '/security/orderpay/statusConfirm',
+      url: '/mshz-app/security/orderpay/statusConfirm',
       data: JSON.stringify(params),
       dataType: 'json',
       contentType: 'application/json;charset=UTF-8',
@@ -37,13 +42,13 @@ $(function () {
         if (data.status === 'C0000') {
           console.log('success');
           // if (data.result) {
-
           // }
-          location.href = '/mshz-app/security/orderpay/ali/getorderstr/wap?orderNo=' + params.orderNo;
+          location.href = '/mshz-app/security/orderpay/ali/wap?orderNo=' + params.orderNo;
 
         } else {
           alert(data.message);
-          setTimeout(() => {
+
+          setTimeout(function () {
             location.href = './oreder-list.html';
           }, 1000);
         }
@@ -63,7 +68,8 @@ $(function () {
   $('#alipay').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    orderPaid(order);
+
+    orderPaid();
   });
 
 
