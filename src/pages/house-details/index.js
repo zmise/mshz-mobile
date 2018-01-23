@@ -134,7 +134,7 @@ $(function () {
     priceLow: priceLow,
     situationId: situationId,
   }
-  guessLikeInfo()
+  guessLikeInfo(guessLikeParams);
 
   // window.localStorage.setItem('guessLike', guessLike);
 });
