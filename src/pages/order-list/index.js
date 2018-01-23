@@ -36,15 +36,13 @@ $(function () {
             }
             if (params.orderQueryType === 'VALIDATED') {
               for (var i = 0; i < data.length; i++) {
-                strA = '<div class="box"><a class="content orderDetails" data-orderno="' + data[i].orderNo + '" data-orderstate="' + data[i].orderState + '"><div class="title"><span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span></div><div class="time"><span>' + data[i].startTime + '至' + data[i].endTime + '</span><div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div></div><div class="total"><span>' + data[i].bookedDays + '晚</span><div> ';
-                if (data[i].orderState === 'CHECKED_OUT') {
-                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">已退房</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '">评价订单</button></div></div></div>';
-                } else if (data[i].orderState === 'BOOKED') {
-                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div> </a><div class="status"><span class="title current3">待入住</span><div class="stu-but"><button class="cancel-order">取消订单</button><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
+                strA = '<div class="box"><a class="content orderDetails" data-orderno="' + data[i].orderNo + '" data-orderstate="' + data[i].orderState + '"><div class="title"><span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span></div><div class="time"><span>' + data[i].startTime + '至' + data[i].endTime + '</span><div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div></div><div class="total"><span>' + data[i].bookedDays + '晚</span><div>';
+                if (data[i].orderState === 'BOOKED') {
+                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div></a><div class="status"><span class="title current3">待入住</span><div class="stu-but"><button class="cancel-order">取消订单</button><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
                 } else if (data[i].orderState === 'CHECKED') {
-                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div> </a><div class="status"><span class="title current3">入住中</span><div class="stu-but"><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
+                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div></a><div class="status"><span class="title current3">入住中</span><div class="stu-but"><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
                 } else {
-                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div> </a><div class="status"><span class="title current2">提前退房</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '">评价订单</button></div></div></div>';
+                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div></a><div class="status"><span class="title current2">' + data[i].orderStateDesc + '</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '">评价订单</button></div></div></div>';
                 }
 
                 str += strA + strB;
