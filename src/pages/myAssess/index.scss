@@ -3,7 +3,6 @@
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
-
 body {
     position: relative;
     padding-top: .88rem;
@@ -13,5 +12,119 @@ body {
 }
 
 .article-body {
-    min-height: calc(100% - 3rem);
+    min-height: calc(100% - 3.22rem);
+    box-sizing: border-box;
+}
+
+.article-body .self-assess {
+    @include flex-box;
+    @include flex-direction(column);
+    padding: .32rem .35rem;
+    margin-top: 0.24rem;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-bottom: .01rem solid #F3F3F3;
+}
+
+.article-body .self-assess .time {
+    font-size: .22rem;
+    color: rgba(181, 185, 190, 1);
+    padding-bottom: 0.1rem;
+}
+
+.article-body .self-assess .text-img .txt {
+    display: block;
+    font-size: .26rem;
+    color: rgba(90, 165, 114, 1);
+    padding-bottom: .1rem;
+}
+
+.article-body .self-assess .img-list {
+    @include flex-box;
+    @include flex-wrap(wrap);
+}
+
+.article-body .self-assess .img-list .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.2rem;
+    margin-right: .16rem;
+    margin-bottom: .15rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.article-body .self-assess .content {
+    @include flex-box;
+    @include align-items;
+    width: 6.8rem;
+    height: 1.67rem;
+    background: rgba(247, 250, 248, 1);
+    border-radius: .04rem;
+}
+
+.article-body .self-assess .content img {
+    width: 2.54rem;
+    height: 1.43rem;
+    margin-left: .12rem;
+}
+
+.article-body .self-assess .content .i-txt {
+    @include flex;
+    @include flex-box; // @include align-items(space-between);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    height: 100%;
+    margin-left: .2rem;
+    margin-right: .2rem;
+}
+
+.article-body .self-assess .content .i-txt .title {
+    padding-top: 0.1rem;
+    font-size: .28rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.article-body .self-assess .content .i-txt .time {
+    @include flex-box;
+    @include justify-content (space-between);
+    font-size: .22rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.article-body .self-assess .content .i-txt .price {
+    padding-bottom: 0.1rem;
+    font-size: .22rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.article-body .talk-area {
+    padding: .2rem .4rem;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+}
+
+.article-body .talk-area .oneline {
+    @include flex-box;
+    @include justify-content (flex-start);
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .4rem;
+}
+
+.article-body .talk-area .oneline .icon {
+    height: 0.32rem;
+    width: 0.32rem;
+    font-size: .32rem;
+    margin-right: 0.1rem;
+}
+
+.article-body .talk-area .item {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .6rem;
+}
+
+.article-body .talk-area .item .current {
+    color: $color;
 }

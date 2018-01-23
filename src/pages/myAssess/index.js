@@ -4,6 +4,16 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 
+$(function () {
+
+
+  // 点击返回回到上一页
+  $('#back').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    history.go(-1)
+  });
+});
 
 
 
