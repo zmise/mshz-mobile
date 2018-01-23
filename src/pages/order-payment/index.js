@@ -26,52 +26,35 @@ $(function () {
 
   // 订单支付页面的post接口
   function orderPaid() {
-    var params = {
-      orderNo: order.orderNo,
-    }
-    console.log(params)
 
+    // 先查询当前订单状态是否可进行支付
     $.ajax({
       url: '/mshz-app/security/orderpay/statusConfirm',
-      data: JSON.stringify(params),
+      data: JSON.stringify({ orderNo: order.orderNo }),
       dataType: 'json',
       contentType: 'application/json;charset=UTF-8',
       type: 'POST',
       cache: false,
-      success: function (data) {
-        if (data.status === 'C0000') {
-          console.log('success');
-          // if (data.result) {
-          // }
-          location.href = '/mshz-app/security/orderpay/ali/wap?orderNo=' + params.orderNo;
-
-        } else {
-          alert(data.message);
-
-          setTimeout(function () {
-            location.href = './oreder-list.html';
-          }, 1000);
+      success: function (res) {
+        if (res.status === 'C0000') {  // 可支付
+          location.href = '/mshz-app/security/orderpay/ali/wap?orderNo=' + order.orderNo;
+        } else if (res.status === 'R0003') {  // 订单已失效
+          location.replace('./order-details.html?orderNo=' + order.orderNo);
+        } else { // 订单不存在
+          location.replace('./order-list.html');
         }
-
-
       },
       error: function (error) {
         console.log(error);
-        console.log('error');
       }
     });
-
-
   }
-
 
   $('#alipay').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-
     orderPaid();
   });
-
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
