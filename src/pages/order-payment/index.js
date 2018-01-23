@@ -8,7 +8,7 @@ var order = require('../../common/order-utils');
 $(function () {
   $.when(order.orderInfo()).done(function (data) {
 
-    if (data.newOrderState === 'WAIT_PAYMENT' && data.effectTimeSecond > 0) {
+    if (data.newOrderState === 'PENDING' && data.effectTimeSecond > 0) {
       // 关闭loading
       $('#loading').remove();
 
@@ -18,7 +18,7 @@ $(function () {
 
       $('.content-body .content').empty().append(str);
 
-      startTimer(data.effectTimeSecond);
+      order.startTimer(data.effectTimeSecond);
     } else {
       location.replace('./order-details.html?orderNo=' + order.orderNo);
     }

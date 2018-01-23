@@ -194,16 +194,15 @@ $(function () {
       contentType: 'application/json;charset=UTF-8',
       type: 'POST',
       cache: false,
-      success: function (data) {
-        console.log('success');
-        console.log(data);
-        if (data && data.result && data.result.orderNo !== '') {
+      success: function (res) {
+
+        if (res.status === 'C0000') {
           var path = './order-payment.html?orderNo=' + data.result.orderNo;
           console.log(path);
           window.location = path;
+        } else {
+          showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
-
-
       },
       error: function (error) {
         console.log(error);

@@ -25,9 +25,9 @@ function buildHeader(data) {
   if (state === 'PENDING' || state === 'BOOKED') {
     header =
       '<div class="time-paid">' +
-      '<span class="txt">已为您保留房源，请于' +
-      '<span class="minute" id="minute"></span> 分' +
-      '<span class="seconds" id="seconds"></span>' +
+      '<span class="txt">已为您保留房源，请于 ' +
+      '<span class="minute" id="minute"></span> 分 ' +
+      '<span class="seconds" id="seconds"></span> ' +
       '秒内支付订单' +
       '</span>' +
       '<i class="icon iconfont icon-daojishi"></i>' +
@@ -65,8 +65,7 @@ function buildRefundContent(data) {
     refund += '<div class="cancel-info">' +
       '<span>退款金额</span>' +
       '<span class="cancel-price">¥' + data.refund + '</span>' +
-      '</div>'
-      ;
+      '</div>';
   }
 
   return refund;
@@ -76,10 +75,10 @@ function buildButton(state) {
   if (state === 'PENDING' || state === 'BOOKED') {
     button =
       '<section class="check-body">' +
-      '<a class="items" id="order-cancel">' +
+      '<a class="items" id="orderCancel">' +
       '<p>取消订单</p>' +
       '</a>' +
-      '<a class="items" href="javascript:;" id="order-paid">付款</a>' +
+      '<a class="items" href="javascript:;" id="orderPaid">付款</a>' +
       '</section>'
       ;
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT' || state === 'CHECKED_OUT') {
@@ -132,6 +131,7 @@ function startTimer(totalSeconds) {
     //清除定时器并执行释放房源的操作和刷新页面
     if (tResult <= 0) {
       clearInterval(interval);
+      location.replace('./order-details.html?orderNo=' + orderNo);
     }
   }, 1000);
 
@@ -148,7 +148,7 @@ function convertStatus(orderState, payState) {
   EARLY_CHECKED_OUT, 提前退房
   INVALIDATED 无效
   */
-  if (orderState === 'BOOKED' && payState === 'NO_PAYMENT') {
+  if (orderState === 'BOOKED' && payState === 'WAIT_PAYMENT') {
     state = 'PENDING';  // 待付款
   } else if (orderState === 'BOOKED' && payState === 'PAYMENT') {
     state = 'PAYMENT';  // 待入住
@@ -195,5 +195,6 @@ module.exports = {
   buildHeader: buildHeader,
   buildRefundContent: buildRefundContent,
   buildButton: buildButton,
-  orderInfo: orderInfo
+  orderInfo: orderInfo,
+  startTimer: startTimer
 };

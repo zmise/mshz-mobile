@@ -39,7 +39,7 @@ function houseInfo(data) {
     '<div class="txt-line">' +
     '<i class="line-items">' + data.gardenArea + '</i>' +
     '<i class="line-items">' + data.roomLayout + '居' + data.roomArea + '平</i>' +
-    '<i class="line-items">' + data.roomCount + '人</i>' +
+    '<i class="line-items">' + data.custCount + '人</i>' +
     '</div>' +
     '</div>' +
     '</div>' +
@@ -110,14 +110,15 @@ function orderCancel(data) {
     contentType: 'application/json;charset=UTF-8',
     type: 'POST',
     cache: false,
-    success: function (data) {
-      if (data.status === 'C0000') {
+    success: function (res) {
+      if (res.status === 'C0000') {
         console.log('success');
         showMessage('取消成功', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-
         //跳转order-list页面
         var path = './order-list.html';
         window.location = path;
+      } else {
+        showMessage(res.message, 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       }
     },
     error: function (error) {
@@ -131,14 +132,14 @@ function orderCancel(data) {
 
 // 点击付款按钮跳转到订单支付页面 order-payment
 
-$('#order-paid').on('tap', function (e) {
+$(document).on('tap', '#orderPaid', function (e) {
   e.stopPropagation();
   e.preventDefault();
   location.href = './order-payment.html?orderNo=' + order.orderNo;
 });
 
 // 点击取消订单 跳转到订单列表页面  弹出弹框，点击确定取消，删除该订单dom”释放房源，toast，取消成功，跳转订单列表
-$('#order-cancel').on('tap', function (e) {
+$(document).on('tap', '#orderCancel', function (e) {
   e.stopPropagation();
   e.preventDefault();
   $('#overlay').show();
@@ -162,7 +163,7 @@ $('#overlay').on('tap', '#cancel', function (e) {
   $('#overlay .box').hide();
   //释放房源
   var cancelParams = {
-    orderNo: orderNo,
+    orderNo: order.orderNo,
   }
   orderCancel(cancelParams);
 
@@ -205,7 +206,7 @@ $(function () {
     // console.log(newOrderState);
     console.log('data.effectTimeSecond=', data.effectTimeSecond);
     if (data.newOrderState === 'PENDING' && data.effectTimeSecond > 0) {
-      startTimer(data.effectTimeSecond);
+      order.startTimer(data.effectTimeSecond);
     }
   });
 });
