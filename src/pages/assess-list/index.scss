@@ -67,6 +67,10 @@ body {
     border-bottom: .04rem solid $color;
 }
 
+.order-body .current .number {
+    background-color: $color;
+}
+
 
 /* all-assess */
 
@@ -203,13 +207,13 @@ body {
     color: rgba(181, 185, 190, 1);
 }
 
-.article-body .tobe-assess .content .bnt {
+.article-body .all-assess .content .bnt {
     @include flex-box;
     @include align-items;
     @include justify-content(flex-end);
 }
 
-.article-body .tobe-assess .content .bnt .box {
+.article-body .all-assess .content .bnt .box {
     @include flex-box;
     @include align-items;
     @include justify-content;

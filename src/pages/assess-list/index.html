@@ -11,17 +11,17 @@
 <body>
   <header class="header-body fixed">
     <div class="header">
-      <h1 class="title">我的订单</h1>
+      <h1 class="title">我的评价</h1>
     </div>
     <a class="back" href="javascript:;" id="back">
     </a>
     <a class="menu iconfont icon-daohanglancaidan" id="menu" href="javascript:;"></a>
   </header>
   <section class="order-body">
-    <div class="items current">
+    <div class="items current" data-comment-status="">
       <span class="txt">全部（32）</span>
     </div>
-    <div class="items ">
+    <div class="items" data-comment-status="NOT_COMMENT">
       <span class="txt">待评价
         <i class="number">3</i>
       </span>
@@ -42,7 +42,6 @@
         </div>
       </div>
 
-
       <div class="content">
         <img src="./img/banner-bg.jpg" alt="">
         <div class="i-txt">
@@ -70,6 +69,9 @@
             <span>8晚</span>
           </div>
           <span class="price">¥3600</span>
+          <div class="bnt">
+            <a class="box" id="myAssess-entry">评价订单</a>
+          </div>
         </div>
       </div>
 
@@ -84,9 +86,8 @@
         </div>
         <span class="price">¥3600</span>
         <div class="bnt">
-          <div class="box">评价订单</div>
+          <a class="box" id="myAssess-entry">评价订单</a>
         </div>
-
       </div>
     </div>
   </article>
