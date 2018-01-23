@@ -33,7 +33,7 @@ function showMessage(content, duration, isCenter, animateIn, animateOut) {
 function houseInfo(data) {
   return '<div class="order-info">' +
     '<div class="content">' +
-    '<img src="' + data.roomMainPic + '" alt="">' +
+    '<img src="' + data.roomMainPic.replace('{size}', '120x100') + '" alt="">' +
     '<div class="i-txt">' +
     '<span class="title">' + data.roomTitle + '</span>' +
     '<div class="txt-line">' +
