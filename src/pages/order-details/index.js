@@ -65,14 +65,15 @@ function moneyInfo(data) {
 
   var fundsModelList = data.fundsModelList;
   for (var i = 0, len = fundsModelList.length; i < len; i++) {
-    moneyInfo += '<div class="items">' +
-      '<span>' + fundsModelList[i].itemName + '</span>' +
-      '<span>¥' + fundsModelList[i].itemMoney + '</span>' +
-      '</div>';
+    if (fundsModelList[i].itemMoney > 0) {
+      moneyInfo += '<div class="items">' +
+        '<span>' + fundsModelList[i].itemName + '</span>' +
+        '<span>¥' + fundsModelList[i].itemMoney + '</span>' +
+        '</div>';
+    }
   }
 
   moneyInfo +=
-
     '</div>' +
     '<div class="total">' +
     '<span>总额</span>' +

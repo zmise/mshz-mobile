@@ -180,7 +180,7 @@
 }
 
 .article-body .money-info {
-    height: 3.07rem;
+    // height: 3.07rem;
     padding: .3rem .35rem 0 .42rem;
     margin-bottom: 0.11rem;
     background: rgba(255, 255, 255, 1);
@@ -194,13 +194,15 @@
 }
 
 .article-body .money-info .check-list {
-    padding-top: 0.35rem;
+    padding-top: 0.15rem;
     color: rgba(94, 100, 107, 1);
 }
 
 .article-body .money-info .check-list .items {
     @include flex-box;
     @include justify-content(space-between);
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
 }
 
 .article-body .money-info .check-list .items span {
@@ -208,7 +210,6 @@
 }
 
 .article-body .money-info .check-list .items:last-child {
-    padding-top: 0.3rem;
     padding-bottom: 0.2rem;
     border-bottom: .01rem solid rgba(227, 230, 233, 1);
 }
@@ -217,7 +218,8 @@
     @include flex-box;
     @include align-items;
     @include justify-content(flex-end);
-    padding-top: 0.1rem;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
     font-size: .26rem;
     color: rgba(42, 43, 45, 1);
 }
