@@ -152,8 +152,8 @@
                     var en = me.endData;
                     var day = totalDay;
                     var price = totalPrice;
-                    console.log(day)
-                    console.log(price)
+                    // console.log(day)
+                    // console.log(price)
 
                     // debugger
                     if (st) {
@@ -379,7 +379,7 @@
                 if (me.settings.callback && $.type(me.settings.callback) === "function") {
                     me.settings.callback(st, en, day, price);
                 }
-           },
+            },
 
             _selectDate: function (arry1) {
 

@@ -110,9 +110,14 @@ $(function () {
             callback: function (start, end, totalDay, Price) {
               $('#startDate').val(start);
               $('#endDate').val(end);
-              $('#totalday').text('共' + totalDay + '晚');
-              $('#housePrice').text(Price);
-              $('#totalPrice').text('￥' + (Price + +$('#otherPrice').text()));
+              if (totalDay) {
+                $('#totalday').text('共' + totalDay + '晚');
+              }
+              if (Price) {
+                $('#housePrice').text(Price);
+                $('#totalPrice').text('￥' + (Price + +$('#otherPrice').text()));
+              }
+
             },   //回调函数
             comfireBtn: '.comfire',//确定按钮的class或者id
             startData: startDate,
@@ -221,6 +226,8 @@ $(function () {
   endDate = window.sessionStorage.endDate || initEndDate;
   $('#startDate').val(startDate);
   $('#endDate').val(endDate);
+  $('#totalday').text('共1晚');
+
   // var message ={
   //   E0001: 'skdjfksd',
   //   E0002: 'asldklskd'
