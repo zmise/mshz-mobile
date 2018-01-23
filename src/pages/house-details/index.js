@@ -41,7 +41,7 @@ $(function () {
         console.log('success');
         console.log(data);
         if (data.status === 'C0000') {
-          var json = data.result;
+          var json = data.result.items;
           console.log(json);
           var str = '';
           for (var i = 0; i < json.length - 1; i++) {

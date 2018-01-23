@@ -4,7 +4,7 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 
-require('../../assets/js/appDownload.js');//全局下载APP
+// require('../../assets/js/appDownload.js');//全局下载APP
 
 
 
