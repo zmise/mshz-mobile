@@ -201,7 +201,7 @@ $(function () {
     var refundHTML = order.buildRefundContent(data);
 
 
-    $('#article-body').html(headerHTML + houseInfoHTML + moneyInfoHTML + refundHTML + customerInfoHTML);
+    $('#article-body').html(headerHTML + houseInfoHTML + refundHTML + moneyInfoHTML + customerInfoHTML);
     var buttonsHTML = order.buildButton(data.newOrderState);
     $('body').append(buttonsHTML);
     // console.log(newOrderState);
