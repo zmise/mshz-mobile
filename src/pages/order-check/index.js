@@ -197,7 +197,7 @@ $(function () {
       success: function (res) {
 
         if (res.status === 'C0000') {
-          var path = './order-payment.html?orderNo=' + data.result.orderNo;
+          var path = './order-payment.html?orderNo=' + res.result.orderNo;
           console.log(path);
           window.location = path;
         } else {
