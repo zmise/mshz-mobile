@@ -186,7 +186,7 @@ $(function () {
   // 新增订单post接口
 
   function addOrder(params) {
-    console.log(params)
+    console.log(params);
     $.ajax({
       url: '/mshz-app/security/app/order/addOrder',
       data: JSON.stringify(params),
@@ -287,9 +287,9 @@ $(function () {
   // $inputLayout.find('.name')
   // $inputLayout.find('.IDcard')
   // $inputLayout.find('.tel')
-  $inputLayout.on('keydown', '#name', function (e) {
-    $(this).val($(this).val().replace(/[^\u4E00-\u9FA5]/g, ''));
-  });
+  // $inputLayout.on('keydown', '#name', function (e) {
+  //   $(this).val($(this).val().replace(/[^\u4E00-\u9FA5]/g, ''));
+  // });
   $inputLayout.on('keydown', '#IDcard', function (e) {
 
     $(this).val($(this).val().replace(/\D+/g, ''));
@@ -382,7 +382,7 @@ $(function () {
         }
       ],
       custCount: +$('#peo-num').val() || 1,
-      orderChannel: 'MSHZ_APP',
+      orderChannel: 'MSHZ_WAP',
       roomId: params.roomId,
       startTime: $('#startDate').val(),
       endTime: $('#endDate').val(),

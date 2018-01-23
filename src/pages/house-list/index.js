@@ -261,7 +261,7 @@ $(function () {
         lastParams[prop] = params[prop];
       }
     }
-    console.log(lastParams, 'lastParams');
+    // console.log(lastParams, 'lastParams');
 
     $.ajax({
       url: '/mshz-app/room/queryRoom',

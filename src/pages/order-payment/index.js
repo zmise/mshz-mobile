@@ -48,7 +48,7 @@ $(function () {
 
   function orderPreviewInfo(params) {
 
-    console.log(params);
+    // console.log(params);
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderDetail',
       data: params,
@@ -83,32 +83,49 @@ $(function () {
   }
 
 
-  // GET
+  // 订单支付GET
   function orderPaid(params) {
-    console.log(params);
+    var path = '/mshz-app/security/orderpay/ali/wap?orderNo=' + params.orderNo;
+    window.location = path;
 
-    $.ajax({
-      url: '/mshz-app//security/orderpay/ali/wap',
-      data: JSON.stringify(params),
-      dataType: 'json',
-      contentType: 'application/json;charset=UTF-8',
-      type: 'GET',
-      cache: false,
-      success: function (data) {
-        console.log('success');
-        console.log(data);
-        // if (data && data.result && data.result.orderNo !== '') {
-        //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
-        //   console.log(path);
-        //   window.location = path;
-        // }
+    // var req = new XMLHttpRequest();
+    // req.open('get', '/mshz-app/security/orderpay/ali/wap', false);
+    // req.send(form);
+    // var form = new FormData();
+    // form.append("orderNo", params.orderNo);
 
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-      }
-    });
+    // $.ajax({
+    //   url: 'http://192.168.0.243:81/mshz-app/security/orderpay/ali/wap',
+    //   type: 'post',
+    //   data: form,
+    //   processData: false,
+    //   contentType: false,
+    //   cache: false,
+    //   success: function (data) {
+    //     console.log("over..");
+    //   }
+    // });
+    // $.ajax({
+    //   url: '/mshz-app/security/orderpay/ali/wap',
+    //   data: params,
+    //   dataType: 'json',
+    //   type: 'GET',
+    //   cache: false,
+    //   success: function (data) {
+    //     console.log('success');
+    //     console.log(data);
+    //     // if (data && data.result && data.result.orderNo !== '') {
+    //     //   var path = './order-payment.html?orderNo=' + data.result.orderNo;
+    //     //   console.log(path);
+    //     //   window.location = path;
+    //     // }
+
+    //   },
+    //   error: function (error) {
+    //     console.log(error);
+    //     console.log('error');
+    //   }
+    // });
 
   }
 
@@ -116,9 +133,10 @@ $(function () {
   // url上面的参数
   var params = {
     orderNo: getUrlParam('orderNo'),
-  }
-  if (!params.orderNo) {
-    location.replace('error.html?code=E0001')
+  };
+
+  if (!params.orderNo || params.orderNo.length < 14) {
+    location.replace('error.html?code=E0001');
   } else {
     // 关闭loading
     $('#loading').remove();
