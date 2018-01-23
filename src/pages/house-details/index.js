@@ -25,55 +25,6 @@ $(function () {
     }
   };
 
-
-
-  // 猜你喜欢get接口
-  function guessLikeInfo(params) {
-
-    console.log(params);
-    $.ajax({
-      url: '/mshz-app/room/maybeLike',
-      data: params,
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (data) {
-        console.log('success');
-        console.log(data);
-        if (data.status === 'C0000') {
-          var json = data.result.items;
-          console.log(json);
-          var str = '';
-          for (var i = 0; i < json.length - 1; i++) {
-            str +=
-              '<a href="/houseDetails?id=' + json.id + '">' +
-              '<img class="items " src="' + json.mainPicture.replace('{size}', '600x350') + '">' +
-              '<div class="oneline">' +
-              '<p>' + json.title + '</p>' +
-              '<p>¥' + json.price + '</p>' +
-              '</div>' +
-              '<div class="twoline">' +
-              '<i class="twoline-items" href="javascript:;">$' + json.cityName + '</i>' +
-              '<i class="twoline-items" href="javascript:;">' + json.houseType + '' + json.area + '平</i>' +
-              '<i class="twoline-items" href="javascript:;">' + json.customerCount + '人</i>' +
-              '</div>' +
-              '</a>'
-              ;
-          }
-          $('#guessLike').empty().append(str);
-
-        }
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-      }
-    });
-
-  }
-
-
-
   /* switch header   */
   var timeoutObject;
   $(document).on('scroll.header', function () {
@@ -118,8 +69,6 @@ $(function () {
 
     priceHigh = Math.max(num, priceHigh); // 取最大值
     priceLow = Math.min(num, priceLow); // 取最小值
-
-
   }
   guessLikeArray.push(guessLike);
 
@@ -136,5 +85,56 @@ $(function () {
   }
   guessLikeInfo(guessLikeParams);
 
-  // window.localStorage.setItem('guessLike', guessLike);
+
+  // 猜你喜欢get接口
+  function guessLikeInfo(params) {
+    $.ajax({
+      url: '/mshz-app/room/maybeLike',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+          var data = res.result.items;
+
+          if (data.length > 0) {
+            var listHTML = '<div class="title">你可能喜欢</div>' +
+              '  <div class="slide-body" js-plugin="slide" id="guessLike">' +
+              '    <div class="slide">';
+
+            for (var i = 0; i < data.length; i++) {
+              var item = data[i];
+              listHTML +=
+                '<a href="/houseDetails?id=' + item.id + '">' +
+                '  <img class="items" src="' + item.mainPicture.replace('{size}', '200x100') + '">' +
+                '  <div class="oneline">' +
+                '    <p>' + item.title + '</p>' +
+                '    <p>¥' + item.price + '</p>' +
+                '  </div>' +
+                '  <div class="twoline">' +
+                '    <i class="twoline-items">' + item.cityName + '</i>' +
+                '    <i class="twoline-items">' + item.roomCount + '居 ' + item.area + '平</i>' +
+                '    <i class="twoline-items">' + item.customerCount + '人</i>' +
+                '  </div>' +
+                '</a>';
+            }
+
+            listHTML += '</div></div>';
+            $('#guessLikeWrapper').empty().append(listHTML);
+
+            $('#guessLike').slide();
+          }
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+
+
 });
