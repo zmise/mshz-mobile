@@ -3,6 +3,7 @@
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
+@import '../../sass/toast.scss'; // toast的样式
 body {
     position: relative;
     padding-top: .88rem;
@@ -12,7 +13,7 @@ body {
 }
 
 .article-body {
-    min-height: calc(100% - 3.22rem);
+    min-height: calc(100% - 3rem);
     box-sizing: border-box;
 }
 
@@ -26,10 +27,32 @@ body {
     border-bottom: .01rem solid #F3F3F3;
 }
 
+.article-body .self-assess .time-score {
+    @include flex-box;
+    @include justify-content(space-between);
+}
+
 .article-body .self-assess .time {
     font-size: .22rem;
     color: rgba(181, 185, 190, 1);
     padding-bottom: 0.1rem;
+}
+
+.article-body .self-assess .score {
+    @include flex-box;
+    @include align-items;
+}
+
+.article-body .self-assess .score span {
+    font-size: .24rem;
+    color: rgba(255, 92, 92, 1);
+    margin-right: 0.3rem;
+}
+
+.article-body .self-assess .score .start-line {
+    width: 1.2rem;
+    height: .2rem;
+    background-color: #ff5c5c;
 }
 
 .article-body .self-assess .text-img .txt {
@@ -102,6 +125,7 @@ body {
     padding: .2rem .4rem;
     background: rgba(255, 255, 255, 1);
     box-sizing: border-box;
+    margin-bottom: 0.11rem;
 }
 
 .article-body .talk-area .oneline {
@@ -123,8 +147,49 @@ body {
     font-size: .26rem;
     color: rgba(94, 100, 107, 1);
     line-height: .6rem;
+    overflow: hidden;
 }
 
 .article-body .talk-area .item .current {
     color: $color;
+}
+
+.commentBox {
+    @include position(fixed, auto, auto, 0, auto, 10);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: 100%;
+    padding: .09rem 0 .09rem .35rem;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+}
+
+.commentBox .comment {
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    width: 6rem;
+    padding-top: 0.22rem;
+    padding-left: 0.11rem;
+    font-size: .28rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: .04rem;
+    border: .01rem solid rgba(227, 230, 233, 1);
+    box-sizing: border-box;
+}
+
+.commentBox .replay-comment {
+    @include flex;
+    @include align-items;
+    @include justify-content;
+    background-color: #fff;
+    color: #000;
+    font-size: .28rem;
+    color: rgba(90, 165, 114, 1);
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
 }

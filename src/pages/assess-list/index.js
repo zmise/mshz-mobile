@@ -44,7 +44,7 @@ $(function () {
 
             str += '</div>' +
               '<div class="content">' +
-              '  <img src="' + item.mainPic + '" alt="">' +
+              '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
               '    <div class="time">' +
@@ -54,7 +54,7 @@ $(function () {
               '    <span class="price">¥' + item.roomRate + '</span>';
             if (!item.content.length) {
               str += '    <div class="bnt">' +
-                '      <a class="box" id="myAssess-entry">评价订单</a>' +
+                '      <a class="box" id="myAssess-entry" data-id="' + item.id + '">评价订单</a>' +
                 '    </div>';
             }
 
@@ -90,7 +90,11 @@ $(function () {
   $('.article-body').on('tap', '#myAssess-entry', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    window.location = './myAssess.html';
+    var id = $(this).data('id');
+    if (id && id !== '') {
+      window.location = './myAssess.html?id=' + id;
+
+    }
   });
 
   // 点击返回回到上一页
