@@ -35,13 +35,19 @@ function buildHeader(data) {
   } else if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT') {
     header =
       '<div class="others-info">' +
-      '<svg class="icon" aria-hidden="true">' +
-      '<use xlink:href="#icon-' + map[state].icon + '"></use>' +
-      '</svg>' +
-      '<div>' +
-      '<span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
-      '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data.refundApplyTime + ' 处理时间：1-3个工作日' + '</p>' +
-      '</div>' +
+      '  <svg class="icon" aria-hidden="true">' +
+      '    <use xlink:href="#icon-' + map[state].icon + '"></use>' +
+      '  </svg>' +
+      '<div>';
+
+    if (data.refundState !== 'REFUND_FINISH') {
+      header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
+        '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data.refundApplyTime + ' 处理时间：1-3个工作日';
+    } else {
+      header += '  <span class="txt ' + map[state].className + '">' + data.refundStateDesc + '</span>';
+    }
+    header += '</p>' +
+      '  </div>' +
       '</div>'
       ;
   } else {
