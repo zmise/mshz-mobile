@@ -47,7 +47,7 @@ $(function () {
                   '</a>' +
                   '<div class="status">' +
                   '  <div class="stu-but">' +
-                  '      <a href="javascript:;" class="cancel-order">取消订单</a>' +
+                  '      <a href="javascript:;" class="cancel-order" data-order-no="' + data[i].orderNo + '">取消订单</a>' +
                   '      <a class="current1" href=./order-payment.html?orderNo=' + data[i].orderNo + '">付款</a>' +
                   '  </div>' +
                   '</div></div>';
@@ -81,7 +81,7 @@ $(function () {
                     '  <div class="status">' +
                     '    <span class="title current3">已预订</span>' +
                     '    <div class="stu-but">' +
-                    '      <a href="javascript:;" class="cancel-order">取消订单</a>' +
+                    '      <a href="javascript:;" class="cancel-order" data-order-no="' + data[i].orderNo + '">取消订单</a>' +
                     '      <a class="current3" href="./order-details.html?orderNo=' + data[i].orderNo + '">再次预订</a>' +
                     '    </div>' +
                     '  </div>' +
@@ -255,38 +255,13 @@ $(function () {
     /* 点击生成订单列表数据 */
   });
 
-  // 点击付款order-paid按钮跳转到订单支付页面 order-payment
-  $('.article-body').on('tap', '.order-paid', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    // console.log($(this).closest('.box').find('.orderDetails').data('orderno'));
-    var orderNo = $(this).closest('.box').find('.orderDetails').data('orderno');
-
-    var path = './order-payment.html?orderNo=' + orderNo;
-    window.location = path;
-
-  });
-
-  // 点击再次预订order-again按钮跳转到订单确认页面order-check
-  $('.article-body').on('tap', '.order-again', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    // var roomId = $(this).data('roomid');
-    var orderNo = $(this).data('orderNo');
-
-    var path = './order-details.html?orderNo=' + orderNo;
-    console.log(path)
-    window.location = path;
-
-  });
-
 
   // 点击取消订单cancel-order按钮，弹出弹框，点击确定取消，删除该订单dom，toast，取消成功”释放房源
   $('.article-body').on('tap', '.cancel-order', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var orderNo = $(this).closest('.box').find('.orderDetails').data('orderno');
-    $('#orderno').val(orderNo);
+    var orderNo = $(this).data('orderNo');
+    $('#orderNo').val(orderNo);
     $('#overlay').show();
     $('#overlay .box').show();
 
@@ -304,7 +279,7 @@ $(function () {
   $('#overlay').on('tap', '#cancel', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var orderNo = $('#orderno').val();
+    var orderNo = $('#orderNo').val();
     $('#overlay').hide();
     $('#overlay .box').hide();
     //释放房源
@@ -313,20 +288,6 @@ $(function () {
     }
     orderCancel(cancelParams);
 
-  });
-
-
-  // 点击评价订单
-  $('.article-body').on('tap', '.talk-order', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    var orderNo = $(this).data('orderno');
-    var roomId = $(this).data('roomid');
-
-    var path = './assess-order.html?orderNo=' + orderNo + '&roomId=' + roomId;
-    // console.log(path)
-    window.location = path;
   });
 
   // 点击返回回到上一页
