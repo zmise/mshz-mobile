@@ -155,8 +155,6 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (res) {
-        // console.log('success');
-        console.log(res);
 
         if (res.status === 'C0000') {
           var data = res.result;
@@ -167,8 +165,9 @@ $(function () {
           $('.house-price').text(data.roomRate);
           $('#totalPrice').text('￥' + (data.roomRate + data.roomDeposit));
           $('#addressBody').empty().append(str);
+        } else {
+          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
-
 
       },
       error: function (error) {
