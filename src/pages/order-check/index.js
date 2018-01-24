@@ -4,44 +4,40 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/toast.js');  //toast的事件
 
-
 // $.toast('Here you can put the text of the toast');
-
-
-
-
-// window.sessionStorage.JQa="JQA";
-// $("#a").text(window.sessionStorage.JQa);
-// window.sessionStorage.setItem('JQb','JQB');
-// $("#b").text(window.sessionStorage.getItem('JQb'));
-
 
 $(function () {
   var startDate, endDate, initStartDate, initEndDate, initCaleEndDate;
   // 当前日期
-  function initTime() {
-    var b = new Date();
-    var ye = b.getFullYear();
-    var mo = b.getMonth() + 1;
-    var da = b.getDate();
-    b = new Date(b.getTime() + 24 * 3600 * 1000);
-    var ye1 = b.getFullYear();
-    var mo1 = b.getMonth() + 1;
-    var da1 = b.getDate();
-    if (mo < 10) {
-      mo = '0' + mo
+  function initDate() {
+    startDate = window.sessionStorage.startDate;
+    endDate = window.sessionStorage.endDate;
+
+    if (!startDate || !endDate) {
+
+      var b = new Date();
+      var ye = b.getFullYear();
+      var mo = b.getMonth() + 1;
+      var da = b.getDate();
+      b = new Date(b.getTime() + 24 * 3600 * 1000);
+      var ye1 = b.getFullYear();
+      var mo1 = b.getMonth() + 1;
+      var da1 = b.getDate();
+      if (mo < 10) {
+        mo = '0' + mo
+      }
+      if (da < 10) {
+        da = '0' + da
+      }
+      if (mo1 < 10) {
+        mo1 = '0' + mo1
+      }
+      if (da1 < 10) {
+        da1 = '0' + da1
+      }
+      startDate = ye + '-' + mo + '-' + da;
+      endDate = ye1 + '-' + mo1 + '-' + da1;
     }
-    if (da < 10) {
-      da = '0' + da
-    }
-    if (mo1 < 10) {
-      mo1 = '0' + mo1
-    }
-    if (da1 < 10) {
-      da1 = '0' + da1
-    }
-    initStartDate = ye + '-' + mo + '-' + da;
-    initEndDate = ye1 + '-' + mo1 + '-' + da1;
 
     b = new Date(b.getTime() + 24 * 3600 * 1000 * 89);
     ye1 = b.getFullYear();
@@ -54,7 +50,6 @@ $(function () {
       da1 = '0' + da1
     }
     initCaleEndDate = ye1 + '-' + mo1 + '-' + da1;
-
   }
 
   //获取url中的参数
@@ -76,36 +71,49 @@ $(function () {
       dataType: 'json',
       type: 'GET',
       cache: false,
-      success: function (data) {
+      success: function (res) {
         // console.log('success');
         // console.log(data);
-        if (data && data.result && data.result.map && data.result.map !== '') {
-          var obj = data.result.map;
+        if (res.status === 'C0000') {
+          var data = res.result.map;
+
+          var yearMonths = [];
+          for (var prop in data) {
+            yearMonths.push(prop);
+          }
+          yearMonths.sort();
 
           var sourceDate = [];
-          // Object.keys(obj).forEach(function (key) {
-          //   return sourceDate = sourceDate.concat(obj[key]);
+          // dataect.keys(data).forEach(function (key) {
+          //   return sourceDate = sourceDate.concat(data[key]);
           // });
           // var sourceDate1 = [];
-          // console.log(obj);
+          // console.log(data);
 
-          for (var prop in obj) {
-            sourceDate = sourceDate.concat(obj[prop]);
+          for (var i = 0; i < yearMonths.length; i++) {
+            sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
           // console.log(sourceDate);
-          var startDate = $('#startDate').val() || initStartDate;
-          var endDate = $('#endDate').val() || initEndDate;
+          // var startDate = $('#startDate').val() || initStartDate;
+          // var endDate = $('#endDate').val() || initEndDate;
+
+          // 判断默认日期是否已经无房
+          var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status;
+          if (inDateStatus === 'BOOKED' || inDateStatus === 'CHECKED_IN') {
+            startDate = '';
+            endDate = '';
+          }
           // 初始化价格日历
           $('#firstSelect').calendarSwitch({
             selectors: {
               sections: ".calendar"
             },
-            index: 3,      //展示的月份个数
-            animateFunction: "slideToggle",        //动画效果
-            controlDay: false,//知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
-            // daysnumber: "90",     //控制天数
-            comeColor: "#44bb80",       //入住颜色
-            outColor: "#44bb80",      //离店颜色
+            index: 3,      // 展示的月份个数
+            animateFunction: "slideToggle", // 动画效果
+            controlDay: false,              // 知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
+            // daysnumber: "90",            // 控制天数
+            comeColor: "#44bb80",           // 入住颜色
+            outColor: "#44bb80",            // 离店颜色
             comeoutColor: "#44bb80",        //入住和离店之间的颜色
             callback: function (start, end, totalDay, Price) {
               $('#startDate').val(start);
@@ -146,19 +154,18 @@ $(function () {
       dataType: 'json',
       type: 'GET',
       cache: false,
-      success: function (data) {
+      success: function (res) {
         // console.log('success');
-        console.log(data);
+        console.log(res);
 
+        if (res.status === 'C0000') {
+          var data = res.result;
+          console.log(data);
+          var str = '<div class="item-oneline"><p>' + data.roomTitle + '</p><p>￥' + data.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + data.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + data.roomCount + '居' + data.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + data.custCount + '人</i></div>';
 
-        if (data && data.result && data.result !== '') {
-          var json = data.result;
-          console.log(json);
-          var str = '<div class="item-oneline"><p>' + json.roomTitle + '</p><p>￥' + json.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + json.roomCount + '居' + json.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + json.custCount + '人</i></div>';
-
-          $('.yajin').text(json.roomDeposit);
-          $('.house-price').text(json.roomRate);
-          $('#totalPrice').text('￥' + (json.roomRate + json.roomDeposit));
+          $('.yajin').text(data.roomDeposit);
+          $('.house-price').text(data.roomRate);
+          $('#totalPrice').text('￥' + (data.roomRate + data.roomDeposit));
           $('#addressBody').empty().append(str);
         }
 
@@ -206,7 +213,7 @@ $(function () {
           console.log(path);
           window.location = path;
         } else {
-          showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
       },
       error: function (error) {
@@ -218,33 +225,28 @@ $(function () {
   }
 
 
-
   // 初始化当前日期
-  initTime();
+  initDate();
 
-  startDate = window.sessionStorage.startDate || initStartDate;
-  endDate = window.sessionStorage.endDate || initEndDate;
+
+  /*
+
+  var totalDays = (new Date(endDate) - new Date(startDate)) / 24 / 60 / 60 / 1000;
+
   $('#startDate').val(startDate);
   $('#endDate').val(endDate);
-  $('#totalday').text('共1晚');
-
-  // var message ={
-  //   E0001: 'skdjfksd',
-  //   E0002: 'asldklskd'
-  // }
-
+  $('#totalday').text('共' + totalDays + '晚');
+  */
 
   // url上面的参数
   // todo
   var roomId = getUrlParam('roomId');
-  console.log(roomId);
   if (!roomId) {
     location.replace('error.html?code=E0001')
   } else {
     // 关闭loading
     $('#loading').remove();
   }
-
 
 
   var params = {
@@ -254,12 +256,10 @@ $(function () {
   }
 
 
-
-
   // init价格日历get请求接口
   var caleParams = {
     roomId: params.roomId,
-    startDate: initStartDate,
+    startDate: startDate,
     endDate: initCaleEndDate,
   }
 
