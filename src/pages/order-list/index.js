@@ -48,7 +48,7 @@ $(function () {
                   '<div class="status">' +
                   '  <div class="stu-but">' +
                   '      <a href="javascript:;" class="cancel-order" data-order-no="' + data[i].orderNo + '">取消订单</a>' +
-                  '      <a class="current1" href=./order-payment.html?orderNo=' + data[i].orderNo + '">付款</a>' +
+                  '      <a class="current1" href="./order-payment.html?orderNo=' + data[i].orderNo + '">付款</a>' +
                   '  </div>' +
                   '</div></div>';
               }
