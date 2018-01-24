@@ -22,8 +22,9 @@ $(function () {
         console.log(res);
         if (res.status === 'C0000') {
           var data = res.result.items;
+          var index = data.length;
           var str = '';
-          for (var i = 0; i < data.length; i++) {
+          for (var i = 0; i < index; i++) {
             var item = data[i];
             str +=
               '<div class="all-assess">' +
@@ -73,7 +74,7 @@ $(function () {
     });
   }
 
-
+  myOrderComment();
   //点击全部评价和待评价之间的切换
   $('.order-body').on('tap', '.items', function (e) {
     e.preventDefault();
