@@ -1,0 +1,47 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+// @import '../../sass/footer.scss'; // 全局底部
+@import '../../sass/navigate.scss'; // 侧边导航
+body {
+    position: relative;
+    padding-top: .88rem;
+}
+
+// .article-body {
+//     min-height: calc(100% - 3rem);
+// }
+.commiute {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items(flex-end);
+}
+
+.commiute .content {
+    height: 3.6rem;
+    width: 100%;
+    padding: 0.3rem .35rem;
+    font-size: .26rem;
+    background: rgba(255, 255, 255, 1);
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+}
+
+.commiute button {
+    width: 2.4rem;
+    height: .64rem;
+    border-radius: .04rem;
+    margin-right: 0.35rem;
+    margin-top: 0.48rem;
+    font-size: .26rem;
+    color: rgba(255, 255, 255, 1);
+    background-color: $color;
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+}
