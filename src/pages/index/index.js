@@ -316,4 +316,13 @@ $(function () {
   window.sessionStorage.setItem('startDate', startDate);
   window.sessionStorage.setItem('endDate', endDate);
 
+
+
+  //点击进入订单列表
+  $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location = './order-list.html';
+
+  });
 });

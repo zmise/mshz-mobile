@@ -1,0 +1,26 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+body {
+    position: relative;
+    padding: .88rem .35rem 0;
+    background-color: #fff;
+}
+
+.header-body {
+    background-color: #fff;
+}
+
+.header-body .title {
+    color: $color;
+}
+
+.header-body .back {
+    font-size: .32rem;
+}
+
+.header-body .back:before {
+    border-color: $color;
+    height: 0.2rem;
+    width: 0.2rem;
+}
