@@ -191,10 +191,6 @@ $('#back').on('tap', function (e) {
 $(function () {
   $.when(order.orderInfo()).done(function (data) {
 
-    // 关闭loading
-    $('#loading').remove();
-
-
     var houseInfoHTML = houseInfo(data);
     var moneyInfoHTML = moneyInfo(data);
     var customerInfoHTML = customerInfo(data);
@@ -211,5 +207,9 @@ $(function () {
     if (data.newOrderState === 'PENDING' && data.effectTimeSecond > 0) {
       order.startTimer(data.effectTimeSecond);
     }
-  });
+  }).fail(function (err) {
+    showMessage('请求失败', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    // 关闭loading
+    $('#loading').remove();
+  });;
 });

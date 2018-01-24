@@ -22,7 +22,11 @@ $(function () {
     } else {
       location.replace('./order-details.html?orderNo=' + order.orderNo);
     }
-  });
+  }).fail(function (err) {
+    showMessage('请求失败', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    // 关闭loading
+    $('#loading').remove();
+  });;
 
   // 订单支付页面的post接口
   function orderPaid() {

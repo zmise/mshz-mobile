@@ -31,26 +31,127 @@ $(function () {
 
             if (params.orderQueryType === 'WAIT_PAYMENT') {
               for (var i = 0; i < data.length; i++) {
-                str += '<div class="box"><a class="content orderDetails" data-orderno="' + data[i].orderNo + '" data-orderstate="' + data[i].orderState + '"><div class="title current"><span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span></div><div class="time"><span>' + data[i].startTime + '至' + data[i].endTime + '</span><div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div></div><div class="total"><span>' + data[i].bookedDays + '晚</span><div> <span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div> </a><div class="status"><div class="stu-but"><button class="cancel-order">取消订单</button><button class="current1 order-paid">付款</button></div></div></div>';
+                str += '<div class="box">' +
+                  '  <a href="./order-details.html?orderNo=' + data[i].orderNo + '" class="content">' +
+                  '<div class="title current">' +
+                  '  <span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span>' +
+                  '</div>' +
+                  '<div class="time">' +
+                  '  <span>' + data[i].startTime + '至' + data[i].endTime + '</span>' +
+                  '  <div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div>' +
+                  '</div>' +
+                  '<div class="total">' +
+                  '  <span>' + data[i].bookedDays + '晚</span>' +
+                  '  <div><span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div>' +
+                  '</div>' +
+                  '</a>' +
+                  '<div class="status">' +
+                  '  <div class="stu-but">' +
+                  '      <a href="javascript:;" class="cancel-order">取消订单</a>' +
+                  '      <a class="current1" href=./order-payment.html?orderNo=' + data[i].orderNo + '">付款</a>' +
+                  '  </div>' +
+                  '</div></div>';
               }
-            }
-            if (params.orderQueryType === 'VALIDATED') {
+            } else if (params.orderQueryType === 'VALIDATED') {
               for (var i = 0; i < data.length; i++) {
-                strA = '<div class="box"><a class="content orderDetails" data-orderno="' + data[i].orderNo + '" data-orderstate="' + data[i].orderState + '"><div class="title"><span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span></div><div class="time"><span>' + data[i].startTime + '至' + data[i].endTime + '</span><div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div></div><div class="total"><span>' + data[i].bookedDays + '晚</span><div>';
+                strA =
+                  '<div class="box">' +
+                  '  <a href="./order-details.html?orderNo=' + data[i].orderNo + '" class="content">' +
+                  '    <div class="title">' +
+                  '      <span>' + data[i].roomTitle + '</span>' +
+                  '      <span>¥' + data[i].totalPrice + '</span>' +
+                  '    </div>' +
+                  '    <div class="time">' +
+                  '      <span>' + data[i].startTime + '至' + data[i].endTime + '</span>' +
+                  '      <div>' +
+                  '        <span>房费：</span>' +
+                  '        <span>¥' + data[i].roomRate + '</span>' +
+                  '      </div>' +
+                  '    </div>' +
+                  '    <div class="total">' +
+                  '      <span>' + data[i].bookedDays + '晚</span>';
                 if (data[i].orderState === 'BOOKED') {
-                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div></a><div class="status"><span class="title current3">已预订</span><div class="stu-but"><button class="cancel-order">取消订单</button><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
+                  strB =
+                    '      <div>' +
+                    '        <span>押金：</span>' +
+                    '        <span>¥' + data[i].roomDeposit + '</span>' +
+                    '      </div>' +
+                    '    </div>' +
+                    '  </a>' +
+                    '  <div class="status">' +
+                    '    <span class="title current3">已预订</span>' +
+                    '    <div class="stu-but">' +
+                    '      <a href="javascript:;" class="cancel-order">取消订单</a>' +
+                    '      <a class="current3" href="./order-details.html?orderNo=' + data[i].orderNo + '">再次预订</a>' +
+                    '    </div>' +
+                    '  </div>' +
+                    '</div>';
                 } else if (data[i].orderState === 'CHECKED') {
-                  strB = '<span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div></a><div class="status"><span class="title current3">已入住</span><div class="stu-but"><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
+                  strB =
+                    '      <div>' +
+                    '        <span>押金：</span>' +
+                    '        <span>¥' + data[i].roomDeposit + '</span>' +
+                    '      </div>' +
+                    '    </div>' +
+                    '  </a>' +
+                    '  <div class="status">' +
+                    '    <span class="title current3">已入住</span>' +
+                    '    <div class="stu-but">' +
+                    '      <a class="current3" href="./order-details.html?orderNo=' + data[i].orderNo + '">再次预订</a>' +
+                    '    </div>' +
+                    '  </div>' +
+                    '</div>';
                 } else {
-                  strB = '<span>额外费用：</span><span>¥' + data[i].extarAcount + '</span></div></div></a><div class="status"><span class="title current2">' + data[i].orderStateDesc + '</span><div class="stu-but"><button class="order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button><button class="current2 talk-order" data-orderno="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">评价订单</button></div></div></div>';
+                  strB =
+                    '      <div>' +
+                    '        <span>额外费用：</span>' +
+                    '        <span>¥' + data[i].extarAcount + '</span>' +
+                    '      </div>' +
+                    '    </div>' +
+                    '  </a>' +
+                    '  <div class="status">' +
+                    '    <span class="title current2">' + data[i].orderStateDesc + '</span>' +
+                    '    <div class="stu-but">' +
+                    '      <a href="./order-details.html?orderNo=' + data[i].orderNo + '">再次预订</a>' +
+                    '      <a class="current2" href="./assess-order.html?orderNo=' + data[i].orderNo + '&roomId=' + data[i].roomId + '">评价订单</a>' +
+                    '    </div>' +
+                    '  </div>' +
+                    '</div>';
                 }
 
                 str += strA + strB;
               }
-            }
-            if (params.orderQueryType === 'CANCELLED_AND_INVALIDATED') {
+            } else if (params.orderQueryType === 'CANCELLED_AND_INVALIDATED') {
               for (var i = 0; i < data.length; i++) {
-                str += '<div class="box"><a class="content orderDetails" data-orderno="' + data[i].orderNo + '" data-orderstate="' + data[i].orderState + '"><div class="title"><span>' + data[i].roomTitle + '</span><span>¥' + data[i].totalPrice + '</span></div><div class="time"><span>' + data[i].startTime + '至' + data[i].endTime + '</span><div><span>房费：</span><span>¥' + data[i].roomRate + '</span></div></div><div class="total"><span>' + data[i].bookedDays + '晚</span><div> <span>押金：</span><span>¥' + data[i].roomDeposit + '</span></div></div> </a> <div class="status"><span class="title current3">' + data[i].orderStateDesc + '</span><div class="stu-but"><button class="current3 order-again" data-order-no="' + data[i].orderNo + '" data-roomid="' + data[i].roomId + '">再次预订</button></div></div></div>';
+                str +=
+                  '<div class="box">' +
+                  '  <a href="./order-details.html?orderNo=' + data[i].orderNo + '" class="content">' +
+                  '    <div class="title">' +
+                  '      <span>' + data[i].roomTitle + '</span>' +
+                  '      <span>¥' + data[i].totalPrice + '</span>' +
+                  '    </div>' +
+                  '    <div class="time">' +
+                  '      <span>' + data[i].startTime + '至' + data[i].endTime + '</span>' +
+                  '      <div>' +
+                  '        <span>房费：</span>' +
+                  '        <span>¥' + data[i].roomRate + '</span>' +
+                  '      </div>' +
+                  '    </div>' +
+                  '    <div class="total">' +
+                  '      <span>' + data[i].bookedDays + '晚</span>' +
+                  '      <div>' +
+                  '        <span>押金：</span>' +
+                  '        <span>¥' + data[i].roomDeposit + '</span>' +
+                  '      </div>' +
+                  '    </div>' +
+                  '  </a>' +
+                  '  <div class="status">' +
+                  '    <span class="title current3">' + data[i].orderStateDesc + '</span>' +
+                  '    <div class="stu-but">' +
+                  '      <a class="current3" href="./order-details.html?orderNo=' + data[i].orderNo + '">再次预订</a>' +
+                  '    </div>' +
+                  '  </div>' +
+                  '</div>';
               }
             }
           } else {
@@ -60,7 +161,6 @@ $(function () {
               '<p clss="txt">~空空如也~</p>' +
               ' </div>'
               ;
-
           }
           $('.article-body').append(str);
 
@@ -154,20 +254,6 @@ $(function () {
     orderList(params);
     /* 点击生成订单列表数据 */
   });
-
-  $('.article-body').on('tap', '.orderDetails', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    var orderNo = $(this).data('orderno');
-    var orderState = $(this).data('orderstate');
-    console.log(orderNo);
-    if (orderNo && orderNo !== '') {
-      var path = './order-details.html?orderNo=' + orderNo;
-      window.location = path;
-    }
-  });
-
-
 
   // 点击付款order-paid按钮跳转到订单支付页面 order-payment
   $('.article-body').on('tap', '.order-paid', function (e) {
