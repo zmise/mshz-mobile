@@ -13,9 +13,9 @@ $(function () {
     startDate = window.sessionStorage.startDate;
     endDate = window.sessionStorage.endDate;
 
+    var b = new Date();
     if (!startDate || !endDate) {
 
-      var b = new Date();
       var ye = b.getFullYear();
       var mo = b.getMonth() + 1;
       var da = b.getDate();
