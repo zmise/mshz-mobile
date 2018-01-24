@@ -127,12 +127,10 @@ function orderCancel(data) {
       console.log('error');
     }
   });
-
 }
 
 
 // 点击付款按钮跳转到订单支付页面 order-payment
-
 $(document).on('tap', '#orderPaid', function (e) {
   e.stopPropagation();
   e.preventDefault();
@@ -171,12 +169,11 @@ $('#overlay').on('tap', '#cancel', function (e) {
 });
 
 // 点击评价订单
-$('#talk-order').on('tap', function (e) {
+$(document).on('tap', '#talk-order', function (e) {
   e.stopPropagation();
   e.preventDefault();
-  var order = $('#orderNo').val();
   var roomId = $(this).data('roomid');
-  location.href = './assess-order.html?orderNo=' + orderNo + '&roomId=' + roomId;
+  location.href = './assess-order.html?orderNo=' + order.orderNo + '&roomId=' + roomId;
 });
 
 // 点击返回回到上一页
@@ -202,8 +199,10 @@ $(function () {
     $('#article-body').html(headerHTML + houseInfoHTML + refundHTML + moneyInfoHTML + customerInfoHTML);
     var buttonsHTML = order.buildButton(data.newOrderState, data);
     $('body').append(buttonsHTML);
-    // console.log(newOrderState);
-    console.log('data.effectTimeSecond=', data.effectTimeSecond);
+
+    // 关闭loading
+    $('#loading').remove();
+
     if (data.newOrderState === 'PENDING' && data.effectTimeSecond > 0) {
       order.startTimer(data.effectTimeSecond);
     }
