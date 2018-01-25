@@ -47,13 +47,13 @@ $(function () {
 
 
 
-  $('#firstSelect').on('tap', function (e) {
+  $('#handleCalendar').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
-  $('#firstSelect').calendarSwitch({
+
+  $('#handleCalendar').calendarSwitch({
     selectors: {
       sections: ".calendar"
     },
@@ -232,7 +232,7 @@ $(function () {
 
 
   /* 进入搜索页 */
-  $('#search-entry').on('tap', function (e) {
+  $('#handleSearch').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
     if ($.trim($(this).val()) == '') {

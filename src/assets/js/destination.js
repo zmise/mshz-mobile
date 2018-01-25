@@ -7,7 +7,7 @@ $(function () {
 
   var arr = [];
 
-  $('#destination-entry').on('tap', function (e) {
+  $('#handleDestination').on('tap', function (e) {
     $('.des-body').show();
     /* 阻止首页滚动条事件  */
     $('body,html').css({ 'overflow': 'hidden' });
