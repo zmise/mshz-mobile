@@ -238,7 +238,7 @@ $(function () {
       // params.page++;
       var page = $('#page').val() - 0 + 1;
       $('#page').val(page);
-
+      console.log(page);
       loadingMore();
     }
     $('.loading').show();
@@ -279,8 +279,9 @@ $(function () {
             var json = data.result.items;
             var str = '';
             for (var i = 0; i < json.length; i++) {
-              str += '<div class="index-list"><img src="' + json[0].mainPicture + '" alt=""><div class="item-oneline"><p>' + json[0].title + '</p><p>￥' + json[0].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[0].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[0].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[0].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[0].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[0].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[0].commentCount + '条评价</i></div></div></div>';
+              str += '<div class="index-list"><img src="' + json[i].mainPicture.replace('{size}', '680x384') + '" alt=""><div class="item-oneline"><p>' + json[i].title + '</p><p>￥' + json[i].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[i].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[i].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[i].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[i].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[i].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[i].commentCount + '条评价</i></div></div></div>';
             }
+
             if (params.page === '1') {
               $('.recommend-body .mrl_35').empty().append(str);
             } else {
