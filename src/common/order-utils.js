@@ -3,6 +3,7 @@ var map = {
   PAYMENT: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
   CANCELL_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
   CANCELL_NO_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
+  CHECKED: { icon: 'yituifangyoutuikuan', text: '已入住', className: 'current2' },
   CHECKED_OUT: { icon: 'yituifangwutuikuan', text: '已退房', className: 'current2' },
   EARLY_CHECKED_OUT: { icon: 'yituifangyoutuikuan', text: '提前退房', className: 'current2' },
   INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时', className: 'current2' }
@@ -174,10 +175,10 @@ function orderInfo() {
       res.result.newOrderState = convertStatus(res.result.orderState, res.result.payState);
       dfd.resolve(res.result);
     } else {
-      dfd.reject('请求失败');
+      dfd.reject(res);
     }
-  }).fail(function (error) {
-    dfd.reject('请求失败');
+  }).fail(function (err) {
+    dfd.reject(err);
   });
 
   return dfd.promise();

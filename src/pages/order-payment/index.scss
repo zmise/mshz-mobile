@@ -4,6 +4,7 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/loading.scss'; // 加载中
+@import '../../sass/toast.scss'; // toast的样式
 html {
     height: 100%;
 }
@@ -22,6 +23,9 @@ footer {
 }
 
 
+#paymentInfo {
+  min-height: 10rem;
+}
 /* hold-body */
 
 .hold-body {

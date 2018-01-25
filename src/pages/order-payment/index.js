@@ -3,6 +3,8 @@ require('./index.scss');
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
+require('../../assets/js/toast.js');  //toast的事件
+
 var order = require('../../common/order-utils');
 
 $(function () {
@@ -13,19 +15,31 @@ $(function () {
       $('#loading').remove();
 
       var str = '<div class="txt"><span>订单号：<span>' + order.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + data.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + data.startTime.replace(/-/g, '.') + '-' + data.endTime.replace(/-/g, '.') + ' 共' + data.bookedDays + '晚</span></div><span>押金：￥<span>' + data.roomDeposit + '</span></span></div> ';
-      $('.tol-pri').text(+data.roomRate + +data.roomDeposit);
+      $('.tol-pri').text('￥' + (+data.roomRate + +data.roomDeposit));
       // console.log($('tol-pri').text())
 
       $('.content-body .content').empty().append(str);
+      $('#paymentInfo').show();
 
       order.startTimer(data.effectTimeSecond);
     } else {
       location.replace('./order-details.html?orderNo=' + order.orderNo);
     }
-  }).fail(function (err) {
-    showMessage('请求失败', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+  }).fail(function (res) {
     // 关闭loading
     $('#loading').remove();
+    $('#paymentInfo').empty().show();
+    setTimeout(function () {
+      history.go(-1);
+    }, 2e3);
+    $('body').toast({
+      position: 'fixed',
+      animateIn: 'bounceInUp-hastrans',
+      animateOut: 'bounceOutDown-hastrans',
+      content: '请求失败',
+      duration: 2000,
+      isCenter: true,
+    });
   });;
 
   // 订单支付页面的post接口
