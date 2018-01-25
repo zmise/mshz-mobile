@@ -77,15 +77,21 @@ function buildRefundContent(data) {
 }
 function buildButton(state, data) {
   var button = '';
-  if (state === 'PENDING' || state === 'BOOKED') {
+  if (state === 'PENDING') {
     button =
       '<section class="check-body">' +
       '<a class="items" id="orderCancel">' +
       '<p>取消订单</p>' +
       '</a>' +
       '<a class="items" href="javascript:;" id="orderPaid">付款</a>' +
-      '</section>'
-      ;
+      '</section>';
+  } else if (state === 'PAYMENT' && data.cancelFlag === '1') {
+    button =
+      '<section class="opinion-body">' +
+      '<a class="items" id="orderCancel">' +
+      '<p>取消订单</p>' +
+      '</a>' +
+      '</section>';
   } else if (state === 'EARLY_CHECKED_OUT' || state === 'CHECKED_OUT') {
     button =
       '<section class="opinion-body">' +
