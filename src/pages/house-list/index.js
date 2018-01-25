@@ -272,14 +272,37 @@ $(function () {
       dataType: 'json',
       type: 'GET',
       cache: false,
-      success: function (data) {
-        console.log(data);
-        if (data.status === 'C0000') {
-          if (data.result && data.result.items) {
-            var json = data.result.items;
+      success: function (res) {
+        console.log(res);
+        if (res.status === 'C0000') {
+          if (res.result && res.result.items) {
+            var data = res.result.items;
             var str = '';
-            for (var i = 0; i < json.length; i++) {
-              str += '<div class="index-list"><img src="' + json[i].mainPicture.replace('{size}', '680x384') + '" alt=""><div class="item-oneline"><p>' + json[i].title + '</p><p>￥' + json[i].price + '</p></div><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + json[i].cityName + '</i><i class="twoline-items" href="javascript:;">' + json[i].houseType + '</i><i class="twoline-items" href="javascript:;">' + json[i].customerCount + '人</i></div><div class="item-threeline"><div class="three-lline"><div class="star-lines"></div><i class="score">' + json[i].rateServer + '分</i></div><div class="three-rline"><i class="twoline-items" href="javascript:;">' + json[i].area + '住过</i><i class="twoline-items" href="javascript:;">' + json[i].commentCount + '条评价</i></div></div></div>';
+            for (var i = 0; i < data.length; i++) {
+              var item = data[i];
+              str +=
+                '<div class="index-list">' +
+                '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                '  <div class="item-oneline">' +
+                '    <p>' + item.title + '</p>' +
+                '    <p>￥' + item.price + '</p>' +
+                '  </div>' +
+                '  <div class="item-twoline">' +
+                '    <i class="twoline-items">' + item.cityName + '</i>' +
+                '    <i class="twoline-items">' + item.houseType + '</i>' +
+                '    <i class="twoline-items">' + item.customerCount + '人</i>' +
+                '  </div>' +
+                '  <div class="item-threeline">' +
+                '    <div class="three-lline">' +
+                '      <div class="star-lines"></div>' +
+                '      <i class="score">' + item.rateServer + '分</i>' +
+                '    </div>' +
+                '    <div class="three-rline">' +
+                '      <i class="twoline-items">' + item.area + '住过</i>' +
+                '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>';
             }
 
             if (params.page === '1') {
