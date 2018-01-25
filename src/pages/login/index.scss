@@ -1,6 +1,7 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/header.scss'; // 全局头部
+@import '../../sass/toast.scss'; // toast的样式
 body {
     position: relative;
     padding: 0 .35rem;
@@ -58,12 +59,34 @@ body {
 }
 
 .input-list .current {
+    color: $color;
+}
+
+.input-list .items .flex-items {
+    @include flex;
+}
+
+.input-list .currentborder {
     border-bottom: .03rem solid $color;
 }
 
 .input-list .items .text {
     font-size: .26rem;
-    color: rgba(181, 185, 190, 1);
+}
+
+.input-list .items .text .current {
+    color: $color;
+}
+
+.input-list .items .text .seconds {
+    width: 0.4rem;
+}
+
+.input-list .items .icon {
+    width: 0.4rem;
+    height: 0.4rem;
+    font-size: .4rem;
+    
 }
 
 .input-list .state {
@@ -79,11 +102,11 @@ body {
     width: 0.24rem;
     margin-right: 0.1rem;
     font-size: .24rem;
-    color: rgba(196, 201, 205, 1);
 }
 
 .button-body {
     @include flex-box;
+    @include flex-direction(column);
     @include align-items;
     @include justify-content;
     padding-top: 0.5rem;
@@ -92,11 +115,51 @@ body {
 .button-body .bnt {
     resize: none;
     outline: none;
-    width: 6.2rem;
+    width: 6.4rem;
     height: .88rem;
+    margin-bottom: 0.45rem;
     font-size: .32rem;
     letter-spacing: .1rem;
     background: $color;
     border-radius: .04rem;
     color: #fff;
 }
+
+.button-body .bnt1 {
+    resize: none;
+    outline: none;
+    width: 6.4rem;
+    height: .88rem;
+    margin-bottom: 0.45rem;
+    font-size: .32rem;
+    background: $color;
+    border-radius: .04rem;
+    color: #fff;
+}
+
+.button-body .text {
+    height: 0.26rem;
+    font-size: .26rem;
+    color: rgba(196, 201, 205, 1);
+    padding: 0 .24rem;
+    border-right: .01rem solid rgba(227, 230, 233, 1);
+}
+
+.button-body .text:last-child {
+    border: 0;
+}
+
+.button-body .currnet {
+    color: $color;
+}
+
+// .button-body .box {
+//     @include flex-box;
+//     @include justify-content;
+// }
+// .button-body .box {
+// }
+//改变toast的样式
+// .animated {
+//     background-color: skyblue;
+// }
