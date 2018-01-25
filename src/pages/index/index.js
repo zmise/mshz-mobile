@@ -15,6 +15,114 @@ require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
 
+  //searchInfo
+  function searchInfo(cityName) {
+    // console.log(cityName);
+    // var city = $('#destination-entry').val();
+    $.ajax({
+      url: '/mshz-app/room/queryCityRimInfo',
+      data: {
+        'city': cityName,
+      },
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (data) {
+        // console.log('success');
+        var json = data.result;
+        console.log(json);
+        //取localStorage中搜索历史的值
+        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
+        var str = '';
+
+        if (searchHistroy.length > 0) {
+          str =
+            '<div class="theme"><div class="title">搜索历史</div><div class="keywords">';
+          for (var i = 0; i < searchHistroy.length; i++) {
+            str += '<a class="items" href="javascript:;">' + searchHistroy[i] + '</a>';
+          }
+
+          str += '</div></div>';
+        }
+        for (var i = 0; i < json.length; i++) {
+          var str1 = ''
+          var arr = json[i].rimNames;
+          for (var j = 0; j < arr.length; j++) {
+            str1 += '<a class="items" href="javascript:;">' + arr[j].name + '</a>';
+          }
+
+          str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div >';
+        }
+        $('.search-keyword').empty().append(str);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
+
+  function bdGetPosition(result) {
+    var cityName = result.name;
+    if (cityName.indexOf('市') != -1) {
+      cityName = cityName.replace('市', '');
+    }
+    $('#destination-entry').val(cityName);
+  }
+
+
+  var startDate, endDate;
+  var timeoutObject;
+  function initTime() {
+    var b = new Date();
+    var ye = b.getFullYear();
+    var mo = b.getMonth() + 1;
+    var da = b.getDate();
+    b = new Date(b.getTime() + 24 * 3600 * 1000);
+    var ye1 = b.getFullYear();
+    var mo1 = b.getMonth() + 1;
+    var da1 = b.getDate();
+    if (mo < 10) {
+      mo = '0' + mo
+    }
+    if (da < 10) {
+      da = '0' + da
+    }
+    if (mo1 < 10) {
+      mo1 = '0' + mo1
+    }
+    if (da1 < 10) {
+      da1 = '0' + da1
+    }
+    startDate = ye + '-' + mo + '-' + da;
+    endDate = ye1 + '-' + mo1 + '-' + da1;
+
+  }
+
+
+
+
+
+  if ($('#destination-entry').val() == '') {
+    var nowCity = new BMap.LocalCity();
+    nowCity.get(bdGetPosition);
+  }
+  initTime();
+
+  // console.log(startDate);
+  // console.log(endDate);
+  startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
+  endData = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
+
+  window.sessionStorage.setItem('startDate', startDate);
+  window.sessionStorage.setItem('endDate', endDate);
+
+
+
+
+
   // $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
   $('.banner-body').banner({
@@ -37,7 +145,7 @@ $(function () {
   // };
 
   /* switch header   */
-  var timeoutObject;
+
   $(document).on('scroll.header', function () {
     if (timeoutObject) {
       clearTimeout(timeoutObject);
@@ -112,55 +220,13 @@ $(function () {
   // } else {
   //   alert("不包含");
   // }
-  if ($('#destination-entry').val() == '') {
-    var nowCity = new BMap.LocalCity();
-    nowCity.get(bdGetPosition);
-  }
-
-  function bdGetPosition(result) {
-    var cityName = result.name;
-    if (cityName.indexOf('市') != -1) {
-      cityName = cityName.replace('市', '');
-    }
-    $('#destination-entry').val(cityName);
-  }
 
 
 
-  function searchInfo(cityName) {
-    // console.log(cityName);
-    // var city = $('#destination-entry').val();
-    $.ajax({
-      url: '/mshz-app/room/queryCityRimInfo',
-      data: {
-        'city': cityName,
-      },
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (data) {
-        // console.log('success');
-        var json = data.result;
-        console.log(json);
-        var str = '';
-        for (var i = 0; i < json.length; i++) {
-          var str1 = ''
-          var arr = json[i].rimNames;
-          for (var j = 0; j < arr.length; j++) {
-            str1 += '<a class="items" href="javascript:;">' + arr[j].name + '</a>';
-          }
 
-          str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div >';
-        }
-        $('.search-keyword').empty().append(str);
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-      }
-    });
 
-  }
+
+
 
   /*  点击搜索跳转houselist */
   $("#search").click(function () {
@@ -280,41 +346,9 @@ $(function () {
 
 
   /*  当天的日期和当他下一天的日期*/
-  var startDate, endDate;
-  function initTime() {
-    var b = new Date();
-    var ye = b.getFullYear();
-    var mo = b.getMonth() + 1;
-    var da = b.getDate();
-    b = new Date(b.getTime() + 24 * 3600 * 1000);
-    var ye1 = b.getFullYear();
-    var mo1 = b.getMonth() + 1;
-    var da1 = b.getDate();
-    if (mo < 10) {
-      mo = '0' + mo
-    }
-    if (da < 10) {
-      da = '0' + da
-    }
-    if (mo1 < 10) {
-      mo1 = '0' + mo1
-    }
-    if (da1 < 10) {
-      da1 = '0' + da1
-    }
-    startDate = ye + '-' + mo + '-' + da;
-    endDate = ye1 + '-' + mo1 + '-' + da1;
 
-  }
 
-  initTime();
-  // console.log(startDate);
-  // console.log(endDate);
-  startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
-  endData = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
 
-  window.sessionStorage.setItem('startDate', startDate);
-  window.sessionStorage.setItem('endDate', endDate);
 
 
 

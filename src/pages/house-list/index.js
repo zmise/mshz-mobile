@@ -25,7 +25,8 @@ $(function () {
       prices: $('#prices').val(),
       roomCount: $('#roomCount').val() === '' ? '' : +$('#roomCount').val(),
       furniture: $('#furniture').val(),
-      page: $('#page').val()
+      currentPage: $('#page').val(),
+      pageSize: 20,
     };
   }
 
@@ -261,7 +262,7 @@ $(function () {
         lastParams[prop] = params[prop];
       }
     }
-    // console.log(lastParams, 'lastParams');
+    console.log(lastParams);
 
     $.ajax({
       url: '/mshz-app/room/queryRoom',
