@@ -20,18 +20,18 @@
   </header>
   <!-- 订单分类栏-->
   <section class="order-sort-body">
-    <div class="items" id="tobepaid">
-      <span class="txt current">待付款</span>
-      <i class="line current"></i>
-    </div>
-    <div class="items" id="valid">
+    <a class="items" data-order-query-type="WAIT_PAYMENT" href="#WAIT_PAYMENT">
+      <span class="txt">待付款</span>
+      <i class="line"></i>
+    </a>
+    <a class="items" data-order-query-type="VALIDATED" href="#VALIDATED">
       <span class="txt">有效单</span>
       <i class="line"></i>
-    </div>
-    <div class="items" id="invalid">
+    </a>
+    <a class="items" data-order-query-type="CANCELLED_AND_INVALIDATED" href="#CANCELLED_AND_INVALIDATED">
       <span class="txt">退款/失效单</span>
       <i class="line"></i>
-    </div>
+    </a>
 
   </section>
 

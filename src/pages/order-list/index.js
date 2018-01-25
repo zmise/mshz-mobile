@@ -8,18 +8,37 @@ require('../../assets/js/toast.js');  //toast的事件
 
 /* 切换订单分类栏的事件 */
 $(function () {
+  // 获取默认页签类型
+  var orderQueryType = location.hash.substr(1) || 'WAIT_PAYMENT';
+  var $orderSort = $('.order-sort-body');
+
+  $orderSort.on('tap', '.items', function (e) {
+    $orderSort.find('.txt').removeClass('current');
+    $(this).find('.txt').addClass('current');
+    $orderSort.find('.line').removeClass('current');
+    $(this).find('.line').addClass('current');
+    $('.article-body').empty();
+
+    orderQueryType = $(this).data('orderQueryType');
+
+    orderList();
+  });
+
+  $orderSort.find('a[data-order-query-type="' + orderQueryType + '"]').trigger('tap');
+
+
   /* get请求  订单列表数据 */
-  function orderList(params) {
+  function orderList() {
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderList',
-      data: params,
+      data: {
+        orderQueryType: orderQueryType
+      },
       dataType: 'json',
       type: 'GET',
       cache: false,
       success: function (res) {
-        console.log(res);
         if (res.status === 'C0000') {
-          // console.log(res.result);
           $('.article-body').empty();
 
           var str = '';
@@ -29,7 +48,7 @@ $(function () {
 
           if (data.length !== 0) {
 
-            if (params.orderQueryType === 'WAIT_PAYMENT') {
+            if (orderQueryType === 'WAIT_PAYMENT') {
               for (var i = 0; i < data.length; i++) {
                 str += '<div class="box">' +
                   '  <a href="./order-details.html?orderNo=' + data[i].orderNo + '" class="content">' +
@@ -52,7 +71,7 @@ $(function () {
                   '  </div>' +
                   '</div></div>';
               }
-            } else if (params.orderQueryType === 'VALIDATED') {
+            } else if (orderQueryType === 'VALIDATED') {
               for (var i = 0; i < data.length; i++) {
                 strA =
                   '<div class="box">' +
@@ -121,7 +140,7 @@ $(function () {
 
                 str += strA + strB;
               }
-            } else if (params.orderQueryType === 'CANCELLED_AND_INVALIDATED') {
+            } else if (orderQueryType === 'CANCELLED_AND_INVALIDATED') {
               for (var i = 0; i < data.length; i++) {
                 str +=
                   '<div class="box">' +
@@ -186,12 +205,8 @@ $(function () {
       success: function (res) {
 
         if (res.status === 'C0000') {
-          var params = {
-            orderQueryType: $('#orderQueryType').val(),
-          }
-
           showMessage('取消成功', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-          orderList(params);
+          orderList();
         } else {
           showMessage(res.message, 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
@@ -201,7 +216,6 @@ $(function () {
         console.log('error');
       }
     });
-
   }
 
   // 初始化的弹出的toast框
@@ -220,41 +234,6 @@ $(function () {
       isCenter: isCenter,
     });
   }
-
-
-  var initParams = {
-    orderQueryType: 'WAIT_PAYMENT',
-  }
-  $('#orderQueryType').val(initParams.orderQueryType);
-  orderList(initParams);
-
-
-  var $orderSort = $('.order-sort-body');
-
-  $('#tobepaid').attr('data-type', 'WAIT_PAYMENT');
-  $('#valid').attr('data-type', 'VALIDATED');
-  $('#invalid').attr('data-type', 'CANCELLED_AND_INVALIDATED');
-
-  $orderSort.on('tap', '.items', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $orderSort.find('.txt').removeClass('current');
-    $(this).find('.txt').addClass('current');
-    $orderSort.find('.line').removeClass('current');
-    $(this).find('.line').addClass('current');
-    $('.article-body').empty();
-
-    // console.log($(this).data('type'));
-    var params = {
-      orderQueryType: $(this).data('type'),
-    }
-    $('#orderQueryType').val(params.orderQueryType);
-
-    // ajax请求数据 刷新article-body盒子的内容
-    orderList(params);
-    /* 点击生成订单列表数据 */
-  });
-
 
   // 点击取消订单cancel-order按钮，弹出弹框，点击确定取消，删除该订单dom，toast，取消成功”释放房源
   $('.article-body').on('tap', '.cancel-order', function (e) {

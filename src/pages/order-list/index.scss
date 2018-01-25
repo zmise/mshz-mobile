@@ -30,6 +30,7 @@ body {
     @include align-items;
     height: 100%;
     color: rgba(94, 100, 107, 1);
+    flex: 1;
 }
 
 .order-sort-body .txt {
