@@ -1,8 +1,11 @@
 require('./index.scss');
+// require('../../assets/js/plugins.js');
 
 require('../../assets/js/toast.js');  //toast的事件
 
+
 $(function () {
+
   // 初始化的弹出的toast框
   function showMessage(content, duration, isCenter, animateIn, animateOut) {
     var animateIn = animateIn || 'fadeIn';
@@ -27,13 +30,28 @@ $(function () {
   // showMessage('zmise', 100000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
   showMessage('这是提示消息哈！');
 
-  // 点击到完成并登录成功跳转到login
+  // 点击到登录成功跳转到login
   $('#index-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
     window.location = '/index.html';
   });
 
+
+  // 点击到手机登录页面login
+  $('#login-entry').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    window.location = './login.html';
+  });
+
+
+  // 点击到忘记密码页面forgot-password
+  $('#forgotPsw-entry').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    window.location = './forgot-password.html';
+  });
   // 点击返回回到上一页
   $('#back').on('click', function (e) {
 

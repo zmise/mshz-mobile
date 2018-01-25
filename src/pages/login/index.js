@@ -8,11 +8,11 @@ $(function () {
 
   // 初始化的弹出的toast框
   function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
+    var animateIn = animateIn || 'fadeIn';
+    var animateOut = animateOut || 'fadeOut';
+    var content = content || '这是一个提示信息';
+    var duration = duration || '3000';
+    var isCenter = isCenter || false;
     $('body').toast({
       position: 'fixed',
       animateIn: animateIn,
@@ -30,9 +30,26 @@ $(function () {
   // showMessage('zmise', 100000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
   showMessage('这是提示消息哈！');
 
+
+  // 点击到设置密码页面setting-password
+  $('#login').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    window.location = './setting-password.html';
+  });
+
+
+  // 点击到用户登录页面user-login
+  $('#userLogin-entry').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    window.location = './user-login.html';
+  });
+
+
+
   // 点击返回回到上一页
   $('#back').on('click', function (e) {
-
     e.stopPropagation();
     e.preventDefault();
     history.go(-1);

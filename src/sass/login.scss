@@ -1,0 +1,169 @@
+body {
+    position: relative;
+    padding: 0 .35rem;
+    background-color: #fff;
+}
+
+.header-body {
+    background-color: #fff;
+}
+
+.header-body .title {
+    color: $color;
+}
+
+.header-body .back {
+    font-size: .32rem;
+}
+
+.header-body .back:before {
+    border-color: $color;
+    height: 0.2rem;
+    width: 0.2rem;
+}
+
+//.title-body
+.title-body {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    padding: 0 .3rem;
+    margin-top: 1.3rem;
+    margin-bottom: .3rem;
+}
+
+.title-body .logo {
+    width: 2.3rem;
+    height: .8rem;
+}
+
+//.input-list
+.input-list {
+    @include flex-box;
+    @include flex-direction(column);
+    padding: 0 .3rem;
+}
+
+.input-list .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    padding: .74rem 0 .24rem;
+    font-size: .26rem;
+    color: rgba(181, 185, 190, 1);
+    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+}
+
+.input-list .current {
+    color: $color;
+}
+
+.input-list .items .flex-items {
+    @include flex;
+}
+
+.input-list .currentborder {
+    border-bottom: .03rem solid $color;
+}
+
+.input-list .items .text {
+    font-size: .26rem;
+}
+
+.input-list .items .text .current {
+    color: $color;
+}
+
+.input-list .items .text .seconds {
+    width: 0.4rem;
+}
+
+.input-list .items .icon {
+    width: 0.4rem;
+    height: 0.4rem;
+    font-size: .4rem;
+}
+
+.input-list .state {
+    margin-top: 0.26rem;
+    @include flex-box;
+    @include align-items;
+    font-size: .24rem;
+    color: rgba(196, 201, 205, 1);
+}
+
+.input-list .state .icon {
+    height: 0.24rem;
+    width: 0.24rem;
+    margin-right: 0.1rem;
+    font-size: .24rem;
+}
+
+.button-body {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    padding-top: 0.5rem;
+}
+
+.button-body .bnt {
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+    width: 6.4rem;
+    height: .88rem;
+    font-size: .32rem;
+    letter-spacing: .1rem;
+    background: $color;
+    border-radius: .04rem;
+    color: #fff;
+}
+
+.button-body .bnt1 {
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+    width: 6.4rem;
+    height: .88rem;
+    font-size: .32rem;
+    background: $color;
+    border-radius: .04rem;
+    color: #fff;
+}
+
+.button-body .txt-box {
+    margin-top: 0.45rem;
+    height: 0.4rem;
+}
+
+.button-body .text {
+    margin-top: 0.45rem;
+    font-size: .26rem;
+    color: rgba(196, 201, 205, 1);
+    padding: 0 .24rem;
+    border-right: .01rem solid rgba(227, 230, 233, 1);
+}
+
+.button-body .text:last-child {
+    border: 0;
+}
+
+.button-body .currnet {
+    color: $color;
+}
+
+// .button-body .box {
+//     @include flex-box;
+//     @include justify-content;
+// }
+// .button-body .box {
+// }
+//改变toast的样式
+// .animated {
+//     background-color: skyblue;
+// }

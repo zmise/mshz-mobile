@@ -1,8 +1,11 @@
 require('./index.scss');
+// require('../../assets/js/plugins.js');
 
 require('../../assets/js/toast.js');  //toast的事件
 
+
 $(function () {
+
   // 初始化的弹出的toast框
   function showMessage(content, duration, isCenter, animateIn, animateOut) {
     var animateIn = animateIn || 'fadeIn';
