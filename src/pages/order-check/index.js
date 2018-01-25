@@ -121,15 +121,15 @@ $(function () {
             comeColor: "#44bb80",           // 入住颜色
             outColor: "#44bb80",            // 离店颜色
             comeoutColor: "#44bb80",        //入住和离店之间的颜色
-            callback: function (start, end, totalDays, Price) {
+            callback: function (start, end, totalDays, price) {
               $('#startDate').val(start);
               $('#endDate').val(end);
               if (totalDays) {
                 $('#totalday').text('共' + totalDays + '晚');
               }
-              if (Price) {
-                $('#housePrice').text(Price);
-                $('#totalPrice').text('￥' + (Price + +$('#otherPrice').text()));
+              if (price) {
+                $('#housePrice').text(price);
+                $('#totalPrice').text('￥' + (price + +$('#otherPrice').text()));
               }
 
             },   //回调函数
