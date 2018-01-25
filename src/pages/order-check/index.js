@@ -102,6 +102,12 @@ $(function () {
           if (inDateStatus === 'BOOKED' || inDateStatus === 'CHECKED_IN') {
             startDate = '';
             endDate = '';
+          } else {
+            var totalDays = (new Date(endDate) - new Date(startDate)) / 24 / 60 / 60 / 1000;
+
+            $('#startDate').val(startDate);
+            $('#endDate').val(endDate);
+            $('#totalday').text('共' + totalDays + '晚');
           }
           // 初始化价格日历
           $('#firstSelect').calendarSwitch({
@@ -115,11 +121,11 @@ $(function () {
             comeColor: "#44bb80",           // 入住颜色
             outColor: "#44bb80",            // 离店颜色
             comeoutColor: "#44bb80",        //入住和离店之间的颜色
-            callback: function (start, end, totalDay, Price) {
+            callback: function (start, end, totalDays, Price) {
               $('#startDate').val(start);
               $('#endDate').val(end);
-              if (totalDay) {
-                $('#totalday').text('共' + totalDay + '晚');
+              if (totalDays) {
+                $('#totalday').text('共' + totalDays + '晚');
               }
               if (Price) {
                 $('#housePrice').text(Price);
