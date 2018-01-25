@@ -156,10 +156,10 @@
           // console.log(price)
 
           // debugger
-
           me._slider(me.sections)
-          me._callback(st, en, day, price);
+
           if (st) {
+            me._callback(st, en, day, price);
             var end = en;
             end = end.split('-');
             end = end[1] + '.' + end[2];
