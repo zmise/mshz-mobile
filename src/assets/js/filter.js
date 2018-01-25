@@ -101,7 +101,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     // $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
-
+    $('#caleDate').text($('#firstSelect').text());
     if ($(this).hasClass('current') && $filterLayer.css('display') !== 'none') {
       hideFilterLayer();
     } else {
@@ -109,7 +109,7 @@ $(function () {
       showFilterLayer($(this).index() - 1);
     }
   });
-  
+
   /* 单选事件 */
   $filterList.on('tap', '.items', function (e) {
     e.preventDefault();
