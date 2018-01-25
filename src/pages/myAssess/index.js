@@ -98,7 +98,7 @@ $(function () {
 
           str +=
             '</div> ' +
-            '<div class="content">' +
+            '<div class="content houseDetail-entry">' +
             '  <img src="' + data.mainPic.replace('{size}', '400x300') + '" alt="">' +
             '  <div class="i-txt">' +
             '    <span class="title">' + data.title + '</span>' +
@@ -179,6 +179,17 @@ $(function () {
     location.replace('error.html?code=E0001')
   }
 
+
+  //点击进入房源详情houseDetails
+  $('.article-body').on('tap', '.houseDetail-entry', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var id = getUrlParam('id');
+    if (id && id !== '') {
+      window.location = '/houseDetails?id=' + id;
+
+    }
+  });
 
   // 回复的交互效果
   $('.article-body').on('tap', '.reply-comment', function (e) {

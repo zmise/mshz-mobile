@@ -27,7 +27,7 @@ $(function () {
           for (var i = 0; i < index; i++) {
             var item = data[i];
             str +=
-              '<div class="all-assess">' +
+              '<a class="all-assess " href="./myAssess.html?id=' + item.id + '">' +
               '<span class="time">' + item.commentTime + '</span>' +
               '<div class="text-img">' +
               '  <span class="txt">' + item.content + '</span>';
@@ -43,7 +43,7 @@ $(function () {
             }
 
             str += '</div>' +
-              '<div class="content">' +
+              '<div class="content houseDetail-entry" data-id="' + item.id + '">' +
               '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
@@ -54,13 +54,13 @@ $(function () {
               '    <span class="price">¥' + item.roomRate + '</span>';
             if (!item.content.length) {
               str += '    <div class="bnt">' +
-                '      <a class="box" id="myAssess-entry" data-id="' + item.id + '">评价订单</a>' +
+                '      <a class="box" data-id="' + item.id + '">评价订单</a>' +
                 '    </div>';
             }
 
             str += '  </div>' +
               '</div>' +
-              '</div>';
+              '</a>';
           }
           $('.article-body').empty().append(str);
 
@@ -86,13 +86,13 @@ $(function () {
     myOrderComment(params);
   });
 
-  //点击进入评价列表
-  $('.article-body').on('tap', '#myAssess-entry', function (e) {
+  //点击进入房源详情houseDetails
+  $('.article-body').on('tap', '.houseDetail-entry', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var id = $(this).data('id');
     if (id && id !== '') {
-      window.location = './myAssess.html?id=' + id;
+      window.location = '/houseDetails?id=' + id;
 
     }
   });
