@@ -26,7 +26,15 @@ $(function () {
     $('body,html').css({ 'overflow': 'visible' });
 
     $('#search-entry').val($(this).text());
-
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
+    for (var i = 0; i < searchHistroy.length; i++) {
+      var item = searchHistroy[i];
+      if (item == $(this).text()) {
+        searchHistroy.splice(i, 1);
+      }
+    }
+    searchHistroy.push($(this).text());
+    window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();
     // var newListHTML = search();
     // $('.search-list .slide').empty().append(newListHTML)
@@ -106,11 +114,11 @@ $(function () {
     var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
     for (var i = 0; i < searchHistroy.length; i++) {
       var item = searchHistroy[i];
-      if (item == $(this).text()) {
+      if (item == $(this).data('keyword')) {
         searchHistroy.splice(i, 1);
       }
     }
-    searchHistroy.push($(this).text());
+    searchHistroy.push($(this).data('keyword'));
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
   });
 
