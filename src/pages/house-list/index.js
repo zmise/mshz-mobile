@@ -282,7 +282,7 @@ $(function () {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
               str +=
-                '<div class="index-list">' +
+                '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
                 '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
                 '  <div class="item-oneline">' +
                 '    <p>' + item.title + '</p>' +
@@ -303,7 +303,7 @@ $(function () {
                 '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
                 '    </div>' +
                 '  </div>' +
-                '</div>';
+                '</a>';
             }
 
             if (params.page === '1') {
