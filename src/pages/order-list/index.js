@@ -171,8 +171,18 @@ $(function () {
                   '      </div>' +
                   '    </div>' +
                   '  </a>' +
-                  '  <div class="status">' +
-                  '    <span class="title current3">' + item.orderStateDesc + '</span>' +
+                  '  <div class="status">';
+                if (item.orderState === 'CANCELL_REFUND' || item.orderState === 'CANCELL_NO_REFUND') {
+                  str +=
+                    '    <span class="title current3">已取消</span>';
+                } else if (item.orderState === 'INVALIDATED') {
+                  str +=
+                    '    <span class="title current3">支付超时，订单已失效</span>';
+                } else {
+                  str +=
+                    '    <span class="title current3">' + item.orderStateDesc + '</span>';
+                }
+                str +=
                   '    <div class="stu-but">' +
                   '      <a class="current3" href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
                   '    </div>' +
