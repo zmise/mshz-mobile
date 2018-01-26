@@ -98,7 +98,7 @@ $(function () {
 
           str +=
             '</div> ' +
-            '<div class="content houseDetail-entry">' +
+            '<a class="content" href="/houseDetails?id=' + data.situationId + '">' +
             '  <img src="' + data.mainPic.replace('{size}', '400x300') + '" alt="">' +
             '  <div class="i-txt">' +
             '    <span class="title">' + data.title + '</span>' +
@@ -108,7 +108,7 @@ $(function () {
             '    </div>' +
             '    <span class="price">¥' + data.roomRate + '</span>' +
             '  </div>' +
-            '</div>' +
+            '</a>' +
             '</div>';
 
           // '      <i class="current">楼主：</i>' +
@@ -180,16 +180,16 @@ $(function () {
   }
 
 
-  //点击进入房源详情houseDetails
-  $('.article-body').on('tap', '.houseDetail-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var id = getUrlParam('id');
-    if (id && id !== '') {
-      window.location = '/houseDetails?id=' + id;
+  // //点击进入房源详情houseDetails
+  // $('.article-body').on('tap', '.houseDetail-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   var id = getUrlParam('id');
+  //   if (id && id !== '') {
+  //     window.location = '/houseDetails?id=' + id;
 
-    }
-  });
+  //   }
+  // });
 
   // 回复的交互效果
   $('.article-body').on('tap', '.reply-comment', function (e) {

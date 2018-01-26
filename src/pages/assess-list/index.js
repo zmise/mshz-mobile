@@ -27,7 +27,7 @@ $(function () {
           for (var i = 0; i < index; i++) {
             var item = data[i];
             str +=
-              '<a class="all-assess " href="./myAssess.html?id=' + item.id + '">' +
+              '<div class="all-assess myassess-entry" data-id="' + item.id + '">' +
               '<span class="time">' + item.commentTime + '</span>' +
               '<div class="text-img">' +
               '  <span class="txt">' + item.content + '</span>';
@@ -43,7 +43,7 @@ $(function () {
             }
 
             str += '</div>' +
-              '<div class="content houseDetail-entry" data-id="' + item.id + '">' +
+              '<a class="content" href="/houseDetails?id=' + item.situationId + '">' +
               '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
@@ -54,13 +54,13 @@ $(function () {
               '    <span class="price">¥' + item.roomRate + '</span>';
             if (!item.content.length) {
               str += '    <div class="bnt">' +
-                '      <a class="box" data-id="' + item.id + '">评价订单</a>' +
+                '<div class="box assess-entry" data-id="' + item.id + '">评价订单</div>' +
                 '    </div>';
             }
 
             str += '  </div>' +
-              '</div>' +
-              '</a>';
+              '</a>' +
+              '</div>';
           }
           $('.article-body').empty().append(str);
 
@@ -86,13 +86,24 @@ $(function () {
     myOrderComment(params);
   });
 
-  //点击进入房源详情houseDetails
-  $('.article-body').on('tap', '.houseDetail-entry', function (e) {
+  //点击进入评论详情myassess-entry
+  $('.article-body').on('tap', '.myassess-entry', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var id = $(this).data('id');
     if (id && id !== '') {
-      window.location = '/houseDetails?id=' + id;
+      window.location = './myAssess.html?id=' + id;
+
+    }
+  });
+
+  //点击进入评价订单assess-order
+  $('.article-body').on('tap', '.assess-entry', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var id = $(this).data('id');
+    if (id && id !== '') {
+      window.location = './assess-order.html?id=' + id;
 
     }
   });
