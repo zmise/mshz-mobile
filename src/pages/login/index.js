@@ -40,6 +40,15 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
+          //sessionStorage缓存个人信息
+          var item = res.result;
+          if (item && item !== '') {
+            window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
+          }
+          // window.sessionStorage.setItem('headPortrait', item); //头像
+          // window.sessionStorage.setItem('nickname', item); //昵称
+          // window.sessionStorage.setItem('hasSetPassword', item); //是否已设置密码
+          // window.sessionStorage.setItem('phone', item); //手机号码
           if (res.result.hasSetPassword) {
             window.location = '/';
           } else {

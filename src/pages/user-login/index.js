@@ -18,6 +18,11 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
+          //sessionStorage缓存个人信息
+          var item = res.result;
+          if (item && item !== '') {
+            window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
+          }
           window.location = '/';
         } else {
           showMessage(res.message);

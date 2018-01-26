@@ -37,19 +37,19 @@ $(function () {
     $(this).find('.icon').addClass('current').end().siblings().find('.icon').removeClass('current');
   });
 
-  /*  点击进入订单列表  */
-  $('#order-list').on('tap', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var path = "./order-list.html"
-    window.location = path;
-  });
+  // /*  点击进入订单列表  */
+  // $('#order-list').on('tap', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   var path = '/user/order-list.html'
+  //   window.location = path;
+  // });
 
-  /*  点击进入个人中心  */
-  $('#personal-center').on('tap', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var path = "./personal-center.html"
-    window.location = path;
-  });
+  // /*  点击进入个人中心  */
+  // $('#personal-center').on('tap', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   var path = '/user/personal-center.html'
+  //   window.location = path;
+  // });
 });

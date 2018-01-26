@@ -239,7 +239,6 @@ $(function () {
     //   // $('#destination-entry').attr('data-cityname', cityName);
     // }
     if (!$("#destination-entry").val()) {
-
       return;
     }
 
@@ -356,7 +355,6 @@ $(function () {
   $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    window.location = './order-list.html';
-
+    window.location = './user/order-list.html';
   });
 });
