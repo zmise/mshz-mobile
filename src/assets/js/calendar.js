@@ -491,8 +491,8 @@
               }
             }
 
+            totalPrice = 0;
             if (first < second) {
-              totalPrice = 0;
 
               // $(me.sections).find('.rz').text('退房');
 
@@ -528,7 +528,8 @@
                 });
                 if (me.sourceData && me.sourceData !== '') {
 
-                  totalPrice = totalPrice + +$(arry1[first]).find('.odd').text().replace('￥', '');
+                  // totalPrice = totalPrice + +$(arry1[first]).find('.odd').text().replace('￥', '');
+                  totalPrice += me.sourceData[first].price;
                 }
               }
               flag = 0;

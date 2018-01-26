@@ -128,8 +128,8 @@ $(function () {
                 $('#totalday').text('共' + totalDays + '晚');
               }
               if (price) {
-                $('#housePrice').text(price);
-                $('#totalPrice').text('￥' + (price + +$('#otherPrice').text()));
+                $('#housePrice').text(price.toFixed(1));
+                $('#totalPrice').text('￥' + (price + +$('#otherPrice').text()).toFixed(1));
               }
 
             },   //回调函数
