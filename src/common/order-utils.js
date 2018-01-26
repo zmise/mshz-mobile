@@ -41,12 +41,15 @@ function buildHeader(data) {
       '  </svg>' +
       '<div>';
 
-    if (data.refundState !== 'REFUND_FINISH') {
+    if (data.refund === 0) {
+      header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>';
+    } else if (data.refundState !== 'REFUND_FINISH') {
       header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
         '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data.refundApplyTime + ' 处理时间：1-3个工作日';
     } else {
       header += '  <span class="txt ' + map[state].className + '">' + data.refundStateDesc + '</span>';
     }
+
     header += '</p>' +
       '  </div>' +
       '</div>'
@@ -66,7 +69,7 @@ function buildHeader(data) {
 function buildRefundContent(data) {
   var state = data.newOrderState;
   var refund = '';
-  if (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT') {
+  if (data.refund > 0 && (state === 'CANCELL_REFUND' || state === 'EARLY_CHECKED_OUT')) {
     refund += '<div class="cancel-info">' +
       '<span>退款金额</span>' +
       '<span class="cancel-price">¥' + data.refund + '</span>' +
