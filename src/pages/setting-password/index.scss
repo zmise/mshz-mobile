@@ -2,3 +2,10 @@
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/toast.scss'; // toast的样式
 @import '../../sass/login.scss'; // login的样式
+.header-text {
+    @include position(fixed, .1rem, .15rem, auto, auto, 99);
+    height: .5rem;
+    padding: 0.2rem;
+    font-size: .32rem;
+    color: rgba(227, 230, 233, 1);
+}

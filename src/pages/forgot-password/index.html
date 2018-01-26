@@ -21,20 +21,19 @@
     </div>
   </section>
   <section class="input-list">
-    <input class="items currentborder" placeholder="手机号" />
+    <input class="items currentborder" placeholder="手机号" id="tel" />
     <div class="items">
-      <input class="text flex-items" type="text" placeholder="输入验证码">
+      <input class="text flex-items" type="text" placeholder="输入验证码" id="verify" />
       <div class="text">
-        <span>
-          <i class="seconds">60</i>s后重新获取
+        <span class="hide">
+          <i class="seconds" id="seconds">60</i>s后重新获取
         </span>
-        <!-- <span class="current">获取验证码</span> -->
+        <span class="current" id="send-verify">获取验证码</span>
       </div>
     </div>
-    <div class="items currentborder current">
-      <input class="text flex-items " type="text" placeholder="新密码（6-12个字母、数字或符号）">
-      <i class="icon iconfont icon-yanjingbukejian"></i>
-      <i class="icon iconfont icon-yanjingkejian"></i>
+    <div class="items">
+      <input class="text flex-items " type="password" placeholder="新密码（6-12个字母、数字或符号）" id="psw" />
+      <i class="icon iconfont icon-yanjingbukejian" id="toggleStyle"></i>
     </div>
     <div class="state current"></div>
   </section>

@@ -49,8 +49,8 @@ body {
     @include align-items;
     @include justify-content(space-between);
     padding: .74rem 0 .24rem;
-    font-size: .26rem;
-    color: rgba(181, 185, 190, 1);
+    margin-bottom: 0.02rem;
+    font-size: .26rem; // color: rgba(181, 185, 190, 1);
     border-bottom: .01rem solid rgba(227, 230, 233, 1);
 }
 
@@ -63,11 +63,20 @@ body {
 }
 
 .input-list .currentborder {
+    margin: 0;
     border-bottom: .03rem solid $color;
 }
 
 .input-list .items .text {
     font-size: .26rem;
+}
+
+.input-list .items .text span {
+    color: rgba(181, 185, 190, 1);
+}
+
+.input-list .items .text .hide {
+    display: none;
 }
 
 .input-list .items .text .current {
@@ -82,6 +91,11 @@ body {
     width: 0.4rem;
     height: 0.4rem;
     font-size: .4rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.input-list .items .current {
+    color: $color;
 }
 
 .input-list .state {

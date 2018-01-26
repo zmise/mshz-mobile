@@ -21,14 +21,14 @@
     </div>
   </section>
   <section class="input-list">
-    <input class="items currentborder" placeholder="手机号" />
+    <input class="items currentborder" placeholder="手机号" id="tel" />
     <div class="items">
-      <input class="text flex-items" type="text" placeholder="输入验证码">
+      <input class="text flex-items" type="text" placeholder="输入验证码" id="verify"/>
       <div class="text">
-        <span>
-          <i class="seconds">60</i>s后重新获取
+        <span class="hide">
+          <i class="seconds" id="seconds">60</i>s后重新获取
         </span>
-        <!-- <span class="current">获取验证码</span> -->
+        <span class="current" id="send-verify">获取验证码</span>
       </div>
     </div>
     <div class="state current">

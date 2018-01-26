@@ -48,7 +48,7 @@ $(function () {
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
               '    <div class="time">' +
-              '      <span>' + item.startTime + '至' + item.endTime + '</span>' +
+              '      <span>' + item.startTimeDesc + '至' + item.endTimeDesc + '</span>' +
               '      <span>' + item.days + '晚</span>' +
               '    </div>' +
               '    <span class="price">¥' + item.roomRate + '</span>';

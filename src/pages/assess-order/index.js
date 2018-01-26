@@ -188,7 +188,7 @@ $(function () {
     var paramsList = {
       commentPictures: commentPictures,
       content: content,
-      orderNo: content,
+      orderNo: orderNo,
       roomEnvironment: roomEnvironment,
       roomId: roomId,
       serviceAttitude: serviceAttitude,
