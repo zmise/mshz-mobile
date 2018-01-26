@@ -493,7 +493,6 @@
 
             totalPrice = 0;
             if (first < second) {
-
               // $(me.sections).find('.rz').text('退房');
 
               $(this).find('span:first').text('退房').addClass('rz');
@@ -518,7 +517,6 @@
               // $(this).append('<p class="rz">入住</p>')
               $(this).find('span:first').text('入住').addClass('rz');
               $(this).find('span').addClass('color');
-
               for (; second < first; second++) {
                 $(arry1[second]).find('span').addClass('color');
 
@@ -529,7 +527,7 @@
                 if (me.sourceData && me.sourceData !== '') {
 
                   // totalPrice = totalPrice + +$(arry1[first]).find('.odd').text().replace('￥', '');
-                  totalPrice += me.sourceData[first].price;
+                  totalPrice += me.sourceData[second].price;
                 }
               }
               flag = 0;
