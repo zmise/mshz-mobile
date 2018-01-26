@@ -120,8 +120,12 @@ $(function () {
   window.sessionStorage.setItem('endDate', endDate);
 
 
+  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
 
-
+  if (loginInfo) {
+    $('#login').hide();
+    $('#menu').show();
+  }
 
   // $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
@@ -345,10 +349,6 @@ $(function () {
 
 
   /*  当天的日期和当他下一天的日期*/
-
-
-
-
 
 
   //点击进入订单列表

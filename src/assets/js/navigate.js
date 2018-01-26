@@ -18,13 +18,13 @@ $(function () {
       '       <i class="icon iconfont icon-gerenzhongxinshouye"></i>' +
       '       <span class="txt">首页</span>' +
       '     </a>' +
-      // '     <a class="items" href="/user/personal-center.html">' +
-      '     <a class="items" href="/personal-center.html">' +
+      '     <a class="items" href="/user/personal-center.html">' +
+      // '     <a class="items" href="/personal-center.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwode"></i>' +
       '       <span class="txt">我的</span>' +
       '     </a>' +
-      // '     <a class="items" href="/user/order-list.html">' +
-      '     <a class="items" href="/order-list.html">' +
+      '     <a class="items" href="/user/order-list.html">' +
+      // '     <a class="items" href="/order-list.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>' +
       '       <span class="txt">订单</span>' +
       '       <span class="num">6</span>' +
@@ -40,15 +40,15 @@ $(function () {
 
     if (loginInfo.hasSetPassword) {
       str +=
-        // '     <a class="items" href="/user/change-password.html">' +
-        '     <a class="items" href="/change-password.html">' +
+        '     <a class="items" href="/user/change-password.html">' +
+        // '     <a class="items" href="/change-password.html">' +
         '       <i class="icon iconfont icon-xiugaimima"></i>' +
         '       <span class="txt">修改密码</span>' +
         '     </a>';
     } else {
       str +=
-        // '     <a class="items" href="/user/setting-password.html">' +
-        '     <a class="items" href="/setting-password.html">' +
+        '     <a class="items" href="/user/setting-password.html">' +
+        // '     <a class="items" href="/setting-password.html">' +
         '       <i class="icon iconfont icon-xiugaimima"></i>' +
         '       <span class="txt">设置密码</span>' +
         '     </a>';
@@ -66,8 +66,8 @@ $(function () {
       '     <i class="icon iconfont icon-xiazai"></i>' +
       '     <span class="ftxt">下载APP</span>' +
       '   </a>' +
-      // '   <a class="box" href="/user/suggestion.html">' +
-      '   <a class="box" href="/suggestion.html">' +
+      '   <a class="box" href="/user/suggestion.html">' +
+      // '   <a class="box" href="/suggestion.html">' +
       '     <i class="icon iconfont icon-gerenzhongxinyijianfankui"></i>' +
       '     <span class="ftxt">意见反馈</span>' +
       '   </a>' +
@@ -76,9 +76,13 @@ $(function () {
     $('body').append(str);
     //样式高亮  
     var p = location.pathname;
-    //[attr*="val" i]选择属性attr的值任意位置包含val或者VAL或者 Val 或者vAl或者 vaL字符
-    $('.navigate a[href*="' + p + '" i]').addClass('current').find('.icon').addClass('current');
-    // window.jquery = $;
+    if (p === '/') {
+      $('.navigate a:first-child').addClass('current').find('.icon').addClass('current');
+    } else {
+      //[attr*="val" i]选择属性attr的值任意位置包含val或者VAL或者 Val 或者vAl或者 vaL字符
+      $('.navigate a[href*="' + p + '" i]').addClass('current').find('.icon').addClass('current');
+    }
+    // window.jquery = $;    
   }
   /* 阻止滚动条事件  */
   $('#overlay,.navigate-body').on('touchmove', function (e) {
