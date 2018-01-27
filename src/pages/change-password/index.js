@@ -15,7 +15,10 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          window.location = '/';
+          showMessage(res.message);
+          setTimeout(function () {
+            window.location = '/';
+          }, 1000);
         } else {
           showMessage(res.message);
         }
