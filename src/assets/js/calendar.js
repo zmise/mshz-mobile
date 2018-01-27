@@ -427,6 +427,7 @@
             var arr = $(me.sections).find('.tbody').find('.rz');
             first = $(arry1).index($(this));
 
+            // 如果第一次点击的单元格是无房，则点击无效
             if (me.sourceData[first].status === 'BOOKED' || me.sourceData[first].status === 'CHECKED_IN') {
               return false;
             }
