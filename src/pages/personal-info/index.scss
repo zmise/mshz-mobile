@@ -64,3 +64,30 @@ body {
     width: .38rem;
     font-size: .38rem
 }
+
+#overlay {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    display: none;
+}
+
+#overlay .sex-box {
+    @include flex-box;
+    @include justify-content;
+    @include flex-direction(column);
+    width: 6rem;
+    height: 1.93rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: .08rem;
+    box-sizing: border-box;
+}
+
+#overlay .sex-box .items {
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    padding-left: .5rem;
+    font-size: .32rem;
+    color: rgba(42, 43, 45, 1);
+}

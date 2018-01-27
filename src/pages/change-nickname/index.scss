@@ -1,0 +1,39 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/toast.scss'; // toast的样式
+body {
+    background-color: #fff;
+}
+
+.header-body .menu {
+    font-size: .28rem;
+    color: rgba(255, 255, 255, 1);
+    padding-right: 0.2rem;
+}
+
+//.input-list
+.input {
+    @include flex-box;
+    @include flex-direction(column);
+    padding: .88rem .3rem 0;
+}
+
+.input .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    padding: .6rem 0 .24rem;
+    margin-bottom: 0.02rem;
+    font-size: .26rem; // color: rgba(181, 185, 190, 1);
+    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+}
+
+.input .current {
+    color: $color;
+}
+
+.input .currentborder {
+    margin: 0;
+    border-bottom: .01rem solid $color;
+}
