@@ -85,7 +85,7 @@ $(function () {
         password: pswVal,
         phone: telVal,
       };
-      checkcode(listParams);
+      password(listParams);
     }
   });
 
