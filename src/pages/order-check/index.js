@@ -14,30 +14,28 @@ $(function () {
     endDate = window.sessionStorage.endDate;
 
     var b = new Date();
-    if (!startDate || !endDate) {
 
-      var ye = b.getFullYear();
-      var mo = b.getMonth() + 1;
-      var da = b.getDate();
-      b = new Date(b.getTime() + 24 * 3600 * 1000);
-      var ye1 = b.getFullYear();
-      var mo1 = b.getMonth() + 1;
-      var da1 = b.getDate();
-      if (mo < 10) {
-        mo = '0' + mo
-      }
-      if (da < 10) {
-        da = '0' + da
-      }
-      if (mo1 < 10) {
-        mo1 = '0' + mo1
-      }
-      if (da1 < 10) {
-        da1 = '0' + da1
-      }
-      startDate = ye + '-' + mo + '-' + da;
-      endDate = ye1 + '-' + mo1 + '-' + da1;
+    var ye = b.getFullYear();
+    var mo = b.getMonth() + 1;
+    var da = b.getDate();
+    b = new Date(b.getTime() + 24 * 3600 * 1000);
+    var ye1 = b.getFullYear();
+    var mo1 = b.getMonth() + 1;
+    var da1 = b.getDate();
+    if (mo < 10) {
+      mo = '0' + mo
     }
+    if (da < 10) {
+      da = '0' + da
+    }
+    if (mo1 < 10) {
+      mo1 = '0' + mo1
+    }
+    if (da1 < 10) {
+      da1 = '0' + da1
+    }
+    initStartDate = ye + '-' + mo + '-' + da;
+    initEndDate = ye1 + '-' + mo1 + '-' + da1;
 
     b = new Date(b.getTime() + 24 * 3600 * 1000 * 89);
     ye1 = b.getFullYear();
@@ -94,8 +92,7 @@ $(function () {
             sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
           // console.log(sourceDate);
-          // var startDate = $('#startDate').val() || initStartDate;
-          // var endDate = $('#endDate').val() || initEndDate;
+
 
           // 判断默认日期是否已经无房
           var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status;
@@ -264,7 +261,7 @@ $(function () {
   // init价格日历get请求接口
   var caleParams = {
     roomId: params.roomId,
-    startDate: startDate,
+    startDate: initStartDate,
     endDate: initCaleEndDate,
   }
 

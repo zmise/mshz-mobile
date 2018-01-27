@@ -4,7 +4,6 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
-
 body {
     position: relative;
     padding-top: .88rem;
@@ -14,5 +13,54 @@ body {
 }
 
 .article-body {
-    min-height: calc(100% - 3rem);
+    min-height: calc(100% - 3.1rem);
+}
+
+.personal-info {
+    margin-top: 0.12rem;
+    padding: 0.05rem .35rem;
+    background-color: #fff;
+}
+
+.personal-info .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+    height: 1.05rem;
+    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+}
+
+.personal-info .items:last-child {
+    border: 0;
+}
+
+.personal-info .items .title {
+    font-size: .26rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.personal-info .items .content {
+    @include flex-box;
+    @include align-items;
+    font-size: .26rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.personal-info .items .content .icon {
+    height: 0.2rem;
+    width: 0.2rem;
+    margin-left: 0.3rem;
+    font-size: 0.2rem;
+}
+
+.personal-info .items .content .pic {
+    width: 0.88rem;
+    height: 0.88rem;
+    border-radius: .44rem;
+}
+
+.personal-info .items .content .sex {
+    height: .38rem;
+    width: .38rem;
+    font-size: .38rem
 }
