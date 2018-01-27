@@ -4,7 +4,7 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
-
+@import '../../sass/list/index-list.scss'; // 推荐房源列表
 body {
     position: relative;
     padding-top: .88rem;
@@ -15,4 +15,9 @@ body {
 
 .article-body {
     min-height: calc(100% - 3rem);
+}
+
+.listItems {
+    padding: 0 .35rem;
+    background-color: #fff;
 }

@@ -1,0 +1,182 @@
+@import '../../sass/base.scss'; // 基础变量
+@import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
+@import '../../sass/navigate.scss'; // 侧边导航
+@import '../../sass/footer.scss'; // 全局底部
+@import '../../sass/appDownload.scss'; // 全局下载APP
+body {
+    position: relative;
+    padding-top: .88rem;
+    background-color: #f5f5f5;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.article-body {
+    min-height: calc(100% - 3rem);
+}
+
+.clc-red {
+    color: rgba(255, 92, 92, 1) !important;
+}
+
+.flex-box {
+    @include flex-box;
+    @include align-items;
+}
+
+
+/* comment-body */
+
+.comment-body {
+    background-color: #fff;
+    padding: .45rem .35rem;
+    margin-top: .12rem;
+}
+
+.comment-body .total {
+    padding-bottom: .3rem;
+    border-bottom: $border;
+}
+
+.comment-body .total .line-one,
+.comment-body .total .line-two {
+    @include flex-box;
+    @include justify-content(space-between);
+}
+
+.comment-body .total .line-two {
+    padding-top: .1rem;
+}
+
+.comment-body .total .txt {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .total .line-one .tlt {
+    font-size: .28rem;
+    font-weight: 700;
+    color: rgba(42, 43, 45, 1);
+}
+
+.comment-body .total .line-two .socre {
+    margin-right: .26rem;
+}
+
+.comment-body .line-one .icon {
+    position: relative;
+    display: block;
+    width: .24rem;
+    height: .24rem;
+    margin-left: .1rem;
+    overflow: hidden;
+    @include transition(all .3s);
+}
+
+.comment-body .line-one .icon::before {
+    position: absolute;
+    bottom: .06rem;
+    right: auto;
+    top: auto;
+    left: .03rem;
+    z-index: 10;
+    display: block;
+    content: "";
+    width: .12rem;
+    height: .12rem;
+    border-width: 0 .015rem .015rem 0;
+    border-style: solid;
+    border-color: #999;
+    @include transform(rotate(-45deg));
+}
+
+.comment-body .first-comment {
+    padding-top: .46rem;
+}
+
+.comment-body .first-comment .info {
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-between);
+}
+
+.comment-body .first-comment .info .socre {
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .first-comment .info .photo {
+    width: 0.88rem;
+    height: 0.88rem;
+    border-radius: .44rem;
+    background-color: #333;
+    margin-right: .22rem;
+}
+
+.comment-body .first-comment .info .name-time {
+    @include flex-box;
+    @include flex-direction(column);
+    @include justify-content;
+    font-size: .24rem;
+    color: rgba(181, 185, 190, 1);
+}
+
+.comment-body .first-comment .info .name-time span:first-child {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.comment-body .first-comment .des {
+    margin-left: 1.1rem;
+}
+
+.comment-body .first-comment .des .des-cnt {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    line-height: .4rem;
+    @include line-clamp;
+}
+
+.comment-body .first-comment .des .img-list {
+    @include flex-box;
+    @include flex-wrap(wrap);
+    border-bottom: $border;
+}
+
+.comment-body .first-comment .des .des-duihua {
+    @include flex-box;
+    @include align-items;
+    @include flex;
+    padding-top: .2rem;
+}
+
+.comment-body .first-comment .des .des-duihua span {
+    font-size: .26rem;
+    color: $color;
+    line-height: .4rem;
+}
+
+.comment-body .first-comment .des .des-duihua span:last-child {
+    @include flex;
+    color: rgba(94, 100, 107, 1);
+}
+
+.comment-body .first-comment .des-duihua .icon {
+    @include flex-box;
+    @include align-items;
+    width: 0.4rem;
+    height: 0.4rem;
+    font-size: .32rem;
+    color: $color;
+}
+
+.comment-body .first-comment .des .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.2rem;
+    margin-right: .16rem;
+    margin-bottom: .24rem;
+    color: #000;
+    box-sizing: border-box;
+}
