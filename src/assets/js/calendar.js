@@ -427,6 +427,10 @@
             var arr = $(me.sections).find('.tbody').find('.rz');
             first = $(arry1).index($(this));
 
+            if (me.sourceData[first].status === 'BOOKED' || me.sourceData[first].status === 'CHECKED_IN') {
+              return false;
+            }
+
             for (var m = 0; m < arr.length; m++) {
               arr.eq(m).text(arr.eq(m).data('day'));
               if (arr.eq(m).data('txt')) {
