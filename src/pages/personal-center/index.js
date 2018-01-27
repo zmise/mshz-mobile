@@ -20,7 +20,7 @@ $(function () {
           console.log(res.result);
           var item = res.result;
           var str =
-            '<section class="personal-info">' +
+            '<a class="personal-info" href="./personal-info.html">' +
             '  <div class="flex-box">' +
             '    <img class="photo" href="' + item.headPortrait.replace('{size}', '137x137') + '"/>' +
             '    <div class="name-time">' +
@@ -32,20 +32,20 @@ $(function () {
             '    </div>' +
             '  </div>' +
             '  <i class="icon iconfont icon-fanhuixiangyou"></i>' +
-            '</section>' +
+            '</a>' +
             '<section class="other-info">' +
-            '  <div class="items">' +
-            '    <span class="number ">' + item.collectRoomCount + '</span>' +
+            '  <a class="items" href="./myCollection.html">' +
+            '    <span class="number">' + item.collectRoomCount + '</span>' +
             '    <span class="txt">收藏房源</span>' +
-            '  </div>' +
-            '  <div class="items" id="myInegral-entry">' +
+            '  </a>' +
+            '  <a class="items" href="./myIntegral.html" id="myInegral-entry">' +
             '    <span class="number">' + item.integral + '</span>' +
             '    <span class="txt">我的积分</span>' +
-            '  </div>' +
-            '  <div class="items" id="assessList-entry">' +
+            '  </a>' +
+            '  <a class="items" href="./order-list.html" id="assessList-entry">' +
             '    <span class="number">' + item.appraiseCount + '</span>' +
             '    <span class="txt">我的评价</span>' +
-            '  </div>' +
+            '  </a>' +
             '</section>'
             ;
           $('#article-body').prepend(str);
@@ -59,8 +59,8 @@ $(function () {
               str +=
                 '  <div class="items">' +
                 '    <div class="tlt">' +
-                '      <span class="txt">' + picList.address + '</span>' +
-                '      <span class="txt current">' + picList.id + '</span>' +
+                '      <span class="txt">' + picList.title + '</span>' +
+                '      <span class="txt current">待入住</span>' +
                 '    </div>' +
                 '    <div class="time">' +
                 '      <span class="txt">' + picList.inRoomStartTime + '至' + picList.inRoomEndTime + '</span>' +
@@ -69,11 +69,13 @@ $(function () {
                 '  </div>';
             }
           } else {
-            str += '';
+            str +=
+              '<div class="noOrder-body">' +
+              '<div class="img"></div>' +
+              '<p clss="txt">~空空如也~</p>' +
+              ' </div>'
+              ;
           }
-
-
-
           str +=
             '  </div>' +
             '</div>';
@@ -89,39 +91,39 @@ $(function () {
   }
 
   queryPersonalCenter();
-  //点击进入个人中心
-  $('.article-body').on('tap', '#myInegral-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = './myIntegral.html';
-  });
-  //点击进入订单列表
-  $('.article-body').on('tap', '#orderList-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = './order-list.html';
+  // //点击进入我的积分
+  // $('.article-body').on('tap', '#myInegral-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = './myIntegral.html';
+  // });
+  // //点击进入订单列表
+  // $('.article-body').on('tap', '#orderList-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = './order-list.html';
 
-  });
+  // });
 
-  //点击进入成为房东页面
-  $('.article-body').on('tap', '#landlord-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = './tobelandlord.html';
-  });
-  //点击进入成为房东页面
-  $('.article-body').on('tap', '#landlord-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = './tobelandlord.html';
-  });
+  // //点击进入成为房东页面
+  // $('.article-body').on('tap', '#landlord-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = './tobelandlord.html';
+  // });
+  // //点击进入成为房东页面
+  // $('.article-body').on('tap', '#landlord-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = './tobelandlord.html';
+  // });
 
-  //点击进入评价列表
-  $('.article-body').on('tap', '#assessList-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = './assess-list.html';
-  });
+  // //点击进入评价列表
+  // $('.article-body').on('tap', '#assessList-entry', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = './assess-list.html';
+  // });
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {

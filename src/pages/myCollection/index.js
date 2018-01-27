@@ -6,7 +6,6 @@ require('../../assets/js/navigate.js');
 
 require('../../assets/js/appDownload.js');//全局下载APP
 
-
 $(function () {
 
   // 点击返回回到上一页
@@ -16,3 +15,5 @@ $(function () {
     history.go(-1)
   });
 });
+
+

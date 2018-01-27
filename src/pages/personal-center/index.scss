@@ -43,8 +43,7 @@ body {
 .personal-info .photo {
     width: 1.37rem;
     height: 1.37rem;
-    border-radius: .685rem;
-    background-color: #333;
+    border-radius: .685rem; // background-color: #333;
     margin-right: .3rem;
 }
 
@@ -232,4 +231,27 @@ body {
 
 .server-tel a {
     color: rgba(94, 100, 107, 1);
+}
+
+//.noOrder-body
+.article-body .noOrder-body {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    background-color: #fff;
+    margin-top: 0.24rem;
+}
+
+.article-body .noOrder-body .img {
+    width: 2.5rem;
+    height: 2rem;
+    background: url('./img/nullbox.png') no-repeat;
+    background-size: 2.5rem 2rem;
+}
+
+.article-body .noOrder-body .txt {
+    font-size: .26rem;
+    color: rgba(94, 100, 107, 1);
+    padding-top: 0.24rem;
 }

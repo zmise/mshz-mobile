@@ -29,11 +29,13 @@ $(function () {
       '       <span class="txt">订单</span>' +
       '       <span class="num">6</span>' +
       '     </a>' +
-      '     <a class="items" href="javascript:;">' +
+      // '     <a class="items" href="/myCollection.html">' +
+      '     <a class="items" href="/user/myCollection.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>' +
       '       <span class="txt">收藏</span>' +
       '     </a>' +
-      '     <a class="items" href="javascript:;">' +
+      // '     <a class="items" href="/myHistory.html">' +      
+      '     <a class="items" href="/user/myHistory.html">' +
       '       <i class="icon iconfont icon-zuji"></i>' +
       '       <span class="txt">足迹</span>' +
       '     </a>';

@@ -52,7 +52,7 @@ $(function () {
 
   var guessLike = {
     price: $('#price').val(),
-    situation: $('#situation').val(),
+    situationId: $('#situation').val(),
   }
 
   var flag = 0;
