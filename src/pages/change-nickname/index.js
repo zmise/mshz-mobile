@@ -6,9 +6,9 @@ require('../../assets/js/toast.js');  //toast的事件
 $(function () {
 
 
-  //找回密码并登录post接口
+  //修改个人资料post接口
   function updateUserInfo(params) {
-    console.log(params)
+    console.log(params);
     $.ajax({
       url: '/mshz-app/security/user/updateUserInfo',
       data: JSON.stringify(params),
@@ -18,12 +18,14 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          //sessionStorage缓存个人信息
-          showMessage(res.message);
-          history.go(-1);
+          showMessage('修改成功');
+
         } else {
-          showMessage(res.message);
+          showMessage('修改失败');
         }
+        setTimeout(() => {
+          history.go(-1);
+        }, 1000);
       },
       error: function (error) {
         console.log(error);
@@ -55,25 +57,36 @@ $(function () {
   }
   // showMessage('zmise', 100000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
 
+  //获取url中的参数
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
 
+  var nickname = getUrlParam('nickname');
 
-
-
+  if (!nickname) {
+    location.replace('error.html?code=E0001')
+  } else {
+    // 关闭loading
+    $('#loading').remove();
+    $('#nickname').val(nickname);
+  }
 
   // 点击到完成并登录成功跳转到login
-  $('#index-entry').on('click', function (e) {
+  $('#save').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    // 验证手机格式  
-    var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
-    if (!reg.test(telVal)) {
-      showMessage('请输入正确的手机号');
-      return;
-    }
+    var nickname = $.trim($('#nickname').val());
+    // if (!reg.test(telVal)) {
+    //   showMessage('请输入一个字以内的昵称');
+    //   return;
+    // }
     var params = {
       nickname: nickname,
     };
-    findpassword(params);
+    updateUserInfo(params);
   });
 
   // 点击返回回到上一页
