@@ -173,11 +173,11 @@ $(function () {
         }
 
         if (res.status === 'C0000') {
-          setTimeout(() => {
+          setTimeout(function () {
             showMessage('修改成功');
           }, 1000);
         } else {
-          setTimeout(() => {
+          setTimeout(function () {
             showMessage('修改失败');
           }, 1000);
         }

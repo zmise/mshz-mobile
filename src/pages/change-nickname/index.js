@@ -23,7 +23,7 @@ $(function () {
         } else {
           showMessage('修改失败');
         }
-        setTimeout(() => {
+        setTimeout(function () {
           history.go(-1);
         }, 1000);
       },
