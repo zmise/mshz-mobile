@@ -1,6 +1,7 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
 @import '../../sass/banner.scss'; // 焦点图
+@import '../../sass/toast.scss'; // toast的样式
 body {
     position: relative;
     padding-bottom: 1rem;
@@ -493,7 +494,6 @@ body {
 //     }
 // }
 
-
 /*start living-info */
 
 .living-info {
@@ -552,9 +552,7 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content;
-    @include flex(0,
-    0,
-    auto);
+    @include flex(0, 0, auto);
     width: 3.8rem;
     height: 2.138rem;
     margin-right: .24rem;
@@ -574,7 +572,6 @@ body {
 //         background-size: 100% auto;
 //     }
 // }
-
 .feature-channel .slide .oneline {
     @include flex-box;
     @include justify-content(space-between);
@@ -620,12 +617,7 @@ body {
 /* footer-body */
 
 .footer-body {
-    @include position(fixed,
-    auto,
-    0,
-    0,
-    0,
-    500);
+    @include position(fixed, auto, 0, 0, 0, 500);
     @include flex-box;
     background-color: #fff;
     height: 1rem;
@@ -668,4 +660,43 @@ body {
 
 .footer-body .items .roder {
     padding-left: .21rem;
+}
+
+// 联系管家遮罩层
+#overlay {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content(flex-end);
+    display: none;
+}
+
+#overlay .box {
+    @include flex-box;
+    @include flex-direction(column);
+    width: 6.8rem;
+    margin-bottom: 0.3rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: .08rem;
+    box-sizing: border-box;
+}
+
+#overlay .box .items {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .28rem;
+    height: 1.22rem;
+    color: rgba(42, 43, 45, 1);
+    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+}
+
+#overlay .box .items .name {
+    @include flex;
+    padding-left: 1.5rem;
+}
+
+#overlay .box .items .tel {
+    @include flex;
+    padding-left: .2rem;
 }

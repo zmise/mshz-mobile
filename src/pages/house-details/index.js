@@ -2,89 +2,28 @@ require('./index.scss');
 
 require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.banner.js');
+require('../../assets/js/toast.js');  //toast的事件
 
 
 
 
 $(function () {
-  $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
-  /* 焦点图片  */
-  $('.banner-body').banner({
-    'width': $(window).width(),
-    'height': $(window).width() * 2 / 3,
-    'paginationType': 'fraction'
-  });
-
-  /* switch header */
-  function switchHeader() {
-    var _hig = $('.banner-body').height();
-    if ($(document).scrollTop() > _hig) {
-      $('.header-body').show();
-    } else {
-      $('.header-body').hide();
-    }
-  };
-
-  /* switch header   */
-  var timeoutObject;
-  $(document).on('scroll.header', function () {
-    if (timeoutObject) {
-      clearTimeout(timeoutObject);
-    }
-    timeoutObject = setTimeout(switchHeader, 30);
-  });
-
-
-  /* 点击展开全部  */
-  $('.house-base-info .base-server').on('tap', '.more', function (e) {
-    e.stopPropagation();
-    $('.house-base-info .base-server .icon-items:gt(4)').toggleClass('hide');
-  });
-
-  /* 点击切换喜欢收藏  */
-  $('.banner-body').on('tap', '.collect', function (e) {
-    e.stopPropagation();
-    $(this).toggleClass('clc-red');
-  });
-
-  //猜你喜欢的渲染数据
-  var guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
-
-  var guessLike = {
-    price: $('#price').val(),
-    situationId: $('#situation').val(),
+  // 初始化的弹出的toast框
+  function showMessage(content, duration, isCenter, animateIn, animateOut) {
+    var animateIn = animateIn;
+    var animateOut = animateOut;
+    var content = content;
+    var duration = duration;
+    var isCenter = isCenter;
+    $('body').toast({
+      position: 'fixed',
+      animateIn: animateIn,
+      animateOut: animateOut,
+      content: content,
+      duration: duration,
+      isCenter: isCenter,
+    });
   }
-
-  var flag = 0;
-  var priceHigh = $('#price').val();
-  var priceLow = priceHigh;
-  var situationId = $('#situation').val();
-  for (var i = 0; i < guessLikeArray.length; i++) {
-    var item = guessLikeArray[i];
-    var num = guessLikeArray[i].price;
-
-    if (guessLike.situation === item.situation) {
-      guessLikeArray.splice(i, 1);
-    }
-
-    priceHigh = Math.max(num, priceHigh); // 取最大值
-    priceLow = Math.min(num, priceLow); // 取最小值
-  }
-  guessLikeArray.push(guessLike);
-
-  if (guessLikeArray.length > 50) {
-    guessLikeArray.shift();
-  }
-  window.localStorage.setItem('guessLike', JSON.stringify(guessLikeArray));
-  var guessLikeParams = {
-    city: $('#city').val(),
-    region: $('#area').val(),
-    priceHigh: priceHigh,
-    priceLow: priceLow,
-    situationId: situationId,
-  }
-  guessLikeInfo(guessLikeParams);
-
 
   // 猜你喜欢get接口
   function guessLikeInfo(params) {
@@ -134,6 +73,178 @@ $(function () {
     });
 
   }
+
+  //增加用户收藏房源post接口
+  function addUserCollectRoom(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/userinfo/addUserCollectRoom',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+
+          //sessionStorage缓存个人信息
+          // var item = res.result;
+          // if (item && item !== '') {
+          //   window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
+          // }
+          // window.location = '/';
+          showMessage('收藏房源成功');
+
+        } else {
+          showMessage(res.message);
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+  }
+
+  //删除用户收藏房源post接口
+  function deleteUserCollectRoom(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/userinfo/deleteUserCollectRoom',
+      data: JSON.stringify(params),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+          showMessage('移除房源成功');
+        } else {
+          showMessage(res.message);
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+  }
+
+
+  // /* switch header */
+  // function switchHeader() {
+  //   var _hig = $('.banner-body').height();
+  //   if ($(document).scrollTop() > _hig) {
+  //     $('.header-body').show();
+  //   } else {
+  //     $('.header-body').hide();
+  //   }
+  // };
+  // /* switch header   */
+  // var timeoutObject;
+  // $(document).on('scroll.header', function () {
+  //   if (timeoutObject) {
+  //     clearTimeout(timeoutObject);
+  //   }
+  //   timeoutObject = setTimeout(switchHeader, 30);
+  // });
+
+
+  //猜你喜欢的渲染数据
+  var guessLikeArray = [];
+  if (typeof window.localStorage.getItem('guessLike') === 'string') {
+    console.log(123)
+    guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
+  }
+
+  var guessLike = {
+    price: $('#price').val(),
+    situationId: $('#situation').val(),
+  }
+
+  var flag = 0;
+  var priceHigh = $('#price').val();
+  var priceLow = priceHigh;
+  var situationId = $('#situation').val();
+  for (var i = 0; i < guessLikeArray.length; i++) {
+    var item = guessLikeArray[i];
+    var num = guessLikeArray[i].price;
+
+    if (guessLike.situation === item.situation) {
+      guessLikeArray.splice(i, 1);
+    }
+
+    priceHigh = Math.max(num, priceHigh); // 取最大值
+    priceLow = Math.min(num, priceLow); // 取最小值
+  }
+  guessLikeArray.push(guessLike);
+
+  if (guessLikeArray.length > 50) {
+    guessLikeArray.shift();
+  }
+  window.localStorage.setItem('guessLike', JSON.stringify(guessLikeArray));
+  var guessLikeParams = {
+    city: $('#city').val(),
+    region: $('#area').val(),
+    priceHigh: priceHigh,
+    priceLow: priceLow,
+    situationId: situationId,
+  }
+
+  guessLikeInfo(guessLikeParams);
+
+  $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
+  /* 焦点图片  */
+  $('.banner-body').banner({
+    'width': $(window).width(),
+    'height': $(window).width() * 2 / 3,
+    'paginationType': 'fraction'
+  });
+
+
+
+
+
+
+  /* 点击展开全部  */
+  $('.house-base-info .base-server').on('tap', '.more', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('.house-base-info .base-server .icon-items:gt(4)').toggleClass('hide');
+  });
+
+  /* 点击切换喜欢收藏  */
+  $('.banner-body').on('tap', '#collect', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $(this).toggleClass('clc-red');
+    var status = $(this).data('status');
+    var params = {
+      situationId: $(this).data('situationId'),
+    };
+    if (status === 'collect') {
+      $(this).attr('data-status', '');
+      deleteUserCollectRoom(params);
+    } else {
+      $(this).attr('data-status', 'collect');
+
+      addUserCollectRoom(params);
+    }
+  });
+
+
+  /* 点击联系管家  */
+  $('#tel-major').on('click', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('#overlay').css('display', 'flex');
+  });
+
+  $('#overlay').on('tap', '.items', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('#overlay').hide();
+  });
 
 
 

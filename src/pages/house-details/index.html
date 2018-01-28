@@ -9,15 +9,16 @@
 </head>
 
 <body>
-
-  <header class="header-body" style="display:none;">
+  <!-- 星期一找李沛修改 -->
+  <!-- <header class="header-body" style="display:none;">
     <a class="back iconfont icon-daohanglanfanhui" href="javascript:;"></a>
     <div class="title">
       <span class="tit">泸沽湖畔 一居室民宿</span>
       <span class="desc"></span>
     </div>
     <a class="iconfont collect icon-dianzan clc-red" href="javascript:;"></a>
-  </header>
+  </header> -->
+
   <section class="banner-body">
     <div class="banner">
       <a class="items" href="javascript:;">
@@ -31,7 +32,8 @@
       </a>
     </div>
     <a class="back iconfont icon-daohanglanfanhui" href="javascript:;"></a>
-    <a class="collect iconfont icon-dianzan " href="javascript:;"></a>
+    <!-- 星期一找李沛修改 -->
+    <a class="collect iconfont icon-dianzan" data-situationId="" data-status="collect" href="javascript:;" id="collect"></a>
     <!--<p class="sold-out">该房源已下架</p>-->
   </section>
 
@@ -320,16 +322,34 @@
     </div>
   </section>
   <footer class="footer-body">
-    <a class="items" href="tel:10086132346">
+    <!-- 星期一找李沛修改 -->
+    <div class="items" id="tel-major">
       <i class="commuite iconfont icon-lianxiguanjia"></i>
       <span class="txt">联系管家</span>
-    </a>
+    </div>
+    <!-- 星期一找李沛修改 -->
+
     <a class="items" href="http://172.16.72.97:8080/html/order-check.html">
       <span class="price">¥1325</span>
       <span class="roder">立即预定</span>
     </a>
   </footer>
 
+  <!-- 星期一找李沛修改 -->
+  <!-- 遮罩层 -->
+  <section class="overlay" id="overlay">
+    <div class="box">
+      <a class="items" href="tel:13517263721">
+        <span class="name">谭小华</span>
+        <span class="tel">13517263721</span>
+      </a>
+      <a class="items" href="tel:13522681036">
+        <span class="name">吴乐声</span>
+        <span class="tel">13522681036</span>
+      </a>
+    </div>
+  </section>
+  <!-- 星期一找李沛修改 -->
 
   <input id="price" type="hidden" value="" />
   <input id="area" type="hidden" value="" />
