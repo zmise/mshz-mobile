@@ -241,11 +241,10 @@ $(function () {
   });
 
   $('#overlay').on('tap', '.items', function (e) {
-    event.preventDefault();
     event.stopPropagation();
+    event.preventDefault();
+    window.location = 'tel:' + $(this).find('.tel').text();
     $('#overlay').hide();
   });
-
-
 
 });
