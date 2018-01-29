@@ -8,6 +8,8 @@ $(function () {
   var arr = [];
 
   $('#handleDestination').on('tap', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     $('.des-body').show();
     /* 阻止首页滚动条事件  */
     $('body,html').css({ 'overflow': 'hidden' });
@@ -18,6 +20,7 @@ $(function () {
 
   /* 返回首页  */
   $('#destination-cancel').on('tap', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     $(this).closest('.des-body').hide();
     /* 恢复首页滚动条事件  */
@@ -30,6 +33,7 @@ $(function () {
 
   $('.des-body .des-fixed .items').on('tap', function (e) {
     e.preventDefault();
+    e.stopPropagation();
     var target = $(this).text();
     var arr1 = $('.des-body .des-list .title').text();
     var a = 0;
