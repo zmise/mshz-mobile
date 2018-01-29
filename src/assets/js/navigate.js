@@ -124,9 +124,11 @@ $(function () {
 
 
   /*  点击退出登录  */
-  $('body').on('tap', '#outLogin', function (e) {
+  $('body').on('click', '#outLogin', function (e) {
     e.stopPropagation();
+
     // var path = '/user/order-list.html';
+    console.log(123);
     window.sessionStorage.removeItem('loginInfo');
   });
 
