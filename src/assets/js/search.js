@@ -35,8 +35,8 @@ $(function () {
     }
     searchHistroy.push($(this).text());
 
-    if (guessLikeArray.length > 10) {
-      guessLikeArray.shift();
+    if (searchHistroy.length > 10) {
+      searchHistroy.shift();
     }
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();

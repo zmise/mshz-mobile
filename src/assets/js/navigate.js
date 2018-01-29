@@ -1,7 +1,7 @@
 $(function () {
   var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
   if (loginInfo) {
-    console.log(loginInfo);
+    // console.log(loginInfo);
     var str =
       '<nav class="navigate-body" js-plugin="slide" data-direction="vertical">' +
       ' <div class="navigate">' +
