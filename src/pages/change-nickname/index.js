@@ -79,10 +79,10 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     var nickname = $.trim($('#nickname').val());
-    // if (!reg.test(telVal)) {
-    //   showMessage('请输入一个字以内的昵称');
-    //   return;
-    // }
+    if (!reg.test(nickname)) {
+      showMessage('请输入昵称！');
+      return;
+    }
     var params = {
       nickname: nickname,
     };
