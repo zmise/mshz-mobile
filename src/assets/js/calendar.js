@@ -426,10 +426,11 @@
           if (flag == 0) {
             var arr = $(me.sections).find('.tbody').find('.rz');
             first = $(arry1).index($(this));
-
-            // 如果第一次点击的单元格是无房，则点击无效
-            if (me.sourceData[first].status === 'BOOKED' || me.sourceData[first].status === 'CHECKED_IN') {
-              return false;
+            if (me.sourceData && me.sourceData.length !== 0) {
+              // 如果第一次点击的单元格是无房，则点击无效
+              if (me.sourceData[first].status === 'BOOKED' || me.sourceData[first].status === 'CHECKED_IN') {
+                return false;
+              }
             }
 
             for (var m = 0; m < arr.length; m++) {
@@ -444,8 +445,10 @@
             //移除点击无房的高亮
             for (var n = 0; n < arry1.length; n++) {
               var status = $(arry1[n]).find('.odd').data('status');
-              if (status === 'BOOKED' || status === 'CHECKED_IN') {
-                $(arry1[n]).find('span:first').removeClass('even');
+              if (me.sourceData && me.sourceData.length !== 0) {
+                if (status === 'BOOKED' || status === 'CHECKED_IN') {
+                  $(arry1[n]).find('span:first').removeClass('even');
+                }
               }
             }
 
