@@ -65,6 +65,7 @@
           var select = q;
           $(me.sections).find(".tbody").append("<p class='ny1'></p><table class='dateTable'></table>")
           var currentDate = new Date();
+          currentDate.setDate(1);
           currentDate.setMonth(currentDate.getMonth() + select);
           var currentYear = currentDate.getFullYear();
           var currentMonth = currentDate.getMonth();
