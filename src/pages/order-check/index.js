@@ -145,58 +145,58 @@ $(function () {
 
     // console.log(params);
 
-    // $.ajax({
-    //   url: '/mshz-app/security/app/order/queryOrderPreview',
-    //   data: params,
-    //   dataType: 'json',
-    //   type: 'GET',
-    //   cache: false,
-    //   success: function (res) {
+    $.ajax({
+      url: '/mshz-app/security/app/order/queryOrderPreview',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
 
 
-    res = {
-      "result": {
-        "roomCount": 1, "roomRate": 28,
-        "roomPrice": 28,
-        "gardenArea": "南山",
-        "roomDeposit": 0, "roomArea": 66,
-        "cancelDays": 5,
-        "roomTitle": "观海台花园608",
-        "cancelRemark": "",
-        "cancelAble": true,
-        "custCount": 2
-      },
-      "message": "处理成功",
-      "status": "C0000"
-    };
-    if (res.status === 'C0000') {
-      orderInfo = res.result;
-      var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + orderInfo.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + orderInfo.custCount + '人</i></div>';
+        // res = {
+        //   "result": {
+        //     "roomCount": 1, "roomRate": 28,
+        //     "roomPrice": 28,
+        //     "gardenArea": "南山",
+        //     "roomDeposit": 0, "roomArea": 66,
+        //     "cancelDays": 5,
+        //     "roomTitle": "观海台花园608",
+        //     "cancelRemark": "",
+        //     "cancelAble": true,
+        //     "custCount": 2
+        //   },
+        //   "message": "处理成功",
+        //   "status": "C0000"
+        // };
+        if (res.status === 'C0000') {
+          orderInfo = res.result;
+          var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + orderInfo.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + orderInfo.custCount + '人</i></div>';
 
-      $('.yajin').text(orderInfo.roomDeposit);
-      $('.house-price').text(orderInfo.roomRate);
-      $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
-      $('#addressBody').empty().append(str);
+          $('.yajin').text(orderInfo.roomDeposit);
+          $('.house-price').text(orderInfo.roomRate);
+          $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
+          $('#addressBody').empty().append(str);
 
-      // 仅当后台定义了退订规则后才显示
-      if (orderInfo.cancelAble) {
-        $('#cancelInfoWrapper').show();
-        $('#cancelDays').text(orderInfo.cancelDays);
-        if (orderInfo.cancelRemark.length) {
-          $('#cancelRules').show();
-          $('#cancelRemark').html(orderInfo.cancelRemark.replace(/\n/g, '<br>'));
+          // 仅当后台定义了退订规则后才显示
+          if (orderInfo.cancelAble) {
+            $('#cancelInfoWrapper').show();
+            $('#cancelDays').text(orderInfo.cancelDays);
+            if (orderInfo.cancelRemark.length) {
+              $('#cancelRules').show();
+              $('#cancelRemark').html(orderInfo.cancelRemark.replace(/\n/g, '<br>'));
+            }
+          }
+        } else {
+          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
-      }
-    } else {
-      showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-    }
 
-    //   },
-    //   error: function (error) {
-    //     console.log(error);
-    //     console.log('error');
-    //   }
-    // });
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
 
   }
   // 初始化的弹出的toast框
