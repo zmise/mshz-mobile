@@ -42,9 +42,9 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('感谢您的评论！', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-          // setTimeout(function () {
-          //   history.go(-1);
-          // }, 1500)
+          setTimeout(function () {
+            history.go(-1);
+          }, 1500)
         } else {
           showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
