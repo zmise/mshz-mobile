@@ -11,6 +11,91 @@ require('../../assets/js/appDownload.js');//全局下载APP
 
 var params = {};
 $(function () {
+  /* get请求 loadingMore start*/
+
+  function loadingMore() {
+    initParams();
+    console.log(params);
+    var lastParams = {}
+    for (var prop in params) {
+      if (params[prop] !== '' && params[prop]) {
+        lastParams[prop] = params[prop];
+      }
+    }
+    console.log(lastParams);
+
+    $.ajax({
+      url: '/mshz-app/room/queryRoom',
+      data: lastParams,
+      // data: {
+      //   city: 'SHENZHEN'
+      // },
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        console.log(res);
+        if (res.status === 'C0000') {
+          if (res.result && res.result.items) {
+            var data = res.result.items;
+            var str = '';
+            for (var i = 0; i < data.length; i++) {
+              var item = data[i];
+              str +=
+                '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
+                '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                '  <div class="item-oneline">' +
+                '    <p>' + item.title + '</p>' +
+                '    <p>￥' + item.price + '</p>' +
+                '  </div>' +
+                '  <div class="item-twoline">' +
+                '    <i class="twoline-items">' + item.cityName + '</i>' +
+                '    <i class="twoline-items">' + item.houseType + '</i>' +
+                '    <i class="twoline-items">' + item.customerCount + '人</i>' +
+                '  </div>' +
+                '  <div class="item-threeline">' +
+                '    <div class="three-lline">' +
+                '      <div class="star-lines"></div>' +
+                '      <i class="score">' + item.rateServer + '分</i>' +
+                '    </div>' +
+                '    <div class="three-rline">' +
+                '      <i class="twoline-items">' + item.area + '住过</i>' +
+                '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                '    </div>' +
+                '  </div>' +
+                '</a>';
+            }
+
+            if (params.page === '1') {
+              $('.recommend-body .mrl_35').empty().append(str);
+            } else {
+              $('.recommend-body .mrl_35').append(str);
+            }
+
+            $('.loading').remove();
+          }
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+
+      }
+    });
+
+  }
+  /* loadingMore end*/
+
+  /* hideFilterLayer */
+
+  function hideFilterLayer() {
+    $('body,html').css({ 'overflow': 'visible' });
+    $filterLayer.hide();
+    $filterList.hide();
+    $overlay.hide();
+  };
+
+  /* initParams */
 
   function initParams() {
     params = {
@@ -76,12 +161,6 @@ $(function () {
   var $filterLayer = $('.filter-layer');
   var $filterList = $('.filter-list');
   var $overlay = $('#overlay');
-  function hideFilterLayer() {
-    $('body,html').css({ 'overflow': 'visible' });
-    $filterLayer.hide();
-    $filterList.hide();
-    $overlay.hide();
-  };
   /* 位置确定事件 */
   $('.filter-list').on('tap', '.two-row:not(.metro) .items', function (e) {
     e.stopPropagation();
@@ -250,83 +329,18 @@ $(function () {
 
   /* loadinging end*/
 
-
-  /* get请求 loadingMore start*/
-
-  function loadingMore() {
-    initParams();
-    console.log(params);
-    var lastParams = {}
-    for (var prop in params) {
-      if (params[prop] !== '' && params[prop]) {
-        lastParams[prop] = params[prop];
-      }
-    }
-    console.log(lastParams);
-
-    $.ajax({
-      url: '/mshz-app/room/queryRoom',
-      data: lastParams,
-      // data: {
-      //   city: 'SHENZHEN'
-      // },
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (res) {
-        console.log(res);
-        if (res.status === 'C0000') {
-          if (res.result && res.result.items) {
-            var data = res.result.items;
-            var str = '';
-            for (var i = 0; i < data.length; i++) {
-              var item = data[i];
-              str +=
-                '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
-                '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
-                '  <div class="item-oneline">' +
-                '    <p>' + item.title + '</p>' +
-                '    <p>￥' + item.price + '</p>' +
-                '  </div>' +
-                '  <div class="item-twoline">' +
-                '    <i class="twoline-items">' + item.cityName + '</i>' +
-                '    <i class="twoline-items">' + item.houseType + '</i>' +
-                '    <i class="twoline-items">' + item.customerCount + '人</i>' +
-                '  </div>' +
-                '  <div class="item-threeline">' +
-                '    <div class="three-lline">' +
-                '      <div class="star-lines"></div>' +
-                '      <i class="score">' + item.rateServer + '分</i>' +
-                '    </div>' +
-                '    <div class="three-rline">' +
-                '      <i class="twoline-items">' + item.area + '住过</i>' +
-                '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-                '    </div>' +
-                '  </div>' +
-                '</a>';
-            }
-
-            if (params.page === '1') {
-              $('.recommend-body .mrl_35').empty().append(str);
-            } else {
-              $('.recommend-body .mrl_35').append(str);
-            }
-
-            $('.loading').remove();
-          }
-        }
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-
-      }
-    });
-
+  /* 登录判断 */
+  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  if (loginInfo) {
+    $('#login').hide();
+    $('#menu').css('display', 'flex');
   }
 
-
-  /* loadingMore end*/
-
+  // login入口
+  $('#login').on('tap', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location = '/user/login.html';
+  });
 
 });

@@ -244,14 +244,26 @@ $(function () {
       userId: userId,
     }
     queryRoomIsAlready(paramsList);
+
+
+    $('#orderCheck-entry').on('tap', function (e) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
+    });
   } else {
     /* 没有登录点击收藏  */
-
     $('.banner-body').on('click', '#collect', function (e) {
       event.preventDefault();
       event.stopPropagation();
       console.log(132)
       showMessage('请先登录，才可以收藏房源');
+    });
+
+    $('#orderCheck-entry').on('tap', function (e) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location = '/user/login.html';
     });
   }
 
