@@ -1,9 +1,9 @@
 $(function () {
-  /* 阻止滚动条事件  */
-  $('.search-layer').on('touchmove', function (e) {
-    e.preventDefault();
-  });
 
+  /* 阻止滚动条事件  */
+  // $('.search-layer').on('touchmove', function (e) {
+  //   e.stopPropagation();
+  // });
 
 
   /* 返回首页  */

@@ -150,12 +150,12 @@ $(function () {
 
   /* switch header   */
 
-  $(document).on('scroll.header', function () {
-    if (timeoutObject) {
-      clearTimeout(timeoutObject);
-    }
-    timeoutObject = setTimeout(switchHeader, 30);
-  });
+  // $(document).on('scroll.header', function () {
+  //   if (timeoutObject) {
+  //     clearTimeout(timeoutObject);
+  //   }
+  //   timeoutObject = setTimeout(switchHeader, 30);
+  // });
 
 
 
@@ -304,20 +304,18 @@ $(function () {
   $('#handleSearch').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
+    $('body,html').css({ 'overflow': 'hidden' });
     if ($.trim($(this).val()) == '') {
       $('.search-layer').show();
       $('.search-layer .search-keyword').show();
       $('.search-layer .search-list').hide();
-      $('body,html').css({ 'overflow': 'hidden' });
       $('.search-body .text-body .text').val($(this).val());
     } else {
       $('.search-layer').show();
       $('.search-layer .search-keyword').hide();
       $('.search-layer .search-list').show();
-      $('body,html').css({ 'overflow': 'hidden' });
       $('.search-body .text-body .text').val($(this).val());
     }
-
     searchInfo($('#destination-entry').val());
     // $('.search-layer').show();
     // $('body,html').css({ 'overflow': 'hidden' });

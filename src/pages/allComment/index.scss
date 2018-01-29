@@ -28,40 +28,42 @@ body {
 
 /* comment-body */
 
-.comment-body {
-    background-color: #fff;
-    padding: .45rem .35rem;
-    margin-top: .12rem;
-}
-
-.comment-body .total {
-    padding-bottom: .3rem;
+.total {
+    margin-top: .3rem;
     border-bottom: $border;
+    padding: 0 .35rem .2rem;
+    background-color: #fff;
 }
 
-.comment-body .total .line-one,
-.comment-body .total .line-two {
+.total .line-one,
+.total .line-two {
     @include flex-box;
     @include justify-content(space-between);
 }
 
-.comment-body .total .line-two {
+.total .line-two {
     padding-top: .1rem;
 }
 
-.comment-body .total .txt {
+.total .txt {
     font-size: .24rem;
     color: rgba(181, 185, 190, 1);
 }
 
-.comment-body .total .line-one .tlt {
+.total .line-one .tlt {
     font-size: .28rem;
     font-weight: 700;
     color: rgba(42, 43, 45, 1);
 }
 
-.comment-body .total .line-two .socre {
+.total .line-two .socre {
     margin-right: .26rem;
+}
+
+.comment-body {
+    background-color: #fff;
+    padding: .1rem 0 .45rem;
+    border-bottom: .01rem solid RGBA(243, 243, 243, 1);
 }
 
 .comment-body .line-one .icon {
@@ -92,7 +94,7 @@ body {
 }
 
 .comment-body .first-comment {
-    padding-top: .46rem;
+    padding: .46rem .35rem 0;
 }
 
 .comment-body .first-comment .info {
@@ -141,42 +143,40 @@ body {
 .comment-body .first-comment .des .img-list {
     @include flex-box;
     @include flex-wrap(wrap);
-    border-bottom: $border;
 }
 
-.comment-body .first-comment .des .des-duihua {
-    @include flex-box;
-    @include align-items;
-    @include flex;
-    padding-top: .2rem;
-}
-
-.comment-body .first-comment .des .des-duihua span {
-    font-size: .26rem;
-    color: $color;
-    line-height: .4rem;
-}
-
-.comment-body .first-comment .des .des-duihua span:last-child {
-    @include flex;
-    color: rgba(94, 100, 107, 1);
-}
-
-.comment-body .first-comment .des-duihua .icon {
-    @include flex-box;
-    @include align-items;
-    width: 0.4rem;
-    height: 0.4rem;
-    font-size: .32rem;
-    color: $color;
-}
-
-.comment-body .first-comment .des .items {
+.comment-body .first-comment .des .img-list .items {
     @include flex(0, 0, auto);
     width: 1.44rem;
     height: 1.2rem;
-    margin-right: .16rem;
-    margin-bottom: .24rem;
+    margin: .2rem .16rem .2rem 0;
     color: #000;
     box-sizing: border-box;
 }
+
+.comment-body .first-comment .des .des-duihua {
+    padding: 0.15rem;
+    padding-right: 0;
+    background: rgba(242, 242, 242, 1);
+    border-radius: .04rem;
+    margin-right: 0.35rem;
+}
+
+.comment-body .first-comment .des .des-duihua .items {
+    @include flex-box;
+}
+
+.comment-body .first-comment .des .des-duihua .items span {
+    font-size: .26rem;
+    line-height: .4rem;
+    color: rgba(94, 100, 107, 1);
+}
+
+.comment-body .first-comment .des .des-duihua .items .current {
+    color: $color;
+}
+
+// .comment-body .first-comment .des .des-duihua span:last-child {
+//     @include flex;
+//     color: rgba(94, 100, 107, 1);
+// }

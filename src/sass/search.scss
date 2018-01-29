@@ -231,7 +231,8 @@
     // display: none;
     @include flex;
     padding: .88rem .35rem 0;
-    overflow: auto;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .search-layer .search-keyword .title {

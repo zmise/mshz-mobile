@@ -74,6 +74,54 @@ $(function () {
 
   }
 
+  // 确认房源是否被收藏get接口
+  function queryRoomIsAlready(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/userinfo/queryRoomIsAlready',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+          if (res.result) {
+            $('#collect').attr('data-status', 'collect').addClass('clc-red');
+            /* 登录过后点击切换喜欢收藏  */
+            $('.banner-body').on('click', '#collect', function (e) {
+              event.preventDefault();
+              event.stopPropagation();
+              $(this).toggleClass('clc-red');
+              var status = $(this).data('status');
+              var params = {
+                situationId: $(this).data('situationId'),
+              };
+              if (status === 'collect') {
+                $(this).attr('data-status', '');
+                deleteUserCollectRoom(params);
+              } else {
+                $(this).attr('data-status', 'collect');
+                addUserCollectRoom(params);
+              }
+            });
+          } else {
+            $('#collect').attr('data-status', '');
+            $('.banner-body').on('click', '#collect', function (e) {
+              event.preventDefault();
+              event.stopPropagation();
+              showMessage('后台处理没有成功收藏');
+            });
+          }
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+
+  }
+
   //增加用户收藏房源post接口
   function addUserCollectRoom(params) {
     console.log(params)
@@ -86,13 +134,6 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-
-          //sessionStorage缓存个人信息
-          // var item = res.result;
-          // if (item && item !== '') {
-          //   window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
-          // }
-          // window.location = '/';
           showMessage('收藏房源成功');
 
         } else {
@@ -153,7 +194,6 @@ $(function () {
   //猜你喜欢的渲染数据
   var guessLikeArray = [];
   if (typeof window.localStorage.getItem('guessLike') === 'string') {
-    console.log(123)
     guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
   }
 
@@ -193,6 +233,31 @@ $(function () {
 
   guessLikeInfo(guessLikeParams);
 
+
+  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  if (loginInfo) {
+    /* 初始化收藏状态 */
+    var situationId = $('#situation').val();
+    var userId = loginInfo.id;
+    var paramsList = {
+      situationId: $('#situation').val(),
+      userId: userId,
+    }
+    queryRoomIsAlready(paramsList);
+  } else {
+    /* 没有登录点击收藏  */
+
+    $('.banner-body').on('click', '#collect', function (e) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log(132)
+      showMessage('请先登录，才可以收藏房源');
+    });
+  }
+
+
+
+
   $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
   $('.banner-body').banner({
@@ -213,24 +278,7 @@ $(function () {
     $('.house-base-info .base-server .icon-items:gt(4)').toggleClass('hide');
   });
 
-  /* 点击切换喜欢收藏  */
-  $('.banner-body').on('tap', '#collect', function (e) {
-    event.preventDefault();
-    event.stopPropagation();
-    $(this).toggleClass('clc-red');
-    var status = $(this).data('status');
-    var params = {
-      situationId: $(this).data('situationId'),
-    };
-    if (status === 'collect') {
-      $(this).attr('data-status', '');
-      deleteUserCollectRoom(params);
-    } else {
-      $(this).attr('data-status', 'collect');
 
-      addUserCollectRoom(params);
-    }
-  });
 
 
   /* 点击联系管家  */
