@@ -21,9 +21,9 @@
     </div>
   </section>
   <section class="input-list">
-    <input class="items currentborder" placeholder="手机号" id="tel" />
+    <input class="items currentborder" placeholder="手机号" id="tel" maxlength="11" />
     <div class="items">
-      <input class="text flex-items" type="text" placeholder="输入验证码" id="verify" />
+      <input class="text flex-items" type="text" placeholder="输入验证码" id="verify" maxlength="4" />
       <div class="text">
         <span class="hide">
           <i class="seconds" id="seconds">60</i>s后重新获取
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="items">
-      <input class="text flex-items " type="password" placeholder="新密码（6-12个字母、数字或符号）" id="psw" />
+      <input class="text flex-items" type="password" placeholder="新密码（6-12个字母、数字或符号）" id="psw" maxlength="12" />
       <i class="icon iconfont icon-yanjingbukejian" id="toggleStyle"></i>
     </div>
     <div class="state current"></div>
