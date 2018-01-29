@@ -153,7 +153,6 @@ $(function () {
       cache: false,
       success: function (res) {
 
-
         // res = {
         //   "result": {
         //     "roomCount": 1, "roomRate": 28,
@@ -177,13 +176,12 @@ $(function () {
           $('.house-price').text(orderInfo.roomRate);
           $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
           $('#addressBody').empty().append(str);
-
           // 仅当后台定义了退订规则后才显示
           if (orderInfo.cancelAble) {
-            $('#cancelInfoWrapper').show();
+            $('#cancelInfoWrapper').removeClass('hidden');
             $('#cancelDays').text(orderInfo.cancelDays);
             if (orderInfo.cancelRemark.length) {
-              $('#cancelRules').show();
+              $('#cancelRules').removeClass('hidden');
               $('#cancelRemark').html(orderInfo.cancelRemark.replace(/\n/g, '<br>'));
             }
           }
