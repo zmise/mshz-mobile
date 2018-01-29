@@ -4,50 +4,33 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/toast.js');  //toast的事件
 
+var util = require('../../util/');
+
 // $.toast('Here you can put the text of the toast');
 
 $(function () {
-  var startDate, endDate, initStartDate, initEndDate, initCaleEndDate;
+  var startDate, endDate, initCaleEndDate;
+
+  // 缓存 preview 接口返回的当前房源的各类信息。
+  var orderInfo = {};
+
   // 当前日期
   function initDate() {
     startDate = window.sessionStorage.startDate;
     endDate = window.sessionStorage.endDate;
 
     var b = new Date();
+    if (!startDate || !endDate) {
+      startDate = util.formatDate(b, 'yyyy-MM-dd');
+    }
 
-    var ye = b.getFullYear();
-    var mo = b.getMonth() + 1;
-    var da = b.getDate();
-    b = new Date(b.getTime() + 24 * 3600 * 1000);
-    var ye1 = b.getFullYear();
-    var mo1 = b.getMonth() + 1;
-    var da1 = b.getDate();
-    if (mo < 10) {
-      mo = '0' + mo
+    if (!endDate) {
+      b = new Date(b.getTime() + 24 * 3600 * 1000);
+      endDate = util.formatDate(b, 'yyyy-MM-dd');
     }
-    if (da < 10) {
-      da = '0' + da
-    }
-    if (mo1 < 10) {
-      mo1 = '0' + mo1
-    }
-    if (da1 < 10) {
-      da1 = '0' + da1
-    }
-    initStartDate = ye + '-' + mo + '-' + da;
-    initEndDate = ye1 + '-' + mo1 + '-' + da1;
 
     b = new Date(b.getTime() + 24 * 3600 * 1000 * 89);
-    ye1 = b.getFullYear();
-    mo1 = b.getMonth() + 1;
-    da1 = b.getDate();
-    if (mo1 < 10) {
-      mo1 = '0' + mo1
-    }
-    if (da1 < 10) {
-      da1 = '0' + da1
-    }
-    initCaleEndDate = ye1 + '-' + mo1 + '-' + da1;
+    initCaleEndDate = util.formatDate(b, 'yyyy-MM-dd');
   }
 
   //获取url中的参数
@@ -58,7 +41,6 @@ $(function () {
   }
 
   // init价格日历请求
-
   function calePriceInfo(params) {
     // params.endDate = '2018-03-31';
     // console.log(params)
@@ -129,6 +111,8 @@ $(function () {
                 $('#totalPrice').text('￥' + (price + +$('#otherPrice').text()).toFixed(1));
               }
 
+              // 切换入住日期后，更新退款信息
+              updateCancelInfo(start, end);
             },   //回调函数
             comfireBtn: '.comfire',//确定按钮的class或者id
             startData: startDate,
@@ -146,38 +130,73 @@ $(function () {
 
   }
 
+  function updateCancelInfo(startDate, endDate) {
+    var beforeDays = '';
+    var s = new Date(startDate);
+    var b = new Date(s.getTime() - 24 * 60 * 60 * 1000 * orderInfo.cancelDays);
+
+    $('#cancelBeforeDays').text(util.formatDate(b, 'yyyy-MM-dd') + ' 14:00');
+    $('#cancelStartDay').text(startDate + ' 14:00');
+    $('#cancelEndDay').text(endDate + ' 12:00');
+  }
+
   // 订单预览get接口
   function orderPreviewInfo(params) {
 
     // console.log(params);
 
-    $.ajax({
-      url: '/mshz-app/security/app/order/queryOrderPreview',
-      data: params,
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (res) {
+    // $.ajax({
+    //   url: '/mshz-app/security/app/order/queryOrderPreview',
+    //   data: params,
+    //   dataType: 'json',
+    //   type: 'GET',
+    //   cache: false,
+    //   success: function (res) {
 
-        if (res.status === 'C0000') {
-          var data = res.result;
-          console.log(data);
-          var str = '<div class="item-oneline"><p>' + data.roomTitle + '</p><p>￥' + data.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + data.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + data.roomCount + '居' + data.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + data.custCount + '人</i></div>';
 
-          $('.yajin').text(data.roomDeposit);
-          $('.house-price').text(data.roomRate);
-          $('#totalPrice').text('￥' + (data.roomRate + data.roomDeposit));
-          $('#addressBody').empty().append(str);
-        } else {
-          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-        }
-
+    res = {
+      "result": {
+        "roomCount": 1, "roomRate": 28,
+        "roomPrice": 28,
+        "gardenArea": "南山",
+        "roomDeposit": 0, "roomArea": 66,
+        "cancelDays": 5,
+        "roomTitle": "观海台花园608",
+        "cancelRemark": "",
+        "cancelAble": true,
+        "custCount": 2
       },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
+      "message": "处理成功",
+      "status": "C0000"
+    };
+    if (res.status === 'C0000') {
+      orderInfo = res.result;
+      var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + orderInfo.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + orderInfo.custCount + '人</i></div>';
+
+      $('.yajin').text(orderInfo.roomDeposit);
+      $('.house-price').text(orderInfo.roomRate);
+      $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
+      $('#addressBody').empty().append(str);
+
+      // 仅当后台定义了退订规则后才显示
+      if (orderInfo.cancelAble) {
+        $('#cancelInfoWrapper').show();
+        $('#cancelDays').text(orderInfo.cancelDays);
+        if (orderInfo.cancelRemark.length) {
+          $('#cancelRules').show();
+          $('#cancelRemark').html(orderInfo.cancelRemark.replace(/\n/g, '<br>'));
+        }
       }
-    });
+    } else {
+      showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    }
+
+    //   },
+    //   error: function (error) {
+    //     console.log(error);
+    //     console.log('error');
+    //   }
+    // });
 
   }
   // 初始化的弹出的toast框
@@ -230,16 +249,6 @@ $(function () {
   // 初始化当前日期
   initDate();
 
-
-  /*
-
-  var totalDays = (new Date(endDate) - new Date(startDate)) / 24 / 60 / 60 / 1000;
-
-  $('#startDate').val(startDate);
-  $('#endDate').val(endDate);
-  $('#totalday').text('共' + totalDays + '晚');
-  */
-
   // url上面的参数
   // todo
   var roomId = getUrlParam('roomId');
@@ -250,38 +259,26 @@ $(function () {
     $('#loading').remove();
   }
 
-
   var params = {
     roomId: roomId,
     startDate: startDate,
     endDate: endDate,
   }
 
-
   // init价格日历get请求接口
   var caleParams = {
     roomId: params.roomId,
-    startDate: initStartDate,
+    startDate: startDate,
     endDate: initCaleEndDate,
   }
 
+  // 价格日历get请求接口
   calePriceInfo(caleParams);
 
-  // 价格日历get请求接口
-
-
-  var ordPreParams = {
-    roomId: params.roomId,
-    startTime: params.startDate,
-    endTime: params.endDate,
-  }
   // 订单预览get接口
-  orderPreviewInfo(ordPreParams);
-
-  // 订单预览get接口
-
-
-
+  orderPreviewInfo({
+    roomId: params.roomId
+  });
 
   /*   页面的生成时一些盒子的隐藏判断 */
   var $liveNum = $('.userInfo-body .input-layout .liveNum');
@@ -291,17 +288,8 @@ $(function () {
     $liveNum.find('.reduce').hide();
   }
 
-  /* 一些input框的正则判断  */
-  // $inputLayout.find('.name')
-  // $inputLayout.find('.IDcard')
-  // $inputLayout.find('.tel')
-  // $inputLayout.on('keydown', '#name', function (e) {
-  //   $(this).val($(this).val().replace(/[^\u4E00-\u9FA5]/g, ''));
-  // });
   $inputLayout.on('keydown', '#IDcard', function (e) {
-
     $(this).val($(this).val().replace(/\D+/g, ''));
-
   });
 
   //输入电话号码以 4 3 3 的格式
@@ -331,8 +319,8 @@ $(function () {
     $('.calendar').slideToggle();
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
-  /*   显示日历的控件的点击事件 */
 
+  /*   显示日历的控件的点击事件 */
   $('.userInfo-body').on('tap', '#reduce', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -382,12 +370,11 @@ $(function () {
     }
 
     var paramsList = {
-      custFormList: [
-        {
-          custIdCard: idVal,
-          custName: nameVal,
-          custPhone: telVal,
-        }
+      custFormList: [{
+        custIdCard: idVal,
+        custName: nameVal,
+        custPhone: telVal,
+      }
       ],
       custCount: +$('#peo-num').val() || 1,
       orderChannel: 'MSHZ_WAP',

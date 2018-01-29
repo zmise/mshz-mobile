@@ -13,6 +13,10 @@ body {
 }
 
 
+.hidden {
+  display: none;
+}
+
 /* address-body */
 
 .address-body {
@@ -275,13 +279,11 @@ body {
 
 .rule-body .slide-body .slide-content {
     @include flex-box;
-    @include align-items;
     @include flex-direction(column);
-    @include flex(0,
-    0,
-    auto);
+    @include flex(0, 0, auto);
+    align-items: left;
     padding-left: .35rem;
-    width: 10.99rem;
+    // width: 10.99rem;
     height: 3.36rem;
     font-size: $font-large;
     color: #fff;
@@ -292,24 +294,23 @@ body {
 .rule-body .slide-content .box1,
 .rule-body .slide-content .box2,
 .rule-body .slide-content .box3 {
-    width: 100%;
     @include flex-box;
     @include align-items;
 }
 
 .rule-body .slide-content .box1 {
-    padding-left: .66rem;
     margin-top: .5rem;
 }
 
 .rule-body .slide-content .box1 .items {
     @include flex-box;
     @include align-items;
-    width: 2.75rem;
+    flex: 1;
     height: .88rem;
     padding: 0 .2rem;
     border-radius: .1rem;
-    margin-right: .5rem;
+    margin: 0 0 0 0.5rem;
+    width: 2rem;
     border: .01rem solid rgba(255, 92, 92, 1);
     font-size: .24rem;
     color: rgba(255, 92, 92, 1);
@@ -325,7 +326,7 @@ body {
     @include flex-box;
     @include align-items;
     @include justify-content(flex-start);
-    padding-left: .36rem;
+    width: 100%;
     margin-top: .35rem;
 }
 
@@ -352,18 +353,21 @@ body {
 }
 
 .rule-body .slide-content .box3 {
-    background-color: #fff;
     @include flex-box;
     @include align-items(flex-start);
     @include justify-content(flex-start);
+    margin-left: -1.2rem;
+    width: 11.8rem;
+    background-color: #fff;
     margin-top: .22rem;
+    margin-left: -1.25rem;
 }
 
 .rule-body .slide-content .box3 .items {
     @include flex-box;
     @include align-items;
     @include flex-direction(column);
-    padding-right: 1.15rem;
+    flex: 1;
 }
 
 .rule-body .slide-content .box3 .items:last-child {

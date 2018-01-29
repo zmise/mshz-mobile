@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="input-layout">
-        <span class="text-style-1"> 押金</span>
+        <span class="text-style-1">押金</span>
         <div class="text-style-4">
           <span>￥</span>
           <span class="yajin" id="otherPrice"></span>
@@ -90,15 +90,15 @@
     </div>
   </section>
   <!-- todo -->
-  <section class="rule-body">
+  <section class="rule-body hidden" id="cancelInfoWrapper">
     <div class="title">退订信息</div>
     <div class="slide-body" js-plugin="slide">
       <div class="slide">
         <div class="slide-content" href="javascript:;">
           <div class="box1">
-            <div class="items">如取消订单，定金全部退还</div>
-            <div class="items">如取消订单，扣除前1天的定金</div>
-            <div class="items">如取消订单，扣除之后1天的定金</div>
+            <div class="items">取消订单，订金全部退还</div>
+            <div class="items">如需取消订单，请与管家联系</div>
+            <div class="items">不允许取消订单</div>
           </div>
           <div class="box2">
             <i class="circle iconfont icon-shijianliucheng"></i>
@@ -114,25 +114,27 @@
               <span class="txt">预定成功</span>
             </div>
             <div class="items">
-              <span class="txt">入住前五天</span>
-              <span class="time">2017-11-27 14∶00</span>
+              <span class="txt">入住前
+                <span id="cancelDays"></span> 天</span>
+              <span class="time" id="cancelBeforeDays"></span>
             </div>
             <div class="items">
               <span class="txt">入住时间</span>
-              <span class="time">2017-12-02 14∶00</span>
+              <span class="time" id="cancelStartDay"></span>
             </div>
             <div class="items">
               <span class="txt">退房时间</span>
-              <span class="time">2017-12-08 12∶00</span>
+              <span class="time" id="cancelEndDay"></span>
             </div>
           </div>
 
         </div>
       </div>
     </div>
-    <span class="tit">交易规则</span>
-    <p class="part">11月27日后退订，需额外扣除1天订金作为违约金，剩余订金将会又工作人和您联系</p>
-    <p class="part">取消订单和提前退房时间以系统中记录的时间为准，请致电客服电话：xxx xxxx xxxx</p>
+    <div id="cancelRules" class="hidden">
+      <span class="tit">交易规则</span>
+      <p class="part" id="cancelRemark"></p>
+    </div>
   </section>
 
   <footer class="check-body">
