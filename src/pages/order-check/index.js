@@ -1,3 +1,4 @@
+require('../../common/session');
 require('./index.scss');
 
 require('../../assets/js/plugins.js');
@@ -153,6 +154,9 @@ $(function () {
       cache: false,
       success: function (res) {
 
+        // 关闭loading
+        $('#loading').remove();
+
         // res = {
         //   "result": {
         //     "roomCount": 1, "roomRate": 28,
@@ -252,9 +256,6 @@ $(function () {
   var roomId = getUrlParam('roomId');
   if (!roomId) {
     location.replace('error.html?code=E0001')
-  } else {
-    // 关闭loading
-    $('#loading').remove();
   }
 
   var params = {
@@ -270,13 +271,13 @@ $(function () {
     endDate: initCaleEndDate,
   }
 
-  // 价格日历get请求接口
-  calePriceInfo(caleParams);
-
   // 订单预览get接口
   orderPreviewInfo({
     roomId: params.roomId
   });
+
+  // 价格日历get请求接口
+  calePriceInfo(caleParams);
 
   /*   页面的生成时一些盒子的隐藏判断 */
   var $liveNum = $('.userInfo-body .input-layout .liveNum');

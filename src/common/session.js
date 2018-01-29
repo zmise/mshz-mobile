@@ -28,7 +28,8 @@ $(document).off('ajaxError').on('ajaxError', function (res, xhr) {
     return;
   } else if (xhr.status == 401 && !invalidSession) {
     invalidSession = !0;
-    location.replace('/');
+    window.sessionStorage.setItem('lastLocation', location.href);
+    location.replace(location.pathname.indexOf('/user/') ? '/user/login.html' : '/');
   }
 });
 // abort the all the ajax requests when the session is expired.
@@ -44,11 +45,8 @@ $(document).off('ajaxComplete').on('ajaxComplete', function (e, req, options) {
     return false;
   }
   var data = JSON.parse(req.responseText);
-  if (data.code === 'C0002') {
-    console.log(data.data.msg);
-    location.replace('/');
-  } else if (data.code === 'C0001') {
-    console.log(data.msg);
-    return false;
+  if (data.code === 'EXXXX') {
+    window.sessionStorage.setItem('lastLocation', location.href);
+    location.replace(location.pathname.indexOf('/user/') ? '/user/login.html' : '/');
   }
 });
