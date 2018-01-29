@@ -42,9 +42,9 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('感谢您的评论！', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-          setTimeout(function () {
-            history.go(-1);
-          }, 1500)
+          // setTimeout(function () {
+          //   history.go(-1);
+          // }, 1500)
         } else {
           showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
@@ -133,7 +133,7 @@ $(function () {
   function renderImageList(url, dtd, index) {
     var str =
       '<div class="items">' +
-      '<img class="js-uploaded-image" src="' + url.replace('{size}', '100x100') + '" data-src="' + url + '" alt="">' +
+      '<img class="js-uploaded-image" src="' + url.replace('{size}', '100x100') + '" data-url="' + url + '" alt="">' +
       '<i class="remove-image">' +
       '  <svg class="icon" aria-hidden="true">' +
       '    <use xlink:href="#icon-tupianxuanzequxiao"></use>' +
@@ -183,7 +183,7 @@ $(function () {
     var commentPictures = [];
     var images = $('.js-uploaded-image');
     for (var i = 0; i < images.length; i++) {
-      commentPictures.push(images[i].data('url'));
+      commentPictures.push(images.eq(i).data('url'));
     }
 
 
