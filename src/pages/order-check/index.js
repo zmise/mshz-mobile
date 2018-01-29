@@ -89,6 +89,8 @@ $(function () {
             $('#startDate').val(startDate);
             $('#endDate').val(endDate);
             $('#totalday').text('共' + totalDays + '晚');
+
+            updateCancelInfo(startDate, endDate);
           }
           // 初始化价格日历
           $('#firstSelect').calendarSwitch({
@@ -117,8 +119,8 @@ $(function () {
               updateCancelInfo(start, end);
             },   //回调函数
             comfireBtn: '.comfire',//确定按钮的class或者id
-            startData: initStartDate,
-            endData: initCaleEndDate,
+            startData: startDate,
+            endData: endDate,
             sourceData: sourceDate,
           });
         }
@@ -268,7 +270,7 @@ $(function () {
   // init价格日历get请求接口
   var caleParams = {
     roomId: params.roomId,
-    startDate: startDate,
+    startDate: initStartDate,
     endDate: initCaleEndDate,
   }
 
