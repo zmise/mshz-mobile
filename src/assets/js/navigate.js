@@ -29,13 +29,12 @@ $(function () {
       '       <span class="txt">订单</span>' +
       '       <span class="num">6</span>' +
       '     </a>' +
-      // '     <a class="items" href="/myCollection.html">' +
-      '     <a class="items" href="/user/myCollection.html">' +
+      '     <a class="items" href="/user/my-collection.html">' +
+      // '     <a class="items" href="/my-collection.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>' +
       '       <span class="txt">收藏</span>' +
       '     </a>' +
-      // '     <a class="items" href="/myHistory.html">' +      
-      '     <a class="items" href="/user/myHistory.html">' +
+      '     <a class="items" href="/user/my-footprint.html">' +
       '       <i class="icon iconfont icon-zuji"></i>' +
       '       <span class="txt">足迹</span>' +
       '     </a>';
@@ -76,7 +75,7 @@ $(function () {
       ' </div>' +
       '</nav>';
     $('body').append(str);
-    //样式高亮  
+    //样式高亮
     var p = location.pathname;
     if (p === '/') {
       $('.navigate a:first-child').addClass('current').find('.icon').addClass('current');
@@ -84,7 +83,7 @@ $(function () {
       //[attr*="val" i]选择属性attr的值任意位置包含val或者VAL或者 Val 或者vAl或者 vaL字符
       $('.navigate a[href*="' + p + '" i]').addClass('current').find('.icon').addClass('current');
     }
-    // window.jquery = $;    
+    // window.jquery = $;
   }
   /* 阻止滚动条事件  */
   $('#overlay,.navigate-body').on('touchmove', function (e) {

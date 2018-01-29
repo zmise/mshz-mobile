@@ -138,7 +138,7 @@ $(function () {
                     '    <span class="title current2">' + item.orderStateDesc + '</span>' +
                     '    <div class="stu-but">' +
                     '      <a href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
-                    '      <a class="current2" href="./assess-order.html?orderNo=' + item.orderNo + '&roomId=' + item.roomId + '">评价订单</a>' +
+                    '      <a class="current2" href="./comment-order.html?orderNo=' + item.orderNo + '&roomId=' + item.roomId + '">评价订单</a>' +
                     '    </div>' +
                     '  </div>' +
                     '</div>';

@@ -131,7 +131,7 @@ $(function () {
     $('.navigatelist-body').on('tap', '#myCollection', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      window.location = '/user/myCollection.html';
+      window.location = '/user/my-collections.html';
     });
   }
   else {

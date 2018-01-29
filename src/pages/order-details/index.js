@@ -172,7 +172,7 @@ $(document).on('tap', '#talk-order', function (e) {
   e.stopPropagation();
   e.preventDefault();
   var roomId = $(this).data('roomid');
-  location.href = './assess-order.html?orderNo=' + order.orderNo + '&roomId=' + roomId;
+  location.href = './comment-order.html?orderNo=' + order.orderNo + '&roomId=' + roomId;
 });
 
 // 点击返回回到order-list

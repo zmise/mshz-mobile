@@ -34,15 +34,15 @@ $(function () {
             '  <i class="icon iconfont icon-fanhuixiangyou"></i>' +
             '</a>' +
             '<section class="other-info">' +
-            '  <a class="items" href="./myCollection.html">' +
+            '  <a class="items" href="./my-collection.html">' +
             '    <span class="number">' + item.collectRoomCount + '</span>' +
             '    <span class="txt">收藏房源</span>' +
             '  </a>' +
-            '  <a class="items" href="./myIntegral.html" id="myInegral-entry">' +
+            '  <a class="items" href="./my-points.html" id="myInegral-entry">' +
             '    <span class="number">' + item.integral + '</span>' +
             '    <span class="txt">我的积分</span>' +
             '  </a>' +
-            '  <a class="items" href="./order-list.html" id="assessList-entry">' +
+            '  <a class="items" href="./comment-list.html" id="assessList-entry">' +
             '    <span class="number">' + item.appraiseCount + '</span>' +
             '    <span class="txt">我的评价</span>' +
             '  </a>' +

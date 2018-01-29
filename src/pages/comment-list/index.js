@@ -91,7 +91,7 @@ $(function () {
     e.stopPropagation();
     var id = $(this).data('id');
     if (id && id !== '') {
-      window.location = './myAssess.html?id=' + id;
+      window.location = './my-comments.html?id=' + id;
 
     }
   });
@@ -102,7 +102,7 @@ $(function () {
     e.stopPropagation();
     var id = $(this).data('id');
     if (id && id !== '') {
-      window.location = './assess-order.html?id=' + id;
+      window.location = './comment-order.html?id=' + id;
 
     }
   });
