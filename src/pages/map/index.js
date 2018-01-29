@@ -15,9 +15,9 @@ var mp = new BMap.Map('allmap'); // 创建Map实例
 // 22.538246,113.931198
 // var lng = 113.931198;
 
-var lng = getUrlParam('lng') || 113.931198
+var lng = getUrlParam('lng');
 // var lat = 22.538246;
-var lat = getUrlParam('lat') || 22.538246;
+var lat = getUrlParam('lat');
 var level = 15;
 // var level = getUrlParam('level');
 var point = new BMap.Point(lng, lat);
@@ -100,7 +100,7 @@ ComplexCustomOverlay.prototype.draw = function () {
 // var content = '桃园地铁站';
 
 
-var content = getUrlParam('content') || '桃园地铁站';
+var content = getUrlParam('content');
 var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(lng, lat), content);
 console.log(myCompOverlay);
 mp.addOverlay(myCompOverlay);

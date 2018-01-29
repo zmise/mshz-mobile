@@ -4,37 +4,108 @@ require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.photo.album.js');
 
 $(function () {
+  // function queryPicsBySituationId(params) {
+  //   $.ajax({
+  //     url: '/mshz-app/room/queryPicsBySituationId',
+  //     data: params,
+  //     dataType: 'json',
+  //     type: 'GET',
+  //     cache: false,
+  //     success: function (res) {
+  //       if (res.status === 'C0000') {
+  //         var item = res.result;
+  //         var str =
+  //           '<section class="photo-body">' +
+  //           '  <div class="container">'
+  //           ;
+  //         for (var i = 0; i < item.length; i++) {
+  //           str += '<ul class="types">';
+  //           for (var j = 0; j < item[i].imageUrlList.length; j++) {
+  //             str +=
+  //               '<li class="items">' +
+  //               '  <img src="./img/pictrue-loading-banner.png" data-src="img/1.png" jslazy />' +
+  //               '  <a class="back" href="javascript:;"></a>' +
+  //               '</li>'
+  //               ;
+  //           }
+  //           str += '</ul>';
 
+  //         }
+  //         str +=
+  //           '  </div>' +
+  //           '</section>'
+  //           ;
+  //         $('body').prepend(str);
+
+  //       }
+  //     },
+  //     error: function (error) {
+  //       console.log(error);
+  //       console.log('error');
+  //     }
+  //   });
+
+  // }
   function getUrlParam(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)'); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg); //匹配目标参数
     if (r != null) return decodeURI(r[2]); //处理中文乱码
     return null; //返回参数值
   }
-
-  var imageIndex = parseInt(getUrlParam('imageIndex'));
-  console.log(imageIndex);
+  // 房源图片的get请求
+  // var imageIndex = parseInt(getUrlParam('imageIndex'));
+  // console.log(imageIndex);
   // 向模板中导入全局变量
-  template.defaults.imports.$typeIndex = parseInt(getUrlParam('typeIndex'));
-  template.defaults.imports.$itemIndex = parseInt(getUrlParam('itemIndex')) + 1;
+  // template.defaults.imports.$typeIndex = parseInt(getUrlParam('typeIndex'));
+  // template.defaults.imports.$itemIndex = parseInt(getUrlParam('itemIndex')) + 1;
   // $.ajax();
-  var houseId = getUrlParam('houseId');
   var id = parseInt(getUrlParam('id'));
   // console.log(getUrlParam('houseId'));
   // console.log(parseInt(getUrlParam('id')));
   // 轮播图
   $.ajax({
-    url: 'http://172.16.72.113:6688/getBnner',
+    url: '/mshz-app/room/queryPicsBySituationId',
     data: {
-      flag: 1,
-      houseId: houseId,
       id: id,
     },
     dataType: 'json',
     type: 'GET',
     success: function (data) {
       console.log(data);
-      var html = template('tpl-data', data);
+      var str =
+        '<section class="photo-body">' +
+        '  <div class="container">'
+        ;
+      for (var i = 0; i < item.length; i++) {
+        str += '<ul class="types">';
+        for (var j = 0; j < item[i].imageUrlList.length; j++) {
+          str +=
+            '<li class="items">' +
+            '  <img src="./img/pictrue-loading-banner.png" data-src="img/1.png" jslazy />' +
+            '  <a class="back" href="javascript:;"></a>' +
+            '</li>'
+            ;
+        }
+        str += '</ul>';
+
+      }
+      str +=
+        '  </div>' +
+        '</section>'
+        ;
+
+      str +=
+        '<section class="photo-numbers">' +
+        '  <p class="title"><span>1/</span>2</p>' +
+        '</section>';
+
+      str +=
+        '<section class="photo-tabs">' +
+        '  <a class="items current" href="javascript:;">房源图&nbsp;&nbsp;(1)</a>' +
+        '  <a class="items" href="javascript:;">小区图&nbsp;&nbsp;(3)</a>' +
+        '</section>'
+        ;
+
       $('#content').html(html);
 
       /* 通过图片下标设置标题 */
