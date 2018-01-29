@@ -9,6 +9,8 @@ require('../../assets/js/toast.js');  //toast的事件
 
 $(function () {
 
+  // 最多可上传图片的张数
+  var MAX_IMAGE_COUNT = 6;
 
   // 初始化的弹出的toast框
   function showMessage(content, duration, isCenter, animateIn, animateOut) {
@@ -39,18 +41,16 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          showMessage('感谢您的评论！', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
           setTimeout(function () {
             history.go(-1);
           }, 1500)
-
         } else {
           showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
       },
       error: function (error) {
         console.log(error);
-        console.log('error');
       }
     });
 
@@ -67,105 +67,99 @@ $(function () {
   var roomId = getUrlParam('roomId');
 
   // 点击给评分
-  $('.assess-start').on('tap', '.start', function (e) {
+  $('.assess-star').on('tap', '.star', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).siblings().removeClass('icon-tianchongxingji current').addClass('icon-weitianchongxingji');
     $(this).removeClass('icon-weitianchongxingji').addClass('icon-tianchongxingji current').prevAll().removeClass('icon-weitianchongxingji').addClass('icon-tianchongxingji current');
-    $(this).closest('.items').attr('data-score', $(this).index() + 1)
-    console.log($(this).closest('.items'))
-    console.log($(this).index())
-  });
 
+    $(this).closest('.items').data('score', $(this).index() + 1);
+
+  });
 
   // 点击上传图片
-  $('.assess-commiute').on('change', '#img-file', function (e) {
-    // e.stopPropagation();
-    // e.preventDefault();
-
-    imgPreview($(this));
-  });
-
-  function imgPreview(fileDom) {
-    //判断是否支持FileReader
-    if (window.FileReader) {
-      var reader = new FileReader();
-
-    } else {
-      alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
-    }
-
-    //获取文件
-    // console.log(fileDom);
-
-    var file = fileDom[0].files[0];
-    // console.log(file);
-
-    var imageType = /^image\//;
-    //是否是图片
-    if (!imageType.test(file.type)) {
-      alert("请选择图片！");
-      return;
-    }
-    //读取完成
-    reader.onload = function (e) {
-      //获取图片dom
-      // console.log(e.target);
-      // console.log(e.target.result);
-      // var $img = $('#img');
-      // //图片路径设置为读取的图片
-      // $img.attr('src', e.target.result);
-      // console.log(fileDom.next());
-
-      var str =
-        '<div class="items">' +
-        '<img src="' + e.target.result + '" alt="">' +
-        '<i class="closeImg">' +
-        '<svg class="icon" aria-hidden="true">' +
-        '<use xlink:href="#icon-tupianxuanzequxiao"></use>' +
-        '</svg>' +
-        '</i>' +
-        '</div>'
-        ;
-
-      $('.img-list').prepend(str);
-      var index = $('.img-list').find('.items').length - 1;
-      if (index >= 7) {
-        fileDom.closest('.items').remove();
-      }
-      fileDom.next().text(index + '/6');
-
-    };
-    reader.readAsDataURL(file);
-  }
-  // $.ajxa
-  //   .post
-  //   .then(res => {
-  //     if (res.data.status === 'C0000') {
-  //       console.log('上传成功');
-  //     } else {
-  //       console.log('上传失败');
-  //     }
-  //   });
-
-
-  // 点击删除图片
-  $('.assess-commiute').on('tap', '.closeImg', function (e) {
+  $('.assess-commiute').on('change', '.btn-upload', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var index = $('.img-list').find('.items').length - 1;
-    if (index === 6) {
-      var str =
-        '<div class="items">' +
-        '<input class="iconImg iconfont icon-xuanzexiangpian" type="file" accept="image/*" id="img-file"  multiple="multiple" >' +
-        '<span class="txt">5/6</span>' +
-        '</div>'
-        ;
-      $('.img-list').append(str);
 
+    var deferreds = [];
+
+    for (var i = 0; i < this.files.length; i++) {
+      var file = this.files[i];
+
+      // 缓存上传图片的请求对象
+      deferreds.push(uploadImage(file, i));
     }
+
+    $.when.apply(null, deferreds).then(function () {
+      console.log('upload done.');
+
+      // 移除用过的 file 域，加入新域为下次上传作准备。
+      $('#btnUpload').replaceWith('<input class="btn-upload" type="file" name="file" accept="image/*" id="btnUpload" multiple="multiple">');
+
+      // 更新已上传的图片数量
+      updateImageCount();
+    }).fail(function (err) {
+      console.log(err);
+      showMessage(err.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+    });
+
+  });
+
+  function uploadImage(file, index) {
+    var dtd = $.Deferred();
+    var params = new FormData();
+    params.append('file', file, file.name);
+    $.ajax({
+      url: '/mshz-app/security/order/comment/updateLoadPicture',
+      type: 'post',
+      contentType: false,
+      processData: false,
+      data: params
+    }).then(function (res) {
+      if (res.status === 'C0000') {
+        renderImageList(res.result.url);
+      } else {
+        dtd.reject(new Error(res.message));
+      }
+    }).done(function () {
+      dtd.resolve(index);
+    }).fail(function (err) {
+      dtd.reject(new Error('上传失败，请检查网络。'));
+    });
+    return dtd.promise();
+  }
+
+  function renderImageList(url, dtd, index) {
+    var str =
+      '<div class="items">' +
+      '<img class="js-uploaded-image" src="' + url.replace('{size}', '100x100') + '" data-src="' + url + '" alt="">' +
+      '<i class="remove-image">' +
+      '  <svg class="icon" aria-hidden="true">' +
+      '    <use xlink:href="#icon-tupianxuanzequxiao"></use>' +
+      '  </svg>' +
+      '</i>' +
+      '</div>';
+
+    $('.img-list').prepend(str);
+
+  }
+
+  function updateImageCount() {
+    var count = $('.js-uploaded-image').length;
+    console.log('count=', count);
+    // 当已上传的图片数量大等于最多可上传的数量时，则隐藏上传按钮。
+    $('.js-upload').toggle(count < MAX_IMAGE_COUNT);
+    $('.image-count-txt').text(count + '/' + MAX_IMAGE_COUNT);
+  }
+
+  // 点击删除图片
+  $('.assess-commiute').on('tap', '.remove-image', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+
     $(this).closest('.items').remove();
-    $(this).index();
+    updateImageCount();
 
   });
 
@@ -173,17 +167,25 @@ $(function () {
   $('#saveComment-entry').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log($('.img-list img'))
-    console.log($('.img-list img').length)
-    var commentPictures = [];
-    for (var i = 0; i < $('.img-list img').length; i++) {
-      commentPictures[i] = $('.img-list img').eq(i).attr('src');
-    }
+
+
     var content = $('#textarea').val() || '';
     var orderNo = getUrlParam('orderNo') || '';
     var roomId = getUrlParam('roomId') || '';
     var roomEnvironment = $('#roomEnvironment').data('score') || 0;
     var serviceAttitude = $('#serviceAttitude').data('score') || 0;
+
+    if (!roomEnvironment || !serviceAttitude) {
+      showMessage('请对房屋环境和服务态度进行评分', 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      return false;
+    }
+
+    var commentPictures = [];
+    var images = $('.js-uploaded-image');
+    for (var i = 0; i < images.length; i++) {
+      commentPictures.push(images[i].data('url'));
+    }
+
 
     var paramsList = {
       commentPictures: commentPictures,

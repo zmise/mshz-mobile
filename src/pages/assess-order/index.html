@@ -19,46 +19,39 @@
   </header>
 
 
-  <section class="assess-start">
+  <section class="assess-star">
     <div class="items">
       <div class="title">评分</div>
       <div class="txt">满意请给5星哦</div>
     </div>
     <div class="items" id="roomEnvironment">
       <div class="title">房屋环境</div>
-      <div class="start-list">
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
+      <div class="star-list">
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
       </div>
     </div>
     <div class="items" id="serviceAttitude">
       <div class="title">服务态度</div>
-      <div class="start-list">
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
-        <i class="start iconfont icon-weitianchongxingji"></i>
+      <div class="star-list">
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
+        <i class="star iconfont icon-weitianchongxingji"></i>
       </div>
     </div>
   </section>
   <section class="assess-commiute">
-    <textarea class="content" placeholder="你有什么住房心得吗？都可以告诉大家哦" id="textarea"></textarea>
+    <textarea class="content" placeholder="你有什么住房心得吗？都可以告诉大家哦" id="textarea" maxlength="200"></textarea>
     <div class="img-list">
-      <!-- <div class="items">
-        <img src="" alt="" id="img">
-        <i class="closeImg">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-tupianxuanzequxiao"></use>
-          </svg>
-        </i>
-      </div> -->
-      <div class="items">
-        <input class="iconImg iconfont icon-xuanzexiangpian" type="file" accept="image/*" id="img-file" multiple="multiple">
-        <span class="txt">0/6</span>
+      <div class="items js-upload">
+        <input class="btn-upload" type="file" name="file" accept="image/*" id="btnUpload" multiple="multiple">
+        <i class="icon-img iconfont icon-xuanzexiangpian"></i>
+        <span class="image-count-txt">0/6</span>
       </div>
     </div>
     <div class="box">
@@ -66,16 +59,8 @@
     </div>
   </section>
 
-
-
-
-
   <!-- 侧边栏 -->
   <div class="overlay" id="overlay"></div>
-
-
-
-
 </body>
 
 </html>
