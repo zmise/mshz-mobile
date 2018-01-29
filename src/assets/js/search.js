@@ -34,6 +34,10 @@ $(function () {
       }
     }
     searchHistroy.push($(this).text());
+
+    if (guessLikeArray.length > 10) {
+      guessLikeArray.shift();
+    }
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();
     // var newListHTML = search();
