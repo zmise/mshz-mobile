@@ -49,10 +49,17 @@ $(function () {
           // window.sessionStorage.setItem('nickname', item); //昵称
           // window.sessionStorage.setItem('hasSetPassword', item); //是否已设置密码
           // window.sessionStorage.setItem('phone', item); //手机号码
+
           if (res.result.hasSetPassword) {
-            window.location = '/';
+            var lastLocation = window.sessionStorage.getItem('lastLocation');
+            window.sessionStorage.removeItem('lastLocation');
+            if (lastLocation) {
+              location.replace(lastLocation);
+            } else {
+              location.replace('/');
+            }
           } else {
-            window.location = './setting-password.html';
+            location.replace('./setting-password.html');
           }
         } else {
           showMessage(res.message);
@@ -94,7 +101,7 @@ $(function () {
     var interval = setInterval(function () {
       var tResult = totalSeconds - 1;
       var tResultSec = Math.floor(tResult % tMin);
-      // 将时间小于10的,在值前面加入0;   
+      // 将时间小于10的,在值前面加入0;
       if (tResultSec < 10) {
         tResultSec = '0' + tResultSec;
       }
@@ -129,7 +136,7 @@ $(function () {
     e.preventDefault();
 
 
-    // 验证手机格式  
+    // 验证手机格式
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
     if (!telReg.test(telVal)) {
@@ -147,7 +154,7 @@ $(function () {
   $('#login').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    // 验证手机格式  
+    // 验证手机格式
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
 
