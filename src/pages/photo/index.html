@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>名宿好住</title>
+</head>
+
+<body>
+  <section class="photo-body">
+    <div class="container">
+      <ul class="types">
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src="img/1.png" jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src="img/2.png" jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+      </ul>
+      <ul class="types">
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src="img/3.png" jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src="img/4.png" jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src="img/5.png" jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="photo-numbers">
+    <p class="title"><span>1/</span>2</p>
+  </section>
+  <section class="photo-tabs">
+    <a class="items current" href="javascript:;">房源图&nbsp;&nbsp;(1)</a>
+    <a class="items" href="javascript:;">小区图&nbsp;&nbsp;(3)</a>
+  </section>
+  <div id="content"></div>
+  <div id="back" href="javascript:;"></div>
+</body>
+
+</html>
+
+<!-- <script src="../../assets/js/plugins/template-web.js"></script> -->
+
+<!-- <script id="tpl-data" type="text/html">
+  <section class="photo-body">
+    <div class="container">
+      {{each data as value index}}
+      <ul class="types">
+        {{each value.imageUrlList as item}}
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src={{item}} jslazy />
+          <a class="back" href="javascript:;"></a>
+        </li>
+        {{/each}}
+      </ul>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="photo-numbers">
+    {{each data as value index}} {{if index===0 }}
+    <p class="title"><span>1/</span>{{value.imageUrlList.length}}</p>
+    {{/if}} {{/each}}
+  </section>
+  <section class="photo-tabs">
+    {{each data as value index}}
+    <a class="items {{if index===0 }}current{{/if}}" href="javascript:;">{{value.imageType}}&nbsp;&nbsp;({{value.imageUrlList.length}})</a>    {{/each}}
+  </section>
+</script> -->
+
+
+<!-- <script id="tpl-data" type="text/html">
+  <section class="photo-body">
+    <div class="container">
+      {{each data as value index}}
+      <ul class="types">
+        {{each value.imageUrlList as item}}
+        <li class="items">
+          <img src="./img/pictrue-loading-banner.png" data-src={{item}} jslazy />
+        </li>
+        {{/each}}
+      </ul>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="photo-numbers">
+    {{each data as value index}} {{if index===$typeIndex }}
+    <p class="title"><span>{{$itemIndex}}/</span>{{value.imageUrlList.length}}</p>
+    {{/if}} {{/each}}
+  </section>
+  <section class="photo-tabs">
+    {{each data as value index}}
+    <a class="items {{if index===$typeIndex }}current{{/if}}" href="javascript:;">{{value.imageType}}&nbsp;&nbsp;({{value.imageUrlList.length}})</a>    {{/each}}
+  </section>
+</script> -->
+
+<!-- <script>
+  (function ($, undefined) {
+    function getUrlParam(name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)'); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return decodeURI(r[2]); //处理中文乱码
+      return null; //返回参数值
+    }
+    // const typeIndex = parseInt(getUrlParam('typeIndex'));
+    // const lat = 22.538246;
+    // const itemIndex = parseInt(getUrlParam('itemIndex'));
+    // console.log(typeIndex);
+    // console.log(itemIndex);
+
+    // 向模板中导入全局变量
+    template.defaults.imports.$typeIndex = parseInt(getUrlParam('typeIndex'));
+    template.defaults.imports.$itemIndex = parseInt(getUrlParam('itemIndex')) + 1;
+    // $.ajax();
+    var houseId = getUrlParam('houseId');
+    var id = parseInt(getUrlParam('id'));
+    // console.log(getUrlParam('houseId'));
+    // console.log(parseInt(getUrlParam('id')));
+    // 轮播图
+    $.ajax({
+      // url: 'http://192.168.0.130/qfang-agent-api/api/mobile/noSessionPreview/getPreviewImages',
+      url: 'http://172.16.72.113:6688/getBnner',
+      data: {
+        flag: 1,
+        houseId: houseId,
+        id: id,
+      },
+      dataType: 'json',
+      type: 'GET',
+      success: function (data) {
+        console.log(data);
+        var html = template('tpl-data', data);
+        $('#content').html(html);
+      }
+    });
+    // var data = {
+    //   // 'typeIndex': typeIndex,
+    //   // 'itemIndex': itemIndex + 1,
+    //   'status': 0,
+    //   'data': [{
+    //       'imageType': '房源图',
+    //       'imageUrlList': ['img/1.png', 'img/2.png']
+    //     },
+    //     {
+    //       'imageType': '小区图',
+    //       'imageUrlList': ['img/3.png', 'img/4.png', 'img/5.png']
+    //     }
+    //   ]
+    // };
+    // var html = template('tpl-data', data);
+    // $('#content').html(html);
+
+  }(jQuery));
+</script> -->
