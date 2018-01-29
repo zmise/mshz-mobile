@@ -10,7 +10,7 @@ var util = require('../../util/');
 // $.toast('Here you can put the text of the toast');
 
 $(function () {
-  var startDate, endDate, initCaleEndDate;
+  var startDate, endDate, initCaleEndDate, initStartDate;
 
   // 缓存 preview 接口返回的当前房源的各类信息。
   var orderInfo = {};
@@ -21,8 +21,9 @@ $(function () {
     endDate = window.sessionStorage.endDate;
 
     var b = new Date();
-    if (!startDate || !endDate) {
-      startDate = util.formatDate(b, 'yyyy-MM-dd');
+    initStartDate = util.formatDate(b, 'yyyy-MM-dd');
+    if (!startDate) {
+      startDate = initStartDate;
     }
 
     if (!endDate) {
@@ -116,8 +117,8 @@ $(function () {
               updateCancelInfo(start, end);
             },   //回调函数
             comfireBtn: '.comfire',//确定按钮的class或者id
-            startData: startDate,
-            endData: endDate,
+            startData: initStartDate,
+            endData: initCaleEndDate,
             sourceData: sourceDate,
           });
         }
