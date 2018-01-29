@@ -175,11 +175,12 @@ $(document).on('tap', '#talk-order', function (e) {
   location.href = './assess-order.html?orderNo=' + order.orderNo + '&roomId=' + roomId;
 });
 
-// 点击返回回到上一页
+// 点击返回回到order-list
 $('#back').on('tap', function (e) {
   e.stopPropagation();
   e.preventDefault();
-  history.go(-1)
+  var path = './order-list.html';
+  window.location = path;
 });
 
 
