@@ -39,38 +39,51 @@ $(function () {
           if (res.result && res.result.items) {
             var data = res.result.items;
             var str = '';
-            for (var i = 0; i < data.length; i++) {
-              var item = data[i];
-              str +=
-                '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
-                '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
-                '  <div class="item-oneline">' +
-                '    <p>' + item.title + '</p>' +
-                '    <p>￥' + item.price + '</p>' +
-                '  </div>' +
-                '  <div class="item-twoline">' +
-                '    <i class="twoline-items">' + item.cityName + '</i>' +
-                '    <i class="twoline-items">' + item.houseType + '</i>' +
-                '    <i class="twoline-items">' + item.customerCount + '人</i>' +
-                '  </div>' +
-                '  <div class="item-threeline">' +
-                '    <div class="three-lline">' +
-                '      <div class="star-lines"></div>' +
-                '      <i class="score">' + item.rateServer + '分</i>' +
-                '    </div>' +
-                '    <div class="three-rline">' +
-                '      <i class="twoline-items">' + item.area + '住过</i>' +
-                '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-                '    </div>' +
-                '  </div>' +
-                '</a>';
+            if (data.length > 0) {
+              for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                str +=
+                  '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
+                  '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                  '  <div class="item-oneline">' +
+                  '    <p>' + item.title + '</p>' +
+                  '    <p>￥' + item.price + '</p>' +
+                  '  </div>' +
+                  '  <div class="item-twoline">' +
+                  '    <i class="twoline-items">' + item.cityName + '</i>' +
+                  '    <i class="twoline-items">' + item.houseType + '</i>' +
+                  '    <i class="twoline-items">' + item.customerCount + '人</i>' +
+                  '  </div>' +
+                  '  <div class="item-threeline">' +
+                  '    <div class="three-lline">' +
+                  '      <div class="star-lines"></div>' +
+                  '      <i class="score">' + item.rateServer + '分</i>' +
+                  '    </div>' +
+                  '    <div class="three-rline">' +
+                  '      <i class="twoline-items">' + item.area + '住过</i>' +
+                  '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                  '    </div>' +
+                  '  </div>' +
+                  '</a>';
+              }
+
+              if (params.page === '1') {
+                $('.recommend-body .mrl_35').empty().append(str);
+              } else {
+                $('.recommend-body .mrl_35').append(str);
+              }
+            } else {
+              str =
+                '<section class="unusual-body">' +
+                '  <div class="no-house"></div>' +
+                '  <span>很抱歉，没有搜索到房源</span>' +
+                '</section>'
+                ;
+              $('.recommend-body .mrl_35').empty();
+              $('.unusual-body').remove();
+              $('.article-body').append(str);
             }
 
-            if (params.page === '1') {
-              $('.recommend-body .mrl_35').empty().append(str);
-            } else {
-              $('.recommend-body .mrl_35').append(str);
-            }
 
             $('.loading').remove();
           }
@@ -79,7 +92,12 @@ $(function () {
       error: function (error) {
         console.log(error);
         console.log('error');
-
+        var str =
+          '<section class="unusual-body">' +
+          '  <div class="no-network"></div>' +
+          '  <span>网络请求失败，请检查网络</span>' +
+          '</section>'
+          ;
       }
     });
 
