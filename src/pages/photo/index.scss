@@ -16,15 +16,13 @@ body {
 }
 
 .photo-body .container {
-    @include flex-box;
-    @include align-items;
+    @include flex-box; // @include align-items;
     width: 100%;
     height: 100%;
 }
 
 .photo-body .types {
-    @include flex-box;
-    @include align-items;
+    @include flex-box; // @include align-items;
     @include flex(0, 0, auto);
 }
 
@@ -32,6 +30,7 @@ body {
     display: block;
     @include flex(0, 0, auto);
     position: relative;
+    margin-top: 3.8rem;
 }
 
 .photo-body .items img {
@@ -41,10 +40,10 @@ body {
 #back {
     position: fixed;
     z-index: 999;
-    top: .375rem;
-    right: .375rem;
-    width: .75rem;
-    height: .75rem;
+    top: .75rem;
+    left: .37rem;
+    width: .3rem;
+    height: .3rem;
     background-image: url('./img/clone.png');
     background-position: center;
     background-size: 100% 100%;
@@ -56,23 +55,28 @@ body {
 
 .photo-numbers {
     @include position(fixed,
+    .7rem,
     auto,
     auto,
-    1.25rem,
-    .6rem,
+    auto,
     500);
-    margin: 0;
-    margin-bottom: .5rem;
+    @include flex-box;
+    @include justify-content;
+    @include flex-box;
+    width: 100%;
     color: #fff;
 }
 
 .photo-numbers .title {
     margin: 0;
-    font-size: .35rem;
+    font-size: .34rem;
+    color: rgba(255, 255, 255, 1);
 }
 
-.photo-numbers .title span {
-    font-size: .5rem;
+.photo-numbers .title .num {
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.5rem;
 }
 
 
@@ -86,24 +90,20 @@ body {
     0,
     500);
     @include flex-box;
-    padding: .5rem 0 .5rem .6rem;
+    @include flex-wrap(wrap);
+    padding: .4rem 0 .5rem .4rem;
     background-color: rgba(0, 0, 0, .5);
 }
 
 .photo-tabs .items {
-    display: block;
     @include flex-box;
     text-align: center;
-    height: .75rem;
     justify-content: center;
-    line-height: .75em;
-    width: 1.875rem;
-    font-size: .325rem;
-    color: #4d4d4d;
-    border-radius: .5rem;
+    font-size: .3rem;
+    color: #555;
+    margin-right: 0.5rem;
 }
 
 .photo-tabs .current {
     color: #fff;
-    background-color: #4d4d4d;
 }
