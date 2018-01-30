@@ -73,7 +73,7 @@ $(function () {
                   '</div></div>';
               }
             } else if (orderQueryType === 'VALIDATED') {
-              for (var i = 0; i < data.length; i++) {
+              for (var i = 27; i < data.length; i++) {
                 var item = data[i];
                 strA =
                   '<div class="box">' +
@@ -127,6 +127,7 @@ $(function () {
                     '  </div>' +
                     '</div>';
                 } else {
+                  strB = '';
                   if (item.extarAcount > 0) {
                     strB =
                       '      <div>' +
