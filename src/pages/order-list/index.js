@@ -127,11 +127,14 @@ $(function () {
                     '  </div>' +
                     '</div>';
                 } else {
-                  strB =
-                    '      <div>' +
-                    '        <span>额外费用：</span>' +
-                    '        <span>¥' + item.extarAcount + '</span>' +
-                    '      </div>' +
+                  if (item.extarAcount > 0) {
+                    strB =
+                      '      <div>' +
+                      '        <span>额外费用：</span>' +
+                      '        <span>¥' + item.extarAcount + '</span>' +
+                      '      </div>';
+                  }
+                  strB +=
                     '    </div>' +
                     '  </a>' +
                     '  <div class="status">' +
