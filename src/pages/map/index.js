@@ -13,25 +13,24 @@ function getUrlParam(name) {
 
 var mp = new BMap.Map('allmap'); // 创建Map实例
 // 22.538246,113.931198
-// var lng = 113.931198;
-
+// 116.3964,39.9093
 var lng = getUrlParam('lng');
-// var lat = 22.538246;
 var lat = getUrlParam('lat');
+// var lng = 113.931198;
+// var lat = 22.538246;
 var level = 15;
 // var level = getUrlParam('level');
 var point = new BMap.Point(lng, lat);
 
 mp.centerAndZoom(point, level);
 
-mp.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+// mp.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+mp.enableScrollWheelZoom();
 
-var geolocationControl = new BMap.GeolocationControl();
 
-
-var opts = {
-  position: point, // 指定文本标注所在的地理位置
-}
+// var opts = {
+//   position: point, // 指定文本标注所在的地理位置
+// }
 // 复杂的自定义覆盖物
 function ComplexCustomOverlay(point, text) {
   this._point = point;
@@ -41,27 +40,16 @@ ComplexCustomOverlay.prototype = new BMap.Overlay();
 ComplexCustomOverlay.prototype.initialize = function (map) {
   this._map = map;
   var div = this._div = document.createElement('div');
-  div.className = 'overlay';
+  // div.className = 'overlay';
   div.style.position = 'absolute';
-  // div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
-  // div.style.backgroundColor = '#000';
-  // div.style.color = '#fff';
-  // div.style.paddingTop = '.12rem';
-  // div.style.paddingBottom = '.12rem';
-  // div.style.paddingRight = '.15rem';
-  // div.style.paddingLeft = '.15rem';
-  // div.style.fontSize = '.3rem';
-  // div.style.whiteSpace = "nowrap";
-  // div.style.MozUserSelect = "none";
-  // div.style.opacity = .6;
-  // div.style.borderRadius = '.1rem';
+  div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
   div.style.backgroundColor = '#000';
   div.style.color = '#fff';
-  div.style.paddingTop = '.25rem';
-  div.style.paddingBottom = '.25rem';
-  div.style.paddingRight = '.3rem';
-  div.style.paddingLeft = '.3rem';
-  div.style.fontSize = '.6rem';
+  div.style.paddingTop = '.1rem';
+  div.style.paddingBottom = '.1rem';
+  div.style.paddingRight = '.2rem';
+  div.style.paddingLeft = '.2rem';
+  div.style.fontSize = '.24rem';
   div.style.whiteSpace = "nowrap";
   div.style.MozUserSelect = "none";
   div.style.opacity = .6;
@@ -74,11 +62,11 @@ ComplexCustomOverlay.prototype.initialize = function (map) {
   var arrow = this._arrow = document.createElement('div');
 
   arrow.style.position = 'absolute';
-  arrow.style.width = '1rem';
-  arrow.style.height = '1rem';
-  arrow.style.borderTop = '1rem solid #000';
-  arrow.style.borderLeft = '.5rem solid transparent';
-  arrow.style.borderRight = '.5rem solid transparent';
+  arrow.style.width = '0rem';
+  arrow.style.height = '0rem';
+  arrow.style.borderTop = '.2rem solid #000';
+  arrow.style.borderLeft = '.1rem solid transparent';
+  arrow.style.borderRight = '.1rem solid transparent';
   arrow.style.overflow = 'hidden';
   div.appendChild(arrow);
   map.getPanes().labelPane.appendChild(div);
@@ -86,19 +74,31 @@ ComplexCustomOverlay.prototype.initialize = function (map) {
 }
 
 
-
 ComplexCustomOverlay.prototype.draw = function () {
   var map = this._map;
   var pixel = map.pointToOverlayPixel(this._point);
-  var that = this;
-  that._div.style.left = pixel.x - $('.overlay')[0].clientWidth / 2 + 'px';
-  that._div.style.top = pixel.y - $('.overlay')[0].clientHeight - 10 + 'px';
-  that._arrow.style.left = $('.overSpan')[0].offsetWidth / 2 + 'px';
-  that._arrow.style.top = $('.overlay')[0].clientHeight - 2 + 'px';
+  // this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
+  this._div.style.left = pixel.x - 30 + "px";
+  this._div.style.top = pixel.y - 30 + "px";
+  this._arrow.style.left = $('.overSpan')[0].offsetWidth / 2 + 'px';
+  this._arrow.style.top = $('.overSpan')[0].clientHeight + 24 + 'px';
 }
+// ComplexCustomOverlay.prototype.draw = function () {
+//   var map = this._map;
+//   var pixel = map.pointToOverlayPixel(this._point);
+//   // console.log(pixel)
+//   var that = this;
+//   // that._div.style.left = pixel.x - $('.overlay')[0].clientWidth / 2 + 'px';
+//   // that._div.style.left = pixel.x;
+//   // that._div.style.top = pixel.y - $('.overlay')[0].clientHeight - 10 + 'px';
+//   // that._div.style.top = pixel.y;
+//   // that._arrow.style.left = $('.overSpan')[0].offsetWidth / 2 + 'px';
+//   // that._arrow.style.left = $('.overSpan')[0].offsetWidth / 2 + 'px';
+//   // that._arrow.style.top = $('.overlay')[0].clientHeight - 2 + 'px';
+//   // that._arrow.style.top = $('.overlay')[0].clientHeight - 2 + 'px';
+// }
 
 // var content = '桃园地铁站';
-
 
 var content = getUrlParam('content');
 var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(lng, lat), content);
@@ -141,6 +141,12 @@ $('#circle').on('click', function () {
 });
 
 
+// 点击返回回到上一页
+$('#back').on('click', function (e) {
+  e.stopPropagation();
+  e.preventDefault();
+  history.go(-1);
+});
 
 
 // function getNavigation() {

@@ -1,5 +1,6 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
 body,
 html,
 #allmap {
@@ -21,4 +22,23 @@ html,
     background-image: url('./img/circle.png');
     background-size: 2rem 2rem;
     background-repeat: no-repeat;
+}
+
+.header-body {
+    background-color: #fff;
+}
+
+.header-body .title {
+    font-size: .34rem;
+    color: rgba(42, 43, 45, 1);
+}
+
+.header-body .back {
+    font-size: .32rem;
+}
+
+.header-body .back:before {
+    border-color: $color;
+    height: 0.2rem;
+    width: 0.2rem;
 }
