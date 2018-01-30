@@ -52,8 +52,8 @@ $(function () {
 
           if (res.result.hasSetPassword) {
             var lastLocation = window.sessionStorage.getItem('lastLocation');
-            window.sessionStorage.removeItem('lastLocation');
             if (lastLocation) {
+              window.sessionStorage.removeItem('lastLocation');
               location.replace(lastLocation);
             } else {
               location.replace('/');

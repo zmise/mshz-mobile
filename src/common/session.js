@@ -29,7 +29,7 @@ $(document).off('ajaxError').on('ajaxError', function (res, xhr) {
   } else if (xhr.status == 401 && !invalidSession) {
     invalidSession = !0;
     window.sessionStorage.setItem('lastLocation', location.href);
-    location.replace(location.pathname.indexOf('/user/') ? '/user/login.html' : '/');
+    location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }
 });
 // abort the all the ajax requests when the session is expired.
@@ -47,6 +47,6 @@ $(document).off('ajaxComplete').on('ajaxComplete', function (e, req, options) {
   var data = JSON.parse(req.responseText);
   if (data.code === 'EXXXX') {
     window.sessionStorage.setItem('lastLocation', location.href);
-    location.replace(location.pathname.indexOf('/user/') ? '/user/login.html' : '/');
+    location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }
 });

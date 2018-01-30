@@ -23,7 +23,13 @@ $(function () {
           if (item && item !== '') {
             window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
           }
-          window.location = '/';
+          var lastLocation = window.sessionStorage.getItem('lastLocation');
+          if (lastLocation) {
+            window.sessionStorage.removeItem('lastLocation');
+            location.replace(lastLocation);
+          } else {
+            location.replace('/');
+          }
         } else {
           showMessage(res.message);
         }
@@ -69,7 +75,7 @@ $(function () {
   $('#index-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    // 验证手机格式  
+    // 验证手机格式
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
     var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
