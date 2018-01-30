@@ -8,7 +8,6 @@ $(function () {
 
   //设置密码post接口
   function modPassword(params) {
-    console.log(params)
     $.ajax({
       url: '/mshz-app/security/user/modPassword',
       data: JSON.stringify(params),
@@ -18,10 +17,10 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage(res.message);
+          showMessage('密码设置完成，请牢记密码！');
           setTimeout(function () {
             window.location = '/';
-          }, 1000);
+          }, 2000);
         } else {
           showMessage(res.message);
         }
@@ -69,15 +68,8 @@ $(function () {
     }
   });
 
-  // 点击到完成并登录成功跳转到index
-  $('#index-entry').on('click', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    window.location = '/index.html';
-  });
-
   // 点击到完成并登录成功跳转到login
-  $('#index-entry').on('click', function (e) {
+  $('#indexEntry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
     var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
@@ -94,16 +86,8 @@ $(function () {
     }
   });
 
-  // 点击到完成并登录成功跳转到login
-  $('#passing').on('click', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-    window.location = '/';
-  });
-
   // 点击返回回到上一页
   $('#back').on('click', function (e) {
-
     e.stopPropagation();
     e.preventDefault();
     history.go(-1);
