@@ -6,6 +6,61 @@ require('../../assets/js/toast.js');  //toast的事件
 
 $(function () {
 
+  //发送图形验证码get接口
+  function getImageVerify() {
+    $.ajax({
+      url: '/mshz-app/verify/image',
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        console.log(res);
+        if (res.status === 'C0000') {
+          showMessage('发送中，请耐心等待');
+        }
+      },
+      error: function (error) {
+        // console.log(error.responseText);
+
+        // console.log(encodeURI(error.responseText))
+        // $('#verifyimg').attr('src', 'data:image/png;base64,' + encodeURI(error.responseText))
+        // console.log('error');
+      }
+    });
+  }
+  // 验证图形验证码的get接口
+  function verifyValidate(params) {
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/verify/validate',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        console.log(res);
+        if (res.status === 'C0000' && res.result) {
+          showMessage(res.message);
+          $('#overlay').hide();
+          $('#send-verify').hide().siblings().show();
+          timer(60);
+          sendcheckcode($.trim($('#tel').val()).replace(/\s/g, ''));
+        } else {
+          showMessage('验证错误，请重新输入');
+          var verifyDom = document.getElementById('verifyimg');
+          var src = verifyDom.src.substring(0, verifyDom.src.indexOf('?') + 1);
+          verifyDom.src = src + Math.random();
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+
+      }
+    });
+  }
+
+
   //发送登录短信验证码get接口
   function sendcheckcode(params) {
     $.ajax({
@@ -137,12 +192,64 @@ $(function () {
       showMessage('请输入正确的手机号');
       return;
     } else {
+      $('#overlay').show();
+
+      if ($('#verifyimg').attr('src') !== '') {
+        var verifyDom = document.getElementById('verifyimg');
+        var src = verifyDom.src.substring(0, verifyDom.src.indexOf('?') + 1);
+        verifyDom.src = src + Math.random();
+      } else {
+        $('#verifyimg').attr('src', '/mshz-app/verify/image?');
+      }
+      $('.textList .items').eq(0).focus();
       // console.log('success')
-      $(this).hide().siblings().show();
-      timer(60);
-      sendcheckcode(telVal);
+      // $(this).hide().siblings().show();
+      // timer(60);
+      // sendcheckcode(telVal);
     }
   });
+
+  // 点击验证图更换
+  $('#verifyimg').on('click', function () {
+    // src的变化会导致请求 
+    var src = this.src.substring(0, this.src.indexOf('?') + 1);
+    this.src = src + Math.random();
+  });
+
+  // 跳文本框
+  $('.textList .items').on('input propertychange', function () {
+    if ($(this).val().length === 1) {
+      $(this).next().focus();
+    } else {
+      $(this).prev().focus();
+    }
+  });
+
+  // 点击noCancel的取消验证
+  $('#noCancel').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $('#overlay').hide();
+
+  });
+
+  // 点击cancel的发送短信验证码
+  $('#cancel').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var code = '';
+    var $textList = $('.textList .items')
+    for (var i = 0; i < $textList.length; i++) {
+      code += $textList.eq(i).val();
+    }
+    $textList.blur();
+    var params = {
+      code: code,
+    }
+    verifyValidate(params);
+  });
+
+
 
   // 点击到完成并登录成功跳转到login
   $('#index-entry').on('click', function (e) {
