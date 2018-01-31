@@ -153,12 +153,13 @@ $(function () {
   // $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
   $('.banner-body').banner({
-    'width': $(window).width(),
-    'height': $(window).width() * 2 / 3,
-    'paginationType': 'fraction',
-    'autoPlay': true, // 是否自动播放
-    'speed': 3000, // 播放速度
-
+    width: $(window).width(),
+    height: $(window).width() * 2 / 3,
+    paginationType: 'fraction',
+    autoPlay: true, // 是否自动播放
+    speed: 3000, // 播放速度
+    pagination: 'pagination', // 分页器的className
+    paginationType: 'bullets', // 分页器的类型   bullets (小点) | fraction (x/y) 
   });
 
   // /* switch header */

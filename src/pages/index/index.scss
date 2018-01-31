@@ -19,7 +19,7 @@ body {
 .header-body {
     width: 100%;
     height: 4.96rem;
-    background: url('./img/feature-garden.jpg') no-repeat;
+    background: url('./img/hearder-bg.png') no-repeat;
     background-size: cover;
 }
 
@@ -270,4 +270,23 @@ body {
 
 #menu {
     display: none;
+}
+
+//pagination
+.banner-body .pagination {
+    @include flex-box;
+    margin-bottom: 1.2rem;
+    background-color: transparent;
+}
+
+.pagination span {
+    height: 0.12rem;
+    width: 0.12rem;
+    margin-left: 0.12rem;
+    border-radius: .06rem;
+    background-color: #fff;
+}
+
+.pagination .current {
+    background-color: $color;
 }
