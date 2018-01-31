@@ -8,14 +8,21 @@
     height: 3.84rem;
 }
 
+.other-line,
 .three-rline,
 .three-lline,
 .item-oneline,
 .item-twoline,
 .item-threeline {
     @include flex-box;
-    @include flex-direction;
     @include align-items;
+}
+
+.other-line {
+    @include flex;
+    @include justify-content(flex-end);
+    font-size: .2rem;
+    color: rgba(181, 185, 190, 1);
 }
 
 .index-list .item-oneline {

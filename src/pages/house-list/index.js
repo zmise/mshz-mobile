@@ -8,6 +8,14 @@ require('../../assets/js/calendar.js');//日期插件
 
 require('../../assets/js/filter.js');//筛选功能
 require('../../assets/js/appDownload.js');//全局下载APP
+var util = require('../../util/');
+
+var b = new Date();
+var today = util.formatDate(b, 'yyyy-MM-dd');
+
+b = new Date(b.getTime() + 24 * 3600 * 1000);
+var tomorrow = util.formatDate(b, 'yyyy-MM-dd');
+
 
 var params = {};
 $(function () {
@@ -63,6 +71,9 @@ $(function () {
                   '    <div class="three-rline">' +
                   '      <i class="twoline-items">' + item.area + '住过</i>' +
                   '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                  '    </div>' +
+                  '    <div class="other-line">' +
+                  '      <span>距我 963m</span>' +
                   '    </div>' +
                   '  </div>' +
                   '</a>';
@@ -151,6 +162,10 @@ $(function () {
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
 
+  if (params.startDate === "") {
+    params.startDate = today;
+    params.endData = tomorrow;
+  }
   $('#firstSelect').calendarSwitch({
     selectors: {
       sections: ".calendar"
