@@ -4,12 +4,37 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
+@import '../../sass/loading.scss'; // 加载中
 body {
     position: relative;
     padding-top: .88rem;
     background-color: #f5f5f5;
     height: 100%;
     box-sizing: border-box;
+}
+
+.header-body {
+    background-color: #fff;
+}
+
+.header-body .title {
+    color: rgba(42, 43, 45, 1);
+}
+
+.header-body .close {
+    @include position(absolute, 0, auto, auto, 0, 10);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: .88rem;
+    height: .88rem;
+    overflow: hidden;
+    font-size: .36rem;
+}
+
+.header-body .close .icon {
+    font-size: .3rem;
+    color: $color;
 }
 
 .article-body {
@@ -29,7 +54,7 @@ body {
 /* comment-body */
 
 .total {
-    margin-top: .3rem;
+    margin-top: .12rem;
     border-bottom: $border;
     padding: 0 .35rem .2rem;
     background-color: #fff;
@@ -180,3 +205,8 @@ body {
 //     @include flex;
 //     color: rgba(94, 100, 107, 1);
 // }
+.star-lines {
+    width: 1.2rem;
+    height: .2rem;
+    background-color: #ff5c5c;
+}
