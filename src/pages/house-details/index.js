@@ -123,7 +123,7 @@ $(function () {
   // }
 
   //增加用户收藏房源post接口
-  function addUserCollectRoom(params) {
+  function addUserCollectRoom(params, el) {
     console.log(params)
     $.ajax({
       url: '/mshz-app/security/userinfo/addUserCollectRoom',
@@ -134,8 +134,8 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('收藏房源成功');
-
+          showMessage('收藏房源成功！');
+          $(el).data('status', 'collect');
         } else {
           showMessage(res.message);
         }
@@ -148,7 +148,7 @@ $(function () {
   }
 
   //删除用户收藏房源post接口
-  function deleteUserCollectRoom(params) {
+  function deleteUserCollectRoom(params, el) {
     console.log(params)
     $.ajax({
       url: '/mshz-app/security/userinfo/deleteUserCollectRoom',
@@ -159,7 +159,8 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('移除房源成功');
+          showMessage('取消收藏房源成功！');
+          $(el).data('status', '');
         } else {
           showMessage(res.message);
         }
@@ -250,14 +251,14 @@ $(function () {
       $(this).toggleClass('clc-red');
       var status = $(this).data('status');
       var params = {
-        situationId: $(this).data('situationId'),
+        situationId: $('#situation').val(),
       };
       if (status === 'collect') {
-        $(this).attr('data-status', '');
-        deleteUserCollectRoom(params);
+        // $(this).attr('data-status', '');
+        deleteUserCollectRoom(params, this);
       } else {
-        $(this).attr('data-status', 'collect');
-        addUserCollectRoom(params);
+        // $(this).attr('data-status', 'collect');
+        addUserCollectRoom(params, this);
       }
     });
 
@@ -271,12 +272,14 @@ $(function () {
     $('.banner-body').on('click', '#collect', function (e) {
       event.preventDefault();
       event.stopPropagation();
+      sessionStorage.setItem('lastLocation', location.href);
       window.location = '/user/login.html';
     });
 
     $('#orderCheck-entry').on('tap', function (e) {
       event.preventDefault();
       event.stopPropagation();
+      sessionStorage.setItem('lastLocation', location.href);
       window.location = '/user/login.html';
     });
   }
