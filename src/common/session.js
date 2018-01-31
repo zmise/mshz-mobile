@@ -28,6 +28,7 @@ $(document).off('ajaxError').on('ajaxError', function (res, xhr) {
     return;
   } else if (xhr.status == 401 && !invalidSession) {
     invalidSession = !0;
+    window.sessionStorage.removeItem('loginInfo');
     window.sessionStorage.setItem('lastLocation', location.href);
     location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }
@@ -45,7 +46,8 @@ $(document).off('ajaxComplete').on('ajaxComplete', function (e, req, options) {
     return false;
   }
   var data = JSON.parse(req.responseText);
-  if (data.code === 'EXXXX') {
+  if (data.code === 'EXXXX') { // todo 与接口约定的错误编码
+    window.sessionStorage.removeItem('loginInfo');
     window.sessionStorage.setItem('lastLocation', location.href);
     location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }
