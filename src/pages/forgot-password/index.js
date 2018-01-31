@@ -276,6 +276,7 @@ $(function () {
         checkcode: verifyVal,
         newPassword: pswVal,
         phone: telVal,
+        source: 'WAP',
       };
       findpassword(listParams);
     }
