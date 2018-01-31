@@ -11,9 +11,83 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 
-
+var lng;
+var lat;
 
 $(function () {
+
+  //h5本地获取地理位置
+  function getLocation() {
+
+    var options = {
+      enableHighAccuracy: true, //boolean 是否要求高精度的地理信息，默认为false
+      maximumAge: 1000 //应用程序的缓存时间
+    }
+
+    if (navigator.geolocation) {
+      //浏览器支持geolocation
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+    } else {
+      //浏览器不支持geolocation
+      console.log("浏览器不支持!");
+    }
+  }
+
+  //成功时
+  function onSuccess(position) {
+    //返回用户位置
+    //经度
+    lng = position.coords.longitude;
+    //纬度
+    lat = position.coords.latitude;
+
+    //使用腾讯地图API
+
+    //腾讯地图的中心地理坐标
+    var center = new qq.maps.LatLng(latitude, longitude);
+    var map = new qq.maps.Map(document.getElementById("container"), {
+      //地图的中心地理坐标
+      center: center,
+      //初始化地图缩放级别
+      zoom: 16
+    });
+
+    //在地图中创建信息提示窗口
+    var infoWin = new qq.maps.InfoWindow({
+      map: map
+    });
+    //打开信息窗口
+    infoWin.open();
+    //设置信息窗口显示区的内容
+    infoWin.setContent('' + '您在这里纬度：' + latitude + '经度：' + longitude);
+    //设置信息窗口的位置
+    infoWin.setPosition(center);
+  }
+
+  //失败时
+  function onError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        alert("用户拒绝对获取地理位置的请求");
+        break;
+
+      case error.POSITION_UNAVAILABLE:
+        alert("位置信息是不可用的");
+        break;
+
+      case error.TIMEOUT:
+        alert("请求用户地理位置超时");
+        break;
+
+      case error.UNKNOWN_ERROR:
+        alert("未知错误");
+        break;
+    }
+
+  }
+
+
 
   //searchInfo
   function searchInfo(cityName) {
@@ -68,11 +142,19 @@ $(function () {
 
 
   function bdGetPosition(result) {
+    // console.log(result);
     var cityName = result.name;
     if (cityName.indexOf('市') != -1) {
       cityName = cityName.replace('市', '');
     }
-    $('#destination-entry').val(cityName);
+    if ($('#destination-entry').val() == '') {
+      $('#destination-entry').val(cityName);
+    }
+    lat = result.center.lat;
+    lng = result.center.lng;
+    if (!lat || !lng || lng === '' || lat === '') {
+      window.onload = getLocation;
+    }
   }
 
 
@@ -104,11 +186,10 @@ $(function () {
 
   }
 
+  // 百度接口的定位获取信息（cityName，lat，lng）
+  var nowCity = new BMap.LocalCity();
+  nowCity.get(bdGetPosition);
 
-  if ($('#destination-entry').val() == '') {
-    var nowCity = new BMap.LocalCity();
-    nowCity.get(bdGetPosition);
-  }
   initTime();
 
   // console.log(startDate);
@@ -220,7 +301,11 @@ $(function () {
   });
 
 
-  //获取位置的经纬度
+
+
+
+  // getLocation();
+  // //获取当前位置的经纬度
   // function getLocation() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(showPosition);
@@ -232,11 +317,10 @@ $(function () {
   // }
 
   // function showPosition(position) {
-
-  //   //   x.innerHTML="纬度: " + position.coords.latitude +
-  //   // "<br>经度: " + position.coords.longitude;
-  //   alert('纬度: ' + position.coords.latitude +
-  //     '经度: ' + position.coords.longitude)
+  //   console.log(position.coords.latitude);
+  //   console.log(position.coords.longitude);
+  //   // alert('纬度: ' + position.coords.latitude +
+  //   //   '经度: ' + position.coords.longitude)
   // }
   // $('#location').on('tap', function (e) {
   //   e.stopPropagation();
@@ -286,7 +370,10 @@ $(function () {
     if (poi != "") {
       path += "&poi=" + poi;
     }
-    console.log(path);
+    if (lat !== '' && lng !== '') {
+      path += "&lat=" + lat + "&lng=" + lng;
+    }
+    // console.log(path);
     window.location = path;
   })
 

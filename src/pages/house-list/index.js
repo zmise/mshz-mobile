@@ -71,10 +71,14 @@ $(function () {
                   '    <div class="three-rline">' +
                   '      <i class="twoline-items">' + item.area + '住过</i>' +
                   '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-                  '    </div>' +
-                  '    <div class="other-line">' +
-                  '      <span>距我 963m</span>' +
-                  '    </div>' +
+                  '    </div>';
+                if (item.discDesc) {
+                  str +=
+                    '    <div class="other-line">' +
+                    '      <span>距我 ' + item.discDesc + 'm</span>' +
+                    '    </div>';
+                }
+                str +=
                   '  </div>' +
                   '</a>';
               }
@@ -148,7 +152,9 @@ $(function () {
       roomCount: $('#roomCount').val() === '' ? '' : +$('#roomCount').val(),
       furniture: $('#furniture').val(),
       currentPage: $('#page').val(),
-      pageSize: 20,
+      pageSize: 10,
+      lng: $('#lng').val(),
+      lat: $('#lat').val(),
     };
   }
 
@@ -347,9 +353,7 @@ $(function () {
 
   $(document).on('scroll.loading', function (e) {
     var _footerHeight = $('.footer-body').outerHeight(true) || 0;
-    console.log(_footerHeight);
     var _heg = $(document).height() - _footerHeight;
-    console.log(_heg);
 
     if ($(this).scrollTop() + $(window).height() < _heg) {
       return;
