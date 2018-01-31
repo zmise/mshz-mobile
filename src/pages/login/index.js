@@ -72,6 +72,8 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('发送中，请耐心等待');
+        } else {
+          showMessage(res.message);
         }
       },
       error: function (error) {
