@@ -15,7 +15,7 @@ $(function () {
 
   function loadingMore() {
     initParams();
-    console.log(params);
+    // console.log(params);
     var lastParams = {}
     for (var prop in params) {
       if (params[prop] !== '' && params[prop]) {
@@ -40,6 +40,7 @@ $(function () {
             var data = res.result.items;
             var str = '';
             if (data.length > 0) {
+              $('.unusual-body').remove();
               for (var i = 0; i < data.length; i++) {
                 var item = data[i];
                 str +=
@@ -66,38 +67,45 @@ $(function () {
                   '  </div>' +
                   '</a>';
               }
-
-              if (params.page === '1') {
-                $('.recommend-body .mrl_35').empty().append(str);
-              } else {
-                $('.recommend-body .mrl_35').append(str);
+              if (res.result.currentPage === '1') {
+                $('.recommend-body .mrl_35').empty()
               }
+              $('.recommend-body .mrl_35').append(str);
             } else {
-              str =
-                '<section class="unusual-body">' +
-                '  <div class="no-house"></div>' +
-                '  <span>很抱歉，没有搜索到房源</span>' +
-                '</section>'
-                ;
-              $('.recommend-body .mrl_35').empty();
-              $('.unusual-body').remove();
+              if (res.result.currentPage === '1') {
+                $('.recommend-body .mrl_35').empty();
+                str =
+                  '<section class="unusual-body">' +
+                  '  <div class="no-house"></div>' +
+                  '  <span>很抱歉，没有搜索到房源</span>' +
+                  '</section>'
+                  ;
+              }
               $('.article-body').append(str);
+              // str =
+              //   '<section class="unusual-body">' +
+              //   '  <div class="no-house"></div>' +
+              //   '  <span>很抱歉，没有搜索到房源</span>' +
+              //   '</section>'
+              //   ;
+              // $('.recommend-body .mrl_35').empty();
             }
-
-
-            $('.loading').remove();
+            // $('.loading').remove();
           }
         }
       },
       error: function (error) {
         console.log(error);
         console.log('error');
+        $('.recommend-body .mrl_35').empty();
+        $('.unusual-body').remove();
         var str =
           '<section class="unusual-body">' +
           '  <div class="no-network"></div>' +
           '  <span>网络请求失败，请检查网络</span>' +
-          '</section>'
-          ;
+          '</section>';
+        $('.article-body').append(str);
+
       }
     });
 
@@ -192,7 +200,7 @@ $(function () {
     if (poi == '不限') {
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
     } else {
-      console.log('zmise')
+      // console.log('zmise')
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
     }
     $('#poi').val(poi);
@@ -324,25 +332,25 @@ $(function () {
 
   $(document).on('scroll.loading', function (e) {
     var _footerHeight = $('.footer-body').outerHeight(true) || 0;
+    console.log(_footerHeight);
     var _heg = $(document).height() - _footerHeight;
+    console.log(_heg);
 
     if ($(this).scrollTop() + $(window).height() < _heg) {
       return;
     }
     if (!$('.loading').length) {
       $('.article-body').append(_html);
-
       //加载更多请求
       // params.page++;
       var page = $('#page').val() - 0 + 1;
       $('#page').val(page);
-      console.log(page);
       loadingMore();
     }
     $('.loading').show();
-    /*setTimeout(function() {
+    setTimeout(function () {
       $('.loading').hide();
-    }, 3000);*/
+    }, 3000);
   });
 
   /* loadinging end*/
