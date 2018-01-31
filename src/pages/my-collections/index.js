@@ -25,7 +25,7 @@ $(function () {
           for (var i = 0; i < array.length; i++) {
             var item = array[i];
 
-            str =
+            str +=
               '<div class="listItems">' +
               '  <a href="/houseDetails?id=' + item.id + '">' +
               '    <div class="index-list">' +
