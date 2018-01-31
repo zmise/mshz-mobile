@@ -169,13 +169,24 @@ function orderInfo() {
     location.replace('error.html?code=E0001');
   }
 
+  var reqSource = getUrlParam('reqSource');
+  var params = {}
+  if (reqSource && reqSource !== '') {
+    params = {
+      orderNo: orderNo,
+      reqSource: reqSource,
+    }
+  } else {
+    params = {
+      orderNo: orderNo
+    }
+  }
+
   var dfd = $.Deferred();
 
   $.ajax({
     url: '/mshz-app/security/app/order/queryOrderDetail',
-    data: {
-      orderNo: orderNo
-    },
+    data: params,
     dataType: 'json',
     type: 'GET',
     cache: false
