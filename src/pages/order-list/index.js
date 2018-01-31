@@ -107,7 +107,7 @@ $(function () {
                       '    <a href="javascript:;" class="cancel-order" data-order-no="' + item.orderNo + '">取消订单</a>';
                   }
                   strB +=
-                    '      <a class="current3" href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
+                    '      <a class="current3" href="/houseDetails?id=' + item.situationId + '">再次预订</a>' +
                     '    </div>' +
                     '  </div>' +
                     '</div>';
@@ -122,7 +122,7 @@ $(function () {
                     '  <div class="status">' +
                     '    <span class="title current3">已入住</span>' +
                     '    <div class="stu-but">' +
-                    '      <a class="current3" href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
+                    '      <a class="current3" href="/houseDetails?id=' + item.situationId + '">再次预订</a>' +
                     '    </div>' +
                     '  </div>' +
                     '</div>';
@@ -141,7 +141,7 @@ $(function () {
                     '  <div class="status">' +
                     '    <span class="title current2">' + item.orderStateDesc + '</span>' +
                     '    <div class="stu-but">' +
-                    '      <a href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
+                    '      <a href="/houseDetails?id=' + item.situationId + '">再次预订</a>' +
                     '      <a class="current2" href="./comment-order.html?orderNo=' + item.orderNo + '&roomId=' + item.roomId + '">评价订单</a>' +
                     '    </div>' +
                     '  </div>' +
@@ -188,7 +188,7 @@ $(function () {
                 }
                 str +=
                   '    <div class="stu-but">' +
-                  '      <a class="current3" href="./order-details.html?orderNo=' + item.orderNo + '">再次预订</a>' +
+                  '      <a class="current3" href="/houseDetails?id=' + item.situationId + '">再次预订</a>' +
                   '    </div>' +
                   '  </div>' +
                   '</div>';
