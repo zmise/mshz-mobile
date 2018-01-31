@@ -1,4 +1,24 @@
 $(function () {
+
+  //发送图形验证码get接口
+  function logout() {
+    $.ajax({
+      url: '/mshz-app/openapi/user/logout',
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+  }
+
+
   var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
   if (loginInfo) {
     // console.log(loginInfo);
@@ -29,12 +49,12 @@ $(function () {
       '       <span class="txt">订单</span>' +
       '       <span class="num">6</span>' +
       '     </a>' +
-      '     <a class="items" href="/user/my-collection.html">' +
-      // '     <a class="items" href="/my-collection.html">' +
+      '     <a class="items" href="/user/my-collections.html">' +
+      // '     <a class="items" href="/my-collections.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>' +
       '       <span class="txt">收藏</span>' +
       '     </a>' +
-      '     <a class="items" href="/user/my-footprint.html">' +
+      '     <a class="items" href="/user/my-footprints.html">' +
       '       <i class="icon iconfont icon-zuji"></i>' +
       '       <span class="txt">足迹</span>' +
       '     </a>';
@@ -125,10 +145,12 @@ $(function () {
   /*  点击退出登录  */
   $('body').on('click', '#outLogin', function (e) {
     e.stopPropagation();
+    e.preventDefault();
 
     // var path = '/user/order-list.html';
-    console.log(123);
+    // console.log(123);
     window.sessionStorage.removeItem('loginInfo');
+    logout();
   });
 
   // /*  点击进入订单列表  */
