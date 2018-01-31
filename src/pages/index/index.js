@@ -29,17 +29,20 @@ $(function () {
       cache: false,
       success: function (data) {
         // console.log('success');
-        var json = data.result;
+        var json = data.result || [];
         console.log(json);
         //取localStorage中搜索历史的值
-        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
+        var city = $.trim($('#destination-entry').val());
+
+        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+        var item = searchHistroy[city] || [];
         var str = '';
 
-        if (searchHistroy.length > 0) {
+        if (item.length > 0) {
           str =
             '<div class="theme"><div class="title">搜索历史</div><div class="keywords">';
-          for (var i = 0; i < searchHistroy.length; i++) {
-            str += '<a class="items" href="javascript:;">' + searchHistroy[i] + '</a>';
+          for (var i = 0; i < item.length; i++) {
+            str += '<a class="items" href="javascript:;">' + item[i] + '</a>';
           }
 
           str += '</div></div>';
@@ -274,7 +277,7 @@ $(function () {
     var city = $("#destination-entry").val();
     var poi = $("#search-entry").val();
     var dates = $("#firstSelect").val();
-    var path = "/houseList?city=" + city
+    var path = "/houseList?city=" + city;
     if (dates != "") {
       var split = dates.split("至");
       var str = "&startDate=" + split[0] + "&endDate=" + split[1];
@@ -297,6 +300,7 @@ $(function () {
     $(this).closest('.des-body').hide();
     $('body,html').css({ 'overflow': 'visible' });
   });
+  /* 切换目的地时的事件 */
   $('.des-hot-city .items').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -309,11 +313,8 @@ $(function () {
     //   var cityName = pinyin.convertToPinyin(cityName)
     // }
     // $('#destination-entry').attr('data-cityname', cityName);
-
-
     $(this).closest('.des-body').hide();
     $('body,html').css({ 'overflow': 'visible' });
-
   });
   $('.des-list .txt').on('tap', function (e) {
     e.stopPropagation();
@@ -324,7 +325,7 @@ $(function () {
   });
 
 
-  /* 进入搜索页 */
+  /* 进入搜索列表 */
   $('#handleSearch').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();

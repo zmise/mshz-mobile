@@ -20,24 +20,30 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     // console.log($(this).closest('.search-layer').html());
+    // console.log($("#destination-entry").val());
     $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
 
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
 
     $('#search-entry').val($(this).text());
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
-    for (var i = 0; i < searchHistroy.length; i++) {
-      var item = searchHistroy[i];
+    var city = $.trim($('#destination-entry').val());
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    // if(searchHistroy[city])
+    var cityItem = searchHistroy[city] || [];
+    // console.log(item);
+    for (var i = 0; i < cityItem.length; i++) {
+      var item = cityItem[i];
       if (item == $(this).text()) {
-        searchHistroy.splice(i, 1);
+        cityItem.splice(i, 1);
       }
     }
-    searchHistroy.push($(this).text());
-
-    if (searchHistroy.length > 10) {
-      searchHistroy.shift();
+    console.log(cityItem);
+    cityItem.push($(this).text());
+    if (cityItem.length > 10) {
+      cityItem.shift();
     }
+    searchHistroy[city] = cityItem;
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();
     // var newListHTML = search();
