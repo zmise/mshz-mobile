@@ -12,6 +12,7 @@ $(function () {
     e.preventDefault();
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
+    $('.search-body input').blur();
     // $('#search-entry').val($('.text-body .text').val());
   });
 
@@ -25,6 +26,7 @@ $(function () {
 
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
+    $('.search-body input').blur();
 
     $('#search-entry').val($(this).text());
     var city = $.trim($('#destination-entry').val());
@@ -119,6 +121,7 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.search-layer').hide();
+    $('.search-body input').blur();
     $('body,html').css({ 'overflow': 'visible' });
     $('#search-entry').val($(this).data('keyword'));
     var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
