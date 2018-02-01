@@ -11,7 +11,7 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 
-var lng;
+var lon;
 var lat;
 
 $(function () {
@@ -38,7 +38,7 @@ $(function () {
   function onSuccess(position) {
     //返回用户位置
     //经度
-    lng = position.coords.longitude;
+    lon = position.coords.longitude;
     //纬度
     lat = position.coords.latitude;
 
@@ -151,8 +151,8 @@ $(function () {
       $('#destination-entry').val(cityName);
     }
     lat = result.center.lat;
-    lng = result.center.lng;
-    if (!lat || !lng || lng === '' || lat === '') {
+    lon = result.center.lng;
+    if (!lat || !lon || lon === '' || lat === '') {
       window.onload = getLocation;
     }
   }
@@ -186,7 +186,7 @@ $(function () {
 
   }
 
-  // 百度接口的定位获取信息（cityName，lat，lng）
+  // 百度接口的定位获取信息（cityName，lat，lon）
   var nowCity = new BMap.LocalCity();
   nowCity.get(bdGetPosition);
 
@@ -370,8 +370,8 @@ $(function () {
     if (poi != "") {
       path += "&poi=" + poi;
     }
-    if (lat !== '' && lng !== '') {
-      path += "&lat=" + lat + "&lng=" + lng;
+    if (lat !== '' && lon !== '') {
+      path += "&lat=" + lat + "&lon=" + lon;
     }
     // console.log(path);
     window.location = path;

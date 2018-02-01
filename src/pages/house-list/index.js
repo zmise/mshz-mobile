@@ -1,11 +1,8 @@
 require('./index.scss');
-
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
-
 require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
-
 require('../../assets/js/filter.js');//筛选功能
 require('../../assets/js/appDownload.js');//全局下载APP
 var util = require('../../util/');
@@ -47,8 +44,58 @@ $(function () {
           if (res.result && res.result.items) {
             var data = res.result.items;
             var str = '';
-            if (data.length > 0) {
+            if (res.result.currentPage === 1) {
               $('.unusual-body').remove();
+              $('.recommend-body .mrl_35').empty();
+              if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                  var item = data[i];
+                  str +=
+                    '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
+                    '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                    '  <div class="item-oneline">' +
+                    '    <p>' + item.title + '</p>' +
+                    '    <p>￥' + item.price + '</p>' +
+                    '  </div>' +
+                    '  <div class="item-twoline">' +
+                    '    <i class="twoline-items">' + item.cityName + '</i>' +
+                    '    <i class="twoline-items">' + item.houseType + '</i>' +
+                    '    <i class="twoline-items">' + item.customerCount + '人</i>' +
+                    '  </div>' +
+                    '  <div class="item-threeline">' +
+                    '    <div class="three-lline">' +
+                    '      <div class="star-lines"></div>' +
+                    '      <i class="score">' + item.rateServer + '分</i>' +
+                    '    </div>' +
+                    '    <div class="three-rline">' +
+                    '      <i class="twoline-items">' + item.area + '住过</i>' +
+                    '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                    '    </div>';
+                  if (item.distDesc) {
+                    str +=
+                      '    <div class="other-line">' +
+                      '      <span>距我 ' + item.distDesc + 'm</span>' +
+                      '    </div>';
+                  }
+                  str +=
+                    '  </div>' +
+                    '</a>';
+                }
+                $('.recommend-body .mrl_35').append(str);
+
+              } else {
+                str =
+                  '<section class="unusual-body">' +
+                  '  <div class="no-house"></div>' +
+                  '  <span>很抱歉，没有搜索到房源</span>' +
+                  '</section>'
+                  ;
+                $('.article-body').append(str);
+
+              }
+
+            } else {
+
               for (var i = 0; i < data.length; i++) {
                 var item = data[i];
                 str +=
@@ -72,40 +119,26 @@ $(function () {
                   '      <i class="twoline-items">' + item.area + '住过</i>' +
                   '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
                   '    </div>';
-                if (item.discDesc) {
+                if (item.distDesc) {
                   str +=
                     '    <div class="other-line">' +
-                    '      <span>距我 ' + item.discDesc + 'm</span>' +
+                    '      <span>距我 ' + item.distDesc + 'm</span>' +
                     '    </div>';
                 }
                 str +=
                   '  </div>' +
                   '</a>';
               }
-              if (res.result.currentPage === '1') {
-                $('.recommend-body .mrl_35').empty()
-              }
-              $('.recommend-body .mrl_35').append(str);
-            } else {
-              if (res.result.currentPage === '1') {
-                $('.recommend-body .mrl_35').empty();
-                str =
-                  '<section class="unusual-body">' +
-                  '  <div class="no-house"></div>' +
-                  '  <span>很抱歉，没有搜索到房源</span>' +
-                  '</section>'
-                  ;
-              }
-              $('.article-body').append(str);
-              // str =
-              //   '<section class="unusual-body">' +
-              //   '  <div class="no-house"></div>' +
-              //   '  <span>很抱歉，没有搜索到房源</span>' +
-              //   '</section>'
-              //   ;
-              // $('.recommend-body .mrl_35').empty();
+              setTimeout(function () {
+                $('.recommend-body .mrl_35').append(str);
+                $('.loading').remove();
+              }, 1000);
             }
-            // $('.loading').remove();
+
+            // $('.loading').hide();
+            // setTimeout(function () {
+            //   $('.loading').remove();
+            // }, 3000);
           }
         }
       },
@@ -153,7 +186,7 @@ $(function () {
       furniture: $('#furniture').val(),
       currentPage: $('#page').val(),
       pageSize: 10,
-      lng: $('#lng').val(),
+      lon: $('#lon').val(),
       lat: $('#lat').val(),
     };
   }
@@ -367,9 +400,9 @@ $(function () {
       loadingMore();
     }
     $('.loading').show();
-    setTimeout(function () {
-      $('.loading').hide();
-    }, 3000);
+    // setTimeout(function () {
+    //   $('.loading').hide();
+    // }, 1000);
   });
 
   /* loadinging end*/

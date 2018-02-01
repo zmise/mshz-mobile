@@ -6,7 +6,10 @@
 }
 
 .loading {
-    @include position(absolute, 50%, auto, auto, 50%, 999999);
+    @include position(fixed, 65%, auto, auto, 43%, 999999);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
     width: 160px;
     height: 56px;
     margin-left: -80px;
