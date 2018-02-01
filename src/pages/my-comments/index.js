@@ -81,7 +81,7 @@ $(function () {
           var str =
             '<div class="self-assess">' +
             '<div class="time-score">' +
-            '  <span class="time">' + data.commentTime + '</span>' +
+            '  <span class="time">' + data.commentTimeDesc + '</span>' +
             '  <div class="score">' +
             '    <span>' + data.score + '</span>' +
             '    <div class="start-line"></div>' +
@@ -103,7 +103,7 @@ $(function () {
             '  <div class="i-txt">' +
             '    <span class="title">' + data.title + '</span>' +
             '    <div class="time">' +
-            '      <span>' + data.startTime + '至' + data.endTime + '</span>' +
+            '      <span>' + data.startTimeDesc + '至' + data.endTimeDesc + '</span>' +
             '      <span>' + data.days + '晚</span>' +
             '    </div>' +
             '    <span class="price">¥' + data.roomRate + '</span>' +
