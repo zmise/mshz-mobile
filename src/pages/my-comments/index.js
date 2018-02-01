@@ -77,7 +77,7 @@ $(function () {
       cache: false,
       success: function (res) {
         console.log(res);
-        if (res.status === 'C0000' && res.result !== '' && res.result) {
+        if (res.status === 'C0000' && res.result) {
           var data = res.result;
           var str =
             '<div class="self-assess">' +
@@ -89,7 +89,7 @@ $(function () {
             '  </div>    ' +
             '</div>' +
             '<div class="text-img">' +
-            '  <span class="txt">' + data.content + '</span>';
+            '  <span class="txt">' + (data.content.lenght > 0 ? data.content : '暂无评论') + '</span>';
 
           // <div class="img-list">
 
@@ -140,18 +140,13 @@ $(function () {
                   '    <span>' + item[i].replyContent + '</span>' +
                   '  </div>';
               }
-
-              // str += 
             }
-
-
           }
           str += '</div>';
 
           $('.article-body').empty().append(str);
 
         }
-
       },
       error: function (error) {
         console.log(error);
@@ -179,7 +174,6 @@ $(function () {
   } else {
     location.replace('error.html?code=E0001')
   }
-
 
   // //点击进入房源详情houseDetails
   // $('.article-body').on('tap', '.houseDetail-entry', function (e) {

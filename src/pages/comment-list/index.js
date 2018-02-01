@@ -29,9 +29,9 @@ $(function () {
             var item = data[i];
             str +=
               '<div class="all-assess myassess-entry" data-id="' + item.id + '">' +
-              '<span class="time">' + item.commentTime + '</span>' +
+              '<span class="time">' + item.commentTimeDesc + '</span>' +
               '<div class="text-img">' +
-              '  <span class="txt">' + item.content + '</span>';
+              '  <span class="txt">' + (item.content.lenght > 0 ? item.content : '暂无评论') + '</span>';
 
             // 拼接评论图片
             var imgs = item.commentPicture.split(',');

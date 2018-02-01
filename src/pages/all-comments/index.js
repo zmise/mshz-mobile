@@ -36,33 +36,34 @@ $(function () {
             '</div>';
           var array = data.comment.items || [];
           for (var i = 0; i < array.length; i++) {
+            var item = array[i];
             str +=
               '<div class="comment-body">' +
               '  <div class="first-comment">' +
               '    <div class="info">' +
               '      <div class="flex-box">' +
-              '        <img class="photo" src="' + array[i].headPortrait.replace('{size}', '88x88') + '"/>' +
+              '        <img class="photo" src="' + item.headPortrait.replace('{size}', '88x88') + '"/>' +
               '        <div class="name-time">' +
-              '          <span>' + array[i].nickName + '</span>' +
-              '          <span>' + array[i].commentTimeDesc + '</span>' +
+              '          <span>' + item.nickName + '</span>' +
+              '          <span>' + item.commentTimeDesc + '</span>' +
               '        </div>' +
               '      </div>' +
-              '      <span class="socre">' + array[i].score + '分</span>' +
+              '      <span class="socre">' + item.score + '分</span>' +
               '    </div>' +
               '    <div class="des">' +
-              '      <p class="des-cnt">' + array[i].content + '</p>';
+              '      <p class="des-cnt">' + (item.content.lenght > 0 ? item.content : '暂无评论') + '</p>';
 
-            if (array[i].commentPicture !== '') {
+            if (item.commentPicture !== '') {
               str += '      <div class="img-list">';
-              var comPicArray = array[i].commentPicture.split(',');
+              var comPicArray = item.commentPicture.split(',');
               for (var k = 0; k < comPicArray.length; k++) {
                 str +=
-                  '        <img class="items " src="' + comPicArray[k].replace('{size}', '144x144') + '"/>';
+                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '144x144') + '"/>';
               }
               str += '      </div>';
             }
 
-            var list = array[i].replyList;
+            var list = item.replyList;
             if (list.length > 0) {
               str += '      <div class="des-duihua">'
               for (var j = 0; j < list.length; j++) {
@@ -106,7 +107,7 @@ $(function () {
     if (r != null) return unescape(r[2]); return null; //返回参数值
   }
 
-  var roomId = getUrlParam('roomId') || 'cdbfd42e-d6fc-4d43-8254-dc594f0fd181';
+  var roomId = getUrlParam('roomId');
 
   if (!roomId) {
     location.replace('error.html?code=E0001')
@@ -119,9 +120,6 @@ $(function () {
     }
     queryRoomComment(params)
   }
-
-
-
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
