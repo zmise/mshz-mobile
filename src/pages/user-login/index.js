@@ -5,6 +5,7 @@ require('../../assets/js/toast.js');  //toast的事件
 
 
 $(function () {
+  window.sessionStorage.removeItem('loginInfo');
 
   //发送密码&手机号登录post接口
   function password(params) {
@@ -100,7 +101,7 @@ $(function () {
   $('#login-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    window.location = './login.html';
+    location.replace('./login.html');
   });
 
 
@@ -108,7 +109,7 @@ $(function () {
   $('#forgotPsw-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    window.location = './forgot-password.html';
+    location.replace('./forgot-password.html');
   });
   // 点击返回回到上一页
   $('#back').on('click', function (e) {

@@ -5,6 +5,8 @@ require('../../assets/js/toast.js');  //toast的事件
 
 
 $(function () {
+  window.sessionStorage.removeItem('loginInfo');
+
   //发送图形验证码get接口
   function getImageVerify() {
     $.ajax({
@@ -215,7 +217,7 @@ $(function () {
 
   // 点击验证图更换
   $('#verifyimg').on('click', function () {
-    // src的变化会导致请求 
+    // src的变化会导致请求
     var src = this.src.substring(0, this.src.indexOf('?') + 1);
     this.src = src + Math.random();
   });
@@ -285,7 +287,7 @@ $(function () {
   $('#userLogin-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    window.location = './user-login.html';
+    location.replace('./user-login.html');
   });
 
 
