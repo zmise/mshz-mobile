@@ -6,7 +6,7 @@ require('../../assets/js/plugins.js');
 function getUrlParam(name) {
   var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)'); //构造一个含有目标参数的正则表达式对象
   var r = window.location.search.substr(1).match(reg); //匹配目标参数
-  if (r != null) return decodeURI(r[2]); //处理中文乱码
+  if (r != null) return decodeURIComponent(r[2]); //处理中文乱码
   return null; //返回参数值
 }
 
@@ -45,25 +45,22 @@ ComplexCustomOverlay.prototype.initialize = function (map) {
   div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
   div.style.backgroundColor = '#000';
   div.style.color = '#fff';
-  div.style.paddingTop = '.1rem';
-  div.style.paddingBottom = '.1rem';
-  div.style.paddingRight = '.2rem';
-  div.style.paddingLeft = '.2rem';
+  div.style.padding = '.1rem .2rem';
   div.style.fontSize = '.24rem';
-  div.style.whiteSpace = "nowrap";
-  div.style.MozUserSelect = "none";
+  div.style.whiteSpace = 'nowrap';
+  div.style.MozUserSelect = 'none';
   div.style.opacity = .6;
   div.style.borderRadius = '.2rem';
   var span = this._span = document.createElement('span');
-  span.className = 'overSpan';
+  span.id = 'textName';
   div.appendChild(span);
   span.appendChild(document.createTextNode(this._text));
   var that = this;
   var arrow = this._arrow = document.createElement('div');
 
   arrow.style.position = 'absolute';
-  arrow.style.width = '0rem';
-  arrow.style.height = '0rem';
+  arrow.style.width = '0';
+  arrow.style.height = '0';
   arrow.style.borderTop = '.2rem solid #000';
   arrow.style.borderLeft = '.1rem solid transparent';
   arrow.style.borderRight = '.1rem solid transparent';
@@ -78,10 +75,11 @@ ComplexCustomOverlay.prototype.draw = function () {
   var map = this._map;
   var pixel = map.pointToOverlayPixel(this._point);
   // this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
-  this._div.style.left = pixel.x - 30 + "px";
-  this._div.style.top = pixel.y - 30 + "px";
-  this._arrow.style.left = $('.overSpan')[0].offsetWidth / 2 + 'px';
-  this._arrow.style.top = $('.overSpan')[0].clientHeight + 24 + 'px';
+  var text = $('#textName')[0];
+  this._div.style.left = pixel.x - text.offsetWidth / 2 + 'px';
+  this._div.style.top = pixel.y - text.offsetHeight / 2 + 'px';
+  this._arrow.style.left = $('#textName')[0].offsetWidth / 2 + 'px';
+  this._arrow.style.top = $('#textName')[0].clientHeight + 24 + 'px';
 }
 // ComplexCustomOverlay.prototype.draw = function () {
 //   var map = this._map;
@@ -112,13 +110,13 @@ mp.addControl(geolocationControl);
 var geolocationControl = new BMap.GeolocationControl();
 
 
-geolocationControl.addEventListener("locationSuccess", function (e) {
+geolocationControl.addEventListener('locationSuccess', function (e) {
   // 定位成功事件
   var Dlng = e.target.vD.lng;
   var Dlat = e.target.vD.lat;
   $('#circle').attr('href', 'http://api.map.baidu.com/direction?origin=' + Dlat + ',' + Dlng + '&destination=' + lat + ',' + lng + '&mode=driving&region=深圳&output=html');
 });
-geolocationControl.addEventListener("locationError", function (e) {
+geolocationControl.addEventListener('locationError', function (e) {
   // 定位失败事件
   alert('获取不到定位，请检查手机定位设置');
 });
