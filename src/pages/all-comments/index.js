@@ -1,3 +1,4 @@
+require('../../common/session');
 require('./index.scss');
 
 /* 侧边导航 */
