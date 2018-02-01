@@ -501,9 +501,11 @@
             }
 
             totalPrice = 0;
+            var end = $(this).find('span:first').data('year-month-day');
+            end = end.split('-');
+            end = end[1] + '.' + end[2];
             if (first < second) {
               // $(me.sections).find('.rz').text('退房');
-
               $(this).find('span:first').text('退房').addClass('rz');
               $(this).find('span').addClass('color');
 
@@ -519,6 +521,7 @@
                 }
               }
               flag = 0;
+              $('.calendar .headerTip').text($('.calendar .headerTip').text().split('-')[0] + '-' + end);
 
             } else if (first > second) {
 
@@ -540,6 +543,7 @@
                 }
               }
               flag = 0;
+              $('.calendar .headerTip').text(end + '-' + $('.calendar .headerTip').text().split('-')[0]);
 
             }
             // $(me.sections).find('.rz').each(function (index, element) {
@@ -549,10 +553,7 @@
             //     }
 
             // });
-            var end = $(this).find('span:first').data('year-month-day');
-            end = end.split('-');
-            end = end[1] + '.' + end[2];
-            $('.calendar .headerTip').text($('.calendar .headerTip').text().split('-')[0] + '-' + end);
+
             // $('.hover').css({
             //     'position': 'absolute',
             //     'left': '-17px',
