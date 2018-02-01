@@ -145,7 +145,7 @@ $(function () {
   /*  点击退出登录  */
   $('body').on('click', '#outLogin', function (e) {
     e.stopPropagation();
-    e.preventDefault();
+    // e.preventDefault();
 
     // var path = '/user/order-list.html';
     // console.log(123);
