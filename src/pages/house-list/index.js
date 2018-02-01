@@ -41,80 +41,8 @@ $(function () {
         '</section>',
       domFinished: '<div class="dropload-finished">已加载所有房源</div>'
     },
-    loadDownFn: function (me) {
-
-      loadingMore();
-
-      // page++;
-      // // 拼接HTML
-      // var result = '';
-      // $.ajax({
-      //     type: 'GET',
-      //     url: 'http://ons.me/tools/dropload/json.php?page='+page+'&size='+size,
-      //     dataType: 'json',
-      //     success: function(data){
-      //         var arrLen = data.length;
-      //         if(arrLen > 0){
-      //             for(var i=0; i<arrLen; i++){
-      //                 result +=   '<a class="item opacity" href="'+data[i].link+'">'
-      //                                 +'<img src="'+data[i].pic+'" alt="">'
-      //                                 +'<h3>'+data[i].title+'</h3>'
-      //                                 +'<span class="date">'+data[i].date+'</span>'
-      //                             +'</a>';
-      //             }
-      //         // 如果没有数据
-      //         }else{
-      //             // 锁定
-      //             me.lock();
-      //             // 无数据
-      //             me.noData();
-      //         }
-      //         // 为了测试，延迟1秒加载
-      //         setTimeout(function(){
-      //             // 插入数据到页面，放到最后面
-      //             $('.lists').append(result);
-      //             // 每次数据插入，必须重置
-      //             me.resetload();
-      //         },1000);
-      //     },
-      //     error: function(xhr, type){
-      //         alert('Ajax error!');
-      //         // 即使加载出错，也得重置
-      //         me.resetload();
-      //     }
-      // });
-    }
+    loadDownFn: loadingMore
   });
-
-  /* loadinging start*/
-
-  // $(window).on('scroll.loading', function (e) {
-  //   var scrollTop = $(this).scrollTop();
-  //   //页面高度
-  //   var scrollHeight = $(document).height();
-  //   //浏览器窗口高度
-  //   var totalHeight = scrollTop + windowHeight;
-  //   var footerHeight = $('.footer-body').outerHeight(true) || 0;
-
-  //   //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-  //   if (scrollTop + windowHeight < scrollHeight - footerHeight - distance || noMoreData) {
-  //     return;
-  //   }
-  //   console.log('到底')
-  //   if (scrollTimer) {
-  //     clearTimeout(scrollTimer);
-  //   }
-  //   scrollTimer = setTimeout(function () {
-  //     // if (!$('.loading').length) {
-  //     //   $('.article-body').append(_html);
-  //     // }
-  //     // $('.loading').show();
-  //     loadingMore({ isReload: false });
-  //   }, 100);
-
-  // });
-
-  /* loadinging end*/
 
   /* get请求 loadingMore start*/
 
@@ -142,7 +70,7 @@ $(function () {
       cache: false,
       success: function (res) {
 
-        var recordCount = res.result.recordCount;
+        var recordCount = res.result && res.result.recordCount || 0;
 
         if (lastParams.page === 1) {
           $houseList.empty();
@@ -175,10 +103,16 @@ $(function () {
               '      <i class="score">' + item.rateServer + '分</i>' +
               '    </div>' +
               '    <div class="three-rline">' +
-              '      <i class="twoline-items">' + item.area + '住过</i>' +
+              '      <i class="twoline-items">' + item.livedCount + '人住过</i>' +
               '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-              '    </div>' +
-              '  </div>' +
+              '    </div>';
+            if (item.distDesc > 0) {
+              result +=
+                '    <div class="other-line">' +
+                '      <span>距我 ' + (item.distDesc > 1000 ? item.dist : item.distDesc) + '</span>' +
+                '    </div>';
+            }
+            result += '  </div>' +
               '</a>';
           }
 
@@ -186,7 +120,7 @@ $(function () {
 
         }
         //dropload.noMoreData = lastParams.page >= res.result.pageCount;
-        dropload.resetload(recordCount, lastParams.page, res.result.pageCount);
+        dropload.resetload(recordCount, lastParams.page, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
         console.log(error);
@@ -296,10 +230,10 @@ $(function () {
     console.log(poi)
     if (poi == '不限') {
       poi = '';
-      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
+      $(this).closest('body').find('.position').text('位置');
     } else {
       // console.log('zmise')
-      $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(poi);
+      $(this).closest('body').find('.position').text(poi);
     }
     $('#poi').val(poi);
 
@@ -409,7 +343,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     hideFilterLayer();
-    $(this).closest('body').find('.filter-body .mostjs:eq(1) .txt').text($(this).text());
+    $(this).closest('body').find('.rule').text($(this).text());
 
     var sortBy = $(this).data('sortBy');
     console.log(sortBy)
