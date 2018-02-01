@@ -323,5 +323,11 @@ $(function () {
     window.location = 'tel:' + $(this).find('.tel').text();
     $('#overlay').hide();
   });
+  $('#overlay').on('tap', function (e) {
+    event.stopPropagation();
+    event.preventDefault();
+    $('#overlay').hide();
+
+  });
 
 });
