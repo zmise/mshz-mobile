@@ -205,6 +205,8 @@ $(function () {
           }
           $('.article-body').append(str);
 
+        } else {
+          showMessage(res.message, 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
         }
       },
       error: function (error) {

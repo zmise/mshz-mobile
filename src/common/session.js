@@ -41,14 +41,14 @@ $.ajaxPrefilter(function (options, originalOptions, xhr) {
     xhr.setRequestHeader('X-Robot', true);
   }
 });
-$(document).off('ajaxComplete').on('ajaxComplete', function (e, req, options) {
-  if (!req.responseText) {
-    return false;
-  }
-  var data = JSON.parse(req.responseText);
-  if (data.code === 'EXXXX') { // todo 与接口约定的错误编码
-    window.sessionStorage.removeItem('loginInfo');
-    window.sessionStorage.setItem('lastLocation', location.href);
-    location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
-  }
-});
+// $(document).off('ajaxComplete').on('ajaxComplete', function (e, req, options) {
+//   if (!req.responseText) {
+//     return false;
+//   }
+//   var data = JSON.parse(req.responseText);
+//   if (data.code === 'EXXXX') { // todo 与接口约定的错误编码
+//     window.sessionStorage.removeItem('loginInfo');
+//     window.sessionStorage.setItem('lastLocation', location.href);
+//     location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
+//   }
+// });
