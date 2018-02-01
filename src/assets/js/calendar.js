@@ -201,11 +201,11 @@
         me.animateFunction = me.settings.animateFunction;
 
         if (me.animateFunction == "fadeToggle") {
-          $(id).fadeToggle();
+          $(id).fadeToggle('fast');
         } else if (me.animateFunction == "slideToggle") {
-          $(id).slideToggle();
+          $(id).slideToggle('fast');
         } else if (me.animateFunction == "toggle") {
-          $(id).toggle();
+          $(id).toggle('fast');
         }
 
       },
