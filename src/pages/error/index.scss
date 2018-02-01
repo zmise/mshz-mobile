@@ -13,3 +13,24 @@ body {
     font-size: .5rem;
     color: red;
 }
+
+.unusual-body {
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    padding-top: 1.45rem;
+}
+
+.unusual-body .no-info {
+    width: 1.35rem;
+    height: 1.93rem;
+    background: url('./img/no-info.png') no-repeat;
+    background-size: cover;
+}
+
+.unusual-body span {
+    padding-top: 0.2rem;
+    font-size: .28rem;
+    color: rgba(90, 165, 114, 1);
+}
