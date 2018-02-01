@@ -43,10 +43,12 @@
 }
 
 .banner-body .back {
-    @include position(absolute, .2rem, auto, auto, .35rem, 10);
+    @include position(absolute, 0, auto, auto, 0, 10);
     @include flex-box;
+    @include justify-content(center);
     width: .8rem;
     height: .8rem;
+    line-height: .8rem;
     font-size: .42rem;
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -54,13 +56,13 @@
 
 .banner-body .collect,
 .banner-body .icon-collect {
-    @include position(absolute, .2rem, .35rem, auto, auto, 10);
+    @include position(absolute, 0, 0, auto, auto, 10);
     @include flex-box;
-    @include justify-content(flex-end);
+    @include justify-content(center);
     width: .8rem;
     height: .8rem;
+    line-height: .8rem;
     font-size: .42rem;
-    line-height: 1;
     color: #333;
     background-color: rgba(0, 0, 0, 0);
     border-radius: .1rem;
