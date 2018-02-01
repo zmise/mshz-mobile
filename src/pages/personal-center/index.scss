@@ -43,7 +43,9 @@ body {
 .personal-info .photo {
     width: 1.37rem;
     height: 1.37rem;
-    border-radius: .685rem; // background-color: #333;
+    border-radius: .685rem;
+    background: url('./img/headPortrait.png');
+    background-size: cover;
     margin-right: .3rem;
 }
 
