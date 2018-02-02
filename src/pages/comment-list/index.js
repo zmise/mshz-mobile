@@ -44,7 +44,7 @@ $(function () {
             }
 
             str += '</div>' +
-              '<a class="content" href="./houseDetails?id=' + item.situationId + '">' +
+              '<a class="content" href="/houseDetails?id=' + item.situationId + '">' +
               '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
