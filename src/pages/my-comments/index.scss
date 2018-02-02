@@ -66,6 +66,7 @@ body {
 .article-body .self-assess .img-list {
     @include flex-box;
     @include flex-wrap(wrap);
+    width: 5rem;
 }
 
 .article-body .self-assess .img-list .items {
