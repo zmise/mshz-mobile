@@ -431,7 +431,7 @@ $(function () {
     searchInfo($('#destination-entry').val());
     // $('.search-layer').show();
     // $('body,html').css({ 'overflow': 'hidden' });
-    // $('.search-body .text-body .text').val($(this).val());
+    $('.search-body .text-body .text').val($('#search-entry').val());
 
   });
   // $.ajax({

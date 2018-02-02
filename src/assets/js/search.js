@@ -140,6 +140,7 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.text-body').find('.text').val('');
+    $('#search-entry').val('');
     $('.search-layer .search-keyword').show();
     $('.search-layer .search-list').hide();
   });
