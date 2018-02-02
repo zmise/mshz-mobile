@@ -300,25 +300,25 @@ $(function () {
     $(this).val($(this).val().replace(/\D+/g, ''));
   });
 
-  //输入电话号码以 4 3 3 的格式
-  $inputLayout.on('input', '#tel', function (e) {
-    var len = this.value.length;
-    if (len === 3 || len === 8) {
-      this.value += ' ';
-    }
-  }).on('keydown', '#tel', function (e) {
-    var key = e.keyCode;
-    if ((key > 47 && key < 58) || (key > 95 && key < 106) || key === 8) {
-      var val = this.value.replace(/^\s*/, '');
-      var len = val.length;
-      if (key == 8 && (len == 4 || len == 9)) {
-        val = val.trim();
-      }
-      this.value = val;
-    } else {
-      return false;
-    }
-  });
+  // //输入电话号码以 4 3 3 的格式
+  // $inputLayout.on('input', '#tel', function (e) {
+  //   var len = this.value.length;
+  //   if (len === 3 || len === 8) {
+  //     this.value += ' ';
+  //   }
+  // }).on('keydown', '#tel', function (e) {
+  //   var key = e.keyCode;
+  //   if ((key > 47 && key < 58) || (key > 95 && key < 106) || key === 8) {
+  //     var val = this.value.replace(/^\s*/, '');
+  //     var len = val.length;
+  //     if (key == 8 && (len == 4 || len == 9)) {
+  //       val = val.trim();
+  //     }
+  //     this.value = val;
+  //   } else {
+  //     return false;
+  //   }
+  // });
 
   /*   显示日历的控件的点击事件 */
   $('.userInfo-body').on('tap', '.calc-entry', function (e) {
