@@ -30,7 +30,7 @@ $(function () {
 
     } else {
       //浏览器不支持geolocation
-      console.log("浏览器不支持!");
+      console.log('浏览器不支持!');
     }
   }
 
@@ -46,7 +46,7 @@ $(function () {
 
     //腾讯地图的中心地理坐标
     var center = new qq.maps.LatLng(latitude, longitude);
-    var map = new qq.maps.Map(document.getElementById("container"), {
+    var map = new qq.maps.Map(document.getElementById('container'), {
       //地图的中心地理坐标
       center: center,
       //初始化地图缩放级别
@@ -69,19 +69,19 @@ $(function () {
   function onError(error) {
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        alert("用户拒绝对获取地理位置的请求");
+        alert('用户拒绝对获取地理位置的请求');
         break;
 
       case error.POSITION_UNAVAILABLE:
-        alert("位置信息是不可用的");
+        alert('位置信息是不可用的');
         break;
 
       case error.TIMEOUT:
-        alert("请求用户地理位置超时");
+        alert('请求用户地理位置超时');
         break;
 
       case error.UNKNOWN_ERROR:
-        alert("未知错误");
+        alert('未知错误');
         break;
     }
 
@@ -200,40 +200,6 @@ $(function () {
   window.sessionStorage.setItem('startDate', startDate);
   window.sessionStorage.setItem('endDate', endDate);
 
-  /* 登录判断 */
-  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  // if (loginInfo) {
-  // $('#login').hide();
-  // $('#menu').show();
-  //登录点击进入订单列表
-  $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = '/user/order-list.html';
-  });
-
-  $('.navigatelist-body').on('tap', '#myCollection', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = '/user/my-collections.html';
-  });
-  // }
-  // else {
-  //   //未登录点击进入login
-  //   $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  //     window.location = '/user/login.html';
-  //   });
-  //   $('.navigatelist-body').on('tap', '#myCollection', function (e) {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  //     window.location = '/user/login.html';
-  //   });
-  // }
-
-
-
   // $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
   $('.banner-body').banner({
@@ -264,8 +230,6 @@ $(function () {
   //   }
   //   timeoutObject = setTimeout(switchHeader, 30);
   // });
-
-
 
   $('#handleCalendar').on('tap', function (e) {
     e.stopPropagation();
@@ -344,7 +308,7 @@ $(function () {
 
 
   /*  点击搜索跳转houselist */
-  $("#search").click(function () {
+  $('#search').click(function () {
 
     // if ($('#destination-entry').val() != '') {
     //   var cityName = $('#destination-entry').val();
@@ -353,25 +317,25 @@ $(function () {
     //   // }
     //   // $('#destination-entry').attr('data-cityname', cityName);
     // }
-    if (!$("#destination-entry").val()) {
+    if (!$('#destination-entry').val()) {
       return;
     }
 
-    // var city = $("#destination-entry").data('cityname');
-    var city = $("#destination-entry").val();
-    var poi = $("#search-entry").val();
-    var dates = $("#firstSelect").val();
-    var path = "/houseList?city=" + city;
-    if (dates != "") {
-      var split = dates.split("至");
-      var str = "&startDate=" + split[0] + "&endDate=" + split[1];
+    // var city = $('#destination-entry').data('cityname');
+    var city = $('#destination-entry').val();
+    var poi = $('#search-entry').val();
+    var dates = $('#firstSelect').val();
+    var path = '/houseList?city=' + city;
+    if (dates != '') {
+      var split = dates.split('至');
+      var str = '&startDate=' + split[0] + '&endDate=' + split[1];
       path += str;
     }
-    if (poi != "") {
-      path += "&poi=" + poi;
+    if (poi != '') {
+      path += '&poi=' + poi;
     }
     if (lat !== '' && lon !== '') {
-      path += "&lat=" + lat + "&lon=" + lon;
+      path += '&lat=' + lat + '&lon=' + lon;
     }
     // console.log(path);
     window.location = path;
