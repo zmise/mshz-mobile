@@ -4,6 +4,7 @@ require('./index.scss');
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
+require('../../assets/js/zoomify.js'); // 查看大图
 
 // require('../../assets/js/appDownload.js');//全局下载APP
 
@@ -31,14 +32,14 @@ $(function () {
               '<div class="all-assess myassess-entry" data-id="' + item.id + '">' +
               '<span class="time">' + item.commentTimeDesc + '</span>' +
               '<div class="text-img">' +
-              '  <span class="txt">' + (item.content.lenght > 0 ? item.content : '暂无评论') + '</span>';
+              '  <span class="txt">' + (item.content.length > 0 ? item.content : '暂无评论') + '</span>';
 
             // 拼接评论图片
             var imgs = item.commentPicture.split(',');
             if (item.commentPicture.length > 0) {
               str += '<div class="img-list">';
               for (var j = 0; j < imgs.length; j++) {
-                str += '<img class="items" src="' + imgs[j].replace('{size}', '144x144') + '" />';
+                str += '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />';
               }
               str += '</div>';
             }
@@ -64,6 +65,7 @@ $(function () {
               '</div>';
           }
           $('.article-body').empty().append(str);
+          $('.img-list img').zoomify();
 
         }
 
@@ -114,4 +116,10 @@ $(function () {
     e.preventDefault();
     history.go(-1)
   });
+
+  // 阻止冒泡
+  $('.article-body').on('tap', '.zoomify', function (e) {
+    e.stopPropagation();
+  });
+
 });
