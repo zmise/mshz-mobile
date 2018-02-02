@@ -135,14 +135,14 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('收藏房源成功！');
-          $(el).data('status', 'collect');
+          $(el).toggleClass('clc-red').data('status', 'collect');
         } else {
           showMessage(res.message);
         }
       },
       error: function (error) {
-        console.log(error);
-        console.log('error');
+        sessionStorage.setItem('lastLocation', location.href);
+        location.replace('/user/login.html');
       }
     });
   }
@@ -160,14 +160,14 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('取消收藏房源成功！');
-          $(el).data('status', '');
+          $(el).toggleClass('clc-red').data('status', '');
         } else {
           showMessage(res.message);
         }
       },
       error: function (error) {
-        console.log(error);
-        console.log('error');
+        sessionStorage.setItem('lastLocation', location.href);
+        location.replace('/user/login.html');
       }
     });
   }
@@ -241,7 +241,6 @@ $(function () {
   $('.banner-body').on('click', '#collect', function (e) {
     event.preventDefault();
     event.stopPropagation();
-    $(this).toggleClass('clc-red');
     var status = $(this).data('status');
     var params = {
       situationId: $('#situation').val(),
