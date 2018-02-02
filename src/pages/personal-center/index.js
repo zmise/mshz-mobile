@@ -35,7 +35,7 @@ $(function () {
             '  <i class="icon iconfont icon-fanhuixiangyou"></i>' +
             '</a>' +
             '<section class="other-info">' +
-            '  <a class="items" href="./my-collection.html">' +
+            '  <a class="items" href="./my-collections.html">' +
             '    <span class="number">' + item.collectRoomCount + '</span>' +
             '    <span class="txt">收藏房源</span>' +
             '  </a>' +
