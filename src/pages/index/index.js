@@ -201,36 +201,36 @@ $(function () {
   window.sessionStorage.setItem('endDate', endDate);
 
   /* 登录判断 */
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  if (loginInfo) {
-    $('#login').hide();
-    $('#menu').show();
-    //登录点击进入订单列表
-    $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location = '/user/order-list.html';
-    });
+  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  // if (loginInfo) {
+  // $('#login').hide();
+  // $('#menu').show();
+  //登录点击进入订单列表
+  $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location = '/user/order-list.html';
+  });
 
-    $('.navigatelist-body').on('tap', '#myCollection', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location = '/user/my-collections.html';
-    });
-  }
-  else {
-    //未登录点击进入login
-    $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location = '/user/login.html';
-    });
-    $('.navigatelist-body').on('tap', '#myCollection', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location = '/user/login.html';
-    });
-  }
+  $('.navigatelist-body').on('tap', '#myCollection', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location = '/user/my-collections.html';
+  });
+  // }
+  // else {
+  //   //未登录点击进入login
+  //   $('.navigatelist-body').on('tap', '#orderList-entry', function (e) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
+  //     window.location = '/user/login.html';
+  //   });
+  //   $('.navigatelist-body').on('tap', '#myCollection', function (e) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
+  //     window.location = '/user/login.html';
+  //   });
+  // }
 
 
 
@@ -243,7 +243,7 @@ $(function () {
     autoPlay: true, // 是否自动播放
     speed: 3000, // 播放速度
     pagination: 'pagination', // 分页器的className
-    paginationType: 'bullets', // 分页器的类型   bullets (小点) | fraction (x/y) 
+    paginationType: 'bullets', // 分页器的类型   bullets (小点) | fraction (x/y)
   });
 
   // /* switch header */
@@ -465,11 +465,11 @@ $(function () {
 
 
   // login入口
-  $('#login').on('tap', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = '/user/login.html';
-  });
+  // $('#login').on('tap', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = '/user/login.html';
+  // });
 
   // 阻止图片的跳转
   $('.banner-body').on('tap', '.items', function (e) {

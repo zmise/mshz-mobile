@@ -1,5 +1,6 @@
 @import '../../sass/base.scss'; // 基础变量
 @import '../../sass/iconfont.scss'; // 字体
+@import '../../sass/header.scss'; // 全局头部
 @import '../../sass/list/index-list.scss'; // 推荐房源列表
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
@@ -268,9 +269,9 @@ body {
     font-size: 0.17rem;
 }
 
-#menu {
-    display: none;
-}
+// #menu {
+//     display: none;
+// }
 
 //pagination
 .banner-body .pagination {

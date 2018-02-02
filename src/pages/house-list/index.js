@@ -356,18 +356,18 @@ $(function () {
     // freachloading($(this).text());
   });
 
-  /* 登录判断 */
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  if (loginInfo) {
-    $('#login').hide();
-    $('#menu').css('display', 'flex');
-  }
+  // /* 登录判断 */
+  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  // if (loginInfo) {
+  //   $('#login').hide();
+  //   $('#menu').css('display', 'flex');
+  // }
 
-  // login入口
-  $('#login').on('tap', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    window.location = '/user/login.html';
-  });
+  // // login入口
+  // $('#login').on('tap', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   window.location = '/user/login.html';
+  // });
 
 });
