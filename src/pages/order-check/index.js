@@ -191,6 +191,12 @@ $(function () {
               $('#cancelRules').removeClass('hidden');
               $('#cancelRemark').html(orderInfo.cancelRemark.replace(/\n/g, '<br>'));
             }
+          } else {
+            $('#cancelInfoWrapper').removeClass('hidden');
+            $('#cancelInfoWrapper .title').hide();
+            $('#cancelInfoWrapper .slide-body').hide();
+            $('#cancelRules').removeClass('hidden');
+            $('#cancelRemark').html('不允许退订');
           }
         } else {
           showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
