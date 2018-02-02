@@ -172,9 +172,11 @@ $(function () {
 
 
   var sourceData;
-  $('#firstSelect').on('tap', function (e) {
+  $('.cale-entry').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
+    hideFilterLayer();
+    $('.calendar').slideToggle('fast');
     $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
   });
 
