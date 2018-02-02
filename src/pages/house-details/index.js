@@ -235,54 +235,47 @@ $(function () {
   guessLikeInfo(guessLikeParams);
 
 
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  if (loginInfo) {
-    /* 初始化收藏状态 */
-    // var situationId = $('#situation').val();
-    // var userId = loginInfo.id;
-    // var paramsList = {
-    //   situationId: $('#situation').val(),
-    //   userId: userId,
-    // }
-    // queryRoomIsAlready(paramsList);
-    $('.banner-body').on('click', '#collect', function (e) {
-      event.preventDefault();
-      event.stopPropagation();
-      $(this).toggleClass('clc-red');
-      var status = $(this).data('status');
-      var params = {
-        situationId: $('#situation').val(),
-      };
-      if (status === 'collect') {
-        // $(this).attr('data-status', '');
-        deleteUserCollectRoom(params, this);
-      } else {
-        // $(this).attr('data-status', 'collect');
-        addUserCollectRoom(params, this);
-      }
-    });
+  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  // if (loginInfo) {
 
-    $('#orderCheck-entry').on('tap', function (e) {
-      event.preventDefault();
-      event.stopPropagation();
-      window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
-    });
-  } else {
-    /* 没有登录点击收藏  */
-    $('.banner-body').on('click', '#collect', function (e) {
-      event.preventDefault();
-      event.stopPropagation();
-      sessionStorage.setItem('lastLocation', location.href);
-      window.location = '/user/login.html';
-    });
+  $('.banner-body').on('click', '#collect', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $(this).toggleClass('clc-red');
+    var status = $(this).data('status');
+    var params = {
+      situationId: $('#situation').val(),
+    };
+    if (status === 'collect') {
+      // $(this).attr('data-status', '');
+      deleteUserCollectRoom(params, this);
+    } else {
+      // $(this).attr('data-status', 'collect');
+      addUserCollectRoom(params, this);
+    }
+  });
 
-    $('#orderCheck-entry').on('tap', function (e) {
-      event.preventDefault();
-      event.stopPropagation();
-      sessionStorage.setItem('lastLocation', location.href);
-      window.location = '/user/login.html';
-    });
-  }
+  $('#orderCheck-entry').on('tap', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
+  });
+  // } else {
+  //   /* 没有登录点击收藏  */
+  //   $('.banner-body').on('click', '#collect', function (e) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //     sessionStorage.setItem('lastLocation', location.href);
+  //     window.location = '/user/login.html';
+  //   });
+
+  //   $('#orderCheck-entry').on('tap', function (e) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //     sessionStorage.setItem('lastLocation', location.href);
+  //     window.location = '/user/login.html';
+  //   });
+  // }
 
 
 
