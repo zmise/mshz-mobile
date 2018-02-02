@@ -5,6 +5,7 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/js/toast.js');  //toast的事件
+require('../../assets/js/zoomify.js'); // 查看大图
 
 
 $(function () {
@@ -89,14 +90,18 @@ $(function () {
             '  </div>    ' +
             '</div>' +
             '<div class="text-img">' +
-            '  <span class="txt">' + (data.content.lenght > 0 ? data.content : '暂无评论') + '</span>';
+            '  <span class="txt">' + (data.content.length > 0 ? data.content : '暂无评论') + '</span>';
 
-          // <div class="img-list">
 
-          //   <img class="items " src=""></img>
-
-          // </div>
-
+          // 拼接评论图片
+          var imgs = data.commentPicture.split(',');
+          if (data.commentPicture.length > 0) {
+            str += '<div class="img-list">';
+            for (var j = 0; j < imgs.length; j++) {
+              str += '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />';
+            }
+            str += '</div>';
+          }
           str +=
             '</div> ' +
             '<a class="content" href="/houseDetails?id=' + data.situationId + '">' +
@@ -145,6 +150,7 @@ $(function () {
           str += '</div>';
 
           $('.article-body').empty().append(str);
+          $('.img-list img').zoomify();
 
         }
       },
@@ -226,6 +232,11 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     history.go(-1)
+  });
+
+  // 查看大图阻止冒泡
+  $('.article-body').on('tap', '.zoomify', function (e) {
+    e.stopPropagation();
   });
 });
 
