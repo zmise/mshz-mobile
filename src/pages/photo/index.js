@@ -20,7 +20,7 @@ $(function () {
   // $.ajax();
   // console.log(getUrlParam('houseId'));
   // console.log(parseInt(getUrlParam('id')));
-  var id = parseInt(getUrlParam('id'));
+  var id = getUrlParam('id');
 
   if (id) {
     $.ajax({
