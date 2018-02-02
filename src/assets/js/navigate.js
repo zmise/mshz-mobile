@@ -1,27 +1,34 @@
+var Cookie = require('js-cookie');
+
 $(function () {
 
-  //发送图形验证码get接口
-  function logout() {
-    $.ajax({
-      url: '/mshz-app/openapi/user/logout',
-      dataType: 'json',
-      type: 'GET',
-      cache: false,
-      success: function (res) {
+  function getUserInfo() {
+    var dtd = $.Deferred();
+    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    if (loginInfo) {
+      dtd.resolve(loginInfo);
+    } else if (Cookie.get('sid')) {
+      $.ajax({
+        url: '/mshz-app/security/user/info/query',
+        type: 'get',
+        dataType: 'JSON'
+      }).then(function (res) {
         if (res.status === 'C0000') {
+          dtd.resolve(res.result);
+        } else {
+          dtd.reject(new Error('查询用户信息失败！'));
         }
-      },
-      error: function (error) {
-        console.log(error);
-        console.log('error');
-      }
-    });
+      });
+    }
+    return dtd;
   }
 
+  getUserInfo().then(initSideNav).fail(function () {
+    // 查询失败后或考虑跳转到登录页
+    // location.replace('./login.html');
+  });
 
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  if (loginInfo) {
-    // console.log(loginInfo);
+  function initSideNav(loginInfo) {
     var str =
       '<nav class="navigate-body" js-plugin="slide" data-direction="vertical">' +
       ' <div class="navigate">' +
@@ -105,6 +112,27 @@ $(function () {
     }
     // window.jquery = $;
   }
+
+
+  //发送图形验证码get接口
+  function logout() {
+    $.ajax({
+      url: '/mshz-app/openapi/user/logout',
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {
+        }
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+  }
+
+
   /* 阻止滚动条事件  */
   $('#overlay,.navigate-body').on('touchmove', function (e) {
     e.preventDefault();
@@ -153,21 +181,4 @@ $(function () {
     logout();
   });
 
-  // /*  点击进入订单列表  */
-  // $('#order-list').on('tap', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   // var path = '/user/order-list.html';
-  //   var path = './order-list.html';
-  //   window.location = path;
-  // });
-
-  // /*  点击进入个人中心  */
-  // $('#personal-center').on('tap', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   // var path = '/user/personal-center.html';
-  //   var path = './personal-center.html';
-  //   window.location = path;
-  // });
 });

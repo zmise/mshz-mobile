@@ -24,6 +24,10 @@ $(function () {
           if (item && item !== '') {
             window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
           }
+
+          // for test
+          // location.replace('./order-list.html');
+
           var lastLocation = window.sessionStorage.getItem('lastLocation');
           if (lastLocation) {
             window.sessionStorage.removeItem('lastLocation');
