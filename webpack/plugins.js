@@ -21,7 +21,7 @@ const jsPlugin = new webpack.optimize.UglifyJsPlugin(); //JS压缩
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const copyArray = new CopyWebpackPlugin([{
-  from: path.resolve(config.srcDir, 'assets/vendors/icon-map-marker.png'),
+  from: path.resolve(config.srcDir, 'assets/img'),
   to: 'static/img/'
 }]);
 
