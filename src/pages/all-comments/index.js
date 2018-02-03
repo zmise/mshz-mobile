@@ -25,12 +25,12 @@ $(function () {
             '<div class="total">' +
             '  <div class="line-two">' +
             '    <div class="flex-box">' +
-            '      <i class="clc-red txt socre">' + data.rate + '分</i>' +
+            '      <i class="clc-red txt socre">' + data.rate.toFixed(1) + '分</i>' +
             '      <div class="star-lines"></div>' +
             '    </div>' +
             '    <div>' +
-            '      <i class="clc-red txt" href="javascript:;">环境：' + data.rateEnv + '</i>' +
-            '      <i class="clc-red txt" href="javascript:;">服务：' + data.rateServer + '</i>' +
+            '      <i class="clc-red txt" href="javascript:;">环境：' + data.rateEnv.toFixed(1) + '</i>' +
+            '      <i class="clc-red txt" href="javascript:;">服务：' + data.rateServer.toFixed(1) + '</i>' +
             '    </div>' +
             '  </div>' +
             '</div>';
@@ -41,14 +41,19 @@ $(function () {
               '<div class="comment-body">' +
               '  <div class="first-comment">' +
               '    <div class="info">' +
-              '      <div class="flex-box">' +
-              '        <img class="photo" src="' + item.headPortrait.replace('{size}', '88x88') + '"/>' +
+              '      <div class="flex-box">';
+            if (item.headPortrait.length) {
+              str += '        <img class="photo" src="' + item.headPortrait.replace('{size}', '88x88') + '"/>';
+            } else {
+              str += '        <img class="photo" src="/user/static/img/user.png"/>';
+            }
+            str +=
               '        <div class="name-time">' +
               '          <span>' + item.nickName + '</span>' +
               '          <span>' + item.commentTimeDesc + '</span>' +
               '        </div>' +
               '      </div>' +
-              '      <span class="socre">' + item.score + '分</span>' +
+              '      <span class="socre">' + item.score.toFixed(1) + '分</span>' +
               '    </div>' +
               '    <div class="des">' +
               '      <p class="des-cnt">' + (item.content.lenght > 0 ? item.content : '暂无评论') + '</p>';
