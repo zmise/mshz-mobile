@@ -95,7 +95,10 @@ body {
     display: block;
     font-size: .26rem;
     color: rgba(90, 165, 114, 1);
-    padding-bottom: .1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
 }
 
 .article-body .all-assess .img-list {
@@ -121,6 +124,7 @@ body {
     height: 1.67rem;
     background: rgba(247, 250, 248, 1);
     border-radius: .04rem;
+    margin-top: 0.07rem;
 }
 
 .article-body .all-assess .content img {
