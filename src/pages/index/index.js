@@ -111,12 +111,12 @@ $(function () {
         var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
         var item = searchHistroy[city] || [];
         var str = '';
-
         if (item.length > 0) {
           str =
             '<div class="theme"><div class="title">搜索历史</div><div class="keywords">';
           for (var i = 0; i < item.length; i++) {
-            str += '<a class="items" href="javascript:;">' + item[i] + '</a>';
+
+            str += '<a class="items" href="javascript:;" data-type="' + item[i].type + '">' + item[i].destination + '</a>';
           }
 
           str += '</div></div>';
@@ -125,7 +125,7 @@ $(function () {
           var str1 = ''
           var arr = json[i].rimNames;
           for (var j = 0; j < arr.length; j++) {
-            str1 += '<a class="items" href="javascript:;">' + arr[j].name + '</a>';
+            str1 += '<a class="items" href="javascript:;" data-type="' + json[i].rimType + '">' + arr[j].name + '</a>';
           }
 
           str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div >';
@@ -307,7 +307,7 @@ $(function () {
 
 
 
-  /*  点击搜索跳转houselist */
+  /*  点击搜索跳转houselist.html */
   $('#search').click(function () {
 
     // if ($('#destination-entry').val() != '') {
@@ -326,6 +326,7 @@ $(function () {
     var poi = $('#search-entry').val();
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
+    var type = $.trim($('#destination-entry').data('typ'));
     if (dates != '') {
       var split = dates.split('至');
       var str = '&startDate=' + split[0] + '&endDate=' + split[1];
@@ -336,6 +337,9 @@ $(function () {
     }
     if (lat !== '' && lon !== '') {
       path += '&lat=' + lat + '&lon=' + lon;
+    }
+    if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站') {
+      path += "&needAllCity=true"
     }
     // console.log(path);
     window.location = path;

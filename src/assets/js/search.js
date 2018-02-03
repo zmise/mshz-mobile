@@ -27,21 +27,28 @@ $(function () {
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
     $('.search-body input').blur();
+    if ($(this)) {
 
+    }
     $('#search-entry').val($(this).text());
+    $('#search-entry').attr('data-type', $(this).data('type'));
     var city = $.trim($('#destination-entry').val());
     var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
     for (var i = 0; i < cityItem.length; i++) {
-      var item = cityItem[i];
+      var item = cityItem[i].destination;
       if (item == $(this).text()) {
         cityItem.splice(i, 1);
       }
     }
-    console.log(cityItem);
-    cityItem.push($(this).text());
+    // console.log(cityItem);
+    var obj = {
+      destination: $(this).text(),
+      type: $(this).data('type'),
+    }
+    cityItem.push(obj);
     if (cityItem.length > 10) {
       cityItem.shift();
     }
@@ -101,7 +108,7 @@ $(function () {
       success: function (data) {
         // console.log('success');
         var json = data.result;
-        // console.log(json);
+        console.log(json);
         var str = '';
         for (var i = 0; i < json.length; i++) {
           str += '<a class="items" href="javascript:;" data-keyword="' + json[i].name + '"><div class="txt-icon"><i class="icon iconfont icon-sousuoliebiao"></i><span class="txt">' + json[i].name + '</span></div><span class="icon-goto">' + json[i].pointTypeName + '</span></a>';
@@ -124,15 +131,45 @@ $(function () {
     $('.search-body input').blur();
     $('body,html').css({ 'overflow': 'visible' });
     $('#search-entry').val($(this).data('keyword'));
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
-    for (var i = 0; i < searchHistroy.length; i++) {
-      var item = searchHistroy[i];
-      if (item == $(this).data('keyword')) {
-        searchHistroy.splice(i, 1);
+
+    // var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
+    // for (var i = 0; i < searchHistroy.length; i++) {
+    //   var item = searchHistroy[i];
+    //   if (item == $(this).data('keyword')) {
+    //     searchHistroy.splice(i, 1);
+    //   }
+    // }
+    // searchHistroy.push($(this).data('keyword'));
+    // window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
+    var destination = $(this).find('.txt').text();
+    var type = $(this).find('.icon-goto').text();
+    var city = $.trim($('#destination-entry').val());
+    $('#search-entry').val(destination);
+    $('#search-entry').attr('data-type', type);
+
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    // if(searchHistroy[city])
+    var cityItem = searchHistroy[city] || [];
+    // console.log(item);
+    for (var i = 0; i < cityItem.length; i++) {
+      var item = cityItem[i].destination;
+      if (item == $(this).text()) {
+        cityItem.splice(i, 1);
       }
     }
-    searchHistroy.push($(this).data('keyword'));
+    // console.log(cityItem);
+    var obj = {
+      destination: destination,
+      type: type,
+    }
+    cityItem.push(obj);
+    if (cityItem.length > 10) {
+      cityItem.shift();
+    }
+    searchHistroy[city] = cityItem;
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
+
+
   });
 
   /* ??? */
