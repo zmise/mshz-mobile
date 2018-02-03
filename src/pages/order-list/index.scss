@@ -147,6 +147,12 @@ body {
     padding: 0 .35rem;
 }
 
+.article-body .amount{
+    display: inline-block;
+    width: .6rem;
+    text-align: right;
+}
+
 .article-body .box .status .stu-but {
     @include flex;
     @include flex-box;

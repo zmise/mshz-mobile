@@ -59,11 +59,11 @@ $(function () {
                   '</div>' +
                   '<div class="time">' +
                   '  <span>' + item.startTime + '至' + item.endTime + '</span>' +
-                  '  <div><span>房费：</span><span>¥' + item.roomRate + '</span></div>' +
+                  '  <div><span>房费：</span><span class="amount">¥' + item.roomRate + '</span></div>' +
                   '</div>' +
                   '<div class="total">' +
                   '  <span>' + item.bookedDays + '晚</span>' +
-                  '  <div><span>押金：</span><span>¥' + item.roomDeposit + '</span></div>' +
+                  '  <div><span>押金：</span><span class="amount">¥' + item.roomDeposit + '</span></div>' +
                   '</div>' +
                   '</a>' +
                   '<div class="status">' +
@@ -80,14 +80,13 @@ $(function () {
                   '<div class="box">' +
                   '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                   '    <div class="title">' +
-                  '      <span>' + item.roomTitle + '</span>' +
+                  '      <span class="ellips">' + item.roomTitle + '</span>' +
                   '      <span>¥' + item.totalPrice + '</span>' +
                   '    </div>' +
                   '    <div class="time">' +
                   '      <span>' + item.startTime + '至' + item.endTime + '</span>' +
                   '      <div>' +
-                  '        <span>房费：</span>' +
-                  '        <span>¥' + item.roomRate + '</span>' +
+                  '        <span>房费：</span><span class="amount">¥' + item.roomRate + '</span>' +
                   '      </div>' +
                   '    </div>' +
                   '    <div class="total">' +
@@ -95,8 +94,7 @@ $(function () {
                 if (item.orderState === 'BOOKED') {
                   strB =
                     '      <div>' +
-                    '        <span>押金：</span>' +
-                    '        <span>¥' + item.roomDeposit + '</span>' +
+                    '        <span>押金：</span><span class="amount">¥' + item.roomDeposit + '</span>' +
                     '      </div>' +
                     '    </div>' +
                     '  </a>' +
@@ -115,8 +113,7 @@ $(function () {
                 } else if (item.orderState === 'CHECKED') {
                   strB =
                     '      <div>' +
-                    '        <span>押金：</span>' +
-                    '        <span>¥' + item.roomDeposit + '</span>' +
+                    '        <span>押金：</span><span class="amount">¥' + item.roomDeposit + '</span>' +
                     '      </div>' +
                     '    </div>' +
                     '  </a>' +
@@ -132,8 +129,7 @@ $(function () {
                   if (item.extarAcount > 0) {
                     strB =
                       '      <div>' +
-                      '        <span>额外费用：</span>' +
-                      '        <span>¥' + item.extarAcount + '</span>' +
+                      '        <span>额外费用：</span><span class="amount">¥' + item.extarAcount + '</span>' +
                       '      </div>';
                   }
                   strB +=
@@ -165,14 +161,14 @@ $(function () {
                   '      <span>' + item.startTime + '至' + item.endTime + '</span>' +
                   '      <div>' +
                   '        <span>房费：</span>' +
-                  '        <span>¥' + item.roomRate + '</span>' +
+                  '        <span class="amount">¥' + item.roomRate + '</span>' +
                   '      </div>' +
                   '    </div>' +
                   '    <div class="total">' +
                   '      <span>' + item.bookedDays + '晚</span>' +
                   '      <div>' +
                   '        <span>押金：</span>' +
-                  '        <span>¥' + item.roomDeposit + '</span>' +
+                  '        <span class="amount">¥' + item.roomDeposit + '</span>' +
                   '      </div>' +
                   '    </div>' +
                   '  </a>' +
