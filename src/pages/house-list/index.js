@@ -93,7 +93,7 @@ $(function () {
               '    <p>￥' + item.price + '</p>' +
               '  </div>' +
               '  <div class="item-twoline">' +
-              '    <i class="twoline-items">' + item.cityName + '</i>' +
+              '    <i class="twoline-items">' + item.region + '</i>' +
               '    <i class="twoline-items">' + item.houseType + '</i>' +
               '    <i class="twoline-items">' + item.customerCount + '人</i>' +
               '  </div>' +
