@@ -36,9 +36,9 @@ $(function () {
               '          <p>￥' + item.price + '</p>' +
               '        </div>' +
               '        <div class="item-twoline">' +
-              '          <i class="twoline-items" href="javascript:;">' + item.cityName + '</i>' +
-              '          <i class="twoline-items" href="javascript:;">' + item.houseType + '</i>' +
-              '          <i class="twoline-items" href="javascript:;">' + item.customerCount + '人</i>' +
+              '          <i class="twoline-items">' + item.region + '</i>' +
+              '          <i class="twoline-items">' + item.houseType + '</i>' +
+              '          <i class="twoline-items">' + item.customerCount + '人</i>' +
               '        </div>' +
               '        <div class="item-threeline">' +
               '          <div class="three-lline">' +
@@ -46,8 +46,8 @@ $(function () {
               '            <i class="score">' + item.rateServer + '分</i>' +
               '          </div>' +
               '          <div class="three-rline">' +
-              '            <i class="twoline-items" href="javascript:;">' + item.area + '住过</i>' +
-              '            <i class="twoline-items" href="javascript:;">' + item.commentCount + '条评价</i>' +
+              '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
+              '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
               '          </div>' +
               '        </div>' +
               '      </div>' +
