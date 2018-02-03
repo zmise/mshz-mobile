@@ -21,7 +21,9 @@ $(function () {
   // console.log(getUrlParam('houseId'));
   // console.log(parseInt(getUrlParam('id')));
   var id = getUrlParam('id');
-
+  var imageIndex = getUrlParam('imageIndex'); // 总数的第几
+  var typeIndex = getUrlParam('typeIndex'); // 第几个类型
+  var itemIndex = getUrlParam('itemIndex'); // 类型中的第几张
   if (id) {
     $.ajax({
       url: '/mshz-app/room/queryPicsBySituationId',
@@ -70,21 +72,28 @@ $(function () {
 
           var itemNumber = 0;
           for (var i = 0; i < array.length; i++) {
-            str +=
-              '  <a class="items" href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
-              ;
+            if (parseInt(typeIndex) + 1 === i) {
+              str +=
+                '  <a class="items current" href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
+                ;
+            } else {
+              str +=
+                '  <a class="items " href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
+                ;
+            }
+
+
             itemNumber += array[i].imageUrlList.length;
           }
 
 
-          str += '</section>'
-            ;
+          str += '</section>';
           $('#content').html(str);
 
-          $('.title').html('<span>房源相册 ' + '<i class="num">1</i>/' + totalImg + '</span>');
-          $('.photo-tabs .items').eq(0).addClass('current');
+          $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/' + totalImg + '</span>');
           /* 通过图片下标设置标题 */
           function getTitle(index) {
+            $('.num').text(index + 1);
             var indexNum = $('.types').eq(index).data('length');
             var _txt = '';
             var _cur = 1;
@@ -106,10 +115,8 @@ $(function () {
                 index = index - $('.types').eq(idx).find('.items').length;
               }
             }
-            console.log(indexNum)
-            indexNum += _cur;
             // $('.title').html('<span>房源相册 ' + '<i class="num">' + _cur + '/' + _sum + '</i></span>');
-            $('.num').text(indexNum);
+            // $('.num').text(indexNum);
           };
 
           /* 通过点击类型Tab获得图片下标 */
@@ -126,7 +133,7 @@ $(function () {
             width: $(window).width(),
             height: $(window).height(),
             pagination: false,
-            index: 0,
+            index: imageIndex,
             callback: function (i) {
               getTitle(i);
             },
@@ -166,7 +173,6 @@ $(function () {
   $('#back').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(11)
     history.go(-1)
   });
 

@@ -100,7 +100,7 @@ $(function () {
               '  <div class="item-threeline">' +
               '    <div class="three-lline">' +
               '      <div class="star-lines"></div>' +
-              '      <i class="score">' + item.rateServer + '分</i>' +
+              '      <i class="score">' + item.rate + '分</i>' +
               '    </div>' +
               '    <div class="three-rline">' +
               '      <i class="twoline-items">' + item.livedCount + '人住过</i>' +
