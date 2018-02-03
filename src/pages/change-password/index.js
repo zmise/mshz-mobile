@@ -18,7 +18,7 @@ $(function () {
         if (res.status === 'C0000') {
           showMessage(res.message);
           setTimeout(function () {
-            window.location = '/';
+            history.go(-1);
           }, 1000);
         } else {
           showMessage(res.message);

@@ -6,6 +6,19 @@ require('../../assets/js/toast.js');  //toast的事件
 
 $(function () {
 
+  // 跳转逻辑
+  function windowLocation() {
+    var lastLocation = window.sessionStorage.getItem('lastLocation');
+    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    if (loginInfo) {
+      history.go(-1);
+    } else if (lastLocation) {
+      window.sessionStorage.removeItem('lastLocation');
+      location.replace(lastLocation);
+    } else {
+      location.replace('/');
+    }
+  }
   //设置密码post接口
   function modPassword(params) {
     $.ajax({
@@ -19,7 +32,8 @@ $(function () {
         if (res.status === 'C0000') {
           showMessage('密码设置完成，请牢记密码！');
           setTimeout(function () {
-            window.location = '/';
+            // window.location = '/';
+            windowLocation();
           }, 2000);
         } else {
           showMessage(res.message);
@@ -84,6 +98,13 @@ $(function () {
       };
       modPassword(listParams);
     }
+  });
+
+  // 点击跳过的跳转
+  $('#passing').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    windowLocation();
   });
 
   // 点击返回回到上一页
