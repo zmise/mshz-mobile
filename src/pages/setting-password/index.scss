@@ -9,3 +9,11 @@
     font-size: .32rem;
     color: rgba(227, 230, 233, 1);
 }
+
+.title-body .logo {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .42rem;
+    color: $color;
+}
