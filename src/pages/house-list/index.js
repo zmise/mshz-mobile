@@ -106,7 +106,7 @@ $(function () {
               '      <i class="twoline-items">' + item.livedCount + '人住过</i>' +
               '      <i class="twoline-items">' + item.commentCount + '条评价</i>' +
               '    </div>';
-            if (item.distDesc > 0) {
+            if (item.distDesc) {
               result +=
                 '    <div class="other-line">' +
                 '      <span>' + (lastParams.poi ? '距景点 ' : '距我 ') + item.distDesc + '</span>' +
