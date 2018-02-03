@@ -13,7 +13,7 @@ $(function () {
   function queryUserRoomHistory(params) {
     console.log(params)
     $.ajax({
-      url: '/mshz-app/security/user/queryUserRoomHistory',
+      url: '/mshz-app/openapi/user/queryUserRoomHistory',
       data: JSON.stringify(params),
       dataType: 'json',
       contentType: 'application/json;charset=UTF-8',
@@ -75,7 +75,7 @@ $(function () {
     }
 
     var params = {
-      ids: ids,
+      ids: ids
     }
     queryUserRoomHistory(params);
   }
