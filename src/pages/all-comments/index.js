@@ -56,7 +56,7 @@ $(function () {
               '      <span class="socre">' + item.score.toFixed(1) + '分</span>' +
               '    </div>' +
               '    <div class="des">' +
-              '      <p class="des-cnt">' + (item.content.lenght > 0 ? item.content : '暂无评论') + '</p>';
+              '      <p class="des-cnt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</p>';
 
             if (item.commentPicture !== '') {
               str += '      <div class="img-list">';
