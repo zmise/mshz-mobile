@@ -39,7 +39,7 @@ $(function () {
         '  <div class="no-house"></div>' +
         '  <span>很抱歉，没有搜索到房源</span>' +
         '</section>',
-      domFinished: '<div class="dropload-finished">已加载所有房源</div>'
+      domFinished: ''//<div class="dropload-finished">已加载所有房源</div>'
     },
     loadDownFn: loadingMore
   });
