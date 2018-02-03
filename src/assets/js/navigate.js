@@ -24,8 +24,8 @@ $(function () {
   }
 
   getUserInfo().then(function (loginInfo) {
-    window.sessionStorage.setItem('loginInfo', loginInfo);
-    initSideNav(login);
+    window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+    initSideNav(loginInfo);
   }).fail(function () {
     // 查询失败后或考虑跳转到登录页
     // location.replace('./login.html');
