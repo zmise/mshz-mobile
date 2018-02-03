@@ -70,8 +70,9 @@ $(function () {
   if (typeof window.localStorage.getItem('guessLike') === 'string') {
     guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     var ids = [];
-    for (var i = 0; i < guessLikeArray.length; i++) {
-      ids.push(guessLikeArray[i].situationId);
+    var len = guessLikeArray.length;
+    while (len-- > 0) {
+      ids.push(guessLikeArray[len].situationId);
     }
 
     var params = {
