@@ -83,6 +83,13 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
 
+    var uploadedCount = $('.js-uploaded-image').length;
+    var fileCount = this.files.length;
+    if (fileCount + uploadedCount > MAX_IMAGE_COUNT) {
+      showMessage('最多只可上传 ' + MAX_IMAGE_COUNT + ' 张照片，请重新选择！', 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      return;
+    }
+
     var deferreds = [];
 
     for (var i = 0; i < this.files.length; i++) {
