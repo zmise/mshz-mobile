@@ -59,6 +59,7 @@ $(function () {
         if (res.status === 'C0000') {
           var data = res.result.map;
 
+          // 将接口返回的“年-月”进行排序
           var yearMonths = [];
           for (var prop in data) {
             yearMonths.push(prop);
@@ -66,17 +67,9 @@ $(function () {
           yearMonths.sort();
 
           var sourceDate = [];
-          // dataect.keys(data).forEach(function (key) {
-          //   return sourceDate = sourceDate.concat(data[key]);
-          // });
-          // var sourceDate1 = [];
-          // console.log(data);
-
           for (var i = 0; i < yearMonths.length; i++) {
             sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
-          // console.log(sourceDate);
-
 
           // 判断默认日期是否已经无房
           var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status;
@@ -90,20 +83,21 @@ $(function () {
             $('#endDate').val(endDate);
             $('#totalday').text('共' + totalDays + '晚');
 
+            console.log('orderInfo.cancelDays=', orderInfo.cancelDays)
             updateCancelInfo(startDate, endDate);
           }
           // 初始化价格日历
           $('#firstSelect').calendarSwitch({
             selectors: {
-              sections: ".calendar"
+              sections: '.calendar'
             },
             index: 3,      // 展示的月份个数
-            animateFunction: "slideToggle", // 动画效果
+            animateFunction: 'slideToggle', // 动画效果
             controlDay: false,              // 知否控制在daysnumber天之内，这个数值的设置前提是总显示天数大于90天
-            // daysnumber: "90",            // 控制天数
-            comeColor: "#44bb80",           // 入住颜色
-            outColor: "#44bb80",            // 离店颜色
-            comeoutColor: "#44bb80",        //入住和离店之间的颜色
+            // daysnumber: '90',            // 控制天数
+            comeColor: '#44bb80',           // 入住颜色
+            outColor: '#44bb80',            // 离店颜色
+            comeoutColor: '#44bb80',        //入住和离店之间的颜色
             callback: function (start, end, totalDays, price) {
               $('#startDate').val(start);
               $('#endDate').val(end);
@@ -149,7 +143,7 @@ $(function () {
 
     // console.log(params);
 
-    $.ajax({
+    return $.ajax({
       url: '/mshz-app/security/app/order/queryOrderPreview',
       data: params,
       dataType: 'json',
@@ -160,24 +154,9 @@ $(function () {
         // 关闭loading
         $('#loading').remove();
 
-        // res = {
-        //   "result": {
-        //     "roomCount": 1, "roomRate": 28,
-        //     "roomPrice": 28,
-        //     "gardenArea": "南山",
-        //     "roomDeposit": 0, "roomArea": 66,
-        //     "cancelDays": 5,
-        //     "roomTitle": "观海台花园608",
-        //     "cancelRemark": "",
-        //     "cancelAble": true,
-        //     "custCount": 2
-        //   },
-        //   "message": "处理成功",
-        //   "status": "C0000"
-        // };
         if (res.status === 'C0000') {
           orderInfo = res.result;
-          var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items" href="javascript:;">' + orderInfo.gardenArea + '</i><i class="twoline-items" href="javascript:;">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum" href="javascript:;">' + orderInfo.custCount + '人</i></div>';
+          var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items">' + orderInfo.gardenArea + '</i><i class="twoline-items">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum">' + orderInfo.custCount + '人</i></div>';
 
           $('.yajin').text(orderInfo.roomDeposit);
           $('.house-price').text(orderInfo.roomRate);
@@ -273,20 +252,22 @@ $(function () {
     endDate: endDate,
   }
 
-  // init价格日历get请求接口
-  var caleParams = {
-    roomId: params.roomId,
-    startDate: initStartDate,
-    endDate: initCaleEndDate,
-  }
-
   // 订单预览get接口
   orderPreviewInfo({
     roomId: params.roomId
-  });
+  }).then(function () {
 
-  // 价格日历get请求接口
-  calePriceInfo(caleParams);
+    // init价格日历get请求接口
+    var caleParams = {
+      roomId: params.roomId,
+      startDate: initStartDate,
+      endDate: initCaleEndDate,
+    }
+
+    // 价格日历get请求接口
+    calePriceInfo(caleParams);
+
+  });
 
   /*   页面的生成时一些盒子的隐藏判断 */
   var $liveNum = $('.userInfo-body .input-layout .liveNum');
