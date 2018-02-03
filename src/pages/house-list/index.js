@@ -109,7 +109,7 @@ $(function () {
             if (item.distDesc > 0) {
               result +=
                 '    <div class="other-line">' +
-                '      <span>距我 ' + (item.distDesc > 1000 ? item.dist : item.distDesc) + '</span>' +
+                '      <span>' + (lastParams.poi ? '距景点 ' : '距我 ') + item.distDesc + '</span>' +
                 '    </div>';
             }
             result += '  </div>' +
