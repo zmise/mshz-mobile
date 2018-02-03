@@ -518,8 +518,12 @@ body {
     color: rgba(94, 100, 107, 1);
 }
 
+.living-info .items .lab {
+  width: 1.5rem;
+}
 .living-info .items .txt {
     @include flex;
+    width: 5.8rem;
 }
 
 // .living-info .items .gap {
