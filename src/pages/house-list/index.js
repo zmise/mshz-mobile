@@ -157,6 +157,7 @@ $(function () {
       pageSize: 10,
       lon: $('#lon').val(),
       lat: $('#lat').val(),
+      needAllCity: $('#needAllCity').val(),
     };
 
   }
@@ -229,7 +230,8 @@ $(function () {
     var $content = $(this).closest('.filter-list').find('.content');
     var curLayerIndex = $content.find('.one-row .current').index();
     var poi = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
-    console.log(poi)
+    var type = $(this).data('type');
+    // console.log(poi)
     if (poi == '不限') {
       poi = '';
       $(this).closest('body').find('.position').text('位置');
@@ -238,6 +240,12 @@ $(function () {
       $(this).closest('body').find('.position').text(poi);
     }
     $('#poi').val(poi);
+
+    if (type === '飞机场' || type === '汽车站' || type === '火车站') {
+      $('#needAllCity').val('true');
+    } else {
+      $('#needAllCity').val('');
+    }
 
     loadingMore({ isReload: true });
   });
@@ -265,7 +273,11 @@ $(function () {
     } else {
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(metro);
     }
-    $('#poi').val(metro);
+    // $('#poi').val(metro);
+    $('#poi').val('');
+    $('#needAllCity').val('true');
+    $('#lon').val($(this).data('lon'));
+    $('#lat').val($(this).data('lat'));
 
     loadingMore({ isReload: true });
   });
