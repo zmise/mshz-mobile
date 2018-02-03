@@ -208,7 +208,7 @@ $(function () {
         $('#verifyimg').attr('src', '/mshz-app/verify/image?');
       }
 
-      $('.textList .items').eq(0).focus();
+      $('.textList').eq(0).focus();
       // $(this).hide().siblings().show();
       // timer(60);
       // sendcheckcode(telVal);
@@ -223,24 +223,25 @@ $(function () {
   });
 
   // 跳文本框
-  $('.textList .items').on('input propertychange', function () {
-    if ($(this).val().length === 1) {
-      $(this).next().focus();
-    } else {
-      $(this).prev().focus();
-    }
-  });
+  // $('.textList .items').on('input propertychange', function () {
+  //   if ($(this).val().length === 1) {
+  //     $(this).next().focus();
+  //   } else {
+  //     $(this).prev().focus();
+  //   }
+  // });
 
   // 点击cancel的发送短信验证码
   $('#cancel').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var code = '';
-    var $textList = $('.textList .items')
-    for (var i = 0; i < $textList.length; i++) {
-      code += $textList.eq(i).val();
-    }
-    $textList.blur();
+    var code = $('.textList').eq(0).val();
+    // var $textList = $('.textList .items')
+    // for (var i = 0; i < $textList.length; i++) {
+    //   code += $textList.eq(i).val();
+    // }
+
+    $('.textList').eq(0).blur();
     var params = {
       code: code,
     }

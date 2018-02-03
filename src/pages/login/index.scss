@@ -3,6 +3,10 @@
 @import '../../sass/header.scss'; // 全局头部
 @import '../../sass/toast.scss'; // toast的样式
 @import '../../sass/login.scss'; // login的样式
+// #overlay {
+//     display: block;
+// }
+
 #overlay .box {
     @include flex-box;
     @include flex-direction(column);
@@ -40,18 +44,14 @@
 
 #overlay .box .verify .textList {
     @include flex-box;
-}
-
-#overlay .box .verify .textList .items {
-    @include flex-box;
     @include align-items;
     @include justify-content;
-    width: .8rem;
     height: .8rem;
     margin-left: 0.1rem;
     background: rgba(227, 230, 233, 1);
     border-radius: .04rem;
     text-align: center;
+    letter-spacing: .2rem;
 }
 
 #overlay .box .text2 {
