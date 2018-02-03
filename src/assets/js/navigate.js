@@ -7,7 +7,7 @@ $(function () {
     var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
     if (loginInfo) {
       dtd.resolve(loginInfo);
-    } else if (Cookie.get('sid')) {
+    } else if (Cookie.get('sid') && $('body').data('logined')) {
       $.ajax({
         url: '/mshz-app/security/user/info/query',
         type: 'get',
@@ -23,7 +23,10 @@ $(function () {
     return dtd;
   }
 
-  getUserInfo().then(initSideNav).fail(function () {
+  getUserInfo().then(function (loginInfo) {
+    window.sessionStorage.setItem('loginInfo', loginInfo);
+    initSideNav(login);
+  }).fail(function () {
     // 查询失败后或考虑跳转到登录页
     // location.replace('./login.html');
   });
