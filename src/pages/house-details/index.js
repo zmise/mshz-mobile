@@ -211,7 +211,7 @@ $(function () {
     var item = guessLikeArray[i];
     var num = guessLikeArray[i].price;
 
-    if (guessLike.situation === item.situation) {
+    if (guessLike.situationId === item.situationId) {
       guessLikeArray.splice(i, 1);
     }
 
@@ -229,7 +229,7 @@ $(function () {
     region: $('#area').val(),
     priceHigh: priceHigh,
     priceLow: priceLow,
-    situationId: situationId,
+    situationId: situationId
   }
 
   guessLikeInfo(guessLikeParams);
