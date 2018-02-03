@@ -148,6 +148,11 @@
         $(me.comfire).on('tap', function (event) {
           event.preventDefault();
           event.stopPropagation();
+
+          // 日历层正在动画过渡中则直接返回
+          if ($(me.sections).is(':animated')) {
+            return;
+          }
           $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
           var st = me.startData;
           var en = me.endData;
