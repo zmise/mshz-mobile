@@ -25,6 +25,10 @@ $(function () {
         if (res.status === 'C0000') {
           var data = res.result.items;
           var index = data.length;
+          console.log(params);
+          if (params.commentStatus === '') {
+            $('#allList').text('全部（' + index + '）');
+          }
           var str = '';
           for (var i = 0; i < index; i++) {
             var item = data[i];
@@ -77,7 +81,31 @@ $(function () {
     });
   }
 
-  myOrderComment();
+  // 未评价订单数量查询 get接口
+  function uncommittedCount() {
+    $.ajax({
+      url: '/mshz-app/security/order/comment/uncommittedCount',
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        console.log(res);
+        if (res.status === 'C0000') {
+          $('#unComment').text(res.result);
+        }
+
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+      }
+    });
+  }
+  var params = {
+    commentStatus: ''
+  }
+  myOrderComment(params);
+  uncommittedCount();
   //点击全部评价和待评价之间的切换
   $('.order-body').on('tap', '.items', function (e) {
     e.preventDefault();
@@ -90,7 +118,7 @@ $(function () {
   });
 
   //点击进入评论详情myassess-entry
-  $('.article-body').on('tap', '.myassess-entry', function (e) {
+  $('.article-body').on('click', '.myassess-entry', function (e) {
     e.stopPropagation();
     var id = $(this).data('id');
     if (id && id !== '') {
@@ -100,7 +128,7 @@ $(function () {
   });
 
   //点击进入评价订单assess-order
-  $('.article-body').on('tap', '.assess-entry', function (e) {
+  $('.article-body').on('click', '.assess-entry', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var id = $(this).data('id');
