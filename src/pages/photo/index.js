@@ -127,13 +127,13 @@ $(function () {
             }
             return _index;
           }
-
-
+          //当前点进去的图片 位于相册的位置的序号
+          var firstIndex = +$('.types').eq(typeIndex).data('length') + +itemIndex;
           var photo = $('.photo-body').phototAlbum({
             width: $(window).width(),
             height: $(window).height(),
             pagination: false,
-            index: imageIndex,
+            index: firstIndex,
             callback: function (i) {
               getTitle(i);
             },
