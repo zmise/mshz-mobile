@@ -2,7 +2,10 @@
 
 .header-body {
     position: relative;
-    background-color: $color;
+    background: #3dbe83;
+    background: -moz-linear-gradient(left, #3dbe83 0%, #5cb177 100%);
+    background: -webkit-linear-gradient(left, #3dbe83 0%,#5cb177 100%);
+    background: linear-gradient(to right, #3dbe83 0%,#5cb177 100%);
 }
 
 .header-body.fixed {
