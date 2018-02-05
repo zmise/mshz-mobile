@@ -39,7 +39,11 @@ $(function () {
         '  <div class="no-house"></div>' +
         '  <span>很抱歉，没有搜索到房源</span>' +
         '</section>',
-      domFinished: ''//<div class="dropload-finished">已加载所有房源</div>'
+      domFinished: '', // <div class="dropload-finished">已加载所有房源</div>'
+      domNetworkError: '<section class="unusual-body">' +
+        '  <div class="no-network"></div>' +
+        '  <span>网络请求失败，请检查网络</span>' +
+        '</section>'
     },
     loadDownFn: loadingMore
   });
@@ -99,7 +103,7 @@ $(function () {
               '  </div>' +
               '  <div class="item-threeline">' +
               '    <div class="three-lline">' +
-              '      <div class="star-lines"></div>' +
+              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.67 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
               '      <i class="score">' + item.rate + '分</i>' +
               '    </div>' +
               '    <div class="three-rline">' +
@@ -125,13 +129,8 @@ $(function () {
       error: function (error) {
         console.log(error);
         console.log('error');
-        var result =
-          '<section class="unusual-body">' +
-          '  <div class="no-network"></div>' +
-          '  <span>网络请求失败，请检查网络</span>' +
-          '</section>';
-        $houseList.empty().append(result);
-        dropload.lock();
+        $houseList.empty();
+        dropload.resetload(-1);
       }
     });
   }

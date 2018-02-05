@@ -48,6 +48,7 @@
 .index-list .item-threeline {
     @include justify-content(flex-start);
     padding-top: .26rem;
+    white-space: nowrap;
 }
 
 // .index-list .item-threeline .three-lline {
@@ -78,14 +79,3 @@
 //     width: .17rem;
 //     background-color: skyblue;
 // }
-.star-lines {
-    width: 1.2rem;
-    height: .2rem;
-    background-color: rgba(255, 92, 92, 1);
-    margin-right: .26rem;
-}
-
-.score {
-    font-size: .24rem;
-    color: rgba(255, 92, 92, 1);
-}

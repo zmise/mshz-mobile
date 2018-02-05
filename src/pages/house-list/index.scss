@@ -86,31 +86,3 @@ body {
 // #menu {
 //     display: none;
 // }
-
-.unusual-body {
-    @include flex-box;
-    @include flex-direction(column);
-    @include align-items;
-    @include justify-content;
-    padding-top: 1.45rem;
-}
-
-.unusual-body .no-house {
-    width: 3.93rem;
-    height: 1.92rem;
-    background: url('./img/no-houseInfo.png') no-repeat;
-    background-size: 100%;
-}
-
-.unusual-body .no-network {
-    width: 4.32rem;
-    height: 2.73rem;
-    background: url('./img/check-network.png') no-repeat;
-    background-size: 100%;
-}
-
-.unusual-body span {
-    padding-top: 0.2rem;
-    font-size: .28rem;
-    color: rgba(90, 165, 114, 1);
-}

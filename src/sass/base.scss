@@ -295,7 +295,7 @@ table {
     background-color: $color !important;
 }
 
-.c-wite {
+.c-white {
     color: #fff !important;
 }
 
@@ -303,10 +303,71 @@ table {
     color: $color !important;
 }
 
-.bd-c-wite {
+.bd-c-white {
     color: #fff !important;
 }
 
 .bd-c-base {
     color: $color !important;
+}
+
+.star-lines {
+    position: relative;
+    width: 1.7rem;
+    height: .34rem;
+    margin-right: .2rem;
+    background-color: #ccc;
+}
+
+.star-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.7rem;
+    height: .34rem;
+    background-image: url(../../assets/img/star.png);
+    background-size: .34rem .34rem;
+}
+
+.star-bar-score {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: .34rem;
+  background-color: rgb(250, 92, 92);
+}
+
+.score {
+    font-size: .24rem;
+    color: rgb(255, 92, 92);
+}
+
+
+.unusual-body {
+  @include flex-box;
+  @include flex-direction(column);
+  @include align-items;
+  @include justify-content;
+  padding-top: 1.45rem;
+}
+
+.unusual-body .no-house {
+  width: 3.93rem;
+  height: 1.92rem;
+  background: url('../../assets/img/no-house-info.png') no-repeat;
+  background-size: 100%;
+}
+
+.unusual-body .no-network {
+  width: 4.32rem;
+  height: 2.73rem;
+  background: url('../../assets/img/check-network.png') no-repeat;
+  background-size: 100%;
+}
+
+.unusual-body span {
+  padding-top: 0.2rem;
+  font-size: .28rem;
+  color: rgba(90, 165, 114, 1);
 }
