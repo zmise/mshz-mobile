@@ -90,8 +90,8 @@ body {
     10);
     background-color: rgba(255, 255, 255, 1);
     border-radius: .04rem;
-    box-shadow: 0 0 .1rem rgb(100, 100, 100);
-    padding: .3rem .6rem .4rem;
+    box-shadow: 0 0 .2rem rgba(39, 88, 55, 0.12);
+    padding: .2rem .6rem .4rem;
 }
 
 .select-body .input-text {
@@ -101,6 +101,14 @@ body {
     padding-bottom: .2rem;
     border-bottom: $border;
     width: 100%;
+}
+
+.select-body .input-text:nth-child(2) {
+    padding-bottom: .3rem;
+}
+
+.select-body .input-text:nth-child(3) {
+    border: 0;
 }
 
 .select-body .input-text .input-text-left {
@@ -151,7 +159,7 @@ body {
     padding: 0;
     border: none;
     outline: none; //css去掉button点击后的蓝框
-    margin-top: .27;
+    margin-top: .2rem;
     height: .8rem;
     width: 100%;
     font-size: .34rem;
@@ -171,7 +179,7 @@ body {
     padding-top: .2rem;
     background: rgba(255, 255, 255, 1);
     border-radius: .04rem;
-    box-shadow: 0 0 .1rem rgb(100, 100, 100);
+    box-shadow: 0 0 .2rem rgba(39, 88, 55, 0.12);
 }
 
 .navigatelist-body .items {
@@ -197,7 +205,7 @@ body {
 
 .navigatelist-body .items .txt {
     display: block;
-    margin-top: .24rem;
+    margin-top: .2rem;
     font-size: .22rem;
     font-family: PingFangSC;
     color: rgba(105, 107, 112, 1);
@@ -272,7 +280,6 @@ body {
 // #menu {
 //     display: none;
 // }
-
 //pagination
 .banner-body .pagination {
     @include flex-box;
