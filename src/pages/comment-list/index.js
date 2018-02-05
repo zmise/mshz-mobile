@@ -27,7 +27,7 @@ $(function () {
           var index = data.length;
           console.log(params);
           if (params.commentStatus === '') {
-            $('#allList').text('全部（' + index + '）');
+            $('#allList').text('已评价（' + index + '）');
           }
           var str = '';
           for (var i = 0; i < index; i++) {
