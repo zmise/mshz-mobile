@@ -6,7 +6,6 @@
 // #overlay {
 //     display: block;
 // }
-
 #overlay .box {
     @include flex-box;
     @include flex-direction(column);
@@ -29,7 +28,7 @@
 #overlay .box .verify {
     @include flex-box;
     @include align-items;
-    @include justify-content(space-between);
+    @include justify-content(space-around);
     padding: 0 .35rem;
     margin-bottom: 0.5rem;
 }
@@ -47,7 +46,8 @@
     @include align-items;
     @include justify-content;
     height: .8rem;
-    margin-left: 0.1rem;
+    width: 2.7rem;
+    margin-left: 0.3rem;
     background: rgba(227, 230, 233, 1);
     border-radius: .04rem;
     text-align: center;

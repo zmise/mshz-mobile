@@ -4,71 +4,68 @@
 @import '../../sass/toast.scss'; // toast的样式
 @import '../../sass/login.scss'; // login的样式
 #overlay .box {
-  @include flex-box;
-  @include flex-direction(column);
-  width: 6.8rem;
-  margin: calc(40%) .35rem 0;
-  background: rgba(255, 255, 255, 1);
-  border-radius: .08rem;
-  box-sizing: border-box;
+    @include flex-box;
+    @include flex-direction(column);
+    width: 6.8rem;
+    margin: calc(40%) .35rem 0;
+    background: rgba(255, 255, 255, 1);
+    border-radius: .08rem;
+    box-sizing: border-box;
 }
 
 #overlay .box .text1 {
-  @include flex-box;
-  @include align-items;
-  @include justify-content;
-  font-size: .28rem;
-  height: 1.22rem;
-  color: rgba(42, 43, 45, 1);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .28rem;
+    height: 1.22rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 #overlay .box .verify {
-  @include flex-box;
-  @include align-items;
-  @include justify-content(space-between);
-  padding: 0 .35rem;
-  margin-bottom: 0.5rem;
+    @include flex-box;
+    @include align-items;
+    @include justify-content(space-around);
+    padding: 0 .35rem;
+    margin-bottom: 0.5rem;
 }
 
 #overlay .box .verify .verifyimg {
-  width: 2.4rem;
-  height: .8rem;
-  background: rgba(227, 230, 233, 1);
-  border-radius: .04rem;
-  border: 0;
+    width: 2.4rem;
+    height: .8rem;
+    background: rgba(227, 230, 233, 1);
+    border-radius: .04rem;
+    border: 0;
 }
 
 #overlay .box .verify .textList {
-  @include flex-box;
-}
-
-#overlay .box .verify .textList .items {
-  @include flex-box;
-  @include align-items;
-  @include justify-content;
-  width: .8rem;
-  height: .8rem;
-  margin-left: 0.1rem;
-  background: rgba(227, 230, 233, 1);
-  border-radius: .04rem;
-  text-align: center;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    height: .8rem;
+    width: 2.7rem;
+    margin-left: 0.3rem;
+    background: rgba(227, 230, 233, 1);
+    border-radius: .04rem;
+    text-align: center;
+    letter-spacing: .2rem;
 }
 
 #overlay .box .text2 {
-  @include flex-box;
-  height: 0.85rem;
-  border-top: .01rem solid rgba(227, 230, 233, 1);
+    @include flex-box;
+    height: 0.85rem;
+    border-top: .01rem solid rgba(227, 230, 233, 1);
 }
 
 #overlay .box .text2 span {
-  @include flex;
-  @include flex-box;
-  @include align-items;
-  @include justify-content;
-  font-size: .28rem;
-  color: rgba(0, 122, 255, 1);
+    @include flex;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    font-size: .28rem;
+    color: rgba(0, 122, 255, 1);
 }
 
 #overlay .box .text2 span:last-child {
-  border-left: .01rem solid rgba(227, 230, 233, 1);
+    border-left: .01rem solid rgba(227, 230, 233, 1);
 }
