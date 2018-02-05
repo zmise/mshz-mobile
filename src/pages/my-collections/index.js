@@ -41,10 +41,10 @@ $(function () {
               '          <i class="twoline-items">' + item.customerCount + '人</i>' +
               '        </div>' +
               '        <div class="item-threeline">' +
-              '          <div class="three-lline">' +
-              '            <div class="star-lines"></div>' +
-              '            <i class="score">' + item.rateServer + '分</i>' +
-              '          </div>' +
+              '    <div class="three-lline">' +
+              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
+              '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
+              '    </div>' +
               '          <div class="three-rline">' +
               '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
               '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
