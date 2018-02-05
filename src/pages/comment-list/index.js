@@ -58,7 +58,7 @@ $(function () {
               '      <span>' + item.days + '晚</span>' +
               '    </div>' +
               '    <span class="price">¥' + item.roomRate + '</span>';
-            if (!item.content.length && !item.commentPicture.length) {
+            if (!item.score && !item.content.length && !item.commentPicture.length) {
               str += '    <div class="bnt">' +
                 '<div class="box assess-entry" data-id="' + item.id + '">评价订单</div>' +
                 '    </div>';
