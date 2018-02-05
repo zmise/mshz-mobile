@@ -326,7 +326,7 @@ $(function () {
     var poi = $('#search-entry').val();
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
-    var type = $.trim($('#destination-entry').data('typ'));
+    var type = $.trim($('#destination-entry').data('type'));
     if (dates != '') {
       var split = dates.split('至');
       var str = '&startDate=' + split[0] + '&endDate=' + split[1];
@@ -335,7 +335,7 @@ $(function () {
     if (poi != '') {
       path += '&poi=' + poi;
     }
-    if (lat !== '' && lon !== '') {
+    if (lat !== '' && lon !== '' && lat && lon) {
       path += '&lat=' + lat + '&lon=' + lon;
     }
     if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站') {
