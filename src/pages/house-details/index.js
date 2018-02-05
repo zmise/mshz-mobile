@@ -52,7 +52,7 @@ $(function () {
                 '    <p>¥' + item.price + '</p>' +
                 '  </div>' +
                 '  <div class="twoline">' +
-                '    <i class="twoline-items">' + item.cityName + '</i>' +
+                '    <i class="twoline-items">' + item.region + '</i>' +
                 '    <i class="twoline-items">' + item.roomCount + '居 ' + item.area + '平</i>' +
                 '    <i class="twoline-items">' + item.customerCount + '人</i>' +
                 '  </div>' +
