@@ -85,8 +85,8 @@ $(function () {
             '<div class="time-score">' +
             '  <span class="time">' + data.commentTimeDesc + '</span>' +
             '  <div class="score">' +
-            '    <span>' + data.score + '</span>' +
-            '    <div class="start-line"></div>' +
+            '    <span>' + data.score.toFixed(1) + '</span>' +
+            '      <div class="star-lines"><div class="star-bar-score" style="width:' + (data.score * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
             '  </div>    ' +
             '</div>' +
             '<div class="text-img">' +

@@ -26,7 +26,8 @@ $(function () {
             '  <div class="line-two">' +
             '    <div class="flex-box">' +
             '      <i class="clc-red txt socre">' + data.rate.toFixed(1) + '分</i>' +
-            '      <div class="star-lines"></div>' +
+            '      <div class="star-lines"><div class="star-bar-score" style="width:' + (data.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
+            '    </div>' +
             '    </div>' +
             '    <div>' +
             '      <i class="clc-red txt" href="javascript:;">环境：' + data.rateEnv.toFixed(1) + '</i>' +
@@ -45,7 +46,7 @@ $(function () {
             if (item.headPortrait.length) {
               str += '        <img class="photo" src="' + item.headPortrait.replace('{size}', '88x88') + '"/>';
             } else {
-              str += '        <img class="photo" src="/user/static/img/user.png"/>';
+              str += '        <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
             }
             str +=
               '        <div class="name-time">' +
