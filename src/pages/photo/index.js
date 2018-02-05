@@ -72,7 +72,7 @@ $(function () {
 
           var itemNumber = 0;
           for (var i = 0; i < array.length; i++) {
-            if (parseInt(typeIndex) + 1 === i) {
+            if (parseInt(typeIndex) === i) {
               str +=
                 '  <a class="items current" href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
                 ;
