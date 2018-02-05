@@ -18,9 +18,9 @@
 		this.$image = $(element).addClass('zoomify');
 		this.options = $.extend({}, Zoomify.DEFAULTS, this.$image.data(), options);
 
-		this.$image.on('click', function (e) {
-			// e.stopPropagation();
-			// e.preventDefault();
+		this.$image.on('tap', function (e) {
+			e.stopPropagation();
+			e.preventDefault();
 			that.zoom();
 		});
 		$(window).on('resize', function () { that.reposition(); });
@@ -139,9 +139,9 @@
 		this.$shadow = $('<div class="zoomify-shadow"></div>');
 		$('body').append(this.$shadow);
 		this.addTransition(this.$shadow);
-		this.$shadow.on('click', function (e) {
-			// e.stopPropagation();
-			// e.preventDefault();
+		this.$shadow.on('tap', function (e) {
+			e.stopPropagation();
+			e.preventDefault();
 			that.zoomOut();
 		})
 

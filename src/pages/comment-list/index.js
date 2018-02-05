@@ -33,7 +33,7 @@ $(function () {
           for (var i = 0; i < index; i++) {
             var item = data[i];
             str +=
-              '<div class="all-assess myassess-entry" data-id="' + item.id + '">' +
+              '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">' +
               '<span class="time">' + item.commentTimeDesc + '</span>' +
               '<div class="text-img">' +
               '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
@@ -49,7 +49,7 @@ $(function () {
             }
 
             str += '</div>' +
-              '<a class="content" href="/houseDetails?id=' + item.situationId + '">' +
+              '<div class="content house-details" data-id="' + item.situationId + '" href="/houseDetails?id=' + item.situationId + '">' +
               '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
               '  <div class="i-txt">' +
               '    <span class="title">' + item.title + '</span>' +
@@ -60,13 +60,13 @@ $(function () {
               '    <span class="price">¥' + item.roomRate + '</span>';
             if (!item.score && !item.content.length && !item.commentPicture.length) {
               str += '    <div class="bnt">' +
-                '<div class="box assess-entry" data-id="' + item.id + '">评价订单</div>' +
+                '<div class="box assess-entry" data-id="' + item.roomId + '">评价订单</div>' +
                 '    </div>';
             }
 
             str += '  </div>' +
-              '</a>' +
-              '</div>';
+              '</div>' +
+              '</a>';
           }
           $('.article-body').empty().append(str);
           $('.img-list img').zoomify();
@@ -118,19 +118,31 @@ $(function () {
   });
 
   //点击进入评论详情myassess-entry
-  $('.article-body').on('click', '.myassess-entry', function (e) {
+  // $('.article-body').on('tap', '.myassess-entry', function (e) {
+
+  // var id = $(this).data('id');
+  // if (id && id !== '') {
+  //   window.location = './my-comments.html?id=' + id;
+
+  // }
+  // });
+
+  //点击进入评论详情house-details
+  $('.article-body').on('tap', '.house-details', function (e) {
     e.stopPropagation();
+    e.preventDefault();
+
     var id = $(this).data('id');
     if (id && id !== '') {
-      window.location = './my-comments.html?id=' + id;
+      window.location = '/houseDetails?id=' + id;
 
     }
   });
-
   //点击进入评价订单assess-order
-  $('.article-body').on('click', '.assess-entry', function (e) {
+  $('.article-body').on('tap', '.assess-entry', function (e) {
     e.preventDefault();
-    e.stopPropagation();
+
+    console.log('zmise')
     var id = $(this).data('id');
     if (id && id !== '') {
       window.location = './comment-order.html?id=' + id;
@@ -147,6 +159,7 @@ $(function () {
 
   // 阻止冒泡
   $('.article-body').on('tap', '.zoomify', function (e) {
+    e.preventDefault();
     e.stopPropagation();
   });
 
