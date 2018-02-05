@@ -103,8 +103,8 @@ $(function () {
               '  </div>' +
               '  <div class="item-threeline">' +
               '    <div class="three-lline">' +
-              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.67 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
-              '      <i class="score">' + item.rate + '分</i>' +
+              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
+              '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
               '    </div>' +
               '    <div class="three-rline">' +
               '      <i class="twoline-items">' + item.livedCount + '人住过</i>' +
