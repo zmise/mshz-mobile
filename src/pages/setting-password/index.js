@@ -104,7 +104,13 @@ $(function () {
   $('#passing').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    windowLocation();
+    var lastLocation = window.sessionStorage.getItem('lastLocation');
+    if (lastLocation) {
+      window.sessionStorage.removeItem('lastLocation');
+      location.replace(lastLocation);
+    } else {
+      location.replace('/');
+    }
   });
 
   // 点击返回回到上一页
