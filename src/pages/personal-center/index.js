@@ -55,17 +55,17 @@ $(function () {
             '<div class="slider">';
 
           var picList = item.waitInRoomOrders;
-          if (picList > 0) {
-            for (var i = 0; i < picList.length; i++) {
+          if (picList.length > 0) {
+            for (var i = 0; i < 2; i++) {
               str +=
                 '  <div class="items">' +
                 '    <div class="tlt">' +
-                '      <span class="txt">' + picList.title + '</span>' +
+                '      <span class="txt">' + picList[i].title + '</span>' +
                 '      <span class="txt current">待入住</span>' +
                 '    </div>' +
                 '    <div class="time">' +
-                '      <span class="txt">' + picList.inRoomStartTime + '至' + picList.inRoomEndTime + '</span>' +
-                '      <span class="txt">' + picList.days + '晚</span>' +
+                '      <span class="txt">' + picList[i].inRoomStartTime + '至' + picList[i].inRoomEndTime + '</span>' +
+                '      <span class="txt">' + picList[i].days + '晚</span>' +
                 '    </div>' +
                 '  </div>';
             }
