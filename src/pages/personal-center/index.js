@@ -61,7 +61,7 @@ $(function () {
                 '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
                 '    <div class="tlt">' +
                 '      <span class="txt">' + picList[i].title + '</span>' +
-                '      <span class="txt current">待入住</span>' +
+                '      <span class="txt current">已预订</span>' +
                 '    </div>' +
                 '    <div class="time">' +
                 '      <span class="txt">' + picList[i].inRoomStartTimeDesc + '至' + picList[i].inRoomEndTimeDesc + '</span>' +
