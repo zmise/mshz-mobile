@@ -341,12 +341,17 @@ $(function () {
     e.preventDefault();
     // 验证手机格式  todo
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
-    var idReg = /^((\d{18})|([0-9x]{18})|([0-9X]{18}))$/; //验证身份证正则
+    var idReg = /^(\d{18}$|^\d{17}(\d|X|x))$/; //验证身份证正则
+    var nameReg = /^[\u4e00-\u9fa5]{2,18}|(^[a-zA-Z]+[\s.]?([a-zA-Z]+[\s.]?){0,4}[a-zA-Z]$)/;
     var nameVal = $.trim($('#name').val());
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
     var idVal = $.trim($('#IDcard').val());
-    if (nameVal.length < 2) {
+    if (nameVal.length < 2 || nameVal.length > 18) {
       showMessage('请填写正确姓名', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      return;
+    }
+    if (!nameReg.test(nameVal)) {
+      showMessage('姓名仅限为2-18位中文或英文字母', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
     if (!idReg.test(idVal)) {
