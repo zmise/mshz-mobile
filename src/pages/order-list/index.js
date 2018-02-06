@@ -143,7 +143,7 @@ $(function () {
                     strB +=
                       '      <a class="current2" href="./comment-order.html?orderNo=' + item.orderNo + '&roomId=' + item.roomId + '">评价订单</a>';
                   }
-                  '    </div>' +
+                  strB += '    </div>' +
                     '  </div>' +
                     '</div>';
                 }
