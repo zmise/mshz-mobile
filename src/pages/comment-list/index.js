@@ -22,7 +22,7 @@ $(function () {
       cache: false,
       success: function (res) {
         console.log(res);
-        if (res.status === 'C0000' && res.result && res.result.item.length) {
+        if (res.status === 'C0000' && res.result && res.result.items.length) {
           var data = res.result.items;
           var index = data.length;
           if (params.commentStatus === '') {
@@ -32,12 +32,11 @@ $(function () {
           for (var i = 0; i < index; i++) {
             var item = data[i];
             str +=
-              '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">' +
-              '<span class="time">' + item.commentTimeDesc + '</span>' +
-              '<div class="text-img">';
-
+              '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">';
             if (params.commentStatus !== 'NOT_COMMENT') {
               str +=
+                '<span class="time">' + item.commentTimeDesc + '</span>' +
+                '<div class="text-img">' +
                 '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
             }
 
