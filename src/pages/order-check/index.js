@@ -347,11 +347,11 @@ $(function () {
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
     var idVal = $.trim($('#IDcard').val());
     if (nameVal.length < 2 || nameVal.length > 18) {
-      showMessage('请填写正确姓名', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      showMessage('请填写正确姓名', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
     if (!nameReg.test(nameVal)) {
-      showMessage('姓名仅限为2-18位中文或英文字母', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      showMessage('姓名仅限为2-18位中文或英文字母', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
       return;
     }
     if (!idReg.test(idVal)) {
