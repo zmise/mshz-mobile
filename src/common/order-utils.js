@@ -1,6 +1,6 @@
 var map = {
   PENDING: { icon: 'dairuzhu', text: '待付款', className: 'current2' },
-  PAYMENT: { icon: 'dairuzhu', text: '待入住', className: 'current2' },
+  PAYMENT: { icon: 'dairuzhu', text: '已预订', className: 'current2' },
   CANCELL_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
   CANCELL_NO_REFUND: { icon: 'yiquxiao', text: '已取消', className: 'current1' },
   CHECKED: { icon: 'yituifangyoutuikuan', text: '已入住', className: 'current2' },
