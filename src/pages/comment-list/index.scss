@@ -125,7 +125,6 @@ body {
     @include align-items;
     width: 6.8rem;
     height: 1.67rem;
-    background: rgba(247, 250, 248, 1);
     border-radius: .04rem;
 }
 
@@ -226,7 +225,7 @@ body {
     @include align-items;
     @include justify-content;
     width: 1.2rem;
-    height: .44rem;
+    height: .48rem;
     color: rgba(255, 92, 92, 1);
     border-radius: .04rem;
     border: .01rem solid rgba(255, 92, 92, 1);
