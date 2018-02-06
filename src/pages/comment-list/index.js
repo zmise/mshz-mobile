@@ -70,7 +70,7 @@ $(function () {
               '</div>' +
               '</a>';
           }
-          $('.article-body').empty().append(str);
+          $('#articleBody').empty().append(str);
           $('.img-list img').zoomify();
 
         }
@@ -120,7 +120,7 @@ $(function () {
   });
 
   //点击进入评论详情myassess-entry
-  // $('.article-body').on('tap', '.myassess-entry', function (e) {
+  // $('#articleBody').on('tap', '.myassess-entry', function (e) {
 
   // var id = $(this).data('id');
   // if (id && id !== '') {
@@ -130,7 +130,7 @@ $(function () {
   // });
 
   //点击进入评论详情house-details
-  $('.article-body').on('tap', '.house-details', function (e) {
+  $('#articleBody').on('tap', '.house-details', function (e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -141,7 +141,8 @@ $(function () {
     }
   });
   //点击进入评价订单assess-order
-  $('.article-body').on('tap', '.assess-entry', function (e) {
+  $('#articleBody').on('tap', '.assess-entry', function (e) {
+    e.stopPropagation();
     e.preventDefault();
 
     console.log('zmise')
@@ -160,7 +161,7 @@ $(function () {
   });
 
   // 阻止冒泡
-  $('.article-body').on('tap', '.zoomify', function (e) {
+  $('#articleBody').on('tap', '.zoomify', function (e) {
     e.preventDefault();
     e.stopPropagation();
   });
