@@ -60,7 +60,7 @@ $(function () {
               str +=
                 '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
                 '    <div class="tlt">' +
-                '      <span class="txt">' + picList[i].title + '</span>' +
+                '      <span class="txt ellips">' + picList[i].title + '</span>' +
                 '      <span class="txt current">已预订</span>' +
                 '    </div>' +
                 '    <div class="time">' +

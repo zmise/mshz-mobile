@@ -160,13 +160,20 @@ body {
 }
 
 .order-info .slider .items .tlt .txt {
+    @include flex-box;
     font-size: .32rem;
     color: rgba(94, 100, 107, 1);
 }
 
+.order-info .slider .items .tlt .ellips {
+    @include flex;
+}
+
 .order-info .slider .items .tlt .current {
+    @include justify-content(flex-end);
     color: $color;
     font-weight: 700;
+    width: 2rem;
 }
 
 .order-info .slider .items .time {
