@@ -42,8 +42,6 @@ $(function () {
         if (res.status === 'C0000' && res.result) {
           showMessage(res.message);
           $('#overlay').hide();
-          $('#send-verify').hide().siblings().show();
-          timer(60);
           sendcheckcode($.trim($('#tel').val()).replace(/\s/g, ''));
         } else {
           showMessage('验证错误，请重新输入');
@@ -74,6 +72,10 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('发送中，请耐心等待');
+          $('#send-verify').hide().siblings().show();
+          timer(60);
+        } else {
+          showMessage(res.message);
         }
       },
       error: function (error) {
@@ -222,33 +224,30 @@ $(function () {
     this.src = src + Math.random();
   });
 
-  // 跳文本框
-  $('.textList .items').on('input propertychange', function () {
-    if ($(this).val().length === 1) {
-      $(this).next().focus();
-    } else {
-      $(this).prev().focus();
-    }
-  });
+  // // 跳文本框
+  // $('.textList .items').on('input propertychange', function () {
+  //   if ($(this).val().length === 1) {
+  //     $(this).next().focus();
+  //   } else {
+  //     $(this).prev().focus();
+  //   }
+  // });
+
 
   // 点击noCancel的取消验证
   $('#noCancel').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    $('#overlay').hide();
 
+    $('#overlay').hide();
   });
 
   // 点击cancel的发送短信验证码
   $('#cancel').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var code = '';
-    var $textList = $('.textList .items')
-    for (var i = 0; i < $textList.length; i++) {
-      code += $textList.eq(i).val();
-    }
-    $textList.blur();
+    var code = $('.textList').eq(0).val();
+    $('.textList').eq(0).blur();
     var params = {
       code: code,
     }
