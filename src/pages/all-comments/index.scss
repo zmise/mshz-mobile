@@ -5,6 +5,7 @@
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
 @import '../../sass/loading.scss'; // 加载中
+@import '../../sass/zoomify.scss'; // 查看大图样式
 body {
     position: relative;
     padding-top: .88rem;
@@ -162,8 +163,7 @@ body {
 .comment-body .first-comment .des .des-cnt {
     font-size: .26rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .4rem;
-    // @include line-clamp;
+    line-height: .4rem; // @include line-clamp;
 }
 
 .comment-body .first-comment .des .img-list {

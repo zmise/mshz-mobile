@@ -3,6 +3,7 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.banner.js');
 require('../../assets/js/toast.js');  //toast的事件
+require('../../assets/js/zoomify.js'); // 查看大图
 
 
 
@@ -322,4 +323,11 @@ $(function () {
 
   });
 
+
+  $('.img-list img').zoomify();
+
+  // 查看大图阻止冒泡
+  $('.img-list').on('tap', '.zoomify', function (e) {
+    e.stopPropagation();
+  });
 });

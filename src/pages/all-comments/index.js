@@ -4,6 +4,8 @@ require('./index.scss');
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/appDownload.js');//全局下载APP
+require('../../assets/js/zoomify.js'); // 查看大图
+
 
 $(function () {
 
@@ -64,7 +66,7 @@ $(function () {
               var comPicArray = item.commentPicture.split(',');
               for (var k = 0; k < comPicArray.length; k++) {
                 str +=
-                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '144x144') + '"/>';
+                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '750x750') + '"/>';
               }
               str += '      </div>';
             }
@@ -94,6 +96,8 @@ $(function () {
           }
 
           $('#articleBody').append(str);
+          $('.img-list img').zoomify();
+
         }
       },
       error: function (error) {
@@ -130,5 +134,10 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     history.go(-1)
+  });
+
+  // 查看大图阻止冒泡
+  $('.article-body').on('tap', '.zoomify', function (e) {
+    e.stopPropagation();
   });
 });
