@@ -23,7 +23,7 @@ $(function () {
           var str =
             '<a class="personal-info" href="./personal-info.html">' +
             '  <div class="flex-box">' +
-            '    <img class="photo" href="' + item.headPortrait.replace('{size}', '137x137') + '"/>' +
+            '    <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '"/>' +
             '    <div class="name-time">' +
             '      <span>' + item.nickname + '</span>' +
             '      <div class="tel">' +

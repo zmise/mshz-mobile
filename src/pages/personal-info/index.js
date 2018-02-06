@@ -49,9 +49,13 @@ $(function () {
       data: params
     }).then(function (res) {
       if (res.status === 'C0000') {
-
-        console.log(res.result.url);
+        //sessionStorage更新缓存的个人信息
         $('#image').attr('src', res.result.url.replace('{size}', '88x88'));
+        var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+        if (loginInfo) {
+          loginInfo.headPortrait = res.result.url;
+          window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+        }
         var params = {
           headPortrait: res.result.url,
         }
