@@ -98,7 +98,7 @@ $(function () {
               '  </div>' +
               '  <div class="item-twoline">' +
               '    <i class="twoline-items">' + item.region + '</i>' +
-              '    <i class="twoline-items">' + item.houseType + '</i>' +
+              '    <i class="twoline-items">' + item.roomCount + '居' + item.area + '平</i>' +
               '    <i class="twoline-items">' + item.customerCount + '人</i>' +
               '  </div>' +
               '  <div class="item-threeline">' +
