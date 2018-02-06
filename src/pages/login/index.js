@@ -43,8 +43,6 @@ $(function () {
         if (res.status === 'C0000' && res.result) {
           showMessage(res.message);
           $('#overlay').hide();
-          $('#send-verify').hide().siblings().show();
-          timer(60);
           sendcheckcode($.trim($('#tel').val()).replace(/\s/g, ''));
         } else {
           showMessage('验证错误，请重新输入');
@@ -74,6 +72,8 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           showMessage('发送中，请耐心等待');
+          $('#send-verify').hide().siblings().show();
+          timer(60);
         } else {
           showMessage(res.message);
         }
