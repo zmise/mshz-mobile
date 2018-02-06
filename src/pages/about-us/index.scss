@@ -5,16 +5,23 @@
 @import '../../sass/footer.scss'; // 全局底部
 body {
     position: relative;
-    padding-top: .88rem;
-    background-color: #fff;
+    background-color: #f5f5f5;
     height: 100%
+}
+
+.header-body {
+    background: rgba(255, 255, 255, 0);
+}
+
+.header-body.fixed {
+    position: absolute;
 }
 
 
 /* about-us */
 
 .about-us {
-    padding: .3rem;
+    margin-bottom: .12rem;
     background-color: #fff;
 }
 
@@ -24,46 +31,76 @@ body {
 }
 
 .about-us .txt {
-    font-size: $font-middle;
-    color: $color-dark-grey;
+    @include flex-box;
+    position: relative;
+    text-align: center;
+    padding: 0 .75rem .2rem;
     line-height: 1.8;
+    font-size: .24rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .4rem;
+}
+
+.about-us .txt::before,
+.about-us .txt::after {
+    @include position(absolute, .1rem, auto, auto, auto, 9);
+    content: '';
+    width: .12rem;
+    height: .12rem;
+    background: $color;
+    border-radius: .06rem
+}
+
+.about-us .txt::before {
+    left: .35rem;
+}
+
+.about-us .txt::after {
+    right: .35rem;
 }
 
 
 /* contact-us */
 
 .contact-us {
-    padding: .6rem 0;
-    margin: 0 .3rem;
-    background: url('img/about-bg.png') 50% 50% no-repeat;
+    padding: .35rem 0 .1rem 0; // background: url('img/about-bg.png') 50% 50% no-repeat;
     background-color: #fff;
     background-size: 100% auto;
+    margin-bottom: .12rem;
 }
 
 .contact-us .title {
+    position: relative;
+    padding-left: 0.36rem;
     margin-bottom: .2rem;
-    font-size: $font-large;
     font-weight: 700;
-    color: #fff;
-    line-height: 1.2;
-    text-align: center;
+    font-size: .32rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .32rem;
+}
+
+.contact-us .title::before {
+    @include position(absolute, 0, auto, auto, 0, 9);
+    content: '';
+    width: .1rem;
+    height: .32rem;
+    background: $color;
 }
 
 .contact-us .items {
     @include flex-box;
-    padding: .1rem 0;
-    font-size: $font-middle;
-    color: #fff;
     line-height: 1.2;
+    font-size: .24rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .48rem;
 }
 
 .contact-us .items .lab {
-    display: block;
-    margin-right: .4rem;
+    width: 3rem;
+    margin-left: 0.8rem;
 }
 
 .contact-us .items .txt {
-    display: block;
     @include flex;
 }
 
@@ -76,29 +113,37 @@ body {
 /* address-body */
 
 .address-body {
-    padding: .3rem .3rem;
-    border-bottom: $border;
+    padding: .3rem .35rem;
+    margin-bottom: 0.12rem;
     background-color: #fff;
 }
 
 .address-body .title {
-    padding: .1rem 0;
-    font-size: $font-large;
+    position: relative;
     font-weight: 700;
-    color: $color-dark-grey;
-    line-height: 1.2;
-    text-align: center;
+    font-size: .32rem;
+    color: rgba(42, 43, 45, 1);
+    line-height: .32rem;
+}
+
+.address-body .title::before {
+    @include position(absolute, 0, auto, auto, -.35rem, 9);
+    content: '';
+    width: .1rem;
+    height: .32rem;
+    background: $color;
 }
 
 .address-body .address {
     padding: .2rem 0;
-    font-size: $font-middle;
-    color: $color-dark-grey;
-    line-height: 1.2;
-    text-align: center;
+    font-size: .24rem;
+    font-weight: 700;
+    color: rgba(42, 43, 45, 1);
+    line-height: .32rem;
 }
 
 .address-body .map {
     margin: .2rem 0;
     overflow: hidden;
+    border-radius: .16rem;
 }
