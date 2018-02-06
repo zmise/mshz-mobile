@@ -49,7 +49,7 @@ $(function () {
             '  </a>' +
             '</section>'
             ;
-          $('#article-body').prepend(str);
+          $('#articleBody').prepend(str);
 
           str =
             '<div class="slider">';
@@ -80,7 +80,8 @@ $(function () {
           str +=
             '  </div>' +
             '</div>';
-          $('#article-body .order-info').append(str);
+          $('#articleBody .order-info').append(str);
+          $('#articleBody').css('visibility', 'visible');
 
         }
       },
@@ -93,13 +94,13 @@ $(function () {
 
   queryPersonalCenter();
   // //点击进入我的积分
-  // $('.article-body').on('tap', '#myInegral-entry', function (e) {
+  // $('.articleBody').on('tap', '#myInegral-entry', function (e) {
   //   e.preventDefault();
   //   e.stopPropagation();
   //   window.location = './myIntegral.html';
   // });
   // //点击进入订单列表
-  // $('.article-body').on('tap', '#orderList-entry', function (e) {
+  // $('.articleBody').on('tap', '#orderList-entry', function (e) {
   //   e.preventDefault();
   //   e.stopPropagation();
   //   window.location = './order-list.html';
@@ -107,20 +108,20 @@ $(function () {
   // });
 
   // //点击进入成为房东页面
-  // $('.article-body').on('tap', '#landlord-entry', function (e) {
+  // $('.articleBody').on('tap', '#landlord-entry', function (e) {
   //   e.preventDefault();
   //   e.stopPropagation();
   //   window.location = './tobelandlord.html';
   // });
   // //点击进入成为房东页面
-  // $('.article-body').on('tap', '#landlord-entry', function (e) {
+  // $('.articleBody').on('tap', '#landlord-entry', function (e) {
   //   e.preventDefault();
   //   e.stopPropagation();
   //   window.location = './tobelandlord.html';
   // });
 
   // //点击进入评价列表
-  // $('.article-body').on('tap', '#assessList-entry', function (e) {
+  // $('.articleBody').on('tap', '#assessList-entry', function (e) {
   //   e.preventDefault();
   //   e.stopPropagation();
   //   window.location = './assess-list.html';

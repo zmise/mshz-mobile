@@ -15,6 +15,7 @@ body {
 .article-body {
     min-height: calc(100% - 4rem);
     box-sizing: border-box;
+    visibility: hidden;
 }
 
 .personal-info {
