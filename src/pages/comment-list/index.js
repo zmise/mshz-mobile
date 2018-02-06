@@ -62,7 +62,7 @@ $(function () {
               '    <span class="price">¥' + item.roomRate + '</span>';
             if (!item.score && !item.content.length && !item.commentPicture.length) {
               str += '    <div class="bnt">' +
-                '<div class="box assess-entry" data-id="' + item.roomId + '">评价订单</div>' +
+                '<div class="box assess-entry" data-room-id="' + item.roomId + '" data-order-no="' + item.orderNo + '">评价订单</div>' +
                 '    </div>';
             }
 
@@ -146,10 +146,10 @@ $(function () {
     e.preventDefault();
 
     console.log('zmise')
-    var id = $(this).data('id');
+    var roomId = $(this).data('room-id');
+    var orderNo = $(this).data('order-no');
     if (id && id !== '') {
-      window.location = './comment-order.html?id=' + id;
-
+      window.location = './comment-order.html?roomId=' + roomId + '&orderNo=' + orderNo;
     }
   });
 
