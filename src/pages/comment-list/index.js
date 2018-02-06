@@ -22,10 +22,9 @@ $(function () {
       cache: false,
       success: function (res) {
         console.log(res);
-        if (res.status === 'C0000') {
+        if (res.status === 'C0000' && res.result && res.result.item.length) {
           var data = res.result.items;
           var index = data.length;
-          console.log(params);
           if (params.commentStatus === '') {
             $('#allList').text('已评价（' + index + '）');
           }
