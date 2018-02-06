@@ -180,8 +180,14 @@ $(document).on('tap', '#talk-order', function (e) {
 $('#back').on('tap', function (e) {
   e.stopPropagation();
   e.preventDefault();
-  var path = './order-list.html';
-  window.location = path;
+  var flag;
+  if (flag === 'paly') {
+    window.location = './order-list.html#VALIDATED';
+  } else {
+    history.go(-1)
+  }
+
+
 });
 
 
