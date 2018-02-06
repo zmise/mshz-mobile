@@ -58,16 +58,16 @@ $(function () {
           if (picList.length > 0) {
             for (var i = 0; i < 2; i++) {
               str +=
-                '  <div class="items">' +
+                '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
                 '    <div class="tlt">' +
                 '      <span class="txt">' + picList[i].title + '</span>' +
                 '      <span class="txt current">待入住</span>' +
                 '    </div>' +
                 '    <div class="time">' +
-                '      <span class="txt">' + picList[i].inRoomStartTime + '至' + picList[i].inRoomEndTime + '</span>' +
+                '      <span class="txt">' + picList[i].inRoomStartTimeDesc + '至' + picList[i].inRoomEndTimeDesc + '</span>' +
                 '      <span class="txt">' + picList[i].days + '晚</span>' +
                 '    </div>' +
-                '  </div>';
+                '  </a>';
             }
           } else {
             str +=
