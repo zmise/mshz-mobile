@@ -148,7 +148,7 @@ $(function () {
     console.log('zmise')
     var roomId = $(this).data('room-id');
     var orderNo = $(this).data('order-no');
-    if (id && id !== '') {
+    if (roomId && roomId !== '' && orderNo && orderNo !== '') {
       window.location = './comment-order.html?roomId=' + roomId + '&orderNo=' + orderNo;
     }
   });
