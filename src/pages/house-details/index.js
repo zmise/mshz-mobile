@@ -298,6 +298,13 @@ $(function () {
     event.preventDefault();
     event.stopPropagation();
     $('.house-base-info .base-server .icon-items:gt(4)').toggleClass('hide');
+    if ($(this).find('span').text() === '展开全部') {
+      $(this).find('span').text('收起');
+      $(this).find('i').css('transform', 'rotate(180deg)')
+    } else {
+      $(this).find('span').text('展开全部');
+      $(this).find('i').css('transform', 'rotate(0)')
+    }
   });
 
 
