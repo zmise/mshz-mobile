@@ -36,8 +36,14 @@ $(function () {
     var str =
       '<nav class="navigate-body" js-plugin="slide" data-direction="vertical">' +
       ' <div class="navigate">' +
-      '   <div class="login" href="javascript:;">' +
-      '     <img class="photo" src="' + loginInfo.headPortrait.replace('{size}', '120x120') + '" alt="">' +
+      '   <div class="login" href="javascript:;">';
+
+    if (loginInfo.headPortrait.length) {
+      str += '  <img class="photo" src="' + loginInfo.headPortrait.replace('{size}', '120x120') + '" alt="">';
+    } else {
+      str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
+    }
+    str +=
       '     <span class="txt">' + loginInfo.nickname + '</span>' +
       '     <div class="tel">' +
       '       <i class="icon iconfont icon-shouji"></i>' +

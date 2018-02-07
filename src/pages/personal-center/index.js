@@ -22,8 +22,13 @@ $(function () {
           var item = res.result;
           var str =
             '<a class="personal-info" href="./personal-info.html">' +
-            '  <div class="flex-box">' +
-            '    <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '"/>' +
+            '  <div class="flex-box">';
+          if (item.headPortrait.length) {
+            str += '  <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '" alt="">';
+          } else {
+            str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
+          }
+          str +=
             '    <div class="name-time">' +
             '      <span>' + item.nickname + '</span>' +
             '      <div class="tel">' +
