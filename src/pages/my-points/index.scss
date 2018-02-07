@@ -13,17 +13,11 @@ body {
 }
 
 .general-info {
-    @include position(relative, auto, auto, auto, auto, 10);
-    @include flex;
-    @include flex-box;
-    @include align-items;
-    @include flex-direction(column);
-    height: 3rem;
     @include linear-gradient;
-    ;
-    padding-top: 0.1rem;
-    margin-bottom: 0.7rem;
-    box-sizing: border-box;
+    height: 3rem;
+    padding-top: .1rem;
+    margin-bottom: .7rem;
+    text-align: center;
 }
 
 .general-info .score {
@@ -39,16 +33,14 @@ body {
 }
 
 .general-info .content {
-    @include position(absolute, auto, auto, -.5rem, auto, 10);
-    @include flex-box;
-    @include justify-content;
-    @include flex-direction(column);
-    width: 6.78rem;
-    height: 1.64rem;
-    border-radius: .08rem; // box-shadow: 0 0 .1rem rgb(100, 100, 100);
-    padding: .2rem .9rem 0 .75rem;
-    background-color: #fff;
-    box-sizing: border-box;
+  width: 6.78rem;
+  height: 1.64rem;
+  border-radius: .08rem;
+  padding: .2rem .9rem 0 .75rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  text-align: left;
+  margin: .4rem auto -.51rem;
 }
 
 .general-info .content .tlt {
@@ -60,7 +52,7 @@ body {
 .general-info .content .cnt {
     font-size: .22rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .32rem;
+    line-height: .4rem;
 }
 
 .article-body {
