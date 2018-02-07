@@ -9,4 +9,12 @@ $(function () {
   if (loginInfo) {
     $('#menu').removeClass('icon-gerenzhongxin').addClass('icon-daohanglancaidan').attr('href', 'javascript:;');
   }
+
+  $('#back').on('click', function (e) {
+
+    e.stopPropagation();
+    e.preventDefault();
+    history.go(-1);
+  });
+
 });
