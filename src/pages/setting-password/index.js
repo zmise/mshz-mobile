@@ -58,15 +58,16 @@ $(function () {
       $('#psw').attr('type', 'password');
     }
   });
-
-  // 点击到完成并登录成功跳转到login
+  // [\u4e00-\u9fa5_\s/g]{6,12}
+  // 点击到完成并登录成功跳转到login /\s/g  /[\u4e00-\u9fa5_\s/g]/ /[^\x00-\xff]/if (!telReg.test(telVal)) {
   $('#indexEntry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
-
-    if (pswVal.length > 12 || pswVal.length < 6) {
-      toast.show('请输入6-12位密码');
+    var pswVal = $('#psw').val();
+    var pswReg = /[\u4e00-\u9fa5_\s]/g;; //验证密码正则
+    if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
+      showMessage('请输入6-12位密码');
+      $('#psw').val('');
       return;
     } else {
       var listParams = {

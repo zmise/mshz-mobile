@@ -60,13 +60,15 @@ $(function () {
     e.preventDefault();
     // 验证手机格式
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
+    var pswReg = /[\u4e00-\u9fa5_\s]/g;; //验证密码正则
+
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
-    var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
+    var pswVal = $('#psw').val();
 
     if (!telReg.test(telVal)) {
       toast.show('请输入正确的手机号');
       return;
-    } else if (pswVal.length > 12 || pswVal.length < 6) {
+    } else if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
       toast.show('请输入6-12位密码');
       return;
     } else {

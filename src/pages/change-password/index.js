@@ -57,11 +57,18 @@ $(function () {
   $('#index-entry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var oldPswVal = $.trim($('#oldPsw').val()).replace(/\s/g, '');
-    var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
-
-    if (pswVal.length > 12 || pswVal.length < 6) {
-      toast.show('请输入6-12位密码');
+    var oldPswVal = $('#oldPsw').val();
+    var pswVal = $('#psw').val();
+    var pswReg = /[\u4e00-\u9fa5_\s]/g;
+    if (oldPswVal.length > 12 || oldPswVal.length < 6 || pswReg.test(oldPswVal)) {
+      showMessage('请输入真确的密码');
+      $('#oldPsw').val('');
+      $('#psw').val('');
+      return;
+    } else if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
+      showMessage('请输入6-12位密码');
+      $('#oldPsw').val('');
+      $('#psw').val('');
       return;
     } else {
       var listParams = {
