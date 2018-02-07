@@ -7,7 +7,7 @@ $(function () {
     var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
     if (loginInfo) {
       dtd.resolve(loginInfo);
-    } else if (Cookie.get('sid') && $('body').data('logined')) {
+    } else if (Cookie.get('sid') || $('body').data('logined')) {
       $.ajax({
         url: '/mshz-app/security/user/info/query',
         type: 'get',
