@@ -385,4 +385,11 @@ $(function () {
     e.stopPropagation();
   });
 
+  //点击隐藏overlay
+  $('.filter-layer').on('tap', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(1321)
+    hideFilterLayer();
+  });
 });
