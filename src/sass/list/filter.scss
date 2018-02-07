@@ -16,7 +16,8 @@
 
 .filter-layer .filter-header {
     // @include position(fixed, 0, 0, auto, 0, 999);
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 .filter-layer .filter-header .des {
@@ -224,7 +225,6 @@
 // .filter-list .content .metro-row .slide {
 //     display: none;
 // }
-
 .filter-list .content .slide-body:last-child {
     @include flex; // padding: .24rem 0;
     padding: 0 .3rem;
@@ -283,15 +283,16 @@
 
 .filter-list .range-body .range-value {
     @include position(absolute, 0, 0, 0, 0, 10);
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 .filter-list .range-body .first-slider {
-    @include position(absolute, -.18rem, auto, auto, -.4rem, 20);
+    @include position(absolute, -.4rem, auto, auto, -.4rem, 20);
 }
 
 .filter-list .range-body .last-slider {
-    @include position(absolute, -.18rem, -.4rem, auto, auto, 20);
+    @include position(absolute, -.4rem, -.4rem, auto, auto, 20);
 }
 
 .filter-list .range-body .first-slider,
@@ -299,6 +300,7 @@
     width: .36rem;
     height: .48rem;
     border-radius: .1rem;
+    margin: 0.3rem 0;
     background-color: #fff;
     box-shadow: 0 0 .06rem rgba(0, 0, 0, .5); // margin: 0 .36rem;
 }
@@ -450,7 +452,8 @@
 .filter-list .complete-body .ok {
     @include flex;
     color: #fff;
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 .filter-list .complete-body .cancel {
