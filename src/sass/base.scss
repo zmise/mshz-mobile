@@ -372,8 +372,31 @@ table {
     background-size: 100%;
 }
 
+.unusual-body .tobe-landlord {
+    margin-top: 1rem;
+    width: 3.3rem;
+    height: 2.08rem;
+    background: url('../../assets/img/tobe-landlord.png') no-repeat;
+    background-size: 100%;
+}
+
 .unusual-body span {
     padding-top: 0.2rem;
     font-size: .28rem;
     color: rgba(90, 165, 114, 1);
+}
+
+.unusual-body button {
+    resize: none;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: 0;
+    width: 3.2rem;
+    height: .6rem;
+    margin-top: 0.2rem;
+    background: rgba(90, 165, 114, 1);
+    border-radius: .04rem;
+    font-size: .2rem;
+    color: rgba(254, 255, 254, 1);
 }
