@@ -174,6 +174,25 @@ $(function () {
 
   //   }
   // });
+  // 查看评价post接口
+  $.ajax({
+    url: '/mshz-app/security/order/comment/seeComment',
+    data: JSON.stringify(params),
+    dataType: 'json',
+    contentType: 'application/json;charset=UTF-8',
+    type: 'POST',
+    cache: false,
+    success: function (res) {
+      console.log(res);
+      if (res.status === 'C0000') {
+        console.log(res.result);
+      }
+    },
+    error: function (error) {
+      console.log(error);
+      console.log('error');
+    }
+  });
 
   // 回复的交互效果
   $('.article-body').on('tap', '.reply-comment', function (e) {

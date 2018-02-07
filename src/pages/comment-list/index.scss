@@ -69,7 +69,8 @@ body {
 }
 
 .order-body .current .number {
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 
@@ -78,11 +79,20 @@ body {
 .article-body .all-assess {
     @include flex-box;
     @include flex-direction(column);
+    position: relative;
     padding: .32rem .35rem;
     margin-top: 0.24rem;
     background: rgba(255, 255, 255, 1);
     box-sizing: border-box;
     border-bottom: .01rem solid #F3F3F3;
+}
+
+.article-body .small-circle {
+    @include position(absolute, .12rem, .12rem, auto, auto, 99);
+    width: .16rem;
+    height: .16rem;
+    background: rgba(255, 92, 92, 1);
+    border-radius: .08rem;
 }
 
 .article-body .all-assess .time {
@@ -91,9 +101,10 @@ body {
     padding-bottom: 0.1rem;
 }
 
-.article-body .all-assess .text-img{
-  margin-bottom: .07rem;
+.article-body .all-assess .text-img {
+    margin-bottom: .07rem;
 }
+
 .article-body .all-assess .text-img .txt {
     display: block;
     font-size: .26rem;

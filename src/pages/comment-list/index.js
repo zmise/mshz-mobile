@@ -11,7 +11,6 @@ require('../../assets/js/zoomify.js'); // 查看大图
 
 
 $(function () {
-
   // 我的订单评价列表展示 get接口
   function myOrderComment(params) {
     $.ajax({
@@ -33,7 +32,11 @@ $(function () {
             var item = data[i];
             if (params.commentStatus !== 'NOT_COMMENT') {
               str +=
-                '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">' +
+                '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">';
+              if (item.hasNew) {
+                str += '<div class="small-circle"></div>';
+              }
+              str +=
                 '<span class="time">' + item.commentTimeDesc + '</span>' +
                 '<div class="text-img">' +
                 '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
@@ -121,15 +124,11 @@ $(function () {
     myOrderComment(params);
   });
 
-  //点击进入评论详情myassess-entry
-  // $('#articleBody').on('tap', '.myassess-entry', function (e) {
-
-  // var id = $(this).data('id');
-  // if (id && id !== '') {
-  //   window.location = './my-comments.html?id=' + id;
-
-  // }
-  // });
+  // 点击myassess - entry 
+  $('#articleBody').on('tap', '.myassess-entry', function (e) {
+    e.stopPropagation();
+    $(this).find('.small-circle').remove();
+  });
 
   //点击进入评论详情house-details
   $('#articleBody').on('tap', '.house-details', function (e) {
@@ -146,8 +145,6 @@ $(function () {
   $('#articleBody').on('tap', '.assess-entry', function (e) {
     e.stopPropagation();
     e.preventDefault();
-
-    console.log('zmise')
     var roomId = $(this).data('room-id');
     var orderNo = $(this).data('order-no');
     if (roomId && roomId !== '' && orderNo && orderNo !== '') {
