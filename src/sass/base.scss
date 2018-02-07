@@ -299,7 +299,7 @@ table {
 }
 
 .bg-base {
-    background-color: $color !important;
+    @include linear-gradient;
 }
 
 .c-white {

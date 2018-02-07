@@ -76,7 +76,7 @@
     content: '';
     width: .72rem;
     height: .72rem;
-    @include linear-gradient;;
+    background-color: $color;
     border-radius: 50%;
     z-index: 1;
 }
