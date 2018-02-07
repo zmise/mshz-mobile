@@ -10,7 +10,7 @@ var order = require('../../common/order-utils');
 
 function houseInfo(data) {
   return '<div class="order-info">' +
-    '<div class="content">' +
+    '<a class="content" href="/houseDetails?id=' + data.situationId + '">' +
     '<img src="' + data.roomMainPic.replace('{size}', '120x100') + '" alt="">' +
     '<div class="i-txt">' +
     '<span class="title">' + data.roomTitle + '</span>' +
@@ -20,7 +20,7 @@ function houseInfo(data) {
     '<i class="line-items">' + data.custCount + '人</i>' +
     '</div>' +
     '</div>' +
-    '</div>' +
+    '</a>' +
     '<div class="time">' +
     '<i class="icon iconfont icon-shijianxianshi"></i>' +
     '<span class="txt">' + data.startTime + '至' + data.endTime + '</span>' +
