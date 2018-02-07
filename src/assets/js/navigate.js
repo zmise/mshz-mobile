@@ -87,7 +87,7 @@ $(function () {
       str +=
         '     <a class="items" href="/user/setting-password.html">' +
         // '     <a class="items" href="/setting-password.html">' +
-        '       <i class="icon iconfont icon-xiugaimima"></i>' +
+        '       <i class="icon iconfont icon-shezhimima"></i>' +
         '       <span class="txt">设置密码</span>' +
         '     </a>';
     }
