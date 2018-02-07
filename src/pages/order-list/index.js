@@ -4,7 +4,7 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');//侧边栏
 require('../../assets/js/appDownload.js');//全局下载APP
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 
 /* 切换订单分类栏的事件 */
@@ -205,7 +205,7 @@ $(function () {
           $('.article-body').append(str);
 
         } else {
-          showMessage(res.message, 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show(res.message);
         }
       },
       error: function (error) {
@@ -228,33 +228,16 @@ $(function () {
       success: function (res) {
 
         if (res.status === 'C0000') {
-          showMessage('取消成功', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show('取消成功');
           orderList();
         } else {
-          showMessage(res.message, 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show(res.message);
         }
       },
       error: function (error) {
         console.log(error);
         console.log('error');
       }
-    });
-  }
-
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
     });
   }
 

@@ -5,35 +5,12 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 require('../../assets/js/appDownload.js');//全局下载APP
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 
 
 
 $(function () {
-
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn || 'fadeIn';
-    var animateOut = animateOut || 'fadeOut';
-    var content = content || '这是一个提示信息';
-    var duration = duration || '3000';
-    var isCenter = isCenter || false;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-      padding: '0.1rem 0.27rem',
-      background: 'rgba(181, 185, 190, 0.8)',
-      borderRadius: '.31rem',
-      fontSize: '.24rem',
-      top: "80%",        //bottom底部的位置    具体的数值 或者center  垂直居中
-    });
-  }
-
 
   //上传本地图片转换为URL post接口
   function uploadImage(file) {
@@ -106,7 +83,7 @@ $(function () {
   //       }
   //       updateUserInfo(params);
   //     } else {
-  //       showMessage('传入的图片文件不正确');
+  //       toast.show('传入的图片文件不正确');
   //     }
 
   //   };
@@ -210,11 +187,11 @@ $(function () {
 
         if (res.status === 'C0000') {
           setTimeout(function () {
-            showMessage('修改成功');
+            toast.show('修改成功');
           }, 1000);
         } else {
           setTimeout(function () {
-            showMessage('修改失败');
+            toast.show('修改失败');
           }, 1000);
         }
       },

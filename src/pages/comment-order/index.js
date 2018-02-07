@@ -4,7 +4,7 @@ require('./index.scss');
 require('../../assets/js/plugins.js');
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 require('../../assets/js/navigate.js');//侧边栏
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 
 
@@ -13,24 +13,7 @@ $(function () {
   // 最多可上传图片的张数
   var MAX_IMAGE_COUNT = 6;
 
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-    });
-  }
   // 评价发布保存post接口
-
   function saveComment(params) {
     console.log(params);
     $.ajax({
@@ -42,12 +25,12 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('感谢您的评论！', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show('感谢您的评论！');
           setTimeout(function () {
             history.go(-1);
           }, 1500)
         } else {
-          showMessage(res.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show(res.message);
         }
       },
       error: function (error) {
@@ -86,7 +69,7 @@ $(function () {
     var uploadedCount = $('.js-uploaded-image').length;
     var fileCount = this.files.length;
     if (fileCount + uploadedCount > MAX_IMAGE_COUNT) {
-      showMessage('最多只可上传 ' + MAX_IMAGE_COUNT + ' 张照片，请重新选择！', 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('最多只可上传 ' + MAX_IMAGE_COUNT + ' 张照片，请重新选择！');
       return;
     }
 
@@ -109,7 +92,7 @@ $(function () {
       updateImageCount();
     }).fail(function (err) {
       console.log(err);
-      showMessage(err.message, 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show(err.message);
     });
 
   });
@@ -184,7 +167,7 @@ $(function () {
     var serviceAttitude = $('#serviceAttitude').data('score') || 0;
 
     if (!roomEnvironment || !serviceAttitude) {
-      showMessage('请对房屋环境和服务态度进行评分', 3000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('请对房屋环境和服务态度进行评分');
       return false;
     }
 

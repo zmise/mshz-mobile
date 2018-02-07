@@ -4,28 +4,11 @@ require('./index.scss');
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
 
 
 $(function () {
-
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-    });
-  }
 
   // 回复评价post接口
   function replyComment(params) {

@@ -2,29 +2,13 @@ require('./index.scss');
 
 require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.banner.js');
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
 
 
 
 
 $(function () {
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-    });
-  }
 
   // 猜你喜欢get接口
   function guessLikeInfo(params) {
@@ -110,7 +94,7 @@ $(function () {
   //           $('.banner-body').on('click', '#collect', function (e) {
   //             event.preventDefault();
   //             event.stopPropagation();
-  //             showMessage('后台处理没有成功收藏');
+  //             toast.show('后台处理没有成功收藏');
   //           });
   //         }
   //       }
@@ -135,10 +119,10 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('收藏房源成功！');
+          toast.show('收藏房源成功！');
           $(el).toggleClass('clc-red').data('status', 'collect');
         } else {
-          showMessage(res.message);
+          toast.show(res.message);
         }
       },
       error: function (error) {
@@ -160,10 +144,10 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('取消收藏房源成功！');
+          toast.show('取消收藏房源成功！');
           $(el).toggleClass('clc-red').data('status', '');
         } else {
-          showMessage(res.message);
+          toast.show(res.message);
         }
       },
       error: function (error) {

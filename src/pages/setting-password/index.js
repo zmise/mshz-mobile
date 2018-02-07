@@ -1,7 +1,7 @@
 require('./index.scss');
 // require('../../assets/js/plugins.js');
 
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 
 $(function () {
@@ -30,13 +30,13 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          showMessage('密码设置完成，请牢记密码！');
+          toast.show('密码设置完成，请牢记密码！');
           setTimeout(function () {
             // window.location = '/';
             windowLocation();
           }, 2000);
         } else {
-          showMessage(res.message);
+          toast.show(res.message);
         }
       },
       error: function (error) {
@@ -45,29 +45,6 @@ $(function () {
       }
     });
   }
-
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn || 'fadeIn';
-    var animateOut = animateOut || 'fadeOut';
-    var content = content || '这是一个提示信息';
-    var duration = duration || '3000';
-    var isCenter = isCenter || false;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-      padding: '0.1rem 0.27rem',
-      background: 'rgba(181, 185, 190, 0.8)',
-      borderRadius: '.31rem',
-      fontSize: '.24rem',
-      top: "80%",        //bottom底部的位置    具体的数值 或者center  垂直居中
-    });
-  }
-  // showMessage('zmise', 100000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
 
   // 点击toggleStyle字体图标改变样式和 input的type属性
   $('#toggleStyle').on('click', function (e) {
@@ -89,7 +66,7 @@ $(function () {
     var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
 
     if (pswVal.length > 12 || pswVal.length < 6) {
-      showMessage('请输入6-12位密码');
+      toast.show('请输入6-12位密码');
       return;
     } else {
       var listParams = {

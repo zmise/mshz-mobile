@@ -4,7 +4,7 @@ require('./index.scss');
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 var order = require('../../common/order-utils');
 
@@ -33,14 +33,7 @@ $(function () {
     setTimeout(function () {
       history.go(-1);
     }, 2e3);
-    $('body').toast({
-      position: 'fixed',
-      animateIn: 'bounceInUp-hastrans',
-      animateOut: 'bounceOutDown-hastrans',
-      content: '请求失败',
-      duration: 2000,
-      isCenter: true,
-    });
+    toast.show('请求失败');
   });;
 
   // 订单支付页面的post接口

@@ -3,7 +3,7 @@ require('./index.scss');
 
 require('../../assets/js/plugins.js');
 require('../../assets/js/calendar.js');//日期插件
-require('../../assets/js/toast.js');  //toast的事件
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 var util = require('../../util/');
 
@@ -178,7 +178,7 @@ $(function () {
             $('#cancelRemark').html('不允许退订');
           }
         } else {
-          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show(res.message);
         }
 
       },
@@ -188,22 +188,6 @@ $(function () {
       }
     });
 
-  }
-  // 初始化的弹出的toast框
-  function showMessage(content, duration, isCenter, animateIn, animateOut) {
-    var animateIn = animateIn;
-    var animateOut = animateOut;
-    var content = content;
-    var duration = duration;
-    var isCenter = isCenter;
-    $('body').toast({
-      position: 'fixed',
-      animateIn: animateIn,
-      animateOut: animateOut,
-      content: content,
-      duration: duration,
-      isCenter: isCenter,
-    });
   }
 
   // 新增订单post接口
@@ -224,7 +208,7 @@ $(function () {
           console.log(path);
           window.location = path;
         } else {
-          showMessage(res.message, 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+          toast.show(res.message);
         }
       },
       error: function (error) {
@@ -347,19 +331,19 @@ $(function () {
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
     var idVal = $.trim($('#IDcard').val());
     if (nameVal.length < 2 || nameVal.length > 18) {
-      showMessage('请填写正确姓名', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('请填写正确姓名');
       return;
     }
     if (!nameReg.test(nameVal)) {
-      showMessage('姓名仅限为2-18位中文或英文字母', 2000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('姓名仅限为2-18位中文或英文字母');
       return;
     }
     if (!idReg.test(idVal)) {
-      showMessage('请填写正确身份证号', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('请填写正确身份证号');
       return;
     }
     if (!telReg.test(telVal)) {
-      showMessage('请填写正确手机号码', 1000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
+      toast.show('请填写正确手机号码');
       return;
     }
 
