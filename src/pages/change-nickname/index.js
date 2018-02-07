@@ -43,7 +43,6 @@ $(function () {
     }
     return null; //返回参数值
   }
-
   var nickname = getUrlParam('nickname');
 
   if (!nickname) {
@@ -54,13 +53,16 @@ $(function () {
     $('#nickname').val(nickname);
   }
 
-  // 点击到完成并登录成功跳转到login
+  // 点击到完成并登录成功跳转到login /^\d+$/ 
   $('#save').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
+
     var nickname = $.trim($('#nickname').val());
-    if (nickname.length === 0) {
-      toast.show('请输入昵称！');
+    var nameReg = /^\d+$/; //纯数字
+
+    if (nickname.length === 0 || nameReg.test(nickname)) {
+      toast.show('请输入正确的姓名');
       return;
     }
     var params = {

@@ -205,7 +205,15 @@ $(function () {
 
   queryInfo();
 
-
+  // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
+  var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
+  if (browserRule.test(navigator.userAgent)) {
+    window.onpageshow = function (event) {
+      if (event.persisted) {
+        window.location.reload()
+      }
+    };
+  }
 
   // 点击上传图片  更换头像
   $('.article-body').on('click', '#image', function (e) {
