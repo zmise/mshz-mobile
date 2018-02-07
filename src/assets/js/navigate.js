@@ -26,6 +26,7 @@ $(function () {
   getUserInfo().then(function (loginInfo) {
     window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
     initSideNav(loginInfo);
+    $('#login').replaceWith('<a class="menu iconfont icon-daohanglancaidan" href="javascript:;" id="menu"></a>');
   }).fail(function () {
     // 查询失败后或考虑跳转到登录页
     // location.replace('./login.html');
@@ -86,7 +87,7 @@ $(function () {
     }
 
 
-    str += '     <a class="items" href="/" id="outLogin">' +
+    str += '     <a class="items" href="/" id="logout">' +
       '       <i class="icon iconfont icon-gerenzhongxintuichu"></i>' +
       '       <span class="txt">退出登录</span>' +
       '     </a>' +
@@ -142,7 +143,7 @@ $(function () {
   });
 
   /* 打开侧边导航栏  */
-  $('#menu').on('tap', function (e) {
+  $('body').on('tap.navigate', '#menu', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('#overlay').show();
@@ -153,7 +154,7 @@ $(function () {
   });
 
   /* 关闭侧边导航栏  */
-  $('#overlay').on('tap.navigate', function (e) {
+  $('body').on('tap.navigate', '#overlay', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('.navigate-body').translate({
@@ -166,7 +167,7 @@ $(function () {
   });
 
   /*  点击改变颜色current  */
-  $('.navigate .content').on('tap', '.items', function (e) {
+  $('body').on('.navigate .content .items', function (e) {
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
     $(this).find('.icon').addClass('current').end().siblings().find('.icon').removeClass('current');
@@ -174,7 +175,7 @@ $(function () {
 
 
   /*  点击退出登录  */
-  $('body').on('click', '#outLogin', function (e) {
+  $('body').on('click', '#logout', function (e) {
     e.stopPropagation();
     // e.preventDefault();
 
