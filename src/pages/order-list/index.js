@@ -214,6 +214,8 @@ $(function () {
               '<p clss="txt">~空空如也~</p>' +
               ' </div>'
               ;
+            $('.article-body').css('background-color', '#fff');
+
           }
           $('.article-body').append(str);
 

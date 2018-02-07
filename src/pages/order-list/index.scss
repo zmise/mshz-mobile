@@ -55,7 +55,9 @@ body {
 /* 确保底部footer在底部 */
 
 .article-body {
-    min-height: calc(100% - 2.12rem);
+    min-height: calc(100% - 2.5rem);
+    margin-bottom: 0.12rem;
+    background-color: #fff;
 }
 
 
@@ -147,7 +149,7 @@ body {
     padding: 0 .35rem;
 }
 
-.article-body .amount{
+.article-body .amount {
     display: inline-block;
     width: .6rem;
     text-align: right;
@@ -160,26 +162,26 @@ body {
 }
 
 .article-body .box .status .stu-but a {
-  width: 1.56rem;
-  height: .56rem;
-  margin-left: .32rem;
-  background-color: #fff;
-  border-radius: .28rem;
-  border: 0.02rem solid rgba(196, 201, 205, 1);
-  display: inline-block;
-  font-size: 14px;
-  color: #666;
-  line-height: .56rem;
-  text-align: center;
+    width: 1.56rem;
+    height: .56rem;
+    margin-left: .32rem;
+    background-color: #fff;
+    border-radius: .28rem;
+    border: 0.02rem solid rgba(196, 201, 205, 1);
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    line-height: .56rem;
+    text-align: center;
 }
-
 
 .article-body .box .status .title {
     font-size: .28rem;
 }
 
 .article-body .box .status .stu-but .current1 {
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
     color: rgba(255, 255, 255, 1);
 }
 
