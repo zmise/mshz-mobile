@@ -261,7 +261,7 @@
     @include flex-box;
     @include align-items;
     @include justify-content;
-    padding: .8rem .35rem .6rem; // box-shadow: 0 -.04rem .04em rgba(100, 100, 100, .1);
+    padding: .8rem .35rem .6rem .5rem; // box-shadow: 0 -.04rem .04em rgba(100, 100, 100, .1);
 }
 
 .filter-list .range-body .range {
@@ -300,9 +300,11 @@
     width: .36rem;
     height: .48rem;
     border-radius: .1rem;
-    margin: 0.3rem 0;
+    margin: 0.3rem .5rem;
+    padding: 0 .23rem;
     background-color: #fff;
     box-shadow: 0 0 .06rem rgba(0, 0, 0, .5); // margin: 0 .36rem;
+    box-sizing: border-box;
 }
 
 .filter-list .range-body .first-slider {

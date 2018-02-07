@@ -14,11 +14,13 @@ body {
 
 .general-info {
     @include position(relative, auto, auto, auto, auto, 10);
+    @include flex;
     @include flex-box;
     @include align-items;
     @include flex-direction(column);
     height: 3rem;
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
     padding-top: 0.1rem;
     margin-bottom: 0.7rem;
     box-sizing: border-box;

@@ -380,5 +380,9 @@ $(function () {
   //   e.stopPropagation();
   //   window.location = '/user/login.html';
   // });
+  $('.filter-layer .threelist').on('touchstart', '.range-body', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  });
 
 });
