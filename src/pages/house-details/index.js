@@ -46,8 +46,8 @@ $(function () {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
               listHTML +=
-                '<a href="/houseDetails?id=' + item.id + '">' +
-                '  <img class="items" src="' + item.mainPicture.replace('{size}', '200x100') + '">' +
+                '<a class="items" href="/houseDetails?id=' + item.id + '">' +
+                '  <img src="' + item.mainPicture.replace('{size}', '200x100') + '">' +
                 '  <div class="oneline">' +
                 '    <p>' + item.title + '</p>' +
                 '    <p>¥' + item.price + '</p>' +
