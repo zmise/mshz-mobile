@@ -61,7 +61,7 @@ $(function () {
 
           var picList = item.waitInRoomOrders;
           if (picList.length > 0) {
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < picList.length && i < 2; i++) {
               str +=
                 '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
                 '    <div class="tlt">' +
