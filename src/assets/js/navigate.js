@@ -41,7 +41,7 @@ $(function () {
     if (loginInfo.headPortrait.length) {
       str += '  <img class="photo" src="' + loginInfo.headPortrait.replace('{size}', '120x120') + '" alt="">';
     } else {
-      str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
+      str += '  <img class="photo" src="/user' + require('../../assets/img/user.png') + '"/>';
     }
     str +=
       '     <span class="txt">' + loginInfo.nickname + '</span>' +
