@@ -31,13 +31,15 @@ $(function () {
           var str = '';
           for (var i = 0; i < index; i++) {
             var item = data[i];
-            str +=
-              '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">';
             if (params.commentStatus !== 'NOT_COMMENT') {
               str +=
+                '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">' +
                 '<span class="time">' + item.commentTimeDesc + '</span>' +
                 '<div class="text-img">' +
                 '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
+            } else {
+              str +=
+                '<a class="all-assess myassess-entry" href="javascript:;">';
             }
 
             // 拼接评论图片
