@@ -289,9 +289,25 @@ $(function () {
   });
 
 
+  /* 判断详情内容是否大于100  */
 
-
-
+  if ($.trim($('#houseDes').text()).length > 100) {
+    $('#more').removeClass('hide');
+    $('#houseDes').addClass('zmise');
+  }
+  /* 点击展开全部  */
+  $('.house-base-info .house-des').on('tap', '.more', function (e) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('#houseDes').toggleClass('zmise');
+    if ($(this).find('span').text() === '展开全部') {
+      $(this).find('span').text('收起');
+      $(this).find('i').css('transform', 'rotate(180deg)')
+    } else {
+      $(this).find('span').text('展开全部');
+      $(this).find('i').css('transform', 'rotate(0)')
+    }
+  });
 
   /* 点击展开全部  */
   $('.house-base-info .base-server').on('tap', '.more', function (e) {

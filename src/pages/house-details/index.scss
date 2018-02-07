@@ -194,6 +194,14 @@ body {
     word-break: break-all;
 }
 
+.house-base-info .house-des .zmise {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 .house-base-info .house-des .part:last-child {
     padding-top: .2rem;
 }
@@ -232,17 +240,20 @@ body {
     line-height: 1
 }
 
+.house-des .more,
 .base-server .more {
     @include flex-box;
     @include justify-content;
 }
 
+.house-des .more span,
 .base-server .more span {
     font-size: .2rem;
     color: rgba(181, 185, 190, 1);
     padding-right: .15rem;
 }
 
+.house-des .more .icon,
 .base-server .more .icon {
     position: relative;
     display: block;
@@ -252,6 +263,8 @@ body {
     @include transition(all .3s);
 }
 
+.house-des .more .icon:before,
+.house-des .more .icon:after,
 .base-server .more .icon:before,
 .base-server .more .icon:after {
     position: absolute;
