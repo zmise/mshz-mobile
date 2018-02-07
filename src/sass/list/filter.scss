@@ -16,7 +16,7 @@
 
 .filter-layer .filter-header {
     // @include position(fixed, 0, 0, auto, 0, 999);
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 .filter-layer .filter-header .des {
@@ -283,7 +283,7 @@
 
 .filter-list .range-body .range-value {
     @include position(absolute, 0, 0, 0, 0, 10);
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 .filter-list .range-body .first-slider {
@@ -331,7 +331,7 @@
 //     height: .8rem;
 //     color: #fff;
 //     border-radius: 50%;
-//     background-color: $color;
+//     @include linear-gradient;;
 // }
 // .filter-list .range-body .orange-text:before {
 //     @include position(absolute, .48rem, auto, auto, .2rem, -10);
@@ -339,7 +339,7 @@
 //     content: '';
 //     width: .4rem;
 //     height: .4rem;
-//     background-color: $color;
+//     @include linear-gradient;;
 //     @include transform(rotateZ(45deg));
 // }
 
@@ -450,7 +450,7 @@
 .filter-list .complete-body .ok {
     @include flex;
     color: #fff;
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 .filter-list .complete-body .cancel {

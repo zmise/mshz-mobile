@@ -110,6 +110,13 @@ $border: .01rem solid #E3E6E9;
     z-index: $z-index;
 }
 
+@mixin linear-gradient {
+    background: #3dbe83;
+    background: -moz-linear-gradient(left, #3dbe83 0%, #5cb177 100%);
+    background: -webkit-linear-gradient(left, #3dbe83 0%, #5cb177 100%);
+    background: linear-gradient(to right, #3dbe83 0%, #5cb177 100%);
+}
+
 
 /* html的fontsize */
 
@@ -330,12 +337,12 @@ table {
 }
 
 .star-bar-score {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: .34rem;
-  background-color: rgb(250, 92, 92);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: .34rem;
+    background-color: rgb(250, 92, 92);
 }
 
 .score {
@@ -343,31 +350,30 @@ table {
     color: rgb(255, 92, 92);
 }
 
-
 .unusual-body {
-  @include flex-box;
-  @include flex-direction(column);
-  @include align-items;
-  @include justify-content;
-  padding-top: 1.45rem;
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items;
+    @include justify-content;
+    padding-top: 1.45rem;
 }
 
 .unusual-body .no-house {
-  width: 3.93rem;
-  height: 1.92rem;
-  background: url('../../assets/img/no-house-info.png') no-repeat;
-  background-size: 100%;
+    width: 3.93rem;
+    height: 1.92rem;
+    background: url('../../assets/img/no-house-info.png') no-repeat;
+    background-size: 100%;
 }
 
 .unusual-body .no-network {
-  width: 4.32rem;
-  height: 2.73rem;
-  background: url('../../assets/img/check-network.png') no-repeat;
-  background-size: 100%;
+    width: 4.32rem;
+    height: 2.73rem;
+    background: url('../../assets/img/check-network.png') no-repeat;
+    background-size: 100%;
 }
 
 .unusual-body span {
-  padding-top: 0.2rem;
-  font-size: .28rem;
-  color: rgba(90, 165, 114, 1);
+    padding-top: 0.2rem;
+    font-size: .28rem;
+    color: rgba(90, 165, 114, 1);
 }

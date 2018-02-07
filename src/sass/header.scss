@@ -2,10 +2,7 @@
 
 .header-body {
     position: relative;
-    background: #3dbe83;
-    background: -moz-linear-gradient(left, #3dbe83 0%, #5cb177 100%);
-    background: -webkit-linear-gradient(left, #3dbe83 0%,#5cb177 100%);
-    background: linear-gradient(to right, #3dbe83 0%,#5cb177 100%);
+    @include linear-gradient;
 }
 
 .header-body.fixed {
@@ -101,7 +98,6 @@
 //     height: .3rem;
 //     overflow: hidden;
 // }
-
 // .header-body .char {
 //     @include position(absolute, 0, 0, auto, auto, 10);
 //     @include flex-box;

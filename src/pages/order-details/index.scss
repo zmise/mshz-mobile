@@ -47,7 +47,7 @@ footer {
 .check-body .items:last-child {
     @include justify-content;
     width: 3.2rem;
-    background-color: $color;
+    @include linear-gradient;;
     color: #fff;
     font-size: .36rem;
 }

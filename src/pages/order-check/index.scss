@@ -318,7 +318,7 @@ body {
 
 .rule-body .slide-content .box1 .items:first-child {
     color: #fff;
-    background-color: $color;
+    @include linear-gradient;;
     border-color: $color;
 }
 
@@ -467,7 +467,7 @@ body {
 .check-body .items:last-child {
     @include justify-content;
     width: 3.2rem;
-    background-color: $color;
+    @include linear-gradient;;
     color: #fff;
     font-size: .36rem;
 }

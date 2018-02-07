@@ -162,8 +162,8 @@ body {
     margin-top: .2rem;
     height: .8rem;
     width: 100%;
-    font-size: .34rem;
-    background: $color;
+    font-size: .34rem; // background: $color;
+    @include linear-gradient;
     color: rgba(255, 255, 255, 1);
     border-radius: .04rem;
 }
@@ -207,7 +207,6 @@ body {
     display: block;
     margin-top: .2rem;
     font-size: .22rem;
-    font-family: PingFangSC;
     color: rgba(105, 107, 112, 1);
     line-height: 1;
     text-align: center;
@@ -296,5 +295,7 @@ body {
 }
 
 .pagination .current {
-    background-color: $color;
+    // @include linear-gradient;;
+    @include linear-gradient;
+    
 }

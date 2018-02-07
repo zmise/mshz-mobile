@@ -51,8 +51,8 @@
     padding: .16rem .32rem;
     font-size: $font-small;
     color: #fff; // line-height: 1.2;
-    border-radius: .4rem;
-    background-color: #5aa572;
+    border-radius: .4rem; // background-color: #5aa572;
+    @include linear-gradient;
     box-shadow: 0 0 8px rgba(100, 100, 100, .3);
 }
 

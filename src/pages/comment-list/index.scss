@@ -69,7 +69,7 @@ body {
 }
 
 .order-body .current .number {
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 

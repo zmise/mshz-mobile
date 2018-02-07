@@ -650,7 +650,7 @@ body {
 
 .footer-body .items:last-child {
     @include justify-content;
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 .footer-body .items .commuite {

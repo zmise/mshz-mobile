@@ -179,7 +179,7 @@ body {
 }
 
 .article-body .box .status .stu-but .current1 {
-    background-color: $color;
+    @include linear-gradient;;
     color: rgba(255, 255, 255, 1);
 }
 

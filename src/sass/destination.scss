@@ -28,7 +28,7 @@
 
 .des-body .des-header {
     @include position(fixed, 0, 0, auto, 0, 999);
-    background-color: $color;
+    @include linear-gradient;;
 }
 
 .des-body .des-header .des {
