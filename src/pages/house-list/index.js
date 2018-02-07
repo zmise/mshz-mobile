@@ -389,7 +389,6 @@ $(function () {
   $('.filter-layer').on('tap', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(1321)
     hideFilterLayer();
   });
 });
