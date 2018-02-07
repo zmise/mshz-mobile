@@ -21,7 +21,7 @@ $(function () {
       cache: false,
       success: function (res) {
         console.log(res);
-        if (res.status === 'C0000' && res.result && res.result.items.length) {
+        if (res.status === 'C0000') {
           var data = res.result.items;
           var index = data.length;
           if (params.commentStatus === '') {
@@ -120,7 +120,7 @@ $(function () {
     $(this).addClass('current').siblings().removeClass('current');
     var params = {
       commentStatus: $(this).data('commentStatus')
-    };
+    }; z
     myOrderComment(params);
   });
 
