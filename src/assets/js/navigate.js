@@ -60,7 +60,7 @@ $(function () {
       '       <i class="icon iconfont icon-gerenzhongxinwode"></i>' +
       '       <span class="txt">我的</span>' +
       '     </a>' +
-      '     <a class="items" href="/user/order-list.html">' +
+      '     <a class="items" href="/user/order-list.html" id="orderList">' +
       // '     <a class="items" href="/order-list.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>' +
       '       <span class="txt">订单</span>' +

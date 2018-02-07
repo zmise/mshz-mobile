@@ -21,11 +21,24 @@ $(function () {
     $('.article-body').empty();
 
     orderQueryType = $(this).data('orderQueryType');
-
     orderList();
+
+    $('#orderList').on('tap', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $('.navigate-body').translate({
+        duration: 0.3,
+        value: '100%',
+        callback: function () {
+          $('#overlay').hide();
+        }
+      });
+    });
   });
 
   $orderSort.find('a[data-order-query-type="' + orderQueryType + '"]').trigger('tap');
+
+
 
 
   /* get请求  订单列表数据 */
