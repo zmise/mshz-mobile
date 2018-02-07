@@ -156,7 +156,9 @@ function convertStatus(orderState, payState) {
   if (orderState === 'BOOKED' && payState === 'WAIT_PAYMENT') {
     state = 'PENDING';  // 待付款
   } else if (orderState === 'BOOKED' && payState === 'PAYMENT') {
-    state = 'PAYMENT';  // 待入住
+    state = 'PAYMENT';  // 已预订
+  } else if (orderState === 'BOOKED' && payState === 'PART_PAYMENT') {
+    state = 'PAYMENT';  // 已预订
   }
   return state;
 }
