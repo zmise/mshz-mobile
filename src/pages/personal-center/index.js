@@ -26,7 +26,7 @@ $(function () {
           if (item.headPortrait.length) {
             str += '  <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '" alt="">';
           } else {
-            str += '  <img class="photo" src="/user' + require('../../assets/img/user.png') + '"/>';
+            str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
           }
           str +=
             '    <div class="name-time">' +

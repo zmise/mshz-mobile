@@ -9,13 +9,11 @@
 }
 
 .navigate-body .login {
-    @include flex-box;
-    @include flex-direction(column);
-    @include align-items;
     padding: .5rem 0 0;
     border-bottom: .12rem solid rgba(245, 245, 245, 1);
     height: 2.92rem;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .navigate-body .login .photo {
@@ -26,6 +24,7 @@
     background: url(../../assets/img/user.png);
     background-size: cover;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .navigate-body .login .txt {
@@ -34,16 +33,10 @@
     padding: .15rem 0;
 }
 
-.navigate-body .login .tel {
-    @include flex-box;
-    @include align-items;
-}
-
 .navigate-body .login .tel .icon {
     width: .3rem;
     height: .3rem;
     font-size: .3rem;
-    margin-right: .1rem;
     color: rgba(181, 185, 190, 1);
 }
 

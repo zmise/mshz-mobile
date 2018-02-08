@@ -36,12 +36,12 @@ $(function () {
     var str =
       '<nav class="navigate-body" js-plugin="slide" data-direction="vertical">' +
       ' <div class="navigate">' +
-      '   <div class="login" href="javascript:;">';
+      '   <div class="login">';
 
     if (loginInfo.headPortrait.length) {
       str += '  <img class="photo" src="' + loginInfo.headPortrait.replace('{size}', '120x120') + '" alt="">';
     } else {
-      str += '  <img class="photo" src="/user' + require('../../assets/img/user.png') + '"/>';
+      str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
     }
     str +=
       '     <span class="txt">' + loginInfo.nickname + '</span>' +
