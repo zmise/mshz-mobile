@@ -68,8 +68,12 @@ $(function () {
     e.preventDefault();
     var pswVal = $('#psw').val();
     var pswReg = /[\u4e00-\u9fa5_\s]/g;; //验证密码正则
-    if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
-      showMessage('请输入6-12位密码');
+    if (pswVal.length > 12 || pswVal.length < 6) {
+      toast.show('请输入6-12位密码');
+      $('#psw').val('');
+      return;
+    } else if (pswReg.test(pswVal)) {
+      toast.show('禁止输入中文和空格');
       $('#psw').val('');
       return;
     } else {

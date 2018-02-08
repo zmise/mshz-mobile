@@ -239,8 +239,10 @@ $(function () {
     e.preventDefault();
     // 验证手机格式
     var telReg = /^1[3|4|5|7|8][0-9]{9}$/; //验证手机正则
+    var pswReg = /[\u4e00-\u9fa5_\s]/g;; //验证密码正则
+
     var telVal = $.trim($('#tel').val()).replace(/\s/g, '');
-    var pswVal = $.trim($('#psw').val()).replace(/\s/g, '');
+    var pswVal = $('#psw').val();
     var verifyVal = $.trim($('#verify').val()).replace(/\s/g, '');
 
 
@@ -252,6 +254,12 @@ $(function () {
       return;
     } else if (pswVal.length > 12 || pswVal.length < 6) {
       toast.show('请输入6-12位密码');
+      $('#psw').val('');
+      return;
+    } else if (pswReg.test(pswVal)) {
+      toast.show('禁止输入中文和空格');
+      $('#oldPsw').val('');
+      $('#psw').val('');
       return;
     } else {
       var listParams = {

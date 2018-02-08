@@ -68,8 +68,12 @@ $(function () {
     if (!telReg.test(telVal)) {
       toast.show('请输入正确的手机号');
       return;
-    } else if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
+    } else if (pswVal.length > 12 || pswVal.length < 6) {
       toast.show('请输入6-12位密码');
+      return;
+    } else if (pswReg.test(pswVal)) {
+      toast.show('禁止输入中文和空格');
+      $('#psw').val('');
       return;
     } else {
       var listParams = {

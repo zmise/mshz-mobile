@@ -60,13 +60,25 @@ $(function () {
     var oldPswVal = $('#oldPsw').val();
     var pswVal = $('#psw').val();
     var pswReg = /[\u4e00-\u9fa5_\s]/g;
-    if (oldPswVal.length > 12 || oldPswVal.length < 6 || pswReg.test(oldPswVal)) {
-      showMessage('请输入真确的密码');
+    if (oldPswVal.length > 12 || oldPswVal.length < 6) {
+      toast.show('请输入6-12的密码');
       $('#oldPsw').val('');
       $('#psw').val('');
       return;
-    } else if (pswVal.length > 12 || pswVal.length < 6 || pswReg.test(pswVal)) {
-      showMessage('请输入6-12位密码');
+    } else if (pswReg.test(pswVal)) {
+      toast.show('禁止输入中文和空格');
+      $('#oldPsw').val('');
+      $('#psw').val('');
+      return;
+    }
+    else if (pswVal.length > 12 || pswVal.length < 6) {
+      toast.show('请输入6-12位密码');
+      $('#oldPsw').val('');
+      $('#psw').val('');
+      return;
+    }
+    else if (pswReg.test(pswVal)) {
+      toast.show('禁止输入中文和空格');
       $('#oldPsw').val('');
       $('#psw').val('');
       return;
