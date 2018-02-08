@@ -461,7 +461,6 @@ body {
 
 .comment-body .first-comment .des .des-duihua {
     @include flex-box;
-    @include align-items;
     @include flex;
     padding-top: .2rem;
 }
@@ -470,6 +469,7 @@ body {
     font-size: .26rem;
     color: $color;
     line-height: .4rem;
+    width: 1.5rem;
 }
 
 .comment-body .first-comment .des .des-duihua span:last-child {
@@ -650,7 +650,8 @@ body {
 
 .footer-body .items:last-child {
     @include justify-content;
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 .footer-body .items .commuite {
