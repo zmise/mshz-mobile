@@ -4,7 +4,6 @@
 @import '../../sass/calendar.scss'; // 日历插件
 @import '../../sass/toast.scss'; // toast的样式
 @import '../../sass/loading.scss'; // 加载中
-
 body {
     position: relative;
     padding: .88rem 0 1rem;
@@ -12,10 +11,10 @@ body {
     // box-sizing: border-box;
 }
 
-
 .hidden {
-  display: none!important;
+    display: none!important;
 }
+
 
 /* address-body */
 
@@ -42,6 +41,7 @@ body {
 
 .address-body .item-oneline p:first-child {
     color: $color;
+    font-weight: 700;
 }
 
 .address-body .item-oneline p:last-child {
@@ -240,6 +240,10 @@ body {
     color: #b5b9be
 }
 
+#cancelRules {
+    padding-top: 0.3rem;
+}
+
 .rule-body .tit {
     padding: .48rem .35rem 0;
     font-size: .24rem;
@@ -280,11 +284,12 @@ body {
 .rule-body .slide-body .slide-content {
     @include flex-box;
     @include flex-direction(column);
-    @include flex(0, 0, auto);
+    @include flex(0,
+    0,
+    auto);
     align-items: left;
-    padding-left: .35rem;
-    // width: 10.99rem;
-    height: 3.36rem;
+    padding-left: .35rem; // width: 10.99rem;
+    height: 3rem;
     font-size: $font-large;
     color: #fff;
     line-height: 1.2;
@@ -318,7 +323,8 @@ body {
 
 .rule-body .slide-content .box1 .items:first-child {
     color: #fff;
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
     border-color: $color;
 }
 
@@ -462,12 +468,14 @@ body {
     margin-left: .33rem;
     font-size: .4rem;
     color: rgba(255, 92, 92, 1);
+    font-weight: 700;
 }
 
 .check-body .items:last-child {
     @include justify-content;
     width: 3.2rem;
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
     color: #fff;
     font-size: .36rem;
 }

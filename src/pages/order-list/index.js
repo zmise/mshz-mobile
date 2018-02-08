@@ -68,7 +68,7 @@ $(function () {
                 str += '<div class="box">' +
                   '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                   '<div class="title current">' +
-                  '  <span>' + item.roomTitle + '</span><span>¥' + item.totalPrice + '</span>' +
+                  '  <span>' + item.roomTitle + '</span><span class="weight">¥' + item.totalPrice + '</span>' +
                   '</div>' +
                   '<div class="time">' +
                   '  <span>' + item.startTime + '至' + item.endTime + '</span>' +
@@ -94,7 +94,7 @@ $(function () {
                   '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                   '    <div class="title">' +
                   '      <span class="ellips">' + item.roomTitle + '</span>' +
-                  '      <span>¥' + item.totalPrice + '</span>' +
+                  '      <span class="weight">¥' + item.totalPrice + '</span>' +
                   '    </div>' +
                   '    <div class="time">' +
                   '      <span>' + item.startTime + '至' + item.endTime + '</span>' +
@@ -171,7 +171,7 @@ $(function () {
                   '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                   '    <div class="title">' +
                   '      <span>' + item.roomTitle + '</span>' +
-                  '      <span>¥' + item.totalPrice + '</span>' +
+                  '      <span class="weight">¥' + item.totalPrice + '</span>' +
                   '    </div>' +
                   '    <div class="time">' +
                   '      <span>' + item.startTime + '至' + item.endTime + '</span>' +
@@ -211,10 +211,10 @@ $(function () {
             str =
               '<div class="noOrder-body">' +
               '<div class="img"></div>' +
-              '<p clss="txt">~空空如也~</p>' +
+              '<p class="txt">~空空如也~</p>' +
               ' </div>'
               ;
-            $('.article-body').css('background-color', '#fff');
+            // $('.article-body').css('background-color', '#fff');
 
           }
           $('.article-body').append(str);

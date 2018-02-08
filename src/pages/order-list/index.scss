@@ -56,8 +56,7 @@ body {
 
 .article-body {
     min-height: calc(100% - 2.5rem);
-    margin-bottom: 0.12rem;
-    background-color: #fff;
+    margin-bottom: 0.12rem; // background-color: #fff;
 }
 
 
@@ -68,8 +67,8 @@ body {
     @include flex-direction(column);
     @include align-items;
     @include justify-content;
-    background-color: #fff;
     margin-top: 0.24rem;
+    padding-top: 0.3rem;
 }
 
 .article-body .noOrder-body .img {
@@ -80,9 +79,9 @@ body {
 }
 
 .article-body .noOrder-body .txt {
-    font-size: .26rem;
-    color: rgba(94, 100, 107, 1);
-    padding-top: 0.24rem;
+    font-size: .28rem;
+    color: #5e646b;
+    padding-top: 0.2rem;
 }
 
 .article-body .box {
@@ -101,7 +100,7 @@ body {
 
 .article-body .box .content {
     height: 1.88rem;
-    border-bottom: 0.04rem dashed #c4c9cd;
+    border-bottom: 0.04rem dashed #E3E6E9;
 }
 
 .article-body .box .content .title,
@@ -117,6 +116,10 @@ body {
     margin-top: .18rem;
     font-size: .32rem;
     color: rgba(42, 43, 45, 1);
+}
+
+.article-body .box .content .title .weight {
+    font-weight: 700;
 }
 
 .article-body .box .content .current {

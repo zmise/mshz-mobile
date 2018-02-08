@@ -44,14 +44,14 @@
 }
 
 .index-list .item-oneline p:last-child {
-    font-weight: 700;
     color: rgba(255, 92, 92, 1);
+    font-weight: 700;
 }
 
 .index-list .item-twoline,
 .index-list .item-threeline {
     @include justify-content(flex-start);
-    padding-top: .26rem;
+    padding-top: .24rem;
     white-space: nowrap;
 }
 

@@ -26,7 +26,7 @@ $(function () {
           if (item.headPortrait.length) {
             str += '  <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '" alt="">';
           } else {
-            str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
+            str += '  <img class="photo" src="' + require('./img/headPortrait.png') + '"/>';
           }
           str +=
             '    <div class="name-time">' +
@@ -78,7 +78,7 @@ $(function () {
             str +=
               '<div class="noOrder-body">' +
               '<div class="img"></div>' +
-              '<p clss="txt">~空空如也~</p>' +
+              '<p class="txt">~空空如也~</p>' +
               ' </div>'
               ;
           }

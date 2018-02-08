@@ -23,7 +23,6 @@ body {
 .general-info .score {
     font-size: .72rem;
     font-weight: 700;
-    height: 1.09rem;
     color: rgba(255, 255, 255, 1);
 }
 
@@ -33,14 +32,14 @@ body {
 }
 
 .general-info .content {
-  width: 6.78rem;
-  height: 1.64rem;
-  border-radius: .08rem;
-  padding: .2rem .9rem 0 .75rem;
-  background-color: #fff;
-  box-sizing: border-box;
-  text-align: left;
-  margin: .4rem auto -.51rem;
+    width: 6.78rem;
+    height: 1.64rem;
+    border-radius: .08rem;
+    padding: .2rem .9rem 0 .75rem;
+    background-color: #fff;
+    box-sizing: border-box;
+    text-align: left;
+    margin: .4rem auto -.51rem;
 }
 
 .general-info .content .tlt {
@@ -50,9 +49,10 @@ body {
 }
 
 .general-info .content .cnt {
+    margin-top: 0.08rem;
     font-size: .22rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .4rem;
+    line-height: .32rem;
 }
 
 .article-body {

@@ -42,9 +42,9 @@ body {
 }
 
 .personal-info .photo {
-    width: 1.37rem;
-    height: 1.37rem;
-    border-radius: .685rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: .65rem;
     background: url('./img/headPortrait.png');
     background-size: cover;
     margin-right: .3rem;
@@ -85,6 +85,7 @@ body {
     @include justify-content(space-around);
     height: 1.14rem;
     background-color: #fff;
+    padding: 0 .1rem;
 }
 
 .other-info .items {
@@ -143,7 +144,6 @@ body {
     @include flex;
     @include flex-box;
     @include flex-direction(column);
-    @include justify-content(space-between);
     padding: 0 0.35rem;
 }
 
@@ -152,6 +152,7 @@ body {
     border-radius: .08rem;
     border: .01rem dashed $color;
     padding: 0 0.25rem;
+    margin-bottom: 0.32rem;
 }
 
 .order-info .slider .items .tlt {
@@ -179,7 +180,7 @@ body {
 
 .order-info .slider .items .time {
     @include flex-box;
-    padding-top: 0.26rem;
+    padding-top: 0.12rem;
 }
 
 .order-info .slider .items .time .txt {
@@ -216,6 +217,7 @@ body {
     width: 1.18rem;
     height: 1.04rem;
     margin-right: 0.24rem;
+    margin-top: 0.1rem;
 }
 
 .landlord-entry .txt {
@@ -235,6 +237,7 @@ body {
     @include flex-box;
     @include align-items(flex-end);
     @include justify-content;
+    padding-top: 0.2rem;
     height: .48rem;
     background: rgba(255, 255, 255, 1);
     font-size: .24rem;
@@ -262,7 +265,8 @@ body {
 }
 
 .article-body .noOrder-body .txt {
-    font-size: .26rem;
-    color: rgba(94, 100, 107, 1);
-    padding-top: 0.24rem;
+    padding-left: 0.04rem;
+    font-size: .28rem;
+    color: #5e646b;
+    padding-top: 0.2rem;
 }

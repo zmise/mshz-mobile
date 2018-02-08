@@ -154,6 +154,7 @@ body {
 }
 
 .banner-des .tools .items span {
+    margin-left: 0.15rem;
     font-size: .24rem;
     color: rgba(94, 100, 107, 1);
 }
@@ -171,7 +172,7 @@ body {
 
 .house-base-info .items {
     border-bottom: $border;
-    padding-top: .48rem;
+    padding-top: .32rem;
     padding-bottom: .36rem;
 }
 
@@ -180,18 +181,16 @@ body {
 }
 
 .house-base-info .items .tit {
-    padding-bottom: 0.35rem;
+    padding-bottom: 0.15rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
     font-weight: 900;
 }
 
 .house-base-info .house-des .part {
-    padding-right: .12rem;
     font-size: .24rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .3rem;
-    padding-top: .2rem;
+    line-height: .38rem;
     word-break: break-all;
 }
 
@@ -210,7 +209,6 @@ body {
 .base-server .content {
     @include flex-box;
     @include flex-wrap(wrap);
-    padding: .2rem 0;
     overflow: hidden;
 }
 
@@ -223,8 +221,8 @@ body {
 .base-server .content .icon-items .txt {
     display: block;
     padding: 5px 0;
-    font-size: 14px;
-    color: #333;
+    font-size: .22rem;
+    color: rgba(105, 107, 112, 1);
     line-height: 1.2;
     text-align: center;
 }
@@ -236,8 +234,8 @@ body {
     width: .6rem;
     height: .6rem;
     margin: 0 auto;
-    font-size: .50rem;
-    color: #999;
+    font-size: .42rem;
+    color: #5e646b;
     line-height: 1
 }
 
@@ -247,9 +245,13 @@ body {
     @include justify-content;
 }
 
+.house-des .more {
+    padding-top: 0.24rem;
+}
+
 .house-des .more span,
 .base-server .more span {
-    font-size: .2rem;
+    font-size: .22rem;
     color: rgba(181, 185, 190, 1);
     padding-right: .15rem;
 }
@@ -269,15 +271,15 @@ body {
 .base-server .more .icon:before,
 .base-server .more .icon:after {
     position: absolute;
-    bottom: .1rem;
+    bottom: .12rem;
     right: auto;
     top: auto;
     left: .08rem;
     z-index: 10;
     display: block;
     content: "";
-    width: .16rem;
-    height: .16rem;
+    width: .12rem;
+    height: .12rem;
     border-width: 0 .02rem .02rem 0;
     border-style: solid;
     border-color: #999;
@@ -458,6 +460,7 @@ body {
     @include flex-box;
     @include flex-wrap(wrap);
     border-bottom: $border;
+    padding-top: 0.24rem;
 }
 
 .comment-body .first-comment .des .des-duihua {
@@ -467,17 +470,21 @@ body {
 }
 
 .comment-body .first-comment .des .des-duihua span {
+    @include flex;
     font-size: .26rem;
-    color: $color;
+    color: rgba(94, 100, 107, 1);
     line-height: .4rem;
     width: 1.5rem;
 }
 
-.comment-body .first-comment .des .des-duihua span:last-child {
-    @include flex;
-    color: rgba(94, 100, 107, 1);
+.comment-body .first-comment .des .des-duihua span i {
+    color: $color;
 }
 
+// .comment-body .first-comment .des .des-duihua span:last-child {
+//     @include flex;
+//     color: rgba(94, 100, 107, 1);
+// }
 .comment-body .first-comment .des-duihua .icon {
     @include flex-box;
     @include align-items;
@@ -495,6 +502,7 @@ body {
     margin-bottom: .24rem;
     color: #000;
     box-sizing: border-box;
+    border-radius: .04rem;
 }
 
 // @each $item in garden,
@@ -580,6 +588,7 @@ body {
     font-size: $font-large;
     color: #fff;
     box-sizing: border-box;
+    border-radius: .04rem;
     flex-direction: column;
 }
 
@@ -709,7 +718,7 @@ body {
     @include align-items;
     @include justify-content;
     font-size: .28rem;
-    height: 1.22rem;
+    height: 1.06rem;
     color: rgba(42, 43, 45, 1);
     border-bottom: .01rem solid rgba(227, 230, 233, 1);
 }

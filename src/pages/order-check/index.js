@@ -172,7 +172,6 @@ $(function () {
             }
           } else {
             $('#cancelInfoWrapper').removeClass('hidden');
-            $('#cancelInfoWrapper .title').hide();
             $('#cancelInfoWrapper .slide-body').hide();
             $('#cancelRules').removeClass('hidden');
             $('#cancelRemark').html('不允许退订');
