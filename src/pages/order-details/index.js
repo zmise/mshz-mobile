@@ -158,9 +158,9 @@ $(document).on('tap', '#talk-order', function (e) {
 $('#back').on('tap', function (e) {
   e.stopPropagation();
   e.preventDefault();
-
-  var flag = order.reqSource;
-  if (flag === 'ALIPAY') {
+  // reqSource 是线上支付方式的数量
+  var reqSource = order.reqSource;
+  if (reqSource === 'ALIPAY') {
     window.location = './order-list.html#VALIDATED';
   } else {
     history.go(-1);
