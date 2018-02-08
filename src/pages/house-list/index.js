@@ -7,7 +7,9 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/filter.js');//筛选功能
 require('../../assets/js/appDownload.js');//全局下载APP
+require('../../assets/js/dropload.min');
 var util = require('../../util/');
+
 
 var b = new Date();
 var today = util.formatDate(b, 'yyyy-MM-dd');
@@ -15,9 +17,11 @@ var today = util.formatDate(b, 'yyyy-MM-dd');
 b = new Date(b.getTime() + 24 * 3600 * 1000);
 var tomorrow = util.formatDate(b, 'yyyy-MM-dd');
 
-
-
-require('../../assets/js/dropload.min');
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    location.reload();
+  }
+};
 
 $(function () {
 

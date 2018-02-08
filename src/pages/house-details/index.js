@@ -5,8 +5,11 @@ require('../../assets/plugins/jquery.banner.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
 
-
-
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    location.reload();
+  }
+};
 
 $(function () {
 

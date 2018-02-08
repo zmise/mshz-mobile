@@ -14,6 +14,13 @@ require('../../assets/js/appDownload.js');//全局下载APP
 var lon;
 var lat;
 
+
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    location.reload();
+  }
+};
+
 $(function () {
 
   //h5本地获取地理位置
