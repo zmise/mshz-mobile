@@ -56,7 +56,7 @@ body {
 
 .total {
     margin-top: .12rem;
-    border-bottom: $border;
+    border-bottom: $border; // @include border-media(.01rem, solid, #E3E6E9);
     padding: 0 .35rem .2rem;
     background-color: #fff;
 }
@@ -89,7 +89,8 @@ body {
 .comment-body {
     background-color: #fff;
     padding: .1rem 0 .45rem;
-    border-bottom: .01rem solid RGBA(243, 243, 243, 1);
+    border-bottom: .01rem solid rgba(243, 243, 243, 1);
+    // @include border-media(.01rem, solid, rgba(243, 243, 243, 1));
 }
 
 .comment-body .line-one .icon {

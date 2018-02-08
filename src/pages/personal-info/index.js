@@ -213,6 +213,8 @@ $(function () {
     };
   }
 
+
+  
   // 点击上传图片  更换头像
   $('.article-body').on('click', '#image', function (e) {
     // e.stopPropagation();

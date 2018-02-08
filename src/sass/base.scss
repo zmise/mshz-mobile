@@ -117,6 +117,16 @@ $border: .01rem solid #E3E6E9;
     background: linear-gradient(to right, #3dbe83 0%, #5cb177 100%);
 }
 
+@mixin border-media($length: 0.1rem, $style: solid, $color: #E3E6E9) {
+    border: $length $style $color;
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        border: 2*$length $style $color
+    }
+    @media screen and (-webkit-min-device-pixel-ratio: 3) {
+        border: 3*$length $style $color
+    }
+}
+
 
 /* html的fontsize */
 
