@@ -132,9 +132,7 @@ $(function () {
             '  <div class="items" id="sex">' +
             '    <span class="title">性别</span>' +
             '    <div class="content">' +
-            '      <svg class="sex" aria-hidden="true">' +
-            '        <use xlink: href="#icon-' + sex + '" id="sex-style"></use>' +
-            '      </svg>' +
+            '      <i class="sex iconfont icon-' + sex + '" id="sex-style"></i>' +
             '      <i class="icon iconfont icon-fanhuixiangyou"></i>' +
             '    </div>' +
             '  </div>' +
@@ -179,9 +177,9 @@ $(function () {
         if (params.sex) {
           $('#overlay').hide();
           if (params.sex === 'MALE') {
-            $('#sex-style').attr('href', '#icon-nan');
+            $('#sex-style').removeClass('icon-nv').addClass('icon-nan');
           } else {
-            $('#sex-style').attr('href', '#icon-nv');
+            $('#sex-style').removeClass('icon-nan').addClass('icon-nv');
           }
         }
 
