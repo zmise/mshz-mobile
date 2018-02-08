@@ -104,7 +104,7 @@ body {
 }
 
 .select-body .input-text:nth-child(2) {
-    padding-bottom: .3rem;
+    padding-bottom: .2rem;
 }
 
 .select-body .input-text:nth-child(3) {
@@ -121,6 +121,7 @@ body {
     width: .34rem;
     height: .34rem;
     margin-right: .32rem;
+    color: rgba(105, 107, 112, 1);
 }
 
 .select-body .input-text .input-text-right {
@@ -131,8 +132,8 @@ body {
 .select-body .input-text .input-text-right i {
     width: .32rem;
     height: .32rem;
-    color: $color;
-    font-size: .12rem;
+    font-size: .24rem;
+    color: #b5b9be;
     @include transform(rotateY(180deg));
 }
 
@@ -176,7 +177,7 @@ body {
     @include justify-content(space-around);
     height: 1.42rem;
     margin-top: -1.22rem;
-    padding-top: .2rem;
+    padding: .2rem .1rem 0;
     background: rgba(255, 255, 255, 1);
     border-radius: .04rem;
     box-shadow: 0 0 .2rem rgba(39, 88, 55, 0.12);
@@ -186,6 +187,13 @@ body {
     display: block;
     width: 25%;
     box-sizing: border-box;
+}
+
+.navigatelist-body .nav-line {
+    width: .01rem;
+    height: .48rem;
+    margin-top: 0.3rem;
+    background: rgba(227, 230, 233, 1);
 }
 
 .navigatelist-body .items .icon-box {
@@ -203,9 +211,13 @@ body {
     overflow: hidden;
 }
 
+.navigatelist-body .items .tesuicon {
+    margin-left: 0.08rem;
+}
+
 .navigatelist-body .items .txt {
     display: block;
-    margin-top: .2rem;
+    margin-top: .18rem;
     font-size: .22rem;
     color: rgba(105, 107, 112, 1);
     line-height: 1;
@@ -230,7 +242,9 @@ body {
 
 .recommend-body .title .txt {
     display: inline-block;
+    padding-top: 0.03rem;
     font-size: .36rem;
+    font-weight: 700;
     color: rgba(42, 43, 45, 1);
 }
 
@@ -241,6 +255,7 @@ body {
     height: .36rem;
     font-size: .36rem;
     margin-right: .24rem;
+    margin-top: 0.01rem;
     overflow: hidden;
     color: $color;
     ;
@@ -297,5 +312,4 @@ body {
 .pagination .current {
     // @include linear-gradient;;
     @include linear-gradient;
-    
 }

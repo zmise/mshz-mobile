@@ -17,8 +17,8 @@
     @include flex-box;
     @include flex-direction;
     width: 100%;
-    padding-top: .18rem;
-    padding-bottom: .19rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
     border-bottom: $border;
 }
 
@@ -33,6 +33,7 @@
     width: .6rem;
     height: .5rem;
     font-size: .48rem;
+    margin-bottom: 0.02rem;
 }
 
 .site-map-mbox {
@@ -73,9 +74,9 @@
 }
 
 .copyright {
-    font-size: .16rem;
+    font-size: .18rem;
     color: #b5b9be;
-    line-height: 1.5;
+    line-height: 2;
 }
 
 .page-bottom {

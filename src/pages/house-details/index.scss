@@ -180,6 +180,7 @@ body {
 }
 
 .house-base-info .items .tit {
+    padding-bottom: 0.35rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
     font-weight: 900;
@@ -651,7 +652,6 @@ body {
 .footer-body .items:last-child {
     @include justify-content;
     @include linear-gradient;
-    ;
 }
 
 .footer-body .items .commuite {
@@ -675,10 +675,12 @@ body {
 .footer-body .items .price {
     padding-right: .25rem;
     border-right: $border;
+    font-weight: 700;
 }
 
 .footer-body .items .roder {
     padding-left: .21rem;
+    font-weight: 700;
 }
 
 // 联系管家遮罩层
