@@ -5,10 +5,6 @@ require('../../assets/js/navigate.js');
 
 
 $(function () {
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  if (loginInfo) {
-    $('#menu').removeClass('icon-gerenzhongxin').addClass('icon-daohanglancaidan').attr('href', 'javascript:;');
-  }
 
   $('#back').on('click', function (e) {
 
