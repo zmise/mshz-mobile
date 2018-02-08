@@ -284,13 +284,20 @@ $(function () {
   //     return false;
   //   }
   // });
-
+  //阻止首页滚动条事件
+  function stopScroll() {
+    $('body').css({
+      position: 'fixed',
+      top: -document.body.scrollTop + 'px'
+    });
+  }
   /*   显示日历的控件的点击事件 */
   $('.userInfo-body').on('tap', '.calc-entry', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $('.calendar').slideToggle();
-    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    // $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    stopScroll();
   });
 
   /*   显示日历的控件的点击事件 */

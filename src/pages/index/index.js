@@ -186,6 +186,22 @@ $(function () {
 
   }
 
+  //阻止首页滚动条事件
+  function stopScroll() {
+    $('body').css({
+      position: 'fixed',
+      top: -document.body.scrollTop + 'px'
+    });
+  }
+
+  //恢复首页滚动条事件
+  function bodyScroll() {
+    var top = -document.body.style.top.replace('px');
+    $('body').css({
+      position: 'static'
+    });
+    window.scrollTo(0, top);
+  }
   // 百度接口的定位获取信息（cityName，lat，lon）
   var nowCity = new BMap.LocalCity();
   nowCity.get(bdGetPosition);
@@ -236,7 +252,8 @@ $(function () {
   $('#handleCalendar').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    // $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    stopScroll();
   });
 
   $('#handleCalendar').calendarSwitch({
@@ -355,7 +372,8 @@ $(function () {
     // console.log($(this).prev().text());
     $('#destination-entry').val($(this).prev().text());
     $(this).closest('.des-body').hide();
-    $('body,html').css({ 'overflow': 'visible' });
+    // $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
   });
   /* 切换目的地时的事件 */
   $('.des-hot-city .items').on('tap', function (e) {
@@ -371,14 +389,16 @@ $(function () {
     // }
     // $('#destination-entry').attr('data-cityname', cityName);
     $(this).closest('.des-body').hide();
-    $('body,html').css({ 'overflow': 'visible' });
+    // $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
   });
   $('.des-list .txt').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $('#destination-entry').val($(this).text());
     $(this).closest('.des-body').hide();
-    $('body,html').css({ 'overflow': 'visible' });
+    // $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
   });
 
 
@@ -386,7 +406,8 @@ $(function () {
   $('#handleSearch').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    $('body,html').css({ 'overflow': 'hidden' });
+    // $('body,html').css({ 'overflow': 'hidden' });
+    stopScroll();
     if ($.trim($(this).val()) == '') {
       $('.search-layer').show();
       $('.search-layer .search-keyword').show();

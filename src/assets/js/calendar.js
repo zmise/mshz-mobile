@@ -1,5 +1,12 @@
 (function ($) {
   "use strict";
+  function bodyScroll() {
+    var top = -document.body.style.top.replace('px');
+    $('body').css({
+      position: 'static'
+    });
+    window.scrollTo(0, top);
+  }
   var calendarSwitch = (function () {
     function calendarSwitch(element, options) {
       this.settings = $.extend(true, $.fn.calendarSwitch.defaults, options || {});
@@ -153,7 +160,8 @@
           if ($(me.sections).is(':animated')) {
             return;
           }
-          $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
+          // $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
+          bodyScroll();
           var st = me.startData;
           var en = me.endData;
           var day = totalDays;
@@ -193,7 +201,8 @@
         $('#cale-cancel').on('tap', function (e) {
           e.stopPropagation();
           e.preventDefault();
-          $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
+          // $('body,html').css({ 'overflow': 'visible' });//恢复首页滚动条
+          bodyScroll();
           me._slider(me.sections);
           // me._callback()
         });

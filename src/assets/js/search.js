@@ -5,13 +5,23 @@ $(function () {
   //   e.stopPropagation();
   // });
 
+  //恢复首页滚动条事件
+  function bodyScroll() {
+    var top = -document.body.style.top.replace('px');
+    $('body').css({
+      position: 'static'
+    });
+    window.scrollTo(0, top);
+  }
+
 
   /* 返回首页  */
   $('#search-cancel').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.search-layer').hide();
-    $('body,html').css({ 'overflow': 'visible' });
+    // $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
     $('.search-body input').blur();
     // $('#search-entry').val($('.text-body .text').val());
   });
@@ -26,6 +36,7 @@ $(function () {
 
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
     $('.search-body input').blur();
     if ($(this)) {
 
@@ -130,6 +141,7 @@ $(function () {
     $(this).closest('.search-layer').hide();
     $('.search-body input').blur();
     $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
     $('#search-entry').val($(this).data('keyword'));
 
     // var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];

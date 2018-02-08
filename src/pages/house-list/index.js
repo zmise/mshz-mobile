@@ -161,10 +161,28 @@ $(function () {
 
   }
 
+
+  //阻止首页滚动条事件
+  function stopScroll() {
+    $('body').css({
+      position: 'fixed',
+      top: -document.body.scrollTop + 'px'
+    });
+  }
+
+  //恢复首页滚动条事件
+  function bodyScroll() {
+    var top = -document.body.style.top.replace('px');
+    $('body').css({
+      position: 'static'
+    });
+    window.scrollTo(0, top);
+  }
   /* hideFilterLayer */
 
   function hideFilterLayer() {
-    $('body,html').css({ 'overflow': 'visible' });
+    // $('body,html').css({ 'overflow': 'visible' });
+    bodyScroll();
     $filterLayer.hide();
     $filterList.hide();
     $overlay.hide();
@@ -177,7 +195,8 @@ $(function () {
     e.preventDefault();
     hideFilterLayer();
     $('.calendar').slideToggle('fast');
-    $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    // $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
+    stopScroll();
   });
 
   if (params.startDate === "") {
