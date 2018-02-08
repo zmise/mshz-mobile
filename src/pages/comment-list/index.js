@@ -28,53 +28,63 @@ $(function () {
             $('#allList').text('已评价（' + index + '）');
           }
           var str = '';
-          for (var i = 0; i < index; i++) {
-            var item = data[i];
-            if (params.commentStatus !== 'NOT_COMMENT') {
-              str +=
-                '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">';
-              if (item.hasNew) {
-                str += '<div class="small-circle"></div>';
+          if (index > 0) {
+            for (var i = 0; i < index; i++) {
+              var item = data[i];
+              if (params.commentStatus !== 'NOT_COMMENT') {
+                str +=
+                  '<a class="all-assess myassess-entry" href="./my-comments.html?id=' + item.id + '" data-id="' + item.id + '">';
+                if (item.hasNew) {
+                  str += '<div class="small-circle"></div>';
+                }
+                str +=
+                  '<span class="time">' + item.commentTimeDesc + '</span>' +
+                  '<div class="text-img">' +
+                  '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
+              } else {
+                str +=
+                  '<a class="all-assess myassess-entry" href="javascript:;">';
               }
-              str +=
-                '<span class="time">' + item.commentTimeDesc + '</span>' +
-                '<div class="text-img">' +
-                '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
-            } else {
-              str +=
-                '<a class="all-assess myassess-entry" href="javascript:;">';
-            }
 
-            // 拼接评论图片
-            var imgs = item.commentPicture.split(',');
-            if (item.commentPicture.length > 0) {
-              str += '<div class="img-list">';
-              for (var j = 0; j < imgs.length; j++) {
-                str += '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />';
+              // 拼接评论图片
+              var imgs = item.commentPicture.split(',');
+              if (item.commentPicture.length > 0) {
+                str += '<div class="img-list">';
+                for (var j = 0; j < imgs.length; j++) {
+                  str += '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />';
+                }
+                str += '</div>';
               }
-              str += '</div>';
-            }
 
-            str += '</div>' +
-              '<div class="content house-details" data-id="' + item.situationId + '" href="/houseDetails?id=' + item.situationId + '">' +
-              '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
-              '  <div class="i-txt">' +
-              '    <span class="title">' + item.title + '</span>' +
-              '    <div class="time">' +
-              '      <span>' + item.startTimeDesc + '至' + item.endTimeDesc + '</span>' +
-              '      <span>' + item.days + '晚</span>' +
-              '    </div>' +
-              '    <span class="price">¥' + item.roomRate + '</span>';
-            if (!item.score && !item.content.length && !item.commentPicture.length) {
-              str += '    <div class="bnt">' +
-                '<div class="box assess-entry" data-room-id="' + item.roomId + '" data-order-no="' + item.orderNo + '">评价订单</div>' +
-                '    </div>';
-            }
+              str += '</div>' +
+                '<div class="content house-details" data-id="' + item.situationId + '" href="/houseDetails?id=' + item.situationId + '">' +
+                '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
+                '  <div class="i-txt">' +
+                '    <span class="title">' + item.title + '</span>' +
+                '    <div class="time">' +
+                '      <span>' + item.startTimeDesc + '至' + item.endTimeDesc + '</span>' +
+                '      <span>' + item.days + '晚</span>' +
+                '    </div>' +
+                '    <span class="price">¥' + item.roomRate + '</span>';
+              if (!item.score && !item.content.length && !item.commentPicture.length) {
+                str += '    <div class="bnt">' +
+                  '<div class="box assess-entry" data-room-id="' + item.roomId + '" data-order-no="' + item.orderNo + '">评价订单</div>' +
+                  '    </div>';
+              }
 
-            str += '  </div>' +
-              '</div>' +
-              '</a>';
+              str += '  </div>' +
+                '</div>' +
+                '</a>';
+            }
+          } else {
+            str +=
+              '<section class="unusual-body">' +
+              '  <div class="no-comment-order"></div>' +
+              '  <span>没有等待评价的订单哦</span>' +
+              '</section>'
+              ;
           }
+
           $('#articleBody').empty().append(str);
           $('.img-list img').zoomify();
 
@@ -120,7 +130,8 @@ $(function () {
     $(this).addClass('current').siblings().removeClass('current');
     var params = {
       commentStatus: $(this).data('commentStatus')
-    }; z
+    };
+    $('#articleBody').empty();
     myOrderComment(params);
   });
 
