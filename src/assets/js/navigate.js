@@ -39,9 +39,9 @@ $(function () {
       '   <div class="login">';
 
     if (loginInfo.headPortrait.length) {
-      str += '  <img class="photo" src="' + loginInfo.headPortrait.replace('{size}', '120x120') + '" alt="">';
+      str += '  <div class="photo" style="background-image:url(' + loginInfo.headPortrait.replace('{size}', '120x120') + ')"></div>';
     } else {
-      str += '  <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
+      str += '  <div class="photo"></div>';
     }
     str +=
       '     <span class="txt">' + loginInfo.nickname + '</span>' +
