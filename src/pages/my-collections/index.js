@@ -21,7 +21,7 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {
-          var array = res.result;
+          var array = res.result.items;
           var str = '';
           for (var i = 0; i < array.length; i++) {
             var item = array[i];
