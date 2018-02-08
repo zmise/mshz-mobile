@@ -469,9 +469,9 @@ $(function () {
   //   window.location = '/user/login.html';
   // });
 
-  // 阻止图片的跳转
-  $('.banner-body').on('tap', '.items', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-  });
+  // // 阻止图片的跳转
+  // $('.banner-body').on('tap', '.items', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // });
 });
