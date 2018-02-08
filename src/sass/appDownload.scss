@@ -8,8 +8,6 @@
     height: .86rem;
     padding-right: .35rem;
     ;
-    padding-left: .35rem;
-    ;
     background-color: #f3ffff;
     box-sizing: border-box;
     box-shadow: 0 -5px 10px rgba(100, 100, 100, .2);
@@ -25,7 +23,6 @@
     width: 1.6rem;
     height: .56rem;
     margin-right: .14rem;
-    margin-left: .18rem;
     overflow: hidden;
 }
 
@@ -57,9 +54,12 @@
 }
 
 .app-download .close {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
     position: relative;
-    width: .24rem;
-    height: .24rem;
+    width: .8rem;
+    height: .8rem;
     overflow: hidden;
     font-size: .16rem;
     color: #5aa572;
