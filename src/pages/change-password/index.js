@@ -65,7 +65,7 @@ $(function () {
       $('#oldPsw').val('');
       $('#psw').val('');
       return;
-    } else if (pswReg.test(pswVal)) {
+    } else if (pswReg.test(oldPswVal)) {
       toast.show('禁止输入中文和空格');
       $('#oldPsw').val('');
       $('#psw').val('');
@@ -73,13 +73,11 @@ $(function () {
     }
     else if (pswVal.length > 12 || pswVal.length < 6) {
       toast.show('请输入6-12位密码');
-      $('#oldPsw').val('');
       $('#psw').val('');
       return;
     }
     else if (pswReg.test(pswVal)) {
       toast.show('禁止输入中文和空格');
-      $('#oldPsw').val('');
       $('#psw').val('');
       return;
     } else {

@@ -554,9 +554,11 @@ body {
 }
 
 .feature-channel .title {
-    padding: .48rem 0 .38rem;
+    padding: .35rem 0 .35rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
+    line-height: 1.2;
+    font-weight: 700;
 }
 
 .feature-channel .slide-body {
