@@ -261,8 +261,8 @@ $(function () {
     $liveNum.find('.reduce').hide();
   }
 
-  $inputLayout.on('keydown', '#IDcard', function (e) {
-    $(this).val($(this).val().replace(/\D+/g, ''));
+  $inputLayout.on('input', '#IDcard', function (e) {
+    $(this).val($(this).val().replace(/[^\dxX]/g, ''));
   });
 
   // //输入电话号码以 4 3 3 的格式
