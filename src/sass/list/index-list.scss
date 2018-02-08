@@ -26,6 +26,10 @@
     color: rgba(181, 185, 190, 1);
 }
 
+.other-line .icon {
+    font-size: .24rem;
+}
+
 .index-list .item-oneline {
     @include justify-content(space-between);
     padding-top: .24rem;

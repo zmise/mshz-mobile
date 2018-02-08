@@ -113,7 +113,7 @@ $(function () {
             if (item.distDesc) {
               result +=
                 '    <div class="other-line">' +
-                '      <span>' + (lastParams.poi ? '距景点 ' : '距我 ') + item.distDesc + '</span>' +
+                '      <span>' + (lastParams.poi ? '<i class="icon iconfont icon-xiaoweizhidingdian"></i> ' : '距我 ') + item.distDesc + '</span>' +
                 '    </div>';
             }
             result += '  </div>' +
