@@ -89,11 +89,11 @@ $(function () {
   });
 
   /* overlay的tap事件  */
-  $overlay.on('tap', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    hideFilterLayer();
-  });
+  // $overlay.on('tap', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   hideFilterLayer();
+  // });
 
 
   /* 切换筛选项   */

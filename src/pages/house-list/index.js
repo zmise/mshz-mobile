@@ -405,6 +405,17 @@ $(function () {
   });
 
   //点击隐藏overlay
+  $('body').on('tap.navigate', '#overlay', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('.navigate-body').translate({
+      duration: 0.3,
+      value: '100%',
+      callback: function () {
+        $('#overlay').hide();
+      }
+    });
+  });
   $('.filter-layer').on('tap', function (e) {
     e.preventDefault();
     e.stopPropagation();
