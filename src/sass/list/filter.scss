@@ -159,9 +159,11 @@
 /* filter-list */
 
 .filter-list {
+    @include flex;
     @include flex-box;
     @include flex-direction(column); // height: 4rem;
     background-color: #fff;
+    height: 5rem;
 }
 
 .filter-layer .onelist {
