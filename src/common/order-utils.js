@@ -12,7 +12,7 @@ var map = {
 
 var orderNo = ''; // 保存当前页的订单号
 var newOrderState = ''; // 重新定义浏览器端所使用的订单状态
-
+var reqSource = '' // 判断前一个页面是否是订单支付
 //获取url中的参数
 function getUrlParam(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -171,7 +171,7 @@ function orderInfo() {
     location.replace('error.html?code=E0001');
   }
 
-  var reqSource = getUrlParam('reqSource');
+  reqSource = getUrlParam('reqSource');
   var params = {}
   if (reqSource && reqSource !== '') {
     params = {
@@ -209,6 +209,7 @@ function orderInfo() {
 
 module.exports = {
   orderNo: getUrlParam('orderNo'),
+  reqSource: getUrlParam('reqSource'),
   buildHeader: buildHeader,
   buildRefundContent: buildRefundContent,
   buildButton: buildButton,

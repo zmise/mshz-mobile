@@ -158,11 +158,12 @@ $(document).on('tap', '#talk-order', function (e) {
 $('#back').on('tap', function (e) {
   e.stopPropagation();
   e.preventDefault();
-  var flag;
-  if (flag === 'paly') {
+
+  var flag = order.reqSource;
+  if (flag === 'ALIPAY') {
     window.location = './order-list.html#VALIDATED';
   } else {
-    history.go(-1)
+    history.go(-1);
   }
 
 
