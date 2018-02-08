@@ -32,7 +32,7 @@ $(function () {
         if (res.status === 'C0000') {
           toast.show('密码设置完成，请牢记密码！');
           var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-          loginInfo.hasSetPassword = false;
+          loginInfo.hasSetPassword = true;
           window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
           setTimeout(function () {
             // window.location = '/';
