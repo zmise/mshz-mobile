@@ -242,9 +242,13 @@ $(function () {
       sex: $(this).data('id'),
     }
     updateUserInfo(params);
-
     // $('#overlay').hide();
+  });
 
+  $('#overlay').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $('#overlay').hide();
   });
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
