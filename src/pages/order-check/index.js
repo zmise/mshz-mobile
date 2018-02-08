@@ -73,7 +73,7 @@ $(function () {
 
           // 判断默认日期是否已经无房
           var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status;
-          if (inDateStatus === 'BOOKED' || inDateStatus === 'CHECKED_IN') {
+          if (inDateStatus === 'BOOKED' || inDateStatus === 'CHECKED_IN' || inDateStatus === 'FIXED') {
             startDate = '';
             endDate = '';
           } else {
