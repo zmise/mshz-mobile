@@ -1,17 +1,59 @@
 require('../../common/session');
 require('./index.scss');
+require('../../sass/dropload.scss');
+
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 
 require('../../assets/js/appDownload.js');//全局下载APP
+require('../../assets/js/dropload.min'); // 分页插件
 
+
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    location.reload();
+  }
+};
 $(function () {
+  // dropload
+  var $collectionsList = $('.article-body .list'); // $('#collectionsList')
+
+  var dropload = $('.article-body').dropload({
+    scrollArea: window,
+    domDown: {
+      domClass: 'dropload-down',
+      domRefresh: '<div class="dropload-refresh"> </div>',
+      domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+      domNoData: '<section class="unusual-body">' +
+        '  <div class="no-house"></div>' +
+        '  <span>请赶紧去收藏房源吧</span>' +
+        '</section>',
+      domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
+      domNetworkError: '<section class="unusual-body">' +
+        '  <div class="no-network"></div>' +
+        '  <span>网络请求失败，请检查网络</span>' +
+        '</section>'
+    },
+    loadDownFn: loadingMore
+  });
 
 
-  // 查询用户收藏房源get接口
-  function queryUserCollectRoom(params) {
+  function loadingMore(options) {
+    var curPage = +$('#page').val();
+    if (options && options.isReload) {
+      $('#page').val(1);
+      curPage = 1;
+      // dropload.unlock();
+    } else {
+      $('#page').val(curPage + 1);
+      curPage += 1;
+    }
+    var params = {
+      currentPage: curPage,
+      pageSize: 10,
+    }
     console.log(params)
     $.ajax({
       url: '/mshz-app/security/userinfo/queryUserCollectRoom',
@@ -20,12 +62,20 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (res) {
-        if (res.status === 'C0000') {
+        var recordCount = res.result && res.result.recordCount || 0;
+        if (params.page === 1) {
+          $collectionsList.empty();
+        }
+        console.log(res)
+
+        if (res.status === 'C0000'
+          && res.result
+          && res.result.items
+          && res.result.items.length > 0) {
           var array = res.result.items;
           var str = '';
           for (var i = 0; i < array.length; i++) {
             var item = array[i];
-
             str +=
               '<div class="listItems">' +
               '  <a href="/houseDetails?id=' + item.id + '">' +
@@ -55,23 +105,20 @@ $(function () {
               '</div>'
               ;
           }
-
-          $('.article-body').append(str);
+          $collectionsList.append(str);
         }
+
+        dropload.resetload(recordCount, params.page, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
         console.log(error);
         console.log('error');
+        $collectionsList.empty();
+        dropload.resetload(-1);
       }
     });
-
   }
-  var params = {
-    currentPage: 1,
-    pageSize: 20,
-  }
-  queryUserCollectRoom(params);
-
+  loadingMore({ isReload: true })
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
