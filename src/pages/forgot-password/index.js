@@ -178,7 +178,6 @@ $(function () {
       return;
     } else {
       $('#overlay').show();
-
       if ($('#verifyimg').attr('src') !== '') {
         var verifyDom = document.getElementById('verifyimg');
         var src = verifyDom.src.substring(0, verifyDom.src.indexOf('?') + 1);
@@ -186,7 +185,7 @@ $(function () {
       } else {
         $('#verifyimg').attr('src', '/mshz-app/verify/image?');
       }
-      $('.textList .items').eq(0).focus();
+      $('.textList').eq(0).focus();
       // console.log('success')
       // $(this).hide().siblings().show();
       // timer(60);
@@ -215,7 +214,7 @@ $(function () {
   $('#noCancel').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-
+    $('.textList').eq(0).val('');
     $('#overlay').hide();
   });
 
@@ -225,6 +224,7 @@ $(function () {
     e.preventDefault();
     var code = $('.textList').eq(0).val();
     $('.textList').eq(0).blur();
+    $('.textList').eq(0).val('');
     var params = {
       code: code,
     }

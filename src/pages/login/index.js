@@ -174,7 +174,6 @@ $(function () {
       return;
     } else {
       $('#overlay').show();
-
       if ($('#verifyimg').attr('src') !== '') {
         var verifyDom = document.getElementById('verifyimg');
         var src = verifyDom.src.substring(0, verifyDom.src.indexOf('?') + 1);
@@ -217,6 +216,7 @@ $(function () {
     // }
 
     $('.textList').eq(0).blur();
+    $('.textList').eq(0).val('');
     var params = {
       code: code,
     }
@@ -228,7 +228,7 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     $('#overlay').hide();
-
+    $('.textList').eq(0).val('');
   });
 
   // 点击到设置密码页面验证登录setting-password
