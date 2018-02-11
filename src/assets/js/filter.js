@@ -13,7 +13,7 @@ $(function () {
 
   /* 显示筛选层   */
   function showFilterLayer(index) {
-    $('body,html').css({ 'overflow': 'hidden' });
+    // $('body,html').css({ 'overflow': 'hidden' });
     $overlay.show();
     $filterLayer.slideDown(200);
     $filterList.hide().eq(index).show();

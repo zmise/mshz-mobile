@@ -34,7 +34,7 @@ $(function () {
       history.go(-1);
     }, 2e3);
     toast.show('请求失败');
-  });;
+  });
 
   // 订单支付页面的post接口
   function orderPaid() {
