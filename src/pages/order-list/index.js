@@ -47,8 +47,8 @@ $(function () {
     var curPage = +$('#page').val();
     if (options && options.isReload) {
       $('#page').val(1);
+      dropload.unlock();
       curPage = 1;
-      // dropload.unlock();
     } else {
       $('#page').val(curPage + 1);
       curPage += 1;
@@ -77,7 +77,7 @@ $(function () {
           && res.result
           && res.result.items
           && res.result.items.length > 0) {
-          $orderList.empty();
+          // $orderList.empty();
           var strA = '';
           var strB = '';
           var data = res.result.items;

@@ -44,8 +44,8 @@ $(function () {
     var curPage = +$('#page').val();
     if (options && options.isReload) {
       $('#page').val(1);
+      dropload.unlock();
       curPage = 1;
-      // dropload.unlock();
     } else {
       $('#page').val(curPage + 1);
       curPage += 1;
