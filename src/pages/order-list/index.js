@@ -268,7 +268,7 @@ $(function () {
       }
     });
   }
-  loadingMore({ isReload: true })
+  // loadingMore({ isReload: true })
   //$('.order-sort-body')
   $orderSort.on('tap', '.items', function (e) {
     $orderSort.find('.txt').removeClass('current');
