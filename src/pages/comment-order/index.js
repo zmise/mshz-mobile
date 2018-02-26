@@ -1,5 +1,6 @@
 require('../../common/session');
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标

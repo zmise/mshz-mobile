@@ -1,5 +1,6 @@
 require('../../common/session');
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
@@ -135,7 +136,7 @@ $(function () {
     myOrderComment(params);
   });
 
-  // 点击myassess - entry 
+  // 点击myassess - entry
   $('#articleBody').on('tap', '.myassess-entry', function (e) {
     e.stopPropagation();
     $(this).find('.small-circle').remove();

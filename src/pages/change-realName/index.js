@@ -1,4 +1,5 @@
 require('./index.scss');
+require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 

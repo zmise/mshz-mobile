@@ -1,5 +1,6 @@
 require('../../common/session');
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
@@ -41,7 +42,7 @@ $(function () {
       console.log('error');
     }
   });
-  // 
+  //
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();

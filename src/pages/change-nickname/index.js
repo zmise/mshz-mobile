@@ -1,4 +1,5 @@
 require('./index.scss');
+require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 
@@ -53,7 +54,7 @@ $(function () {
     $('#nickname').val(nickname);
   }
 
-  // 点击到完成并登录成功跳转到login /^\d+$/ 
+  // 点击到完成并登录成功跳转到login /^\d+$/
   $('#save').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();

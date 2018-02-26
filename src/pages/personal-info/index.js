@@ -1,5 +1,6 @@
 require('../../common/session');
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
@@ -214,7 +215,7 @@ $(function () {
   }
 
 
-  
+
   // 点击上传图片  更换头像
   $('.article-body').on('click', '#image', function (e) {
     // e.stopPropagation();

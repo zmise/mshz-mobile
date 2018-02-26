@@ -1,4 +1,5 @@
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');

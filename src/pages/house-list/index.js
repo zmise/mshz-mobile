@@ -1,4 +1,5 @@
 require('./index.scss');
+require('../../assets/js/analytics.js');
 require('../../sass/dropload.scss');
 
 require('../../assets/js/plugins.js');

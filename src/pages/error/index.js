@@ -1,4 +1,5 @@
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 $(function () {
   //获取url中的参数

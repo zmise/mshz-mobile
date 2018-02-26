@@ -1,5 +1,6 @@
 require('../../common/session');
 require('./index.scss');
+require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');//侧边栏
