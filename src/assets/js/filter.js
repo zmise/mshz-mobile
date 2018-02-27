@@ -115,7 +115,8 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
-    console.log('zmise');
+    $(this).siblings().find('.icon').removeClass('current');
+    $(this).find('.icon').addClass('current');
   });
 
   /* 多选事件 */

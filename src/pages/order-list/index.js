@@ -230,7 +230,7 @@ $(function () {
           $orderList.append(str);
 
         } else {
-          toast.show(res.message);
+          // toast.show(res.message);
         }
         dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
       },

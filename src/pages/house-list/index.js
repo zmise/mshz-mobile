@@ -58,7 +58,6 @@ $(function () {
   function loadingMore(options) {
     var curPage = +$('#page').val();
     if (options && options.isReload) {
-      console.log('reload')
       $('#page').val(1);
       dropload.unlock();
     } else {
@@ -248,18 +247,16 @@ $(function () {
   $('.filter-list').on('tap', '.two-row:not(.metro) .items', function (e) {
     e.stopPropagation();
     hideFilterLayer();
-
     $('#page').val(1);
     var $content = $(this).closest('.filter-list').find('.content');
     var curLayerIndex = $content.find('.one-row .current').index();
-    var poi = $content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text();
+    var poi = $.trim($content.find('.two-row:eq(' + curLayerIndex + ')').find('.current').text());
     var type = $(this).data('type');
     // console.log(poi)
     if (poi == '不限') {
       poi = '';
       $(this).closest('body').find('.position').text('位置');
     } else {
-      // console.log('zmise')
       $(this).closest('body').find('.position').text(poi);
     }
     $('#poi').val(poi);
@@ -289,7 +286,7 @@ $(function () {
     e.stopPropagation();
     hideFilterLayer();
     var metro = $(this).text();
-    //   // console.log(poi)
+    // console.log(poi)
     if (metro === '不限') {
       metro = '';
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
