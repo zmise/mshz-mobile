@@ -45,7 +45,10 @@
 
 .app-download .download {
     display: block;
-    padding: .1rem .32rem;
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    padding: .12rem .3rem;
     font-size: .28rem;
     color: #fff; // line-height: 1.2;
     border-radius: .4rem; // background-color: #5aa572;

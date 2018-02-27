@@ -18,29 +18,30 @@
 }
 
 .banner-body .pagination {
-    @include position(absolute, auto, .35rem, .2rem, auto, 10);
+    @include position(absolute, auto, .35rem, .3rem, auto, 10);
     @include flex-box;
     @include align-items;
     @include justify-content;
     padding: .05rem .1rem;
     height: .28rem;
     background: rgba(43, 47, 51, 0.3);
-    border-radius: .28rem;
+    border-radius: .4rem;
 }
 
 .banner-body .pagination .icon,
 .banner-body .pagination span {
     display: block;
     margin-right: .04rem;
-    font-size: .2rem;
+    // font-size: .2rem;
     color: #fff;
-    line-height: 1.2;
+    // line-height: 1.2;
 }
 
 .banner-body .pagination .icon:before {
     display: block;
     width: .28rem;
     height: .28rem;
+    border-radius: .14rem;
     overflow: hidden;
 }
 

@@ -96,7 +96,7 @@ body {
     background-color: rgba(255, 255, 255, 1);
     border-radius: .04rem;
     box-shadow: 0 0 .2rem rgba(39, 88, 55, 0.12);
-    padding: .2rem .6rem .4rem;
+    padding: .1rem .6rem .4rem;
 }
 
 .select-body .input-text {
@@ -165,7 +165,7 @@ body {
     padding: 0;
     border: none;
     outline: none; //css去掉button点击后的蓝框
-    margin-top: .2rem;
+    margin-top: .08rem;
     height: .8rem;
     width: 100%;
     font-size: .34rem; // background: $color;
@@ -250,6 +250,7 @@ body {
     padding-top: 0.03rem;
     font-size: .36rem;
     font-weight: 700;
+    margin-right: .1rem;
     color: rgba(42, 43, 45, 1);
 }
 
