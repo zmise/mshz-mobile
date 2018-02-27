@@ -70,7 +70,7 @@
         // debugger
         for (var q = 0; q < me.index; q++) {
           var select = q;
-          $(me.sections).find(".tbody").append("<p class='ny1'></p><table class='dateTable'></table>")
+          $(me.sections).find(".tbody").append("<p class='ny1'></p><table class='dateTable'></table><p class='bline'></p>")
           var currentDate = new Date();
           currentDate.setDate(1);
           currentDate.setMonth(currentDate.getMonth() + select);

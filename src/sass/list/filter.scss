@@ -407,8 +407,7 @@
     border-radius: .08rem;
     box-sizing: border-box;
     font-size: .24rem;
-    color: rgba(181, 185, 190, 1);
-    background-color: rgba(247, 247, 247, 1);
+    color: rgba(181, 185, 190, 1); // background-color: rgba(241, 251, 244, 1);
 }
 
 .filter-list .checkbox-body .more-sel-items .icon {
@@ -427,6 +426,7 @@
     color: $color;
     background-color: #fff;
     border: .02rem solid $color;
+    background-color: rgba(241, 251, 244, 1);
 }
 
 .filter-list .checkbox-body .more-sel-items .current {

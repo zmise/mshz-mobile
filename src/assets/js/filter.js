@@ -115,7 +115,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     $(this).addClass('current').siblings().removeClass('current');
-
+    console.log('zmise');
   });
 
   /* 多选事件 */

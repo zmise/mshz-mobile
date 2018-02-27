@@ -17,7 +17,8 @@
     }
 
     .headerWrapper {
-        @include linear-gradient;;
+        @include linear-gradient;
+        ;
     }
 
     .headerWrapper .back {
@@ -85,15 +86,21 @@
     .dateTable {
         width: 99.4%;
         margin: auto;
-        border: none;
-        padding-bottom: .48rem;
+        border: none; // padding-bottom: .48rem; // border-bottom: $border;
+    }
+
+    .bline {
+        width: 6.8rem;
+        text-align: center;
+        padding: .48rem 0 0;
+        margin: 0 .35rem;
         border-bottom: $border;
     }
 
     .tbody .ny1 {
         width: 100%;
         text-align: center;
-        padding: .2rem 0;
+        padding: .4rem 0 .2rem;
         font-size: .28rem;
         color: rgba(42, 43, 45, 1);
         line-height: .48rem;
