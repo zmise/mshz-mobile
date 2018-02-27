@@ -59,7 +59,7 @@ $(function () {
       pageSize: 10,
       orderQueryType: orderQueryType
     }
-    console.log(params);
+    // console.log(params);
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderPage',
       data: params,
@@ -232,7 +232,7 @@ $(function () {
         } else {
           toast.show(res.message);
         }
-        dropload.resetload(recordCount, params.page, res.result && res.result.pageCount || 1);
+        dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
         console.log(error);
