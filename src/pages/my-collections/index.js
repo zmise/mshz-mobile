@@ -119,7 +119,7 @@ $(function () {
       }
     });
   }
-  loadingMore({ isReload: true })
+  // loadingMore({ isReload: true })
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {

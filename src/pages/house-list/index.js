@@ -25,13 +25,7 @@ window.onpageshow = function (event) {
 };
 
 $(function () {
-
   var params = {};
-  // var _html = require('../../assets/svg/loading.html');
-
-  // houseList
-
-
   // dropload
   var $houseList = $('.recommend-body .mrl_35'); // $('#houseList')
   var dropload = $('.recommend-body').dropload({
@@ -94,8 +88,10 @@ $(function () {
           for (var i = 0; i < data.length; i++) {
             var item = data[i];
             result +=
-              '<a class="index-list" href="/houseDetails?id=' + item.id + '">' +
+              '<div class="index-list">' +
+              '<a href="/houseDetails?id=' + item.id + '">' +
               '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+              '</a>' +
               '  <div class="item-oneline">' +
               '    <p>' + item.title + '</p>' +
               '    <p>￥' + item.price + '</p>' +
@@ -121,7 +117,7 @@ $(function () {
                 '    </div>';
             }
             result += '  </div>' +
-              '</a>';
+              '</div>';
           }
 
           $houseList.append(result);

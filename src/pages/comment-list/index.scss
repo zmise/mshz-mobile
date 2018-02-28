@@ -113,6 +113,8 @@ body {
     -webkit-line-clamp: 2;
     overflow: hidden;
     -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .article-body .all-assess .img-list {
