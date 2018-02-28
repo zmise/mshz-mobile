@@ -22,6 +22,10 @@ body {
     display: none !important;
 }
 
+.banner-body {
+    height: 4.22rem;
+}
+
 
 /* header-body */
 
@@ -105,6 +109,7 @@ body {
     font-size: .24rem;
     color: rgba(255, 92, 92, 1);
     margin-right: .26rem;
+    margin-bottom: 0.02rem;
 }
 
 .banner-des .content .twoline .twoline-items {
@@ -296,6 +301,10 @@ body {
     display: block;
 }
 
+.address-body .map img {
+    border-radius: .04rem;
+}
+
 .address-body .address {
     @include position(absolute, auto, auto, 0, auto, 10);
     @include flex-box;
@@ -362,7 +371,10 @@ body {
 }
 
 .comment-body .total .line-two {
-    padding-top: .1rem;
+    padding-top: .2rem;
+    padding-bottom: .4rem;
+    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+    ;
 }
 
 .comment-body .total .txt {
@@ -408,7 +420,7 @@ body {
 }
 
 .comment-body .first-comment {
-    padding-top: .46rem;
+    padding-top: .36rem;
 }
 
 .comment-body .first-comment .info {
@@ -501,7 +513,7 @@ body {
     width: 1.44rem;
     height: 1.2rem;
     margin-right: .16rem;
-    margin-bottom: .24rem;
+    margin-bottom: .16rem;
     color: #000;
     box-sizing: border-box;
     border-radius: .04rem;
@@ -594,6 +606,10 @@ body {
     flex-direction: column;
 }
 
+.feature-channel .items img {
+    border-radius: .04rem;
+}
+
 // @each $item in garden,
 // school,
 // overseas,
@@ -627,6 +643,7 @@ body {
 
 .feature-channel .slide .oneline p:last-child {
     color: rgba(255, 92, 92, 1);
+    margin-right: 0.1rem;
 }
 
 .feature-channel .slide .twoline .twoline-items {

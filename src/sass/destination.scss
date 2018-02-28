@@ -28,7 +28,8 @@
 
 .des-body .des-header {
     @include position(fixed, 0, 0, auto, 0, 999);
-    @include linear-gradient;;
+    @include linear-gradient;
+    ;
 }
 
 .des-body .des-header .des {
@@ -111,9 +112,8 @@
     @include flex-box;
     @include flex-wrap(wrap);
     @include flex-direction;
-    @include align-items;
-    height: 2.37rem;
-    padding-left: .35rem;
+    @include align-items; // height: 2.37rem;
+    padding: .48rem .35rem .12rem;
 }
 
 .des-hot-city .content .items {
@@ -127,6 +127,7 @@
     border-radius: .04rem;
     font-size: .26rem;
     color: rgba(94, 100, 107, 1);
+    margin-bottom: 0.36rem;
 }
 
 
