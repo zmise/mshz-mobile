@@ -16,7 +16,7 @@
     @include position(absolute, .0, 0, auto, 0, 10);
     @include flex-box;
     @include align-items;
-    padding: 0 .35rem;
+    padding-left: 0.35rem;
     height: 0.88rem;
     background-color: #f9f9f9;
 }
@@ -41,7 +41,7 @@
     height: .4rem;
     margin-right: .24rem;
     border-radius: .2rem;
-    font-size: .4rem;
+    font-size: .32rem;
     background-color: #fff;
     color: rgba(181, 185, 190, 1);
     overflow: hidden;
@@ -76,6 +76,7 @@
     @include justify-content;
     width: .72rem;
     height: .72rem;
+    font-size: .24rem;
     color: $color;
     border-radius: 50%;
     z-index: 1;
@@ -215,11 +216,15 @@
 }
 
 .search-layer .search-body .cancel {
-    width: 0.44rem;
-    line-height: .88rem; // padding: .2rem 0 .2rem .2rem;
-    // margin-right: .24rem;
-    font-size: .3rem;
-    color: #fff; // background-color: black;
+    @include flex-box;
+    @include align-items;
+    @include justify-content(flex-end);
+    width: 1.13rem;
+    line-height: .88rem;
+    padding-right: 0.35rem;
+    box-sizing: border-box;
+    font-size: .28rem;
+    color: rgba(254, 254, 255, 1);
 }
 
 
