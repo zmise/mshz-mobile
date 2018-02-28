@@ -109,7 +109,7 @@ $(function () {
           $collectionsList.append(str);
         }
 
-        dropload.resetload(recordCount, params.page, res.result && res.result.pageCount || 1);
+        dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
         console.log(error);
