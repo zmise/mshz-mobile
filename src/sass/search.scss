@@ -34,7 +34,6 @@
 
 .search-body .text-body .search-close {
     position: relative;
-    display: block;
     @include flex-box;
     @include align-items;
     @include justify-content;
@@ -42,9 +41,9 @@
     height: .4rem;
     margin-right: .24rem;
     border-radius: .2rem;
-    font-size: .10rem;
-    background-color: rgba(181, 185, 190, 1);
-    color: #fff;
+    font-size: .4rem;
+    background-color: #fff;
+    color: rgba(181, 185, 190, 1);
     overflow: hidden;
 }
 
@@ -72,36 +71,35 @@
 
 .search-layer .search-body .text-body .search-icon .circle {
     @include position(absolute, .04rem, auto, auto, .04rem, 10);
-    display: block;
-    content: '';
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
     width: .72rem;
     height: .72rem;
-    background-color: $color;
+    color: $color;
     border-radius: 50%;
     z-index: 1;
 }
 
-.search-layer .search-body .text-body .search-icon:before {
-    @include position(absolute, .24rem, auto, auto, .24rem, 10);
-    display: block;
-    content: '';
-    width: .2rem;
-    height: .2rem;
-    border: .04rem solid #fff;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.search-layer .search-body .text-body .search-icon:after {
-    @include position(absolute, .5rem, auto, auto, .44rem, 10);
-    display: block;
-    content: '';
-    width: .16rem;
-    height: .04rem;
-    background-color: #fff;
-    @include transform(rotateZ(45deg));
-}
-
+// .search-layer .search-body .text-body .search-icon:before {
+//     @include position(absolute, .24rem, auto, auto, .24rem, 10);
+//     display: block;
+//     content: '';
+//     width: .2rem;
+//     height: .2rem;
+//     border: .04rem solid #fff;
+//     border-radius: 50%;
+//     z-index: 2;
+// }
+// .search-layer .search-body .text-body .search-icon:after {
+//     @include position(absolute, .5rem, auto, auto, .44rem, 10);
+//     display: block;
+//     content: '';
+//     width: .16rem;
+//     height: .04rem;
+//     background-color: #fff;
+//     @include transform(rotateZ(45deg));
+// }
 .search-layer .search-body .text-body .style-two:before {
     @include position(absolute, .24rem, auto, auto, .24rem, 10);
     display: block;
