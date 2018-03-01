@@ -150,6 +150,9 @@
         me.element.on('tap', function (event) {
           event.preventDefault();
           event.stopPropagation();
+          if ($(me.sections).is(':animated')) {
+            return;
+          }
           me._slider(me.sections)
         });
         $(me.comfire).on('tap', function (event) {
