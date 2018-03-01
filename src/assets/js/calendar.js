@@ -327,7 +327,7 @@
             $arryeven.eq(0).text('今天');
             $arryeven.eq(0).attr('data-txt', '今天');
           }*/
-          for (var i = 0; i < $arryodd.length; i++) {
+          for (var i = 0; i < 90; i++) {
             if (me.sourceData[i].status != null) {
               $arryodd.eq(i).attr('data-status', me.sourceData[i].status);
             }

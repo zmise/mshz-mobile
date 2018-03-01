@@ -52,6 +52,7 @@ $(function () {
   function loadingMore(options) {
     var curPage = +$('#page').val();
     if (options && options.isReload) {
+      console.log('reload');
       $('#page').val(1);
       dropload.unlock();
     } else {
