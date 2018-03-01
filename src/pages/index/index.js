@@ -150,16 +150,16 @@ $(function () {
 
 
   function bdGetPosition(result) {
-    // console.log(result);
-    var cityName = result.name;
+    console.log(result);
+    var cityName = result.address.city;
     if (cityName.indexOf('市') != -1) {
       cityName = cityName.replace('市', '');
     }
     if ($('#destination-entry').val() == '') {
       $('#destination-entry').val(cityName);
     }
-    lat = result.center.lat;
-    lon = result.center.lng;
+    lat = result.point.lat;
+    lon = result.point.lng;
     if (!lat || !lon || lon === '' || lat === '') {
       window.onload = getLocation;
     }
@@ -211,8 +211,8 @@ $(function () {
     window.scrollTo(0, top);
   }
   // 百度接口的定位获取信息（cityName，lat，lon）
-  var nowCity = new BMap.LocalCity();
-  nowCity.get(bdGetPosition);
+  var nowCity = new BMap.Geolocation();
+  nowCity.getCurrentPosition(bdGetPosition);
 
   initTime();
 
