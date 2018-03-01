@@ -418,6 +418,6 @@ $(function () {
   $('.filter-layer').on('tap', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    hideFilterLayer();
+    // hideFilterLayer();
   });
 });

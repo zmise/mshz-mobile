@@ -12,7 +12,7 @@ $(function () {
     e.stopPropagation();
     $('.des-body').show();
     /* 阻止首页滚动条事件  */
-    $('body,html').css({ 'overflow': 'hidden' });
+    // $('body,html').css({ 'overflow': 'hidden' });
     for (var i = 0; i < $('.des-body .des-list .title').length; i++) {
       arr[i] = $('.des-body .des-list .title').eq(i).offset().top;
     }
