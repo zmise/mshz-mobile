@@ -21,7 +21,8 @@ $(function () {
   // 获取默认页签类型
   var orderQueryType = location.hash.substr(1) || 'WAIT_PAYMENT';
   var $orderSort = $('.order-sort-body');
-  $orderSort.find('a[data-order-query-type="' + orderQueryType + '"]').trigger('tap');
+  $orderSort.find('a[data-order-query-type="' + orderQueryType + '"]').trigger('tap').find('.txt').addClass('current').end().find('.line').addClass('current');
+
   // dropload
 
   var $orderList = $('.article-body .list'); // $('#orderList')
