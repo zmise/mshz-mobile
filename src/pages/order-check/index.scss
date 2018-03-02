@@ -19,8 +19,12 @@ body {
 /* address-body */
 
 .address-body {
-    padding: .4rem .35rem .6rem;
+    @include flex-box;
+    @include justify-content;
+    padding: .24rem .35rem .65rem;
     background-color: #fff;
+    height: 1.84rem;
+    box-sizing: border-box;
 }
 
 .item-oneline,
@@ -30,8 +34,20 @@ body {
     @include align-items;
 }
 
+.address-body .mainpic {
+    width: 1.8rem;
+    height: 1.35rem;
+    border-radius: .04rem;
+    margin-right: 0.28rem;
+}
+
+.address-body .content-info {
+    @include flex;
+}
+
 .address-body .item-oneline {
     @include justify-content(space-between);
+    padding-top: 0.2rem;
 }
 
 .address-body .item-oneline p {
@@ -40,8 +56,8 @@ body {
 }
 
 .address-body .item-oneline p:first-child {
-    color: $color;
-    font-weight: 700;
+    font-size: .28rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 .address-body .item-oneline p:last-child {
@@ -50,7 +66,7 @@ body {
 
 .address-body .item-twoline {
     @include justify-content(flex-start);
-    padding-top: .26rem;
+    padding-top: .2rem;
 }
 
 .address-body .twoline-items {

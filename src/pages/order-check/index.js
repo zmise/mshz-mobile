@@ -158,7 +158,19 @@ $(function () {
         if (res.status === 'C0000') {
           orderInfo = res.result;
           var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items">' + orderInfo.gardenArea + '</i><i class="twoline-items">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum">' + orderInfo.custCount + '人</i></div>';
-
+          str =
+            '<img class="mainpic" src="' + orderInfo.mainPicture.replace('{size}', '400x300') + '" />' +
+            '<div class="content-info">' +
+            '  <div class="item-oneline">' +
+            '    <p>' + orderInfo.roomTitle + '</p>' +
+            '    <p>￥' + orderInfo.roomPrice + '</p>' +
+            '  </div>' +
+            '  <div class="item-twoline">' +
+            '    <i class="twoline-items" href="javascript:;">' + orderInfo.gardenArea + '</i>' +
+            '    <i class="twoline-items" href="javascript:;">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i>' +
+            '    <i class="twoline-items def-pnum" href="javascript:;">' + orderInfo.custCount + '人</i>' +
+            '  </div>' +
+            '</div>';
           $('.yajin').text(orderInfo.roomDeposit);
           $('.house-price').text(orderInfo.roomRate);
           $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
