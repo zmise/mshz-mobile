@@ -125,7 +125,7 @@ body {
 }
 
 .banner-des .tools {
-    padding: .3rem 0 .6rem;
+    padding: .3rem 0 .5rem;
 }
 
 .banner-des .tools .items,
@@ -137,7 +137,7 @@ body {
 }
 
 .banner-des .tools .items {
-    padding-bottom: .4rem;
+    padding-bottom: .3rem;
 }
 
 .banner-des .tools .items:last-child {
@@ -155,7 +155,7 @@ body {
 .banner-des .tools .items i {
     height: 0.5rem;
     width: 0.5rem;
-    font-size: .42rem;
+    font-size: .35rem;
 }
 
 .banner-des .tools .items span {
@@ -167,6 +167,7 @@ body {
 
 /* house-base-info */
 
+.map-body,
 .house-base-info {
     @include flex-box;
     @include flex-direction(column);
@@ -176,7 +177,14 @@ body {
 }
 
 .house-base-info .items {
-    border-bottom: $border;
+    // border-bottom: $border;
+    margin-top: 0.12rem;
+    padding-top: .32rem;
+    padding-bottom: .36rem;
+}
+
+.map-body .items {
+    margin-top: 0.12rem;
     padding-top: .32rem;
     padding-bottom: .36rem;
 }
@@ -185,11 +193,16 @@ body {
     border: 0;
 }
 
+.map-body .items .tit,
 .house-base-info .items .tit {
     padding-bottom: 0.15rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
     font-weight: 900;
+}
+
+.map-body .items .tit {
+    padding-bottom: 0.3rem;
 }
 
 .house-base-info .house-des .part {
@@ -256,7 +269,7 @@ body {
 
 .house-des .more span,
 .base-server .more span {
-    font-size: .22rem;
+    font-size: .2rem;
     color: rgba(181, 185, 190, 1);
     padding-right: .15rem;
 }
@@ -276,18 +289,18 @@ body {
 .base-server .more .icon:before,
 .base-server .more .icon:after {
     position: absolute;
-    bottom: .12rem;
+    bottom: .17rem;
     right: auto;
     top: auto;
     left: .08rem;
     z-index: 10;
     display: block;
     content: "";
-    width: .12rem;
-    height: .12rem;
+    width: .1rem;
+    height: .1rem;
     border-width: 0 .02rem .02rem 0;
     border-style: solid;
-    border-color: #999;
+    border-color: rgba(181, 185, 190, 1);
     @include transform(rotate(45deg));
 }
 
@@ -299,6 +312,8 @@ body {
     position: relative;
     overflow: hidden;
     display: block;
+    width: 6.8rem;
+    height: 3.79rem;
 }
 
 .address-body .map img {
@@ -473,6 +488,7 @@ body {
     @include flex-wrap(wrap);
     border-bottom: $border;
     padding-top: 0.24rem;
+    padding-bottom: 0.14rem;
 }
 
 .comment-body .first-comment .des .des-duihua {
@@ -573,10 +589,11 @@ body {
     background-color: #fff;
     padding-left: .35rem;
     margin-top: .12rem;
+    padding-bottom: 0.36rem;
 }
 
 .feature-channel .title {
-    padding: .35rem 0 .35rem;
+    padding: .35rem 0 .3rem;
     font-size: .28rem;
     color: rgba(42, 43, 45, 1);
     line-height: 1.2;
@@ -597,8 +614,8 @@ body {
     @include justify-content;
     @include flex(0, 0, auto);
     width: 3.8rem;
+    height: 2.14rem;
     margin-right: .24rem;
-    margin-bottom: .48rem;
     font-size: $font-large;
     color: #fff;
     box-sizing: border-box;
@@ -625,7 +642,6 @@ body {
     @include justify-content(space-between);
     margin-top: .21rem;
     width: 100%;
-    height: .54rem;
 }
 
 .feature-channel .slide .twoline {
@@ -639,6 +655,7 @@ body {
     font-size: .24rem;
     font-weight: 700;
     color: rgba(42, 43, 45, 1);
+    margin-bottom: 0.15rem;
 }
 
 .feature-channel .slide .oneline p:last-child {
@@ -674,22 +691,24 @@ body {
 }
 
 .footer-body .items {
-    flex: 1;
+    flex: 2;
     @include flex-box;
     @include align-items;
 }
 
 .footer-body .items:last-child {
-    @include justify-content;
+    flex: 3;
+    @include align-items;
+    @include justify-content(space-around);
     @include linear-gradient;
 }
 
 .footer-body .items .commuite {
     width: 0.5rem;
     height: 0.5rem;
-    margin-left: .53rem;
-    margin-right: .16rem;
-    font-size: .42rem;
+    margin-left: .5rem;
+    margin-right: .12rem;
+    font-size: .38rem;
 }
 
 .footer-body .items span {
@@ -703,14 +722,14 @@ body {
 }
 
 .footer-body .items .price {
-    padding-right: .25rem;
-    border-right: $border;
+    padding-right: .25rem; // border-right: $border;
     font-weight: 700;
 }
 
 .footer-body .items .roder {
-    padding-left: .21rem;
-    font-weight: 700;
+    padding-left: .21rem; // font-weight: 700;
+    font-size: .34rem;
+    margin-bottom: 0.02rem;
 }
 
 // 联系管家遮罩层
