@@ -1,3 +1,4 @@
+
 require('./index.scss');
 require('../../assets/js/analytics.js');
 
@@ -8,7 +9,7 @@ require('../../assets/js/navigate.js');
 require('../../assets/js/appDownload.js');//全局下载APP
 
 $(function () {
-
+  window.sessionStorage.setItem('lastLocation', location.href);
 
   // 查询用户浏览记录post接口
   function queryUserRoomHistory(params) {
@@ -89,7 +90,7 @@ $(function () {
   $('#back').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    history.go(-1)
+    location.replace('/');
   });
 });
 
