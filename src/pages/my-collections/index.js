@@ -18,6 +18,10 @@ window.onpageshow = function (event) {
   }
 };
 $(function () {
+  // 关闭loading
+  setTimeout(function (e) {
+    $('#loading').remove();
+  }, 500);
   // dropload
   var $collectionsList = $('.article-body .list'); // $('#collectionsList')
 

@@ -18,6 +18,10 @@ window.onpageshow = function (event) {
 };
 /* 切换订单分类栏的事件 */
 $(function () {
+  // 关闭loading
+  setTimeout(function (e) {
+    $('#loading').remove();
+  }, 500);
   // 获取默认页签类型
   var orderQueryType = location.hash.substr(1) || 'WAIT_PAYMENT';
   var $orderSort = $('.order-sort-body');
