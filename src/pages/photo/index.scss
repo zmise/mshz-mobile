@@ -108,3 +108,11 @@ body {
 .photo-tabs .current {
     color: #fff;
 }
+
+.photo-tabs .slide-body {
+    overflow: hidden;
+}
+
+.photo-tabs .slide {
+    @include flex-box;
+}

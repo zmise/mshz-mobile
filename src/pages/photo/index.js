@@ -2,6 +2,8 @@ require('./index.scss');
 require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
+require('../../assets/plugins/jquery.banner.js');
+require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.photo.album.js');
 
 $(function () {
@@ -69,7 +71,11 @@ $(function () {
             '  </p>' +
             '</section>';
 
-          str += '<section class="photo-tabs">';
+          str +=
+            '<section class="photo-tabs">' +
+            '  <div class="slide-body" js-plugin="slide">' +
+            '    <div class="slide">'
+            ;
 
           var itemNumber = 0;
           for (var i = 0; i < array.length; i++) {
@@ -88,7 +94,10 @@ $(function () {
           }
 
 
-          str += '</section>';
+          str +=
+            '    </div>' +
+            '  </div >' +
+            '</section >';
           $('#content').html(str);
 
           $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/' + totalImg + '</span>');
