@@ -19,13 +19,14 @@ body {
 
 footer {
     @include flex;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
 }
-
 
 #paymentInfo {
-  min-height: 10rem;
+    min-height: 10rem;
 }
+
+
 /* hold-body */
 
 .hold-body {
@@ -42,7 +43,6 @@ footer {
     width: 0.51rem;
     height: 0.51rem;
     font-size: .51rem;
-    margin-top: .37rem;
     margin-bottom: .23rem;
     color: $color;
 }
@@ -87,8 +87,8 @@ footer {
     @include flex;
     @include flex-box;
     @include flex-direction(column);
-    padding-left: .32rem;
     margin-top: .12rem;
+    margin-left: 0.03rem;
 }
 
 .content-body .txt span {
@@ -126,7 +126,7 @@ footer {
 
 .content-body .checkInfo span:last-child {
     font-size: .32rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -148,7 +148,6 @@ footer {
     @include flex-direction(column);
     @include justify-content(flex-start);
     background-color: #fff;
-    height: 3.48rem;
     margin-bottom: .12rem;
 }
 
@@ -157,7 +156,7 @@ footer {
     @include align-items;
     @include justify-content(space-between);
     padding: .24rem .35rem;
-    border-bottom: $border;
+    // border-bottom: $border;
 }
 
 .play-body .playStyle .more {
