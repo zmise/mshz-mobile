@@ -334,7 +334,7 @@
             if (me.sourceData[i].status != null) {
               $arryodd.eq(i).attr('data-status', me.sourceData[i].status);
             }
-            if (me.sourceData[i].status === 'BOOKED' || me.sourceData[i].status === 'CHECKED_IN' || me.sourceData[i].status === 'FIXED') {
+            if (me.sourceData[i].status !== 'VALID') {
               $arryodd.eq(i).text('无房');
               $arryeven.eq(i).removeClass('even');
             } else {
@@ -424,7 +424,7 @@
             if (first < three) {
               for (four; four < three; four++) {
                 var status = $(arry1[four]).find('.odd').data('status');
-                if (status === 'BOOKED' || status === 'CHECKED_IN' || status === 'FIXED') {
+                if (status !== 'VALID') {
                   flag = 0;
                   break;
                 }
@@ -432,7 +432,7 @@
             } else {
               for (three; three < four; three++) {
                 var status = $(arry1[three]).find('.odd').data('status');
-                if (status === 'BOOKED' || status === 'CHECKED_IN' || status === 'FIXED') {
+                if (status !== 'VALID') {
                   flag = 0;
                   break;
                 }
@@ -446,7 +446,7 @@
             first = $(arry1).index($(this));
             if (me.sourceData && me.sourceData.length !== 0) {
               // 如果第一次点击的单元格是无房，则点击无效
-              if (me.sourceData[first].status === 'BOOKED' || me.sourceData[first].status === 'CHECKED_IN' || me.sourceData[first].status === 'FIXED') {
+              if (me.sourceData[first].status !== 'VALID') {
                 return false;
               }
             }
@@ -464,7 +464,7 @@
             for (var n = 0; n < arry1.length; n++) {
               var status = $(arry1[n]).find('.odd').data('status');
               if (me.sourceData && me.sourceData.length !== 0) {
-                if (status === 'BOOKED' || status === 'CHECKED_IN' || status === 'FIXED') {
+                if (status !== 'VALID') {
                   $(arry1[n]).find('span:first').removeClass('even');
                 }
               }
@@ -488,7 +488,7 @@
 
               for (i; i < arry1.length; i++) {
                 var status = $(arry1[i]).find('.odd').data('status');
-                if (status === 'BOOKED' || status === 'CHECKED_IN' || status === 'FIXED') {
+                if (status !== 'VALID') {
                   $(arry1[i]).find('span:first').addClass('even');
                   break;
                 }
