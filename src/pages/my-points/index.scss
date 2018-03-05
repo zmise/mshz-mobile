@@ -21,6 +21,7 @@ body {
 }
 
 .general-info .score {
+    padding-top: 0.2rem;
     font-size: .72rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 1);
@@ -39,7 +40,8 @@ body {
     background-color: #fff;
     box-sizing: border-box;
     text-align: left;
-    margin: .4rem auto -.51rem;
+    margin: .5rem auto -.51rem;
+    box-shadow: 0 0 .16rem RGBA(87, 179, 121, 0.16);
 }
 
 .general-info .content .tlt {

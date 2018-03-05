@@ -99,13 +99,13 @@ body {
 
 .other-info .items .txt {
     font-size: .22rem;
-    color: rgba(94, 100, 107, 1);
+    color: rgba(42, 43, 45, 1);
     margin-top: 0.1rem;
-}
+}.general-info
 
 .other-info .items .number {
-    font-size: .28rem;
-    color: rgba(94, 100, 107, 1);
+    font-size: .3rem;
+    color: rgba(42, 43, 45, 1);
 }
 
 
@@ -115,7 +115,7 @@ body {
     @include flex-box;
     @include flex-direction(column);
     height: 5.45rem;
-    padding-bottom: 0.2rem;
+    // padding-bottom: 0.2rem;
     margin-top: 0.13rem;
     background: rgba(255, 255, 255, 1);
     box-sizing: border-box;
@@ -183,7 +183,7 @@ body {
 
 .order-info .slider .items .time {
     @include flex-box;
-    padding-top: 0.12rem;
+    padding-top: 0.16rem;
 }
 
 .order-info .slider .items .time .txt {

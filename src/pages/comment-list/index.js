@@ -81,7 +81,7 @@ $(function () {
             str +=
               '<section class="unusual-body">' +
               '  <div class="no-comment-order"></div>' +
-              '  <span>没有等待评价的订单哦</span>' +
+              '  <span>没有等待评价的订单哦~</span>' +
               '</section>'
               ;
           }
