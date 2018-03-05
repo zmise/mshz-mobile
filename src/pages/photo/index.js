@@ -2,8 +2,6 @@ require('./index.scss');
 require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
-require('../../assets/plugins/jquery.banner.js');
-require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.photo.album.js');
 
 $(function () {
@@ -23,6 +21,7 @@ $(function () {
   // $.ajax();
   // console.log(getUrlParam('houseId'));
   // console.log(parseInt(getUrlParam('id')));
+
   var id = getUrlParam('id');
   var imageIndex = getUrlParam('imageIndex'); // 总数的第几
   var typeIndex = getUrlParam('typeIndex'); // 第几个类型
@@ -72,8 +71,7 @@ $(function () {
             '</section>';
 
           str +=
-            '<section class="photo-tabs">' +
-            '  <div class="slide-body" js-plugin="slide">' +
+            '<section class="photo-tabs" js-plugin="slide" id="slide">' +
             '    <div class="slide">'
             ;
 
@@ -81,11 +79,11 @@ $(function () {
           for (var i = 0; i < array.length; i++) {
             if (parseInt(typeIndex) === i) {
               str +=
-                '  <a class="items current" href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
+                '  <li class="items current" href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</li>'
                 ;
             } else {
               str +=
-                '  <a class="items " href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</a>'
+                '  <li class="items " href="javascript:;" data-number="' + itemNumber + '">' + array[i].imageType + '&nbsp;(' + array[i].imageUrlList.length + ')</li>'
                 ;
             }
 
@@ -96,10 +94,10 @@ $(function () {
 
           str +=
             '    </div>' +
-            '  </div >' +
             '</section >';
           $('#content').html(str);
-
+          //初始化 滑动
+          $('#slide').slide();
           $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/' + totalImg + '</span>');
           /* 通过图片下标设置标题 */
           function getTitle(index) {
@@ -139,6 +137,7 @@ $(function () {
           }
           //当前点进去的图片 位于相册的位置的序号
           var firstIndex = +$('.types').eq(typeIndex).data('length') + +itemIndex;
+
           var photo = $('.photo-body').phototAlbum({
             width: $(window).width(),
             height: $(window).height(),

@@ -63,7 +63,6 @@ body {
     500);
     @include flex-box;
     @include justify-content;
-    @include flex-box;
     width: 100%;
     color: #fff;
 }
@@ -90,16 +89,19 @@ body {
     0,
     0,
     500);
-    @include flex-box;
-    @include flex-wrap(wrap);
+    @include flex-box; // @include flex-wrap(wrap);
     padding: .4rem 0 .5rem .4rem;
     background-color: rgba(0, 0, 0, .5);
+    overflow: hidden;
 }
 
 .photo-tabs .items {
     @include flex-box;
-    text-align: center;
-    justify-content: center;
+    @include align-items;
+    @include justify-content;
+    @include flex(0,
+    0,
+    auto);
     font-size: .3rem;
     color: #555;
     margin-right: 0.5rem;
@@ -107,10 +109,6 @@ body {
 
 .photo-tabs .current {
     color: #fff;
-}
-
-.photo-tabs .slide-body {
-    overflow: hidden;
 }
 
 .photo-tabs .slide {
