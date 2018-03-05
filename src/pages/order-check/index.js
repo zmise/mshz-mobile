@@ -71,15 +71,14 @@ $(function () {
           for (var i = 0; i < yearMonths.length; i++) {
             sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
-
+          console.log(data);
           // 判断默认日期是否已经无房
-          var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status;
+          var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8)].status;
           if (inDateStatus === 'BOOKED' || inDateStatus === 'CHECKED_IN' || inDateStatus === 'FIXED') {
             startDate = '';
             endDate = '';
           } else {
             var totalDays = (new Date(endDate) - new Date(startDate)) / 24 / 60 / 60 / 1000;
-
             $('#startDate').val(startDate);
             $('#endDate').val(endDate);
             $('#totalday').text('共' + totalDays + '晚');
