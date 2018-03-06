@@ -18,10 +18,11 @@ window.onpageshow = function (event) {
   }
 };
 $(function () {
+  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
   // 关闭loading
-  setTimeout(function (e) {
+  if (loginInfo) {
     $('#loading').remove();
-  }, 500);
+  }
   // dropload
   var $collectionsList = $('.article-body .list'); // $('#collectionsList')
 
