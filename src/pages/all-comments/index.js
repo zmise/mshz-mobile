@@ -6,6 +6,7 @@ require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/zoomify.js'); // 查看大图
+var util = require('../../util/');
 
 
 $(function () {
@@ -54,13 +55,13 @@ $(function () {
             str +=
               '        <div class="name-time">' +
               '          <span>' + item.nickName + '</span>' +
-              '          <span>' + item.commentTimeDesc + '</span>' +
-              '        </div>' +
-              '      </div>' +
-              '      <span class="socre">' + item.score.toFixed(1) + '分</span>' +
-              '    </div>' +
-              '    <div class="des">' +
-              '      <p class="des-cnt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</p>';
+              '          <span>' + util.formatDate(item.commentTime, 'yyyy-MM-dd'); + '</span>' +
+                '        </div>' +
+                '      </div>' +
+                '      <span class="socre">' + item.score.toFixed(1) + '分</span>' +
+                '    </div>' +
+                '    <div class="des">' +
+                '      <p class="des-cnt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</p>';
 
             if (item.commentPicture !== '') {
               str += '      <div class="img-list">';
