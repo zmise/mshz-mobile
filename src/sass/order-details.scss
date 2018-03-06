@@ -1,5 +1,3 @@
-
-
 /* 代付款订单详情的样式 */
 
 .article-body .time-paid {
@@ -161,7 +159,7 @@
 }
 
 .article-body .order-info .address {
-    padding: 0.1rem 0 0 .07rem;
+    padding: 0.18rem 0 0 .07rem;
 }
 
 .article-body .order-info .time .icon,
@@ -228,6 +226,7 @@
     font-size: .36rem;
     color: $color;
     margin-left: .26rem;
+    font-weight: 700;
 }
 
 .article-body .peo-info {

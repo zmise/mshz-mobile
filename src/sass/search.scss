@@ -66,7 +66,7 @@
     border-radius: 50%;
     background-color: transparent;
     overflow: hidden;
-    padding-right: .4rem;
+    padding-right: .15rem;
 }
 
 .search-layer .search-body .text-body .search-icon .circle {
@@ -255,7 +255,6 @@
 
 .search-layer .search-keyword .items {
     display: block;
-    border: $border;
     line-height: 0.22rem;
     padding: .15rem .25rem;
     margin-right: .2rem;
@@ -263,6 +262,7 @@
     border-radius: .26rem;
     font-size: .24rem;
     color: rgba(94, 100, 107, 1);
+    background-color: #f5f5f5;
     cursor: pointer;
 }
 

@@ -52,7 +52,7 @@
 .index-list .item-twoline,
 .index-list .item-threeline {
     @include justify-content(flex-start);
-    padding-top: .24rem;
+    padding-top: .2rem;
     white-space: nowrap;
 }
 
