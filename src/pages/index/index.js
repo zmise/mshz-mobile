@@ -23,7 +23,7 @@ window.onpageshow = function (event) {
 };
 
 $(function () {
-
+  window.sessionStorage.setItem('lastLocation', location.href);
   //h5本地获取地理位置
   function getLocation() {
 

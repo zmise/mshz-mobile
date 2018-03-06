@@ -25,6 +25,7 @@ window.onpageshow = function (event) {
 };
 
 $(function () {
+  window.sessionStorage.setItem('lastLocation', location.href);
   var params = {};
   // dropload
   var $houseList = $('.recommend-body .mrl_35'); // $('#houseList')

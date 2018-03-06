@@ -6,6 +6,7 @@ require('../../assets/js/navigate.js');
 
 
 $(function () {
+  window.sessionStorage.setItem('lastLocation', location.href);
 
   $('#back').on('click', function (e) {
 

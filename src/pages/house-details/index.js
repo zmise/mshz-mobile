@@ -13,7 +13,7 @@ window.onpageshow = function (event) {
 };
 
 $(function () {
-
+  window.sessionStorage.setItem('lastLocation', location.href);
   // 猜你喜欢get接口
   function guessLikeInfo(params) {
     $.ajax({
