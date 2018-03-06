@@ -92,7 +92,7 @@ $(function () {
           if (orderQueryType === 'WAIT_PAYMENT') {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
-              str += '<div class="box">' +
+              str += '<div class="box" id="' + item.orderNo + '">' +
                 '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                 '<div class="title current">' +
                 '  <span>' + item.roomTitle + '</span><span class="weight">¥' + item.totalPrice + '</span>' +
@@ -265,7 +265,9 @@ $(function () {
 
         if (res.status === 'C0000') {
           toast.show('取消成功');
-          orderList();
+          // orderList();
+          var orderNo = params.orderNo
+          $('#' + orderNo).remove();
         } else {
           toast.show(res.message);
         }
