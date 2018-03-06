@@ -71,9 +71,13 @@ $(function () {
           for (var i = 0; i < yearMonths.length; i++) {
             sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
-          console.log(data);
           // 判断默认日期是否已经无房
-          var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8)].status;
+          if (data[startDate.substr(0, 7)] === sourceDate[0].date.substr(0, 7)) {
+            var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status || '';
+
+          } else {
+            var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - 1].status || '';
+          }
           if (inDateStatus !== 'VALID') {
             startDate = '';
             endDate = '';
