@@ -30,7 +30,7 @@ $(function () {
     domDown: {
       domClass: 'dropload-down',
       domRefresh: '<div class="dropload-refresh"> </div>',
-      domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+      domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>',
       domNoData: '<section class="unusual-body">' +
         '  <div class="no-house"></div>' +
         '  <span>请赶紧去收藏房源吧</span>' +

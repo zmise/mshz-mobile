@@ -72,7 +72,7 @@ $(function () {
             sourceDate = sourceDate.concat(data[yearMonths[i]]);
           }
           // 判断默认日期是否已经无房
-          if (data[startDate.substr(0, 7)] === sourceDate[0].date.substr(0, 7)) {
+          if (startDate.substr(0, 7) === sourceDate[0].date.substr(0, 7)) {
             var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status || '';
 
           } else {

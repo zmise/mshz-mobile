@@ -35,7 +35,7 @@ $(function () {
     domDown: {
       domClass: 'dropload-down',
       domRefresh: '<div class="dropload-refresh"> </div>',
-      domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+      domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>',
       domNoData: '<div class="noOrder-body">' +
         '<div class="img"></div>' +
         '<p class="txt">~空空如也~</p>' +
