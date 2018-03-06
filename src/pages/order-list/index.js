@@ -117,7 +117,7 @@ $(function () {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
               strA =
-                '<div class="box">' +
+                '<div class="box" id="' + item.orderNo + '">' +
                 '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                 '    <div class="title">' +
                 '      <span class="ellips">' + item.roomTitle + '</span>' +
@@ -194,7 +194,7 @@ $(function () {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
               str +=
-                '<div class="box">' +
+                '<div class="box" id="' + item.orderNo + '">' +
                 '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                 '    <div class="title">' +
                 '      <span>' + item.roomTitle + '</span>' +
@@ -268,6 +268,17 @@ $(function () {
           // orderList();
           var orderNo = params.orderNo
           $('#' + orderNo).remove();
+          if ($('.article-body .list .box').length === 0) {
+            var str =
+              '<div class="dropload-down">' +
+              '  <div class="noOrder-body">' +
+              '    <div class="img">' +
+              '    </div>' +
+              '    <p class="txt">~空空如也~</p>' +
+              '  </div>' +
+              '</div>';
+            $('.article-body').append(str);
+          }
         } else {
           toast.show(res.message);
         }
