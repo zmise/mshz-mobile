@@ -575,7 +575,11 @@ body {
 
 .living-info .items .txt {
     @include flex;
+    @include flex-box;
+    @include flex-wrap(wrap);
     width: 5.8rem;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 // .living-info .items .gap {
