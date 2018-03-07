@@ -93,7 +93,7 @@ $(function () {
             for (var i = 0; i < data.length; i++) {
               var item = data[i];
               str += '<div class="box" id="' + item.orderNo + '">' +
-                '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
+                '  <a href="./order-details.html?orderNo=' + item.orderNo + '&flag=WAIT_PAYMENT" class="content">' +
                 '<div class="title current">' +
                 '  <span>' + item.roomTitle + '</span><span class="weight">¥' + item.totalPrice + '</span>' +
                 '</div>' +
@@ -118,7 +118,7 @@ $(function () {
               var item = data[i];
               strA =
                 '<div class="box" id="' + item.orderNo + '">' +
-                '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
+                '  <a href="./order-details.html?orderNo=' + item.orderNo + '&flag=VALIDATED" class="content">' +
                 '    <div class="title">' +
                 '      <span class="ellips">' + item.roomTitle + '</span>' +
                 '      <span class="weight">¥' + item.totalPrice + '</span>' +

@@ -95,8 +95,10 @@ function orderCancel(data) {
         console.log('success');
         toast.show('取消成功');
         //跳转order-list页面
-        var path = './order-list.html';
-        window.location = path;
+        var path = './order-list.html#'+order.flag;
+        setTimeout(function () {
+          window.location = path;
+        }, 1000);
       } else {
         toast.show(res.message);
       }
