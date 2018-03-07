@@ -10,6 +10,12 @@ require('../../assets/js/zoomify.js'); // 查看大图
 // require('../../assets/js/appDownload.js');//全局下载APP
 
 
+//  返回后页面不刷新的问题
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    location.reload();
+  }
+};
 
 $(function () {
   // 我的订单评价列表展示 get接口
