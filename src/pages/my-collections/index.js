@@ -18,11 +18,11 @@ window.onpageshow = function (event) {
   }
 };
 $(function () {
-  var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  // 关闭loading
-  if (loginInfo) {
-    $('#loading').remove();
-  }
+  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+  // // 关闭loading
+  // if (loginInfo) {
+  //   $('#loading').remove();
+  // }
   // dropload
   var $collectionsList = $('.article-body .list'); // $('#collectionsList')
 

@@ -25,38 +25,47 @@ $(function () {
         if (res.status === 'C0000') {
           var array = res.result || [];
           var str = '';
-          for (var i = 0; i < array.length; i++) {
-            var item = array[i];
+          if (array.length > 0) {
+            for (var i = 0; i < array.length; i++) {
+              var item = array[i];
 
-            str +=
-              '<div class="listItems">' +
-              '  <a href="/houseDetails?id=' + item.id + '">' +
-              '    <div class="index-list">' +
-              '      <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
-              '        <div class="item-oneline">' +
-              '          <p>' + item.title + '</p>' +
-              '          <p>￥' + item.price + '</p>' +
-              '        </div>' +
-              '        <div class="item-twoline">' +
-              '          <i class="twoline-items">' + item.region + '</i>' +
-              '          <i class="twoline-items">' + item.houseType + '</i>' +
-              '          <i class="twoline-items">' + item.customerCount + '人</i>' +
-              '        </div>' +
-              '        <div class="item-threeline">' +
-              '    <div class="three-lline">' +
-              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
-              '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
-              '    </div>' +
-              '          <div class="three-rline">' +
-              '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
-              '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-              '          </div>' +
-              '        </div>' +
-              '      </div>' +
-              '    </a>' +
-              '</div>'
-              ;
+              str +=
+                '<div class="listItems">' +
+                '  <a href="/houseDetails?id=' + item.id + '">' +
+                '    <div class="index-list">' +
+                '      <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                '        <div class="item-oneline">' +
+                '          <p>' + item.title + '</p>' +
+                '          <p>￥' + item.price + '</p>' +
+                '        </div>' +
+                '        <div class="item-twoline">' +
+                '          <i class="twoline-items">' + item.region + '</i>' +
+                '          <i class="twoline-items">' + item.houseType + '</i>' +
+                '          <i class="twoline-items">' + item.customerCount + '人</i>' +
+                '        </div>' +
+                '        <div class="item-threeline">' +
+                '    <div class="three-lline">' +
+                '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
+                '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
+                '    </div>' +
+                '          <div class="three-rline">' +
+                '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
+                '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                '          </div>' +
+                '        </div>' +
+                '      </div>' +
+                '    </a>' +
+                '</div>'
+                ;
+            }
+          } else {
+            str =
+              '<section class="unusual-body">' +
+              '  <div class="no-house"></div>' +
+              '  <span>没有历史浏览记录</span>' +
+              '</section>';
           }
+
           $('.article-body').append(str);
         }
       },

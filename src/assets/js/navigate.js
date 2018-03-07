@@ -24,9 +24,10 @@ $(function () {
   }
 
   getUserInfo().then(function (loginInfo) {
+    $('#loading').remove();
+    $('#login').replaceWith('<a class="menu iconfont icon-daohanglancaidan" href="javascript:;" id="menu"></a>');
     window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
     initSideNav(loginInfo);
-    $('#login').replaceWith('<a class="menu iconfont icon-daohanglancaidan" href="javascript:;" id="menu"></a>');
   }).fail(function () {
     // 查询失败后或考虑跳转到登录页
     // location.replace('./login.html');
