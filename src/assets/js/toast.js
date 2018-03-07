@@ -72,25 +72,8 @@
         if (opt.closePrev) {
           $('.cpt-toast').remove();
         }
-        box = $("<span class='animated " + opt.animateIn + " cpt-toast'></span>").css({
-          "whiteSpace": "nowrap",
-          "position": opt.position,
-          "padding": opt.padding,
-          "background": opt.background,
-          "font-size": opt.fontSize,
-          "-webkit-border-radius": opt.borderRadius,
-          "-moz-border-radius": opt.borderRadius,
-          "border-radius": opt.borderRadius,
-          "color": opt.color,
-          "top": top,
-          "z-index": opt.zIndex,
-          "-webkit-transform": 'translate3d(-50%,-50%,0)',
-          "-moz-transform": 'translate3d(-50%,-50%,0)',
-          "transform": 'translate3d(-50%,-50%,0)',
-          '-webkit-animation-duration': opt.animateDuration / 1000 + 's',
-          '-moz-animation-duration': opt.animateDuration / 1000 + 's',
-          'animation-duration': opt.animateDuration / 1000 + 's',
-        }).html(opt.content).appendTo($this);
+        console.log('top=', top);
+        box = $("<div class='cpt-toast " + opt.animateIn + "'><span>" + opt.content + "</span></div>").appendTo($this);
         defaults.colseMessage();
       }
 
@@ -98,17 +81,17 @@
         var isLowerIe9 = defaults.isLowerIe9();
         if (!isLowerIe9) {
           t = setTimeout(function () {
-            box.removeClass(opt.animateIn).addClass(opt.animateOut).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-              box.remove();
+            $('.cpt-toast').remove();
+            $('.cpt-toast').removeClass(opt.animateIn).addClass(opt.animateOut).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+              // $('.cpt-toast').remove();              
             });
           }, opt.duration);
         } else {
           t = setTimeout(function () {
-            box.remove();
+            $('.cpt-toast').remove();
           }, opt.duration);
         }
       }
-
       defaults.createMessage();
     })
   };
