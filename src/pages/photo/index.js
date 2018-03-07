@@ -98,7 +98,7 @@ $(function () {
           $('#content').html(str);
           //初始化 滑动
           $('#slide').slide();
-          $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/' + totalImg + '</span>');
+          $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/ ' + totalImg + '</span>');
           /* 通过图片下标设置标题 */
           //高亮居中
           var $curItem = $('.slide li:eq(' + typeIndex + ')');
