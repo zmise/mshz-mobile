@@ -100,6 +100,10 @@ $(function () {
           $('#slide').slide();
           $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/' + totalImg + '</span>');
           /* 通过图片下标设置标题 */
+          //高亮居中
+          var $curItem = $('.slide li:eq(' + typeIndex + ')');
+          var $wrapper = $('#slide');
+          $wrapper.scrollLeft($curItem.position().left - $wrapper.width() / 2 + $curItem.width() / 2);
           function getTitle(index) {
             $('.num').text(index + 1);
             var indexNum = $('.types').eq(index).data('length');
@@ -115,6 +119,8 @@ $(function () {
                   _sum = $('.types').eq(idx).find('.items').length;
                   _txt = $('.photo-tabs').find('.items').eq(idx).text();
                   $('.photo-tabs').find('.items').eq(idx).addClass('current').siblings().removeClass('current');
+                  var $curItem = $('.slide li:eq(' + idx + ')');
+                  $wrapper.scrollLeft($wrapper.scrollLeft() + $curItem.position().left - $wrapper.width() / 2 + $curItem.width() / 2);
                 }
               }
               if (_flag) {
