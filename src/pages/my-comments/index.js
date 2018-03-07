@@ -41,6 +41,8 @@ $(function () {
             $('.article-body .talk-area').append(str);
             $("#comment").val('');
           }
+        } else if (res.status === 'E0002') {
+          toast.show(res.message);
         }
       },
       error: function (error) {

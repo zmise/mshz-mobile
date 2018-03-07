@@ -7,7 +7,7 @@ var map = {
   CHECKED_OUT: { icon: 'yituifangwutuikuan', text: '已退房', className: 'current2' },
   EARLY_CHECKED_OUT: { icon: 'yituifangyoutuikuan', text: '提前退房', className: 'current2' },
   INVALIDATED: { icon: 'zhifuchaoshi', text: '支付超时，订单已失效', className: 'current2' },
-  INVALIDATIING: { icon: 'zhifuchaoshi', text: '支付超时，订单已失效', className: 'current2' }
+  INVALIDATIING: { icon: 'zhifuchaoshi', text: '支付超时，订单取消中', className: 'current2' }
 };
 
 
