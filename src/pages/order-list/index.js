@@ -177,11 +177,14 @@ $(function () {
                   '  </a>' +
                   '  <div class="status">' +
                   '    <span class="title current2">' + item.orderStateDesc + '</span>' +
-                  '    <div class="stu-but">' +
-                  '      <a href="/houseDetails?id=' + item.situationId + '">再次预订</a>';
+                  '    <div class="stu-but">';
                 if (item.commentState !== 'ALREADY_COMMENT') {
                   strB +=
+                    '      <a href="/houseDetails?id=' + item.situationId + '">再次预订</a>' +
                     '      <a class="current2" href="./comment-order.html?orderNo=' + item.orderNo + '&roomId=' + item.roomId + '">评价订单</a>';
+                } else {
+                  strB +=
+                    '      <a class="current3" href="/houseDetails?id=' + item.situationId + '">再次预订</a>';
                 }
                 strB += '    </div>' +
                   '  </div>' +
