@@ -82,7 +82,9 @@ function buildRefundContent(data) {
 }
 function buildButton(state, data) {
   var button = '';
-  if (state === 'PENDING') {
+  if (data.commentState === 'ALREADY_COMMENT') {
+    return;
+  } else if (state === 'PENDING') {
     button =
       '<section class="check-body">' +
       '<a class="items" id="orderCancel">' +
