@@ -39,15 +39,15 @@ body {
 }
 
 .assess-star .items .star-list {
-    margin-left: 0.7rem;
+    margin-left: 0.6rem;
 }
 
 .assess-star .items .star-list .star {
     height: 0.36rem;
     width: 0.36rem;
     font-size: .3rem;
-    margin-right: 0.2rem;
     color: rgba(181, 185, 190, 1);
+    padding: .2rem .1rem;
 }
 
 .assess-star .items .star-list .current {
@@ -65,8 +65,7 @@ body {
     width: 100%;
     height: 1.5rem;
     margin: 0.3rem 0;
-    font-size: .26rem;
-    // color: ;
+    font-size: .26rem; // color: ;
     resize: none;
     outline: none;
     -webkit-appearance: none;
@@ -94,12 +93,12 @@ body {
 }
 
 .assess-commiute .img-list .btn-upload {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
 }
 
 .assess-commiute .img-list .items img {

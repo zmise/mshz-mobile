@@ -236,6 +236,10 @@ body {
     @include justify-content(flex-end);
 }
 
+.article-body .all-assess .content .bnt .bigger {
+    padding: 0 0 0.2rem 0.3rem;
+}
+
 .article-body .all-assess .content .bnt .box {
     @include flex-box;
     @include align-items;
@@ -246,7 +250,6 @@ body {
     border-radius: .04rem;
     border: .01rem solid rgba(255, 92, 92, 1);
     font-size: .24rem;
-    margin-bottom: 0.2rem;
 }
 
 // .article-body .all-assess .time,

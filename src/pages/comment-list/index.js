@@ -74,8 +74,12 @@ $(function () {
                 '    </div>' +
                 '    <span class="price">¥' + item.roomRate + '</span>';
               if (!item.score && !item.content.length && !item.commentPicture.length) {
-                str += '    <div class="bnt">' +
-                  '<div class="box assess-entry" data-room-id="' + item.roomId + '" data-order-no="' + item.orderNo + '">评价订单</div>' +
+                str +=
+                  '    <div class="bnt">' +
+                  '  <div class="bigger assess-entry" data-room-id="' + item.roomId + '" data-order-no="' + item.orderNo + '">' +
+
+                  '<div class="box">评价订单</div>' +
+                  '    </div>' +
                   '    </div>';
               }
 
