@@ -29,6 +29,8 @@ $(document).off('ajaxError').on('ajaxError', function (res, xhr) {
   } else if (xhr.status == 401 && !invalidSession) {
     invalidSession = !0;
     window.sessionStorage.removeItem('loginInfo');
+    window.sessionStorage.removeItem('endDate');
+    window.sessionStorage.removeItem('startDate');
     window.sessionStorage.setItem('lastLocation', location.href);
     location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }

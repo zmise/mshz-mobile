@@ -3,9 +3,30 @@ require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 
-
+var Cookie = require('js-cookie');
 $(function () {
 
+
+  function getUserInfo() {
+    var dtd = $.Deferred();
+    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    if (loginInfo) {
+      dtd.resolve(loginInfo);
+    } else if (Cookie.get('sid') || $('body').data('logined')) {
+      $.ajax({
+        url: '/mshz-app/security/user/info/query',
+        type: 'get',
+        dataType: 'JSON'
+      }).then(function (res) {
+        if (res.status === 'C0000') {
+          dtd.resolve(res.result);
+        } else {
+          dtd.reject(new Error('查询用户信息失败！'));
+        }
+      });
+    }
+    return dtd;
+  }
 
   //修改个人资料post接口
   function updateUserInfo(params) {
@@ -20,13 +41,20 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('修改成功');
-
+          getUserInfo().then(function (loginInfo) {
+            loginInfo.nickname = params.nickname;
+            window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+            setTimeout(function () {
+              history.go(-1);
+            }, 1000);
+          }).fail(function () {
+            // 查询失败后或考虑跳转到登录页
+            // location.replace('./login.html');
+          });
         } else {
           toast.show('修改失败');
         }
-        setTimeout(function () {
-          history.go(-1);
-        }, 1000);
+
       },
       error: function (error) {
         console.log(error);
