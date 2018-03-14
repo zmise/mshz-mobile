@@ -44,7 +44,7 @@ body {
 
 .order-sort-body .line {
     width: 0.48rem;
-    border-bottom: 4px solid #fff;
+    border-bottom: 2px solid #fff;
 }
 
 .order-sort-body .items .current {
@@ -101,7 +101,7 @@ body {
 
 .article-body .box .content {
     height: 1.88rem;
-    border-bottom: 4px dashed #E3E6E9;
+    border-bottom: 2px dashed #E3E6E9;
 }
 
 .article-body .box .content .title,
@@ -124,7 +124,7 @@ body {
 }
 
 .article-body .box .content .current {
-    border-left: 4px solid $color;
+    border-left: 2px solid $color;
     padding-left: .31rem;
 }
 
