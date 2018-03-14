@@ -44,7 +44,7 @@ body {
 
 .order-sort-body .line {
     width: 0.48rem;
-    border-bottom: 0.04rem solid #fff;
+    border-bottom: 4px solid #fff;
 }
 
 .order-sort-body .items .current {
@@ -101,7 +101,7 @@ body {
 
 .article-body .box .content {
     height: 1.88rem;
-    border-bottom: 0.04rem dashed #E3E6E9;
+    border-bottom: 4px dashed #E3E6E9;
 }
 
 .article-body .box .content .title,
@@ -124,7 +124,7 @@ body {
 }
 
 .article-body .box .content .current {
-    border-left: 0.04rem solid $color;
+    border-left: 4px solid $color;
     padding-left: .31rem;
 }
 
@@ -171,9 +171,9 @@ body {
     margin-left: .32rem;
     background-color: #fff;
     border-radius: .28rem;
-    border: 0.02rem solid rgba(196, 201, 205, 1);
+    border: 1px solid rgba(196, 201, 205, 1);
     display: inline-block;
-    font-size: 14px;
+    font-size: .28rem;
     color: #666;
     line-height: .56rem;
     text-align: center;
@@ -232,7 +232,7 @@ body {
 #overlay .box .text2 {
     @include flex-box;
     height: 0.85rem;
-    border-top: .01rem solid rgba(227, 230, 233, 1);
+    border-top: 1px solid rgba(227, 230, 233, 1);
 }
 
 #overlay .box .text2 span {
@@ -245,5 +245,5 @@ body {
 }
 
 #overlay .box .text2 span:last-child {
-    border-left: .01rem solid rgba(227, 230, 233, 1);
+    border-left: 1px solid rgba(227, 230, 233, 1);
 }

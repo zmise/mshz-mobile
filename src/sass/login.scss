@@ -51,7 +51,7 @@ body {
     padding: .74rem 0 .24rem;
     margin-bottom: 0.02rem;
     font-size: .26rem; // color: rgba(181, 185, 190, 1);
-    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+    border-bottom: 1px solid rgba(227, 230, 233, 1);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -65,7 +65,7 @@ body {
 
 .input-list .currentborder {
     margin: 0;
-    border-bottom: .03rem solid $color;
+    border-bottom: 2px solid $color;
 }
 
 .input-list .items .text {
@@ -161,7 +161,7 @@ body {
     font-size: .26rem;
     color: rgba(196, 201, 205, 1);
     padding: 0 .24rem;
-    border-right: .01rem solid rgba(227, 230, 233, 1);
+    border-right: 1px solid rgba(227, 230, 233, 1);
 }
 
 .button-body .text:last-child {

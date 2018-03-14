@@ -86,7 +86,7 @@ footer {
     width: 2.4rem;
     height: 0.64rem;
     margin-right: 0.35rem;
-    border: .01rem solid $color;
+    border: 1px solid $color;
     color: $color;
     border-radius: .04rem;
     color: $color;
@@ -126,7 +126,7 @@ footer {
 #overlay .box .text2 {
     @include flex-box;
     height: 0.85rem;
-    border-top: .01rem solid rgba(227, 230, 233, 1);
+    border-top: 1px solid rgba(227, 230, 233, 1);
 }
 
 #overlay .box .text2 span {
@@ -139,5 +139,5 @@ footer {
 }
 
 #overlay .box .text2 span:last-child {
-    border-left: .01rem solid rgba(227, 230, 233, 1);
+    border-left: 1px solid rgba(227, 230, 233, 1);
 }

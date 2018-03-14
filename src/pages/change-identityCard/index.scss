@@ -26,7 +26,7 @@ body {
     padding: .6rem 0 .24rem;
     margin-bottom: 0.02rem;
     font-size: .26rem; // color: rgba(181, 185, 190, 1);
-    border-bottom: .01rem solid rgba(227, 230, 233, 1);
+    border-bottom: 1px solid rgba(227, 230, 233, 1);
 }
 
 .input .current {
@@ -35,5 +35,5 @@ body {
 
 .input .currentborder {
     margin: 0;
-    border-bottom: .01rem solid $color;
+    border-bottom: 1px solid $color;
 }

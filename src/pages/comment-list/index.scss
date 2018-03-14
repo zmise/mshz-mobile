@@ -66,7 +66,7 @@ body {
 
 .order-body .current {
     color: $color;
-    border-bottom: .04rem solid $color;
+    border-bottom: 4px solid $color;
 }
 
 .order-body .current .number {
@@ -84,7 +84,7 @@ body {
     margin-top: 0.24rem;
     background: rgba(255, 255, 255, 1);
     box-sizing: border-box;
-    border-bottom: .01rem solid #F3F3F3;
+    border-bottom: 1px solid #F3F3F3;
 }
 
 .article-body .small-circle {
@@ -248,7 +248,7 @@ body {
     height: .45rem;
     color: rgba(255, 92, 92, 1);
     border-radius: .04rem;
-    border: .01rem solid rgba(255, 92, 92, 1);
+    border: 1px solid rgba(255, 92, 92, 1);
     font-size: .24rem;
 }
 

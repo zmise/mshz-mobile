@@ -54,7 +54,7 @@
 #overlay .box .text2 {
     @include flex-box;
     height: 0.85rem;
-    border-top: .01rem solid rgba(227, 230, 233, 1);
+    border-top: 1px solid rgba(227, 230, 233, 1);
 }
 
 #overlay .box .text2 span {
@@ -67,5 +67,5 @@
 }
 
 #overlay .box .text2 span:last-child {
-    border-left: .01rem solid rgba(227, 230, 233, 1);
+    border-left: 1px solid rgba(227, 230, 233, 1);
 }

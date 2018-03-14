@@ -10,7 +10,7 @@
 
 .navigate-body .login {
     padding: .5rem 0 0;
-    border-bottom: .12rem solid rgba(245, 245, 245, 1);
+    border-bottom: 12px solid rgba(245, 245, 245, 1);
     height: 2.92rem;
     box-sizing: border-box;
     text-align: center;
@@ -57,12 +57,12 @@
     color: rgba(42, 43, 45, 1);
     height: 0.76rem;
     box-sizing: border-box;
-    border-left: .04rem solid #fff;
+    border-left: 4px solid #fff;
 }
 
 .navigate-body .content .current {
     color: $color;
-    border-left: .04rem solid $color;
+    border-left: 4px solid $color;
 }
 
 .navigate-body .content .items .icon {
@@ -98,7 +98,7 @@
     height: .26rem;
     font-size: .22rem;
     border-radius: .13rem;
-    border: .01rem solid rgba(181, 185, 190, 1);
+    border: 1px solid rgba(181, 185, 190, 1);
     display: none;
 }
 
