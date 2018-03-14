@@ -41,7 +41,7 @@
         padding: "10px 20px",              //padding
         background: "rgba(7,17,27,0.66)",     //背景色
         borderRadius: "6px",                    //圆角
-        duration: 3000,                     //定时器时间
+        duration: 2000,                     //定时器时间
         animateDuration: 500, 						//执行动画时间
         fontSize: 14,                   	//字体大小
         content: "这是一个提示信息",       //提示内容
@@ -105,7 +105,7 @@ function show(content, duration, isCenter, animateIn, animateOut) {
   if (!content.length) {
     return;
   }
-  var duration = duration || 3000;
+  var duration = duration || 1000;
   var isCenter = isCenter || false;
   $('body').toast({
     position: 'fixed',

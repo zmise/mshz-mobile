@@ -3,7 +3,6 @@ require('./index.scss');
 require('../../assets/js/analytics.js');
 
 /* 侧边导航 */
-require('../../assets/js/navigate.js');
 require('../../assets/js/plugins.js');
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 require('../../assets/js/appDownload.js');//全局下载APP
@@ -13,6 +12,12 @@ var toast = require('../../assets/js/toast.js');  //toast的事件
 
 
 $(function () {
+
+  // 获取默认页签类型
+  var orderQueryType = location.hash.substr(1) || '';
+  if (orderQueryType == '') {
+    $('.nickname-body ').css('display', 'none');
+  }
 
   //上传本地图片转换为URL post接口
   function uploadImage(file) {
@@ -117,7 +122,7 @@ $(function () {
             '      <i class="icon iconfont icon-fanhuixiangyou"></i>' +
             '    </div>' +
             '  </div>' +
-            '  <a class="items" href="./change-nickname.html?nickname=' + item.nickname + '">' +
+            '  <a class="items nickname-entry">' +
             '    <span class="title">用户名</span>' +
             '    <div class="content">' +
             '      <span>' + item.nickname + '</span>' +
@@ -176,23 +181,31 @@ $(function () {
       type: 'POST',
       cache: false,
       success: function (res) {
-        if (params.sex) {
-          $('#overlay').hide();
-          if (params.sex === 'MALE') {
-            $('#sex-style').removeClass('icon-nv').addClass('icon-nan');
-          } else {
-            $('#sex-style').removeClass('icon-nan').addClass('icon-nv');
-          }
-        }
 
         if (res.status === 'C0000') {
+          toast.show('修改成功');
           setTimeout(function () {
-            toast.show('修改成功');
+            if (params.sex) {
+              $('#overlay').hide();
+              if (params.sex === 'MALE') {
+                $('#sex-style').removeClass('icon-nv').addClass('icon-nan');
+              } else {
+                $('#sex-style').removeClass('icon-nan').addClass('icon-nv');
+              }
+            }
+            if (params.nickname) {
+              var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+              if (loginInfo) {
+                loginInfo.nickname = params.nickname;
+                window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+              }
+              $('.nickname-body ').css('display', 'none');
+              $('.nickname-entry .content span').text(params.nickname);
+              location.replace('./personal-info.html#');
+            }
           }, 1000);
         } else {
-          setTimeout(function () {
-            toast.show('修改失败');
-          }, 1000);
+          toast.show('修改失败');
         }
       },
       error: function (error) {
@@ -204,7 +217,6 @@ $(function () {
 
 
   queryInfo();
-
   // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
   var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
   if (browserRule.test(navigator.userAgent)) {
@@ -214,6 +226,45 @@ $(function () {
       }
     };
   }
+
+
+
+  // 点击到完成并登录成功跳转到login /^\d+$/
+  $('#save').on('click', function (e) {
+    e.stopPropagation();
+    // e.preventDefault();
+
+    var nickname = $.trim($('#nickname').val());
+    var nameReg = /^\d+$/; //纯数字
+
+    if (nickname.length === 0 || nameReg.test(nickname)) {
+      toast.show('请输入正确的姓名');
+      return;
+    }
+    var params = {
+      nickname: nickname
+    };
+    updateUserInfo(params);
+  });
+
+  // 点击返回回到info
+  $('#return').on('click', function (e) {
+    e.stopPropagation();
+    // e.preventDefault();
+    $('.nickname-body').css('display', 'none');
+    location.replace('./personal-info.html#');
+  });
+
+  //
+  $('.article-body').on('click', '.nickname-entry', function (e) {
+    e.stopPropagation();
+    // e.preventDefault();
+    $('#nickname').val($(this).find('.content span').text());
+    $('.nickname-body').css('display', 'block');
+    location.replace('./personal-info.html#NICKNAME');
+
+  });
+
 
 
 
@@ -237,14 +288,13 @@ $(function () {
     e.preventDefault();
     $('#overlay').css('display', 'flex');
   });
-  $('#overlay .items').on('click', function (e) {
+  $('#overlay .sex-box .items').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
     var params = {
       sex: $(this).data('id'),
     }
     updateUserInfo(params);
-    // $('#overlay').hide();
   });
 
   $('#overlay').on('click', function (e) {

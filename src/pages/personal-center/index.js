@@ -22,7 +22,7 @@ $(function () {
           console.log(res.result);
           var item = res.result;
           var str =
-            '<a class="personal-info" href="./personal-info.html">' +
+            '<a class="personal-info" href="./personal-info.html#">' +
             '  <div class="flex-box">';
           if (item.headPortrait.length) {
             str += '  <img class="photo" src="' + item.headPortrait.replace('{size}', '137x137') + '" alt="">';

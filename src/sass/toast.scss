@@ -1,5 +1,5 @@
 .cpt-toast {
-    @include position(fixed, 0, 0, 0, 0, 1000);
+    @include position(fixed, 0, 0, 0, 0, 10001);
     @include flex-box;
     @include align-items(flex-end);
     @include justify-content;
