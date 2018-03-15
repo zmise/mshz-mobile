@@ -74,8 +74,6 @@ $(function () {
               ;
             score += parseInt(item[i].points);
           }
-          $('#list').append(str);
-
           $collectionsList.append(str);
         }
 
