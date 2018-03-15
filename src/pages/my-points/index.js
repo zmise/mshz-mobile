@@ -6,42 +6,90 @@ require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/js/appDownload.js');//全局下载APP
+require('../../assets/js/dropload.min'); // 分页插件
 $(function () {
+  var $collectionsList = $('.article-body .list'); // $('#collectionsList')
 
-  //queryUserPointsRecord get接口
-  $.ajax({
-    url: '/mshz-app/security/user/queryUserPointsRecord',
-    dataType: 'json',
-    type: 'GET',
-    cache: false,
-    success: function (res) {
-      if (res.status === 'C0000') {
-        console.log(res);
-        var item = res.result.items;
-        var str = '';
-        var score = 0;
-        for (var i = 0; i < item.length; i++) {
-          str +=
-            '<div class="items">' +
-            '  <div class="txt">' +
-            '    <span class="theme">' + item[i].title + '</span>' +
-            '    <span class="time">' + item[i].usage + ' ' + item[i].createTimeDesc
-            + '</span>' +
-            '  </div>' +
-            '  <span class="score">+' + item[i].points + '</span>' +
-            '</div>'
-            ;
-          score += parseInt(item[i].points);
-        }
-        $('#list').append(str);
-        $('#score').text(score);
-      }
+  var dropload = $('.article-body').dropload({
+    scrollArea: window,
+    domDown: {
+      domClass: 'dropload-down',
+      domRefresh: '<div class="dropload-refresh"> </div>',
+      domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>',
+      domNoData: '',
+      domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
+      domNetworkError: '<section class="unusual-body">' +
+        '  <div class="no-network"></div>' +
+        '  <span>网络请求失败，请检查网络</span>' +
+        '</section>'
     },
-    error: function (error) {
-      console.log(error);
-      console.log('error');
-    }
+    loadDownFn: loadingMore
   });
+  function loadingMore(options) {
+    var curPage = +$('#page').val();
+    if (options && options.isReload) {
+      $('#page').val(1);
+      dropload.unlock();
+      curPage = 1;
+    } else {
+      $('#page').val(curPage + 1);
+      curPage += 1;
+    }
+    var params = {
+      currentPage: curPage,
+      pageSize: 10,
+    }
+    console.log(params)
+    $.ajax({
+      url: '/mshz-app/security/user/queryUserPointsRecord',
+      data: params,
+      dataType: 'json',
+      type: 'GET',
+      cache: false,
+      success: function (res) {
+        var recordCount = res.result && res.result.recordCount || 0;
+        if (params.page === 1) {
+          $collectionsList.empty();
+        }
+        console.log(res)
+
+        if (res.status === 'C0000'
+          && res.result
+          && res.result.items
+          && res.result.items.length > 0) {
+          var item = res.result.items;
+          var str = '';
+          var score = 0;
+          for (var i = 0; i < item.length; i++) {
+            str +=
+              '<div class="items">' +
+              '  <div class="txt">' +
+              '    <span class="theme">' + item[i].title + '</span>' +
+              '    <span class="time">' + item[i].usage + ' ' + item[i].createTimeDesc
+              + '</span>' +
+              '  </div>' +
+              '  <span class="score">+' + item[i].points + '</span>' +
+              '</div>'
+              ;
+            score += parseInt(item[i].points);
+          }
+          $('#list').append(str);
+          $('#score').text(score);
+          $collectionsList.append(str);
+        }
+
+        dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
+      },
+      error: function (error) {
+        console.log(error);
+        console.log('error');
+        $collectionsList.empty();
+        dropload.resetload(-1);
+      }
+    });
+  }
+  //queryUserPointsRecord get接口
+
   //
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
