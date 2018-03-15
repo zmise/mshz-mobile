@@ -47,7 +47,7 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (res) {
-        var recordCount = res.result && res.result.recordCount || 0;
+        var recordCount = res.result.list && res.result.list.recordCount || 0;
         if (params.page === 1) {
           $collectionsList.empty();
         }
@@ -55,11 +55,12 @@ $(function () {
 
         if (res.status === 'C0000'
           && res.result
-          && res.result.items
-          && res.result.items.length > 0) {
-          var item = res.result.items;
+          && res.result.list) {
+          var item = res.result.list.items;
           var str = '';
-          var score = 0;
+          if (res.result.currentPage === 1) {
+            $('#score').text(res.result.total || 0);
+          }
           for (var i = 0; i < item.length; i++) {
             str +=
               '<div class="items">' +
@@ -74,11 +75,11 @@ $(function () {
             score += parseInt(item[i].points);
           }
           $('#list').append(str);
-          $('#score').text(score);
+
           $collectionsList.append(str);
         }
 
-        dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
+        dropload.resetload(recordCount, params.currentPage, res.result.list && res.result.list.pageCount || 1);
       },
       error: function (error) {
         console.log(error);
