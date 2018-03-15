@@ -58,7 +58,7 @@ $(function () {
           && res.result.list) {
           var item = res.result.list.items;
           var str = '';
-          if (res.result.currentPage === 1) {
+          if (res.result.list && res.result.list.currentPage === 1) {
             $('#score').text(res.result.total || 0);
           }
           for (var i = 0; i < item.length; i++) {
