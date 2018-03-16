@@ -162,7 +162,9 @@ $(function () {
           orderInfo = res.result;
           var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items">' + orderInfo.gardenArea + '</i><i class="twoline-items">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum">' + orderInfo.custCount + '人</i></div>';
           str =
+            '<div>' +
             '<img class="mainpic" src="' + orderInfo.mainPicture.replace('{size}', '400x300') + '" />' +
+            '</div>' +
             '<div class="content-info">' +
             '  <div class="item-oneline">' +
             '    <p>' + orderInfo.roomTitle + '</p>' +

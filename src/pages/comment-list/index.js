@@ -65,7 +65,9 @@ $(function () {
 
               str += '</div>' +
                 '<div class="content house-details" data-id="' + item.situationId + '" href="/houseDetails?id=' + item.situationId + '">' +
+                '<div>' +
                 '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
+                '</div>' +
                 '  <div class="i-txt">' +
                 '    <span class="title">' + item.title + '</span>' +
                 '    <div class="time">' +

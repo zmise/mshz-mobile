@@ -156,14 +156,23 @@ body {
     @include flex-direction(column);
     @include justify-content(space-between);
     height: 100%;
+    margin-top: 0.14rem;
     margin-left: .2rem;
     margin-right: .2rem;
 }
 
 .article-body .all-assess .content .i-txt .title {
-    padding-top: 0.14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
     font-size: .28rem;
     color: rgba(94, 100, 107, 1);
+    height: 0.45rem;
+    line-height: 0.5rem;
 }
 
 .article-body .all-assess .content .i-txt .time {
@@ -174,7 +183,7 @@ body {
 }
 
 .article-body .all-assess .content .i-txt .price {
-    padding-bottom: 0.09rem;
+    margin-bottom: 0.03rem;
     font-size: .22rem;
     color: rgba(181, 185, 190, 1);
 }
