@@ -186,8 +186,10 @@ body {
 
 .commentBox .replay-comment {
     @include flex;
+    @include flex-wrap;
     @include align-items;
     @include justify-content;
+    width: 1rem;
     background-color: #fff;
     color: #000;
     font-size: .28rem;

@@ -114,18 +114,22 @@ $(function () {
             '  </div>';
           if (item.length > 0) {
             for (var i = 0; i < item.length; i++) {
-              str += '  <div class="item">' +
-                '    <span>';
+
               if (item[i].replyPersonType === 'MANAGER') {
                 str +=
+                  '  <div class="item reply-comment">' +
+                  '    <span>' +
                   '      <i class="current">管家</i>' +
                   '<i>回复:</i>' +
                   '    </span>' +
-                  '    <span class="reply-comment" data-comment-id="' + item[i].commentId + '">' + item[i].replyContent + '</span>' +
+                  '    <span data-comment-id="' + item[i].commentId + '">' + item[i].replyContent + '</span>' +
                   '  </div>'
                   ;
               } else {
-                str += '      <i class="current">楼主</i>' +
+                str +=
+                  '  <div class="item">' +
+                  '    <span>' +
+                  '      <i class="current">楼主</i>' +
                   '<i>回复:</i>' +
                   '    </span>' +
                   '    <span>' + item[i].replyContent + '</span>' +
@@ -227,9 +231,15 @@ $(function () {
   });
   // body滚动隐藏commentBox
   $(window).scroll(function (e) {
+    // $("#commentBox").hide();
+    // $("#comment").blur();
+  });
+  $('body').on('click', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
     $("#commentBox").hide();
     $("#comment").blur();
-  });
+  })
   // 回复的交互效果
 
   // 点击返回回到上一页
