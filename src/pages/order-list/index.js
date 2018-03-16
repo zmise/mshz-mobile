@@ -200,7 +200,7 @@ $(function () {
                 '<div class="box" id="' + item.orderNo + '">' +
                 '  <a href="./order-details.html?orderNo=' + item.orderNo + '" class="content">' +
                 '    <div class="title">' +
-                '      <span>' + item.roomTitle + '</span>' +
+                '      <span class="ellips">' + item.roomTitle + '</span>' +
                 '      <span class="weight">¥' + item.totalPrice + '</span>' +
                 '    </div>' +
                 '    <div class="time">' +
