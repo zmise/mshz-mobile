@@ -5,7 +5,7 @@ $(function () {
   function getUserInfo() {
     var dtd = $.Deferred();
     var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-    if (loginInfo) {
+    if (loginInfo && Cookie.get('sid')) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {
       $.ajax({
