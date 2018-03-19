@@ -6,11 +6,15 @@ require('../../assets/plugins/jquery.banner.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
 
-window.onpageshow = function (event) {
-  if (event.persisted) {
-    location.reload();
-  }
-};
+// 解决Safari ( WKWebview ) 返回后页面不刷新的问题
+var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
+if (browserRule.test(navigator.userAgent)) {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload()
+    }
+  };
+}
 
 $(function () {
   window.sessionStorage.setItem('lastLocation', location.href);

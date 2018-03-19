@@ -18,11 +18,15 @@ var today = util.formatDate(b, 'yyyy-MM-dd');
 b = new Date(b.getTime() + 24 * 3600 * 1000);
 var tomorrow = util.formatDate(b, 'yyyy-MM-dd');
 
-window.onpageshow = function (event) {
-  if (event.persisted) {
-    location.reload();
-  }
-};
+// 解决Safari ( WKWebview ) 返回后页面不刷新的问题
+var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
+if (browserRule.test(navigator.userAgent)) {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload()
+    }
+  };
+}
 
 $(function () {
   window.sessionStorage.setItem('lastLocation', location.href);
