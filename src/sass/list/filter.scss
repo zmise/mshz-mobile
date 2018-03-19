@@ -6,6 +6,7 @@
     @include flex-direction(column);
     box-sizing: border-box;
     overflow: hidden;
+    background-color: #fff;
 }
 
 
@@ -17,7 +18,6 @@
 .filter-layer .filter-header {
     // @include position(fixed, 0, 0, auto, 0, 999);
     @include linear-gradient;
-    ;
 }
 
 .filter-layer .filter-header .des {
@@ -255,7 +255,6 @@
 // .filter-list .content .slide-body .items .current {
 //     color: $color;
 // }
-
 .filter-list .content .slide-body:first-child .items {
     color: rgba(94, 100, 107, 1);
 }
