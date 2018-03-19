@@ -83,8 +83,7 @@ body {
     padding: .32rem .35rem;
     margin-top: 0.24rem;
     background: rgba(255, 255, 255, 1);
-    box-sizing: border-box;
-    border-bottom: 1px solid #F3F3F3;
+    box-sizing: border-box; // border-bottom: 1px solid #F3F3F3;
 }
 
 .article-body .small-circle {
@@ -177,7 +176,8 @@ body {
     font-size: .28rem;
     color: rgba(94, 100, 107, 1);
     height: 0.45rem;
-    line-height: 0.5rem;
+    line-height: 0.43rem;
+    margin-bottom: 0.05rem;
 }
 
 .article-body .all-assess .content .i-txt .time {
@@ -185,6 +185,7 @@ body {
     @include justify-content (space-between);
     font-size: .22rem;
     color: rgba(181, 185, 190, 1);
+    margin-bottom: 0.05rem;
 }
 
 .article-body .all-assess .content .i-txt .price {
