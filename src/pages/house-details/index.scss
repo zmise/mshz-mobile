@@ -800,11 +800,13 @@ body {
 }
 
 #overlay .box .items .name {
-    @include flex;
     padding-left: 1.5rem;
+    flex: 1;
+    box-sizing: border-box;
 }
 
 #overlay .box .items .tel {
-    @include flex;
     padding-left: .2rem;
+    flex: 1;
+    box-sizing: border-box;
 }
