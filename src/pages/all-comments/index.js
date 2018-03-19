@@ -83,7 +83,7 @@ $(function () {
                 if (list[j].replyPersonType === 'MANAGER') {
                   str += '            <i class="current">管家</i>回复：' + list[j].replyContent + '</span>';
                 } else {
-                  str += '            <i class="current">' + list[j].replyName + '</i>回复：' + list[j].replyContent + '</span>';
+                  str += '            <i class="current">' + item.nickName + '</i>回复：' + list[j].replyContent + '</span>';
                 }
 
                 str += '        </div>';
