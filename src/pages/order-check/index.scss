@@ -16,8 +16,6 @@ body {
 }
 
 
-
-
 /* address-body */
 
 .address-body {
@@ -343,7 +341,6 @@ body {
 .rule-body .slide-content .box1 .items:first-child {
     color: #fff;
     @include linear-gradient;
-    ;
     border-color: $color;
 }
 
@@ -494,7 +491,6 @@ body {
     @include justify-content;
     width: 3.2rem;
     @include linear-gradient;
-    ;
     color: #fff;
     font-size: .36rem;
 }
