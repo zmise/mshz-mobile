@@ -122,7 +122,7 @@ $(function () {
                   '      <i class="current">管家</i>' +
                   '<i>回复:</i>' +
                   '    </span>' +
-                  '    <span data-comment-id="' + item[i].commentId + '">' + item[i].replyContent + '</span>' +
+                  '    <span class="comment-id" data-comment-id="' + item[i].commentId + '">' + item[i].replyContent + '</span>' +
                   '  </div>'
                   ;
               } else {
@@ -207,7 +207,7 @@ $(function () {
     e.preventDefault();
     $("#commentBox").css('display', 'flex');
     $("#comment").focus();
-    $("#commentId").val($(this).data('commentId'));
+    $("#commentId").val($(this).find('.comment-id').data('commentId'));
 
   });
 
@@ -236,7 +236,7 @@ $(function () {
   });
   $('body').on('click', function (e) {
     e.stopPropagation();
-    e.preventDefault();
+    // e.preventDefault();
     $("#commentBox").hide();
     $("#comment").blur();
   })
