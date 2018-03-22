@@ -261,6 +261,19 @@ $(function () {
   //   timeoutObject = setTimeout(switchHeader, 30);
   // });
 
+
+  // 判断#handleSearch是否有值，来是否显示handleSearch-input-right
+  if ($('#search-entry').val() !== '') {
+    $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
+  }
+  $('.select-body .input-text ').on('tap', '.handleSearch-input-right', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    $('#search-entry').val('');
+    $('.select-body .input-text .handleSearch-input-right').hide();
+  });
+
+
   $('#handleCalendar').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();

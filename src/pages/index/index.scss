@@ -319,3 +319,18 @@ body {
     // @include linear-gradient;;
     @include linear-gradient;
 }
+
+.select-body .input-text .handleSearch-input-right {
+    padding-top: 0.65rem;
+    display: none;
+}
+
+.select-body .input-text .input-text-right .index-close {
+    width: .4rem;
+    height: .4rem;
+    border-radius: .2rem;
+    font-size: .32rem;
+    background-color: #fff;
+    color: rgba(181, 185, 190, 1);
+    overflow: hidden;
+}

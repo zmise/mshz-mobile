@@ -43,6 +43,9 @@ $(function () {
     }
     $('#search-entry').val($(this).text());
     $('#search-entry').attr('data-type', $(this).data('type'));
+    if ($(this).text() !== '') {
+      $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
+    }
     var city = $.trim($('#destination-entry').val());
     var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     // if(searchHistroy[city])
@@ -158,7 +161,9 @@ $(function () {
     var city = $.trim($('#destination-entry').val());
     $('#search-entry').val(destination);
     $('#search-entry').attr('data-type', type);
-
+    if (destination !== '') {
+      $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
+    }
     var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
@@ -185,11 +190,11 @@ $(function () {
   });
 
   /* ??? */
-  $('.search-body ').on('tap', '.text-body .search-close ', function (e) {
+  $('.search-body ').on('tap', '.text-body .search-close', function (e) {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.text-body').find('.text').val('');
-    $('#search-entry').val('');
+    // $('#search-entry').val('');
     $('.search-layer .search-keyword').show();
     $('.search-layer .search-list').hide();
   });
