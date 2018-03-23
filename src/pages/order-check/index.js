@@ -137,9 +137,9 @@ $(function () {
     var s = new Date(startDate);
     var b = new Date(s.getTime() - 24 * 60 * 60 * 1000 * orderInfo.cancelDays);
 
-    $('#cancelBeforeDays').text(util.formatDate(b, 'yyyy-MM-dd') + ' 14:00');
-    $('#cancelStartDay').text(startDate + ' 14:00');
-    $('#cancelEndDay').text(endDate + ' 12:00');
+    $('#cancelBeforeDays i').text(util.formatDate(b, 'yyyy-MM-dd') + ' ');
+    $('#cancelStartDay i').text(startDate + ' ');
+    $('#cancelEndDay i').text(endDate + ' ');
   }
 
   // 订单预览get接口
@@ -180,6 +180,9 @@ $(function () {
           $('.house-price').text(orderInfo.roomRate);
           $('#totalPrice').text('￥' + (orderInfo.roomRate + orderInfo.roomDeposit));
           $('#addressBody').empty().append(str);
+          $('#cancelBeforeDays').html($('#cancelBeforeDays').html() + orderInfo.inTime);
+          $('#cancelStartDay').html($('#cancelStartDay').html() + orderInfo.inTime);
+          $('#cancelEndDay').html($('#cancelEndDay').html() + orderInfo.outTime);
           // 仅当后台定义了退订规则后才显示
           if (orderInfo.cancelAble) {
             $('#cancelInfoWrapper').removeClass('hidden');
