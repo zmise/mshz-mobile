@@ -243,3 +243,9 @@
     font-size: .26rem;
     color: rgba(94, 100, 107, 1);
 }
+
+.article-body .peo-info .pri-info span:first-child {
+    @include ellips;
+    width: 1.5rem;
+    overflow: hidden;
+}

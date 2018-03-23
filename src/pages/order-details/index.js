@@ -71,9 +71,9 @@ function customerInfo(data) {
   var custModelList = data.custModelList;
   for (var i = 0, len = custModelList.length; i < len; i++) {
     customerInfoHTML += '<div class="pri-info">' +
-      '<span>' + custModelList[0].custName + '</span>' +
-      '<span>' + custModelList[0].custIdCard + '</span>' +
-      '<span>' + custModelList[0].custPhone + '</span>' +
+      '<span>' + custModelList[i].custName + '</span>' +
+      '<span>' + custModelList[i].custIdCard + '</span>' +
+      '<span>' + custModelList[i].custPhone + '</span>' +
       '</div>';
   }
   customerInfoHTML += '</div>';
