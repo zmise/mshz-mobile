@@ -128,6 +128,7 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('收藏房源成功！');
+          $(el).removeClass('icon-weitianchongaixin').addClass('icon-dianzan');
           $(el).toggleClass('clc-red').data('status', 'collect');
         } else {
           toast.show(res.message);
@@ -153,6 +154,7 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('取消收藏房源成功！');
+          $(el).removeClass('icon-dianzan').addClass('icon-weitianchongaixin');
           $(el).toggleClass('clc-red').data('status', '');
         } else {
           toast.show(res.message);
