@@ -73,8 +73,8 @@ function customerInfo(data) {
     customerInfoHTML += '<div class="pri-info">' +
       '<span>' + custModelList[0].custName + '</span>' +
       '<span>' + custModelList[0].custIdCard + '</span>' +
-      '<span>' + custModelList[0].custPhone + '</span>';
-    '</div>';
+      '<span>' + custModelList[0].custPhone + '</span>' +
+      '</div>';
   }
   customerInfoHTML += '</div>';
   return customerInfoHTML;
@@ -95,7 +95,7 @@ function orderCancel(data) {
         console.log('success');
         toast.show('取消成功');
         //跳转order-list页面
-        var path = './order-list.html#'+order.flag;
+        var path = './order-list.html#' + order.flag;
         setTimeout(function () {
           window.location = path;
         }, 1000);
