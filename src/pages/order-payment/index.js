@@ -37,8 +37,8 @@ $(function () {
     toast.show('请求失败');
   });
 
-  // 订单支付页面的post接口
-  function orderPaid() {
+  // ali订单支付页面的post接口
+  function orderAliPaid() {
 
     // 先查询当前订单状态是否可进行支付
     $.ajax({
@@ -63,10 +63,42 @@ $(function () {
     });
   }
 
+  function orderWechatPaid() {
+
+    // 先查询当前订单状态是否可进行支付
+    $.ajax({
+      url: '/mshz-app/security/orderpay/weixin/unifiedorder/wap',
+      data: JSON.stringify({ orderNo: order.orderNo }),
+      dataType: 'json',
+      contentType: 'application/json;charset=UTF-8',
+      type: 'POST',
+      cache: false,
+      success: function (res) {
+        if (res.status === 'C0000') {  // 可支付
+          location.href = res.result.mweb_url;
+        } else if (res.status === 'R0003' && res.status === 'R0002') {  //  R0002("订单不存在")  R0003("订单已失效")
+          location.replace('./order-details.html?orderNo=' + order.orderNo);
+        } else { // 订单不存在
+          location.replace('./order-list.html');
+        }
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });
+  }
+
   $('#alipay').on('tap', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    orderPaid();
+    orderAliPaid();
+  });
+
+
+  $('#wechatpay').on('tap', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    orderWechatPaid();
   });
 
   // 点击返回回到上一页
