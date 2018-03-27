@@ -11,9 +11,11 @@
 }
 
 .banner-body .items {
-    display: block;
-    width: 100%;
     @include flex(0, 0, auto);
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: 100%;
     overflow: hidden;
     background-color: #f3f3f3;
 }

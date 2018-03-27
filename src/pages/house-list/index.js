@@ -102,8 +102,8 @@ $(function () {
             var item = data[i];
             result +=
               '<div class="index-list">' +
-              '<a href="/houseDetails?id=' + item.id + '">' +
-              '  <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+              '<a class="img" href="/houseDetails?id=' + item.id + '">' +
+              '  <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
               '</a>' +
               '  <div class="item-oneline">' +
               '    <p>' + item.title + '</p>' +

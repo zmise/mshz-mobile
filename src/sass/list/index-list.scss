@@ -2,11 +2,19 @@
     border-bottom: $border;
     padding: .36rem 0 .38rem;
     display: block;
+    overflow: hidden;
+}
+
+.index-list .img {
+    @include flex-box;
+    @include align-items;
+    @include justify-content;
+    width: 6.8rem;
+    height: 3.84rem;
+    overflow: hidden;
 }
 
 .index-list img {
-    width: 100%;
-    height: 3.84rem;
     border-radius: .04rem;
 }
 
