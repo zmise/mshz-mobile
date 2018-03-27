@@ -118,7 +118,7 @@ body {
 .article-body .all-assess .img-list {
     @include flex-box;
     @include flex-wrap(wrap);
-    width: 5rem;
+    // width: 5rem;
 }
 
 .article-body .all-assess .img-list .items {

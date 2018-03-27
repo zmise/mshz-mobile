@@ -118,7 +118,7 @@
     display: block; // max-width: calc(100% - .3rem);
     // @include flex;
     font-size: .24rem; // color: rgba(42, 43, 45, 1);
-    text-overflow: ellipsis;
+    // text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap
 }
@@ -126,8 +126,8 @@
 .filter-body .items .icon {
     position: relative;
     display: block;
-    width: .32rem;
-    height: .32rem;
+    width: .3rem;
+    height: .3rem;
     overflow: hidden;
 }
 
@@ -201,7 +201,7 @@
     overflow: hidden;
 }
 
-// .filter-list .content .slide-body 
+// .filter-list .content .slide-body
 .filter-list .content .items {
     display: block;
     @include flex-box;
