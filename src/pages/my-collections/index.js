@@ -28,6 +28,12 @@ $(function () {
 
   var dropload = $('.article-body').dropload({
     scrollArea: window,
+    domUp: {                                                            // 上方DOM
+      domClass: 'dropload-up',
+      domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+      domUpdate: '<div class="dropload-update">↑释放更新</div>',
+      domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>'
+    },
     domDown: {
       domClass: 'dropload-down',
       domRefresh: '<div class="dropload-refresh"> </div>',
@@ -42,7 +48,8 @@ $(function () {
         '  <span>网络请求失败，请检查网络</span>' +
         '</section>'
     },
-    loadDownFn: loadingMore
+    loadDownFn: loadingMore,
+    loadUpFn: loadingMore,
   });
 
 
