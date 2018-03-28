@@ -91,7 +91,10 @@ $(function () {
           str +=
             '</div> ' +
             '<a class="content" href="/houseDetails?id=' + data.situationId + '">' +
+            '<div class="img"> ' +
             '  <img src="' + data.mainPic.replace('{size}', '400x300') + '" alt="">' +
+            '</div> ' +
+
             '  <div class="i-txt">' +
             '    <span class="title">' + data.title + '</span>' +
             '    <div class="time">' +
