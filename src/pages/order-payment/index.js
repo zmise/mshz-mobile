@@ -75,6 +75,7 @@ $(function () {
       cache: false,
       success: function (res) {
         if (res.status === 'C0000') {  // 可支付
+          console.log(res)
           location.href = res.result.mweb_url;
         } else if (res.status === 'R0003' && res.status === 'R0002') {  //  R0002("订单不存在")  R0003("订单已失效")
           location.replace('./order-details.html?orderNo=' + order.orderNo);
