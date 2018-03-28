@@ -8,7 +8,7 @@
 .index-list .img {
     @include flex-box;
     @include align-items;
-    @include justify-content;
+    // @include justify-content;
     width: 6.8rem;
     height: 3.84rem;
     overflow: hidden;

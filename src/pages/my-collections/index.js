@@ -12,11 +12,16 @@ require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/dropload.min'); // 分页插件
 
 
-window.onpageshow = function (event) {
-  if (event.persisted) {
-    location.reload();
-  }
-};
+// 解决Safari ( WKWebview ) 返回后页面不刷新的问题
+var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
+if (browserRule.test(navigator.userAgent)) {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload()
+    }
+  };
+}
+
 $(function () {
   // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
   // // 关闭loading
@@ -87,38 +92,46 @@ $(function () {
           && res.result.items.length > 0) {
           var array = res.result.items;
           var str = '';
-          for (var i = 0; i < array.length; i++) {
-            var item = array[i];
-            str +=
-              '<div class="listItems">' +
-              '  <a href="/houseDetails?id=' + item.id + '">' +
-              '    <div class="index-list">' +
-              '        <div class="img">' +
-              '          <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
-              '        </div>' +
-              '        <div class="item-oneline">' +
-              '          <p>' + item.title + '</p>' +
-              '          <p>￥' + item.price + '</p>' +
-              '        </div>' +
-              '        <div class="item-twoline">' +
-              '          <i class="twoline-items">' + item.region + '</i>' +
-              '          <i class="twoline-items">' + item.houseType + '</i>' +
-              '          <i class="twoline-items">' + item.customerCount + '人</i>' +
-              '        </div>' +
-              '        <div class="item-threeline">' +
-              '    <div class="three-lline">' +
-              '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
-              '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
-              '    </div>' +
-              '          <div class="three-rline">' +
-              '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
-              '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
-              '          </div>' +
-              '        </div>' +
-              '      </div>' +
-              '    </a>' +
-              '</div>'
-              ;
+          if (array.length > 0) {
+            for (var i = 0; i < array.length; i++) {
+              var item = array[i];
+              str +=
+                '<div class="listItems">' +
+                '  <a href="/houseDetails?id=' + item.id + '">' +
+                '    <div class="index-list">' +
+                '        <div class="img">' +
+                '          <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
+                '        </div>' +
+                '        <div class="item-oneline">' +
+                '          <p>' + item.title + '</p>' +
+                '          <p>￥' + item.price + '</p>' +
+                '        </div>' +
+                '        <div class="item-twoline">' +
+                '          <i class="twoline-items">' + item.region + '</i>' +
+                '          <i class="twoline-items">' + item.houseType + '</i>' +
+                '          <i class="twoline-items">' + item.customerCount + '人</i>' +
+                '        </div>' +
+                '        <div class="item-threeline">' +
+                '    <div class="three-lline">' +
+                '      <div class="star-lines"><div class="star-bar-score" style="width:' + (item.rate * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +
+                '      <i class="score">' + item.rate.toFixed(1) + '分</i>' +
+                '    </div>' +
+                '          <div class="three-rline">' +
+                '            <i class="twoline-items">' + item.livedCount + '人住过</i>' +
+                '            <i class="twoline-items">' + item.commentCount + '条评价</i>' +
+                '          </div>' +
+                '        </div>' +
+                '      </div>' +
+                '    </a>' +
+                '</div>'
+                ;
+            }
+          } else {
+            str =
+              '<section class="unusual-body">' +
+              '  <div class="no-house"></div>' +
+              '  <span>请赶紧去收藏房源吧</span>' +
+              '</section>';
           }
           $collectionsList.append(str);
         }

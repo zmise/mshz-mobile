@@ -33,7 +33,9 @@ $(function () {
                 '<div class="listItems">' +
                 '  <a href="/houseDetails?id=' + item.id + '">' +
                 '    <div class="index-list">' +
-                '      <img src="' + item.mainPicture.replace('{size}', '680x384') + '" alt="">' +
+                '        <div class="img">' +
+                '          <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
+                '        </div>' +
                 '        <div class="item-oneline">' +
                 '          <p>' + item.title + '</p>' +
                 '          <p>￥' + item.price + '</p>' +
