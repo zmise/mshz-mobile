@@ -1,6 +1,6 @@
 ## 运行
 
-- cd qfang-mobile
+- cd mshz-mobile
 - npm i
 - npm start `开发`
 - npm run build `打包`
