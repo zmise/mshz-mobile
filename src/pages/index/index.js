@@ -222,8 +222,9 @@ $(function () {
 
   // console.log(startDate);
   // console.log(endDate);
+
   startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
-  endData = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
+  endDate = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
 
   window.sessionStorage.setItem('startDate', startDate);
   window.sessionStorage.setItem('endDate', endDate);

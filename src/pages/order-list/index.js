@@ -302,13 +302,16 @@ $(function () {
   // loadingMore({ isReload: true })
   //$('.order-sort-body')
   $orderSort.on('tap', '.items', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
     $orderSort.find('.txt').removeClass('current');
     $(this).find('.txt').addClass('current');
     $orderSort.find('.line').removeClass('current');
     $(this).find('.line').addClass('current');
     $orderList.empty();
-
+    console.log(location);
     orderQueryType = $(this).data('orderQueryType');
+    location.replace('order-list.html#' + orderQueryType);
     // orderList();
     loadingMore({ isReload: true });
     $('#orderList').on('tap', function (e) {
