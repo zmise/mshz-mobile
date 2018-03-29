@@ -277,6 +277,11 @@ $(function () {
     }
 
     loadingMore({ isReload: true });
+    console.log($(this).parents('.two-row').siblings().not('.metro').not('.one-row'));
+    console.log($(this).parents('.two-row').siblings().not('.metro').not('.one-row').find('.items:first'));
+    console.log($(this).parents('.two-row').siblings().not('.metro').not('.one-row').find('.items:first').find('.icon'));
+    $(this).parents('.two-row').siblings().not('.one-row').find('.items').removeClass('current').find('.icon').removeClass('current');
+    $(this).parents('.two-row').siblings().not('.one-row').find('.items:first').addClass('current').find('.icon').addClass('current')
   });
 
 
@@ -320,8 +325,8 @@ $(function () {
 
     $(this).addClass('current').siblings().removeClass('current');
     $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
-    var $closest = $(this).closest('.content').find('.slide-body:not(.one-row)');
-    $closest.find('.items').removeClass('current');
+    // var $closest = $(this).closest('.content').find('.slide-body:not(.one-row)');
+    // $closest.find('.items').removeClass('current');
     // console.log($closest.find('.items:firstchild'))
     // $closest.eq(0).addClass('current');
   });
