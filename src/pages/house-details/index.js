@@ -199,12 +199,15 @@ $(function () {
   }
 
   var flag = 0;
-  var priceHigh = $('#price').val();
+  var priceHigh = $('#price').val() || 0;
   var priceLow = priceHigh;
   var situationId = $('#situation').val();
   for (var i = 0; i < guessLikeArray.length; i++) {
     var item = guessLikeArray[i];
-    var num = guessLikeArray[i].price;
+    var num = 0;
+    if (!isNaN(guessLikeArray[i].price)) {
+      num = guessLikeArray[i].price;
+    }
 
     if (guessLike.situationId === item.situationId) {
       guessLikeArray.splice(i, 1);
