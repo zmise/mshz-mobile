@@ -4,13 +4,13 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/plugins/jquery.banner.js');//轮播图
 
-
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 
 require('../../assets/js/destination.js');// 日地的
 require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
+var toast = require('../../assets/js/toast.js');  //toast的事件
 
 var lon;
 var lat;
@@ -363,6 +363,8 @@ $(function () {
     //   // $('#destination-entry').attr('data-cityname', cityName);
     // }
     if (!$('#destination-entry').val()) {
+      toast.show('请选择目的地');
+
       return;
     }
 
