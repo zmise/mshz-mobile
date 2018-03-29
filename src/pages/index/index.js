@@ -364,7 +364,6 @@ $(function () {
     // }
     if (!$('#destination-entry').val()) {
       toast.show('请选择目的地');
-
       return;
     }
 
@@ -374,7 +373,15 @@ $(function () {
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
     var type = $.trim($('#search-entry').data('type'));
-
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var cityType = searchHistroy[city] || [];
+    var typeItem;
+    for (var i = 0; i < cityType.length; i++) {
+      var item = cityType[i].destination;
+      if (item === poi) {
+        typeItem = cityType[i].type;
+      }
+    }
     if (dates != '') {
       var split = dates.split('至');
       var str = '&startDate=' + split[0] + '&endDate=' + split[1];
@@ -386,9 +393,10 @@ $(function () {
     if (lat !== '' && lon !== '' && lat && lon) {
       path += '&lat=' + lat + '&lon=' + lon;
     }
-    if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站') {
+    if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站' || typeItem === '机场车站' || typeItem === '飞机场' || typeItem === '汽车站' || typeItem === '火车站') {
       path += "&needAllCity=true"
     }
+
     window.location = path;
   })
 
