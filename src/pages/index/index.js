@@ -297,7 +297,9 @@ $(function () {
       $('#firstSelect').val(start + '至' + end);
       window.sessionStorage.setItem('startDate', start);
       window.sessionStorage.setItem('endDate', end);
-
+      for (var i = 0; i < $('.index-list a').length; i++) {
+        $('.index-list a:eq(' + i + ')').attr('href', $('.index-list a:eq(' + i + ')').attr('href') + '&startDate=' + start + '&endDate=' + end);
+      }
     },   //回调函数
     comfireBtn: '.comfire',//确定按钮的class或者id
   });

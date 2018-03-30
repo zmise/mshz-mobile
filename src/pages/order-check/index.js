@@ -24,12 +24,21 @@ $(function () {
     var b = new Date();
     initStartDate = util.formatDate(b, 'yyyy-MM-dd');
     if (!startDate) {
-      startDate = initStartDate;
+      if (startDateUrl) {
+        startDate = startDateUrl;
+      } else {
+        startDate = initStartDate;
+      }
     }
+
 
     if (!endDate) {
       b = new Date(b.getTime() + 24 * 3600 * 1000);
-      endDate = util.formatDate(b, 'yyyy-MM-dd');
+      if (endDateUrl) {
+        endDate = endDateUrl;
+      } else {
+        endDate = util.formatDate(b, 'yyyy-MM-dd');
+      }
     }
 
     b = new Date(b.getTime() + 24 * 3600 * 1000 * 89);
@@ -42,7 +51,8 @@ $(function () {
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
     if (r != null) return unescape(r[2]); return null; //返回参数值
   }
-
+  var startDateUrl = getUrlParam('startDate');
+  var endDateUrl = getUrlParam('endDate');
   // init价格日历请求
   function calePriceInfo(params) {
     // params.endDate = '2018-03-31';
@@ -244,7 +254,7 @@ $(function () {
   initDate();
 
   // url上面的参数
-  // todo
+
   var roomId = getUrlParam('roomId');
   if (!roomId) {
     location.replace('error.html?code=E0001')

@@ -187,6 +187,15 @@ $(function () {
   // });
 
 
+  //获取url中的参数
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+  var startDate = getUrlParam('startDate');
+  var endDate = getUrlParam('endDate');
+
   //猜你喜欢的渲染数据
   var guessLikeArray = [];
   if (typeof window.localStorage.getItem('guessLike') === 'string') {
@@ -255,7 +264,11 @@ $(function () {
   $('#orderCheck-entry').on('tap', function (e) {
     event.preventDefault();
     event.stopPropagation();
-    window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
+    if (startDate !== '' && endDate !== '') {
+      window.location = '/user/order-check.html?roomId=' + $('#roomId').val() + '&startDate=' + startDate + '&endDate=' + endDate;
+    } else {
+      window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
+    }
   });
   // } else {
   //   /* 没有登录点击收藏  */

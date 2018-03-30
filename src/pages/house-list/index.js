@@ -134,7 +134,9 @@ $(function () {
           }
 
           $houseList.append(result);
-
+          for (var j = 0; j < $('.index-list a').length; j++) {
+            $('.index-list a:eq(' + j + ')').attr('href', $('.index-list a:eq(' + j + ')').attr('href').split('&')[0] + '&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val());
+          }
         }
         //dropload.noMoreData = lastParams.page >= res.result.pageCount;
         dropload.resetload(recordCount, lastParams.page, res.result && res.result.pageCount || 1);
@@ -214,8 +216,9 @@ $(function () {
 
   if (params.startDate === "") {
     params.startDate = today;
-    params.endData = tomorrow;
+    params.endDate = tomorrow;
   }
+
   $('#firstSelect').calendarSwitch({
     selectors: {
       sections: ".calendar"
