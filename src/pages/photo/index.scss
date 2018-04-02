@@ -3,7 +3,6 @@
 img {
     width: 100%;
     border: none;
-    height: 4.5rem;
 }
 
 body {
@@ -34,6 +33,14 @@ body {
     margin-top: 3.8rem;
 }
 
+.photo-body .items .img {
+    @include flex-box;
+    @include align-items;
+    height: 4.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
 .photo-body .items img {
     opacity: 0.8;
 }
@@ -50,7 +57,6 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
 
 /* photo-numbers */
 
@@ -78,7 +84,6 @@ body {
     width: 0.4rem;
     height: 0.5rem;
 }
-
 
 /* photo-tabs */
 

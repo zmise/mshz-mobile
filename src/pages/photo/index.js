@@ -49,7 +49,9 @@ $(function () {
               var item = array[i].imageUrlList[j];
               str +=
                 '<li class="items" data-index="' + (j - 0 + 1) + '">' +
+                '<div class="img">' +
                 '  <img src="' + item.replace('{size}', '750x422') + '" />' +
+                '</div>' +
                 '</li>'
                 ;
             }
