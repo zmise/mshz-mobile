@@ -68,7 +68,9 @@ $(function () {
               var comPicArray = item.commentPicture.split(',');
               for (var k = 0; k < comPicArray.length; k++) {
                 str +=
-                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '750x750') + '"/>';
+                  '<div class="img">' +
+                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '750x750') + '"/>' +
+                  '</div>';
               }
               str += '      </div>';
             }

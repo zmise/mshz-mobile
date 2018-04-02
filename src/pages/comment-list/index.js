@@ -58,7 +58,9 @@ $(function () {
               if (item.commentPicture.length > 0) {
                 str += '<div class="img-list">';
                 for (var j = 0; j < imgs.length; j++) {
-                  str += '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />';
+                  str += '<div class="img">' +
+                    '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />' +
+                    '</div>';
                 }
                 str += '</div>';
               }

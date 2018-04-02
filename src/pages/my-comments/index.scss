@@ -68,12 +68,21 @@ body {
     @include flex-wrap(wrap); // width: 5rem;
 }
 
-.article-body .self-assess .img-list .items {
+.article-body .self-assess .img-list .img {
     @include flex(0, 0, auto);
     width: 1.44rem;
     height: 1.44rem;
     margin-right: .15rem;
     margin-bottom: .15rem;
+    border-radius: .04rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.article-body .self-assess .img-list .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.44rem;
     border-radius: .04rem;
     color: #000;
     box-sizing: border-box;

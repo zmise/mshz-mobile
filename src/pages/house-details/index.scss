@@ -26,7 +26,6 @@ body {
     height: 4.22rem;
 }
 
-
 /* header-body */
 
 .header-body {
@@ -78,7 +77,6 @@ body {
 .header-body .icon-collected {
     color: $color-orange;
 }
-
 
 /* banner-des */
 
@@ -163,7 +161,6 @@ body {
     font-size: .24rem;
     color: rgba(94, 100, 107, 1);
 }
-
 
 /* house-base-info */
 
@@ -362,9 +359,7 @@ body {
     @include transform(rotate(-45deg));
 }
 
-
 /*end 房源基础信息 */
-
 
 /* comment-body */
 
@@ -526,6 +521,17 @@ body {
     color: $color;
 }
 
+.comment-body .first-comment .des .img {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.2rem;
+    margin-right: .16rem;
+    margin-bottom: .16rem;
+    color: #000;
+    box-sizing: border-box;
+    border-radius: .04rem;
+}
+
 .comment-body .first-comment .des .items {
     @include flex(0, 0, auto);
     width: 1.44rem;
@@ -568,7 +574,6 @@ body {
 //         background-size: 100% auto;
 //     }
 // }
-
 /*start living-info */
 
 .living-info {
@@ -609,7 +614,6 @@ body {
 //     display: inline-block;
 //     width: 2em;
 // }
-
 /* feature-channel */
 
 .feature-channel {
@@ -711,7 +715,6 @@ body {
 .feature-channel .slide .twoline .twoline-items:last-child {
     border: none;
 }
-
 
 /* footer-body */
 

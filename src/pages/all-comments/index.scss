@@ -51,7 +51,6 @@ body {
     @include align-items;
 }
 
-
 /* comment-body */
 
 .total {
@@ -174,11 +173,19 @@ body {
     @include flex-wrap(wrap);
 }
 
-.comment-body .first-comment .des .img-list .items {
+.comment-body .first-comment .des .img-list .img {
     @include flex(0, 0, auto);
     width: 1.44rem;
     height: 1.2rem;
     margin: .2rem .16rem .2rem 0;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.comment-body .first-comment .des .img-list .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.2rem; // margin: .2rem .16rem .2rem 0;
     color: #000;
     box-sizing: border-box;
 }

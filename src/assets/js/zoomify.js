@@ -65,7 +65,7 @@
 	};
 	Zoomify.prototype.transformScaleAndTranslate = function (scale, translateX, translateY, callback) {
 		this.addTransition(this.$image);
-		this.transform('scale(' + scale + ') translate(' + translateX + 'px, ' + translateY + 'px)');
+		this.transform('translateZ(0) scale(' + scale + ') translate(' + translateX + 'px, ' + translateY + 'px)');
 		this.removeTransition(this.$image, callback);
 	};
 
@@ -82,7 +82,10 @@
 
 		this.transition(this.$image, 'none');
 		this.transform('none');
-
+		this.$image.css({
+			'width': '300%',
+			'height': '300%',
+		});
 		var offset = this.$image.offset(),
 			width = this.$image.outerWidth(),
 			height = this.$image.outerHeight(),
@@ -111,7 +114,10 @@
 	};
 	Zoomify.prototype.zoomOut = function () {
 		var that = this;
-
+		this.$image.css({
+			'width': '100%',
+			'height': '100%',
+		});
 		this._zooming = true;
 		this.$image.trigger('zoom-out.zoomify');
 		this.transformScaleAndTranslate(1, 0, 0, function () {

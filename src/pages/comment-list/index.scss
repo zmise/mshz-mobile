@@ -17,7 +17,6 @@ body {
     min-height: calc(100% - 2.18rem);
 }
 
-
 /* order-body*/
 
 .order-body {
@@ -73,7 +72,6 @@ body {
     @include linear-gradient;
 }
 
-
 /* all-assess */
 
 .article-body .all-assess {
@@ -117,17 +115,24 @@ body {
 
 .article-body .all-assess .img-list {
     @include flex-box;
-    @include flex-wrap(wrap);
-    // width: 5rem;
+    @include flex-wrap(wrap); // width: 5rem;
 }
 
-.article-body .all-assess .img-list .items {
+.article-body .all-assess .img-list .img {
     @include flex(0, 0, auto);
     width: 1.44rem;
     height: 1.44rem;
     margin-right: .15rem;
     margin-bottom: .15rem;
     border-radius: .04rem;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.article-body .all-assess .img-list .items {
+    @include flex(0, 0, auto);
+    width: 1.44rem;
+    height: 1.44rem;
     color: #000;
     box-sizing: border-box;
 }
@@ -193,7 +198,6 @@ body {
     font-size: .22rem;
     color: rgba(181, 185, 190, 1);
 }
-
 
 /* tobe-assess */
 
