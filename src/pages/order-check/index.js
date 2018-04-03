@@ -24,17 +24,19 @@ $(function () {
     var b = new Date();
     initStartDate = util.formatDate(b, 'yyyy-MM-dd');
     if (!startDate) {
-      if (startDateUrl) {
+      if (startDateUrl && startDateUrl !== 'null' && startDateUrl !== '') {
         startDate = startDateUrl;
       } else {
         startDate = initStartDate;
       }
+
+      // startDate = initStartDate;
     }
 
 
     if (!endDate) {
       b = new Date(b.getTime() + 24 * 3600 * 1000);
-      if (endDateUrl) {
+      if (endDateUrl && endDateUrl !== 'null' && endDateUrl !== '') {
         endDate = endDateUrl;
       } else {
         endDate = util.formatDate(b, 'yyyy-MM-dd');
@@ -84,7 +86,6 @@ $(function () {
           // 判断默认日期是否已经无房
           if (startDate.substr(0, 7) === sourceDate[0].date.substr(0, 7)) {
             var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - new Date().getDate()].status || '';
-
           } else {
             var inDateStatus = data[startDate.substr(0, 7)][+startDate.substr(8) - 1].status || '';
           }
