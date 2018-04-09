@@ -3,10 +3,11 @@ require('../../assets/js/analytics.js');
 // require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
+var record = require('../../assets/js/record'); //判断无痕模式
 
 
 $(function () {
-  window.sessionStorage.removeItem('loginInfo');
+  record.removeSessionRecord('loginInfo', true);
 
   //发送图形验证码get接口
   function getImageVerify() {
@@ -101,13 +102,13 @@ $(function () {
           //sessionStorage缓存个人信息
           var item = res.result;
           if (item && item !== '') {
-            window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
+            record.setSessionRecord('loginInfo', JSON.stringify(item));
           }
 
           if (res.result.hasSetPassword) {
-            var lastLocation = window.sessionStorage.getItem('lastLocation');
+            var lastLocation = record.getSessionRecord('lastLocation');
             if (lastLocation) {
-              window.sessionStorage.removeItem('lastLocation');
+              record.removeSessionRecord('lastLocation');
               location.replace(lastLocation);
             } else {
               location.replace('/');

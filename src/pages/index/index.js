@@ -11,7 +11,7 @@ require('../../assets/js/search.js'); //搜索功能
 require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 var toast = require('../../assets/js/toast.js');  //toast的事件
-
+var record = require('../../assets/js/record.js'); //判断无痕模式
 var lon;
 var lat;
 
@@ -27,7 +27,9 @@ var lat;
 // }
 
 $(function () {
-  window.sessionStorage.setItem('lastLocation', location.href);
+  console.log(0)
+  // window.sessionStorage.setItem('lastLocation', location.href);
+  record.setSessionRecord('lastLocation', location.href, true);
   //h5本地获取地理位置
   function getLocation() {
 
@@ -120,7 +122,7 @@ $(function () {
         //取localStorage中搜索历史的值
         var city = $.trim($('#destination-entry').val());
 
-        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+        var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy')) || {};
         var item = searchHistroy[city] || [];
         var str = '';
         if (item.length > 0) {
@@ -226,8 +228,11 @@ $(function () {
   startDate = $.trim($('#firstSelect').val().split('至')[0]) || startDate;
   endDate = $.trim($('#firstSelect').val().split('至')[1]) || endDate;
 
-  window.sessionStorage.setItem('startDate', startDate);
-  window.sessionStorage.setItem('endDate', endDate);
+  // window.sessionStorage.setItem('startDate', startDate);
+  record.setSessionRecord('startDate', startDate);
+  record.setSessionRecord('endDate', endDate);
+
+  // window.sessionStorage.setItem('endDate', endDate);
 
   // $('.house-base-info .base-server .icon-items:gt(4)').addClass('hide');
   /* 焦点图片  */
@@ -295,8 +300,10 @@ $(function () {
     comeoutColor: "#44bb80",        //入住和离店之间的颜色
     callback: function (start, end) {
       $('#firstSelect').val(start + '至' + end);
-      window.sessionStorage.setItem('startDate', start);
-      window.sessionStorage.setItem('endDate', end);
+      // window.sessionStorage.setItem('startDate', start);
+      // window.sessionStorage.setItem('endDate', end);
+      record.setSessionRecord('startDate', startDate, true);
+      record.setSessionRecord('endDate', endDate);
       for (var i = 0; i < $('.index-list a').length; i++) {
         $('.index-list a:eq(' + i + ')').attr('href', $('.index-list a:eq(' + i + ')').attr('href') + '&startDate=' + start + '&endDate=' + end);
       }
@@ -375,7 +382,7 @@ $(function () {
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
     var type = $.trim($('#search-entry').data('type'));
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
     var cityType = searchHistroy[city] || [];
     var typeItem;
     for (var i = 0; i < cityType.length; i++) {

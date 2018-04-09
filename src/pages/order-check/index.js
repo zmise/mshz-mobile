@@ -7,6 +7,7 @@ require('../../assets/js/calendar.js');//日期插件
 var toast = require('../../assets/js/toast.js');  //toast的事件
 
 var util = require('../../util/');
+var record = require('../../assets/js/record'); //判断无痕模式
 
 // $.toast('Here you can put the text of the toast');
 
@@ -18,8 +19,8 @@ $(function () {
 
   // 当前日期
   function initDate() {
-    startDate = window.sessionStorage.startDate;
-    endDate = window.sessionStorage.endDate;
+    startDate = record.getSessionRecord('startDate');
+    endDate = record.getSessionRecord('endDate');
 
     var b = new Date();
     initStartDate = util.formatDate(b, 'yyyy-MM-dd');

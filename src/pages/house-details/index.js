@@ -5,7 +5,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.banner.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
-
+var record = require('../../assets/js/record'); //判断无痕模式
 // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
 // var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
 // if (browserRule.test(navigator.userAgent)) {
@@ -17,7 +17,7 @@ require('../../assets/js/zoomify.js'); // 查看大图
 // }
 
 $(function () {
-  window.sessionStorage.setItem('lastLocation', location.href);
+  record.setSessionRecord('lastLocation', location.href, true);
   // 猜你喜欢get接口
   function guessLikeInfo(params) {
     $.ajax({
@@ -135,7 +135,7 @@ $(function () {
         }
       },
       error: function (error) {
-        sessionStorage.setItem('lastLocation', location.href);
+        record.setSessionRecord('lastLocation', location.href);
         location.replace('/user/login.html');
       }
     });
@@ -161,7 +161,7 @@ $(function () {
         }
       },
       error: function (error) {
-        sessionStorage.setItem('lastLocation', location.href);
+        record.setSessionRecord('lastLocation', location.href);
         location.replace('/user/login.html');
       }
     });
@@ -198,8 +198,8 @@ $(function () {
 
   //猜你喜欢的渲染数据
   var guessLikeArray = [];
-  if (typeof window.localStorage.getItem('guessLike') === 'string') {
-    guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
+  if (typeof record.getLocalRecord('guessLike') === 'string') {
+    guessLikeArray = JSON.parse(record.getLocalRecord('guessLike')) || [];
   }
 
   var guessLike = {
@@ -230,7 +230,7 @@ $(function () {
   if (guessLikeArray.length > 50) {
     guessLikeArray.shift();
   }
-  window.localStorage.setItem('guessLike', JSON.stringify(guessLikeArray));
+  record.setLocalRecord('guessLike', JSON.stringify(guessLikeArray), true);
   var guessLikeParams = {
     city: $('#city').val(),
     region: $('#area').val(),
@@ -242,8 +242,6 @@ $(function () {
   guessLikeInfo(guessLikeParams);
 
 
-  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  // if (loginInfo) {
 
   $('.banner-body').on('click', '#collect', function (e) {
     event.preventDefault();
@@ -270,22 +268,6 @@ $(function () {
       window.location = '/user/order-check.html?roomId=' + $('#roomId').val();
     }
   });
-  // } else {
-  //   /* 没有登录点击收藏  */
-  //   $('.banner-body').on('click', '#collect', function (e) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //     sessionStorage.setItem('lastLocation', location.href);
-  //     window.location = '/user/login.html';
-  //   });
-
-  //   $('#orderCheck-entry').on('tap', function (e) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //     sessionStorage.setItem('lastLocation', location.href);
-  //     window.location = '/user/login.html';
-  //   });
-  // }
 
 
 

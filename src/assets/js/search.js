@@ -1,5 +1,6 @@
-$(function () {
+var record = require('./record'); //判断无痕模式
 
+$(function () {
   /* 阻止滚动条事件  */
   // $('.search-layer').on('touchmove', function (e) {
   //   e.stopPropagation();
@@ -47,7 +48,7 @@ $(function () {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
     var city = $.trim($('#destination-entry').val());
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
@@ -67,7 +68,7 @@ $(function () {
       cityItem.shift();
     }
     searchHistroy[city] = cityItem;
-    window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
+    record.setLocalRecord('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();
     // var newListHTML = search();
     // $('.search-list .slide').empty().append(newListHTML)
@@ -147,15 +148,7 @@ $(function () {
     bodyScroll();
     $('#search-entry').val($(this).data('keyword'));
 
-    // var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || [];
-    // for (var i = 0; i < searchHistroy.length; i++) {
-    //   var item = searchHistroy[i];
-    //   if (item == $(this).data('keyword')) {
-    //     searchHistroy.splice(i, 1);
-    //   }
-    // }
-    // searchHistroy.push($(this).data('keyword'));
-    // window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
+
     var destination = $(this).find('.txt').text();
     var type = $(this).find('.icon-goto').text();
     var city = $.trim($('#destination-entry').val());
@@ -164,7 +157,7 @@ $(function () {
     if (destination !== '') {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
@@ -184,8 +177,7 @@ $(function () {
       cityItem.shift();
     }
     searchHistroy[city] = cityItem;
-    window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
-
+    record.setLocalRecord('searchHistroy', JSON.stringify(searchHistroy));
 
   });
 

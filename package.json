@@ -7,8 +7,8 @@
   "license": "ISC",
   "scripts": {
     "clear": "rm -rf ./dist",
-    "start": "npm run clear&&set NODE_ENV=development&&webpack-dev-server --hot",
-    "build": "npm run clear&&set NODE_ENV=production&&webpack --optimize-minimize --progress --profile",
+    "start": "npm run clear; NODE_ENV=development webpack-dev-server --hot",
+    "build": "npm run clear; NODE_ENV=production webpack --optimize-minimize --progress --profile",
     "deploy": "scp -r ./dist/* 192.168.0.243:/opt/nginx/html/user/"
   },
   "repository": {

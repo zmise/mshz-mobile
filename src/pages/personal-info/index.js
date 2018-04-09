@@ -7,6 +7,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 require('../../assets/js/appDownload.js');//全局下载APP
 var toast = require('../../assets/js/toast.js');  //toast的事件
+var record = require('../../assets/js/record'); //判断无痕模式
 
 
 
@@ -35,10 +36,10 @@ $(function () {
       if (res.status === 'C0000') {
         //sessionStorage更新缓存的个人信息
         $('#image').attr('src', res.result.url.replace('{size}', '88x88'));
-        var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+        var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
         if (loginInfo) {
           loginInfo.headPortrait = res.result.url;
-          window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+          record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
         }
         var params = {
           headPortrait: res.result.url,
@@ -194,10 +195,10 @@ $(function () {
               }
             }
             if (params.nickname) {
-              var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+              var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
               if (loginInfo) {
                 loginInfo.nickname = params.nickname;
-                window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+                record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
               }
               $('.nickname-body ').css('display', 'none');
               $('.nickname-entry .content span').text(params.nickname);

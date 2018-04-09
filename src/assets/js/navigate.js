@@ -1,10 +1,11 @@
 var Cookie = require('js-cookie');
+var record = require('./record'); //判断无痕模式
 
 $(function () {
 
   function getUserInfo() {
     var dtd = $.Deferred();
-    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
     if (loginInfo && Cookie.get('sid')) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {
@@ -26,7 +27,7 @@ $(function () {
   getUserInfo().then(function (loginInfo) {
     $('#loading').remove();
     $('#login').replaceWith('<a class="menu iconfont icon-daohanglancaidan" href="javascript:;" id="menu"></a>');
-    window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+    record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
     initSideNav(loginInfo);
   }).fail(function () {
     // 查询失败后或考虑跳转到登录页
@@ -188,7 +189,7 @@ $(function () {
 
     // var path = '/user/order-list.html';
     // console.log(123);
-    window.sessionStorage.removeItem('loginInfo');
+    record.removeSessionRecord('loginInfo');
     logout();
   });
 

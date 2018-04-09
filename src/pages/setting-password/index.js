@@ -3,18 +3,19 @@ require('../../assets/js/analytics.js');
 // require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
+var record = require('../../assets/js/record'); //判断无痕模式
 
 
 $(function () {
 
   // 跳转逻辑
   function windowLocation() {
-    var lastLocation = window.sessionStorage.getItem('lastLocation');
-    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    var lastLocation = record.getSessionRecord('lastLocation');
+    var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
     if (loginInfo) {
       history.go(-1);
     } else if (lastLocation) {
-      window.sessionStorage.removeItem('lastLocation');
+      record.removeSessionRecord('lastLocation');
       location.replace(lastLocation);
     } else {
       location.replace('/');
@@ -32,9 +33,9 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('密码设置完成，请牢记密码！');
-          var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+          var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
           loginInfo.hasSetPassword = true;
-          window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+          record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
           setTimeout(function () {
             // window.location = '/';
             windowLocation();
@@ -90,9 +91,9 @@ $(function () {
   $('#passing').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    var lastLocation = window.sessionStorage.getItem('lastLocation');
+    var lastLocation = record.getSessionRecord('lastLocation');
     if (lastLocation) {
-      window.sessionStorage.removeItem('lastLocation');
+      record.removeSessionRecord('lastLocation');
       location.replace(lastLocation);
     } else {
       location.replace('/');

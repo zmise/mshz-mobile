@@ -23,12 +23,7 @@ if (browserRule.test(navigator.userAgent)) {
 }
 
 $(function () {
-  // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-  // // 关闭loading
-  // if (loginInfo) {
-  //   $('#loading').remove();
-  // }
-  // dropload
+
   var $collectionsList = $('.article-body .list'); // $('#collectionsList')
 
   var dropload = $('.article-body').dropload({

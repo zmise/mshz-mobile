@@ -2,6 +2,7 @@ require('./index.scss');
 require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
+var record = require('../../assets/js/record'); //判断无痕模式
 
 var Cookie = require('js-cookie');
 $(function () {
@@ -9,7 +10,7 @@ $(function () {
 
   function getUserInfo() {
     var dtd = $.Deferred();
-    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
     if (loginInfo) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {
@@ -43,7 +44,7 @@ $(function () {
           toast.show('修改成功');
           getUserInfo().then(function (loginInfo) {
             loginInfo.nickname = params.nickname;
-            window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+            record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
             setTimeout(function () {
               history.go(-1);
             }, 1000);

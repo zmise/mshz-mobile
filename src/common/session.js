@@ -1,5 +1,6 @@
 
 var invalidSession = false;
+var record = require('../assets/js/record'); //判断无痕模式
 
 // setup the default parameter for all of the ajax requests
 $.ajaxSetup({
@@ -28,10 +29,10 @@ $(document).off('ajaxError').on('ajaxError', function (res, xhr) {
     return;
   } else if (xhr.status == 401 && !invalidSession) {
     invalidSession = !0;
-    window.sessionStorage.removeItem('loginInfo');
-    window.sessionStorage.removeItem('endDate');
-    window.sessionStorage.removeItem('startDate');
-    window.sessionStorage.setItem('lastLocation', location.href);
+    record.removeSessionRecord('loginInfo');
+    record.removeSessionRecord('endDate');
+    record.removeSessionRecord('startDate');
+    record.setSessionRecord('lastLocation', location.href);
     location.replace(location.pathname.indexOf('/user/') > -1 ? '/user/login.html' : '/');
   }
 });
