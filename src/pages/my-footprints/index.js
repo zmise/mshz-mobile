@@ -81,8 +81,9 @@ $(function () {
   }
 
   var guessLikeArray = [];
-  if (typeof record.getLocalRecord('guessLike') === 'string') {
-    guessLikeArray = JSON.parse(record.getLocalRecord('guessLike')) || [];
+  if (typeof window.localStorage.getItem('guessLike') === 'string') {
+    // guessLikeArray = JSON.parse(record.getLocalRecord('guessLike')) || [];
+    guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     var ids = [];
     var len = guessLikeArray.length;
     while (len-- > 0) {

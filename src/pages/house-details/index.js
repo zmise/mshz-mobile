@@ -198,8 +198,8 @@ $(function () {
 
   //猜你喜欢的渲染数据
   var guessLikeArray = [];
-  if (typeof record.getLocalRecord('guessLike') === 'string') {
-    guessLikeArray = JSON.parse(record.getLocalRecord('guessLike')) || [];
+  if (typeof window.localStorage.getItem('guessLike') === 'string') {
+    guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
   }
 
   var guessLike = {

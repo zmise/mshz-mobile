@@ -11,7 +11,8 @@ $(function () {
   // 跳转逻辑
   function windowLocation() {
     var lastLocation = record.getSessionRecord('lastLocation');
-    var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+    // var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
     if (loginInfo) {
       history.go(-1);
     } else if (lastLocation) {
@@ -33,7 +34,8 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('密码设置完成，请牢记密码！');
-          var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+          // var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+          var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
           loginInfo.hasSetPassword = true;
           record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
           setTimeout(function () {

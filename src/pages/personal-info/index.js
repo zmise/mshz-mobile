@@ -36,7 +36,8 @@ $(function () {
       if (res.status === 'C0000') {
         //sessionStorage更新缓存的个人信息
         $('#image').attr('src', res.result.url.replace('{size}', '88x88'));
-        var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+        // var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+        var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
         if (loginInfo) {
           loginInfo.headPortrait = res.result.url;
           record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));
@@ -195,7 +196,8 @@ $(function () {
               }
             }
             if (params.nickname) {
-              var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+              // var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+              var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
               if (loginInfo) {
                 loginInfo.nickname = params.nickname;
                 record.setSessionRecord('loginInfo', JSON.stringify(loginInfo));

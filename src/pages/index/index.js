@@ -27,7 +27,6 @@ var lat;
 // }
 
 $(function () {
-  console.log(0)
   // window.sessionStorage.setItem('lastLocation', location.href);
   record.setSessionRecord('lastLocation', location.href, true);
   //h5本地获取地理位置
@@ -122,7 +121,8 @@ $(function () {
         //取localStorage中搜索历史的值
         var city = $.trim($('#destination-entry').val());
 
-        var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy')) || {};
+        // var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy')) || {};
+        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
         var item = searchHistroy[city] || [];
         var str = '';
         if (item.length > 0) {
@@ -382,7 +382,8 @@ $(function () {
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
     var type = $.trim($('#search-entry').data('type'));
-    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
+    // var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     var cityType = searchHistroy[city] || [];
     var typeItem;
     for (var i = 0; i < cityType.length; i++) {

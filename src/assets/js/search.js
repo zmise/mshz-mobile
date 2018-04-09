@@ -48,7 +48,7 @@ $(function () {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
     var city = $.trim($('#destination-entry').val());
-    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
@@ -157,7 +157,7 @@ $(function () {
     if (destination !== '') {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
-    var searchHistroy = JSON.parse(record.getLocalRecord('searchHistroy', true)) || {};
+    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);

@@ -10,7 +10,8 @@ $(function () {
 
   function getUserInfo() {
     var dtd = $.Deferred();
-    var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+    // var loginInfo = JSON.parse(record.getSessionRecord('loginInfo'));
+    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
     if (loginInfo) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {
