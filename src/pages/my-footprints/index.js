@@ -7,10 +7,10 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 
 require('../../assets/js/appDownload.js');//全局下载APP
-var record = require('../../assets/js/record'); //判断无痕模式
+require('../../assets/js/record'); //判断无痕模式
 
 $(function () {
-  record.setSessionRecord('lastLocation', location.href, true);
+  window.sessionStorage.setItem('lastLocation', location.href);
 
   // 查询用户浏览记录post接口
   function queryUserRoomHistory(params) {
@@ -82,7 +82,7 @@ $(function () {
 
   var guessLikeArray = [];
   if (typeof window.localStorage.getItem('guessLike') === 'string') {
-    // guessLikeArray = JSON.parse(record.getLocalRecord('guessLike')) || [];
+    // guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     var ids = [];
     var len = guessLikeArray.length;

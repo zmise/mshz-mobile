@@ -3,11 +3,11 @@ require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
-var record = require('../../assets/js/record'); //判断无痕模式
+require('../../assets/js/record'); //判断无痕模式
 
 
 $(function () {
-  record.setSessionRecord('lastLocation', location.href, true);
+  window.sessionStorage.setItem('lastLocation', location.href);
 
   $('#back').on('click', function (e) {
 

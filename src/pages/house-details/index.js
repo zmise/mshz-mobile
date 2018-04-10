@@ -5,7 +5,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.banner.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
-var record = require('../../assets/js/record'); //判断无痕模式
+require('../../assets/js/record'); //判断无痕模式
 // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
 // var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
 // if (browserRule.test(navigator.userAgent)) {
@@ -17,7 +17,7 @@ var record = require('../../assets/js/record'); //判断无痕模式
 // }
 
 $(function () {
-  record.setSessionRecord('lastLocation', location.href, true);
+  window.sessionStorage.setItem('lastLocation', location.href);
   // 猜你喜欢get接口
   function guessLikeInfo(params) {
     $.ajax({
@@ -135,7 +135,7 @@ $(function () {
         }
       },
       error: function (error) {
-        record.setSessionRecord('lastLocation', location.href);
+        window.sessionStorage.setItem('lastLocation', location.href);
         location.replace('/user/login.html');
       }
     });
@@ -161,7 +161,7 @@ $(function () {
         }
       },
       error: function (error) {
-        record.setSessionRecord('lastLocation', location.href);
+        window.sessionStorage.setItem('lastLocation', location.href);
         location.replace('/user/login.html');
       }
     });
@@ -230,7 +230,7 @@ $(function () {
   if (guessLikeArray.length > 50) {
     guessLikeArray.shift();
   }
-  record.setLocalRecord('guessLike', JSON.stringify(guessLikeArray), true);
+  window.localStorage.setItem('guessLike', JSON.stringify(guessLikeArray), true);
   var guessLikeParams = {
     city: $('#city').val(),
     region: $('#area').val(),

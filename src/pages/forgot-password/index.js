@@ -3,7 +3,7 @@ require('../../assets/js/analytics.js');
 // require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
-var record = require('../../assets/js/record'); //判断无痕模式
+require('../../assets/js/record'); //判断无痕模式
 
 
 $(function () {
@@ -125,11 +125,11 @@ $(function () {
           //sessionStorage缓存个人信息
           var item = res.result;
           if (item && item !== '') {
-            record.setSessionRecord('loginInfo', JSON.stringify(item));
+            window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
           }
-          var lastLocation = record.getSessionRecord('lastLocation');
+          var lastLocation = window.sessionStorage.getItem('lastLocation');
           if (lastLocation) {
-            record.removeSessionRecord('lastLocation');
+            window.sessionStorage.removeItem('lastLocation');
             location.replace(lastLocation);
           } else {
             location.replace('/');

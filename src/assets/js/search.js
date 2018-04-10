@@ -1,4 +1,4 @@
-var record = require('./record'); //判断无痕模式
+require('./record'); //判断无痕模式
 
 $(function () {
   /* 阻止滚动条事件  */
@@ -68,7 +68,7 @@ $(function () {
       cityItem.shift();
     }
     searchHistroy[city] = cityItem;
-    record.setLocalRecord('searchHistroy', JSON.stringify(searchHistroy));
+    window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
     // $('.search-layer .search-keyword').hide();
     // var newListHTML = search();
     // $('.search-list .slide').empty().append(newListHTML)
@@ -177,7 +177,7 @@ $(function () {
       cityItem.shift();
     }
     searchHistroy[city] = cityItem;
-    record.setLocalRecord('searchHistroy', JSON.stringify(searchHistroy));
+    window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
 
   });
 

@@ -10,7 +10,7 @@ require('../../assets/js/filter.js');//筛选功能
 require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/dropload.min');
 var util = require('../../util/');
-var record = require('../../assets/js/record'); //判断无痕模式
+require('../../assets/js/record'); //判断无痕模式
 
 
 var b = new Date();
@@ -30,7 +30,7 @@ var tomorrow = util.formatDate(b, 'yyyy-MM-dd');
 // }
 
 $(function () {
-  record.setSessionRecord('lastLocation', location.href, true);
+  window.sessionStorage.setItem('lastLocation', location.href);
   var params = {};
   // dropload
   var $houseList = $('.recommend-body .mrl_35'); // $('#houseList')
@@ -236,8 +236,8 @@ $(function () {
       $('#firstSelect').attr("data-enddata", end);
       $('#startDate').val(start);
       $('#endDate').val(end);
-      record.setSessionRecord('startDate', start);
-      record.setSessionRecord('endDate', end);
+      window.sessionStorage.setItem('startDate', start);
+      window.sessionStorage.setItem('endDate', end);
       // console.log($('#firstSelect').data())
       start = start.split('-');
       start = start[1] + '.' + start[2];
