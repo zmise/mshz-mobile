@@ -37,7 +37,10 @@ $(function () {
         //sessionStorage更新缓存的个人信息
         $('#image').attr('src', res.result.url.replace('{size}', '88x88'));
         // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-        var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+        var loginInfo;
+        if (window.sessionStorage.getItem('loginInfo')) {
+          loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
+        }
         if (loginInfo) {
           loginInfo.headPortrait = res.result.url;
           window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
@@ -197,7 +200,11 @@ $(function () {
             }
             if (params.nickname) {
               // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-              var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+              var loginInfo;
+              if (window.sessionStorage.getItem('loginInfo')) {
+                loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
+              }
+
               if (loginInfo) {
                 loginInfo.nickname = params.nickname;
                 window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));

@@ -11,7 +11,11 @@ $(function () {
   function getUserInfo() {
     var dtd = $.Deferred();
     // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-    var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
+    
+    var loginInfo;
+    if (window.sessionStorage.getItem('loginInfo')) {
+      loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
+    }
     if (loginInfo) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {

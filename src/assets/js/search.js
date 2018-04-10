@@ -48,7 +48,11 @@ $(function () {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
     var city = $.trim($('#destination-entry').val());
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var searchHistroy;
+    if (window.localStorage.getItem('searchHistroy')) {
+      searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    }
+    searchHistroy = {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
@@ -157,7 +161,12 @@ $(function () {
     if (destination !== '') {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+
+    var searchHistroy;
+    if (window.localStorage.getItem('searchHistroy')) {
+      searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    }
+    searchHistroy = {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);

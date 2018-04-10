@@ -122,7 +122,11 @@ $(function () {
         var city = $.trim($('#destination-entry').val());
 
         // var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
-        var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+        var searchHistroy;
+        if (window.localStorage.getItem('searchHistroy')) {
+          searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+        }
+        searchHistroy = {};
         var item = searchHistroy[city] || [];
         var str = '';
         if (item.length > 0) {
@@ -382,7 +386,11 @@ $(function () {
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
     var type = $.trim($('#search-entry').data('type'));
-    var searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy')) || {};
+    var searchHistroy;
+    if (window.localStorage.getItem('searchHistroy')) {
+      searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    }
+    searchHistroy = {};
     var cityType = searchHistroy[city] || [];
     var typeItem;
     for (var i = 0; i < cityType.length; i++) {
