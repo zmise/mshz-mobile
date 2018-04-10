@@ -28,7 +28,6 @@
     width: .3rem
 }
 
-
 /* 其他订单详情的样式 */
 
 .article-body {
@@ -57,6 +56,12 @@
     font-size: .3rem;
 }
 
+.article-body .others-info .cot-txt {
+    font-size: .22rem;
+    color: $color;
+    line-height: .4rem;
+}
+
 .article-body .others-info .current1 {
     color: rgba(255, 92, 92, 1);
 }
@@ -64,13 +69,6 @@
 .article-body .others-info .current2 {
     color: $color;
 }
-
-.article-body .others-info .cot-txt {
-    font-size: .22rem;
-    color: $color;
-    line-height: .4rem;
-}
-
 
 /* 退房，取消有退款的订单详情的样式 */
 
@@ -90,7 +88,6 @@
     color: rgba(255, 92, 92, 1);
     margin-left: .3rem;
 }
-
 
 /* 公共订单详情的样式 */
 
@@ -154,7 +151,7 @@
 }
 
 .article-body .order-info .time,
-{
+    {
     padding: 0.2rem 0 0 .07rem;
 }
 
