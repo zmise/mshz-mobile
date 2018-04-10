@@ -22,7 +22,10 @@ const jsPlugin = new webpack.optimize.UglifyJsPlugin(); //JS压缩
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const copyArray = new CopyWebpackPlugin([{
   from: path.resolve(config.srcDir, 'assets/img'),
-  to: 'static/img/'
+  to: 'static/img'
+}, {
+  from: path.resolve(config.srcDir, 'assets/app'),
+  to: 'app'
 }]);
 
 // 定义 plugin
