@@ -17,7 +17,7 @@
     rangeValue: '.range-value', // range-value
     textValue: '.text-value', // text-value
     moveTextClass: 'orange-text', // 拖动时的ClassName
-    defaultText: '不限', // 默认文本    
+    defaultText: '不限', // 默认文本
     firstCallback: null, // 前一个回调函数
     lastCallback: null, // 后一个回调函数
   };

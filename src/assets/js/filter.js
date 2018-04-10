@@ -27,7 +27,15 @@ $(function () {
         maxValue: 21,
         unitValue: 50,
         firstValue: 0,
-        lastValue: 21
+        lastValue: 21,
+        firstCallback: function () {
+          var prices = $('.first-slider .text-value').text().replace('￥', '') + '-' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '*');
+          $('#prices').val(prices);
+        }, // 前一个回调函数
+        lastCallback: function () {
+          var prices = $('.first-slider .text-value').text().replace('￥', '') + '-' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '*');
+          $('#prices').val(prices);
+        }, // 后一个回调函数
       });
     }
   };
@@ -117,7 +125,12 @@ $(function () {
     $(this).addClass('current').siblings().removeClass('current');
     $(this).siblings().find('.icon').removeClass('current');
     $(this).find('.icon').addClass('current');
+    var roomCount = $('.threelist .options:eq(0)').find('.current').data('roomcount');
+    if (roomCount) { // 排除未选房间数的情况
+      $('#roomCount').val(roomCount);
+    }
   });
+
 
   /* 多选事件 */
   $filterList.on('tap', '.more-sel-items', function (e) {
@@ -126,7 +139,10 @@ $(function () {
     $(this).toggleClass('current');
     $(this).find('.icon').toggleClass('current');
     $(this).closest('.items-box').find('.current').text();
-
+    var furniture = $.map($('.threelist .options:eq(1)').find('.more-sel-items.current'), function (el) {
+      return $(el).data('furniture');
+    }).join(',');
+    $('#furniture').val(furniture);
   });
 
 
