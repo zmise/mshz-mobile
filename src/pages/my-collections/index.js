@@ -40,7 +40,7 @@ $(function () {
       domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>',
       domNoData: '<section class="unusual-body">' +
         '  <div class="no-house"></div>' +
-        '  <span>请赶紧去收藏房源吧</span>' +
+        '  <span>你还没用收藏房源哦~</span>' +
         '</section>',
       domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
       domNetworkError: '<section class="unusual-body">' +
@@ -125,7 +125,7 @@ $(function () {
             str =
               '<section class="unusual-body">' +
               '  <div class="no-house"></div>' +
-              '  <span>请赶紧去收藏房源吧</span>' +
+              '  <span>你还没用收藏房源哦~</span>' +
               '</section>';
           }
           $collectionsList.append(str);
