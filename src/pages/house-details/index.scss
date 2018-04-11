@@ -478,6 +478,8 @@ body {
     color: rgba(94, 100, 107, 1);
     line-height: .4rem;
     @include line-clamp;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .comment-body .first-comment .des .img-list {
