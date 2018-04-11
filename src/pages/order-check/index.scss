@@ -12,9 +12,8 @@ body {
 }
 
 .hidden {
-    display: none!important;
+    display: none !important;
 }
-
 
 /* address-body */
 
@@ -85,7 +84,6 @@ body {
     padding-left: 0;
 }
 
-
 /* color-border */
 
 .color-border {
@@ -94,7 +92,6 @@ body {
     background: url('img/color-border.png') no-repeat;
     background-color: #fff;
 }
-
 
 /* userInfo-body */
 
@@ -237,7 +234,6 @@ body {
 .userInfo-body .input-layout .peo-num {
     margin: 0 .1rem;
 }
-
 
 /* rule-body */
 
@@ -407,7 +403,6 @@ body {
     color: rgba(181, 185, 190, 1);
 }
 
-
 /* start 消息框的样式 */
 
 .dialog {
@@ -446,9 +441,7 @@ body {
     width: 0px; // background-color: skyblue;
 }
 
-
 /* end 对话框的样式 */
-
 
 /*footer check-body */
 
@@ -493,4 +486,11 @@ body {
     @include linear-gradient;
     color: #fff;
     font-size: .36rem;
+}
+
+input:-ms-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input::-webkit-input-placeholder{
+    color: $color;
 }
