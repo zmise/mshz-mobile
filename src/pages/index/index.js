@@ -125,8 +125,9 @@ $(function () {
         var searchHistroy;
         if (window.localStorage.getItem('searchHistroy')) {
           searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+        } else {
+          searchHistroy = {};
         }
-        searchHistroy = {};
         var item = searchHistroy[city] || [];
         var str = '';
         if (item.length > 0) {
@@ -389,8 +390,9 @@ $(function () {
     var searchHistroy;
     if (window.localStorage.getItem('searchHistroy')) {
       searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    } else {
+      searchHistroy = {};
     }
-    searchHistroy = {};
     var cityType = searchHistroy[city] || [];
     var typeItem;
     for (var i = 0; i < cityType.length; i++) {
@@ -399,6 +401,7 @@ $(function () {
         typeItem = cityType[i].type;
       }
     }
+    console.log(typeItem);
     if (dates != '') {
       var split = dates.split('至');
       var str = '&startDate=' + split[0] + '&endDate=' + split[1];
@@ -413,6 +416,7 @@ $(function () {
     if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站' || typeItem === '机场车站' || typeItem === '飞机场' || typeItem === '汽车站' || typeItem === '火车站') {
       path += "&needAllCity=true"
     }
+    console.log(path);
 
     window.location = path;
   })

@@ -51,8 +51,9 @@ $(function () {
     var searchHistroy;
     if (window.localStorage.getItem('searchHistroy')) {
       searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    } else {
+      searchHistroy = {};
     }
-    searchHistroy = {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
@@ -165,8 +166,9 @@ $(function () {
     var searchHistroy;
     if (window.localStorage.getItem('searchHistroy')) {
       searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
+    } else {
+      searchHistroy = {};
     }
-    searchHistroy = {};
     // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
     // console.log(item);
