@@ -488,9 +488,18 @@ body {
     font-size: .36rem;
 }
 
-input:-ms-input-placeholder,
-input:-moz-placeholder,
-input::-moz-placeholder,
-input::-webkit-input-placeholder{
+.cale-styel:-moz-placeholder {
+    color: $color;
+}
+
+.cale-styel::-webkit-input-placeholder {
+    color: $color;
+}
+
+.cale-styel::-moz-placeholder {
+    color: $color;
+}
+
+.cale-styel:-ms-input-placeholder {
     color: $color;
 }

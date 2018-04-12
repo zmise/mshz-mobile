@@ -281,13 +281,32 @@ textarea {
     -webkit-tap-highlight-color: transparent;
 }
 
-input:-ms-input-placeholder,
+// Firefox 4-18
 input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: rgba(181, 185, 190, 1);
+    line-height: 1.2;
+}
+
+// Firefox 19+
+//::-moz-placeholder 伪元素在Firefox 19+替代了之前的 :-moz-placeholder 伪类.
 input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: rgba(181, 185, 190, 1);
+    line-height: 1.2;
+}
+
+// Internet Explorer 10+
+// 经测试，现在这种写法在IE10+上设置没有反应，兼容性还有待探讨
+:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: rgba(181, 185, 190, 1);
+    line-height: 1.2;
+}
+
+// Safari and Chrome
+// 必须加上元素标签，不然不生效
 input::-webkit-input-placeholder,
-textarea:-ms-input-placeholder,
-textarea:-moz-placeholder,
-textarea::-moz-placeholder,
 textarea::-webkit-input-placeholder {
     color: rgba(181, 185, 190, 1);
     line-height: 1.2;
