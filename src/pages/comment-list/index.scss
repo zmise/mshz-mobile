@@ -4,7 +4,7 @@
 @import '../../sass/navigate.scss'; // 侧边导航
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/zoomify.scss'; // 查看大图样式
-// @import '../../sass/appDownload.scss'; // 全局下载APP
+
 body {
     position: relative;
     padding-top: 1.76rem;
@@ -223,7 +223,7 @@ body {
 
 .article-body .tobe-assess .content {
     @include flex;
-    @include flex-box; // @include align-items(space-between);
+    @include flex-box;
     @include flex-direction(column);
     height: 100%;
     margin-left: .2rem;
@@ -271,23 +271,3 @@ body {
     font-size: .24rem;
 }
 
-// .article-body .all-assess .time,
-// {
-//     padding: 0.2rem 0 0 .07rem;
-// }
-// .article-body .all-assess .address {
-//     padding: 0.1rem 0 0 .07rem;
-// }
-// .article-body .all-assess .time .icon,
-// .article-body .all-assess .address .icon {
-//     width: 0.35rem;
-//     height: 0.35rem;
-//     font-size: .33rem;
-//     color: rgba(196, 201, 205, 1);
-//     margin-right: .1rem;
-// }
-// .article-body .all-assess .time .txt,
-// .article-body .all-assess .address .txt {
-//     font-size: .26rem;
-//     color: rgba(42, 43, 45, 1);
-// }

@@ -7,8 +7,7 @@
 body {
     position: relative;
     padding: .88rem 0 1rem;
-    background-color: #f5f5f5; // height: 100%;
-    // box-sizing: border-box;
+    background-color: #f5f5f5;
 }
 
 .hidden {
@@ -301,7 +300,7 @@ body {
     0,
     auto);
     align-items: left;
-    padding-left: .35rem; // width: 10.99rem;
+    padding-left: .35rem;
     height: 3rem;
     font-size: $font-large;
     color: #fff;
@@ -426,7 +425,7 @@ body {
     height: 0px;
     left: .4rem;
     position: absolute;
-    width: 0px; // background-color: black;
+    width: 0px;
 }
 
 .dialog-border-bottom:after {
@@ -438,7 +437,7 @@ body {
     height: 0px;
     left: .4rem;
     position: absolute;
-    width: 0px; // background-color: skyblue;
+    width: 0px;
 }
 
 /* end 对话框的样式 */
@@ -452,7 +451,7 @@ body {
     0,
     0,
     500);
-    @include flex-box; // @include flex-direction;
+    @include flex-box; 
     height: 1rem;
     background-color: #fff;
     box-shadow: 0 -.1rem .1rem rgba(200, 200, 200, .2);

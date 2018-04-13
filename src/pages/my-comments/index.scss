@@ -114,7 +114,7 @@ body {
 .article-body .self-assess .content .i-txt {
     @include flex;
     flex: 1;
-    @include flex-box; // @include align-items(space-between);
+    @include flex-box; 
     @include flex-direction(column);
     @include justify-content(space-between);
     height: 100%;

@@ -112,7 +112,7 @@
     @include flex-box;
     @include flex-wrap(wrap);
     @include flex-direction;
-    @include align-items; // height: 2.37rem;
+    @include align-items;
     padding: .48rem .35rem .12rem;
 }
 
@@ -136,12 +136,7 @@
 
 /* start des-list */
 
-// .des-list {
-//     // @include flex;
-//     // height: 6rem;
-//     // border-top: $border;
-//     // overflow: hidden;
-// }
+
 .des-list .slide {
     background-color: #fff;
 }
@@ -184,7 +179,6 @@
     text-overflow: ellipsis；
 }
 
-// .des-location .content .add,
 .des-location .content .txt {
     display: block;
     font-size: .26rem;

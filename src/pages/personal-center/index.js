@@ -99,40 +99,7 @@ $(function () {
   }
 
   queryPersonalCenter();
-  // //点击进入我的积分
-  // $('.articleBody').on('tap', '#myInegral-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = './myIntegral.html';
-  // });
-  // //点击进入订单列表
-  // $('.articleBody').on('tap', '#orderList-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = './order-list.html';
-
-  // });
-
-  // //点击进入成为房东页面
-  // $('.articleBody').on('tap', '#landlord-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = './tobelandlord.html';
-  // });
-  // //点击进入成为房东页面
-  // $('.articleBody').on('tap', '#landlord-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = './tobelandlord.html';
-  // });
-
-  // //点击进入评价列表
-  // $('.articleBody').on('tap', '#assessList-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = './assess-list.html';
-  // });
-
+ 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();

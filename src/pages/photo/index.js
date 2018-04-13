@@ -12,15 +12,7 @@ $(function () {
     if (r != null) return decodeURI(r[2]); //处理中文乱码
     return null; //返回参数值
   }
-  // 房源图片的get请求
-  // var imageIndex = parseInt(getUrlParam('imageIndex'));
-  // console.log(imageIndex);
-  // 向模板中导入全局变量
-  // template.defaults.imports.$typeIndex = parseInt(getUrlParam('typeIndex'));
-  // template.defaults.imports.$itemIndex = parseInt(getUrlParam('itemIndex')) + 1;
-  // $.ajax();
-  // console.log(getUrlParam('houseId'));
-  // console.log(parseInt(getUrlParam('id')));
+
 
   var id = getUrlParam('id');
   var imageIndex = getUrlParam('imageIndex'); // 总数的第几
@@ -131,8 +123,6 @@ $(function () {
                 index = index - $('.types').eq(idx).find('.items').length;
               }
             }
-            // $('.title').html('<span>房源相册 ' + '<i class="num">' + _cur + '/' + _sum + '</i></span>');
-            // $('.num').text(indexNum);
           };
 
           /* 通过点击类型Tab获得图片下标 */
@@ -169,12 +159,6 @@ $(function () {
 
           });
 
-
-          // $('back').on('touchstart', function (e) {
-          //   e.preventDefault();
-          //   e.stopPropagation();
-          // });
-
         }
       },
       error: function (error) {
@@ -199,21 +183,5 @@ $(function () {
     e.stopPropagation();
     history.go(-1)
   });
-  // var data = {
-  //   // 'typeIndex': typeIndex,
-  //   // 'itemIndex': itemIndex + 1,
-  //   'status': 0,
-  //   'data': [{
-  //       'imageType': '房源图',
-  //       'imageUrlList': ['img/1.png', 'img/2.png']
-  //     },
-  //     {
-  //       'imageType': '小区图',
-  //       'imageUrlList': ['img/3.png', 'img/4.png', 'img/5.png']
-  //     }
-  //   ]
-  // };
-  // var html = template('tpl-data', data);
-  // $('#content').html(html);
 
 });

@@ -36,7 +36,6 @@ $(function () {
       if (res.status === 'C0000') {
         //sessionStorage更新缓存的个人信息
         $('#image').attr('src', res.result.url.replace('{size}', '88x88'));
-        // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
         var loginInfo;
         if (window.sessionStorage.getItem('loginInfo')) {
           loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
@@ -58,49 +57,6 @@ $(function () {
     return dtd.promise();
   }
 
-  // //从本地上传图片文件(input type=file)
-  // function imgPreview(fileDom) {
-  //   //判断是否支持FileReader
-  //   if (window.FileReader) {
-  //     var reader = new FileReader();
-  //   } else {
-  //     alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
-  //   }
-
-  //   //获取文件
-  //   // console.log(fileDom);
-
-  //   var file = fileDom[0].files[0];
-  //   // console.log(file);
-
-  //   var imageType = /^image\//;
-  //   //是否是图片
-  //   if (!imageType.test(file.type)) {
-  //     alert("请选择图片！");
-  //     return;
-  //   }
-  //   //读取完成
-  //   reader.onload = function (e) {
-  //     //获取图片dom
-  //     // console.log(e.target);
-  //     // console.log(e.target.result);
-  //     // var $img = $('#img');
-  //     // //图片路径设置为读取的图片
-  //     // $img.attr('src', e.target.result);
-  //     // console.log(fileDom.next());
-  //     if (e.target.result) {
-  //       $('#image').attr('src', e.target.result);
-  //       var params = {
-  //         headPortrait: e.target.result,
-  //       }
-  //       updateUserInfo(params);
-  //     } else {
-  //       toast.show('传入的图片文件不正确');
-  //     }
-
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
 
   //用户个人中心所需数据get接口
   function queryInfo() {
@@ -199,7 +155,6 @@ $(function () {
               }
             }
             if (params.nickname) {
-              // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
               var loginInfo;
               if (window.sessionStorage.getItem('loginInfo')) {
                 loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
@@ -242,7 +197,6 @@ $(function () {
   // 点击到完成并登录成功跳转到login /^\d+$/
   $('#save').on('click', function (e) {
     e.stopPropagation();
-    // e.preventDefault();
 
     var nickname = $.trim($('#nickname').val());
     var nameReg = /^\d+$/; //纯数字
@@ -260,7 +214,6 @@ $(function () {
   // 点击返回回到info
   $('#return').on('click', function (e) {
     e.stopPropagation();
-    // e.preventDefault();
     $('.nickname-body').css('display', 'none');
     location.replace('./personal-info.html#');
   });
@@ -268,7 +221,7 @@ $(function () {
   //
   $('.article-body').on('click', '.nickname-entry', function (e) {
     e.stopPropagation();
-    // e.preventDefault();
+
     $('#nickname').val($(this).find('.content span').text());
     $('.nickname-body').css('display', 'block');
     location.replace('./personal-info.html#NICKNAME');
@@ -280,8 +233,7 @@ $(function () {
 
   // 点击上传图片  更换头像
   $('.article-body').on('click', '#image', function (e) {
-    // e.stopPropagation();
-    // e.preventDefault();
+
     $('#img-file').click();
   });
   $('.article-body').on('change', '#img-file', function (e) {

@@ -30,8 +30,6 @@ $(function () {
       } else {
         startDate = initStartDate;
       }
-
-      // startDate = initStartDate;
     }
 
 
@@ -58,8 +56,6 @@ $(function () {
   var endDateUrl = getUrlParam('endDate');
   // init价格日历请求
   function calePriceInfo(params) {
-    // params.endDate = '2018-03-31';
-    // console.log(params)
     var city = $('#destination-entry').val();
     $.ajax({
       url: '/mshz-app/room/calendarEveryDay',
@@ -68,8 +64,6 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (res) {
-        // console.log('success');
-        // console.log(data);
         if (res.status === 'C0000') {
           var data = res.result.map;
 
@@ -156,8 +150,6 @@ $(function () {
 
   // 订单预览get接口
   function orderPreviewInfo(params) {
-
-    // console.log(params);
 
     return $.ajax({
       url: '/mshz-app/security/app/order/queryOrderPreview',
@@ -323,14 +315,6 @@ $(function () {
       top: -document.body.scrollTop + 'px'
     });
   }
-  // /*   显示日历的控件的点击事件 */
-  // $('.userInfo-body').on('tap', '.calc-entry', function (e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   $('.calendar').slideToggle();
-  //   // $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
-  //   stopScroll();
-  // });
 
   /*   显示日历的控件的点击事件 */
   $('.userInfo-body').on('tap', '#reduce', function (e) {

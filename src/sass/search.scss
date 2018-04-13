@@ -24,7 +24,7 @@
 .search-layer .search-body .text-body {
     @include flex-box;
     @include flex;
-    @include align-items; // @include justify-content(space-between);
+    @include align-items;
     padding: .08rem 0;
     height: 0.72rem;
     border-radius: .44rem;
@@ -82,25 +82,7 @@
     z-index: 1;
 }
 
-// .search-layer .search-body .text-body .search-icon:before {
-//     @include position(absolute, .24rem, auto, auto, .24rem, 10);
-//     display: block;
-//     content: '';
-//     width: .2rem;
-//     height: .2rem;
-//     border: .04rem solid #fff;
-//     border-radius: 50%;
-//     z-index: 2;
-// }
-// .search-layer .search-body .text-body .search-icon:after {
-//     @include position(absolute, .5rem, auto, auto, .44rem, 10);
-//     display: block;
-//     content: '';
-//     width: .16rem;
-//     height: .04rem;
-//     background-color: #fff;
-//     @include transform(rotateZ(45deg));
-// }
+
 .search-layer .search-body .text-body .style-two:before {
     @include position(absolute, .24rem, auto, auto, .24rem, 10);
     display: block;
@@ -231,7 +213,6 @@
 /* search-keyword */
 
 .search-layer .search-keyword {
-    // display: none;
     @include flex;
     padding: .88rem .35rem 0;
     overflow: hidden;
@@ -250,7 +231,7 @@
 
 .search-layer .search-keyword .keywords {
     @include flex-box;
-    @include flex-wrap(wrap); // padding: 0 .3rem;
+    @include flex-wrap(wrap); 
 }
 
 .search-layer .search-keyword .items {

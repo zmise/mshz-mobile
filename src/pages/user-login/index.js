@@ -1,6 +1,5 @@
 require('./index.scss');
 require('../../assets/js/analytics.js');
-// require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/record'); //判断无痕模式
@@ -26,9 +25,6 @@ $(function () {
           if (item && item !== '') {
             window.sessionStorage.setItem('loginInfo', JSON.stringify(item));
           }
-
-          // for test
-          // location.replace('./order-list.html');
 
           var lastLocation = window.sessionStorage.getItem('lastLocation');
           if (lastLocation) {

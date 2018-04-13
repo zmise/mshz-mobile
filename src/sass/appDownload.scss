@@ -50,8 +50,8 @@
     @include justify-content;
     padding: .12rem .3rem;
     font-size: .28rem;
-    color: #fff; // line-height: 1.2;
-    border-radius: .4rem; // background-color: #5aa572;
+    color: #fff;
+    border-radius: .4rem;
     @include linear-gradient;
     box-shadow: 0 0 8px rgba(100, 100, 100, .3);
 }
@@ -68,20 +68,3 @@
     color: #5aa572;
 }
 
-// .app-download .close:before,
-// .app-download .close:after {
-//     @include position(absolute, .18rem, auto, auto, .04rem, 10);
-//     display: block;
-//     content: '';
-//     width: .28rem;
-//     height: .04rem;
-//     border-radius: .04rem;
-//     background-color: #999;
-//     z-index: 1000;
-// }
-// .app-download .close:before {
-//     @include transform(rotateZ(45deg));
-// }
-// .app-download .close:after {
-//     @include transform(rotateZ(-45deg));
-// }

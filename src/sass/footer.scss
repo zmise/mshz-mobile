@@ -16,8 +16,7 @@
 .site-map {
     @include flex-box;
     @include flex-direction;
-    width: 100%; // padding-top: .4rem;
-    // padding-bottom: .4rem;
+    width: 100%;
     padding-top: .18rem;
     padding-bottom: .19rem;
     border-bottom: $border;
@@ -33,7 +32,7 @@
 .site-map-icon {
     width: .6rem;
     height: .5rem;
-    font-size: .48rem; // margin-bottom: 0.02rem;
+    font-size: .48rem;
 }
 
 .site-map-mbox {

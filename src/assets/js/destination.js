@@ -4,15 +4,12 @@ $(function () {
   //   e.preventDefault();
   // });
   /* 进入日地的的弹出页面 */
-
   var arr = [];
-
   $('#handleDestination').on('tap', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('.des-body').show();
     /* 阻止首页滚动条事件  */
-    // $('body,html').css({ 'overflow': 'hidden' });
     for (var i = 0; i < $('.des-body .des-list .title').length; i++) {
       arr[i] = $('.des-body .des-list .title').eq(i).offset().top;
     }
@@ -47,12 +44,7 @@ $(function () {
         break;
       }
     }
-    // var c = $('.des-body').scrollHeight - $('.des-body').clientHeight;
-    // console.log(b);
-    // console.log($('.des-body .des-list .title').eq(0));
-    // console.log($('.des-body'));
     if (a > 0) {
-      // console.log('zmise');
       $('.des-body').animate({ scrollTop: a }, 1000);
     }
   });

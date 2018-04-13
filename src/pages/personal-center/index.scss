@@ -24,7 +24,7 @@ body {
     @include justify-content(space-between);
     @include linear-gradient;
     height: 1.9rem;
-    padding: 0 .65rem 0 .35rem; // background: $color;
+    padding: 0 .65rem 0 .35rem;
     box-sizing: border-box;
 }
 
@@ -73,10 +73,7 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-// .personal-info .name-time span:first-child {
-//     font-size: .26rem;
-//     color: rgba(94, 100, 107, 1);
-// }
+
 
 /* other-info */
 
@@ -115,7 +112,6 @@ body {
     @include flex-box;
     @include flex-direction(column);
     height: 5.45rem;
-    // padding-bottom: 0.2rem;
     margin-top: 0.13rem;
     background: rgba(255, 255, 255, 1);
     box-sizing: border-box;
@@ -230,7 +226,7 @@ body {
     @include justify-content;
     @include linear-gradient;
     width: 2.52rem;
-    height: .48rem; // background: $color;
+    height: .48rem;
     border-radius: .04rem;
     font-size: .24rem;
     color: rgba(255, 255, 255, 1);
@@ -250,7 +246,6 @@ body {
     color: rgba(94, 100, 107, 1);
 }
 
-//.noOrder-body
 .article-body .noOrder-body {
     @include flex-box;
     @include flex-direction(column);

@@ -10,8 +10,6 @@ $(function () {
 
   function getUserInfo() {
     var dtd = $.Deferred();
-    // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-    
     var loginInfo;
     if (window.sessionStorage.getItem('loginInfo')) {
       loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))

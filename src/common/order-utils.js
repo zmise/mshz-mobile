@@ -108,10 +108,6 @@ function buildButton(state, data) {
       '</section>';
   }
 
-  // if (map[state].content.length > 0) {
-  //   button += '<div class="more-text">' + map[state].content.replace('{{TEXT}}', data.refundDate) + '</div>';
-  // }
-
 
   return button;
 }

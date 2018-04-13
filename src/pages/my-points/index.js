@@ -8,7 +8,7 @@ require('../../assets/js/navigate.js');
 require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/dropload.min'); // 分页插件
 $(function () {
-  var $collectionsList = $('.article-body .list'); // $('#collectionsList')
+  var $collectionsList = $('.article-body .list');
 
   var dropload = $('.article-body').dropload({
     scrollArea: window,
@@ -23,7 +23,7 @@ $(function () {
       domRefresh: '<div class="dropload-refresh"> </div>',
       domLoad: '<div class="dropload-load"><span class="dropload-loading"></span>加载中...</div>',
       domNoData: '',
-      domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
+      domFinished: '',//
       domNetworkError: '<section class="unusual-body">' +
         '  <div class="no-network"></div>' +
         '  <span>网络请求失败，请检查网络</span>' +
@@ -95,9 +95,7 @@ $(function () {
       }
     });
   }
-  //queryUserPointsRecord get接口
 
-  //
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();

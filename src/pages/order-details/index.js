@@ -94,12 +94,10 @@ function orderCancel(data) {
       if (res.status === 'C0000') {
         console.log('success');
         toast.show('取消成功');
-        //跳转order-list页面
-        // var path = './order-list.html#' + order.flag;
+
         //跳转order-details页面
         var path = './order-details.html?orderNo=' + order.orderNo + '#' + order.flag;
         setTimeout(function () {
-          // window.location.replace = path;
           history.go(0)
         }, 1000);
       } else {

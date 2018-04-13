@@ -9,7 +9,7 @@
 @import '../../sass/footer.scss'; // 全局底部
 @import '../../sass/appDownload.scss'; // 全局下载APP
 @import '../../sass/dropload.scss';
-// @import '../../sass/loading.scss'; // 加载中
+
 body {
     position: relative;
     padding: .88rem 0 .86rem;
@@ -22,7 +22,7 @@ body {
 /* 确保底部footer在底部 */
 
 .article-body {
-    min-height: calc(100% - 3.18rem); // background-color: #fff;
+    min-height: calc(100% - 3.18rem);
 }
 
 
@@ -82,7 +82,3 @@ body {
 .recommend-body .index-list:last-child {
     border: none;
 }
-
-// #menu {
-//     display: none;
-// }

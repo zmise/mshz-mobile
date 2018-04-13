@@ -64,56 +64,7 @@ $(function () {
         console.log('error');
       }
     });
-
   }
-
-  // 确认房源是否被收藏get接口
-  // function queryRoomIsAlready(params) {
-  //   console.log(params)
-  //   $.ajax({
-  //     url: '/mshz-app/security/userinfo/queryRoomIsAlready',
-  //     data: params,
-  //     dataType: 'json',
-  //     type: 'GET',
-  //     cache: false,
-  //     success: function (res) {
-  //       if (res.status === 'C0000') {
-  //         if (res.result) {
-  //           $('#collect').attr('data-status', 'collect').addClass('clc-red');
-  //           /* 登录过后点击切换喜欢收藏  */
-  //           $('.banner-body').on('click', '#collect', function (e) {
-  //             event.preventDefault();
-  //             event.stopPropagation();
-  //             $(this).toggleClass('clc-red');
-  //             var status = $(this).data('status');
-  //             var params = {
-  //               situationId: $(this).data('situationId'),
-  //             };
-  //             if (status === 'collect') {
-  //               $(this).attr('data-status', '');
-  //               deleteUserCollectRoom(params);
-  //             } else {
-  //               $(this).attr('data-status', 'collect');
-  //               addUserCollectRoom(params);
-  //             }
-  //           });
-  //         } else {
-  //           $('#collect').attr('data-status', '');
-  //           $('.banner-body').on('click', '#collect', function (e) {
-  //             event.preventDefault();
-  //             event.stopPropagation();
-  //             toast.show('后台处理没有成功收藏');
-  //           });
-  //         }
-  //       }
-  //     },
-  //     error: function (error) {
-  //       console.log(error);
-  //       console.log('error');
-  //     }
-  //   });
-
-  // }
 
   //增加用户收藏房源post接口
   function addUserCollectRoom(params, el) {

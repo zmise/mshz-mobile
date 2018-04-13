@@ -26,10 +26,10 @@ $(function () {
 
   // dropload
 
-  var $orderList = $('.article-body .list'); // $('#orderList')
+  var $orderList = $('.article-body .list');
   var dropload = $('.article-body').dropload({
     scrollArea: window,
-    domUp: {                                                            // 上方DOM
+    domUp: {
       domClass: 'dropload-up',
       domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
       domUpdate: '<div class="dropload-update">↑释放更新</div>',
@@ -43,7 +43,7 @@ $(function () {
         '<div class="img"></div>' +
         '<p class="txt">~空空如也~</p>' +
         ' </div>',
-      domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
+      domFinished: '',
       domNetworkError: '<section class="unusual-body">' +
         '  <div class="no-network"></div>' +
         '  <span>网络请求失败，请检查网络</span>' +
@@ -68,7 +68,6 @@ $(function () {
       pageSize: 10,
       orderQueryType: orderQueryType
     }
-    // console.log(params);
     $.ajax({
       url: '/mshz-app/security/app/order/queryOrderPage',
       data: params,
@@ -87,7 +86,6 @@ $(function () {
           && res.result
           && res.result.items
           && res.result.items.length > 0) {
-          // $orderList.empty();
           var strA = '';
           var strB = '';
           var data = res.result.items;
@@ -270,7 +268,6 @@ $(function () {
 
         if (res.status === 'C0000') {
           toast.show('取消成功');
-          // orderList();
           var orderNo = params.orderNo
           $('#' + orderNo).remove();
           if ($('.article-body .list .box').length === 0) {
@@ -294,8 +291,7 @@ $(function () {
       }
     });
   }
-  // loadingMore({ isReload: true })
-  //$('.order-sort-body')
+
   $orderSort.on('tap', '.items', function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -307,7 +303,6 @@ $(function () {
     console.log(location);
     orderQueryType = $(this).data('orderQueryType');
     location.replace('order-list.html#' + orderQueryType);
-    // orderList();
     loadingMore({ isReload: true });
     $('#orderList').on('tap', function (e) {
       e.stopPropagation();

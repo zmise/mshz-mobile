@@ -13,7 +13,6 @@ $(function () {
 
   /* 显示筛选层   */
   function showFilterLayer(index) {
-    // $('body,html').css({ 'overflow': 'hidden' });
     $overlay.show();
     $filterLayer.slideDown(200);
     $filterList.hide().eq(index).show();
@@ -96,19 +95,11 @@ $(function () {
     hideFilterLayer();
   });
 
-  /* overlay的tap事件  */
-  // $overlay.on('tap', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   hideFilterLayer();
-  // });
-
 
   /* 切换筛选项   */
   $filterBody.on('tap', '.mostjs', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    // $('.filter-body .items').eq($(this).index()).addClass('current').siblings().removeClass('current');
     $('#caleDate').text($('#firstSelect').text());
     if ($(this).hasClass('current') && $filterLayer.css('display') !== 'none') {
       hideFilterLayer();
@@ -144,16 +135,6 @@ $(function () {
     }).join(',');
     $('#furniture').val(furniture);
   });
-
-
-
-  // params.page = 1;
-
-  /* 排序事件 */
-  // $('.twolist .items').on('tap', function (e) {
-  //   e.stopPropagation();
-  //   hideFilterLayer();
-  // });
 
 
   /* 条件搜索的ajax事件 */

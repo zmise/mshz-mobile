@@ -566,16 +566,6 @@ body {
     color: rgba(181, 185, 190, 1);
 }
 
-// @each $item in garden,
-// school,
-// overseas,
-// office,
-// onekey {
-//     .comment-body .#{$item} {
-//         background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
-//         background-size: 100% auto;
-//     }
-// }
 /*start living-info */
 
 .living-info {
@@ -612,10 +602,6 @@ body {
     word-break: break-all;
 }
 
-// .living-info .items .gap {
-//     display: inline-block;
-//     width: 2em;
-// }
 /* feature-channel */
 
 .feature-channel {
@@ -661,16 +647,6 @@ body {
     border-radius: .04rem;
 }
 
-// @each $item in garden,
-// school,
-// overseas,
-// office,
-// onekey {
-//     .feature-channel .#{$item} {
-//         background: url('img/feature-#{$item}.jpg') 50% 50% no-repeat;
-//         background-size: 100% auto;
-//     }
-// }
 .feature-channel .slide .oneline {
     @include flex-box;
     @include justify-content(space-between);

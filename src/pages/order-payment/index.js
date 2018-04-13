@@ -18,7 +18,6 @@ $(function () {
 
       var str = '<div class="txt"><span>订单号：<span>' + order.orderNo + '</span></span><div class="longTxt"><span>房费：￥<span>' + data.roomRate + '</span></span><i class="iconfont icon-riqi"></i><span>' + data.startTime.replace(/-/g, '.') + '-' + data.endTime.replace(/-/g, '.') + ' 共' + data.bookedDays + '晚</span></div><span>押金：￥<span>' + data.roomDeposit + '</span></span></div> ';
       $('.tol-pri').text('￥' + (+data.roomRate + +data.roomDeposit));
-      // console.log($('tol-pri').text())
 
       $('.content-body .content').empty().append(str);
       $('#paymentInfo').show();

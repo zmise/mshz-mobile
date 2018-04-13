@@ -1,6 +1,5 @@
 require('./index.scss');
 require('../../assets/js/analytics.js');
-// require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/record'); //判断无痕模式
@@ -11,8 +10,6 @@ $(function () {
   // 跳转逻辑
   function windowLocation() {
     var lastLocation = window.sessionStorage.getItem('lastLocation');
-    // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
-
     var loginInfo;
     if (window.sessionStorage.getItem('loginInfo')) {
       loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
@@ -39,7 +36,6 @@ $(function () {
       success: function (res) {
         if (res.status === 'C0000') {
           toast.show('密码设置完成，请牢记密码！');
-          // var loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'));
           var loginInfo;
           if (window.sessionStorage.getItem('loginInfo')) {
             loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
@@ -48,8 +44,7 @@ $(function () {
           loginInfo.hasSetPassword = true;
           window.sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo));
           setTimeout(function () {
-            // window.location = '/';
-            windowLocation();
+            window.location = '/';
           }, 2000);
         } else {
           toast.show(res.message);
@@ -74,8 +69,7 @@ $(function () {
       $('#psw').attr('type', 'password');
     }
   });
-  // [\u4e00-\u9fa5_\s/g]{6,12}
-  // 点击到完成并登录成功跳转到login /\s/g  /[\u4e00-\u9fa5_\s/g]/ /[^\x00-\xff]/if (!telReg.test(telVal)) {
+   // 点击到完成并登录成功跳转到login /\s/g  /[\u4e00-\u9fa5_\s/g]/ /[^\x00-\xff]/if (!telReg.test(telVal)) {
   $('#indexEntry').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();

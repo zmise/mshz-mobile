@@ -55,18 +55,12 @@
       var opt = $.extend(defaults, options || {});
       var t = '';
 
-      // setTimeout(function(){
-      //   	box.addClass('show');
-      // },10);
-
       top = opt.isCenter === true ? '50%' : opt.top;
 
       defaults.isLowerIe9 = function () {
         return (!window.FormData);
       }
 
-      // translateY(-50%)
-      // translateInfo = opt.isCenter===true? 'translate3d(-50%,0,0)':'translate3d(-50%,-50%,0)';
 
       defaults.createMessage = function () {
         if (opt.closePrev) {
@@ -83,7 +77,7 @@
           t = setTimeout(function () {
             $('.cpt-toast').remove();
             $('.cpt-toast').removeClass(opt.animateIn).addClass(opt.animateOut).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-              // $('.cpt-toast').remove();              
+              // $('.cpt-toast').remove();
             });
           }, opt.duration);
         } else {

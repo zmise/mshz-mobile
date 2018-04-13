@@ -139,7 +139,6 @@ $(function () {
             $('.index-list a:eq(' + j + ')').attr('href', $('.index-list a:eq(' + j + ')').attr('href').split('&')[0] + '&startDate=' + $('#startDate').val() + '&endDate=' + $('#endDate').val());
           }
         }
-        //dropload.noMoreData = lastParams.page >= res.result.pageCount;
         dropload.resetload(recordCount, lastParams.page, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
@@ -197,7 +196,6 @@ $(function () {
   /* hideFilterLayer */
 
   function hideFilterLayer() {
-    // $('body,html').css({ 'overflow': 'visible' });
     bodyScroll();
     $filterLayer.hide();
     $filterList.hide();
@@ -211,7 +209,6 @@ $(function () {
     e.preventDefault();
     hideFilterLayer();
     $('.calendar').slideToggle('fast');
-    // $('body,html').css({ 'overflow': 'hidden' }); //阻止首页滚动条事件
     stopScroll();
   });
 
@@ -293,10 +290,7 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     var $metroRow = $(this).closest('.content').find('.metro-row');
-    // console.log($metroRow)
     $metroRow.show();
-    // console.log($metroRow.find('.silde:eq(' + $(this).index() + ')'));
-    // $metroRow.find('.silde:eq(' + $(this).index() + ')').show().siblings().hide();
     $metroRow.find('div').css('display', 'none').eq($(this).index()).css('display', 'block');
   });
   $('.filter-list').on('tap', '.metro-row .items', function (e) {
@@ -304,14 +298,12 @@ $(function () {
     e.stopPropagation();
     hideFilterLayer();
     var metro = $(this).text();
-    // console.log(poi)
     if (metro === '不限') {
       metro = '';
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
     } else {
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(metro);
     }
-    // $('#poi').val(metro);
     $('#poi').val('');
     $('#needAllCity').val('true');
     $('#lon').val($(this).data('lon'));
@@ -329,10 +321,6 @@ $(function () {
 
     $(this).addClass('current').siblings().removeClass('current');
     $('.two-row').css('display', 'none').eq($(this).index()).css('display', 'block');
-    // var $closest = $(this).closest('.content').find('.slide-body:not(.one-row)');
-    // $closest.find('.items').removeClass('current');
-    // console.log($closest.find('.items:firstchild'))
-    // $closest.eq(0).addClass('current');
   });
   /* 筛选确定事件 */
 
@@ -344,8 +332,6 @@ $(function () {
       return $(el).data('furniture');
     }).join(',');
 
-    // var $roomCount = $('.threelist .options:eq(0) .items');
-    // var roomCount = $roomCount.find('.current');
     $('#furniture').val(furniture);
     var prices = $('.first-slider .text-value').text().replace('￥', '') + '-' + $('.last-slider .text-value').text().replace('￥', '').replace('不限', '*');
     $('#prices').val(prices);
@@ -403,16 +389,9 @@ $(function () {
 
     //ajax
     loadingMore({ isReload: true });
-    // freachloading($(this).text());
   });
 
 
-  // // login入口
-  // $('#login').on('tap', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   window.location = '/user/login.html';
-  // });
   $('.filter-layer .threelist').on('touchstart', '.range-body', function (e) {
     e.preventDefault();
     e.stopPropagation();

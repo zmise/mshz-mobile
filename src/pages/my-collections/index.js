@@ -42,7 +42,7 @@ $(function () {
         '  <div class="no-house"></div>' +
         '  <span>你还没有收藏房源哦~</span>' +
         '</section>',
-      domFinished: '',// <div class="dropload-finished">已加载所有房源</div>'
+      domFinished: '',
       domNetworkError: '<section class="unusual-body">' +
         '  <div class="no-network"></div>' +
         '  <span>网络请求失败，请检查网络</span>' +
@@ -139,7 +139,6 @@ $(function () {
       }
     });
   }
-  // loadingMore({ isReload: true })
 
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {

@@ -1,11 +1,6 @@
 require('./record'); //判断无痕模式
 
 $(function () {
-  /* 阻止滚动条事件  */
-  // $('.search-layer').on('touchmove', function (e) {
-  //   e.stopPropagation();
-  // });
-
   //恢复首页滚动条事件
   function bodyScroll() {
     var top = -document.body.style.top.replace('px');
@@ -21,20 +16,15 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.search-layer').hide();
-    // $('body,html').css({ 'overflow': 'visible' });
     bodyScroll();
     $('.search-body input').blur();
-    // $('#search-entry').val($('.text-body .text').val());
   });
 
   /* 点击search-keyword给input输入文本并切换 search-list */
   $('.search-layer').on('tap', '.keywords .items', function (e) {
     e.stopPropagation();
     e.preventDefault();
-    // console.log($(this).closest('.search-layer').html());
-    // console.log($("#destination-entry").val());
     $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).text());
-
     $(this).closest('.search-layer').hide();
     $('body,html').css({ 'overflow': 'visible' });
     bodyScroll();
@@ -54,16 +44,13 @@ $(function () {
     } else {
       searchHistroy = {};
     }
-    // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
-    // console.log(item);
     for (var i = 0; i < cityItem.length; i++) {
       var item = cityItem[i].destination;
       if (item == $(this).text()) {
         cityItem.splice(i, 1);
       }
     }
-    // console.log(cityItem);
     var obj = {
       destination: $(this).text(),
       type: $(this).data('type'),
@@ -74,18 +61,8 @@ $(function () {
     }
     searchHistroy[city] = cityItem;
     window.localStorage.setItem('searchHistroy', JSON.stringify(searchHistroy));
-    // $('.search-layer .search-keyword').hide();
-    // var newListHTML = search();
-    // $('.search-list .slide').empty().append(newListHTML)
-    // $('.search-layer .search-list').show();
+
   });
-
-  /* 点击search-list给input输入文本 */
-  // $('.search-list').on('tap', '.slide .items', function (e) {
-  //   e.stopPropagation();
-  //   // $(this).closest('.search-layer').find('.search-body .text-body .text').val($(this).find('.txt').text());
-
-  // });
 
   /* 当搜索框内容不为空时显示清空按钮 */
   $('.search-body').on('input', '.text-body .text', function (e) {
@@ -115,7 +92,6 @@ $(function () {
   //todo
   function search(keyword) {
     var city = $('#destination-entry').val();
-    // console.log(city);
     $.ajax({
       url: '/mshz-app/room/darkSelectRimInfo',
       data: {
@@ -126,7 +102,6 @@ $(function () {
       type: 'GET',
       cache: false,
       success: function (data) {
-        // console.log('success');
         var json = data.result;
         console.log(json);
         var str = '';
@@ -169,16 +144,13 @@ $(function () {
     } else {
       searchHistroy = {};
     }
-    // if(searchHistroy[city])
     var cityItem = searchHistroy[city] || [];
-    // console.log(item);
     for (var i = 0; i < cityItem.length; i++) {
       var item = cityItem[i].destination;
       if (item == $(this).text()) {
         cityItem.splice(i, 1);
       }
     }
-    // console.log(cityItem);
     var obj = {
       destination: destination,
       type: type,
@@ -197,7 +169,6 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
     $(this).closest('.text-body').find('.text').val('');
-    // $('#search-entry').val('');
     $('.search-layer .search-keyword').show();
     $('.search-layer .search-list').hide();
   });

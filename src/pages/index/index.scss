@@ -30,21 +30,6 @@ body {
     background-size: cover;
 }
 
-// .header-body .header-title {
-//     @include flex-box;
-//     @include flex-direction;
-//     @include align-items;
-//     @include justify-content(space-between);
-//     width: 5.85rem;
-//     height: .81rem;
-//     padding-top: 1.43rem;
-//     margin-left: .9rem;
-// }
-// .header-body .header-title p {
-//     font-size: .88rem;
-//     font-family: MFYueYuan_Noncommercial-Regular;
-//     color: rgba(255, 255, 255, 1);
-// }
 .header-body .user {
     @include position(absolute,
     .24rem,
@@ -268,17 +253,6 @@ body {
     ;
 }
 
-// .recommend-body .title .icon:before {
-//     @include position(absolute, 4px, auto, auto, 1px, 10);
-//     display: block;
-//     content: '';
-//     width: 10px;
-//     height: 10px;
-//     border-width: 2px 2px 0 0;
-//     border-style: solid;
-//     border-color: #ccc;
-//     @include transform(rotateZ(45deg));
-// }
 .icon {
     /* 通过设置 font-size 来改变图标大小 */
     width: 1em;
@@ -298,10 +272,6 @@ body {
     font-size: 0.17rem;
 }
 
-// #menu {
-//     display: none;
-// }
-//pagination
 .banner-body .pagination {
     @include flex-box;
     margin-bottom: 1.2rem;
@@ -317,7 +287,6 @@ body {
 }
 
 .pagination .current {
-    // @include linear-gradient;;
     @include linear-gradient;
 }
 

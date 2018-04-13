@@ -19,7 +19,6 @@ body {
 
 footer {
     @include flex;
-    // padding-bottom: 1rem;
 }
 
 #paymentInfo {
@@ -77,12 +76,6 @@ footer {
     border-bottom: $border;
 }
 
-// .content-body .icon {
-//     height: 0.83rem;
-//     width: 0.83rem;
-//     margin-top: 1.08rem;
-//     background-color: skyblue;
-// }
 .content-body .txt {
     @include flex;
     @include flex-box;
@@ -108,7 +101,7 @@ footer {
     height: 0.31rem;
     font-size: .31rem;
     margin-left: .6rem;
-    margin-right: .12rem; // background-color: skyblue;
+    margin-right: .12rem;
 }
 
 .content-body .checkInfo {
@@ -156,7 +149,6 @@ footer {
     @include align-items;
     @include justify-content(space-between);
     padding: .24rem .35rem;
-    // border-bottom: $border;
 }
 
 .play-body .playStyle .more {
@@ -174,7 +166,7 @@ footer {
 .play-body .playStyle .logobox .logo {
     height: 0.58rem;
     width: 0.58rem;
-    margin-right: .48rem; // background-color: rgba(56, 176, 53, 1);
+    margin-right: .48rem; 
 }
 
 .play-body .playStyle .logobox .weixin {

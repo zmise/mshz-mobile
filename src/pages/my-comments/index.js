@@ -109,7 +109,6 @@ $(function () {
             '</a>' +
             '</div>';
 
-          // '      <i class="current">楼主：</i>' +
           var item = data.replyList;
 
           str +=
@@ -171,22 +170,11 @@ $(function () {
 
   if (id && id !== '') {
     // 关闭loading
-    // $('#loading').remove();
     commentDetail(params);
   } else {
     location.replace('error.html?code=E0001')
   }
 
-  // //点击进入房源详情houseDetails
-  // $('.article-body').on('tap', '.houseDetail-entry', function (e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   var id = getUrlParam('id');
-  //   if (id && id !== '') {
-  //     window.location = '/houseDetails?id=' + id;
-
-  //   }
-  // });
   // 查看评价post接口
   $.ajax({
     url: '/mshz-app/security/order/comment/seeComment',

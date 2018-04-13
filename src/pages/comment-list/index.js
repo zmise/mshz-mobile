@@ -7,8 +7,6 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/js/zoomify.js'); // 查看大图
 
-// require('../../assets/js/appDownload.js');//全局下载APP
-
 
 //  返回后页面不刷新的问题
 window.onpageshow = function (event) {

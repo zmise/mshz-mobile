@@ -9,7 +9,6 @@ $(function () {
     if (window.sessionStorage.getItem('loginInfo')) {
       loginInfo = JSON.parse(window.sessionStorage.getItem('loginInfo'))
     }
-  
     if (loginInfo && Cookie.get('sid')) {
       dtd.resolve(loginInfo);
     } else if (Cookie.get('sid') || $('body').data('logined')) {
@@ -62,18 +61,15 @@ $(function () {
       '       <span class="txt">首页</span>' +
       '     </a>' +
       '     <a class="items" href="/user/personal-center.html">' +
-      // '     <a class="items" href="/personal-center.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwode"></i>' +
       '       <span class="txt">我的</span>' +
       '     </a>' +
       '     <a class="items" href="/user/order-list.html#WAIT_PAYMENT" id="orderList">' +
-      // '     <a class="items" href="/order-list.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodedingdan"></i>' +
       '       <span class="txt">订单</span>' +
       '       <span class="num">6</span>' +
       '     </a>' +
       '     <a class="items" href="/user/my-collections.html">' +
-      // '     <a class="items" href="/my-collections.html">' +
       '       <i class="icon iconfont icon-gerenzhongxinwodeshoucang"></i>' +
       '       <span class="txt">收藏</span>' +
       '     </a>' +
@@ -92,7 +88,6 @@ $(function () {
     } else {
       str +=
         '     <a class="items" href="/user/setting-password.html">' +
-        // '     <a class="items" href="/setting-password.html">' +
         '       <i class="icon iconfont icon-shezhimima"></i>' +
         '       <span class="txt">设置密码</span>' +
         '     </a>';
@@ -111,7 +106,6 @@ $(function () {
       '     <span class="ftxt">下载APP</span>' +
       '   </a>' +
       '   <a class="box" href="/user/suggestion.html">' +
-      // '   <a class="box" href="/suggestion.html">' +
       '     <i class="icon iconfont icon-gerenzhongxinyijianfankui"></i>' +
       '     <span class="ftxt">意见反馈</span>' +
       '   </a>' +
@@ -128,7 +122,6 @@ $(function () {
     }
     // window.jquery = $;
   }
-
 
   //发送图形验证码get接口
   function logout() {
@@ -189,10 +182,6 @@ $(function () {
   /*  点击退出登录  */
   $('body').on('click', '#logout', function (e) {
     e.stopPropagation();
-    // e.preventDefault();
-
-    // var path = '/user/order-list.html';
-    // console.log(123);
     window.sessionStorage.removeItem('loginInfo');
     logout();
   });

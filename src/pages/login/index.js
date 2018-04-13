@@ -1,6 +1,5 @@
 require('./index.scss');
 require('../../assets/js/analytics.js');
-// require('../../assets/js/plugins.js');
 
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/record'); //判断无痕模式
@@ -23,10 +22,6 @@ $(function () {
         }
       },
       error: function (error) {
-        // console.log(error.responseText);
-
-        // console.log(encodeURI(error.responseText))
-        // $('#verifyimg').attr('src', 'data:image/png;base64,' + encodeURI(error.responseText))
         // console.log('error');
       }
     });
@@ -151,9 +146,6 @@ $(function () {
     }, 1000);
 
   }
-  // toast.show('zmise', 100000, true, 'bounceInUp-hastrans', 'bounceOutDown-hastrans');
-
-
 
 
   // 点击items的文本框改变样式
@@ -185,9 +177,6 @@ $(function () {
       }
 
       $('.textList').eq(0).focus();
-      // $(this).hide().siblings().show();
-      // timer(60);
-      // sendcheckcode(telVal);
     }
   });
 
@@ -198,24 +187,12 @@ $(function () {
     this.src = src + Math.random();
   });
 
-  // 跳文本框
-  // $('.textList .items').on('input propertychange', function () {
-  //   if ($(this).val().length === 1) {
-  //     $(this).next().focus();
-  //   } else {
-  //     $(this).prev().focus();
-  //   }
-  // });
 
   // 点击cancel的发送短信验证码
   $('#cancel').on('click', function (e) {
     e.stopPropagation();
     e.preventDefault();
     var code = $('.textList').eq(0).val();
-    // var $textList = $('.textList .items')
-    // for (var i = 0; i < $textList.length; i++) {
-    //   code += $textList.eq(i).val();
-    // }
 
     $('.textList').eq(0).blur();
     $('.textList').eq(0).val('');

@@ -8,7 +8,6 @@
 .index-list .img {
     @include flex-box;
     @include align-items;
-    // @include justify-content;
     width: 6.8rem;
     height: 3.84rem;
     overflow: hidden;
@@ -64,9 +63,7 @@
     white-space: nowrap;
 }
 
-// .index-list .item-threeline .three-lline {
-//     @include flex-box;
-// }
+
 .index-list .twoline-items {
     font-size: .24rem;
     padding: 0 .2rem;
@@ -84,11 +81,3 @@
     border: 0;
 }
 
-// .index-list .item-twoline .twoline-items:first-child:before {
-//     @include position(absolute, auto, auto, auto, .35rem, 10);
-//     display: block;
-//     content: '';
-//     height: .23rem;
-//     width: .17rem;
-//     background-color: skyblue;
-// }

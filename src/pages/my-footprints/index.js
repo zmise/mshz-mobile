@@ -82,7 +82,6 @@ $(function () {
 
   var guessLikeArray = [];
   if (typeof window.localStorage.getItem('guessLike') === 'string') {
-    // guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     guessLikeArray = JSON.parse(window.localStorage.getItem('guessLike')) || [];
     var ids = [];
     var len = guessLikeArray.length;

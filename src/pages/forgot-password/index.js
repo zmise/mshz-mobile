@@ -22,10 +22,6 @@ $(function () {
         }
       },
       error: function (error) {
-        // console.log(error.responseText);
-
-        // console.log(encodeURI(error.responseText))
-        // $('#verifyimg').attr('src', 'data:image/png;base64,' + encodeURI(error.responseText))
         // console.log('error');
       }
     });
@@ -188,10 +184,6 @@ $(function () {
         $('#verifyimg').attr('src', '/mshz-app/verify/image?');
       }
       $('.textList').eq(0).focus();
-      // console.log('success')
-      // $(this).hide().siblings().show();
-      // timer(60);
-      // sendcheckcode(telVal);
     }
   });
 
@@ -201,16 +193,6 @@ $(function () {
     var src = this.src.substring(0, this.src.indexOf('?') + 1);
     this.src = src + Math.random();
   });
-
-  // // 跳文本框
-  // $('.textList .items').on('input propertychange', function () {
-  //   if ($(this).val().length === 1) {
-  //     $(this).next().focus();
-  //   } else {
-  //     $(this).prev().focus();
-  //   }
-  // });
-
 
   // 点击noCancel的取消验证
   $('#noCancel').on('click', function (e) {

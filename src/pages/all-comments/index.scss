@@ -55,7 +55,7 @@ body {
 
 .total {
     margin-top: .12rem;
-    border-bottom: $border; // @include border-media(.01rem, solid, #E3E6E9);
+    border-bottom: $border;
     padding: 0 .35rem .2rem;
     background-color: #fff;
 }
@@ -88,7 +88,7 @@ body {
 .comment-body {
     background-color: #fff;
     padding: .1rem 0 .45rem;
-    border-bottom: .01rem solid rgba(243, 243, 243, 1); // @include border-media(.01rem, solid, rgba(243, 243, 243, 1));
+    border-bottom: .01rem solid rgba(243, 243, 243, 1);
 }
 
 .comment-body .line-one .icon {
@@ -163,7 +163,7 @@ body {
 .comment-body .first-comment .des .des-cnt {
     font-size: .26rem;
     color: rgba(94, 100, 107, 1);
-    line-height: .4rem; // @include line-clamp;
+    line-height: .4rem;
     word-wrap: break-word;
     word-break: break-all;
 }
@@ -185,7 +185,7 @@ body {
 .comment-body .first-comment .des .img-list .items {
     @include flex(0, 0, auto);
     width: 1.44rem;
-    height: 1.2rem; // margin: .2rem .16rem .2rem 0;
+    height: 1.2rem;
     color: #000;
     box-sizing: border-box;
 }
@@ -213,8 +213,3 @@ body {
 .comment-body .first-comment .des .des-duihua .items .current {
     color: $color;
 }
-
-// .comment-body .first-comment .des .des-duihua span:last-child {
-//     @include flex;
-//     color: rgba(94, 100, 107, 1);
-// }
