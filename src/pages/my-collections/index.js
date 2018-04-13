@@ -25,7 +25,7 @@ if (browserRule.test(navigator.userAgent)) {
 $(function () {
 
   var $collectionsList = $('.article-body .list'); // $('#collectionsList')
-
+  console.log($('.article-body .list').text())
   var dropload = $('.article-body').dropload({
     scrollArea: window,
     domUp: {                                                            // 上方DOM
@@ -49,7 +49,10 @@ $(function () {
         '</section>'
     },
     loadDownFn: loadingMore,
-    loadUpFn: loadingMore,
+    loadUpFn: function () {
+      $('#page').val(0);
+      loadingMore();
+    },
   });
 
 
@@ -76,11 +79,13 @@ $(function () {
       cache: false,
       success: function (res) {
         var recordCount = res.result && res.result.recordCount || 0;
-        if (params.page === 1) {
+        if (params.currentPage === 1) {
           $collectionsList.empty();
         }
         console.log(res)
-
+        if (res.result.pageCount > 1) {
+          $('.dropload-down .unusual-body').remove();
+        }
         if (res.status === 'C0000'
           && res.result
           && res.result.items
@@ -121,16 +126,9 @@ $(function () {
                 '</div>'
                 ;
             }
-          } else {
-            str =
-              '<section class="unusual-body">' +
-              '  <div class="no-house"></div>' +
-              '  <span>你还没有收藏房源哦~</span>' +
-              '</section>';
           }
           $collectionsList.append(str);
         }
-
         dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
       },
       error: function (error) {
