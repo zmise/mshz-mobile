@@ -7,6 +7,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/zoomify.js'); // 查看大图
 var util = require('../../util/');
+var picture = require('../../assets/img/picture-loading.png');
 
 
 $(function () {
@@ -48,7 +49,7 @@ $(function () {
               '    <div class="info">' +
               '      <div class="flex-box">';
             if (item.headPortrait.length) {
-              str += '        <img class="photo" src="' + item.headPortrait.replace('{size}', '88x88') + '"/>';
+              str += '        <img class="photo" src="' + picture + '" data-src="' + item.headPortrait.replace('{size}', '88x88') + '" lazyload/>';
             } else {
               str += '        <img class="photo" src="' + require('../../assets/img/user.png') + '"/>';
             }
@@ -69,7 +70,7 @@ $(function () {
               for (var k = 0; k < comPicArray.length; k++) {
                 str +=
                   '<div class="img">' +
-                  '        <img class="items" src="' + comPicArray[k].replace('{size}', '750x750') + '"/>' +
+                  '        <img class="items" src="' + picture + '" data-src="' + comPicArray[k].replace('{size}', '750x750') + '" lazyload/>' +
                   '</div>';
               }
               str += '      </div>';
@@ -101,7 +102,7 @@ $(function () {
 
           $('#articleBody').append(str);
           $('.img-list img').zoomify();
-
+          $.lazyload();
         }
       },
       error: function (error) {

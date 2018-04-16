@@ -10,6 +10,7 @@ require('../../assets/js/navigate.js');
 
 require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/dropload.min'); // 分页插件
+var picture = require('../../assets/img/picture-loading.png');
 
 
 // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
@@ -100,7 +101,7 @@ $(function () {
                 '  <a href="/houseDetails?id=' + item.id + '">' +
                 '    <div class="index-list">' +
                 '        <div class="img">' +
-                '          <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
+                '          <img src="' + picture + '" data-src="' + item.mainPicture.replace('{size}', '1020x576') + '" lazyload />' +
                 '        </div>' +
                 '        <div class="item-oneline">' +
                 '          <p>' + item.title + '</p>' +
@@ -130,6 +131,8 @@ $(function () {
           $collectionsList.append(str);
         }
         dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
+        $.lazyload();
+
       },
       error: function (error) {
         console.log(error);

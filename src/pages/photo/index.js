@@ -3,6 +3,7 @@ require('../../assets/js/analytics.js');
 
 require('../../assets/js/plugins.js');
 require('../../assets/plugins/jquery.photo.album.js');
+var picture = require('../../assets/img/picture-loading.png');
 
 $(function () {
 
@@ -42,7 +43,7 @@ $(function () {
               str +=
                 '<li class="items" data-index="' + (j - 0 + 1) + '">' +
                 '<div class="img">' +
-                '  <img src="' + item.replace('{size}', '750x422') + '" />' +
+                '  <img src=' + picture + ' data-src="' + item.replace('{size}', '750x422') + '" lazyload/>' +
                 '</div>' +
                 '</li>'
                 ;
@@ -90,6 +91,7 @@ $(function () {
             '    </div>' +
             '</section >';
           $('#content').html(str);
+          $.lazyload();
           //初始化 滑动
           $('#slide').slide();
           $('.title').html('<span>房源相册 ' + '<i class="num">' + (+imageIndex + 1) + '</i>/ ' + totalImg + '</span>');

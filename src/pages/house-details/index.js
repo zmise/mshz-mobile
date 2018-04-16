@@ -6,6 +6,7 @@ require('../../assets/plugins/jquery.banner.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
 require('../../assets/js/record'); //判断无痕模式
+var picture = require('../../assets/img/picture-loading.png');
 // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
 // var browserRule = /^.*((iPhone)|(iPad)|(Safari))+.*$/;
 // if (browserRule.test(navigator.userAgent)) {
@@ -39,7 +40,7 @@ $(function () {
               var item = data[i];
               listHTML +=
                 '<a class="items" href="/houseDetails?id=' + item.id + '">' +
-                '  <img src="' + item.mainPicture.replace('{size}', '200x100') + '">' +
+                '  <img src="' + picture + '" data-src="' + item.mainPicture.replace('{size}', '200x100') + '" lazyload />' +
                 '  <div class="oneline">' +
                 '    <p>' + item.title + '</p>' +
                 '    <p>¥' + item.price + '</p>' +
@@ -54,8 +55,8 @@ $(function () {
 
             listHTML += '</div></div>';
             $('#guessLikeWrapper').empty().append(listHTML);
-
             $('#guessLike').slide();
+            $.lazyload();
           }
         }
       },

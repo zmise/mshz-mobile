@@ -6,13 +6,14 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');//侧边栏
 require('../../assets/vendors/iconfont/iconfont.js'); //有色图标
 var toast = require('../../assets/js/toast.js');  //toast的事件
+var picture = require('../../assets/img/picture-loading.png');
 
 var order = require('../../common/order-utils');
 
 function houseInfo(data) {
   return '<div class="order-info">' +
     '<a class="content" href="/houseDetails?id=' + data.situationId + '">' +
-    '<img src="' + data.roomMainPic.replace('{size}', '120x100') + '" alt="">' +
+    '<img src=' + picture + ' data-src="' + data.roomMainPic.replace('{size}', '120x100') + '" lazyload /> ' +
     '<div class="i-txt">' +
     '<span class="title">' + data.roomTitle + '</span>' +
     '<div class="txt-line">' +
@@ -196,6 +197,7 @@ $(function () {
     if (data.newOrderState === 'PENDING' && data.effectTimeSecond > 0) {
       order.startTimer(data.effectTimeSecond);
     }
+    $.lazyload();
   }).fail(function (err) {
     toast.show('请求失败');
     // 关闭loading

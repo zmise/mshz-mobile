@@ -7,6 +7,8 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/js/zoomify.js'); // 查看大图
 
+var picture = require('../../assets/img/picture-loading.png');
+
 
 //  返回后页面不刷新的问题
 window.onpageshow = function (event) {
@@ -57,7 +59,7 @@ $(function () {
                 str += '<div class="img-list">';
                 for (var j = 0; j < imgs.length; j++) {
                   str += '<div class="img">' +
-                    '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />' +
+                    '<img class="items img-rounded" src="' + picture + '" data-src="' + imgs[j].replace('{size}', '750x750') + '" lazyload/>' +
                     '</div>';
                 }
                 str += '</div>';
@@ -66,7 +68,7 @@ $(function () {
               str += '</div>' +
                 '<div class="content house-details" data-id="' + item.situationId + '" href="/houseDetails?id=' + item.situationId + '">' +
                 '<div class="img">' +
-                '  <img src="' + item.mainPic.replace('{size}', '400x300') + '" alt="">' +
+                '  <img src="' + picture + '" data-src="' + item.mainPic.replace('{size}', '400x300') + '" lazyload />' +
                 '</div>' +
                 '  <div class="i-txt">' +
                 '    <span class="title">' + item.title + '</span>' +
@@ -100,6 +102,7 @@ $(function () {
 
           $('#articleBody').empty().append(str);
           $('.img-list img').zoomify();
+          $.lazyload();
 
         }
 
@@ -110,7 +113,6 @@ $(function () {
       }
     });
   }
-
   // 未评价订单数量查询 get接口
   function uncommittedCount() {
     $.ajax({

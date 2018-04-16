@@ -11,6 +11,7 @@ require('../../assets/js/appDownload.js');//全局下载APP
 require('../../assets/js/dropload.min');
 var util = require('../../util/');
 require('../../assets/js/record'); //判断无痕模式
+var picture = require('../../assets/img/picture-loading.png');
 
 
 var b = new Date();
@@ -104,7 +105,7 @@ $(function () {
             result +=
               '<div class="index-list">' +
               '<a class="img" href="/houseDetails?id=' + item.id + '">' +
-              '  <img src="' + item.mainPicture.replace('{size}', '1020x576') + '" alt="">' +
+              '  <img src="' + picture + '" data-src="' + item.mainPicture.replace('{size}', '1020x576') + '" lazyload />' +
               '</a>' +
               '  <div class="item-oneline">' +
               '    <p>' + item.title + '</p>' +
@@ -140,6 +141,7 @@ $(function () {
           }
         }
         dropload.resetload(recordCount, lastParams.page, res.result && res.result.pageCount || 1);
+        $.lazyload();
       },
       error: function (error) {
         console.log(error);

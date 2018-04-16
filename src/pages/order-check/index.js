@@ -8,6 +8,7 @@ var toast = require('../../assets/js/toast.js');  //toast的事件
 
 var util = require('../../util/');
 require('../../assets/js/record'); //判断无痕模式
+var picture = require('../../assets/img/picture-loading.png');
 
 // $.toast('Here you can put the text of the toast');
 
@@ -167,7 +168,7 @@ $(function () {
           var str = '<div class="item-oneline"><p>' + orderInfo.roomTitle + '</p><p>￥' + orderInfo.roomPrice + '</p></div ><div class="item-twoline"><i class="twoline-items">' + orderInfo.gardenArea + '</i><i class="twoline-items">' + orderInfo.roomCount + '居' + orderInfo.roomArea + '平</i><i class="twoline-items def-pnum">' + orderInfo.custCount + '人</i></div>';
           str =
             '<div>' +
-            '<img class="mainpic" src="' + orderInfo.mainPicture.replace('{size}', '400x300') + '" />' +
+            '<img class="mainpic" src=' + picture + ' data-src="' + orderInfo.mainPicture.replace('{size}', '400x300') + '" lazyload />' +
             '</div>' +
             '<div class="content-info">' +
             '  <div class="item-oneline">' +
@@ -201,6 +202,7 @@ $(function () {
             $('#cancelRules').removeClass('hidden');
             $('#cancelRemark').html('不允许退订');
           }
+          $.lazyload();
         } else {
           toast.show(res.message);
         }

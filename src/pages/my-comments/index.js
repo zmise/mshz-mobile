@@ -7,6 +7,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
+var picture = require('../../assets/img/picture-loading.png');
 
 
 $(function () {
@@ -86,7 +87,7 @@ $(function () {
             for (var j = 0; j < imgs.length; j++) {
 
               str += '<div class="img">' +
-                '<img class="items img-rounded" src="' + imgs[j].replace('{size}', '750x750') + '" />' +
+                '<img class="items img-rounded" src="' + picture + '" data-src="' + imgs[j].replace('{size}', '750x750') + '" lazyload />' +
                 '</div>';
             }
             str += '</div>';
@@ -146,6 +147,7 @@ $(function () {
 
           $('.article-body').empty().append(str);
           $('.img-list img').zoomify();
+          $.lazyload();
 
         }
       },
