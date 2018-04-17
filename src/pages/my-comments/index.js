@@ -7,6 +7,7 @@ require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/zoomify.js'); // 查看大图
+var util = require('../../util/');
 var picture = require('../../assets/img/picture-loading.png');
 
 
@@ -70,7 +71,7 @@ $(function () {
           var str =
             '<div class="self-assess">' +
             '<div class="time-score">' +
-            '  <span class="time">' + data.commentTimeDesc + '</span>' +
+            '  <span class="time">' + util.formatDate(data.commentTime, 'yyyy-MM-dd') + '</span>' +
             '  <div class="score">' +
             '    <span>' + data.score.toFixed(1) + '</span>' +
             '      <div class="star-lines"><div class="star-bar-score" style="width:' + (data.score * 1.7 / 5) + 'rem"></div><div class="star-bar"></div></div>' +

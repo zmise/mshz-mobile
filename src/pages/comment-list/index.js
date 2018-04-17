@@ -6,7 +6,7 @@ require('../../assets/js/analytics.js');
 require('../../assets/js/plugins.js');
 require('../../assets/js/navigate.js');
 require('../../assets/js/zoomify.js'); // 查看大图
-
+var util = require('../../util/');
 var picture = require('../../assets/img/picture-loading.png');
 
 
@@ -45,7 +45,7 @@ $(function () {
                   str += '<div class="small-circle"></div>';
                 }
                 str +=
-                  '<span class="time">' + item.commentTimeDesc + '</span>' +
+                  '<span class="time">' + util.formatDate(item.commentTime, 'yyyy-MM-dd') + '</span>' +
                   '<div class="text-img">' +
                   '  <span class="txt">' + (item.content.length > 0 ? item.content : (item.commentPicture.length > 0 ? '' : '暂无评论')) + '</span>';
               } else {
