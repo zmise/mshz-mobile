@@ -179,7 +179,7 @@ $(function () {
   }
   guessLikeArray.push(guessLike);
 
-  if (guessLikeArray.length > 50) {
+  if (guessLikeArray.length > 20) {
     guessLikeArray.shift();
   }
   window.localStorage.setItem('guessLike', JSON.stringify(guessLikeArray), true);
