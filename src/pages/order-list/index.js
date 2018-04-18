@@ -82,6 +82,9 @@ $(function () {
         var recordCount = res.result && res.result.recordCount || 0;
         if (params.currentPage === 1) {
           $orderList.empty();
+
+        }
+        if (res.result.pageCount > 1) {
           $('.noOrder-body').remove();
         }
         var str = '';
@@ -241,9 +244,6 @@ $(function () {
             }
           }
           $orderList.append(str);
-
-        } else {
-          // toast.show(res.message);
         }
         dropload.resetload(recordCount, params.currentPage, res.result && res.result.pageCount || 1);
       },

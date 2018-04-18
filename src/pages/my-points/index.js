@@ -62,7 +62,6 @@ $(function () {
         if (params.currentPage === 1) {
           $collectionsList.empty();
         }
-        console.log(res)
 
         if (res.status === 'C0000'
           && res.result

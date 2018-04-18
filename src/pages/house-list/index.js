@@ -95,6 +95,9 @@ $(function () {
         if (lastParams.page === 1) {
           $houseList.empty();
         }
+        if (res.result.pageCount > 1) {
+          $('.no-house').remove();
+        }
 
         if (res.status === 'C0000'
           && res.result

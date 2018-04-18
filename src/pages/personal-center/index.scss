@@ -253,6 +253,9 @@ body {
 }
 
 .article-body .noOrder-body {
+    @include flex(1,
+    0,
+    auto);
     @include flex-box;
     @include flex-direction(column);
     @include align-items;
