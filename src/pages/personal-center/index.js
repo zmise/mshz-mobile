@@ -96,7 +96,6 @@ $(function () {
           $('.order-slider').banner({
             width: $(window).width(),
             height: $(window).width() * 2 / 3,
-            paginationType: 'fraction',
             autoPlay: false, // 是否自动播放
             child: '.slider', // 项容器选择器
             direction: 'horizontal',

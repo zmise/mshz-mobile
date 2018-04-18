@@ -234,7 +234,6 @@ $(function () {
     $('.banner-body').banner({
       width: $(window).width(),
       height: $(window).width() * 2 / 3,
-      paginationType: 'fraction',
       autoPlay: true, // 是否自动播放
       speed: 3000, // 播放速度
       pagination: 'pagination', // 分页器的className

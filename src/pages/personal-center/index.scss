@@ -134,7 +134,9 @@ body {
 }
 
 .order-info .slider {
-    @include flex;
+    @include flex(1,
+    0,
+    auto);
     @include flex-box;
     @include flex-direction(column);
     padding: 0 0.35rem;
@@ -143,7 +145,9 @@ body {
 }
 
 .order-info .slider .items {
-    flex: 1;
+    @include flex(1,
+    0,
+    auto);
     height: 1.8rem !important;
     border-radius: .08rem;
     @include border-media( .01rem,
@@ -154,6 +158,9 @@ body {
 }
 
 .order-info .slider .items .tlt {
+    @include flex(1,
+    0,
+    auto);
     @include flex-box;
     @include justify-content(space-between);
     padding-top: 0.36rem;
@@ -269,57 +276,36 @@ body {
 }
 
 .order-slider {
-    @include flex;
+    @include flex(1,
+    0,
+    auto);
     @include flex-box;
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 .order-slider .banner {
+    @include flex(1,
+    0,
+    auto);
     @include flex-box;
 }
 
-// .order-slider .pagination {
-//     @include position(absolute,
-//     auto,
-//     .35rem,
-//     .3rem,
-//     auto,
-//     10);
-//     @include flex-box;
-//     @include align-items;
-//     @include justify-content;
-//     padding: .02rem .05rem;
-//     height: .28rem;
-//     background: rgba(43, 47, 51, 0.3);
-//     border-radius: .4rem;
-// }
-// .order-slider .pagination .icon,
-// .order-slider .pagination span {
-//     display: block;
-//     margin-right: .04rem;
-//     font-size: .22rem;
-//     color: #fff;
-// }
-// .order-slider .pagination .icon:before {
-//     display: block;
-//     width: .28rem;
-//     height: .28rem;
-//     border-radius: .14rem;
-//     overflow: hidden;
-// }
 .order-info .pagination {
     @include position(absolute,
     auto,
-    auto,
+    0,
     0,
     auto,
     10);
-    @include flex-box;
+    display: flex;
+    display: -webkit-flex;
     @include align-items;
     @include justify-content;
     width: 100%;
-    padding-bottom: 0.1rem; // display: none;
+    height: 0.14rem;
+    padding-bottom: 0.08rem;
 }
 
 .order-info .pagination span {
