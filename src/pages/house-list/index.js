@@ -58,7 +58,10 @@ $(function () {
         '</section>'
     },
     loadDownFn: loadingMore,
-    loadUpFn: loadingMore,
+    loadUpFn: function () {
+      $('#page').val(0);
+      loadingMore();
+    },
   });
 
   /* get请求 loadingMore start*/

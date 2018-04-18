@@ -30,7 +30,10 @@ $(function () {
         '</section>'
     },
     loadDownFn: loadingMore,
-    loadUpFn: loadingMore,
+    loadUpFn: function () {
+      $('#page').val(0);
+      loadingMore();
+    },
 
   });
   function loadingMore(options) {
@@ -56,7 +59,7 @@ $(function () {
       cache: false,
       success: function (res) {
         var recordCount = res.result.list && res.result.list.recordCount || 0;
-        if (params.page === 1) {
+        if (params.currentPage === 1) {
           $collectionsList.empty();
         }
         console.log(res)
