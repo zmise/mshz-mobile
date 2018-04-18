@@ -1,6 +1,7 @@
 require('../../common/session');
 require('./index.scss');
 require('../../assets/js/analytics.js');
+require('../../assets/plugins/jquery.banner.js');//轮播图
 
 /* 侧边导航 */
 require('../../assets/js/plugins.js');
@@ -56,25 +57,29 @@ $(function () {
             '</section>'
             ;
           $('#articleBody').prepend(str);
-
-          str =
-            '<div class="slider">';
+          str = '<div class="order-slider">' +
+            '<div class="banner">';
 
           var picList = item.waitInRoomOrders;
           if (picList.length > 0) {
-            for (var i = 0; i < picList.length && i < 2; i++) {
-              str +=
-                '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
-                '    <div class="tlt">' +
-                '      <span class="txt ellips">' + picList[i].title + '</span>' +
-                '      <span class="txt current">已预订</span>' +
-                '    </div>' +
-                '    <div class="time">' +
-                '      <span class="txt">' + picList[i].inRoomStartTimeDesc + '至' + picList[i].inRoomEndTimeDesc + '</span>' +
-                '      <span class="txt">' + picList[i].days + '晚</span>' +
-                '    </div>' +
-                '  </a>';
+            for (var j = 0; j < Math.ceil(picList.length / 2); j++) {
+              str += '<div class="slider">';
+              for (var i = 2 * j; i < picList.length && i < 2 * (j + 1); i++) {
+                str +=
+                  '  <a class="items" href="./order-details.html?orderNo=' + picList[i].id + '">' +
+                  '    <div class="tlt">' +
+                  '      <span class="txt ellips">' + picList[i].title + '</span>' +
+                  '      <span class="txt current">已预订</span>' +
+                  '    </div>' +
+                  '    <div class="time">' +
+                  '      <span class="txt">' + picList[i].inRoomStartTimeDesc + '至' + picList[i].inRoomEndTimeDesc + '</span>' +
+                  '      <span class="txt">' + picList[i].days + '晚</span>' +
+                  '    </div>' +
+                  '  </a>';
+              }
+              str += '  </div>';
             }
+
           } else {
             str +=
               '<div class="noOrder-body">' +
@@ -83,11 +88,21 @@ $(function () {
               ' </div>'
               ;
           }
-          str +=
-            '  </div>' +
+
+          str += '</div>' +
             '</div>';
           $('#articleBody .order-info').append(str);
           $('#articleBody').css('visibility', 'visible');
+          $('.order-slider').banner({
+            width: $(window).width(),
+            height: $(window).width() * 2 / 3,
+            paginationType: 'fraction',
+            autoPlay: false, // 是否自动播放
+            child: '.slider', // 项容器选择器
+            direction: 'horizontal',
+            pagination: 'pagination', // 分页器的className
+            paginationType: 'bullets', // 分页器的类型   bullets (小点) | fraction (x/y)
+          });
 
         }
       },
@@ -99,7 +114,7 @@ $(function () {
   }
 
   queryPersonalCenter();
- 
+
   // 点击返回回到上一页
   $('#back').on('tap', function (e) {
     e.stopPropagation();
