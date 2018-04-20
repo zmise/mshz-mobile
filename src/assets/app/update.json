@@ -2,5 +2,6 @@
   "mandatory": true,
   "url": "http://www.mshz.com/app/mshz-1.0.0.apk",
   "versionCode": 1,
-  "versionName": "1.0.0"
+  "versionName": "1.0.0",
+  "description":"版本更新"
 }
