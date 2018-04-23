@@ -19,8 +19,10 @@ $(function () {
     $filterLayer.find('.filter-body .mostjs:eq(' + index + ')').addClass('current').siblings().removeClass('current');
     if (index === 0) {
       // $filterLayer.find('.filter-list .two-row').css('display', 'none').eq(0).css('display', 'block');
-    }
-    if (index === 2) {
+      if (!$filterLayer.find('.one-row .items.current').length) {
+        $filterLayer.find('.one-row .items:eq(0)').trigger('tap');
+      }
+    } else if (index === 2) {
       _range = $range.doubleRange({
         minValue: 0,
         maxValue: 21,
