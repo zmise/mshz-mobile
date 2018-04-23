@@ -43,10 +43,9 @@ function buildHeader(data) {
       '  </svg>' +
       '<div>';
 
-    // if (data.refund === 0) {
-    //   header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>';
-    // } else
-    if (data.refundState !== 'REFUND_FINISH') {
+    if (state === 'EARLY_CHECKED_OUT' && data.refund === 0) {
+      header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>';
+    } else if (data.refundState !== 'REFUND_FINISH') {
       header += '  <span class="txt ' + map[state].className + '">' + map[state].text + '</span>' +
         '<p class="cot-txt ' + map[state].className + '">退款中，申请时间：' + data.refundApplyTime + ' 处理时间：1-3个工作日';
     } else {
