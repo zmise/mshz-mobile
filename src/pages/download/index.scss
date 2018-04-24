@@ -1,0 +1,46 @@
+.pages {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background: url(img/app-bg.jpg) 50% 50% no-repeat;
+  background-size: cover;
+}
+
+.download {
+  position: fixed;
+  top: auto;
+  right: 15%;
+  bottom: 12%;
+  left: 15%;
+  z-index: 10;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  background-color: #58b378;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.overlay .pic {
+  display: block;
+  width: 70%;
+  height: auto;
+  margin: 10px 2% auto 25%;
+  border: 0;
+}
