@@ -334,7 +334,7 @@ $(function () {
       path += '&lat=' + lat + '&lon=' + lon;
     }
     if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站' || typeItem === '机场车站' || typeItem === '飞机场' || typeItem === '汽车站' || typeItem === '火车站') {
-      path += "&needAllCity=true"
+      path += "&needAllCity=true&sortBy=A1"
     }
     console.log(path);
 
