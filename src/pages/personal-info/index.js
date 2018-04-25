@@ -114,7 +114,7 @@ $(function () {
             '  <div class="items">' +
             '    <span class="title">身份证号</span>' +
             '    <div class="content">' +
-            '      <span>' + item.identityCard + '</span>' +
+            '      <span>' + item.identityCard.replace(/\d{4}$/, '****') + '</span>' +
             '      <i class="icon iconfont icon-fanhuixiangyou"></i>' +
             '    </div>' +
             '  </div>' +
