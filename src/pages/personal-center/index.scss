@@ -145,9 +145,9 @@ body {
 }
 
 .order-info .slider .items {
-    @include flex(1,
-    0,
-    auto);
+    // @include flex(1,
+    // 0,
+    // auto);
     height: 1.8rem !important;
     border-radius: .08rem;
     @include border-media( .01rem,
