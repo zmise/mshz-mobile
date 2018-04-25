@@ -17,14 +17,14 @@ $(function () {
 
   function getiOS() {
     var iOSUrl =
-      'http://agentapp.qfang.com/qfang-agent-api/product/download/getDownloadUrl?callback=download&productId=bef877d9-de55-404d-8cdb-5c9871bcfe7b&productType=&mobileSystem=IOS';
+      'http://agentapp.qfang.com/qfang-agent-api/product/download/getDownloadUrl?callback=downloadAPP&productId=bef877d9-de55-404d-8cdb-5c9871bcfe7b&productType=&mobileSystem=IOS';
 
     $.ajax({
       url: iOSUrl,
       type: 'GET',
       dataType: 'jsonp',
       jsonp: 'callback',
-      jsonpCallback: 'download'
+      jsonpCallback: 'downloadAPP'
     });
   };
 
@@ -36,7 +36,7 @@ $(function () {
       dataType: 'json',
       success: function (res) {
         if (res.url) {
-          download(res.url);
+          downloadAPP(res.url);
         }
       }
     });
@@ -52,6 +52,6 @@ $(function () {
 
 });
 
-function download(url) {
+window.downloadAPP = function (url) {
   location.href = url;
 }
