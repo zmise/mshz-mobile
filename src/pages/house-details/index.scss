@@ -534,15 +534,9 @@ body {
     border-radius: .04rem;
 }
 
-.comment-body .first-comment .des .items {
-    @include flex(0, 0, auto);
+.comment-body .first-comment .des img {
     width: 1.44rem;
     height: 1.2rem;
-    margin-right: .16rem;
-    margin-bottom: .16rem;
-    color: #000;
-    box-sizing: border-box;
-    border-radius: .04rem;
 }
 
 .no-comment {

@@ -101,7 +101,7 @@ $(function () {
       '   </div> ' +
       ' </div>' +
       ' <div class="nav-footer">' +
-      '   <a class="box">' +
+      '   <a class="box" href="/user/download.html">' +
       '     <i class="icon iconfont icon-xiazai"></i>' +
       '     <span class="ftxt">下载APP</span>' +
       '   </a>' +
