@@ -1,7 +1,7 @@
 {
   "mandatory": true,
-  "url": "http://192.168.0.243:81/app/mshz-1.0.0.apk",
-  "versionCode": 2,
+  "url": "http://www.mshz.com/app/mshz-1.0.0.apk",
+  "versionCode": 1,
   "versionName": "1.0.0",
-  "description":"这是一个版本更新的描述"
+  "description": ""
 }
