@@ -12,8 +12,10 @@ require('../../assets/js/calendar.js');//日期插件
 require('../../assets/js/appDownload.js');//全局下载APP
 var toast = require('../../assets/js/toast.js');  //toast的事件
 require('../../assets/js/record.js'); //判断无痕模式
-var lon;
-var lat;
+
+var geo = require('../../common/geo');
+// 记录用户所在经纬度
+var coords = {};
 
 
 // 解决Safari ( WKWebview ) 返回后页面不刷新的问题
@@ -28,78 +30,6 @@ var lat;
 
 $(function () {
   window.sessionStorage.setItem('lastLocation', location.href);
-  //h5本地获取地理位置
-  function getLocation() {
-
-    var options = {
-      enableHighAccuracy: true, //boolean 是否要求高精度的地理信息，默认为false
-      maximumAge: 1000 //应用程序的缓存时间
-    }
-
-    if (navigator.geolocation) {
-      //浏览器支持geolocation
-      navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-
-    } else {
-      //浏览器不支持geolocation
-      console.log('浏览器不支持!');
-    }
-  }
-
-  //成功时
-  function onSuccess(position) {
-    //返回用户位置
-    //经度
-    lon = position.coords.longitude;
-    //纬度
-    lat = position.coords.latitude;
-
-    //使用腾讯地图API
-
-    //腾讯地图的中心地理坐标
-    var center = new qq.maps.LatLng(latitude, longitude);
-    var map = new qq.maps.Map(document.getElementById('container'), {
-      //地图的中心地理坐标
-      center: center,
-      //初始化地图缩放级别
-      zoom: 16
-    });
-
-    //在地图中创建信息提示窗口
-    var infoWin = new qq.maps.InfoWindow({
-      map: map
-    });
-    //打开信息窗口
-    infoWin.open();
-    //设置信息窗口显示区的内容
-    infoWin.setContent('' + '您在这里纬度：' + latitude + '经度：' + longitude);
-    //设置信息窗口的位置
-    infoWin.setPosition(center);
-  }
-
-  //失败时
-  function onError(error) {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        alert('用户拒绝对获取地理位置的请求');
-        break;
-
-      case error.POSITION_UNAVAILABLE:
-        alert('位置信息是不可用的');
-        break;
-
-      case error.TIMEOUT:
-        alert('请求用户地理位置超时');
-        break;
-
-      case error.UNKNOWN_ERROR:
-        alert('未知错误');
-        break;
-    }
-
-  }
-
-
 
   //searchInfo
   function searchInfo(cityName) {
@@ -114,7 +44,6 @@ $(function () {
       success: function (data) {
 
         var json = data.result || [];
-        console.log(json);
         //取localStorage中搜索历史的值
         var city = $.trim($('#destination-entry').val());
         var searchHistroy;
@@ -130,7 +59,7 @@ $(function () {
             '<div class="theme"><div class="title">搜索历史</div><div class="keywords">';
           for (var i = 0; i < item.length; i++) {
 
-            str += '<a class="items" href="javascript:;" data-type="' + item[i].type + '">' + item[i].destination + '</a>';
+            str += '<a class="items" href="javascript:;" data-type="' + item[i].type + '" data-lat="' + item[i].lat + '" data-lon="' + item[i].lon + '">' + item[i].destination + '</a>';
           }
 
           str += '</div></div>';
@@ -139,10 +68,10 @@ $(function () {
           var str1 = ''
           var arr = json[i].rimNames;
           for (var j = 0; j < arr.length; j++) {
-            str1 += '<a class="items" href="javascript:;" data-type="' + json[i].rimType + '">' + arr[j].name + '</a>';
+            str1 += '<a class="items" href="javascript:;" data-type="' + json[i].rimType + '" data-lat="' + arr[i].lat + '" data-lon="' + arr[i].lon + '">' + arr[j].name + '</a>';
           }
 
-          str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div >';
+          str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div>';
         }
         $('.search-keyword').empty().append(str);
       },
@@ -164,10 +93,15 @@ $(function () {
     if ($('#destination-entry').val() == '') {
       $('#destination-entry').val(cityName);
     }
-    lat = result.point.lat;
-    lon = result.point.lng;
-    if (!lat || !lon || lon === '' || lat === '') {
-      window.onload = getLocation;
+
+    coords.latitude = result.point.lat;
+    coords.longitude = result.point.lng;
+    if (!coords.latitude || !coords.longitude) {
+      window.onload = function () {
+        geo.getLocation(function (position) {
+          coords = position.coords;
+        });
+      }
     }
   }
 
@@ -292,9 +226,6 @@ $(function () {
   });
 
 
-
-
-
   /*  点击搜索跳转houselist.html */
   $('#search').click(function () {
     if (!$('#destination-entry').val()) {
@@ -302,11 +233,16 @@ $(function () {
       return;
     }
 
+    var $searchEntry = $('#search-entry');
+
     var city = $('#destination-entry').val();
-    var poi = $('#search-entry').val();
+    var poi = $searchEntry.val();
     var dates = $('#firstSelect').val();
     var path = '/houseList?city=' + city;
-    var type = $.trim($('#search-entry').data('type'));
+    var type = $searchEntry.data('type');
+    var lon = $searchEntry.data('lon');
+    var lat = $searchEntry.data('lat');
+
     var searchHistroy;
     if (window.localStorage.getItem('searchHistroy')) {
       searchHistroy = JSON.parse(window.localStorage.getItem('searchHistroy'))
@@ -332,13 +268,16 @@ $(function () {
     }
     if (lat !== '' && lon !== '' && lat && lon) {
       path += '&lat=' + lat + '&lon=' + lon;
+    } else {
+      path += '&lat=' + coords.latitude + '&lon=' + coords.longitude;
     }
+
     if (type === '机场车站' || type === '飞机场' || type === '汽车站' || type === '火车站' || typeItem === '机场车站' || typeItem === '飞机场' || typeItem === '汽车站' || typeItem === '火车站') {
-      path += "&needAllCity=true&sortBy=A1"
+      path += '&needAllCity=true&sortBy=A1'
     }
     console.log(path);
 
-    window.location = path;
+    location.href = path;
   })
 
 

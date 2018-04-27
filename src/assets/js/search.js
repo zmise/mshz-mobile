@@ -32,8 +32,10 @@ $(function () {
     if ($(this)) {
 
     }
-    $('#search-entry').val($(this).text());
-    $('#search-entry').attr('data-type', $(this).data('type'));
+    $('#search-entry').val($(this).text())
+      .data('type', $.trim($(this).data('type')))
+      .data('lat', $(this).data('lat'))
+      .data('lon', $(this).data('lon'));
     if ($(this).text() !== '') {
       $('.select-body .input-text .handleSearch-input-right').css('display', 'flex');
     }
@@ -83,7 +85,7 @@ $(function () {
     if (keyword.length > 0) {
       search(keyword);
     } else {
-      $(".sea").html('');
+      $('.sea').html('');
     }
   })
 
@@ -95,8 +97,8 @@ $(function () {
     $.ajax({
       url: '/mshz-app/room/darkSelectRimInfo',
       data: {
-        'city': $('#destination-entry').val(),
-        'name': keyword,
+        city: $('#destination-entry').val(),
+        name: keyword,
       },
       dataType: 'json',
       type: 'GET',

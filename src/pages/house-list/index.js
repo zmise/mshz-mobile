@@ -13,6 +13,9 @@ var util = require('../../util/');
 require('../../assets/js/record'); //判断无痕模式
 var picture = require('../../assets/img/picture-loading.png');
 
+var geo = require('../../common/geo');
+// 记录用户所在经纬度
+var coords = {};
 
 var b = new Date();
 var today = util.formatDate(b, 'yyyy-MM-dd');
@@ -32,6 +35,26 @@ var tomorrow = util.formatDate(b, 'yyyy-MM-dd');
 
 $(function () {
   window.sessionStorage.setItem('lastLocation', location.href);
+
+  // 百度接口的定位获取信息（cityName，lat，lon）
+  var nowCity = new BMap.Geolocation();
+  nowCity.getCurrentPosition(
+    function bdGetPosition(result) {
+      coords.latitude = result.point.lat;
+      coords.longitude = result.point.lng;
+      if (!coords.latitude || !coords.longitude) {
+        window.onload = function () {
+          geo.getLocation(function (position) {
+            coords = position.coords;
+          });
+        }
+      }
+    });
+
+
+
+
+
   var params = {};
   // dropload
   var $houseList = $('.recommend-body .mrl_35'); // $('#houseList')
@@ -134,7 +157,7 @@ $(function () {
             if (item.distDesc) {
               result +=
                 '    <div class="other-line">' +
-                '      <span>' + (lastParams.poi ? '<i class="icon iconfont icon-xiaoweizhidingdian"></i> ' : '距我 ') + item.distDesc + '</span>' +
+                '      <span>' + (lastParams.poi ? '<i class="icon iconfont icon-xiaoweizhidingdian"></i> ' : '距我') + item.distDesc + '</span>' +
                 '    </div>';
             }
             result += '  </div>' +
@@ -274,11 +297,14 @@ $(function () {
     if (poi == '不限') {
       poi = '';
       $(this).closest('body').find('.position').text('位置');
+      $('#lon').val(coords.longitude);
+      $('#lat').val(coords.latitude);
     } else {
       $(this).closest('body').find('.position').text(poi);
+      $('#lon').val($(this).data('lon'));
+      $('#lat').val($(this).data('lat'));
     }
     $('#poi').val(poi);
-
     if (type === '飞机场' || type === '汽车站' || type === '火车站') {
       $('#needAllCity').val('true');
     } else {
@@ -305,17 +331,19 @@ $(function () {
     e.preventDefault();
     e.stopPropagation();
     hideFilterLayer();
-    var metro = $(this).text();
+    var metro = $.trim($(this).text());
     if (metro === '不限') {
-      metro = '';
+      $('#poi').val('');
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text('位置');
+      $('#lon').val(coords.longitude);
+      $('#lat').val(coords.latitude);
     } else {
+      $('#poi').val(metro);
       $(this).closest('body').find('.filter-body .mostjs:eq(0) .txt').text(metro);
+      $('#lon').val($(this).data('lon'));
+      $('#lat').val($(this).data('lat'));
     }
-    $('#poi').val('');
     $('#needAllCity').val('true');
-    $('#lon').val($(this).data('lon'));
-    $('#lat').val($(this).data('lat'));
 
     loadingMore({ isReload: true });
   });
@@ -353,15 +381,16 @@ $(function () {
     loadingMore({ isReload: true });
   });
 
-
   $('.filter-list').on('tap', '.cancel-one', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('.onelist .items').removeClass('current');
     $('#page').val(1);
     $('#poi').val('');
-
+    $('#lon').val(coords.longitude);
+    $('#lat').val(coords.latitude);
   });
+
   $('.filter-list').on('tap', '.cancel-two', function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -381,7 +410,6 @@ $(function () {
     $('#prices').val('0-*');
     $('#roomCount').val('');
     $('#furniture').val('');
-
   });
 
   /* 排序层的切换确定事件 */
