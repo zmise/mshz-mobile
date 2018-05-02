@@ -68,7 +68,7 @@ $(function () {
           var str1 = ''
           var arr = json[i].rimNames;
           for (var j = 0; j < arr.length; j++) {
-            str1 += '<a class="items" href="javascript:;" data-type="' + json[i].rimType + '" data-lat="' + arr[i].lat + '" data-lon="' + arr[i].lon + '">' + arr[j].name + '</a>';
+            str1 += '<a class="items" href="javascript:;" data-type="' + json[i].rimType + '" data-lat="' + arr[i].latitude + '" data-lon="' + arr[i].longitude + '">' + arr[j].name + '</a>';
           }
 
           str += '<div class="theme"><div class="title">' + json[i].rimType + '</div><div class="keywords">' + str1 + '</div></div>';

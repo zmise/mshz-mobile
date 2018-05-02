@@ -49,11 +49,17 @@ $(function () {
           });
         }
       }
-    });
+    }
+  );
 
 
-
-
+  // 从首页选过热门景点等关键字后，进入房源列表页将对应的关键字选中。
+  if ($('#poi').val().length) {
+    var selectedItem = $('.filter-list.onelist').find('.items i:contains(' + $.trim($('#poi').val()) + ')');
+    if (selectedItem.length) {
+      selectedItem.parent().addClass('current').siblings('.items').removeClass('current')
+    }
+  }
 
   var params = {};
   // dropload

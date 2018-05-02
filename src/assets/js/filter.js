@@ -22,7 +22,7 @@ $(function () {
       if (!$filterLayer.find('.one-row .items.current').length) {
         $filterLayer.find('.one-row .items:eq(0)').trigger('tap');
       }
-    } else if (index === 2) {
+    } else if (index === 2 && !_range) {
       _range = $range.doubleRange({
         minValue: 0,
         maxValue: 21,

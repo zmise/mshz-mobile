@@ -208,10 +208,6 @@
     box-sizing: border-box;
 }
 
-.filter-list .content .items .icon {
-    color: #fff;
-}
-
 .filter-list .content .two-row {
     display: none;
     @include flex;
@@ -263,6 +259,12 @@
     border: 0;
 }
 
+.filter-list .content .items.current .icon {
+  display: block;
+}
+.filter-list .content .items .icon {
+  display: none;
+}
 
 /* range-body */
 
