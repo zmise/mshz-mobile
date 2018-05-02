@@ -56,6 +56,8 @@ $(function () {
     var obj = {
       destination: $(this).text(),
       type: $(this).data('type'),
+      lon: $(this).data('lon'),
+      lat: $(this).data('lat')
     }
     cityItem.push(obj);
     if (cityItem.length > 10) {
@@ -156,6 +158,8 @@ $(function () {
     var obj = {
       destination: destination,
       type: type,
+      lon: $(this).data('lon'),
+      lat: $(this).data('lat')
     }
     cityItem.push(obj);
     if (cityItem.length > 10) {
