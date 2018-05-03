@@ -1,14 +1,14 @@
 const webpack = require('webpack');
 var plugins = require('./plugins');
 
-// plugins.push(
-//   new webpack.optimize.UglifyJsPlugin({
-//     compress: {
-//       warnings: false,
-//       drop_console: true
-//     }
-//   })
-// );
+plugins.push(
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      drop_console: true
+    }
+  })
+);
 
 module.exports = {
   entry: require('./entry'),
