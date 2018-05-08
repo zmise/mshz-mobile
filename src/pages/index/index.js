@@ -227,7 +227,7 @@ $(function () {
 
 
   /*  点击搜索跳转houselist.html */
-  $('#search').click(function () {
+  $('#search').on('click', function () {
     if (!$('#destination-entry').val()) {
       toast.show('请选择目的地');
       return;
@@ -249,12 +249,16 @@ $(function () {
     } else {
       searchHistroy = {};
     }
+
+    // 若搜索的关键字存在于历史记录中，则从历史记录中取得相关类型和坐标
     var cityType = searchHistroy[city] || [];
     var typeItem;
     for (var i = 0; i < cityType.length; i++) {
-      var item = cityType[i].destination;
-      if (item === poi) {
-        typeItem = cityType[i].type;
+      var item = cityType[i];
+      if (item.destination === poi) {
+        typeItem = item.type;
+        lon = item.lon;
+        lat = item.lat;
       }
     }
     console.log(typeItem);
@@ -265,8 +269,6 @@ $(function () {
     }
     if (poi != '') {
       path += '&poi=' + poi;
-    }
-    if (lat !== '' && lon !== '' && lat && lon) {
       path += '&lat=' + lat + '&lon=' + lon;
     } else {
       path += '&lat=' + coords.latitude + '&lon=' + coords.longitude;
